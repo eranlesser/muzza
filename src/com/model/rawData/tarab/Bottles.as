@@ -32,12 +32,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 <bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='470' y='0' noteX='30' noteY='82'>
 	<tap noteId="7" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='540' y='0' noteX='30' noteY='82'>
-	<tap noteId="8" />
-</bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='620' y='0' noteX='30' noteY='82'>
-	<tap noteId="9" />
-</bottle>
+
 </components>
 <studio>
 <background image="backgr_solo.jpg" />
@@ -54,8 +49,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="5" soundFile="tarab/bottle/sol.mp3" animationIndex='5' value="5" />
 	<note id="6"  soundFile="tarab/bottle/la.mp3" animationIndex='6'  value="6"/>
 	<note id="7" soundFile="tarab/bottle/sib.mp3" animationIndex='7' value="7" />
-<note id="8" soundFile="edvard/notes/bottle/C+1HO.mp3" animationIndex='6' value="8" />
-	<note id="9" soundFile="edvard/notes/bottle/DHO.mp3" animationIndex='5' value="9" />
 </notes>
 </octaves>
 <gestures>

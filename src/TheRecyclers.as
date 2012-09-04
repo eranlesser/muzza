@@ -24,7 +24,6 @@ package {
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
 			start();
-			
 		}
 		
 		private function start():void{

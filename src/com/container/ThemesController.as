@@ -1,6 +1,7 @@
 package com.container
 {
 	import com.constants.Rhythms;
+	import com.constants.Session;
 	import com.container.controller.ProgressControl;
 	import com.model.IThemeModel;
 	import com.model.MainThemeModel;
@@ -41,6 +42,7 @@ package com.container
 		}
 		
 		private function startProgressControll(name:String,mode:String):void{
+			Session.SONG_NAME=name;
 			_playMode=mode;
 			_presenter.removeStartScreen();
 			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){//reset old progresscontroll

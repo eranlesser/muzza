@@ -3,12 +3,9 @@ package com.representation.view {
 	import com.gamification.INoteDisplayer;
 	import com.gamification.RepresentationtypeController;
 	import com.musicalInstruments.model.CoreInstrumentModel;
-	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
-	import com.musicalInstruments.model.sequances.ISequance;
-	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.components.NoteView;
 	import com.representation.RepresentationSizes;
 	import com.view.tools.AssetsManager;
@@ -70,6 +67,7 @@ package com.representation.view {
 				noteView.updateDisplay();
 			}
 		}
+		
 		public function setX(xx:int):void{
 			_notesContainer.x=xx+RepresentationSizes.thumbNailWidth+RepresentationSizes.cueWidth/2;
 		}
