@@ -1,11 +1,11 @@
 package com.container
 {
 	import com.constants.Dimentions;
-	import com.messages.InfoMessage;
 	import com.messages.LoadingMessage;
 	import com.messages.MessageControl;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
+	import com.screens.view.RecordScreen;
 	import com.screens.view.components.homePage.SongsMenu;
 	
 	import flash.display.DisplayObject;
@@ -19,9 +19,8 @@ package com.container
 		private var _guiLayer:			Sprite;
 		private var _messageLayer:		Sprite;
 		private var _messages:			MessageControl;
-		private var _infoMessage:		InfoMessage;
 		private var _startScreen:		HomePage;
-		private var _menu:				ToolBar;
+		private var _toolBar:			BottomToolBar;
 		public var tutorialRequest:Signal=new Signal();
 		
 		public function Presenter(){
@@ -32,9 +31,9 @@ package com.container
 			_screensLayer = new Sprite();
 			addChild(_screensLayer);
 			_guiLayer = new Sprite();
-			_menu = ToolBar.instance;
-			addChild(_menu);
-			_menu.y=Dimentions.HEIGHT-60;
+			_toolBar = new BottomToolBar();
+			addChild(_toolBar);
+			_toolBar.y=Dimentions.HEIGHT-_toolBar.height-10;
 			addChild(_guiLayer);
 			_messageLayer = new Sprite();
 			addChild(_messageLayer);
@@ -79,18 +78,20 @@ package com.container
 		
 		public function addScreen(screen:DisplayObject):void{
 			_screensLayer.addChild(screen);
-			_menu.visible = !(screen is HomePage);
+			_toolBar.visible = !(screen is HomePage);
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
 			}
 		}
 		
 		public function removeScreen(screen:DisplayObject):void{
+			if(screen is RecordScreen)
+			trace(RecordScreen(screen).model.instrumentModel.thumbNail)
 			_screensLayer.removeChild(screen);
 		}
 		
-		public function get menu():ToolBar{
-			return _menu;
+		public function get menu():BottomToolBar{
+			return _toolBar;
 		}
 		
 		private function addLoader():void{

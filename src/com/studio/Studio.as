@@ -45,7 +45,7 @@ package com.studio
 				_instruments.push(addInstrument(instrumentModel));
 			}
 			layout(0);
-			_toolBar = ToolBar.instance;
+			//_toolBar = ToolBar.instance;
 		}
 		
 		public function start():void{

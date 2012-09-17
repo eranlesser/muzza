@@ -27,19 +27,17 @@ package com.container.controller {
 		}
 		public function start(mode:String):void{
 			_model.playMode=mode;
-			_view.menu.mode=mode;
-			addScreen(_model.currentScreen as DisplayObject);
+			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			initNavigator();
-			_navigator.backEnebled =false;
 		}
 		
 		public function reset():void{
-			_navigator.nextEnabled=true;
 			_model.reset();
-			_navigator.nextSignal.remove(progress);
-			_navigator.prevSignal.remove(rewind);
-			_view.menu.recordScreenMenu.speedControl.reset();
+			_navigator.goto.remove(goTo);
+			//_navigator.nextSignal.remove(progress);
+			//_navigator.prevSignal.remove(rewind);
+			//_view.menu.recordScreenMenu.speedControl.reset();
 		}
 		
 		public function get frameRate():uint{
@@ -49,50 +47,26 @@ package com.container.controller {
 		private function initNavigator():void{
 			//_navigator = _view.addNavigation();
 			_navigator=_view.menu.navigator;
-			_navigator.nextSignal.add(progress);
-			_navigator.prevSignal.add(rewind);
+			_navigator.goto.add(goTo);
+			_navigator.state=_model.recordSession;
+			//_navigator.nextSignal.add(progress);
+			//_navigator.prevSignal.add(rewind);
 		}
-//		private function resetNavigator():void{
-//			_navigator.nextSignal.remove(progress);
-//			_navigator.prevSignal.remove(rewind);
-//			_navigator.backEnebled = false;
-//			_navigator.nextEnabled = true;
-//		}
 		
 		public function get theme():String{
 			return _themeName;
 		}
 		
-		private function progress():void{
+		private function goTo(scr:String):void{
 			_model.currentScreen.stop();
-			removeScreen(_model.currentScreen as DisplayObject);
-			_model.progress();
-			addScreen(_model.currentScreen as DisplayObject);
+			_view.removeScreen(_model.currentScreen as DisplayObject);
+			_model.goTo(scr);
+			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
-			_navigator.nextEnabled = _model.showNextButton;
-			_navigator.backEnebled = _model.showBackButton;
-			if(!_model.showNextButton){
-				_view.menu.mode="play";
-			}else{
-				_view.menu.mode="record";
-			}
-			
+			_navigator.state=_model.recordSession;
 		}
 		
-		private function rewind():void{
-			_model.currentScreen.stop();
-			removeScreen(_model.currentScreen as DisplayObject);
-			_model.rewind();
-			addScreen(_model.currentScreen as DisplayObject);
-			_model.currentScreen.start();
-			_navigator.nextEnabled = _model.showNextButton;
-			_navigator.backEnebled = _model.showBackButton;
-			if(!_model.showNextButton){
-				_view.menu.mode="play";
-			}else{
-				_view.menu.mode="record";
-			}
-		}
+		
 		
 		private function goHome():void{
 			_model.currentScreen.stop();
@@ -100,16 +74,10 @@ package com.container.controller {
 			_model.reset();
 		}
 		
-		private function addScreen(screen:DisplayObject):void{
-			_view.addScreen(screen);
-		}
 		
-		private function removeScreen(screen:DisplayObject):void{
-			_view.removeScreen(screen);
-		}
 		
-		private function onScreenComplete():void{
-			progress();
-		}
+	
+		
+		
 	}
 }

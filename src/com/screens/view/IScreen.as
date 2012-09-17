@@ -10,7 +10,6 @@ package com.screens.view
 		function stop():void;
 		function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void
 		//function set representationVisible(vis:Boolean):void;
-		
 		//function layout(direction:String):void;
 		
 		

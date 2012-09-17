@@ -116,14 +116,14 @@ package com.screens.recordScreenStates
 			return _recordScreen.recorder;
 		}
 		public function get recordButton():MenuButton{
-			return _recordScreen.recordButton;
+			return null//_recordScreen.recordButton;
 		}
 		
 		public function get listenButton():MenuButton{
-			return _recordScreen.listenButton;
+			return null//_recordScreen.listenButton;
 		}
 		public function get practiceButton():MenuButton{
-			return _recordScreen.practiceButton;
+			return null//_recordScreen.practiceButton;
 		}
 		
 		

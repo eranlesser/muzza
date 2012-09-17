@@ -17,10 +17,11 @@ package com.model.rawData
 		public static var xml:XML=
 			<data>
 			<lessons type="lessons">
-				<song name="beethoven" theme="beethoven"  thumbNail="BEETHOVEN_idle.png" clickIcon="BEETHOVEN_Press.png" title="Ode to joy"/>
-				<song name="edvard" theme="edvard" thumbNail="edvard_grieg_idle.png" clickIcon="edvard_grieg_press.png" title="In the hall Of the mountain king"  />
-				<song name="tarab" theme="tarab" thumbNail="blank.png" clickIcon="blank.png" title="Tarab"  />
-				<song name="brazil" theme="brazil" thumbNail="blank.png" clickIcon="blank.png" title="Brazil"  />
+				<song name="beethoven" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
+				<song name="edvard"  thumbNail="EDVARD_GRIEG.png"  title="MOUNTAIN_KING.png"  />
+				<song name="jingleBells" thumbNail="JINGLE_BELLS_PICTURE.png"  title="JINGLE_BELLS.png"  />
+				<song name="tarab"  thumbNail="MOZART_PICTURE.png"  title="MOUNTAIN_KING.png"  />
+				
 				</lessons>
 			<musicians>
 				<character spriteSheet="bassSheet.png" positionsLength="8" width="250" height="350" />

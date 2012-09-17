@@ -36,12 +36,7 @@ package com.container
 			init();
 		}
 		
-		public static function get instance():ToolBar{
-			if(!_instance){
-				_instance=new ToolBar(new Enforcer());
-			}
-			return _instance;
-		}
+		
 		public function get recordScreenMenu():RecordScreenMenu{
 			return _recordMenu;
 		}
@@ -76,7 +71,7 @@ package com.container
 		
 		
 		private function addHomeButton():void{
-			_homeButton = new PressableButton("btn_home.png","btn_home.png");
+			_homeButton = new PressableButton("HOME_IDLE.png","HOME_PRESSED.png");
 			addChild(_homeButton);
 			_homeButton.x=5;
 			_homeButton.y = (hgt-_homeButton.height)/2;

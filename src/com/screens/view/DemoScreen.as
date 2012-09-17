@@ -83,7 +83,6 @@ package com.screens.view {
 		
 		override public function start():void{
 			if(!isInited){
-				ToolBar.instance.visible=false;
 				_bg.addChild(AssetsManager.getAssetByName("BCKGR_1.jpg"));
 				addLoadingSign();
 				//var initTimer:Timer=new Timer(100,1);
@@ -105,7 +104,6 @@ package com.screens.view {
 				var tmr:Timer=new Timer(1000,1);
 				tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 				tmr.start();
-				ToolBar.instance.visible=false;
 			}
 			
 			
@@ -133,7 +131,6 @@ package com.screens.view {
 				_backGroundSoundPlayer.play();
 			}
 			_representation.start();
-			ToolBar.instance.visible=true;
 			
 		}
 		

@@ -21,10 +21,10 @@ package com.screens.recordScreenStates
 		}
 		
 		public function deActivate():void{
-			_context.recordButton.clicked.remove(onRecordBtn);
-			_context.listenButton.clicked.remove(onListenBtn);
+			//_context.recordButton.clicked.remove(onRecordBtn);
+			//_context.listenButton.clicked.remove(onListenBtn);
 			//_context.playRecordedButton.clicked.remove(onPlayBtn);
-			_context.practiceButton.clicked.remove(onPracticeClicked);
+			//_context.practiceButton.clicked.remove(onPracticeClicked);
 			
 			
 			
@@ -38,14 +38,14 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			//_context.instrumentPlayer.playable=true;  // add play button
-			_context.listenButton.state="on";
-			_context.recordButton.state="on";
-			_context.practiceButton.state="on";
+//			_context.listenButton.state="on";
+//			_context.recordButton.state="on";
+//			_context.practiceButton.state="on";
 			//_context.playRecordedButton.state="on";
 			
-			_context.listenButton.clicked.add(onListenBtn);
-			_context.recordButton.clicked.add(onRecordBtn);
-			_context.practiceButton.clicked.add(onPracticeClicked);
+//			_context.listenButton.clicked.add(onListenBtn);
+//			_context.recordButton.clicked.add(onRecordBtn);
+//			_context.practiceButton.clicked.add(onPracticeClicked);
 			//_context.playRecordedButton.clicked.add(onPlayBtn);
 			_context.instrumentRecorder.y=_context.model.getRecordInstrumentY();
 			_context.instrumentRecorder.octave=0;

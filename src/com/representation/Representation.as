@@ -104,12 +104,10 @@ package com.representation {
 			if(!flag){
 				new GTween(_bg,0.2,{y:-_bg.height+34});
 				new GTween(_cue,0.2,{y:-_bg.height+34});
-				_upButton.state="off"
 				//_cue.visible=false;
 			}else{
 				new GTween(_bg,0.2,{y:0});
 				new GTween(_cue,0.2,{y:0});
-				_upButton.state="on"
 				//_cue.visible=true;
 			}
 		}

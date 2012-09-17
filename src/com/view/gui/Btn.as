@@ -4,6 +4,7 @@ package com.view.gui
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
 	import org.osflash.signals.Signal;
@@ -12,19 +13,21 @@ package com.view.gui
 	public class Btn extends Sprite{
 		
 		private var _clicked:		Signal;
-		private var _isClicked:		Boolean = false;
-		private var _icon1:			DisplayObject;
-		private var _icon2:			DisplayObject;
+		private var _idle:			DisplayObject;
+		private var _pressed:		DisplayObject;
+		private var _visited:		DisplayObject;
+		private var _id:String;
 		
-		public var selected:Signal = new Signal();
-		
-		public function Btn(icon1:String,icon2:String){
+		public function Btn(idle:String,pressed:String,visited:String="",id:String=""){
+			_id=id;
 			_clicked = new Signal();
-			_icon1 = AssetsManager.getAssetByName(icon1);
-			_icon2 = AssetsManager.getAssetByName(icon2);
-			addChild(_icon1);
+			_idle = AssetsManager.getAssetByName(idle);
+			_pressed = AssetsManager.getAssetByName(pressed);
+			_visited = AssetsManager.getAssetByName(visited);
+			addChild(_idle);
 			init();
 		}
+		
 		public function get clicked():Signal{
 			return _clicked;
 		}
@@ -40,44 +43,45 @@ package com.view.gui
 			}
 		}
 		
+		
 		public function set state(state:String):void{
 			removeChildAt(0);
-			if(state=="on"){
-				addChild(_icon1);
-				_isClicked=false;
-			}else if(state=="off"){
-				addChild(_icon2);
-				_isClicked=true;
+			if(state=="idle"){
+				addChild(_idle);
+			}else if(state=="pressed"){
+				addChild(_pressed);
+			}else if(state=="visited"){
+				addChild(_visited);
 			}
 		}
 		
-		public function get isClicked():Boolean{
-			return _isClicked;
+		private function mouseDown(e:Event):void{
+			state="pressed";
+			stage.addEventListener(MouseEvent.MOUSE_UP,mouseUp);
 		}
 		
-		public function toggle():void{
-			_isClicked = !_isClicked;
-			if(_icon2){
-				toggleIcons();
-			}
+		private function mouseUp(e:Event):void{
+			stage.removeEventListener(MouseEvent.MOUSE_UP,mouseUp);
+			state="idle";
 		}
+		
+		
 		private function init():void{
 			var nativeClicked:NativeSignal = new NativeSignal(this,MouseEvent.CLICK);
 			nativeClicked.add(onClicked);
+			addEventListener(MouseEvent.MOUSE_DOWN,mouseDown);
 		}
 		
 		private function toggleIcons():void{
-			if(removeChildAt(0)==_icon1){
-				addChild(_icon2);
+			if(removeChildAt(0)==_idle){
+				addChild(_pressed);
 			}else{
-				addChild(_icon1);
+				addChild(_idle);
 			}
 		}
 		
 		private function onClicked(e:MouseEvent):void{
-			//toggle()
-			_clicked.dispatch(_isClicked);
-			selected.dispatch(this);
+			_clicked.dispatch(_id);
 		}
 		
 	}

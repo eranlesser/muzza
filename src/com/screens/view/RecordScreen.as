@@ -1,6 +1,7 @@
 package com.screens.view {
 	import com.constants.Gains;
 	import com.constants.Rhythms;
+	import com.container.BottomToolBar;
 	import com.container.ToolBar;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
@@ -28,7 +29,7 @@ package com.screens.view {
 		private var _model:						RecordScreenModel;
 		private var _recordChannelController:	RecordChannelController;
 		protected var _stateController:			RecordScreenStateController;
-		private var _menu:						ToolBar;
+		private var _menu:						BottomToolBar;
 		private var _timerControll:				ITimeControll;
 		private var _timeModel:					ITimeModel;
 		private var _metronomView:MetronomView;
@@ -54,17 +55,17 @@ package com.screens.view {
 			return _recordChannelController.channel;
 		}
 		
-		public function get listenButton():MenuButton{
-			return _menu.recordScreenMenu.listenButton;
-		}
-		
-		public function get recordButton():MenuButton{
-			return _menu.recordScreenMenu.recordButton;
-		}
-		public function get practiceButton():MenuButton{
-			return _menu.recordScreenMenu.practiceButton;
-		}
-		
+//		public function get listenButton():MenuButton{
+//			return _menu.recordScreenMenu.listenButton;
+//		}
+//		
+//		public function get recordButton():MenuButton{
+//			return _menu.recordScreenMenu.recordButton;
+//		}
+//		public function get practiceButton():MenuButton{
+//			return _menu.recordScreenMenu.practiceButton;
+//		}
+//		
 		public function startTimer():void{
 			_timerControll.play();
 		}
@@ -104,13 +105,13 @@ package com.screens.view {
 				super.start();
 				_stageLayer.addChild(_instrumentRecorder);
 				for each(var instrumentModel:InstrumentModel in _model.bandInstruments){
-					_bandInstruments.push(addInstrument(instrumentModel));
+					//_bandInstruments.push(addInstrument(instrumentModel));
 				}
 				var playChannel:Channel=_representation.addChannel(_model.instrumentModel);
 				var channel:Channel=_representation.addChannel(_model.instrumentModel);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
 				initStateController();
-				_menu=ToolBar.instance;
+				//_menu=ToolBar.instance;
 				_timerControll=Metronome.getTimeControll(this);
 				_metronomView = new MetronomView();
 				addChild(_metronomView);

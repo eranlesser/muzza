@@ -26,17 +26,9 @@ package com.container
 			_presenter.addStartScreen();
 			_presenter.start(this);
 			_presenter.songMenu.playRequest.add(onSongSelected);
-			_presenter.songMenu.studioRequest.add(onStudioSelected);
-			_presenter.songMenu.demoRequest.add(onDemoSelected);
 			_presenter.tutorialRequest.add(onSongSelected);
 		}
 		
-		private function onDemoSelected(name:String):void{
-			startProgressControll(name,"demo");
-		}
-		private function onStudioSelected(name:String):void{
-			startProgressControll(name,"studio");
-		}
 		private function onSongSelected(name:String):void{
 			startProgressControll(name,"record");
 		}

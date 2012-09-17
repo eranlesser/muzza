@@ -1,7 +1,7 @@
 package com.screens.model {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
-	import com.screens.view.IScreen;
 	import com.screens.view.DemoScreen;
+	import com.screens.view.IScreen;
 	import com.studio.Studio;
 	
 
@@ -50,6 +50,9 @@ package com.screens.model {
 		}
 		
 	
+		public function get recordSession():RecordSession{
+			return _recordSession;
+		}
 		
 		public function get showBackButton():Boolean{
 			return !_recordSession.isFirstScreen;
@@ -59,13 +62,9 @@ package com.screens.model {
 			return !_recordSession.isLastScreen;
 		}
 		
-		public function progress():void{
-			_recordSession.progress();
-			_currentScreen=_recordSession.currentScreen;
-		}
 		
-		public function rewind():void{
-			_recordSession.rewind();
+		public function goTo(scr:String):void{
+			_recordSession.goTo(scr);
 			_currentScreen=_recordSession.currentScreen;
 		}
 		

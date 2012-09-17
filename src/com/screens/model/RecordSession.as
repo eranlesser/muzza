@@ -1,9 +1,9 @@
 package com.screens.model
 {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
+	import com.screens.view.DemoScreen;
 	import com.screens.view.EndScreen;
 	import com.screens.view.IScreen;
-	import com.screens.view.DemoScreen;
 	import com.screens.view.RecordScreen;
 	import com.tutorial.TutorialRecordScreen;
 	
@@ -34,7 +34,7 @@ package com.screens.model
 		}
 		
 		public function start():void{
-			progress();
+			_currentScreenIndex=1;
 		}
 		
 		public function reset():void{
@@ -53,24 +53,23 @@ package com.screens.model
 			return _currentScreenIndex==_recordScreens.length-1;
 		}
 		
-		public function progress():Boolean{
-			if(_currentScreenIndex==_recordScreens.length-1){
-				return false;
-			}else{
-				_currentScreenIndex++;
-				return true;
+		public function get screenIndex():uint{
+			return _currentScreenIndex;
+		}
+		
+		public function goTo(scr:String):void{
+			for each(var isc:IScreen in _recordScreens){
+				if(isc is RecordScreen){
+					if(RecordScreen(isc).model.instrumentModel.thumbNail==scr){
+						_currentScreenIndex = _recordScreens.indexOf(isc);
+						return;
+					}
+				}
 			}
+			_currentScreenIndex = _recordScreens.length-1;//End Screen
 		}
 		
 		
-		public function rewind():Boolean{
-			if(_currentScreenIndex==0){
-				return false;
-			}else{
-				_currentScreenIndex--;
-				return true;
-			}
-		}
 		
 		
 	}

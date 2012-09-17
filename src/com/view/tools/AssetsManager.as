@@ -18,6 +18,52 @@ package com.view.tools
 		private var _assets:XML = new XML(
 			"<assets>" +
 			"<image path='assets/crLogo.png' />"+
+			//OPEN
+			"<image path='assets/open/WAGON_TRAIN.png' />"+
+			"<image path='assets/open/STATION_WALL_TRIP.png' />"+
+			"<image path='assets/wall.png' />"+
+			//MENU
+			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
+			"<image path='assets/open/MOZART_PICTURE.png' />"+
+			"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
+			"<image path='assets/gui/menu/blank.png' />"+
+			"<image path='assets/open/EDVARD_GRIEG.png' />"+
+			"<image path='assets/open/NEXT_IDLE.png' />"+
+			"<image path='assets/open/NEXT_PRESSED.png' />"+
+			"<image path='assets/open/PREVIOUS_IDLE.png' />"+
+			"<image path='assets/open/PREVIOUS_Pressed.png' />"+
+			"<image path='assets/open/WHITE_LIGHT_TOP.png' />"+
+			"<image path='assets/open/POLE_STATION.png' />"+
+			"<image path='assets/open/Start_tutorial_idle.png' />"+
+			"<image path='assets/open/Start_tutorial_PRESSED_V_2.png' />"+
+			"<image path='assets/open/PLAY_IDLE.png' />"+
+			"<image path='assets/open/PLAY_PRESSED.png' />"+
+			//TITLES
+			"<image path='assets/open/ODE_TO_JOY.png' />"+
+			"<image path='assets/open/JINGLE_BELLS.png' />"+
+			"<image path='assets/open/MOUNTAIN_KING.png' />"+
+			//TOOLBAR
+			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/BASS_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/BASS_PRESSED.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/bottle_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/bottle_PRESSED.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/BOTTLES_DONE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/BOTTOM_TOOLBAR.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/DEMO_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/DEMO_PRESSED.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/DRUMS_DONE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/DRUMS_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/DRUMS_PRESSED.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/HOME_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/HOME_PRESSED.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/ICONS_POSITIONS.jpg' />"+
+			"<image path='assets/TOOL_BAR_ICONS/LISTEN_DONE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/LISTEN_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/LISTEN_PRESSED.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/BOTTOM_TOOLBAR.png' />"+
+			
+			
 			//SPRITESHEET
 			"<image path='assets/band/drums_new/drumsSheet.png' />"+
 			"<image path='assets/band/drums_new/drumsEyes.png' />"+
@@ -42,18 +88,7 @@ package com.view.tools
 			"<image path='assets/tutorial/create3.jpg' />"+
 			"<image path='assets/tutorial/create4.jpg' />"+
 			
-			//MENU
-			"<image path='assets/gui/menu/BEETHOVEN_idle.png' />"+
-			"<image path='assets/gui/menu/BEETHOVEN_Press.png' />"+
-			"<image path='assets/gui/menu/mozart_idle.png' />"+
-			"<image path='assets/gui/menu/mozart_press.png' />"+
-			"<image path='assets/gui/menu/jingle_bells_idle.png' />"+
-			"<image path='assets/gui/menu/edvard_grieg_idle.png' />"+
-			"<image path='assets/gui/menu/blank.png' />"+
-			"<image path='assets/gui/menu/edvard_grieg_press.png' />"+
-			"<image path='assets/gui/menu/icons_black_background.png' />"+
-			"<image path='assets/gui/menu/thumbnail.gif' />"+
-			"<image path='assets/gui/menu/IMG_0033.JPG' />"+
+			
 			//HAT
 			"<image path='assets/band/hat/hat.png' />"+
 			"<image path='assets/band/hat/coin.png' />"+
