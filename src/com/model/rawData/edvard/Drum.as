@@ -3,7 +3,7 @@ package com.model.rawData.edvard
 	public class Drum
 	{
 		public static var data:XML = 
-<drum type="drums" thumbNail='drum.png' spriteSheet="drumsSheet.png" width="410" height="350" >
+<drum type="drums" thumbNail='drum.png' spriteSheet="drumsSheet.png" >
 <bubble x="-100" y="42">
 </bubble>
 	<eyes swfSheet="drumsEyes.png" x="0" y="0" width="410" height="350" >

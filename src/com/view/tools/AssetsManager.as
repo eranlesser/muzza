@@ -77,8 +77,6 @@ package com.view.tools
 			"<image path='assets/band/drums_new/drumsEyes.png' />"+
 			"<image path='assets/band/bottles_new/bottlesSheet.png' />"+
 			"<image path='assets/band/bottles_new/bottlesEyes.png' />"+
-			"<image path='assets/band/bottles/bottlesSheetSmall.png' />"+
-			"<image path='assets/band/bottles/bottlesEyesSmall.png' />"+
 			"<image path='assets/band/singer/singer.png' />"+
 			"<image path='assets/band/singer/eyesSinger.png' />"+
 			"<image path='assets/band/singer/mouth.png' />"+

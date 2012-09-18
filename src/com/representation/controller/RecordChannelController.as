@@ -9,6 +9,8 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
 	import com.musicalInstruments.view.recordable.RecordableView;
+	import com.notes.INotesChannel;
+	import com.notes.NotesChannel;
 	import com.representation.ChanelNotesType;
 	import com.representation.RepresentationSizes;
 	import com.representation.view.Channel;
@@ -20,14 +22,14 @@ package com.representation.controller {
 	public class RecordChannelController{
 		
 		private var _model:				ITimeModel;
-		private var _channelView:		Channel;
+		private var _channelView:		INotesChannel;
 		private var _recordScreenModel:	RecordScreenModel;
 		private var _fetcher:			CoreInstrumentModel;
 		private var _instrument:		CoreInstrumentModel
 		private var _recordableView:	RecordableView;
 		private var _learnedSequance:	ISequance;
 		
-		public function RecordChannelController(channelView:Channel,instrument:CoreInstrumentModel, recordableView:RecordableView, recordScreenModel:RecordScreenModel):void{
+		public function RecordChannelController(channelView:INotesChannel,instrument:CoreInstrumentModel, recordableView:RecordableView, recordScreenModel:RecordScreenModel):void{
 			_model=Metronome.getTimeModel();
 			_channelView=channelView;
 			_recordScreenModel=recordScreenModel;
@@ -82,16 +84,16 @@ package com.representation.controller {
 		
 		public function stop():void{
 			_model.tickSignal.remove(onTick);
-			_channelView.setX(0);
+			//_channelView.setX(0);
 		}
 		
 		private function onTick():void{
 			if(_model.currentTick>64){
-				_channelView.setX((-(_model.currentTick-64)*(RepresentationSizes.notesArea)/128)+RepresentationSizes.cueWidth/2);
+				//_channelView.setX((-(_model.currentTick-64)*(RepresentationSizes.notesArea)/128)+RepresentationSizes.cueWidth/2);
 			}
 		}
 		
-		public function get channel():Channel{
+		public function get channel():INotesChannel{
 			return _channelView;
 		}
 		

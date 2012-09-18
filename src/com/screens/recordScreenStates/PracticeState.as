@@ -8,6 +8,7 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.components.NoteView;
 	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.notes.INotesChannel;
 	import com.representation.RepresentationSizes;
 	import com.representation.view.Channel;
 	
@@ -23,7 +24,7 @@ package com.screens.recordScreenStates
 	{
 		protected var _context:			RecordScreenStateController;
 		protected var _currentNote:		NoteView;
-		private var _channel:			Channel;
+		private var _channel:			INotesChannel;
 		private var _currentNoteIndx:	uint=0;
 		private var _noteFetcher:		INoteFetcher;
 		private var _complete:			Signal = new Signal();

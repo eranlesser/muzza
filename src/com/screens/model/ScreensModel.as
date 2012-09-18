@@ -17,38 +17,38 @@ package com.screens.model {
 		public function ScreensModel(xml:XML,instrumentsModel:ThemeInstrumentsModel){
 			_xml=xml;
 			_instrumentsModel=instrumentsModel;
-			//parse(xml);
+			parse(xml);
 		}
 		
 		public function get currentScreen():IScreen{
 			return _currentScreen;
 		}
 		
+		private function parse(xml:XML):void{
+//			_studio=new Studio();
+//			_studio.parseXML(_xml.screens.studioScreen[0],_instrumentsModel);
+			_recordSession=new RecordSession(_xml.screens.recordSession[0],_instrumentsModel);
+			_demoScreen = new DemoScreen();
+			_demoScreen.parseXML(_xml.screens.demoScreen[0],_instrumentsModel);
+		}
+		
 		public function set playMode(mode:String):void{
 			switch(mode){
 				case "studio":
-					if(!_studio){
-						_studio=new Studio();
-						_studio.parseXML(_xml.screens.studioScreen[0],_instrumentsModel);
-					}
 					_currentScreen=_studio;
 					break;
 				case "record":
-					if(!_recordSession){
-						_recordSession=new RecordSession(_xml.screens.recordSession[0],_instrumentsModel);
-					}
 					_currentScreen=_recordSession.currentScreen;
 					break;
 				case "demo":
-					if(!_demoScreen){
-						_demoScreen = new DemoScreen();
-						_demoScreen.parseXML(_xml.screens.demoScreen[0],_instrumentsModel);
-					}
 					_currentScreen=_demoScreen;
 					break;
 			}
 		}
 		
+		public function get demoScreen():DemoScreen{
+			return _demoScreen;
+		}
 	
 		public function get recordSession():RecordSession{
 			return _recordSession;

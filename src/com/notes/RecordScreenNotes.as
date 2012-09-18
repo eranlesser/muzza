@@ -10,7 +10,7 @@ package com.notes
 	public class RecordScreenNotes extends Sprite{
 		
 		private var _cue:DisplayObject;
-		
+		private var _channel:INotesChannel;
 		public function RecordScreenNotes()
 		{
 			init();
@@ -24,8 +24,10 @@ package com.notes
 			
 		}
 		
-		public function addChannel(model:CoreInstrumentModel):Channel{
-			return new Channel(model);
+		public function addChannel(model:CoreInstrumentModel):INotesChannel{
+			_channel = new NotesChannel(model);
+			addChild(_channel as DisplayObject);
+			return _channel;
 		}
 		
 		private function init():void{

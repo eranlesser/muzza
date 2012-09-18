@@ -3,7 +3,7 @@ package com.model.rawData.beethoven
 public class Bass
 {
 public static var data:XML = 
-<bass type="bass" thumbNail='bass_flash.jpg' spriteSheet='bassSheet.png'  width="250" height="350">
+<bass type="bass" thumbNail='bass_flash.jpg' spriteSheet='bassSheet.png' >
 <!--<bubble x="-155" y="22">-->
 <bubble x="-800" y="22">
 </bubble>

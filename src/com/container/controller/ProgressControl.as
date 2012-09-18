@@ -14,7 +14,7 @@ package com.container.controller {
 		private var _navigator:		Navigator;
 		private var _model:			ScreensModel;
 		private var _themeName:		String;
-		private var _frameRate:uint;
+		private var _frameRate:		uint;
 		public var goHomeSignal:	Signal;
 		
 		public function ProgressControl(view:Presenter,model:ScreensModel,themeName:String,frameRate:uint){
@@ -48,6 +48,7 @@ package com.container.controller {
 			//_navigator = _view.addNavigation();
 			_navigator=_view.menu.navigator;
 			_navigator.goto.add(goTo);
+			_view.menu.openDemo.add(openDemo);
 			_navigator.state=_model.recordSession;
 			//_navigator.nextSignal.add(progress);
 			//_navigator.prevSignal.add(rewind);
@@ -59,13 +60,21 @@ package com.container.controller {
 		
 		private function goTo(scr:String):void{
 			_model.currentScreen.stop();
-			_view.removeScreen(_model.currentScreen as DisplayObject);
+			_view.removeScreens();
 			_model.goTo(scr);
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			_navigator.state=_model.recordSession;
 		}
 		
+		private function openDemo():void{
+			if(_view.isDemoOpen){
+				_view.closeDemo();
+			}else{
+				_view.openDemo(_model.demoScreen);
+				
+			}
+		}
 		
 		
 		private function goHome():void{

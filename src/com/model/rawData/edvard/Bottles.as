@@ -6,8 +6,8 @@ package com.model.rawData.edvard
 		{
 		}
 		public static var data:XML = 
-<bottles type="bottles" thumbNail='bottles.png' spriteSheet='bottlesSheet.png'  width="410" height="460" >
-<eyes swfSheet="bottlesEyes.png" x="0" y="0" width="410" height="460" >
+<bottles type="bottles" thumbNail='bottles.png' spriteSheet='bottlesSheet.png' >
+<eyes swfSheet="bottlesEyes.png" x="0" y="0" width="440" height="460" >
 	<blink start="0" end="4" />
 	<blink start="4" end="8" />
 	<blink start="9" end="13" />

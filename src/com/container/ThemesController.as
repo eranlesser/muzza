@@ -62,7 +62,7 @@ package com.container
 		}
 		
 		private function reStartScreen():void{
-			_presenter.clearScreens();
+			_presenter.removeScreens();
 			_presenter.restart(this);
 			//_progressControl.goHomeSignal.remove(reStartScreen);
 		}

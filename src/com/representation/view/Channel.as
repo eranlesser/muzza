@@ -33,7 +33,6 @@ package com.representation.view {
 			_instrument = instrumeModel;
 			_notes = new Vector.<NoteView>();
 			_notesFetcher = _instrument as NotesInstrumentModel;
-			
 			drawFrame();
 			RepresentationtypeController.getInstane().register(this);
 		}
@@ -52,15 +51,6 @@ package com.representation.view {
 		}
 		
 		
-		public function set playState(isPlaying:Boolean):void{
-			if(isPlaying){
-				_icon.scaleX=1.1;
-				_icon.scaleY=1.1;
-			}else{
-				_icon.scaleX=1;
-				_icon.scaleY=1;
-			}
-		}
 		
 		public function updateDisplay():void{
 			for each(var noteView:NoteView in _notes){
@@ -81,8 +71,6 @@ package com.representation.view {
 			
 		}
 		
-		
-		
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,noteWeight:uint,type:String,isFlatOrSharp:String):void{
 			var note:NoteView = new NoteView(noteValue,noteWeight,type,noteModel.location,isFlatOrSharp);
 			_notesContainer.addChild(note);
@@ -99,36 +87,6 @@ package com.representation.view {
 			return null;
 		}
 		
-		private function feedBackIcon(isRight:Boolean):Shape{
-			var shape:Shape = new Shape();
-			if(isRight){
-				shape.graphics.lineStyle(1,0X1188BF);
-				//shape.graphics.beginFill(0X5888BF);
-			}else{
-				shape.graphics.lineStyle(1,0XCA2D29);
-				//shape.graphics.beginFill(0XCA2D29);
-				
-			}
-			shape.graphics.moveTo(0,4);
-			shape.graphics.lineTo(0,7);
-			shape.graphics.drawRoundRect(-15,7,30,RepresentationSizes.channelHeight+4,8,8);
-			return shape;
-		}
-		
-		public function mark(loc:uint,isRight:Boolean):void{
-			var icon:DisplayObject = feedBackIcon(isRight);
-			//var icon:DisplayObject = AssetsManager.getAssetByName("wrong_alert.png");
-			addChildAt(icon,0);
-			//icon.width=8;
-			//icon.height=1;
-			if(isRight){
-				icon.x = loc*(RepresentationSizes.notesArea)/128+RepresentationSizes.thumbNailWidth+5;
-			}else{
-				icon.x = loc*(RepresentationSizes.notesArea)/128+RepresentationSizes.thumbNailWidth+5;
-			}
-			icon.y = RepresentationSizes.channelHeight-8;
-			icon.alpha = 0.5;
-		}
 		
 		private function drawFrame():void{
 			_icon=new Sprite();

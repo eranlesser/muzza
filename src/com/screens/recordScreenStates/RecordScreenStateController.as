@@ -3,6 +3,7 @@ package com.screens.recordScreenStates
 	import com.constants.States;
 	import com.musicalInstruments.view.components.SpeechBubble;
 	import com.musicalInstruments.view.recordable.RecordableView;
+	import com.notes.INotesChannel;
 	import com.notes.RecordScreenNotes;
 	import com.representation.Representation;
 	import com.representation.controller.RecordChannelController;
@@ -131,7 +132,7 @@ package com.screens.recordScreenStates
 			return _recordScreen.model;
 		}
 		
-		public function get channel():Channel{
+		public function get channel():INotesChannel{
 			return _recordScreen.recordChannelController.channel;
 		}
 		

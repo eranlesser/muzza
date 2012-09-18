@@ -25,7 +25,7 @@ package com.model.rawData
 				</lessons>
 			<musicians>
 				<character spriteSheet="bassSheet.png" positionsLength="8" width="250" height="350" />
-				<character spriteSheet="bottlesSheet.png" positionsLength="9" width="410" height="460" />
+				<character spriteSheet="bottlesSheet.png" positionsLength="9" width="440" height="460" />
 				<character spriteSheet="drumsSheet.png" positionsLength="4" width="410" height="350" />
 			</musicians>
 			

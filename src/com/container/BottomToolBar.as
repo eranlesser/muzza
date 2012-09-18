@@ -15,6 +15,7 @@ package com.container
 		private var _demoButton:Btn;
 		private var _navigator:Navigator;
 		public var goHome:Signal = new Signal();
+		public var openDemo:Signal = new Signal();
 		
 		
 		public function BottomToolBar(){
@@ -30,10 +31,18 @@ package com.container
 			addChild(_homeButton);
 			_homeButton.x=10;
 			_homeButton.clicked.add(onHome);
+			_demoButton = new Btn("DEMO_IDLE.png","DEMO_PRESSED.png");
+			addChild(_demoButton);
+			_demoButton.x=_homeButton.x+_homeButton.width;
+			_demoButton.clicked.add(onDemo);
 		}
 		
 		private function onHome(btn:String):void{
 			goHome.dispatch();
+		}
+		
+		private function onDemo(btn:String):void{
+			openDemo.dispatch();
 		}
 		
 		public function get navigator():Navigator{

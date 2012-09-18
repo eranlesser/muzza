@@ -7,6 +7,7 @@ package com.screens.view {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.view.playable.*;
 	import com.musicalInstruments.view.recordable.*;
+	import com.notes.INotesChannel;
 	import com.notes.RecordScreenNotes;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
@@ -23,9 +24,9 @@ package com.screens.view {
 		private var _stateController:			RecordScreenStateController;
 		private var _timerControll:				ITimeControll;
 		private var _timeModel:					ITimeModel;
-		private var _notes:					RecordScreenNotes;
-		private var _practiceBtn:Btn;
-		private var _recordBtn:Btn;
+		private var _notes:						RecordScreenNotes;
+		private var _practiceBtn:				Btn;
+		private var _recordBtn:					Btn;
 		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll(this);
@@ -43,7 +44,7 @@ package com.screens.view {
 		public function get recordChannelController():RecordChannelController{
 			return _recordChannelController;
 		}
-		public function get channel():Channel{
+		public function get channel():INotesChannel{
 			return _recordChannelController.channel;
 		}
 		
@@ -92,8 +93,8 @@ package com.screens.view {
 				addChild(_recordBtn);
 				_recordBtn.x=267+_practiceBtn.width+30;
 				_recordBtn.y=60;
-				var playChannel:Channel=_notes.addChannel(_model.instrumentModel);
-				var channel:Channel=_notes.addChannel(_model.instrumentModel);
+				var playChannel:INotesChannel=_notes.addChannel(_model.instrumentModel);
+				var channel:INotesChannel=_notes.addChannel(_model.instrumentModel);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll(this);

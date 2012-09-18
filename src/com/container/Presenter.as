@@ -3,6 +3,7 @@ package com.container
 	import com.constants.Dimentions;
 	import com.messages.LoadingMessage;
 	import com.messages.MessageControl;
+	import com.screens.view.DemoScreen;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
 	import com.screens.view.RecordScreen;
@@ -66,7 +67,7 @@ package com.container
 		
 		public function removeStartScreen():void{
 			_startScreen.stop();
-			removeScreen(_startScreen);
+			removeScreens();
 			try{
 			_messages.close();
 			}catch(e:Error){}
@@ -84,10 +85,27 @@ package com.container
 			}
 		}
 		
-		public function removeScreen(screen:DisplayObject):void{
-			if(screen is RecordScreen)
-			trace(RecordScreen(screen).model.instrumentModel.thumbNail)
-			_screensLayer.removeChild(screen);
+		public function removeScreens():void{
+			for(var i:uint=_screensLayer.numChildren;i>0;i--){
+				(_screensLayer.getChildAt(0) as IScreen).stop();
+				_screensLayer.removeChildAt(0);
+			}
+			
+		}
+		
+		public function openDemo(demoScreen:DemoScreen):void{
+			_screensLayer.addChild(demoScreen);
+			demoScreen.start();
+		}
+		
+		public function closeDemo():void{
+			var demoScreen:DemoScreen = _screensLayer.getChildAt(1) as DemoScreen;
+			demoScreen.stop();
+			_screensLayer.removeChild(demoScreen);
+		}
+		
+		public function get isDemoOpen():Boolean{
+			return _screensLayer.numChildren==2;
 		}
 		
 		public function get menu():BottomToolBar{
@@ -102,9 +120,7 @@ package com.container
 			_messages.close();
 		}
 		
-		public function clearScreens():void{
-			IScreen(_screensLayer.removeChildAt(0)).stop();
-		}
+		
 		
 	}
 }
