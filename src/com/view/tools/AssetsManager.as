@@ -62,7 +62,15 @@ package com.view.tools
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_PRESSED.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BOTTOM_TOOLBAR.png' />"+
-			
+			//NOTES
+			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
+			"<image path='assets/NOTES/notes_frame.png' />"+
+			"<image path='assets/NOTES/notes_sheet.png' />"+
+			//RECORD SCREEN BUTTONS
+			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+
+			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+
+			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
+			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
 			
 			//SPRITESHEET
 			"<image path='assets/band/drums_new/drumsSheet.png' />"+

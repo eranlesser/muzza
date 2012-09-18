@@ -1,5 +1,6 @@
 package com.screens.view
 {
+	import com.notes.RecordScreenNotes;
 	import com.representation.Representation;
 	import com.screens.lyrics.LyricView;
 	
@@ -8,7 +9,7 @@ package com.screens.view
 
 	public class MusicalScreen extends AbstractScreen{
 		
-		protected var _representation:	Representation;
+		
 		protected var isInited:			Boolean = false;
 
 		public function MusicalScreen(){
@@ -31,7 +32,6 @@ package com.screens.view
 		
 		override protected function layout():void{
 			super.layout();
-			_representation.y=0;
 			
 		}
 		

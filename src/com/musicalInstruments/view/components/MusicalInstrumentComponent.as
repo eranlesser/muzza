@@ -47,13 +47,13 @@ package com.musicalInstruments.view.components
 			}
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+//			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+//			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 //			
-//			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
-//			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
-//			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
-//			addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
+			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
+			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
+			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
+			addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
 		}
 		
 		private function onTouch(e:MouseEvent):void{

@@ -52,6 +52,8 @@ package com.view.gui
 				addChild(_pressed);
 			}else if(state=="visited"){
 				addChild(_visited);
+			}else{
+				throw Error(new Error("no state",state))
 			}
 		}
 		

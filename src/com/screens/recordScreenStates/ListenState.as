@@ -3,7 +3,6 @@ package com.screens.recordScreenStates
 	import com.constants.States;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
-	import com.tutorial.TutorialScreenStateController;
 	
 	import org.osflash.signals.Signal;
 
@@ -25,8 +24,6 @@ package com.screens.recordScreenStates
 		public function activate():void{
 			//_context.bubble.visible=false;
 			_context.instrumentRecorder.ableState=States.LISTEN;
-			_context.listenButton.state = "off";
-			_context.listenButton.clicked.add(onStopButton);
 			//new GTween(_context.instrumentRecorder,1,{y:_context.model.getRecordInstrumentY()});
 			//var tween:GTween=new GTween(_context.instrumentPlayer,1,{y:_context.model.getPlayInstrumentY(),x:_context.model.getPlayInstrumentX(),scaleX:1,scaleY:1});
 			//tween.onComplete=play;
@@ -43,7 +40,6 @@ package com.screens.recordScreenStates
 		}
 		
 		public function deActivate():void{
-			_context.listenButton.clicked.remove(onStopButton);
 			stop();
 		}
 		
@@ -52,20 +48,18 @@ package com.screens.recordScreenStates
 		}
 		
 		protected function play():void{
-			_context.bandActive=true;
 			_timeModel.tickSignal.add(onTimerTick);
 			_context.startTimer();
 			_context.instrumentRecorder.play(_context.model.learnedSequanceId,_context.model.beginAtFrame);
 			_context.recordChannelController.start();
-			_context.representation.start();
+			_context.notes.start();
 		}
 		
 		protected function stop():void{
-			_context.bandActive=false;
 			_timeModel.tickSignal.remove(onTimerTick);
 			_context.instrumentRecorder.stop()
 			_context.recordChannelController.stop();
-			_context.representation.stop();
+			_context.notes.stop();
 			//_context.instrumentPlayer.stop();
 			_context.stopTimer();
 			_complete.dispatch();
@@ -81,14 +75,6 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				stop();
 			}
-		}
-		
-		public function addTutorial(stage:uint):void{
-			TutorialScreenStateController(_context).arrow.visible=false;
-		}
-		
-		public function removeTutorial():void{
-			
 		}
 		
 		

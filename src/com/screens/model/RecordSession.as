@@ -5,7 +5,6 @@ package com.screens.model
 	import com.screens.view.EndScreen;
 	import com.screens.view.IScreen;
 	import com.screens.view.RecordScreen;
-	import com.tutorial.TutorialRecordScreen;
 	
 	import org.osflash.signals.Signal;
 

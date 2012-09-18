@@ -3,12 +3,14 @@ package com.screens.recordScreenStates
 	import com.constants.States;
 	import com.musicalInstruments.view.components.SpeechBubble;
 	import com.musicalInstruments.view.recordable.RecordableView;
+	import com.notes.RecordScreenNotes;
 	import com.representation.Representation;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.RecordScreen;
 	import com.screens.view.components.MenuButton;
+	import com.view.gui.Btn;
 
 	public class RecordScreenStateController
 	{
@@ -109,21 +111,18 @@ package com.screens.recordScreenStates
 		// ------------------------------------------------
 		
 		public function get bubble():SpeechBubble{
-			return _recordScreen.bubble;
+			return new SpeechBubble();
 		}
 		
 		public function get instrumentRecorder():RecordableView{
 			return _recordScreen.recorder;
 		}
-		public function get recordButton():MenuButton{
-			return null//_recordScreen.recordButton;
+		public function get recordButton():Btn{
+			return _recordScreen.recordButton;
 		}
 		
-		public function get listenButton():MenuButton{
-			return null//_recordScreen.listenButton;
-		}
-		public function get practiceButton():MenuButton{
-			return null//_recordScreen.practiceButton;
+		public function get practiceButton():Btn{
+			return _recordScreen.practiceButton;
 		}
 		
 		
@@ -140,9 +139,7 @@ package com.screens.recordScreenStates
 			return _recordScreen.recordChannelController;
 		}
 		
-	   public function set bandActive(value:Boolean):void{
-		   _recordScreen.bandActive=value;
-	   }
+	  
 		
 		public function startTimer():void{
 			_recordScreen.startTimer();
@@ -159,8 +156,8 @@ package com.screens.recordScreenStates
 			_recordScreen.unPauseTimer();
 		}
 		
-		public function get representation():Representation{
-			return _recordScreen.representation;
+		public function get notes():RecordScreenNotes{
+			return _recordScreen.notes;
 		}
 		
 		

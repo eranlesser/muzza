@@ -1,43 +1,35 @@
 package com.screens.view {
-	import com.constants.Gains;
 	import com.constants.Rhythms;
 	import com.container.BottomToolBar;
-	import com.container.ToolBar;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
-	import com.musicalInstruments.view.components.SpeechBubble;
 	import com.musicalInstruments.view.playable.*;
 	import com.musicalInstruments.view.recordable.*;
-	import com.representation.Representation;
+	import com.notes.RecordScreenNotes;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
-	import com.screens.view.components.MenuButton;
-	import com.view.MetronomView;
-	
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
+	import com.view.gui.Btn;
 
 
 	public class RecordScreen extends MusicalScreen
 	{
 		private var _instrumentRecorder:		RecordableView;
-		private var _bandInstruments:			Vector.<PlayMusician>
 		private var _model:						RecordScreenModel;
 		private var _recordChannelController:	RecordChannelController;
-		protected var _stateController:			RecordScreenStateController;
-		private var _menu:						BottomToolBar;
+		private var _stateController:			RecordScreenStateController;
 		private var _timerControll:				ITimeControll;
 		private var _timeModel:					ITimeModel;
-		private var _metronomView:MetronomView;
-				
+		private var _notes:					RecordScreenNotes;
+		private var _practiceBtn:Btn;
+		private var _recordBtn:Btn;
+		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll(this);
 			_timeModel = Metronome.getTimeModel();
-			_bandInstruments=new Vector.<PlayMusician>();
 		}
 		
 		public function get recorder():RecordableView{
@@ -55,17 +47,14 @@ package com.screens.view {
 			return _recordChannelController.channel;
 		}
 		
-//		public function get listenButton():MenuButton{
-//			return _menu.recordScreenMenu.listenButton;
-//		}
-//		
-//		public function get recordButton():MenuButton{
-//			return _menu.recordScreenMenu.recordButton;
-//		}
-//		public function get practiceButton():MenuButton{
-//			return _menu.recordScreenMenu.practiceButton;
-//		}
-//		
+
+		public function get recordButton():Btn{
+			return _recordBtn;
+		}
+		public function get practiceButton():Btn{
+			return _practiceBtn;
+		}
+		
 		public function startTimer():void{
 			_timerControll.play();
 		}
@@ -82,19 +71,10 @@ package com.screens.view {
 			_timerControll.unPause();
 		}
 		
-		public function get representation():Representation{
-			return _representation;
+		public function get notes():RecordScreenNotes{
+			return _notes;
 		}
-		public function get bubble():SpeechBubble{
-			var playerIndex:uint=0;
-			if(Math.random()>0.5&&_bandInstruments.length>1){
-				playerIndex=1;
-			}	
-			if(_bandInstruments.length>0)
-				return _bandInstruments[playerIndex].bubble;
-			else
-				return new SpeechBubble();
-		}
+	
 		protected function initStateController():void{
 			_stateController = new RecordScreenStateController(this);
 		}
@@ -104,53 +84,29 @@ package com.screens.view {
 				addRepresentation();
 				super.start();
 				_stageLayer.addChild(_instrumentRecorder);
-				for each(var instrumentModel:InstrumentModel in _model.bandInstruments){
-					//_bandInstruments.push(addInstrument(instrumentModel));
-				}
-				var playChannel:Channel=_representation.addChannel(_model.instrumentModel);
-				var channel:Channel=_representation.addChannel(_model.instrumentModel);
+				_practiceBtn = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
+				addChild(_practiceBtn);
+				_practiceBtn.x=267;
+				_practiceBtn.y=60;
+				_recordBtn = new Btn("RECORD_IDLE.png","RECORD_PRESSED.png");
+				addChild(_recordBtn);
+				_recordBtn.x=267+_practiceBtn.width+30;
+				_recordBtn.y=60;
+				var playChannel:Channel=_notes.addChannel(_model.instrumentModel);
+				var channel:Channel=_notes.addChannel(_model.instrumentModel);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
 				initStateController();
-				//_menu=ToolBar.instance;
 				_timerControll=Metronome.getTimeControll(this);
-				_metronomView = new MetronomView();
-				addChild(_metronomView);
-				_metronomView.x=44;
-				_metronomView.y=84;
 				layout();
 				isInited = true;
-				var tmr:Timer=new Timer(55,1);
-				tmr.addEventListener(TimerEvent.TIMER_COMPLETE,initBand);
-				tmr.start();
-			}else{
-				for each(var ins:PlayMusician in _bandInstruments){
-					ins.start();
-				}
+				
 			}
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 			stage.frameRate = Rhythms.DELAY_COUNT;
 		}
 		
-		private function initBand(e:TimerEvent):void{
-			for each(var ins:PlayMusician in _bandInstruments){
-				ins.start();
-			}
-		}
 		
-		public function set bandActive(value:Boolean):void{
-			if(value){
-				bandPlay()
-			}else{
-				for each(var ins:PlayMusician in _bandInstruments){
-						ins.stop();
-				}
-			}
-		}
-		
-		public function get bandInstruments():Vector.<PlayMusician>{
-			return _bandInstruments;
-		}
 
 		override public function stop():void{
 			_stateController.deActivate();
@@ -165,12 +121,7 @@ package com.screens.view {
 			super.layout();
 			_instrumentRecorder.x = _model.getRecordInstrumentX();
 			_instrumentRecorder.y = _model.getRecordInstrumentY();
-			for each(var ins:PlayMusician in _bandInstruments){
-				ins.x = ins.getX();
-				ins.y = ins.getY();
-				ins.scaleX=0.6;
-				ins.scaleY=0.6;
-			}
+			
 		}
 		
 		private function addInstrument(insModel:InstrumentModel):PlayMusician{
@@ -200,17 +151,13 @@ package com.screens.view {
 		}
 		
 		private function addRepresentation():void{
-			_representation = new Representation(2);
-			_stageLayer.addChild(_representation);
-			_representation.scaleY=1.2;
+			_notes = new RecordScreenNotes();
+			_stageLayer.addChild(_notes);
+			_notes.x=37;
+			_notes.y=110;
 		}
 		
-		private function bandPlay():void{
-			var ins:PlayMusician;
-			for each(ins in _bandInstruments){
-				ins.play(99,_model.beginAtFrame,Gains.PLAYBACK_INSTRUMENT_LEVEL);
-			}
-		}
+		
 		
 	}
 }

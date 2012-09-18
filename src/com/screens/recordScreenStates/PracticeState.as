@@ -10,7 +10,6 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.view.recordable.TapInstrument;
 	import com.representation.RepresentationSizes;
 	import com.representation.view.Channel;
-	import com.tutorial.TutorialScreenStateController;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
@@ -51,7 +50,6 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			_context.instrumentRecorder.notePlayed.add(onNotePlayed);
-			_context.practiceButton.state="off";
 			_context.practiceButton.clicked.add(onStop);
 			_timeModel.tickSignal.add(highLightNext);
 			_context.startTimer();
@@ -61,8 +59,7 @@ package com.screens.recordScreenStates
 			_ofBeatNotes=0;
 			_correctAnswers=0;
 			_context.recordChannelController.start();
-			_context.representation.start();
-			_context.bandActive=true;
+			_context.notes.start();
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_context.recordChannelController.reset();
@@ -82,11 +79,11 @@ package com.screens.recordScreenStates
 			}
 			}
 			
-			_context.representation.stop();
+			_context.notes.stop();
 			_context.recordChannelController.stop();
 			_currentNoteIndx=0;
 			_wrongAnswers=0;
-			_context.practiceButton.state="on";
+			_context.practiceButton.state="pressed";
 			_context.practiceButton.clicked.remove(onStop);
 			_context.instrumentRecorder.notePlayed.remove(onInstrumentPlayed);
 			_context.instrumentRecorder.notePlayed.remove(onNotePlayed);
@@ -94,7 +91,6 @@ package com.screens.recordScreenStates
 			_context.stopTimer();
 			_answerTimer.stop();
 			_context.recordChannelController.reset();
-			_context.bandActive=false;
 		}
 		
 		public function get complete():Signal{

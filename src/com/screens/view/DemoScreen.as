@@ -36,6 +36,7 @@ package com.screens.view {
 		private var _channelControllers:	Vector.<PlayChannelController>;
 		private var _loadSign:TextField;
 		private var _backGroundSoundPlayer:BackGroundSound;
+		protected var _representation:Representation;
 		
 		public function DemoScreen(){
 			_instruments = new Vector.<PlayMusician>();
