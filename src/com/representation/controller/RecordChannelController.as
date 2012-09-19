@@ -84,13 +84,13 @@ package com.representation.controller {
 		
 		public function stop():void{
 			_model.tickSignal.remove(onTick);
-			//_channelView.setX(0);
+			_channelView.setX(0);
 		}
 		
 		private function onTick():void{
-			if(_model.currentTick>64){
-				//_channelView.setX((-(_model.currentTick-64)*(RepresentationSizes.notesArea)/128)+RepresentationSizes.cueWidth/2);
-			}
+			//if(_model.currentTick>64){
+				_channelView.setX((-(_model.currentTick-64)*(RepresentationSizes.notesArea)/128)+RepresentationSizes.cueWidth/2);
+			//}
 		}
 		
 		public function get channel():INotesChannel{

@@ -67,6 +67,7 @@ package com.screens.view.components.homePage
 			_nextButton.y= 40;
 			_nextButton.clicked.add(onNext);
 			_prevButton.clicked.add(onPrev);
+			enableNextPrev();
 		}
 		
 		private function addTutoiralPannel():void{
@@ -105,8 +106,20 @@ package com.screens.view.components.homePage
 			tween.onComplete = enableTween;
 		}
 		
+		private function enableNextPrev():void{
+			_prevButton.visible=true;
+			_nextButton.visible=true;
+			if(_thumbsLayer.x==0){
+				_prevButton.visible=false;
+			}
+			if(_thumbsLayer.x==-(_thumbsLayer.width-Dimentions.WIDTH*2)){
+				_nextButton.visible=false;
+			}
+		}
+		
 		private function enableTween(t:GTween):void{
 			_isTweening=false;
+			enableNextPrev();
 		}
 		
 		private function onSongSelected(songName:String):void{

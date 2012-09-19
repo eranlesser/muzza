@@ -66,6 +66,26 @@ package com.view.tools
 			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
 			"<image path='assets/NOTES/notes_frame.png' />"+
 			"<image path='assets/NOTES/notes_sheet.png' />"+
+			//BOTTLES
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_9.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_9.png' />"+
+			
 			//RECORD SCREEN BUTTONS
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+

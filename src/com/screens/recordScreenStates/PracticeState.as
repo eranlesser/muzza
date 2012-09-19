@@ -8,6 +8,7 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.components.NoteView;
 	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.notes.BigNote;
 	import com.notes.INotesChannel;
 	import com.representation.RepresentationSizes;
 	import com.representation.view.Channel;
@@ -23,7 +24,7 @@ package com.screens.recordScreenStates
 	public class PracticeState implements IRecordScreenState
 	{
 		protected var _context:			RecordScreenStateController;
-		protected var _currentNote:		NoteView;
+		protected var _currentNote:		BigNote;
 		private var _channel:			INotesChannel;
 		private var _currentNoteIndx:	uint=0;
 		private var _noteFetcher:		INoteFetcher;
@@ -107,8 +108,8 @@ package com.screens.recordScreenStates
 			_complete.dispatch();
 		}
 		
-		protected function getNoteByDistance(distance:uint):NoteView{
-			var curNote:NoteView;
+		protected function getNoteByDistance(distance:uint):BigNote{
+			var curNote:BigNote;
 			for(var i:uint=0;i<distance;i++){//was i<4
 				if(_channel.getNoteByLocation(_timeModel.currentTick+i)){
 					curNote=_channel.getNoteByLocation(_timeModel.currentTick+i);
@@ -125,17 +126,17 @@ package com.screens.recordScreenStates
 				return false;
 			}
 			
-			var curNote:NoteView=getNoteByDistance(20);
+			var curNote:BigNote=getNoteByDistance(20);
 			if(!curNote){return false}
 			
 			if(curNote!=_currentNote){
 				_currentNote=curNote;
 				_currentNoteIndx=_timeModel.currentTick;
-				_currentNote.highLight();
+				_currentNote.state="selected";
 				_correctAnswerTime=2;
 				noteChanged=true;
 			}
-			if((_currentNote.location==_timeModel.currentTick)&&_currentNote.isHighLight){
+			if((_currentNote.location==_timeModel.currentTick)&&_currentNote.state=="selected"){
 				_context.pauseTimer();
 				_correctAnswerTime=0;
 			}
@@ -148,7 +149,7 @@ package com.screens.recordScreenStates
 				_ofBeatNotes++;
 				return;
 			}
-			if((_noteFetcher.getNoteById(id).value==_currentNote.value)&&_currentNote.isHighLight){
+			if((_noteFetcher.getNoteById(id).value==_currentNote.value)&&_currentNote.state=="selected"){
 				calculateGoodFeedback();
 			}else{
 				calculateBadFeedback();
@@ -161,7 +162,7 @@ package com.screens.recordScreenStates
 			_goodAnsersInARow++;
 			_totalAnswerTime+=_correctAnswerTime;
 			_correctAnswers++;
-			_currentNote.deLight();
+			_currentNote.state="idle";
 			_currentNoteIndx++;
 			_context.unPauseTimer();
 			if(_correctAnswerTime<=1){

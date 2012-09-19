@@ -35,9 +35,7 @@ package com.container.controller {
 		public function reset():void{
 			_model.reset();
 			_navigator.goto.remove(goTo);
-			//_navigator.nextSignal.remove(progress);
-			//_navigator.prevSignal.remove(rewind);
-			//_view.menu.recordScreenMenu.speedControl.reset();
+			_view.menu.openDemo.remove(openDemo);
 		}
 		
 		public function get frameRate():uint{
@@ -45,13 +43,10 @@ package com.container.controller {
 		}
 		
 		private function initNavigator():void{
-			//_navigator = _view.addNavigation();
 			_navigator=_view.menu.navigator;
 			_navigator.goto.add(goTo);
 			_view.menu.openDemo.add(openDemo);
 			_navigator.state=_model.recordSession;
-			//_navigator.nextSignal.add(progress);
-			//_navigator.prevSignal.add(rewind);
 		}
 		
 		public function get theme():String{

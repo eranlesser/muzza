@@ -26,14 +26,16 @@ package com.container
 			addChild(AssetsManager.getAssetByName("BOTTOM_TOOLBAR.png"));
 			_navigator = addChild(new Navigator()) as Navigator;
 			_navigator.x = Dimentions.WIDTH-10-_navigator.width;
-			//_navigator.y=10;
+			_navigator.y=7;
 			_homeButton = new Btn("HOME_IDLE.png","HOME_PRESSED.png");
 			addChild(_homeButton);
 			_homeButton.x=10;
+			_homeButton.y=7;
 			_homeButton.clicked.add(onHome);
 			_demoButton = new Btn("DEMO_IDLE.png","DEMO_PRESSED.png");
 			addChild(_demoButton);
 			_demoButton.x=_homeButton.x+_homeButton.width;
+			_demoButton.y=7;
 			_demoButton.clicked.add(onDemo);
 		}
 		
