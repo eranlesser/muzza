@@ -34,8 +34,10 @@ package com.screens.view.components.homePage
 			_wallLayer=new Sprite();
 			_thumbsLayer=new Sprite();
 			_poleLayer=new Sprite();
-			_wallLayer.addChild(AssetsManager.getAssetByName("wall.png"));
-			
+			_wallLayer.addChild(AssetsManager.getAssetByName("STATION_WALL_TRIP.png"));
+			var wall2:DisplayObject = AssetsManager.getAssetByName("STATION_WALL_TRIP.png");
+			_wallLayer.addChild(wall2);
+			wall2.x=wall2.width;
 			addChild(_wallLayer);
 			addChild(_thumbsLayer);
 			addChild(_poleLayer);
@@ -44,10 +46,10 @@ package com.screens.view.components.homePage
 			for each(var song:XML in xml.song){
 				var songPannel:LearnSongPannel = getSongPannel(song);
 				_thumbsLayer.addChild(songPannel);
-				songPannel.x=(indx*(Dimentions.WIDTH*2));
+				songPannel.x=(indx*(Dimentions.WIDTH));
 				var pole:DisplayObject = AssetsManager.getAssetByName("POLE_STATION.png");
 				_poleLayer.addChild(pole);
-				pole.x=indx*(Dimentions.WIDTH*2)+Dimentions.WIDTH*1.5
+				pole.x=Dimentions.WIDTH*indx;
 				
 				indx++;
 				songPannel.songSelected.add(onSongSelected);
@@ -77,7 +79,7 @@ package com.screens.view.components.homePage
 			_poleLayer.addChild(pole);
 			pole.cacheAsBitmap=true;
 			pole.cacheAsBitmapMatrix=new Matrix();
-			pole.x=Dimentions.WIDTH*1.5
+			pole.x=Dimentions.WIDTH;
 		}
 		
 		private function onNext(id:String):void{
@@ -85,9 +87,9 @@ package com.screens.view.components.homePage
 				return;
 			}
 			_isTweening=true;
-			var wtween:GTween = new GTween(_wallLayer,2,{x:_wallLayer.x-Dimentions.WIDTH*2},{ease:Circular.easeInOut});
-			var tween:GTween = new GTween(_thumbsLayer,2,{x:_thumbsLayer.x-Dimentions.WIDTH*2},{ease:Circular.easeInOut});
-			var ptween:GTween = new GTween(_poleLayer,2.2,{x:_poleLayer.x-Dimentions.WIDTH*2},{ease:Circular.easeInOut});
+			var wtween:GTween = new GTween(_wallLayer,2,{x:_wallLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
+			var tween:GTween = new GTween(_thumbsLayer,2,{x:_thumbsLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
+			var ptween:GTween = new GTween(_poleLayer,2,{x:_poleLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
 			wtween.onComplete=function onComplete():void{
 				wtween.onComplete=null;
 				_wallLayer.x=0;
@@ -99,10 +101,10 @@ package com.screens.view.components.homePage
 				return;
 			}
 			_isTweening=true;
-			_wallLayer.x=_wallLayer.x-Dimentions.WIDTH*2;
+			_wallLayer.x=_wallLayer.x-Dimentions.WIDTH;
 			var wtween:GTween = new GTween(_wallLayer,2,{x:0},{ease:Circular.easeInOut});
-			var tween:GTween = new GTween(_thumbsLayer,2,{x:_thumbsLayer.x+Dimentions.WIDTH*2},{ease:Circular.easeInOut});
-			var ptween:GTween = new GTween(_poleLayer,2.2,{x:_poleLayer.x+Dimentions.WIDTH*2},{ease:Circular.easeInOut});
+			var tween:GTween = new GTween(_thumbsLayer,2,{x:_thumbsLayer.x+Dimentions.WIDTH},{ease:Circular.easeInOut});
+			var ptween:GTween = new GTween(_poleLayer,2,{x:_poleLayer.x+Dimentions.WIDTH},{ease:Circular.easeInOut});
 			tween.onComplete = enableTween;
 		}
 		
@@ -179,10 +181,7 @@ class LearnSongPannel extends Sprite{
 		_title.cacheAsBitmap=true;
 		
 		addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png")).cacheAsBitmap=true;
-		var light:DisplayObject = AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png");
-		addChild(light);
-		light.x=Dimentions.WIDTH;
-		light.cacheAsBitmap=true;
+		
 		_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
 		addChild(_thumbNail);
 		_thumbNail.cacheAsBitmap=true;

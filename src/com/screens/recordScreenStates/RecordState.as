@@ -55,7 +55,7 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			_context.bubble.visible=false;
-			_context.recordButton.state="selected";
+			_context.recordButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.addOnce(record);
 			_context.recordChannelController.reset();
 			_context.recordChannelController.start();

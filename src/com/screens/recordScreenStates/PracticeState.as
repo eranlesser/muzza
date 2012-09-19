@@ -55,6 +55,7 @@ package com.screens.recordScreenStates
 			_context.practiceButton.clicked.add(onStop);
 			_timeModel.tickSignal.add(highLightNext);
 			_context.startTimer();
+			_context.practiceButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.addOnce(onInstrumentPlayed);
 			_context.bubble.setText("Look up!",false)
 			_totalAnswerTime=0;
@@ -85,7 +86,7 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.stop();
 			_currentNoteIndx=0;
 			_wrongAnswers=0;
-			_context.practiceButton.state="pressed";
+			_context.practiceButton.state="idle";
 			_context.practiceButton.clicked.remove(onStop);
 			_context.instrumentRecorder.notePlayed.remove(onInstrumentPlayed);
 			_context.instrumentRecorder.notePlayed.remove(onNotePlayed);

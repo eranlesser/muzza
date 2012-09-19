@@ -85,7 +85,7 @@ package com.representation.controller {
 		
 		public function stop():void{
 			_model.tickSignal.remove(onTick);
-			_channelView.setX(0);
+			_channelView.setX(-((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2);
 		}
 		
 		private function onTick():void{

@@ -29,7 +29,10 @@ package com.notes
 		}
 		
 		public function clearNotes():void{
-		
+			while(_notes.length>0){
+				var noteView:BigNote = _notes.pop();
+				_notesContainer.removeChild(noteView);
+			}
 		}
 		
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,noteWeight:uint,type:String,isFlatOrSharp:String):void{

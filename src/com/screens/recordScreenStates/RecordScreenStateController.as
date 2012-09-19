@@ -68,6 +68,7 @@ package com.screens.recordScreenStates
 		protected function setState(name:String):void
 		{
 			deActivate();
+			trace("state",name)
 			_state = getStateByName(name);
 			activate();
 		}
