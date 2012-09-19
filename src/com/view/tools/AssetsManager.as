@@ -85,6 +85,34 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_7.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_8.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_9.png' />"+
+			//BASS
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_9.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_9.png' />"+
+			//DRUMS
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_4.png' />"+
 			
 			//RECORD SCREEN BUTTONS
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+

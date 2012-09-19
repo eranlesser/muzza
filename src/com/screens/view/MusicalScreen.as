@@ -1,6 +1,6 @@
 package com.screens.view
 {
-	import com.notes.RecordScreenNotes;
+	import com.notes.Notes;
 	import com.representation.Representation;
 	import com.screens.lyrics.LyricView;
 	

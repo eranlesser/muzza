@@ -30,6 +30,12 @@ package com.notes
 				case "bottles.png":
 					prefix =  "BOTTLES";
 					break;
+				case "drum.png":
+					prefix =  "DRUMS";
+					break;
+				case "bass_flash.jpg":
+					prefix =  "BASS";
+					break;
 			}
 			return prefix;
 		}

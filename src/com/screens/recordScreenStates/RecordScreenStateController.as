@@ -4,7 +4,7 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.view.components.SpeechBubble;
 	import com.musicalInstruments.view.recordable.RecordableView;
 	import com.notes.INotesChannel;
-	import com.notes.RecordScreenNotes;
+	import com.notes.Notes;
 	import com.representation.Representation;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
@@ -157,7 +157,7 @@ package com.screens.recordScreenStates
 			_recordScreen.unPauseTimer();
 		}
 		
-		public function get notes():RecordScreenNotes{
+		public function get notes():Notes{
 			return _recordScreen.notes;
 		}
 		

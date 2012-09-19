@@ -12,6 +12,7 @@ package com.representation.controller {
 	import com.notes.INotesChannel;
 	import com.notes.NotesChannel;
 	import com.representation.ChanelNotesType;
+	import com.representation.Representation;
 	import com.representation.RepresentationSizes;
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
@@ -89,7 +90,7 @@ package com.representation.controller {
 		
 		private function onTick():void{
 			//if(_model.currentTick>64){
-				_channelView.setX((-(_model.currentTick-64)*(RepresentationSizes.notesArea)/128)+RepresentationSizes.cueWidth/2);
+				_channelView.setX((-(_model.currentTick)*(RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2);
 			//}
 		}
 		

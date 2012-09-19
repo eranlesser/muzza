@@ -8,7 +8,7 @@ package com.screens.view {
 	import com.musicalInstruments.view.playable.*;
 	import com.musicalInstruments.view.recordable.*;
 	import com.notes.INotesChannel;
-	import com.notes.RecordScreenNotes;
+	import com.notes.Notes;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
@@ -24,7 +24,7 @@ package com.screens.view {
 		private var _stateController:			RecordScreenStateController;
 		private var _timerControll:				ITimeControll;
 		private var _timeModel:					ITimeModel;
-		private var _notes:						RecordScreenNotes;
+		private var _notes:						Notes;
 		private var _practiceBtn:				Btn;
 		private var _recordBtn:					Btn;
 		
@@ -72,7 +72,7 @@ package com.screens.view {
 			_timerControll.unPause();
 		}
 		
-		public function get notes():RecordScreenNotes{
+		public function get notes():Notes{
 			return _notes;
 		}
 	
@@ -152,7 +152,7 @@ package com.screens.view {
 		}
 		
 		private function addRepresentation():void{
-			_notes = new RecordScreenNotes();
+			_notes = new Notes();
 			_stageLayer.addChild(_notes);
 			_notes.x=37;
 			_notes.y=110;

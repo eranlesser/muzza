@@ -35,8 +35,8 @@ package com.notes
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,noteWeight:uint,type:String,isFlatOrSharp:String):void{
 			var note:BigNote = new BigNote(noteValue,noteWeight,type,noteModel.location,_instrumentModel.thumbNail,isFlatOrSharp);
 			_notesContainer.addChild(note);
-			note.x=noteModel.location*444;
-			note.y=150;
+			note.x=noteModel.location*(_notesMask.width/64);
+			note.y=80;
 			_notes.push(note);
 		}
 		

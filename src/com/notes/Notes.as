@@ -8,12 +8,12 @@ package com.notes
 	import flash.display.Sprite;
 	import flash.geom.Rectangle;
 	
-	public class RecordScreenNotes extends Sprite{
+	public class Notes extends Sprite{
 		
 		private var _cue:DisplayObject;
 		private var _channel:INotesChannel;
 		private var _notesCanvas:Sprite;
-		public function RecordScreenNotes()
+		public function Notes()
 		{
 			init();
 		}
@@ -38,7 +38,7 @@ package com.notes
 			addChild(_notesCanvas);
 			_cue = addChild(AssetsManager.getAssetByName("BLUE_NEEDLE.png"));
 			addChild(_cue);
-			_cue.x=100;
+			_cue.x=width/2-_cue.width/2;
 			addChild(AssetsManager.getAssetByName("notes_frame.png"));
 		}
 	}
