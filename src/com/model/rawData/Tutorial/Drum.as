@@ -15,10 +15,10 @@ public static var data:XML =
 <components recordButtonX="520" recordButtonY="115">
 
 
-<drum image="drum_1_0001.png" playImage="drum_1_0002.png" x='0' y='0' noteX='2' noteY='-5'>
+<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png" x='0' y='0' noteX='2' noteY='-5'>
 <tap noteId="3" />
 </drum>
-<drum image="bottle_drum_0001.png" playImage="bottle_drum_0002.png" x='150' y='0' noteX='15' noteY='5'>
+<drum image="bottle_drum_0001.png" playImage="DRUMS_1_PRESSED.png" x='150' y='0' noteX='15' noteY='5'>
 <tap noteId="4" />
 </drum>
 

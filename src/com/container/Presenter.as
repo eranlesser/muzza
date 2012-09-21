@@ -86,6 +86,9 @@ package com.container
 		}
 		
 		public function removeScreens():void{
+			if(_toolBar.demoButton.state=="pressed"){
+				closeDemo();
+			}
 			for(var i:uint=_screensLayer.numChildren;i>0;i--){
 				(_screensLayer.getChildAt(0) as IScreen).stop();
 				_screensLayer.removeChildAt(0);
@@ -97,6 +100,7 @@ package com.container
 			_screensLayer.addChild(demoScreen);
 			demoScreen.start();
 			_toolBar.demoButton.state="pressed";
+			demoScreen.close.add(closeDemo);
 		}
 		
 		public function closeDemo():void{
@@ -104,6 +108,7 @@ package com.container
 			demoScreen.stop();
 			_screensLayer.removeChild(demoScreen);
 			_toolBar.demoButton.state="idle";
+			(_screensLayer.getChildAt(0) as IScreen).start();
 		}
 		
 		public function get isDemoOpen():Boolean{

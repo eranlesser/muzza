@@ -15,10 +15,9 @@ package com.screens.recordScreenStates
 
 	public class RecordScreenStateController
 	{
-		protected var _states:		Vector.<IRecordScreenState>;
+		protected var _states:			Vector.<IRecordScreenState>;
 		protected var _state:			IRecordScreenState;
 		protected var _recordScreen:	RecordScreen;
-		protected var _progressStage:uint=0;
 		
 		public function RecordScreenStateController(recordScreen:RecordScreen){
 			_recordScreen = recordScreen;
@@ -44,17 +43,14 @@ package com.screens.recordScreenStates
 		
 		public function listen():void{
 			setState(States.LISTEN);
-			_progressStage=1;
 		}
 		
 		public function record():void{
 			setState(States.RECORD);
-			_progressStage=3;
 		}
 		
 		public function practice():void{
 			setState(States.PRACTICE);
-			_progressStage=2;
 		}
 		
 		public function playRecorded():void{
@@ -79,7 +75,6 @@ package com.screens.recordScreenStates
 		{
 			_state.activate();
 			_state.complete.add(onStateComplete);
-			//representation.start(model.beginAtFrame);
 		}
 		
 		public function deActivate():void
@@ -87,14 +82,11 @@ package com.screens.recordScreenStates
 			if(_state){
 				_state.complete.remove(onStateComplete);
 				_state.deActivate();
-				//representation.stop();
 			}
 		}
 		
 		private function onStateComplete():void{
-			//deActivate();
 			setState(States.IDLE);
-			//activate();
 		}
 		
 		private function getStateByName(name:String):IRecordScreenState{

@@ -43,6 +43,7 @@ package com.musicalInstruments.view.recordable {
 			_octvSelector.changed.add(onOctavChanged);
 			layoutOctaveSelector();
 			_octvSelector.octave=0;
+			_octvSelector.visible=false;
 		}
 		
 		public function layoutOctaveSelector():void{

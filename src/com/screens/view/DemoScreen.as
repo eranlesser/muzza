@@ -12,13 +12,17 @@ package com.screens.view {
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
 	import com.screens.view.components.Clock;
+	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.text.*;
 	import flash.utils.Timer;
+	
+	import org.osflash.signals.Signal;
 
 	/**
 	 * 
@@ -36,6 +40,10 @@ package com.screens.view {
 		private var _channelControllers:	Vector.<PlayChannelController>;
 		private var _loadSign:TextField;
 		private var _backGroundSoundPlayer:BackGroundSound;
+		private var _mask:DisplayObject;
+		private var _frame:DisplayObject;
+		private var _closeBtn:Btn;
+		public var close:Signal=new Signal();
 		protected var _representation:Representation;
 		
 		public function DemoScreen(){
@@ -49,7 +57,7 @@ package com.screens.view {
 			_model = new PlayScreenModel(screenData,instrumentsModel);
 		}
 		
-		protected function init():void{
+		protected function init(masked:Boolean=true):void{
 			removeChild(_loadSign);
 			_model.start();
 			addRepresentation();
@@ -76,10 +84,31 @@ package com.screens.view {
 			if(_model.backGraoundSound!=""){
 				_backGroundSoundPlayer=new BackGroundSound(_model.backGraoundSound);
 			}
-			
+			if(masked){
+				_mask=AssetsManager.getAssetByName("DEMO_SCREEN_FRAME.png");
+				this.mask=_mask;
+				_frame=AssetsManager.getAssetByName("DEMO_SCREEN_FRAME.png");
+				_stageLayer.addChild(_frame)
+				_frame.x=29;
+				_frame.y=19;
+				_mask.x=29;
+				_mask.y=19;
+				
+				_closeBtn = new Btn("CLOSE_BUTTON_IDLE.png","CLOSE_BUTTON_SELECTED.png");
+				_stageLayer.addChild(_closeBtn);
+				_closeBtn.x=950;
+				_closeBtn.y=19;
+				_closeBtn.clicked.add(onClose);
+			}
 			var tmr:Timer=new Timer(1000,1);
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
+			
+			
+		}
+		
+		private function onClose(btnid:String):void{
+			close.dispatch();
 		}
 		
 		override public function start():void{

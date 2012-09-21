@@ -48,45 +48,22 @@ public static var data:XML =
 	<RecordedX>167</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<bandInstrument type="drum.png">
-<layout id="0" x='50' y='110'  rotation="0" />	
-	<cycle count="1" sequance="99" />
-	</bandInstrument>
-	<bandInstrument type='bass_flash.jpg'>
-<layout id="0" x='740' y='100'  rotation="0" />	
-	<cycle count="1" sequance="99" />
-	</bandInstrument>
 </recordScreen>
 
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="512" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102">
 	<RecordedX>380</RecordedX>
-	<RecordedY>250</RecordedY>
+	<RecordedY>370</RecordedY>
 	</playerInstrument>
-	<bandInstrument type="bottles.png">
-	<layout id="0" x='50' y='110'  rotation="0" />	
-	<cycle count="1" sequance="99" />
-	</bandInstrument>
-	<bandInstrument type='bass_flash.jpg' >
-	<layout id="0" x='740' y='100'  rotation="0" />	
-	<cycle count="1" sequance="99" />
-	</bandInstrument>
+	
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>-1</RecordedX>
-	<RecordedY>500</RecordedY>
+	<RecordedX>34</RecordedX>
+	<RecordedY>440</RecordedY>
 	</playerInstrument>
-	<bandInstrument type="bottles.png" >
-	<layout id="0" x='50' y='110'  rotation="0" />	
-	<cycle count="1" sequance="99" />
-	</bandInstrument>
-	<bandInstrument type='drum.png'>
-	<layout id="0" x='740' y='100'  rotation="0" />	
-	<cycle count="1" sequance="99" />
-	</bandInstrument>
 </recordScreen>
 
 <endScreen type="ThemeTemplate" beginAtFrame="1" playSequance="102">

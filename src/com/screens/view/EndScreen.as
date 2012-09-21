@@ -22,16 +22,16 @@ package com.screens.view
 				//addHat();
 				//_claps = new Claps();
 			}else{
-				_representation.visible=true;
+				//_representation.visible=true;
 			}
 			
 		}
 		
-		override protected function init():void{
-			super.init();
+		override protected function init(masked:Boolean=true):void{
+			super.init(false);
 			addHat();
 			_claps = new Claps();
-			_representation.visible=true;
+			//_representation.visible=true;
 		}
 		
 		override public function stop():void{

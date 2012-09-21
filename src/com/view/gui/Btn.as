@@ -17,6 +17,7 @@ package com.view.gui
 		private var _pressed:		DisplayObject;
 		private var _visited:		DisplayObject;
 		private var _id:String;
+		private var _state:String;
 		
 		public function Btn(idle:String,pressed:String,visited:String="",id:String=""){
 			_id=id;
@@ -44,17 +45,22 @@ package com.view.gui
 		}
 		
 		
-		public function set state(state:String):void{
+		public function set state(stt:String):void{
 			removeChildAt(0);
-			if(state=="idle"){
+			if(stt=="idle"){
 				addChild(_idle);
-			}else if(state=="pressed"){
+			}else if(stt=="pressed"){
 				addChild(_pressed);
-			}else if(state=="visited"){
+			}else if(stt=="visited"){
 				addChild(_visited);
 			}else{
-				throw Error(new Error("no state",state))
+				throw Error(new Error("no state",stt))
 			}
+			_state=stt;
+		}
+		
+		public function get state():String{
+			return _state;	
 		}
 		
 		private function mouseDown(e:Event):void{

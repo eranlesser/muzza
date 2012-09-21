@@ -14,6 +14,7 @@ package com.screens.view {
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
 	import com.view.gui.Btn;
+	import com.view.tools.AssetsManager;
 
 
 	public class RecordScreen extends MusicalScreen
@@ -81,6 +82,7 @@ package com.screens.view {
 		}
 		override public function start():void{
 			if(!isInited){
+				_bg.addChild(AssetsManager.getAssetByName("PLAY_SCREEN_WALL_BCKGR.png"));
 				createPlayerAndInstrument();
 				addRepresentation();
 				super.start();

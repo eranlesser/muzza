@@ -44,8 +44,8 @@ package com.model.rawData.jingleBells
 </bottle>
 </components>
 <studio>
-<background image="backgr_solo.jpg" />
-<spotlite image="Spot_light_bottle.png" />
+
+
 </studio>
 <octaves>
 <notes>

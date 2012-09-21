@@ -12,29 +12,29 @@ public static var data:XML =
 	</eyes>	
 <components recordButtonX="0" recordButtonY="580">
 		
-		<bass image="BASS_ICON_1_IDLE.png" playImage="BASS_ICON_1_PRESS.png" x='0' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
 			<tap noteId="1" />
 		</bass>
-		<bass image="BASS_ICON_2_IDLE.png" playImage="BASS_ICON_2_PRESS.png" x='128' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='120' y='0' >
 			<tap noteId="2" />
 		</bass>
-		<bass image="BASS_ICON_3_IDLE.png" playImage="BASS_ICON_3_PRESS.png" x='256' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='240' y='0'  >
 			<tap noteId="3" />
 		</bass>
 		
-		<bass image="BASS_ICON_4_IDLE.png" playImage="BASS_ICON_4_PRESS.png" x='384' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='360' y='0' >
 			<tap noteId="4" />
 		</bass>
-		<bass image="BASS_ICON_6_IDLE.png" playImage="BASS_ICON_6_PRESS.png" x='512' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='480' y='0'  >
 			<tap noteId="6" />
 		</bass>
-		<bass image="BASS_ICON_5_IDLE.png" playImage="BASS_ICON_5_PRESS.png" x='640' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='600' y='0'  >
 			<tap noteId="5" />
 		</bass>
-		<bass image="BASS_ICON_7_IDLE.png" playImage="BASS_ICON_7_PRESS.png" x='768' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='720' y='0'  >
 			<tap noteId="7" />
 		</bass>
-		<bass image="BASS_ICON_8_IDLE.png" playImage="BASS_ICON_8_PRESS.png" x='896' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_8_IDLE.png" playImage="BASS_8_SELECTED.png" x='840' y='0' >
 			<tap noteId="8" />
 		</bass>
 		

@@ -12,28 +12,27 @@ package com.model.rawData.edvard
 <blink start="9" end="15" />
 <blink start="15" end="16" />
 	</eyes>							
-<components recordButtonX="12" recordButtonY="275">
+<components>
 
-<drum image="drum_2_0001.png" playImage="drum_2_0002.png" x='50' y='280' noteX='33' noteY='-10'>
-<tap noteId="4" />
-</drum>
-<drum image="drum_1_0001.png" playImage="drum_1_0002.png" x='0' y='110' noteX='2' noteY='-5'>
-<tap noteId="3" />
-</drum>
-<drum image="bottle_drum_0001.png" playImage="bottle_drum_0002.png" x='150' y='110' noteX='15' noteY='5'>
-<tap noteId="2" />
-</drum>
-<drum image="metzila_0001.png" playImage="metzila_0002.png" x='80' y='0' noteX='100' noteY='0'>
+<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='150' y='80'>
 <tap noteId="1" />
 </drum>
-
+<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='60' y='160'>
+<tap noteId="2" />
+</drum>
+<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='40' y='-10'>
+<tap noteId="3" />
+</drum>
+<drum image="DRUMS_4_IDLE.png" playImage="DRUMS_4_PRESSED.png" x='-60' y='70' >
+<tap noteId="4" />
+</drum>
 </components>
 <octaves>
 <notes>
-<note id="1" value="1" soundFile="edvard/notes/drums/CRASH.mp3" animationIndex='2'   />
-<note id="2"  value="2" soundFile="edvard/notes/drums/KICK.mp3" animationIndex='4'  />
-<note id="3"  value="3" soundFile="edvard/notes/drums/SNARE.mp3" animationIndex='5'  />
-<note id="4" value="4" soundFile="edvard/notes/drums/TOM.mp3" animationIndex='1'  />
+<note id="1"  value="1" soundFile="edvard/notes/drums/SNARE.mp3" animationIndex='1'  />
+<note id="2" value="2" soundFile="edvard/notes/drums/TOM.mp3" animationIndex='5'   />
+<note id="3"  value="3" soundFile="edvard/notes/drums/CRASH.mp3" animationIndex='2'  />
+<note id="4" value="4" soundFile="edvard/notes/drums/KICK.mp3" animationIndex='4'  />
 </notes>
 </octaves>
 <sequances>

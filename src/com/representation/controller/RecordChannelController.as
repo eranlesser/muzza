@@ -73,7 +73,7 @@ package com.representation.controller {
 				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.TEACHER_PLAYING);
 			}
 			if( _fetcher.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
-				drawNotes(NoteSequanceModel(_fetcher.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
+				//drawNotes(NoteSequanceModel(_fetcher.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
 			}
 			_recordableView.added.add(noteAdded);
 			onTick();

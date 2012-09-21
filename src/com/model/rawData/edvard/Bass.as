@@ -9,22 +9,22 @@ public static var data:XML =
 	<eyes swfSheet="bassBlink.png" x="0" y="0" width="250" height="350" >
 		<blink start="0" end="5" />
 	</eyes>	
-<components recordButtonX="320" recordButtonY="580">
+<components recordButtonX="0" recordButtonY="580">
 		
-		<bass image="BASS_ICON_1_IDLE.png" playImage="BASS_ICON_1_IDLE.png" x='0' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
 			<tap noteId="1" />
 		</bass>
-		<bass image="BASS_ICON_2_IDLE.png" playImage="BASS_ICON_2_IDLE.png" x='140' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='120' y='0' >
 			<tap noteId="2" />
 		</bass>
-		<bass image="BASS_ICON_3_IDLE.png" playImage="BASS_ICON_3_IDLE.png" x='280' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='240' y='0'  >
 			<tap noteId="3" />
 		</bass>
 		
-		<bass image="BASS_ICON_4_IDLE.png" playImage="BASS_ICON_4_IDLE.png" x='420' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='360' y='0' >
 			<tap noteId="4" />
 		</bass>
-		<bass image="BASS_ICON_6_IDLE.png" playImage="BASS_ICON_6_IDLE.png" x='560' y='0'  noteX='15' noteY='5'>
+		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='480' y='0'  >
 			<tap noteId="6" />
 		</bass>
 		

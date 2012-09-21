@@ -141,6 +141,18 @@ package com.view.tools
 			"<image path='assets/tutorial/create2.jpg' />"+
 			"<image path='assets/tutorial/create3.jpg' />"+
 			"<image path='assets/tutorial/create4.jpg' />"+
+			//DEMOSCREEN
+			"<image path='assets/DEMO_SCREEN/DEMO_SCREEN_FRAME.png' />"+
+			"<image path='assets/DEMO_SCREEN/CLOSE_BUTTON_IDLE.png' />"+
+			"<image path='assets/DEMO_SCREEN/CLOSE_BUTTON_SELECTED.png' />"+
+			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/lines.png' />"+
+			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/pause.png' />"+
+			"<image path='assets/DEMO_SCREEN/play.png' />"+
+			"<image path='assets/DEMO_SCREEN/RELOAD_IDLE.png' />"+
+			"<image path='assets/DEMO_SCREEN/RELOAD_PRESSED.png' />"+
 			
 			
 			//HAT
@@ -239,9 +251,8 @@ package com.view.tools
 			"<image path='assets/gui/plus.gif' />"+
 			"<image path='assets/gui/Down_Arrow_Icon.png' />"+
 			//BACKGROUND
+			"<image path='assets/PLAY_SCREEN_WALL_BCKGR.png' />"+
 			"<image path='assets/themes/ny/BCKGR_1.jpg' />"+
-			"<image path='assets/themes/ny/BCKGR_1.png' />"+
-			"<image path='assets/themes/ny/opening_screen.jpg' />"+
 			"<image path='assets/themes/ny/sign.png' />"+
 			//CLOCK
 			"<image path='assets/themes/ny/mahog_big.png' />"+
@@ -253,22 +264,22 @@ package com.view.tools
 			"<image path='assets/themes/ny/SOUND_OFF.png' />"+
 			"<image path='assets/themes/ny/SOUND_ON.png' />"+
 			// INSTRUMENTS
-			"<image path='assets/instruments/BASS/BASS_ICON_1_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_1_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_2_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_2_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_3_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_3_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_4_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_4_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_5_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_5_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_6_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_6_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_7_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_7_PRESS.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_8_IDLE.png' />"+
-			"<image path='assets/instruments/BASS/BASS_ICON_8_PRESS.png' />"+
+			"<image path='assets/instruments/BASS/BASS_1_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_1_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_2_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_2_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_3_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_3_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_4_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_4_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_5_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_5_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_6_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_6_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_7_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_7_SELECTED.png' />"+
+			"<image path='assets/instruments/BASS/BASS_8_IDLE.png' />"+
+			"<image path='assets/instruments/BASS/BASS_8_SELECTED.png' />"+
 			"<image path='assets/instruments/backgr_solo.jpg' />"+
 			"<image path='assets/instruments/BASS/bass_spot_lights.png' />"+
 			
@@ -296,17 +307,14 @@ package com.view.tools
 			"<image path='assets/instruments/BOTTLES/BOttle_Frame.png' />"+
 			"<image path='assets/instruments/BOTTLES/bottle_frame_BCKGR.png' />"+
 			
-			"<image path='assets/instruments/DRUMS/bottle_drum_0001.png' />"+
-			"<image path='assets/instruments/DRUMS/bottle_drum_0002.png' />"+
-			"<image path='assets/instruments/DRUMS/drum_1_0001.png' />"+
-			"<image path='assets/instruments/DRUMS/drum_1_0002.png' />"+
-			"<image path='assets/instruments/DRUMS/drum_2_0001.png' />"+
-			"<image path='assets/instruments/DRUMS/drum_2_0002.png' />"+
-			"<image path='assets/instruments/DRUMS/metzila_0001.png' />"+
-			"<image path='assets/instruments/DRUMS/metzila_0002.png' />"+
-			"<image path='assets/instruments/DRUMS/panel.png' />"+
-			"<image path='assets/instruments/DRUMS/spot_light_floor.png' />"+
-			"<image path='assets/instruments/DRUMS/spot_light_up.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_1_IDLE.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_1_PRESSED.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_2_IDLE.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_2_PRESSED.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_3_IDLE.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_3_PRESSED.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_4_IDLE.png' />"+
+			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
 			
 			"<image path='assets/instruments/backgr_solo.jpg' />"+
 			"<image path='assets/lv.png' />"+
