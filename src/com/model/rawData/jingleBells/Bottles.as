@@ -15,30 +15,32 @@ package com.model.rawData.jingleBells
 	<blink start="18" end="22" />
 </eyes>						
 <components>
-<bg image="BOttle_Frame.png" x="0" y="0" clickable="false" />
-<bottle image="bottle_8_idle.png" playImage="bottle_8_press.png" x='32' y='-19'>
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='0' y='0' >
 	<tap noteId="1" />
 </bottle>
-<bottle image="bottle_7_idle.png" playImage="bottle_7_press.png" x='107' y='-19'>
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='80' y='0' >
 	<tap noteId="2" />
 </bottle>
-<bottle image="bottle_6_idle.png" playImage="bottle_6_press.png" x='182' y='-19'>
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='160' y='0' >
 	<tap noteId="3" />
 </bottle>
-<bottle image="bottle_5_idle.png" playImage="bottle_5_press.png" x='257' y='-19'>
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='240' y='0' >
 	<tap noteId="4" />
 </bottle>
-<bottle image="bottle_4_idle.png" playImage="bottle_4_press.png" x='322' y='-19'>
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='320' y='0' >
 	<tap noteId="5" />
 </bottle>
-<bottle image="bottle_3_idle.png" playImage="bottle_3_press.png" x='397' y='-19'>
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='400' y='0' >
 	<tap noteId="6" />
 </bottle>
-<bottle image="bottle_2_idle.png" playImage="bottle_2_press.png" x='472' y='-19'>
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='470' y='0' >
 	<tap noteId="7" />
 </bottle>
-<bottle image="bottle_1_idle.png" playImage="bottle_1_press.png" x='547' y='-19'>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='540' y='0' >
 	<tap noteId="8" />
+</bottle>
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='620' y='0' >
+	<tap noteId="9" />
 </bottle>
 </components>
 <studio>

@@ -5,44 +5,44 @@ package com.model.rawData.beethoven
 public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spriteSheet='bottlesSheet.png' >
 <eyes swfSheet="bottlesEyes.png" x="0" y="0" width="440" height="460" >
 	<blink start="0" end="4" />
-	<blink start="4" end="8" />
-	<blink start="9" end="13" />
-	<blink start="13" end="17" />
-	<blink start="18" end="22" />
+	<blink start="4" end="12" />
+	<blink start="12" end="16" />
+	<blink start="16" end="22" />
+	<blink start="22" end="26" />
+	<blink start="26" end="31" />
+	<blink start="31" end="34" />
 </eyes>						
-<components recordButtonX="250" recordButtonY="250">
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='0' y='0' noteX='30' noteY='82'>
+<components>
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='0' y='0' >
 	<tap noteId="1" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='80' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='80' y='0' >
 	<tap noteId="2" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='160' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='160' y='0' >
 	<tap noteId="3" />
 </bottle>
-<bottle image="studio_bottle_3_idle.png" playImage="studio_bottle_3_press.png" x='240' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='240' y='0' >
 	<tap noteId="4" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='320' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='320' y='0' >
 	<tap noteId="5" />
 </bottle>
-<bottle image="studio_bottle_3_idle.png" playImage="studio_bottle_3_press.png" x='400' y='0'noteX='30' noteY='82' >
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='400' y='0' >
 	<tap noteId="6" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='470' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='470' y='0' >
 	<tap noteId="7" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='540' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='540' y='0' >
 	<tap noteId="8" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_press.png" x='620' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='620' y='0' >
 	<tap noteId="9" />
 </bottle>
 </components>
 <studio>
-<background image="backgr_solo.jpg" />
-<spotLight image="Spot_light_bottle.png" />
-<upLight image="spot_light_floor_bottle.png" />
+
 
 </studio>
 <octaves>

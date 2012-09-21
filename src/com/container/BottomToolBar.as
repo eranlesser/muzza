@@ -47,6 +47,10 @@ package com.container
 			openDemo.dispatch();
 		}
 		
+		public function get demoButton():Btn{
+			return _demoButton;
+		}
+		
 		public function get navigator():Navigator{
 			return _navigator;
 		}

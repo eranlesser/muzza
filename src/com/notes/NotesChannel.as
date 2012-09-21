@@ -4,6 +4,7 @@ package com.notes
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.view.components.NoteView;
+	import com.representation.RepresentationSizes;
 	
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -25,7 +26,7 @@ package com.notes
 		}
 		
 		public function setX(xx:int):void{
-			_notesContainer.x=xx;
+			_notesContainer.x=xx-_notesMask.width/2-130;
 		}
 		
 		public function clearNotes():void{
@@ -38,8 +39,9 @@ package com.notes
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,noteWeight:uint,type:String,isFlatOrSharp:String):void{
 			var note:BigNote = new BigNote(noteValue,noteWeight,type,noteModel.location,_instrumentModel.thumbNail,isFlatOrSharp);
 			_notesContainer.addChild(note);
-			note.x=noteModel.location*(_notesMask.width/64);
-			note.y=80;
+			
+			note.x=noteModel.location*((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2
+			note.y=120-noteModel.noteId*10;
 			_notes.push(note);
 		}
 		
@@ -55,7 +57,7 @@ package com.notes
 		private function drawFrame(size:Rectangle):void{
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)
-			_notesMask.graphics.drawRect(0,0,size.width,size.height);
+			_notesMask.graphics.drawRect(50,0,size.width-100,size.height);
 			_notesMask.graphics.endFill();
 			addChild(_notesMask);
 			

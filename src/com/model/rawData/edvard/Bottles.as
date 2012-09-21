@@ -14,32 +14,32 @@ package com.model.rawData.edvard
 	<blink start="13" end="17" />
 	<blink start="18" end="22" />
 </eyes>						
-<components recordButtonX="500" recordButtonY="50">
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='0' y='0' noteX='30' noteY='82'>
+<components>
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='0' y='0' >
 	<tap noteId="1" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='80' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='80' y='0' >
 	<tap noteId="2" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='160' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='160' y='0' >
 	<tap noteId="3" />
 </bottle>
-<bottle image="studio_bottle_3_idle.png" playImage="studio_bottle_3_idle.png" x='240' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='240' y='0' >
 	<tap noteId="4" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='320' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='320' y='0' >
 	<tap noteId="5" />
 </bottle>
-<bottle image="studio_bottle_3_idle.png" playImage="studio_bottle_3_idle.png" x='400' y='0'noteX='30' noteY='82' >
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='400' y='0' >
 	<tap noteId="6" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='470' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='470' y='0' >
 	<tap noteId="7" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='540' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='540' y='0' >
 	<tap noteId="8" />
 </bottle>
-<bottle image="studio_bottle_1_idle.png" playImage="studio_bottle_1_idle.png" x='620' y='0' noteX='30' noteY='82'>
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='620' y='0' >
 	<tap noteId="9" />
 </bottle>
 </components>

@@ -1,6 +1,5 @@
 package com.musicalInstruments.view.components
 {
-	import com.constants.States;
 	import com.gamification.INoteDisplayer;
 	import com.gamification.RepresentationtypeController;
 	import com.musicalInstruments.model.InstrumentComponentModel;
@@ -9,9 +8,7 @@ package com.musicalInstruments.view.components
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Bitmap;
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
 	
@@ -19,21 +16,23 @@ package com.musicalInstruments.view.components
 	
 	public class MusicalInstrumentComponent extends Sprite implements INoteDisplayer{
 		
-		private var _model:		InstrumentComponentModel;
-		private var _idleImage:	Bitmap;
-		private var _playImage:	Bitmap;
-		private var _note:		NoteView;
-		private var _noteFetcher:INoteFetcher;
-		public var tuch:Signal=new Signal();
-		public var unTuch:Signal=new Signal();
-		private var _isPressed:Boolean=false;
-		public function MusicalInstrumentComponent(model:InstrumentComponentModel,noteFetcher:INoteFetcher,showNumbers:Boolean){
+		private var _model:			InstrumentComponentModel;
+		private var _idleImage:		Bitmap;
+		private var _playImage:		Bitmap;
+		private var _note:			NoteView;
+		private var _noteFetcher:	INoteFetcher;
+		private var _isPressed:		Boolean=false;
+
+		public var tuch:			Signal=new Signal();
+		public var unTuch:			Signal=new Signal();
+		
+		public function MusicalInstrumentComponent(model:InstrumentComponentModel,noteFetcher:INoteFetcher){
 			_model = model;
 			_noteFetcher = noteFetcher;
-			init(showNumbers);
+			init();
 		}
 		
-		private function init(showNumbers:Boolean):void{
+		private function init():void{
 			_idleImage = AssetsManager.getBitmap(_model.image,true);
 			_playImage = AssetsManager.getBitmap(_model.playImage,true);
 			_idleImage.smoothing=true;
@@ -41,19 +40,16 @@ package com.musicalInstruments.view.components
 			if(_playImage){ // its a playable component (not bg etc.)
 				addChild(_playImage);
 				state="idle";
-				if(_noteFetcher&&_model.noteX>0&&showNumbers){
-					initNote();
-				}
 			}
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-//			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-//			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 //			
-			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
-			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
-			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
-			addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
+//			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
+//			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
+//			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
+//			addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
 		}
 		
 		private function onTouch(e:MouseEvent):void{
@@ -79,14 +75,7 @@ package com.musicalInstruments.view.components
 			e.updateAfterEvent();
 		}
 		
-		private function initNote():void{
-			_note = new NoteView(_noteFetcher.getNoteById(_model.noteId).value,1,ChanelNotesType.U_PLAYING,1);
-			addChild(_note);
-			_note.x = _model.noteX;
-			_note.y = _model.noteY;
-			_note.mouseEnabled = false;
-			_note.mouseChildren = false;
-		}
+		
 		public function set state(curState:String):void{
 			if(curState=="play"){
 				_idleImage.visible = false;

@@ -27,7 +27,7 @@ package com.notes
 		}
 		
 		public function addChannel(model:CoreInstrumentModel):INotesChannel{
-			_channel = new NotesChannel(model,new Rectangle(0,0,width,height));
+			_channel = new NotesChannel(model,new Rectangle(0,0,950,height));
 			_notesCanvas.addChild(_channel as DisplayObject);
 			return _channel;
 		}
@@ -38,7 +38,7 @@ package com.notes
 			addChild(_notesCanvas);
 			_cue = addChild(AssetsManager.getAssetByName("BLUE_NEEDLE.png"));
 			addChild(_cue);
-			_cue.x=width/2-_cue.width/2;
+			_cue.x=950/2-80;
 			addChild(AssetsManager.getAssetByName("notes_frame.png"));
 		}
 	}

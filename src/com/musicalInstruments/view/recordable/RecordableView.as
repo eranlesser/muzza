@@ -44,14 +44,14 @@ package com.musicalInstruments.view.recordable {
 		private var _player:				NoteSequancePlayer;
 		public var added:					Signal;
 		
-		public function RecordableView(model:CoreInstrumentModel,recordedSequanceId:uint=0,showNumbers:Boolean=true){
+		public function RecordableView(model:CoreInstrumentModel,recordedSequanceId:uint=0){
 			_notePlayed = new Signal();
 			_noteStopped = new Signal();
 			_musicalComponents = new Vector.<MusicalInstrumentComponent>();
 			_model = model as CoreInstrumentModel;
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
 			_recordedSequanceId = recordedSequanceId;
-			addComponents(_model.components,showNumbers);
+			addComponents(_model.components);
 			added = new Signal();
 			
 		}
@@ -192,10 +192,10 @@ package com.musicalInstruments.view.recordable {
 			return null;
 		}
 		
-		private function addComponents(components:Vector.<InstrumentComponentModel>,showNumbers:Boolean):void{
+		private function addComponents(components:Vector.<InstrumentComponentModel>):void{
 			for each(var compModel:InstrumentComponentModel in components){
 				var comp:MusicalInstrumentComponent;
-				comp = new MusicalInstrumentComponent(compModel,_model as INoteFetcher,showNumbers);
+				comp = new MusicalInstrumentComponent(compModel,_model as INoteFetcher);
 				addChild(comp);
 				comp.tuch.add(onTouch);
 				comp.unTuch.add(onUnTouch);

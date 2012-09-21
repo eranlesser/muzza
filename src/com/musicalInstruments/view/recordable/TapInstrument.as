@@ -16,8 +16,8 @@ package com.musicalInstruments.view.recordable {
 		protected var _octvSelector:	OctaveSelector;
 		private var _octaveController:	OctaveController;
 		
-		public function TapInstrument(model:NotesInstrumentModel, recordedSequanceId:uint=0, showNumbers:Boolean=true) {
-			super(model, recordedSequanceId,showNumbers);
+		public function TapInstrument(model:NotesInstrumentModel, recordedSequanceId:uint=0) {
+			super(model, recordedSequanceId);
 			tuch.add(onTouchTap);
 			unTuch.add(onTouchTapEnd);
 			if(model.octavesLength>1){

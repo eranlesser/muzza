@@ -33,7 +33,7 @@ package com.studio
 		public function StudioInstrument(model:InstrumentModel)
 		{
 			
-			_musicalView = _instrument = new TapInstrument(model.coreModel as NotesInstrumentModel,0,false);
+			_musicalView = _instrument = new TapInstrument(model.coreModel as NotesInstrumentModel,0);
 			if((_musicalView as TapInstrument).octaveSelector){
 				(_musicalView as TapInstrument).octaveSelector.enabled=true;
 			}

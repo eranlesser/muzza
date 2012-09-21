@@ -96,12 +96,14 @@ package com.container
 		public function openDemo(demoScreen:DemoScreen):void{
 			_screensLayer.addChild(demoScreen);
 			demoScreen.start();
+			_toolBar.demoButton.state="pressed";
 		}
 		
 		public function closeDemo():void{
 			var demoScreen:DemoScreen = _screensLayer.getChildAt(1) as DemoScreen;
 			demoScreen.stop();
 			_screensLayer.removeChild(demoScreen);
+			_toolBar.demoButton.state="idle";
 		}
 		
 		public function get isDemoOpen():Boolean{
