@@ -7,17 +7,26 @@ package com.screens.view
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
+	import com.studio.ToolBar;
 	import com.utils.Claps;
+	
+	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	
+	import org.osflash.signals.Signal;
 
 	public class EndScreen extends DemoScreen
 	{
-		private var _hat:				Hat;
-		private var _claps:				Claps;
-		private var _representation:	Representation;
+		private var _hat:					Hat;
+		private var _claps:					Claps;
+		private var _representation:		Representation;
 		private var _channelControllers:	Vector.<PlayChannelController>;
+		private var _toolBar:				ToolBar;
 		
 		public function EndScreen(){
 			_channelControllers = new Vector.<PlayChannelController>();
+			addToolBar();
 		}
 		
 		
@@ -27,12 +36,20 @@ package com.screens.view
 			}else{
 			
 			}
+			super.start(); // here _channelControllers gets filled
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.start();
 			}
-			super.start();
+			var tmr:Timer=new Timer(1000,1);
+			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
+			tmr.start();
+			
 		}
 		
+		private function onTimerComplete(e:Event):void{
+			Timer(e.target).removeEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
+			_representation.start();
+		}
 		
 		override public function stop():void{
 			super.stop();
@@ -41,6 +58,7 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
+			_representation.stop();
 		}
 		
 		override protected function init(masked:Boolean=true):void{
@@ -65,6 +83,10 @@ package com.screens.view
 			}
 			super.endMusciPiece();
 		}
+		
+		public function get goto():Signal{
+			return _toolBar.goTo;
+		}
 
 		private function addHat():void{
 			_hat = new Hat();
@@ -80,5 +102,47 @@ package com.screens.view
 			_stageLayer.addChild(_representation);
 		}
 		
+		private function addToolBar():void{
+			_toolBar=new ToolBar();
+			_toolBar.y=573;
+			addChild(_toolBar)
+		}
+		
+	}
+}
+import com.view.gui.Btn;
+import com.view.tools.AssetsManager;
+
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+
+import org.osflash.signals.Signal;
+
+class ToolBar extends Sprite{
+	public var goTo:Signal=new Signal();
+	public function ToolBar(){
+		init();
+	}
+	
+	private function init():void{
+		var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
+		bg.height=35;
+		var backBtn:Btn = new Btn("BACK_BUTTON_IDLE.png","BACK_BUTTON_PRESSED.png");
+		addChild(backBtn);
+		backBtn.height=35;
+		backBtn.clicked.add(backClicked);
+		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
+		addChild(playBtn);
+		playBtn.height=35;
+		playBtn.x=439;
+		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
+		addChild(replay);
+		replay.height=35;
+		replay.x=439+playBtn.width;
+		
+	}
+	
+	private function backClicked(id:String):void{
+		goTo.dispatch("bass_flash.jpg");
 	}
 }

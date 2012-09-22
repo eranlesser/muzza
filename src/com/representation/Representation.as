@@ -56,9 +56,9 @@ package com.representation {
 		
 		private function insertChannel(chanel:Channel):void{
 			_bg.addChild(chanel);
-			chanel.x=1;
+			chanel.x=30;
 			_channels.push(chanel);
-			chanel.y=height-(2*RepresentationSizes.channelHeight);
+			chanel.y=(_channels.length-1)*40+20;
 		}
 		
 		
@@ -104,16 +104,14 @@ package com.representation {
 		
 		public function stop():void{
 			_timeModel.tickSignal.remove(onTick);
-			_cue.x=32;
+			_cue.x=52;
 		}
 		
 		public function onTick():void{
-			if(_timeModel.currentTick<64)
-				_cue.x = (_timeModel.currentTick)*tickSize+38//-_cue.width/2;
+			if(_timeModel.currentTick<64){
+				_cue.x = (_timeModel.currentTick)*tickSize+52//-_cue.width/2;
+			}
 		}
 		
-		public function get cueX():uint{
-			return _cue.x;
-		}
 	}
 }

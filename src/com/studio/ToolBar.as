@@ -1,10 +1,10 @@
-package com.container
+package com.studio
 {
 	import com.constants.Dimentions;
 	import com.constants.Rhythms;
 	import com.container.navigation.Navigator;
 	import com.gui.SpeedSlider;
-	import com.screens.view.components.MenuButton;
+	import com.screens.view.components.RecordScreenButton;
 	import com.view.gui.Btn;
 	import com.view.gui.PressableButton;
 	
@@ -126,7 +126,7 @@ package com.container
 import com.constants.Dimentions;
 import com.constants.Rhythms;
 import com.gui.SpeedSlider;
-import com.screens.view.components.MenuButton;
+import com.screens.view.components.RecordScreenButton;
 import com.view.gui.Btn;
 
 import flash.display.Shape;
@@ -140,9 +140,9 @@ import org.osflash.signals.Signal;
 
 class RecordScreenMenu extends Sprite{
 	
-	private var _listenButton:	MenuButton;
-	private var _recordButton:	MenuButton;
-	private var _practiceButton:MenuButton;
+	private var _listenButton:	RecordScreenButton;
+	private var _recordButton:	RecordScreenButton;
+	private var _practiceButton:RecordScreenButton;
 	private var _gear:			SpeedSlider;
 	public function RecordScreenMenu():void{
 		init();
@@ -172,15 +172,15 @@ class RecordScreenMenu extends Sprite{
 	}
 	
 	
-	public function get listenButton():MenuButton{
+	public function get listenButton():RecordScreenButton{
 		return _listenButton;
 	}
 	
-	public function get recordButton():MenuButton{
+	public function get recordButton():RecordScreenButton{
 		return _recordButton;
 	}
 	
-	public function get practiceButton():MenuButton{
+	public function get practiceButton():RecordScreenButton{
 		return _practiceButton;
 	}
 	
@@ -189,9 +189,9 @@ class RecordScreenMenu extends Sprite{
 	}
 	
 	private function createMenu():void{
-		_listenButton=new MenuButton("Listen","play");
-		_practiceButton = new MenuButton("Practive","play");
-		_recordButton=new MenuButton("Record","record");
+		_listenButton=new RecordScreenButton("Listen","play");
+		_practiceButton = new RecordScreenButton("Practive","play");
+		_recordButton=new RecordScreenButton("Record","record");
 		addChild(_listenButton)
 		addChild(_practiceButton)
 		addChild(_recordButton)

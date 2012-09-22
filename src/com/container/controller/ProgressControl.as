@@ -34,7 +34,7 @@ package com.container.controller {
 		
 		public function reset():void{
 			_model.reset();
-			_navigator.goto.remove(goTo);
+			_view.goto.remove(goTo);
 			_view.menu.openDemo.remove(openDemo);
 		}
 		
@@ -44,7 +44,7 @@ package com.container.controller {
 		
 		private function initNavigator():void{
 			_navigator=_view.menu.navigator;
-			_navigator.goto.add(goTo);
+			_view.goto.add(goTo);
 			_view.menu.openDemo.add(openDemo);
 			_navigator.state=_model.recordSession;
 		}

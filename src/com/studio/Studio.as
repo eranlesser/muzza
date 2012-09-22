@@ -1,7 +1,6 @@
 package com.studio
 {
 	import com.constants.Dimentions;
-	import com.container.ToolBar;
 	import com.gskinner.motion.GTween;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.InstrumentModel;

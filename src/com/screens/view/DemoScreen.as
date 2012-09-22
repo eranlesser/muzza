@@ -120,8 +120,6 @@ package com.screens.view {
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
 				ins.sequanceDone.add(onPlayerDone);
 			}
-			
-			
 		}
 		
 		private function onPlayerDone():void{

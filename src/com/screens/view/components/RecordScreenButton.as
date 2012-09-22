@@ -11,13 +11,13 @@ package com.screens.view.components
 	
 	import org.osflash.signals.Signal;
 
-	public class MenuButton extends Sprite{
+	public class RecordScreenButton extends Sprite{
 		public var clicked:Signal=new Signal();
 		private var _enabled:Boolean=true;
 		private var _button:Btn;
 		private var _label:TextField;
 		private var _bg:Shape;
-		public function MenuButton(txt:String,type:String){
+		public function RecordScreenButton(txt:String,type:String){
 			createButton(txt)
 			//addGui(type);
 		}

@@ -10,7 +10,7 @@ package com.screens.recordScreenStates
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.RecordScreen;
-	import com.screens.view.components.MenuButton;
+	import com.screens.view.components.RecordScreenButton;
 	import com.view.gui.Btn;
 
 	public class RecordScreenStateController

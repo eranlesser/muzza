@@ -64,13 +64,13 @@ package com.view.gui
 		}
 		
 		private function mouseDown(e:Event):void{
-			//state="pressed";
+			state="pressed";
 			stage.addEventListener(MouseEvent.MOUSE_UP,mouseUp);
 		}
 		
 		private function mouseUp(e:Event):void{
 			stage.removeEventListener(MouseEvent.MOUSE_UP,mouseUp);
-			//state="idle";
+			state="idle";
 		}
 		
 		
