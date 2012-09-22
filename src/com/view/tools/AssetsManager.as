@@ -38,6 +38,8 @@ package com.view.tools
 			"<image path='assets/open/Start_tutorial_PRESSED_V_2.png' />"+
 			"<image path='assets/open/PLAY_IDLE.png' />"+
 			"<image path='assets/open/PLAY_PRESSED.png' />"+
+			"<image path='assets/open/Flagbig.png' />"+
+			"<image path='assets/open/Tarab.png' />"+
 			//TITLES
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
 			"<image path='assets/open/JINGLE_BELLS.png' />"+
@@ -184,29 +186,22 @@ package com.view.tools
 			"<image path='assets/representation/symbols/icon_8.png' />"+
 			"<image path='assets/representation/symbols/icon_9.png' />"+
 			//Representation
-			"<image path='assets/representation/marker_small.png' />"+
-			"<image path='assets/representation/marker_big.png' />"+
-			"<image path='assets/representation/marker_3.png' />"+
-			"<image path='assets/representation/notearea_big.png' />"+
-			"<image path='assets/representation/notearea_3.png' />"+
-			"<image path='assets/representation/notearea_indx.png' />"+
-			"<image path='assets/representation/notearea_small.png' />"+
-			"<image path='assets/representation/icon_bass.png' />"+
-			"<image path='assets/representation/icon_bass_.png' />"+
-			"<image path='assets/representation/icon_bottles.png' />"+
-			"<image path='assets/representation/icon_drums.png' />"+
-			"<image path='assets/representation/icon_mic.png' />"+
-			"<image path='assets/representation/icon_bottles_.png' />"+
-			"<image path='assets/representation/icon_drums_.png' />"+
-			"<image path='assets/representation/all.jpg' />"+
-			"<image path='assets/representation/all_.jpg' />"+
-			"<image path='assets/representation/text_track.png' />"+
-			"<image path='assets/representation/wrong_alert.png' />"+
-			"<image path='assets/representation/notebook_x4.png' />"+
-			"<image path='assets/representation/representationUp.png' />"+
-			"<image path='assets/representation/representationDown.png' />"+
-			"<image path='assets/representation/good.jpg' />"+
-			"<image path='assets/representation/bad.jpg' />"+
+			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_SHEET.png' />"+
+			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_BAR.png' />"+
+			"<image path='assets/LISTEN_SCREEN/BACK_BUTTON_IDLE.png' />"+
+			"<image path='assets/LISTEN_SCREEN/BACK_BUTTON_PRESSED.png' />"+
+			"<image path='assets/LISTEN_SCREEN/COLLAPSE_IDLE.png' />"+
+			"<image path='assets/LISTEN_SCREEN/COLLAPSE_PRESSED.png' />"+
+			"<image path='assets/LISTEN_SCREEN/EXPAND_IDLE.png' />"+
+			"<image path='assets/LISTEN_SCREEN/EXPAND_PRESSED.png' />"+
+			"<image path='assets/LISTEN_SCREEN/INSTRUMENT_TAB_AND_SHADOWS.png' />"+
+			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_BLUE_NEEDLE.png' />"+
+			"<image path='assets/LISTEN_SCREEN/mouse.png' />"+
+			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_IDLE.png' />"+
+			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_PRESSED.png' />"+
+			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_IDLE.png' />"+
+			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_PRESSED.png' />"+
+
 			
 			//Rrpresentation Menu
 			"<image path='assets/representation/menu/note.png' />"+

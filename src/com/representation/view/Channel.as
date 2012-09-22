@@ -24,10 +24,8 @@ package com.representation.view {
 		private var _instrument:	CoreInstrumentModel;
 		private var _notesFetcher:	INoteFetcher;
 		private var _notes:			Vector.<NoteView>;
-		private var _icon:			Sprite;
 		private var _notesContainer:Sprite;
-		private var _notesMask:Shape;
-		public var clicked:			Signal=new Signal();
+		private var _notesMask:		Shape;
 		
 		public function Channel(instrumeModel:CoreInstrumentModel){
 			_instrument = instrumeModel;
@@ -89,7 +87,6 @@ package com.representation.view {
 		
 		
 		private function drawFrame():void{
-			_icon=new Sprite();
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0xFFFFFF)
 			_notesMask.graphics.drawRect(RepresentationSizes.thumbNailWidth,0,Dimentions.WIDTH-48,RepresentationSizes.channelHeight);
@@ -100,42 +97,10 @@ package com.representation.view {
 			_notesContainer.x=RepresentationSizes.thumbNailWidth;
 			addChild(_notesContainer);
 			_notesContainer.mask=_notesMask;
-			switch(_instrument.thumbNail){
-				case "bottles.png":
-					_icon.addChild(AssetsManager.getAssetByName("icon_bottles.png"));
-					break;
-				case "bottles2.png":
-					_icon.addChild(AssetsManager.getAssetByName("icon_bottles.png"));
-					break;
-				case "bottles3.png":
-					_icon.addChild(AssetsManager.getAssetByName("icon_bottles.png"));
-					break;
-				case "drum.png":
-					_icon.addChild(AssetsManager.getAssetByName("icon_drums.png"));
-					break;
-				case "bass_flash.jpg":
-					_icon.addChild(AssetsManager.getAssetByName("icon_bass.png"));
-					break;
-				case "singer.png":
-					_icon.addChild(AssetsManager.getAssetByName("icon_mic.png"));
-					break;
-				case "singeret.png":
-					_icon.addChild(AssetsManager.getAssetByName("icon_mic.png"));
-					break;
-				
-			}
 			
-			addChild(_icon);
-			_icon.addEventListener(MouseEvent.CLICK,onIconClick);
 			
 		}
-		public function set thumbNailVisible(flag:Boolean):void{
-			_icon.visible=flag;
-		}
-		private function onIconClick(e:Event):void{
-			clicked.dispatch(this);
-			
-		}
+		
 		
 		
 		

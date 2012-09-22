@@ -20,7 +20,9 @@ package com.model.rawData
 				<song name="beethoven" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
 				<song name="edvard"  thumbNail="EDVARD_GRIEG.png"  title="MOUNTAIN_KING.png"  />
 				<song name="jingleBells" thumbNail="JINGLE_BELLS_PICTURE.png"  title="JINGLE_BELLS.png"  />
-				<song name="tarab"  thumbNail="MOZART_PICTURE.png"  title="MOUNTAIN_KING.png"  />
+				<song name="brazil"  thumbNail="Flagbig.png"  title="Flagbig.png"  />
+				<song name="tarab"  thumbNail="Tarab.png"  title="Tarab.png"  />
+				<song name="tarab"  thumbNail="MOZART_PICTURE.png"  title="MOZART_PICTURE.png"  />
 				
 				</lessons>
 			<musicians>

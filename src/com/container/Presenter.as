@@ -79,7 +79,7 @@ package com.container
 		
 		public function addScreen(screen:DisplayObject):void{
 			_screensLayer.addChild(screen);
-			_toolBar.visible = !(screen is HomePage);
+			_toolBar.visible = (screen is RecordScreen);
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
 			}

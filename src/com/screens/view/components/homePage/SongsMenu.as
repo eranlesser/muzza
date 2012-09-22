@@ -114,7 +114,7 @@ package com.screens.view.components.homePage
 			if(_thumbsLayer.x==0){
 				_prevButton.visible=false;
 			}
-			if(_thumbsLayer.x==-(_thumbsLayer.width-Dimentions.WIDTH*2)){
+			if(_thumbsLayer.x==-(_thumbsLayer.width)){
 				_nextButton.visible=false;
 			}
 		}

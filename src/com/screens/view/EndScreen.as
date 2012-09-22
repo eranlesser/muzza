@@ -2,44 +2,70 @@ package com.screens.view
 {
 	import com.constants.Dimentions;
 	import com.gui.hat.Hat;
+	import com.musicalInstruments.model.InstrumentModel;
+	import com.musicalInstruments.view.playable.PlayMusician;
+	import com.representation.Representation;
+	import com.representation.controller.PlayChannelController;
+	import com.representation.view.Channel;
 	import com.utils.Claps;
-	import com.view.gui.Btn;
-	
-	import flash.events.Event;
 
 	public class EndScreen extends DemoScreen
 	{
 		private var _hat:				Hat;
 		private var _claps:				Claps;
+		private var _representation:	Representation;
+		private var _channelControllers:	Vector.<PlayChannelController>;
+		
 		public function EndScreen(){
-			
+			_channelControllers = new Vector.<PlayChannelController>();
 		}
 		
+		
 		override public function start():void{
-			super.start();
 			if(!isInited){
-				
-				//addHat();
-				//_claps = new Claps();
+				addRepresentation();
 			}else{
-				//_representation.visible=true;
-			}
 			
+			}
+			for each(var channelController:PlayChannelController in _channelControllers){
+				channelController.start();
+			}
+			super.start();
+		}
+		
+		
+		override public function stop():void{
+			super.stop();
+			_hat.reset();
+			_claps.stop();
+			for each(var channelController:PlayChannelController in _channelControllers){
+				channelController.stop();
+			}
 		}
 		
 		override protected function init(masked:Boolean=true):void{
 			super.init(false);
 			addHat();
 			_claps = new Claps();
-			//_representation.visible=true;
+			
 		}
-		
-		override public function stop():void{
-			super.stop();
-			_hat.reset();
-			_claps.stop();
+		override protected function addInstrument(insModel:InstrumentModel):PlayMusician{
+			var ins:PlayMusician = super.addInstrument(insModel);
+			var channel:Channel = _representation.addChannel(insModel.coreModel);
+			_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
+			return ins;
 		}
+
 		
+		override protected function endMusciPiece():void{
+			_claps.play();
+			_hat.fillHat();
+			for each(var channelController:PlayChannelController in _channelControllers){
+				channelController.stop();
+			}
+			super.endMusciPiece();
+		}
+
 		private function addHat():void{
 			_hat = new Hat();
 			_stageLayer.addChild(_hat);
@@ -48,11 +74,11 @@ package com.screens.view
 			_hat.start();
 		}
 		
-		override protected function endMusciPiece():void{
-			_claps.play();
-			_hat.fillHat();
-			//_representation.stop();
-			super.endMusciPiece();
+		private function addRepresentation():void{
+			_representation = new Representation();
+			_representation.y = 573+30;
+			_stageLayer.addChild(_representation);
 		}
+		
 	}
 }
