@@ -57,11 +57,18 @@ package com.musicalInstruments.controller.recorders
 			}
 		}
 		
-		private function onNoteStopped(noteId:uint,noteLength:uint,startLocation:uint,octave:uint):void{
+		private function onNoteStopped(noteId:uint,startLocation:uint,soundLength:uint,octave:uint):void{
 			if(startLocation<_beginAtFrame){  // in case of autorecord the first note is at 0 (or 64)
 				startLocation = _beginAtFrame;
 			}
-			added.dispatch(_sequance.add(noteId,startLocation,noteLength,octave));
+			
+			var location:uint = startLocation-1;
+			if(location%4>2){
+				location=startLocation+location%4;
+			}else{
+				location=startLocation-location%4;
+			}
+			_added.dispatch(_sequance.add(noteId,location,soundLength,octave));
 		}
 	}
 }

@@ -6,7 +6,6 @@ package com.musicalInstruments.view.components {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
-	import flash.events.TimerEvent;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.media.SoundTransform;
@@ -24,32 +23,19 @@ package com.musicalInstruments.view.components {
 		private var _soundFile:	String;
 		public var ready:Signal = new Signal();
 		
-		private var _timer:Timer;
-		/**
-		 * 
-		 *If there are performance issues (sound getting cut) consider creating soundplayer instance for every note 
-		 */		
+		
 		public function SoundPlayer(soundFile:String){
 			_soundFile = soundFile;
 			_metronom = Metronome.getTimeModel();
 			loadSound();
-			_timer = new Timer(120,1);
-			_timer.addEventListener(TimerEvent.TIMER_COMPLETE,onTimer);
 		}
 		
 		public function play(volume:Number=1):void{
-			if(_timer.running&&_channel){
+			if(_channel){
 				_channel.stop();
-				_timer.stop();
 			}
 			_channel = _sound.play();
-			if(_channel){
-				var soundTransform:SoundTransform = new SoundTransform(volume);
-				_channel.soundTransform = soundTransform;
-			}else{
-				//throw new Error("!!!!!  no channel available",_soundFile)
-				trace("!!!!!  no channel available")
-			}
+			
 		}
 		
 		public function stop():void{
@@ -58,21 +44,6 @@ package com.musicalInstruments.view.components {
 			}
 		}
 		
-		private function onTimer(e:TimerEvent):void{
-			if(_channel){
-				_channel.stop();
-			}else{
-				_timer.stop();
-			}
-		}
-		
-		private function onTweenCue(tween:GTween):void{
-			if(_channel){
-				var soundTransform:SoundTransform = _channel.soundTransform;
-				soundTransform.volume = soundTransform.volume-0.10;
-				_channel.soundTransform = SoundTransform(soundTransform);
-			}
-		}
 		
 		
 		private function loadSound():void{
@@ -84,12 +55,10 @@ package com.musicalInstruments.view.components {
 				//performance - to avoid cutting sound beginings
 				_channel = _sound.play();
 				_channel.stop();
-				
 			}
 			catch (err:Error) {
 				trace(err.message);
 			}
-			
 			_sound.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			
 		}

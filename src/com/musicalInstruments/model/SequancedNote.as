@@ -28,6 +28,10 @@ package com.musicalInstruments.model
 			return _location;
 		}
 		
+		public function set location(loc:uint):void{
+			_location=loc;
+		}
+		
 		public function get soundLength():uint{
 			return _soundLength;
 		}

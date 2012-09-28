@@ -43,7 +43,6 @@ package com.musicalInstruments.view.components {
 			_currenSequance = sequance;
 			_volume = volume;
 			if(!_isPlaying){
-				trace("adding tick")
 				_timeModel.soundTick.add(onMetronomeTick);
 			}
 			_isPlaying = true;
@@ -61,12 +60,12 @@ package com.musicalInstruments.view.components {
 			_timeModel.soundTick.remove(onMetronomeTick);
 			_isPlaying = false;
 			//if(_character){
-				_character.animateTo(0,0);
-				_isAnimating=false;
-				animationStateChanged.dispatch();
-				if(_playingNote){
-					noteStopped.dispatch(_playingNote.noteId);
-				}
+			_character.animateTo(0,0);
+			_isAnimating=false;
+			animationStateChanged.dispatch();
+			if(_playingNote){
+				noteStopped.dispatch(_playingNote.noteId);
+			}
 			//}
 		}
 		

@@ -3,8 +3,8 @@ package com.musicalInstruments.view.recordable {
 	import com.metronom.Metronome;
 	import com.musicalInstruments.controller.recorders.IRecorder;
 	import com.musicalInstruments.controller.recorders.InstrumentRecorder;
-	import com.musicalInstruments.model.InstrumentComponentModel;
 	import com.musicalInstruments.model.CoreInstrumentModel;
+	import com.musicalInstruments.model.InstrumentComponentModel;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
@@ -13,7 +13,6 @@ package com.musicalInstruments.view.recordable {
 	import com.musicalInstruments.model.sequances.ISequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IAnimateable;
-	import com.musicalInstruments.view.IMusicalView;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	
@@ -26,24 +25,21 @@ package com.musicalInstruments.view.recordable {
 	public class RecordableView extends Sprite implements IAnimateable{
 		
 		protected var _musicalComponents:	Vector.<MusicalInstrumentComponent>;
-		private var _playingNoteId:			uint; 
 		private var _endAtFrame:			uint;
 		private var _startTick:				uint;
-		private var _isPlaying:				Boolean=false;
 		private var _octave:				uint;
 
 		protected var _insRecorder:			IRecorder;
 		protected var _model:				CoreInstrumentModel;
-		protected var _notePlayed:			Signal;
-		protected var _noteStopped:			Signal;
 		protected var _beginAtFrame:		uint;
 		protected var _recordedSequanceId:	uint;
 		protected var tuch:					Signal=new Signal();
-		protected var unTuch:				Signal=new Signal();
+		private var unTuch:					Signal=new Signal();
 		private var _sequanceDone:			Signal=new Signal();
+		protected var _notePlayed:			Signal;
+		protected var _noteStopped:			Signal;
 		private var _player:				NoteSequancePlayer;
-		public var added:					Signal;
-		
+		public var added:Signal = new Signal();
 		public function RecordableView(model:CoreInstrumentModel,recordedSequanceId:uint=0){
 			_notePlayed = new Signal();
 			_noteStopped = new Signal();
@@ -52,7 +48,6 @@ package com.musicalInstruments.view.recordable {
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
 			_recordedSequanceId = recordedSequanceId;
 			addComponents(_model.components);
-			added = new Signal();
 			
 		}
 		
@@ -153,20 +148,17 @@ package com.musicalInstruments.view.recordable {
 		}
 		
 		protected function playNote(noteId:uint):void{
-			animateNote(noteId , "play");
-			_playingNoteId = noteId;
 			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
 			note.player.play();
-			_isPlaying = true;
+			animateNote(noteId , "play");
 			_startTick = Metronome.getTimeModel().currentTick;
 			_notePlayed.dispatch(noteId);
 		}
 		
-		protected function unPlayNote(noteId:uint):void{
+		private function unPlayNote(noteId:uint):void{
 			animateNote( noteId , "idle");
-			_playingNoteId = 0;
-			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
-			note.player.stop();
+			//var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
+			//note.player.stop();
 			var soundLength:uint = (Metronome.getTimeModel().currentTick-_startTick);
 			if(soundLength==0){  // in case of fast tap
 				soundLength=1;
@@ -177,10 +169,10 @@ package com.musicalInstruments.view.recordable {
 			if(soundLength==3){   // no 3 soundlength yet
 				soundLength = 2;
 			}
-			_noteStopped.dispatch(noteId,soundLength,_startTick,_octave);
 			//if(!Metronome.getTimeModel().isPreTicking){
 			//}
-			_isPlaying = false;
+			
+			_noteStopped.dispatch(noteId,_startTick,soundLength,_octave);
 		}
 		
 		public function getComponentById(id:uint):MusicalInstrumentComponent{
@@ -214,15 +206,15 @@ package com.musicalInstruments.view.recordable {
 			tuch.dispatch(mc);
 		}
 		private function onUnTouch(mc:MusicalInstrumentComponent):void{
-			unTuch.dispatch(mc);
+			unPlayNote(mc.noteId);
 		}
 		
 		private function addRecordButton():void{
 			decorate();
 		}
 		
-		private function onAdded(note:SequancedNote):void{
-			added.dispatch(note);
+		private function onAdded(sequancedNote:SequancedNote):void{
+			added.dispatch(sequancedNote);
 		}
 	}
 }

@@ -6,7 +6,7 @@ package com.notes
 	public interface INotesChannel
 	{
 		function clearNotes():void;
-		function drawNote(noteModel:SequancedNote,noteValue:uint,noteWeight:uint,type:String,isFlatOrSharp:String):void;
+		function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void;
 		function getNoteByLocation(location:uint):BigNote;
 		function setX(xx:int):void;
 	}

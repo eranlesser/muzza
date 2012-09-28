@@ -100,13 +100,14 @@ package com.representation.controller {
 		
 		private function noteAdded(note:SequancedNote):void{
 			var noteModel:NoteModel = NotesInstrumentModel(_instrument).getNoteById(note.noteId);
-			_channelView.drawNote(note,noteModel.value,note.soundLength,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
+			
+			_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
 		}
 		
 		private function drawNotes(sequance:NoteSequanceModel,mode:String):void{
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(_instrument).getNoteById(note.noteId);
-				_channelView.drawNote(note,noteModel.value,note.soundLength,mode,noteModel.isFlatOrSharp);
+				_channelView.drawNote(note,noteModel.value,mode,noteModel.isFlatOrSharp);
 			}
 		}
 		

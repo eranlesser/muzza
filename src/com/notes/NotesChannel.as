@@ -36,11 +36,12 @@ package com.notes
 			}
 		}
 		
-		public function drawNote(noteModel:SequancedNote,noteValue:uint,noteWeight:uint,type:String,isFlatOrSharp:String):void{
-			var note:BigNote = new BigNote(noteValue,noteWeight,type,noteModel.location,_instrumentModel.thumbNail,isFlatOrSharp);
+		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void{
+			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,isFlatOrSharp);
 			_notesContainer.addChild(note);
 			
-			note.x=noteModel.location*((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2
+			note.x=noteModel.location*((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/6+12;
+		trace("?",noteModel.location)
 			note.y=120-noteModel.noteId*10;
 			_notes.push(note);
 		}

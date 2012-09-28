@@ -22,6 +22,7 @@ package {
 			// support autoOrients
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.displayState = StageDisplayState.FULL_SCREEN;
 			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
 			start();
 		}

@@ -77,10 +77,7 @@ package com.representation {
 			_cue.x=52;
 			var thumbs:DisplayObject = AssetsManager.getAssetByName("INSTRUMENT_TAB_AND_SHADOWS.png");
 			_bg.addChild(thumbs);
-			var mouse:DisplayObject = AssetsManager.getAssetByName("mouse.png");
-			addChild(mouse);
-			mouse.x=60;
-			mouse.y=-mouse.height;
+			
 		}
 		
 		

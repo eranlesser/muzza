@@ -12,14 +12,12 @@ package com.musicalInstruments.view.recordable {
 	 * @author eranlesser
 	 */
 	public class TapInstrument extends RecordableView implements IMusicalView {
-		private var _playing:			Boolean = false;	
 		protected var _octvSelector:	OctaveSelector;
 		private var _octaveController:	OctaveController;
 		
 		public function TapInstrument(model:NotesInstrumentModel, recordedSequanceId:uint=0) {
 			super(model, recordedSequanceId);
 			tuch.add(onTouchTap);
-			unTuch.add(onTouchTapEnd);
 			if(model.octavesLength>1){
 				_octvSelector=new OctaveSelector();
 				addOctaveSelector();
@@ -27,16 +25,10 @@ package com.musicalInstruments.view.recordable {
 		}
 		
 		private function onTouchTap(mc:MusicalInstrumentComponent):void { 
-			if(_playing){
-				//return;
-			}
-			_playing = true;
+			
 			playNote(mc.noteId);
 		}
-		private function onTouchTapEnd(mc:MusicalInstrumentComponent):void { 
-			_playing = false;
-			unPlayNote(mc.noteId);
-		}
+	
 		
 		private function addOctaveSelector():void{
 			addChild(_octvSelector);

@@ -102,19 +102,8 @@ package com.musicalInstruments.view.playable {
 			return _done;
 		}
 		
-		public function animateNote(noteId:uint,state:String):void{
-			if(state=="play"){
-				_character.animateTo(NotesInstrumentModel(_model).getNoteById(noteId).animationIndex,noteId);
-				_player.isAnimating=true;
-			}else{
-				_character.animateTo(0,0);
-				_player.isAnimating=false;
-			}
-			_player.animationStateChanged.dispatch();
-		}
 		
 		public function play(sequanceId:uint,beginAtFrame:uint,volume:Number=1):Boolean{
-			trace(_model.thumbNail,"play",_model.getSequanceById(sequanceId))
 			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel,volume);
 			_player.sequenceDone.add(onSequenceDone);
 			_done=false;

@@ -11,6 +11,7 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -32,7 +33,7 @@ package com.screens.view {
 		private var _timeModel:				ITimeModel = Metronome.getTimeModel();
 		protected var _timeControll:		ITimeControll ;
 		protected var _instruments:			Vector.<PlayMusician>
-		private var _mask:					DisplayObject;
+		private var _mask:					Shape;
 		private var _frame:					DisplayObject;
 		private var _closeBtn:				Btn;
 		public var close:					Signal=new Signal();
@@ -63,11 +64,15 @@ package com.screens.view {
 			
 			unPause();
 			setClock();
-			_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
+			
 			
 			if(masked){
-				_mask=AssetsManager.getAssetByName("DEMO_SCREEN_FRAME.png");
-				this.mask=_mask;
+				_mask=new Shape();
+				_mask.graphics.beginFill(0xFFFFFF);
+				_mask.graphics.drawRect(6,10,940,580);
+				_mask.graphics.endFill();
+				_stageLayer.mask=_mask;
+				_bg.mask=_mask;
 				_frame=AssetsManager.getAssetByName("DEMO_SCREEN_FRAME.png");
 				_stageLayer.addChild(_frame)
 				_frame.x=29;
@@ -80,6 +85,24 @@ package com.screens.view {
 				_closeBtn.x=950;
 				_closeBtn.y=19;
 				_closeBtn.clicked.add(onClose);
+				
+				var nowPlaying:DisplayObject=AssetsManager.getAssetByName("ODE_TO_JOY_nowPlaying.png");
+				_stageLayer.addChild(nowPlaying);
+				nowPlaying.x=29+71;
+				nowPlaying.y=531+19;
+				
+				var playBtn:Btn = new Btn("pause.png","play.png");
+				_stageLayer.addChild(playBtn);
+				playBtn.x=131+39+nowPlaying.x+nowPlaying.width;
+				playBtn.y=nowPlaying.y+10;
+				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_IDLE.png");
+				_stageLayer.addChild(reloader);
+				reloader.x=playBtn.x+playBtn.width;
+				reloader.y=playBtn.y;
+				
+				//var timeBar:DisplayObject=AssetsManager.getAssetByName("");
+			}else{
+				_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
 			}
 			var tmr:Timer=new Timer(1000,1);
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);

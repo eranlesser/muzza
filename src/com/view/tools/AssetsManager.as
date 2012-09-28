@@ -68,6 +68,12 @@ package com.view.tools
 			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
 			"<image path='assets/NOTES/notes_frame.png' />"+
 			"<image path='assets/NOTES/notes_sheet.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_contour_highlight.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_mask.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/SPEED.png' />"+
 			//BOTTLES
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
@@ -299,8 +305,7 @@ package com.view.tools
 			"<image path='assets/instruments/BOTTLES/bottle_9_SELECTED.png' />"+
 			"<image path='assets/instruments/BOTTLES/Spot_light_bottle.png' />"+
 			"<image path='assets/instruments/BOTTLES/spot_light_floor_bottle.png' />"+
-			"<image path='assets/instruments/BOTTLES/BOttle_Frame.png' />"+
-			"<image path='assets/instruments/BOTTLES/bottle_frame_BCKGR.png' />"+
+			"<image path='assets/instruments/BOTTLES/bottles_frame.png' />"+
 			
 			"<image path='assets/instruments/DRUMS/DRUMS_1_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_1_PRESSED.png' />"+

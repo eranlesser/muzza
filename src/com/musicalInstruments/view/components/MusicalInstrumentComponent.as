@@ -19,7 +19,6 @@ package com.musicalInstruments.view.components
 		private var _model:			InstrumentComponentModel;
 		private var _idleImage:		Bitmap;
 		private var _playImage:		Bitmap;
-		private var _note:			NoteView;
 		private var _noteFetcher:	INoteFetcher;
 		private var _isPressed:		Boolean=false;
 
@@ -45,11 +44,11 @@ package com.musicalInstruments.view.components
 			//dev
 //			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
 //			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
-//			
+			
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
-			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
+			//addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
-			addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
+			//addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
 		}
 		
 		private function onTouch(e:MouseEvent):void{
@@ -61,6 +60,7 @@ package com.musicalInstruments.view.components
 		private function onUnTouch(e:MouseEvent):void{
 			_isPressed=false;
 			unTuch.dispatch(this);
+			state="idle";
 			e.updateAfterEvent();
 		}
 		private function onTouchTap(e:TouchEvent):void{
@@ -72,6 +72,7 @@ package com.musicalInstruments.view.components
 		private function onTouchTapEnd(e:TouchEvent):void{
 			_isPressed=false;
 			unTuch.dispatch(this);
+			state="idle";
 			e.updateAfterEvent();
 		}
 		
@@ -95,9 +96,6 @@ package com.musicalInstruments.view.components
 		}
 		
 		public function updateDisplay():void{
-			if(_note){
-				_note.updateDisplay();
-			}
 		}
 		
 		

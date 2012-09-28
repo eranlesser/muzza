@@ -89,7 +89,7 @@ package com.screens.view.components.homePage
 			_isTweening=true;
 			var wtween:GTween = new GTween(_wallLayer,2,{x:_wallLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
 			var tween:GTween = new GTween(_thumbsLayer,2,{x:_thumbsLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
-			var ptween:GTween = new GTween(_poleLayer,2,{x:_poleLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
+			var ptween:GTween = new GTween(_poleLayer,2.2,{x:_poleLayer.x-Dimentions.WIDTH},{ease:Circular.easeInOut});
 			wtween.onComplete=function onComplete():void{
 				wtween.onComplete=null;
 				_wallLayer.x=0;
