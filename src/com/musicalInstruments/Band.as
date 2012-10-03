@@ -2,8 +2,8 @@ package com.musicalInstruments
 {
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.view.playable.Character;
-	import com.musicalInstruments.view.playable.Musician;
+	import com.musicalInstruments.view.character.Character;
+	import com.musicalInstruments.view.character.Musician;
 
 	/**
 	 * 

@@ -1,6 +1,7 @@
 package com.representation.controller {
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
+	import com.model.FileProxy;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
@@ -8,13 +9,10 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.ISequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
-	import com.musicalInstruments.view.recordable.RecordableView;
+	import com.musicalInstruments.view.instrument.Instrument;
 	import com.notes.INotesChannel;
-	import com.notes.NotesChannel;
 	import com.representation.ChanelNotesType;
-	import com.representation.Representation;
 	import com.representation.RepresentationSizes;
-	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
 
 	/**
@@ -25,38 +23,26 @@ package com.representation.controller {
 		private var _model:				ITimeModel;
 		private var _channelView:		INotesChannel;
 		private var _recordScreenModel:	RecordScreenModel;
-		private var _fetcher:			CoreInstrumentModel;
-		private var _instrument:		CoreInstrumentModel
-		private var _recordableView:	RecordableView;
+		private var _instrumentModel:	CoreInstrumentModel
 		private var _learnedSequance:	ISequance;
+		private var _recordedSequance:	RecordableNotesSequance;
+		private var _instrument:		Instrument;
 		
-		public function RecordChannelController(channelView:INotesChannel,instrument:CoreInstrumentModel, recordableView:RecordableView, recordScreenModel:RecordScreenModel):void{
+		public function RecordChannelController(channelView:INotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument, recordScreenModel:RecordScreenModel):void{
 			_model=Metronome.getTimeModel();
 			_channelView=channelView;
 			_recordScreenModel=recordScreenModel;
-			_fetcher = recordScreenModel.instrumentModel;
-			_instrument=instrument;
-			_recordableView=recordableView;
-			init();
-		}
-		
-		
-		
-		public function get score():Number{
-			var goodNotes:int=0;
-			var recordedSequance:RecordableNotesSequance = _recordableView.sequance as RecordableNotesSequance;
-			_learnedSequance = _fetcher.getSequanceById(_recordScreenModel.learnedSequanceId);
-			if(_learnedSequance is NoteSequanceModel){
-				var learnedNotes:Vector.<SequancedNote>=NoteSequanceModel(_learnedSequance).notes;
-				for each(var playedNote:SequancedNote in learnedNotes){
-					if(playedNote && checkNotesMatch(playedNote,recordedSequance)){
-						goodNotes++;
-					}else{
-						goodNotes--;
-					}
-				}
+			_instrumentModel=instrumentModel;
+			_instrument = instrument;
+			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
+			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
+			if(_learnedSequance is NoteSequanceModel){//temp
+				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.TEACHER_PLAYING);
 			}
-			return goodNotes/NoteSequanceModel(_learnedSequance).notes.length;
+			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
+				//drawNotes(NoteSequanceModel(_instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
+			}
+			onTick();
 		}
 		
 		public function reset():void{
@@ -66,17 +52,18 @@ package com.representation.controller {
 			}
 		}
 		
+		public function beginRecord():void{
+			_recordedSequance.reset();
+			_instrument.noteStopped.add(noteAdded);
+		}
 		
-		private function init():void{
-			_learnedSequance = _fetcher.getSequanceById(_recordScreenModel.learnedSequanceId);
-			if(_learnedSequance is NoteSequanceModel){//temp
-				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.TEACHER_PLAYING);
+		public function endRecord():void{
+			if(!_recordedSequance.isEmpty){
+				//write sequance somewhere
+				_instrumentModel.addRecordedSequance(_recordedSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
+				FileProxy.exportSequance(_recordedSequance, _instrumentModel.thumbNail);
 			}
-			if( _fetcher.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
-				//drawNotes(NoteSequanceModel(_fetcher.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
-			}
-			_recordableView.added.add(noteAdded);
-			onTick();
+			_instrument.noteStopped.remove(noteAdded);
 		}
 		
 		public function start():void{
@@ -89,24 +76,40 @@ package com.representation.controller {
 		}
 		
 		private function onTick():void{
-			//if(_model.currentTick>64){
-				_channelView.setX((-(_model.currentTick)*(RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2);
-			//}
+			_channelView.setX((-(_model.currentTick)*(RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2);
 		}
 		
 		public function get channel():INotesChannel{
 			return _channelView;
 		}
 		
-		private function noteAdded(note:SequancedNote):void{
-			var noteModel:NoteModel = NotesInstrumentModel(_instrument).getNoteById(note.noteId);
-			
+		public function add(noteId:uint,noteLength:uint,startLocation:uint,octave:uint):SequancedNote{
+			return _recordedSequance.add(noteId,startLocation,noteLength,octave);
+		}
+		
+		private function noteAdded(noteId:uint,noteLength:uint,startLocation:uint,octave:uint):void{
+			var note:SequancedNote = add(noteId,startLocation,noteLength,octave);
+			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
+			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
+			for(var i:uint=0;i<=2;i++){
+				var closeNote:SequancedNote;
+				closeNote = learnedSequance.getNoteByLocation(note.location+i);
+				if(closeNote&&noteModel.id==closeNote.noteId){
+					note.location=closeNote.location;
+					break;
+				}
+				closeNote = learnedSequance.getNoteByLocation(note.location-i);
+				if(closeNote&&noteModel.id==closeNote.noteId){
+					note.location=closeNote.location;
+					break;
+				}
+			}
 			_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
 		}
 		
 		private function drawNotes(sequance:NoteSequanceModel,mode:String):void{
 			for each(var note:SequancedNote in sequance.notes){
-				var noteModel:NoteModel = NotesInstrumentModel(_instrument).getNoteById(note.noteId);
+				var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 				_channelView.drawNote(note,noteModel.value,mode,noteModel.isFlatOrSharp);
 			}
 		}
@@ -121,6 +124,23 @@ package com.representation.controller {
 				estimateLocation++;
 			}
 			return false;
+		}
+		
+		public function get score():Number{
+			var goodNotes:int=0;
+			var recordedSequance:RecordableNotesSequance = _recordedSequance as RecordableNotesSequance;
+			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
+			if(_learnedSequance is NoteSequanceModel){
+				var learnedNotes:Vector.<SequancedNote>=NoteSequanceModel(_learnedSequance).notes;
+				for each(var playedNote:SequancedNote in learnedNotes){
+					if(playedNote && checkNotesMatch(playedNote,recordedSequance)){
+						goodNotes++;
+					}else{
+						goodNotes--;
+					}
+				}
+			}
+			return goodNotes/NoteSequanceModel(_learnedSequance).notes.length;
 		}
 		
 	}

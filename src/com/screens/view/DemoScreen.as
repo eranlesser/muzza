@@ -1,9 +1,8 @@
 package com.screens.view {
 	import com.constants.*;
 	import com.metronom.*;
-	import com.musicalInstruments.BackGroundSound;
 	import com.musicalInstruments.model.*;
-	import com.musicalInstruments.view.playable.PlayMusician;
+	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
 	import com.screens.view.components.Clock;
@@ -21,12 +20,6 @@ package com.screens.view {
 	
 	import org.osflash.signals.Signal;
 
-	/**
-	 * 
-	 * @author eranlesser
-	 * Abstract class for different themes
-	 * 
-	 */	
 	public class DemoScreen extends MusicalScreen implements IScreen{
 		
 		protected var _model:				PlayScreenModel;
@@ -95,6 +88,7 @@ package com.screens.view {
 				_stageLayer.addChild(playBtn);
 				playBtn.x=131+39+nowPlaying.x+nowPlaying.width;
 				playBtn.y=nowPlaying.y+10;
+				playBtn.clicked.add(onPlay);
 				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_IDLE.png");
 				_stageLayer.addChild(reloader);
 				reloader.x=playBtn.x+playBtn.width;
@@ -104,11 +98,14 @@ package com.screens.view {
 			}else{
 				_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
 			}
-			var tmr:Timer=new Timer(1000,1);
-			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
-			tmr.start();
-			
-			
+		}
+		
+		private function onPlay(str:String):void{
+			if(_timeModel.isPlaying)
+				pause();
+			else
+				unPause();
+			trace(str)
 		}
 		
 		private function onClose(btnid:String):void{
@@ -126,10 +123,10 @@ package com.screens.view {
 				
 				unPause();
 				setClock();
-				var tmr:Timer=new Timer(1000,1);
-				tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
-				tmr.start();
 			}
+			var tmr:Timer=new Timer(1000,1);
+			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
+			tmr.start();
 			
 			
 		}
@@ -169,16 +166,16 @@ package com.screens.view {
 		}
 		
 		override public function stop():void{
-			
+			for each(var ins:PlayMusician in _instruments){
+				ins.stop();
+			}
 			pause();
 			Clock.getInstance().reset();
 			Clock.getInstance().visible=false;
 		}
 		
-		protected function pause():void{
-			for each(var ins:PlayMusician in _instruments){
-				ins.stop();
-			}
+		private function pause():void{
+			
 			_timeControll.stop(); 
 			Clock.getInstance().stop();
 		}

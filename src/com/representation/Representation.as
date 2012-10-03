@@ -4,7 +4,6 @@ package com.representation {
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.representation.view.Channel;
-	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Bitmap;

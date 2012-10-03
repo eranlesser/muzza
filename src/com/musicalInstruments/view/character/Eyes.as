@@ -1,4 +1,4 @@
-package com.musicalInstruments.view.playable
+package com.musicalInstruments.view.character
 {
 	import com.constants.Rhythms;
 	import com.metronom.ITimeModel;

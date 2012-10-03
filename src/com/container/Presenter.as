@@ -34,7 +34,7 @@ package com.container
 			_guiLayer = new Sprite();
 			_toolBar = new BottomToolBar();
 			addChild(_toolBar);
-			_toolBar.y=Dimentions.HEIGHT-_toolBar.height-10;
+			_toolBar.y=Dimentions.HEIGHT-_toolBar.height;
 			_toolBar.navigator.goto.add(goToRequest);
 			addChild(_guiLayer);
 			_messageLayer = new Sprite();

@@ -23,7 +23,6 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			//_context.bubble.visible=false;
-			_context.instrumentRecorder.ableState=States.LISTEN;
 			//new GTween(_context.instrumentRecorder,1,{y:_context.model.getRecordInstrumentY()});
 			//var tween:GTween=new GTween(_context.instrumentPlayer,1,{y:_context.model.getPlayInstrumentY(),x:_context.model.getPlayInstrumentX(),scaleX:1,scaleY:1});
 			//tween.onComplete=play;

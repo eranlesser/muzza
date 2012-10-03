@@ -1,16 +1,12 @@
-package com.musicalInstruments.view.recordable {
+package com.musicalInstruments.view.instrument {
 	
 	import com.metronom.Metronome;
-	import com.musicalInstruments.controller.recorders.IRecorder;
-	import com.musicalInstruments.controller.recorders.InstrumentRecorder;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentComponentModel;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.IRecordableSequance;
-	import com.musicalInstruments.model.sequances.ISequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IAnimateable;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
@@ -22,14 +18,14 @@ package com.musicalInstruments.view.recordable {
 
 
 	
-	public class RecordableView extends Sprite implements IAnimateable{
+	public class Instrument extends Sprite implements IAnimateable{
 		
 		protected var _musicalComponents:	Vector.<MusicalInstrumentComponent>;
 		private var _endAtFrame:			uint;
 		private var _startTick:				uint;
 		private var _octave:				uint;
 
-		protected var _insRecorder:			IRecorder;
+	
 		protected var _model:				CoreInstrumentModel;
 		protected var _beginAtFrame:		uint;
 		protected var _recordedSequanceId:	uint;
@@ -39,14 +35,13 @@ package com.musicalInstruments.view.recordable {
 		protected var _notePlayed:			Signal;
 		protected var _noteStopped:			Signal;
 		private var _player:				NoteSequancePlayer;
-		public var added:Signal = new Signal();
-		public function RecordableView(model:CoreInstrumentModel,recordedSequanceId:uint=0){
+		
+		public function Instrument(model:CoreInstrumentModel){
 			_notePlayed = new Signal();
 			_noteStopped = new Signal();
 			_musicalComponents = new Vector.<MusicalInstrumentComponent>();
 			_model = model as CoreInstrumentModel;
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
-			_recordedSequanceId = recordedSequanceId;
 			addComponents(_model.components);
 			
 		}
@@ -55,9 +50,6 @@ package com.musicalInstruments.view.recordable {
 			return _sequanceDone;
 		}
 		
-		public function get sequance():ISequance{
-			return _insRecorder.sequance;
-		}
 		
 		public function get instrumentName():String{
 			return _model.thumbNail;
@@ -108,21 +100,10 @@ package com.musicalInstruments.view.recordable {
 			}
 		}
 		
-		public function set ableState(state:String):void{ // disabled , practice , record
-			if(state){
-				
-			}else{
-				
-			}
-			for each(var component:MusicalInstrumentComponent in _musicalComponents){
-				//component.ableState = state;
-			}
-		}
 		
 		public function setRecordable(beginAtFrame:uint,endAtFrame:uint):void{
 			_beginAtFrame = beginAtFrame;
 			_endAtFrame = endAtFrame;
-			addRecordButton();
 		}
 		
 		public function addRecordedSequance(sequance:IRecordableSequance,beginAtFrame:uint,endAtFrame:uint):void{
@@ -134,18 +115,9 @@ package com.musicalInstruments.view.recordable {
 			getComponentById(noteId).state = state;
 		}
 		
-		public function beginRecord():void{
-			_insRecorder.beginRecord();
-		}
 		
-		public function endRecord():void{
-			_insRecorder.endRecord();
-		}
 		
-		protected function decorate():void{
-			_insRecorder =  new InstrumentRecorder(this,_recordedSequanceId,_beginAtFrame,_endAtFrame);
-			_insRecorder.added.add(onAdded);
-		}
+	
 		
 		protected function playNote(noteId:uint):void{
 			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
@@ -209,12 +181,8 @@ package com.musicalInstruments.view.recordable {
 			unPlayNote(mc.noteId);
 		}
 		
-		private function addRecordButton():void{
-			decorate();
-		}
 		
-		private function onAdded(sequancedNote:SequancedNote):void{
-			added.dispatch(sequancedNote);
-		}
+		
+		
 	}
 }

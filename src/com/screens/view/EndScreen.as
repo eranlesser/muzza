@@ -3,7 +3,7 @@ package com.screens.view
 	import com.constants.Dimentions;
 	import com.gui.hat.Hat;
 	import com.musicalInstruments.model.InstrumentModel;
-	import com.musicalInstruments.view.playable.PlayMusician;
+	import com.musicalInstruments.view.character.PlayMusician;
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
@@ -98,7 +98,7 @@ package com.screens.view
 		
 		private function addRepresentation():void{
 			_representation = new Representation();
-			_representation.y = 573+30;
+			_representation.y = 573+_toolBar.height-5;
 			_stageLayer.addChild(_representation);
 		}
 		
@@ -126,18 +126,14 @@ class ToolBar extends Sprite{
 	
 	private function init():void{
 		var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
-		bg.height=35;
 		var backBtn:Btn = new Btn("BACK_BUTTON_IDLE.png","BACK_BUTTON_PRESSED.png");
 		addChild(backBtn);
-		backBtn.height=35;
 		backBtn.clicked.add(backClicked);
 		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
 		addChild(playBtn);
-		playBtn.height=35;
 		playBtn.x=439;
 		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
 		addChild(replay);
-		replay.height=35;
 		replay.x=439+playBtn.width;
 		
 	}

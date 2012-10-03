@@ -1,6 +1,6 @@
 package com.gui
 {
-	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.musicalInstruments.view.instrument.TapInstrument;
 	
 	import flash.display.Sprite;
 	import flash.events.Event;

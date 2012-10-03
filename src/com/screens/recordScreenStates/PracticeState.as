@@ -7,7 +7,7 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.components.NoteView;
-	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.notes.BigNote;
 	import com.notes.INotesChannel;
 	import com.representation.RepresentationSizes;

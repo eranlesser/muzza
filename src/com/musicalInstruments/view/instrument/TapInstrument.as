@@ -1,6 +1,6 @@
-package com.musicalInstruments.view.recordable {
+package com.musicalInstruments.view.instrument {
 	
-	import com.musicalInstruments.controller.OctaveController;
+	import com.musicalInstruments.controller.OctaveSetter;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IMusicalView;
@@ -11,12 +11,12 @@ package com.musicalInstruments.view.recordable {
 	/**
 	 * @author eranlesser
 	 */
-	public class TapInstrument extends RecordableView implements IMusicalView {
+	public class TapInstrument extends Instrument implements IMusicalView {
 		protected var _octvSelector:	OctaveSelector;
-		private var _octaveController:	OctaveController;
+		private var _octaveController:	OctaveSetter;
 		
-		public function TapInstrument(model:NotesInstrumentModel, recordedSequanceId:uint=0) {
-			super(model, recordedSequanceId);
+		public function TapInstrument(model:NotesInstrumentModel) {
+			super(model);
 			tuch.add(onTouchTap);
 			if(model.octavesLength>1){
 				_octvSelector=new OctaveSelector();
@@ -49,7 +49,7 @@ package com.musicalInstruments.view.recordable {
 		//AUTOSWAP IN PRACTICE STATE
 		public function autoSetOctave(sequance:NoteSequanceModel):void{
 			if((_model as NotesInstrumentModel).octavesLength>1){
-				_octaveController=new OctaveController(sequance,this);
+				_octaveController=new OctaveSetter(sequance,this);
 				_octaveController.start();
 			}
 		}

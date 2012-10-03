@@ -5,9 +5,9 @@ package com.studio
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.view.IMusicalView;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
-	import com.musicalInstruments.view.playable.Musician;
-	import com.musicalInstruments.view.playable.PlayMusician;
-	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.musicalInstruments.view.character.Musician;
+	import com.musicalInstruments.view.character.PlayMusician;
+	import com.musicalInstruments.view.instrument.TapInstrument;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
@@ -33,7 +33,7 @@ package com.studio
 		public function StudioInstrument(model:InstrumentModel)
 		{
 			
-			_musicalView = _instrument = new TapInstrument(model.coreModel as NotesInstrumentModel,0);
+			_musicalView = _instrument = new TapInstrument(model.coreModel as NotesInstrumentModel);
 			if((_musicalView as TapInstrument).octaveSelector){
 				(_musicalView as TapInstrument).octaveSelector.enabled=true;
 			}

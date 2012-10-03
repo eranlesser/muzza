@@ -1,4 +1,4 @@
-package com.musicalInstruments.view.playable {
+package com.musicalInstruments.view.character.unused {
 	import com.constants.Session;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
@@ -15,6 +15,10 @@ package com.musicalInstruments.view.playable {
 	import flash.media.Sound;
 	
 	import org.osflash.signals.Signal;
+	import com.musicalInstruments.view.character.Eyes;
+	import com.musicalInstruments.view.character.Musician;
+	import com.musicalInstruments.view.playable.Eyes;
+	import com.musicalInstruments.view.playable.Musician;
 	
 	
 	public class Singer extends Musician implements IMusicalView{

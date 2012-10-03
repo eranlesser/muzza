@@ -1,4 +1,4 @@
-package com.musicalInstruments.view.playable
+package com.musicalInstruments.view.character
 {
 	import org.osflash.signals.Signal;
 

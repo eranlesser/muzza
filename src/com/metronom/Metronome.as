@@ -133,6 +133,10 @@ package com.metronom
 			_isPlaying = true;
 		}
 		
+		public function get isPlaying():Boolean{
+			return _isPlaying;
+		}
+		
 		//________________ITimeControll  Methods
 		//____________________________________________________________
 		

@@ -25,11 +25,11 @@ public static var data:XML =
 		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='360' y='0' >
 			<tap noteId="4" />
 		</bass>
-		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='480' y='0'  >
-			<tap noteId="6" />
-		</bass>
-		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='600' y='0'  >
+		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='480' y='0'  >
 			<tap noteId="5" />
+		</bass>
+		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='600' y='0'  >
+			<tap noteId="6" />
 		</bass>
 		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='720' y='0'  >
 			<tap noteId="7" />
@@ -49,8 +49,8 @@ public static var data:XML =
 <note id="2"   soundFile="beethoven/notes/BASS/F+1.mp3" animationIndex='2' value="2"  />
 <note id="3"   soundFile="beethoven/notes/BASS/G.mp3" animationIndex='3' value="3"  />
 <note id="4"   soundFile="beethoven/notes/BASS/A.mp3" animationIndex='4' value="4"  />
-<note id="5"   soundFile="beethoven/notes/BASS/B.mp3" animationIndex='5' value="6"   />
-<note id="6"   soundFile="beethoven/notes/BASS/A+1.mp3" animationIndex='6' value="5" isFlatOrSharp="sharp" />
+<note id="5"   soundFile="beethoven/notes/BASS/A+1.mp3" animationIndex='5' value="5"   />
+<note id="6"   soundFile="beethoven/notes/BASS/B.mp3" animationIndex='6' value="6" />
 <note id="7"   soundFile="beethoven/notes/BASS/C.mp3" animationIndex='7' value="7"  />
 <note id="8"   soundFile="beethoven/notes/BASS/DHO.mp3" animationIndex='8' value="8"  />
 </notes>

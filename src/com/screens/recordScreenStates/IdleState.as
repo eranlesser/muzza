@@ -1,7 +1,7 @@
 package com.screens.recordScreenStates
 {
 	import com.constants.States;
-	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.musicalInstruments.view.instrument.TapInstrument;
 	
 	import org.osflash.signals.Signal;
 

@@ -3,14 +3,14 @@ package com.musicalInstruments.controller
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.musicalInstruments.view.instrument.TapInstrument;
 
-	public class OctaveController
+	public class OctaveSetter
 	{
 		private var _model:NoteSequanceModel;
 		private var _view:TapInstrument;
 		private var _currentOctave:uint=0;
-		public function OctaveController(model:NoteSequanceModel,view:TapInstrument){
+		public function OctaveSetter(model:NoteSequanceModel,view:TapInstrument){
 			_model=model;
 			_view=view;
 		}

@@ -5,8 +5,8 @@ package com.screens.view {
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
-	import com.musicalInstruments.view.playable.*;
-	import com.musicalInstruments.view.recordable.*;
+	import com.musicalInstruments.view.character.*;
+	import com.musicalInstruments.view.instrument.*;
 	import com.notes.INotesChannel;
 	import com.notes.Notes;
 	import com.representation.controller.RecordChannelController;
@@ -19,7 +19,7 @@ package com.screens.view {
 
 	public class RecordScreen extends MusicalScreen
 	{
-		private var _instrumentRecorder:		RecordableView;
+		private var _instrumentRecorder:		Instrument;
 		private var _model:						RecordScreenModel;
 		private var _recordChannelController:	RecordChannelController;
 		private var _stateController:			RecordScreenStateController;
@@ -34,7 +34,7 @@ package com.screens.view {
 			_timeModel = Metronome.getTimeModel();
 		}
 		
-		public function get recorder():RecordableView{
+		public function get recorder():Instrument{
 			return _instrumentRecorder;
 		}
 		
@@ -135,11 +135,11 @@ package com.screens.view {
 		
 		private function createPlayerAndInstrument():void{
 			if(_model.instrumentModel.type=="bottles"){
-				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel,_model.recordeSequanceId);
+				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="bass"){
-				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel,_model.recordeSequanceId);
+				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="drums"){
-				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel,_model.recordeSequanceId);
+				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="voice"){
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
 			}

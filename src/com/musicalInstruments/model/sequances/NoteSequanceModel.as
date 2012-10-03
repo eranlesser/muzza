@@ -28,7 +28,8 @@ package com.musicalInstruments.model.sequances {
 		
 		public function getNoteByLocation(location:uint):SequancedNote{
 			var note:SequancedNote;
-			for each(var sequancedNote:SequancedNote in _notes){
+			for(var i:uint=0;i<_notes.length;i++){
+				var sequancedNote:SequancedNote = _notes[i];
 				if(sequancedNote.location == location){
 					note = sequancedNote;
 				}

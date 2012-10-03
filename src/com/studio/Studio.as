@@ -6,7 +6,7 @@ package com.studio
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.view.IMusicalView;
-	import com.musicalInstruments.view.playable.PlayMusician;
+	import com.musicalInstruments.view.character.PlayMusician;
 	import com.representation.Representation;
 	import com.screens.view.IScreen;
 	

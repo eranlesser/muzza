@@ -3,7 +3,7 @@ package com.container
 	import com.constants.Dimentions;
 	import com.model.rawData.Data;
 	import com.musicalInstruments.Band;
-	import com.musicalInstruments.view.playable.Character;
+	import com.musicalInstruments.view.character.Character;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;

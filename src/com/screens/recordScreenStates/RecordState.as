@@ -5,7 +5,8 @@ package com.screens.recordScreenStates
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.recordable.TapInstrument;
+	import com.musicalInstruments.view.instrument.TapInstrument;
+	import com.representation.controller.RecordChannelController;
 	import com.view.MetronomView;
 	
 	import org.osflash.signals.Signal;
@@ -39,7 +40,7 @@ package com.screens.recordScreenStates
 			}
 			_context.instrumentRecorder.notePlayed.remove(record);
 			_timeModel.tickSignal.remove(onTimerTick);
-			_context.instrumentRecorder.endRecord();
+			_context.recordChannelController.endRecord();
 			_context.stopTimer();
 			_context.recordButton.clicked.remove(onRecordBtn);
 			//_context.frameRate = Rhythms.DELAY_COUNT;
@@ -69,7 +70,7 @@ package com.screens.recordScreenStates
 		private function record(noteId:String):void{
 			_timeModel.tickSignal.add(onTimerTick);
 			_context.startTimer();
-			_context.instrumentRecorder.beginRecord();
+			_context.recordChannelController.beginRecord();
 			//_preTicker.active=false;
 		}
 		

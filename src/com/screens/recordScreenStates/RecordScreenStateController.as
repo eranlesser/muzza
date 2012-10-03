@@ -2,7 +2,7 @@ package com.screens.recordScreenStates
 {
 	import com.constants.States;
 	import com.musicalInstruments.view.components.SpeechBubble;
-	import com.musicalInstruments.view.recordable.RecordableView;
+	import com.musicalInstruments.view.instrument.Instrument;
 	import com.notes.INotesChannel;
 	import com.notes.Notes;
 	import com.representation.Representation;
@@ -108,7 +108,7 @@ package com.screens.recordScreenStates
 			return new SpeechBubble();
 		}
 		
-		public function get instrumentRecorder():RecordableView{
+		public function get instrumentRecorder():Instrument{
 			return _recordScreen.recorder;
 		}
 		public function get recordButton():Btn{
