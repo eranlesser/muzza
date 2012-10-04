@@ -1,16 +1,14 @@
 package com.screens.recordScreenStates
 {
+	import com.constants.Rhythms;
 	import com.constants.States;
 	import com.musicalInstruments.view.components.SpeechBubble;
 	import com.musicalInstruments.view.instrument.Instrument;
-	import com.notes.INotesChannel;
-	import com.notes.Notes;
-	import com.representation.Representation;
+	import com.screens.view.components.notes.INotesChannel;
+	import com.screens.view.components.notes.Notes;
 	import com.representation.controller.RecordChannelController;
-	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.RecordScreen;
-	import com.screens.view.components.RecordScreenButton;
 	import com.view.gui.Btn;
 
 	public class RecordScreenStateController
@@ -27,7 +25,6 @@ package com.screens.recordScreenStates
 		
 		protected function initStates():void{
 			_states.push(new IdleState(this));
-			_states.push(new ListenState(this));
 			_states.push(new PracticeState(this));
 			_states.push(new RecordState(this));
 		}
@@ -41,9 +38,6 @@ package com.screens.recordScreenStates
 		// COMMANDS
 		// ------------------------------------------------
 		
-		public function listen():void{
-			setState(States.LISTEN);
-		}
 		
 		public function record():void{
 			setState(States.RECORD);
@@ -53,9 +47,6 @@ package com.screens.recordScreenStates
 			setState(States.PRACTICE);
 		}
 		
-		public function playRecorded():void{
-			setState(States.PLAY_RECORDED);
-		}
 		
 		public function start():void{
 			setState(States.IDLE);
@@ -117,6 +108,11 @@ package com.screens.recordScreenStates
 		
 		public function get practiceButton():Btn{
 			return _recordScreen.practiceButton;
+		}
+		
+		public function set speed(value:Number):void{
+			_recordScreen.stage.frameRate=Rhythms.FRAME_RATE*value;
+			trace(">>",Rhythms.FRAME_RATE*value)
 		}
 		
 		

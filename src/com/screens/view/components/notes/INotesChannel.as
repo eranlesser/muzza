@@ -1,4 +1,4 @@
-package com.notes
+package com.screens.view.components.notes
 {
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.view.components.NoteView;

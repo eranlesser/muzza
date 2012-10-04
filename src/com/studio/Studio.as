@@ -26,7 +26,6 @@ package com.studio
 		private var _instruments:	Vector.<StudioInstrument>;
 		private var _representation:Representation;
 		private var _layoutActive:	Boolean=false;
-		private var _toolBar:		ToolBar;
 		
 		public var homeClicked:Signal=new Signal();
 		public var backClicked:Signal=new Signal();
@@ -48,12 +47,12 @@ package com.studio
 		}
 		
 		public function start():void{
-			_toolBar.studioClicked.add(onToolBar);
+			//_toolBar.studioClicked.add(onToolBar);
 			Metronome.getTimeControll(this).play();
 		}
 		
 		public function stop():void{
-			_toolBar.studioClicked.remove(onToolBar);
+			//_toolBar.studioClicked.remove(onToolBar);
 			for(var i:uint=0;i<_instruments.length;i++){
 				_instruments[i].stop();
 			}

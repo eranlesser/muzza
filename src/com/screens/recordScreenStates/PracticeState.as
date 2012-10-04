@@ -1,5 +1,6 @@
 package com.screens.recordScreenStates
 {
+	import com.constants.Rhythms;
 	import com.constants.States;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
@@ -8,10 +9,11 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.components.NoteView;
 	import com.musicalInstruments.view.instrument.TapInstrument;
-	import com.notes.BigNote;
-	import com.notes.INotesChannel;
+	import com.representation.ChanelNotesType;
 	import com.representation.RepresentationSizes;
 	import com.representation.view.Channel;
+	import com.screens.view.components.notes.BigNote;
+	import com.screens.view.components.notes.INotesChannel;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
@@ -55,6 +57,7 @@ package com.screens.recordScreenStates
 			_context.practiceButton.clicked.add(onStop);
 			_timeModel.tickSignal.add(highLightNext);
 			_context.startTimer();
+			_context.speed=Rhythms.RECORD_SPEED;
 			_context.practiceButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.addOnce(onInstrumentPlayed);
 			_context.bubble.setText("Look up!",false)
@@ -65,7 +68,7 @@ package com.screens.recordScreenStates
 			_context.notes.start();
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
-			_context.recordChannelController.reset();
+			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
 		}
 		
 		private function onInstrumentPlayed(noteId:String):void{
@@ -93,7 +96,7 @@ package com.screens.recordScreenStates
 			_timeModel.tickSignal.remove(highLightNext);
 			_context.stopTimer();
 			_answerTimer.stop();
-			_context.recordChannelController.reset();
+			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
 		}
 		
 		public function get complete():Signal{

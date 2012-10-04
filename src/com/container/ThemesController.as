@@ -52,8 +52,8 @@ package com.container
 				_progressControlIndex=_themeProgressors.indexOf(progressControl);
 				
 			}
-			Rhythms.DELAY_COUNT = _themeProgressors[_progressControlIndex].frameRate;
-			_presenter.stage.frameRate = Rhythms.DELAY_COUNT;
+			Rhythms.FRAME_RATE = _themeProgressors[_progressControlIndex].frameRate;
+			_presenter.stage.frameRate = Rhythms.FRAME_RATE;
 			_themeProgressors[_progressControlIndex].goHomeSignal.add(reStartScreen);
 		}
 		

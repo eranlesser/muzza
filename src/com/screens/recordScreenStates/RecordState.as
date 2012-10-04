@@ -1,11 +1,13 @@
 package com.screens.recordScreenStates
 {
+	import com.constants.Rhythms;
 	import com.constants.States;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.instrument.TapInstrument;
+	import com.representation.ChanelNotesType;
 	import com.representation.controller.RecordChannelController;
 	import com.view.MetronomView;
 	
@@ -58,13 +60,14 @@ package com.screens.recordScreenStates
 			_context.bubble.visible=false;
 			_context.recordButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.addOnce(record);
-			_context.recordChannelController.reset();
+			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordChannelController.start();
 			_context.notes.start();
 			_context.recordButton.clicked.add(onRecordBtn);
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_preTicker.active=true;
+			_context.speed=Rhythms.RECORD_SPEED
 		}
 		
 		private function record(noteId:String):void{

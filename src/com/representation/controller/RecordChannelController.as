@@ -10,7 +10,7 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
 	import com.musicalInstruments.view.instrument.Instrument;
-	import com.notes.INotesChannel;
+	import com.screens.view.components.notes.INotesChannel;
 	import com.representation.ChanelNotesType;
 	import com.representation.RepresentationSizes;
 	import com.screens.model.RecordScreenModel;
@@ -37,7 +37,7 @@ package com.representation.controller {
 			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
-				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.TEACHER_PLAYING);
+				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.U_PLAYING);
 			}
 			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
 				//drawNotes(NoteSequanceModel(_instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
@@ -45,12 +45,14 @@ package com.representation.controller {
 			onTick();
 		}
 		
-		public function reset():void{
+		public function reset(mode:String):void{
 			_channelView.clearNotes();
 			if(_learnedSequance is NoteSequanceModel){//temp
-				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.TEACHER_PLAYING);
+				drawNotes(NoteSequanceModel(_learnedSequance),mode);
 			}
 		}
+		
+		
 		
 		public function beginRecord():void{
 			_recordedSequance.reset();
@@ -76,7 +78,8 @@ package com.representation.controller {
 		}
 		
 		private function onTick():void{
-			_channelView.setX((-(_model.currentTick)*(RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2);
+			
+			_channelView.setX((-(_model.currentTick*2)*(RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/2);
 		}
 		
 		public function get channel():INotesChannel{

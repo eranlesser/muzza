@@ -7,8 +7,8 @@ package com.screens.view {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.instrument.*;
-	import com.notes.INotesChannel;
-	import com.notes.Notes;
+	import com.screens.view.components.notes.INotesChannel;
+	import com.screens.view.components.notes.Notes;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
@@ -106,7 +106,6 @@ package com.screens.view {
 			}
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
-			stage.frameRate = Rhythms.DELAY_COUNT;
 		}
 		
 		

@@ -1,4 +1,4 @@
-package com.notes
+package com.screens.view.components.notes
 {
 	import com.view.tools.AssetsManager;
 	

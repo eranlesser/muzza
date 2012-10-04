@@ -7,7 +7,6 @@ package com.screens.view
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
-	import com.studio.ToolBar;
 	import com.utils.Claps;
 	
 	import flash.events.Event;

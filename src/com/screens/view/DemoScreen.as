@@ -127,7 +127,7 @@ package com.screens.view {
 			var tmr:Timer=new Timer(1000,1);
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
-			
+			stage.frameRate=Rhythms.FRAME_RATE;
 			
 		}
 		

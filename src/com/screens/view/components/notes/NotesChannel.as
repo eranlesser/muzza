@@ -1,4 +1,4 @@
-package com.notes
+package com.screens.view.components.notes
 {
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
@@ -40,11 +40,11 @@ package com.notes
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void{
 			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,isFlatOrSharp);
 			_notesContainer.addChild(note);
-			note.x=noteModel.location*((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/6+12;
-			note.y=120-noteModel.noteId*10;
+			note.x=(noteModel.location*2)*((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/6+12;
+			note.y=140-noteModel.noteId*10;
 			_notes.push(note);
 			if(type==ChanelNotesType.TEACHER_PLAYING){
-				note.alpha=0.3;
+				note.alpha=0.6;
 			}
 		}
 		

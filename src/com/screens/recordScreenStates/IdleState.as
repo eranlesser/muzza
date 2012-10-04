@@ -48,12 +48,7 @@ package com.screens.recordScreenStates
 		private function onRecordBtn(buttonState:Boolean):void{
 			_context.record();
 		}
-		private function onListenBtn(buttonState:Boolean):void{
-			_context.listen();
-		}
-		private function onPlayBtn(buttonState:Boolean):void{
-			_context.playRecorded();
-		}
+		
 		private function onPracticeClicked(buttonState:Boolean):void{
 			_context.practice();
 		}
