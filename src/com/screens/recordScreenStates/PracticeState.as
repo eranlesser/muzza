@@ -55,6 +55,7 @@ package com.screens.recordScreenStates
 		public function activate():void{
 			_context.instrumentRecorder.notePlayed.add(onNotePlayed);
 			_context.practiceButton.clicked.add(onStop);
+			_context.recordButton.clicked.add(onRecordBtn);
 			_timeModel.tickSignal.add(highLightNext);
 			_context.startTimer();
 			_context.speed=Rhythms.RECORD_SPEED;
@@ -91,6 +92,7 @@ package com.screens.recordScreenStates
 			_wrongAnswers=0;
 			_context.practiceButton.state="idle";
 			_context.practiceButton.clicked.remove(onStop);
+			_context.recordButton.clicked.remove(onRecordBtn);
 			_context.instrumentRecorder.notePlayed.remove(onInstrumentPlayed);
 			_context.instrumentRecorder.notePlayed.remove(onNotePlayed);
 			_timeModel.tickSignal.remove(highLightNext);
@@ -99,6 +101,9 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
 		}
 		
+		private function onRecordBtn(buttonState:Boolean):void{
+			_context.record();
+		}
 		public function get complete():Signal{
 			return _complete;
 		}

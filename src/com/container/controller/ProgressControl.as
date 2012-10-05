@@ -16,6 +16,7 @@ package com.container.controller {
 		private var _themeName:		String;
 		private var _frameRate:		uint;
 		public var goHomeSignal:	Signal;
+		private var _demoShown:Boolean=false;
 		
 		public function ProgressControl(view:Presenter,model:ScreensModel,themeName:String,frameRate:uint){
 			_view = view;
@@ -30,6 +31,10 @@ package com.container.controller {
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			initNavigator();
+			if(!_demoShown){
+				openDemo();
+				_demoShown=true;
+			}
 		}
 		
 		public function reset():void{

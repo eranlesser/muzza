@@ -41,19 +41,17 @@ package com.representation.view {
 			addChild(_btn);
 			_btn.x=35;
 			_btn.addEventListener(MouseEvent.MOUSE_DOWN,onBtnDown);
-			setValue(Rhythms.RECORD_SPEED);
+			setValue(1/2);
+			_btn.y=_mask.height*1/2-_btn.height/2+30;
 		}
 		
 		private function setValue(val:Number):void{
 			_value=val;
 			_blueSlider.y=_mask.y-(_blueSlider.height*1/2)+((val)*_mask.height);
-			_btn.y=_mask.height*_value-_btn.height/2+30;
+			//_btn.y=_mask.height*_value-_btn.height/2+30;
 			_shadow.y=_btn.y-3;
 			_shadow.visible=(_shadow.y>_mask.y);
-			Rhythms.RECORD_SPEED=1-val;
-			if(Rhythms.RECORD_SPEED<0.2){
-				Rhythms.RECORD_SPEED=0.2;
-			}
+			Rhythms.RECORD_SPEED=1-val*3/4;
 			if(stage)
 			stage.frameRate=Rhythms.FRAME_RATE*Rhythms.RECORD_SPEED;
 		}

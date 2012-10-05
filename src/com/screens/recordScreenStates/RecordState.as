@@ -44,7 +44,9 @@ package com.screens.recordScreenStates
 			_timeModel.tickSignal.remove(onTimerTick);
 			_context.recordChannelController.endRecord();
 			_context.stopTimer();
+			_context.recordButton.state="idle";
 			_context.recordButton.clicked.remove(onRecordBtn);
+			_context.practiceButton.clicked.remove(onPracticeClicked);
 			//_context.frameRate = Rhythms.DELAY_COUNT;
 			_context.notes.stop();
 			_context.recordChannelController.stop();
@@ -55,6 +57,9 @@ package com.screens.recordScreenStates
 		public function get name():String{
 			return States.RECORD;
 		}
+		private function onPracticeClicked(buttonState:Boolean):void{
+			_context.practice();
+		}
 		
 		public function activate():void{
 			_context.bubble.visible=false;
@@ -64,6 +69,7 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.start();
 			_context.notes.start();
 			_context.recordButton.clicked.add(onRecordBtn);
+			_context.practiceButton.clicked.add(onPracticeClicked);
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_preTicker.active=true;
