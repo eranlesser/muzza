@@ -57,6 +57,10 @@ package com.screens.model
 			return _currentScreenIndex;
 		}
 		
+		public function isRecorded(scrIndex:uint):Boolean{
+			return (_recordScreens[scrIndex] as RecordScreen).model.isRecorded;
+		}
+		
 		public function goTo(scr:String):void{
 			var curIndex:int=-1;
 			if(scr=="back"){

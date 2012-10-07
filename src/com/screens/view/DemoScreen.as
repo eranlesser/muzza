@@ -133,7 +133,9 @@ package com.screens.view {
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
 			stage.frameRate=Rhythms.FRAME_RATE;
-			_timeSlider.setValue(0);
+			if(_timeSlider){
+				_timeSlider.setValue(0);
+			}
 		}
 		
 		private function setTimeSlider():void{
@@ -149,7 +151,9 @@ package com.screens.view {
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
 				ins.sequanceDone.add(onPlayerDone);
 			}
-			_timeModel.soundTick.add(setTimeSlider);
+			if(_timeSlider){
+				_timeModel.soundTick.add(setTimeSlider);
+			}
 		}
 		
 		private function onPlayerDone():void{
@@ -182,7 +186,9 @@ package com.screens.view {
 			pause();
 			Clock.getInstance().reset();
 			Clock.getInstance().visible=false;
-			_timeModel.soundTick.remove(setTimeSlider);
+			if(_timeSlider){
+				_timeModel.soundTick.remove(setTimeSlider);
+			}
 		}
 		
 		private function pause():void{

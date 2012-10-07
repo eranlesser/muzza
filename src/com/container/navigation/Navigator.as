@@ -72,9 +72,14 @@ class BreadCrumbs extends Sprite{
 	}
 	
 	public function set state(session:RecordSession):void{
-		for each(var icon:Btn in _icons){
-			icon.state="idle";
+		for(var i:uint=0;i<_icons.length-1;i++){ // last screen is listen
+			if(session.isRecorded(i)){
+				_icons[i].state="visited";
+			}else{
+				_icons[i].state="idle";
+			}
 		}
+		_icons[_icons.length-1].state="idle";
 		_icons[session.screenIndex].state="pressed";
 	}
 	

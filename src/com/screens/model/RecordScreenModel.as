@@ -3,7 +3,9 @@ package com.screens.model {
 	import com.model.MainThemeModel;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
+	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
+	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 
 	public class RecordScreenModel extends AbstractScreenModel
 	{
@@ -63,6 +65,11 @@ package com.screens.model {
 		
 		public function get instrumentModel():CoreInstrumentModel{
 			return _instrumentModel;
+		}
+		
+		public function get isRecorded():Boolean{
+			var insModel:NoteSequanceModel = (_instrumentModel.getSequanceById(_recordeSequanceId) as NoteSequanceModel);
+			return insModel && (insModel.notes.length>0);
 		}
 		
 		public function get bandInstruments():Vector.<InstrumentModel>{
