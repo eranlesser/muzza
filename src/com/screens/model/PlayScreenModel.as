@@ -13,6 +13,7 @@ package com.screens.model {
 		private var _playSequance:uint;
 		private var _instrumentsModel:ThemeInstrumentsModel;
 		private var _backGraoundSound:String;
+		public var nowPlaying:String;
 		public function PlayScreenModel(xml:XML,instrumentsModel:ThemeInstrumentsModel){
 			super(xml);
 			_xml = xml;
@@ -23,6 +24,7 @@ package com.screens.model {
 		private function parse(xml:XML):void{
 			_playSequance=xml.@playSequance;
 			_backGraoundSound=xml.backGroundSound.@source;
+			nowPlaying=xml.@nowPlaying;
 			_instruments = new Vector.<InstrumentModel>();
 			for each(var instrument:XML in xml.instrument){
 				var insModel:CoreInstrumentModel =_instrumentsModel.getInstrumentByName(instrument.@type);

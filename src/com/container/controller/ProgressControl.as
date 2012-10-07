@@ -1,6 +1,7 @@
 package com.container.controller {
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
+	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
 	
 	import flash.display.DisplayObject;
@@ -25,6 +26,7 @@ package com.container.controller {
 			_frameRate=frameRate;
 			_view.menu.goHome.add(goHome);
 			goHomeSignal = new Signal();
+			
 		}
 		public function start(mode:String):void{
 			_model.playMode=mode;

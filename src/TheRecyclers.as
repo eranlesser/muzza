@@ -2,6 +2,7 @@ package {
 	import com.container.PreLoader;
 	import com.container.Presenter;
 	import com.container.ThemesController;
+	import com.model.FileProxy;
 	import com.view.tools.AssetsManager;
 	
 	import flash.desktop.NativeApplication;
@@ -25,6 +26,7 @@ package {
 			stage.displayState = StageDisplayState.FULL_SCREEN;
 			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
 			start();
+			FileProxy.reset(this)
 		}
 		
 		private function start():void{

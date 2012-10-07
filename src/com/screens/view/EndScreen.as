@@ -138,6 +138,6 @@ class ToolBar extends Sprite{
 	}
 	
 	private function backClicked(id:String):void{
-		goTo.dispatch("bass_flash.jpg");
+		goTo.dispatch("back");
 	}
 }

@@ -18,6 +18,7 @@ package com.screens.model
 		private var _endScreen:				EndScreen;
 		private var _recordScreens:			Vector.<IScreen>;
 		private var _currentScreenIndex:	uint = 0;
+		private var _lastInstrumentIndex:	uint;
 		
 		public function RecordSession(data:XML,instrumentsModel:ThemeInstrumentsModel){
 			_recordScreens = new Vector.<IScreen>();
@@ -57,15 +58,25 @@ package com.screens.model
 		}
 		
 		public function goTo(scr:String):void{
-			for each(var isc:IScreen in _recordScreens){
-				if(isc is RecordScreen){
-					if(RecordScreen(isc).model.instrumentModel.thumbNail==scr){
-						_currentScreenIndex = _recordScreens.indexOf(isc);
-						return;
+			var curIndex:int=-1;
+			if(scr=="back"){
+				curIndex = _lastInstrumentIndex//  = last screen played
+			}else{
+				for each(var isc:IScreen in _recordScreens){
+					if(isc is RecordScreen){
+						if(RecordScreen(isc).model.instrumentModel.thumbNail==scr){
+							curIndex = _recordScreens.indexOf(isc);
+						}
 					}
 				}
 			}
-			_currentScreenIndex = _recordScreens.length-1;//End Screen
+			if(curIndex==-1){
+				curIndex = _recordScreens.length-1;//End Screen
+			}
+			if(curIndex<_recordScreens.length-1){
+				_lastInstrumentIndex=curIndex;
+			}
+			_currentScreenIndex=curIndex;
 		}
 		
 		

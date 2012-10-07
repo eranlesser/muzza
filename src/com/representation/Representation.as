@@ -48,18 +48,29 @@ package com.representation {
 		public function addChannel(model:CoreInstrumentModel):Channel{
 			var chanel:Channel;
 			chanel = new Channel(model);
-			insertChannel(chanel);
-			return chanel;
-		}
-		
-		
-		private function insertChannel(chanel:Channel):void{
 			_bg.addChild(chanel);
 			chanel.x=30;
 			_channels.push(chanel);
-			chanel.y=(_channels.length-1)*40+20;
+			
+			chanel.y=getIndx(model.thumbNail)*40+20;
+			return chanel;
 		}
 		
+		private function getIndx(tmb:String):uint{
+			var yy:uint;
+			switch(tmb){
+				case "bottles.png":
+					yy=0;
+					break;
+				case "drum.png":
+					yy=1;
+					break;
+				case "bass_flash.jpg":
+					yy=2;
+					break;
+			}
+			return yy;
+		}
 		
 		private function init():void{
 			

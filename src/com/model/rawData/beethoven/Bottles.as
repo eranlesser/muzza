@@ -10,7 +10,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="16" end="22" />
 	<blink start="22" end="26" />
 	<blink start="26" end="31" />
-	<blink start="31" end="34" />
+	
 </eyes>						
 <components>
 	

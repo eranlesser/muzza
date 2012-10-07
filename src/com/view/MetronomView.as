@@ -39,7 +39,7 @@ package com.view
 			
 			
 			_sound=new Sound(new URLRequest("../../../assets/sounds/theme/tick.mp3"));
-			_fmt=new SoundTransform(0.8);;
+			_fmt=new SoundTransform(0.6);;
 			_timeModel.metronomeTick.add(onTick);
 		}
 		

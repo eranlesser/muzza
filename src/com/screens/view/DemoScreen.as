@@ -30,6 +30,7 @@ package com.screens.view {
 		private var _frame:					DisplayObject;
 		private var _closeBtn:				Btn;
 		public var close:					Signal=new Signal();
+		private var _timeSlider:TimeSlider;
 		
 		
 		public function DemoScreen(){
@@ -59,6 +60,7 @@ package com.screens.view {
 			setClock();
 			
 			
+			
 			if(masked){
 				_mask=new Shape();
 				_mask.graphics.beginFill(0xFFFFFF);
@@ -79,7 +81,7 @@ package com.screens.view {
 				_closeBtn.y=19;
 				_closeBtn.clicked.add(onClose);
 				
-				var nowPlaying:DisplayObject=AssetsManager.getAssetByName("ODE_TO_JOY_nowPlaying.png");
+				var nowPlaying:DisplayObject=AssetsManager.getAssetByName(_model.nowPlaying);
 				_stageLayer.addChild(nowPlaying);
 				nowPlaying.x=29+71;
 				nowPlaying.y=531+19;
@@ -87,13 +89,16 @@ package com.screens.view {
 				var playBtn:Btn = new Btn("pause.png","play.png");
 				_stageLayer.addChild(playBtn);
 				playBtn.x=131+39+nowPlaying.x+nowPlaying.width;
-				playBtn.y=nowPlaying.y+10;
+				playBtn.y=531+19+10;
 				playBtn.clicked.add(onPlay);
 				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_IDLE.png");
 				_stageLayer.addChild(reloader);
 				reloader.x=playBtn.x+playBtn.width;
-				reloader.y=playBtn.y;
-				
+				reloader.y=531+19+10;
+				_timeSlider = new TimeSlider();
+				_stageLayer.addChild(_timeSlider);
+				_timeSlider.x=(Dimentions.WIDTH)/2+_frame.x-_timeSlider.width/2;
+				_timeSlider.y=531+19+40;
 				//var timeBar:DisplayObject=AssetsManager.getAssetByName("");
 			}else{
 				_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
@@ -101,11 +106,11 @@ package com.screens.view {
 		}
 		
 		private function onPlay(str:String):void{
-			if(_timeModel.isPlaying)
+			if(_timeModel.isPlaying){
 				pause();
-			else
+			}else{
 				unPause();
-			trace(str)
+			}
 		}
 		
 		private function onClose(btnid:String):void{
@@ -128,7 +133,11 @@ package com.screens.view {
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
 			stage.frameRate=Rhythms.FRAME_RATE;
-			
+			_timeSlider.setValue(0);
+		}
+		
+		private function setTimeSlider():void{
+			_timeSlider.setValue(_timeModel.currentTick/_model.endAtFrame)
 		}
 		
 		
@@ -140,6 +149,7 @@ package com.screens.view {
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
 				ins.sequanceDone.add(onPlayerDone);
 			}
+			_timeModel.soundTick.add(setTimeSlider);
 		}
 		
 		private function onPlayerDone():void{
@@ -172,6 +182,7 @@ package com.screens.view {
 			pause();
 			Clock.getInstance().reset();
 			Clock.getInstance().visible=false;
+			_timeModel.soundTick.remove(setTimeSlider);
 		}
 		
 		private function pause():void{
@@ -229,4 +240,38 @@ package com.screens.view {
 			trace("rrr")
 		}
 	}
+}
+import com.view.tools.AssetsManager;
+
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+
+class TimeSlider extends Sprite{
+	private var _rightSeg:DisplayObject;
+	private var _bar:DisplayObject;
+	private var _stroke:DisplayObject;
+	public function TimeSlider(){
+		
+		addChild(AssetsManager.getAssetByName("TIMESLIDER_BACKGROUND.png"));
+		//var leftSlider:DisplayObject = addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_RIGHT_SEGMENT.png"));
+		//leftSlider.rotation=180;
+		//leftSlider.y=leftSlider.height+5;
+		_rightSeg=addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_RIGHT_SEGMENT.png"));
+		_bar=addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_SEGMENT.png"));
+		_bar.y=_rightSeg.y=5;
+		_stroke=AssetsManager.getAssetByName("TIMESLIDER_STROKE_upper_layer.png");
+		addChild(_stroke);
+		var msk:DisplayObject=AssetsManager.getAssetByName("TIMESLIDER_BACKGROUND.png");
+		addChild(msk);
+		mask=msk;
+		msk.x=10;
+	}
+	
+	public function setValue(val:Number):void{
+		_bar.width=Math.round(width*val);
+		_rightSeg.x=_bar.width;
+		//_stroke.width=_rightSeg.x+_rightSeg.width;
+	}
+	
+	
 }

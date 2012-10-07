@@ -60,16 +60,19 @@ package com.representation.view {
 			_btn.startDrag(false,new Rectangle(_btn.x,_mask.y-_btn.height/2,0,_mask.height));
 			stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 			addEventListener(Event.ENTER_FRAME,onEnterFrame);
+			_shadow.visible=false;
 		}
 		
 		private function onEnterFrame(e:Event):void{
-			setValue((_btn.y-(_mask.y-_btn.height/2))/_mask.height);
+			_value=(_btn.y-(_mask.y-_btn.height/2))/_mask.height;
+			_blueSlider.y=_mask.y-(_blueSlider.height*1/2)+((_value)*_mask.height);
 		}
 		
 		private function onMouseUp(e:MouseEvent):void{
 			removeEventListener(Event.ENTER_FRAME,onEnterFrame);
 			stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 			_btn.stopDrag();
+			setValue((_btn.y-(_mask.y-_btn.height/2))/_mask.height);
 		}
 		
 	}

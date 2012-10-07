@@ -161,6 +161,10 @@ package com.view.tools
 			"<image path='assets/DEMO_SCREEN/play.png' />"+
 			"<image path='assets/DEMO_SCREEN/RELOAD_IDLE.png' />"+
 			"<image path='assets/DEMO_SCREEN/RELOAD_PRESSED.png' />"+
+			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_BACKGROUND.png' />"+
+			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_BLUE_RIGHT_SEGMENT.png' />"+
+			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_BLUE_SEGMENT.png' />"+
+			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_STROKE_upper_layer.png' />"+
 			
 			
 			//HAT
