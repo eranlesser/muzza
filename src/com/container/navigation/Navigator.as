@@ -65,9 +65,9 @@ class BreadCrumbs extends Sprite{
 		addButton(drumIcon);
 		addButton(bassIcon);
 		addButton(allIcon);
-		drumIcon.x=bottleIcon.x+bottleIcon.width+2;
-		bassIcon.x=drumIcon.x+drumIcon.width+2;
-		allIcon.x=bassIcon.x+bassIcon.width+2;
+		drumIcon.x=bottleIcon.x+bottleIcon.width;
+		bassIcon.x=drumIcon.x+drumIcon.width;
+		allIcon.x=bassIcon.x+bassIcon.width;
 		_icons[_index].state="idle";
 	}
 	

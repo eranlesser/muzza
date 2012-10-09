@@ -7,6 +7,7 @@ package com.screens.view {
 	import com.screens.model.PlayScreenModel;
 	import com.screens.view.components.Clock;
 	import com.view.gui.Btn;
+	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
@@ -29,6 +30,7 @@ package com.screens.view {
 		private var _mask:					Shape;
 		private var _frame:					DisplayObject;
 		private var _closeBtn:				Btn;
+		private var _playPauseBtn:			ToggleBut;
 		public var close:					Signal=new Signal();
 		private var _timeSlider:TimeSlider;
 		
@@ -86,15 +88,16 @@ package com.screens.view {
 				nowPlaying.x=29+71;
 				nowPlaying.y=531+19;
 				
-				var playBtn:Btn = new Btn("pause.png","play.png");
-				_stageLayer.addChild(playBtn);
-				playBtn.x=131+39+nowPlaying.x+nowPlaying.width;
-				playBtn.y=531+19+10;
-				playBtn.clicked.add(onPlay);
-				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_IDLE.png");
+				_playPauseBtn = new ToggleBut("pause.png","play.png");
+				_stageLayer.addChild(_playPauseBtn);
+				_playPauseBtn.x=131+39+nowPlaying.x+nowPlaying.width;
+				_playPauseBtn.y=531+19+10;
+				_playPauseBtn.clicked.add(onPlay);
+				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_PRESSED.png");
 				_stageLayer.addChild(reloader);
-				reloader.x=playBtn.x+playBtn.width;
+				reloader.x=_playPauseBtn.x+_playPauseBtn.width;
 				reloader.y=531+19+10;
+				reloader.clicked.add(reload);
 				_timeSlider = new TimeSlider();
 				_stageLayer.addChild(_timeSlider);
 				_timeSlider.x=(Dimentions.WIDTH)/2+_frame.x-_timeSlider.width/2;
@@ -105,12 +108,18 @@ package com.screens.view {
 			}
 		}
 		
-		private function onPlay(str:String):void{
+		private function onPlay(indx:uint):void{
 			if(_timeModel.isPlaying){
 				pause();
 			}else{
 				unPause();
 			}
+		}
+		
+		private function reload(str:String):void{
+			_timeControll.stop();
+			_timeSlider.setValue(0);
+			_playPauseBtn.state=1;
 		}
 		
 		private function onClose(btnid:String):void{
@@ -153,6 +162,7 @@ package com.screens.view {
 			}
 			if(_timeSlider){
 				_timeModel.soundTick.add(setTimeSlider);
+				_playPauseBtn.state=0;
 			}
 		}
 		
@@ -193,7 +203,7 @@ package com.screens.view {
 		
 		private function pause():void{
 			
-			_timeControll.stop(); 
+			_timeControll.pause();
 			Clock.getInstance().stop();
 		}
 		
