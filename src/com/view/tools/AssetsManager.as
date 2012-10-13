@@ -26,6 +26,10 @@ package com.view.tools
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
 			"<image path='assets/open/MOZART_PICTURE.png' />"+
 			"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
+			"<image path='assets/open/OVER_THE_RAINBOW.png' />"+
+			"<image path='assets/open/OVER_THE_RAINBOW_pic.png' />"+
+			"<image path='assets/open/BRAZIL_PICTURE.png' />"+
+			"<image path='assets/open/WATERCOLORS_of_BRAZIL.png' />"+
 			"<image path='assets/gui/menu/blank.png' />"+
 			"<image path='assets/open/EDVARD_GRIEG.png' />"+
 			"<image path='assets/open/NEXT_IDLE.png' />"+
@@ -150,13 +154,15 @@ package com.view.tools
 			"<image path='assets/tutorial/create3.jpg' />"+
 			"<image path='assets/tutorial/create4.jpg' />"+
 			//DEMOSCREEN
+			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/WATERCOLORS_of_BRAZIL_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/DEMO_SCREEN_FRAME.png' />"+
 			"<image path='assets/DEMO_SCREEN/CLOSE_BUTTON_IDLE.png' />"+
 			"<image path='assets/DEMO_SCREEN/CLOSE_BUTTON_SELECTED.png' />"+
-			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/lines.png' />"+
-			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
-			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/pause.png' />"+
 			"<image path='assets/DEMO_SCREEN/play.png' />"+
 			"<image path='assets/DEMO_SCREEN/RELOAD_IDLE.png' />"+

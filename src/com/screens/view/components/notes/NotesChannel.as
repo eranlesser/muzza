@@ -1,5 +1,6 @@
 package com.screens.view.components.notes
 {
+	import com.gskinner.motion.easing.Sine;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
@@ -11,13 +12,15 @@ package com.screens.view.components.notes
 	import flash.display.Sprite;
 	import flash.geom.Rectangle;
 	
+	import org.osflash.signals.Signal;
+	
 	public class NotesChannel extends Sprite implements INotesChannel
 	{
 		private var _instrumentModel:	CoreInstrumentModel;
 		private var _notes:				Vector.<BigNote>;
 		private var _notesContainer:	Sprite;
 		private var _notesMask:			Shape;
-		
+		public var moved:Signal=new Signal();
 		
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle){
@@ -27,7 +30,8 @@ package com.screens.view.components.notes
 		}
 		
 		public function setX(xx:int):void{
-			_notesContainer.x=xx-_notesMask.width/2-130;
+			_notesContainer.x=xx//-_notesMask.width/2;
+			moved.dispatch(_notesContainer.x);
 		}
 		
 		public function clearNotes():void{

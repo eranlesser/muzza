@@ -4,7 +4,7 @@ package com.model.rawData.brazil
 public class BrazilData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='22'>
+<theme id='recycle' rhythm='16'>
 <instruments>
 {Drum.data}
 {Bass.data}
@@ -12,7 +12,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99" nowPlaying="WATERCOLORS_of_BRAZIL_nowPlaying.png">
 <backGroundSound id="0" source="brazil/drums/quika.mp3" />
 <instrument type="drum.png" >
 	<layout id="0" x='50' y='140' rotation="0" />

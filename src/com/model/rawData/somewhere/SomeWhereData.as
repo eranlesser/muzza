@@ -1,13 +1,10 @@
-package com.model.rawData.edvard
+package com.model.rawData.somewhere
 {
-	
-public class EdvardData
+
+public class SomeWhereData
 {
-public function EdvardData()
-{
-}
 public static var data:XML = 
-<theme id='recycle' rhythm='28'>
+<theme id='recycle' rhythm='22'>
 <instruments>
 {Drum.data}
 {Bass.data}
@@ -15,8 +12,8 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99"  endAtFrame="512" nowPlaying="MOUTAIN_KING_nowPlaying.png">
-<instrument type="drum.png" >
+<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="512" playSequance="99" nowPlaying="OVER_THE_RAINBOW_nowPlaying.png">
+	<instrument type="drum.png" >
 	<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>
 	<instrument type='bass_flash.jpg' >
@@ -29,19 +26,19 @@ public static var data:XML =
 
 <studioScreen>
 	<instrument type='bass_flash.jpg'>
-	<layout id="0" x="325" y="560" rotation="0" />
-	<layout id="1" x="880" y="0" rotation="-90" />
-	<layout id="2" x="880" y="0" rotation="-90" />
+	<layout id="0" x="-7" y="560" rotation="0" />
+	<layout id="1" x="-7" y="568" rotation="0" />
+	<layout id="2" x="-7" y="568" rotation="0" />
 	</instrument>
 	<instrument type="drum.png">
-	<layout id="0" x="12" y="240" rotation="0"/>
-	<layout id="1" x="320" y="200" rotation="90"/>
-	<layout id="2" x="320" y="5" rotation="180"/>
+	<layout id="0" x="12" y="130" rotation="0"/>
+	<layout id="1" x="320" y="190" rotation="90"/>
+	<layout id="2" x="620" y="130" />
 	</instrument>
 	<instrument type='bottles.png' >
-	<layout id="0" x="320" y="80" rotation="0"/>
-	<layout id="1" x="5" y="2"  rotation="90"/>
-	<layout id="2" x="5" y="2" rotation="90"/>
+	<layout id="0" x="320" y="40" rotation="0"/>
+	<layout id="1" x="160" y="2"  rotation="180"/>
+	<layout id="2" x="-12" y="-10" rotation="140"/>
 	</instrument>
 </studioScreen>
 
@@ -83,6 +80,5 @@ public static var data:XML =
 </recordSession>
 </screens>
 </theme>
-		
 	}
 }

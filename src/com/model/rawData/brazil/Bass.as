@@ -25,6 +25,9 @@ public static var data:XML =
 		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='360' y='0' >
 			<tap noteId="4" />
 		</bass>
+		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='360' y='0' >
+			<tap noteId="5" />
+		</bass>
 		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='480' y='0'  >
 			<tap noteId="6" />
 		</bass>
@@ -47,7 +50,78 @@ public static var data:XML =
 <gestures>
 </gestures>
 <sequances>
+<sequance id="1">
+	<note id="4" location="1" soundLength="1"/>
+	<note id="1" location="5" soundLength="1"/>
+	<note id="4" location="9" soundLength="1"/>
+	<note id="1" location="13" soundLength="1"/>
+</sequance>
+<sequance id="2">
+	<note id="5" location="1" soundLength="1"/>
+	<note id="2" location="5" soundLength="1"/>
+	<note id="5" location="9" soundLength="1"/>
+	<note id="2" location="13" soundLength="1"/>
+</sequance>
+<sequance id="3">
+	<note id="1" location="1" soundLength="1"/>
+	<note id="5" location="5" soundLength="1"/>
+	<note id="1" location="9" soundLength="1"/>
+	<note id="5" location="13" soundLength="1"/>
+</sequance>
+<sequance id="4">
+	<note id="1" location="1" soundLength="1"/>
+	<note id="5" location="5" soundLength="1"/>
+	<note id="1" location="9" soundLength="1"/>
+	<note id="3" location="13" soundLength="1"/>
+</sequance>
+<sequance id="5">
+	<note id="5" location="1" soundLength="1"/>
+	<note id="2" location="5" soundLength="1"/>
+	<note id="1" location="9" soundLength="1"/>
+	<note id="5" location="13" soundLength="1"/>
+</sequance>
+<sequance id="6">
+	<note id="4" location="1" soundLength="1"/>
+	<note id="1" location="5" soundLength="1"/>
+	<note id="4" location="9" soundLength="1"/>
+	<note id="1" location="27" soundLength="1"/>
+	<note id="6" location="13" soundLength="1"/>
+</sequance>
+<sequance id="7">
+	<note id="1" location="1" soundLength="1"/>
+	<note id="5" location="5" soundLength="1"/>
+	<note id="1" location="9" soundLength="1"/>
+	<note id="5" location="11" soundLength="1"/>
+	<note id="6" location="13" soundLength="1"/>
+</sequance>
+<sequance id="8">
+	<note id="4" location="1" soundLength="1"/>
+	<note id="1" location="5" soundLength="1"/>
+	<note id="4" location="9" soundLength="1"/>
+	<note id="1" location="11" soundLength="1"/>
+	<note id="4" location="13" soundLength="1"/>
+</sequance>
 <sequance id="99">
+	<subSequance id="1" location="0" />
+	<subSequance id="1" location="16" />
+	<subSequance id="1" location="32" />
+	<subSequance id="1" location="48" />
+	<subSequance id="2" location="64" />
+	<subSequance id="3" location="80" />
+	<subSequance id="3" location="96" />
+	<subSequance id="4" location="112" />
+	<subSequance id="1" location="128" />
+	<subSequance id="5" location="144" />
+	<subSequance id="1" location="160" />
+	<subSequance id="6" location="176" />
+	<subSequance id="2" location="192" />
+	<subSequance id="7" location="208" />
+	<subSequance id="3" location="224" />
+	<subSequance id="4" location="240" />
+	<subSequance id="8" location="256" />
+	<subSequance id="5" location="272" />
+	<subSequance id="1" location="286" />
+	<subSequance id="1" location="302" />
 </sequance>
 </sequances>
 </bass>
