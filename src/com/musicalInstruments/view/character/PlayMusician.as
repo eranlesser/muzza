@@ -41,12 +41,12 @@ package com.musicalInstruments.view.character {
 		
 		private function initView():void{
 			if(!_musicianView){
-				if(_model.coreModel.type == "bottles" ||_model.coreModel.type == "drums" || _model.coreModel.type == "bass"){
+				//if(_model.coreModel.type == "bottles" ||_model.coreModel.type == "drums" || _model.coreModel.type == "bass"){
 					//_musicianView = Band.instance.getMusician(_model.coreModel);
 					_musicianView=new Musician(_model.coreModel);
-				}else if(_model.coreModel.type == "voice"){
+				//}else if(_model.coreModel.type == "voice"){
 					//_musicianView = new Singer(_model,false);
-				}
+				//}
 			}
 			_musicianView.start();
 			addChild(_musicianView);
@@ -68,9 +68,6 @@ package com.musicalInstruments.view.character {
 		}
 		
 		
-		public function get bubble():SpeechBubble{
-			return Musician(_musicianView).bubble;
-		}
 		
 		public function play(playSequance:uint,beginAtFrame:uint,volume:Number=1):Boolean{
 			//playSequance = _model.getSequanceAtCycle(currentCycle);

@@ -51,6 +51,7 @@ package com.screens.view {
 			for each(var instrumentModel:InstrumentModel in _model.instruments){
 				_instruments.push(addInstrument(instrumentModel));
 			}
+			
 			layout();
 			isInited = true;
 			//////
@@ -221,6 +222,7 @@ package com.screens.view {
 				ins.x = ins.getX();
 				ins.y = ins.getY();
 			}
+			
 		}
 		
 		protected function addInstrument(insModel:InstrumentModel):PlayMusician{

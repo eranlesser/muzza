@@ -38,7 +38,7 @@ package com.studio
 				(_musicalView as TapInstrument).octaveSelector.enabled=true;
 			}
 			_instrumentModel=model;
-			_musicalView.reLayout()
+			(_musicalView as TapInstrument).reLayout()
 			addChild(_musicalView as Sprite);
 			_cover = new Sprite();
 			_cover.graphics.lineStyle(1,0,0.5);

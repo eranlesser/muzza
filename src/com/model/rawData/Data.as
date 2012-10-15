@@ -31,6 +31,7 @@ package com.model.rawData
 				<character spriteSheet="bassSheet.png" positionsLength="8" width="250" height="350" />
 				<character spriteSheet="bottlesSheet.png" positionsLength="9" width="440" height="460" />
 				<character spriteSheet="drumsSheet.png" positionsLength="4" width="410" height="350" />
+				<character spriteSheet="quika.png" positionsLength="12" width="40" height="40" />
 			</musicians>
 			
 			</data>

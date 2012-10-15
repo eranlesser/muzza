@@ -137,22 +137,11 @@ package com.view.tools
 			"<image path='assets/band/drums_new/drumsEyes.png' />"+
 			"<image path='assets/band/bottles_new/bottlesSheet.png' />"+
 			"<image path='assets/band/bottles_new/bottlesEyes.png' />"+
-			"<image path='assets/band/singer/singer.png' />"+
-			"<image path='assets/band/singer/eyesSinger.png' />"+
-			"<image path='assets/band/singer/mouth.png' />"+
-			"<image path='assets/band/singeret/singeret.png' />"+
-			"<image path='assets/band/singeret/eyesSingeret.png' />"+
-			"<image path='assets/band/singeret/mouthSingeret.png' />"+
 			
 			"<image path='assets/band/bass/bassSheet.png' />"+
 			"<image path='assets/band/bass/bassBlink.png' />"+
-			"<image path='assets/band/Bubble_talk.png' />"+
+			"<image path='assets/band/bg/quika.png' />"+
 			"<image path='assets/metronome.png' />"+
-			//TUTORIAL
-			"<image path='assets/tutorial/create1.jpg' />"+
-			"<image path='assets/tutorial/create2.jpg' />"+
-			"<image path='assets/tutorial/create3.jpg' />"+
-			"<image path='assets/tutorial/create4.jpg' />"+
 			//DEMOSCREEN
 			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
@@ -291,8 +280,6 @@ package com.view.tools
 			"<image path='assets/instruments/BASS/BASS_7_SELECTED.png' />"+
 			"<image path='assets/instruments/BASS/BASS_8_IDLE.png' />"+
 			"<image path='assets/instruments/BASS/BASS_8_SELECTED.png' />"+
-			"<image path='assets/instruments/backgr_solo.jpg' />"+
-			"<image path='assets/instruments/BASS/bass_spot_lights.png' />"+
 			
 		
 			"<image path='assets/instruments/BOTTLES/bottle_1_idle.png' />"+
@@ -326,7 +313,6 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_4_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
 			
-			"<image path='assets/instruments/backgr_solo.jpg' />"+
 			"<image path='assets/lv.png' />"+
 			"</assets>"
 		

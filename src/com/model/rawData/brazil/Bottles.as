@@ -55,7 +55,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="5" soundFile="brazil/bottle/do.mp3" animationIndex='5' value="5" />
 	<note id="6"  soundFile="brazil/bottle/re.mp3" animationIndex='6'  value="6"/>
 	<note id="7" soundFile="brazil/bottle/mi.mp3" animationIndex='7' value="7" />
-<note id="8" soundFile="brazil/bottle/fa.mp3" animationIndex='6' value="8" />
+	<note id="8" soundFile="brazil/bottle/fa.mp3" animationIndex='6' value="8" />
 	<note id="9" soundFile="brazil/bottle/sol.mp3" animationIndex='5' value="9" />
 </notes>
 </octaves>
@@ -64,7 +64,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	
 <sequances>
 <sequance id="1">
-	<note id="1" location="1" soundLength="1"/>
+<note id="1" location="1" soundLength="1"/>
 	<note id="2" location="3" soundLength="1"/>
 	<note id="3" location="5" soundLength="1"/>
 	<note id="2" location="9" soundLength="1"/>
@@ -74,7 +74,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="1" location="15" soundLength="1"/>
 </sequance>
 <sequance id="2">
-	<note id="1" location="1" soundLength="1"/>
+<note id="1" location="1" soundLength="1"/>
 	<note id="2" location="3" soundLength="1"/>
 	<note id="3" location="5" soundLength="1"/>
 	<note id="2" location="9" soundLength="1"/>
@@ -90,9 +90,9 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="9" location="1" soundLength="1"/>
 	<note id="9" location="3" soundLength="1"/>
 	<note id="7" location="5" soundLength="1"/>
-	<note id="7" location="9" soundLength="1"/>
-	<note id="6" location="10" soundLength="1"/>
-	<note id="6" location="12" soundLength="1"/>
+	<note id="7" location="7" soundLength="1"/>
+	<note id="6" location="9" soundLength="1"/>
+	<note id="6" location="11" soundLength="1"/>
 	<note id="5" location="13" soundLength="1"/>
 </sequance>
 <sequance id="5">
@@ -103,7 +103,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="4" location="13" soundLength="1"/>
 </sequance>
 <sequance id="7">
-	<note id="2" location="1" soundLength="1"/>
+	<note id="3" location="1" soundLength="1"/>
 	<note id="1" location="13" soundLength="1"/>
 </sequance>
 <sequance id="8">
@@ -133,9 +133,9 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<subSequance id="7" location="144" />
 	<subSequance id="3" location="160" />
 	<subSequance id="4" location="176" />
-	<subSequance id="3" location="192" />
+	<subSequance id="5" location="192" />
 	<subSequance id="4" location="208" />
-	<subSequance id="3" location="224" />
+	<subSequance id="5" location="224" />
 	<subSequance id="4" location="240" />
 	<subSequance id="6" location="256" />
 	<subSequance id="7" location="272" />

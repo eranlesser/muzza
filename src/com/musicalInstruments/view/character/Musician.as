@@ -21,7 +21,6 @@ package com.musicalInstruments.view.character {
 		private var _model:			NotesInstrumentModel;
 		private var _eyes:			Eyes;
 		private var _sequanceDone:	Signal;
-		private var _speachBubble:	SpeechBubble;
 		private var _done:			Boolean=false;
 		public var notePlayed:		Signal;
 		public var noteStopped:		Signal;
@@ -30,7 +29,6 @@ package com.musicalInstruments.view.character {
 			var animatedModel:NotesInstrumentModel = model as NotesInstrumentModel;
 			//_character = new Character(animatedModel.spriteSheet,animatedModel.notesLength,animatedModel.width,animatedModel.height,animatedModel.bubbleX,animatedModel.bubbleY);
 			_character=Band.instance.getCharacter(animatedModel);
-			addBubble(animatedModel.bubbleX,animatedModel.bubbleY);
 			_player = new NoteSequancePlayer(animatedModel, _character);
 			_player.notePlayed.add(onNotePlayed);
 			_player.noteStopped.add(onNoteStopped);
@@ -55,10 +53,6 @@ package com.musicalInstruments.view.character {
 			return _model.thumbNail;
 		}
 		
-		public function reLayout():void{
-			
-		}
-		
 		private function onNotePlayed(noteId:String):void{
 			notePlayed.dispatch(noteId);
 		}
@@ -70,10 +64,11 @@ package com.musicalInstruments.view.character {
 		private function addEyes():void{
 			if(_model.thumbNail=="bass_flash.jpg"){
 				_eyes = new Eyes(CoreInstrumentModel(_model).eyes,this);
-			}else{
+				addChild(_eyes.view);
+			}else if(CoreInstrumentModel(_model).eyes){
 				_eyes = new Eyes(CoreInstrumentModel(_model).eyes);
+				addChild(_eyes.view);
 			}
-			addChild(_eyes.view);
 		}
 		
 		public function set octave(level:uint):void{
@@ -87,17 +82,8 @@ package com.musicalInstruments.view.character {
 		public function get animationStateChanged():Signal{
 			return _player.animationStateChanged;
 		}
+	
 		
-		public function get bubble():SpeechBubble{
-			return _speachBubble;
-		}
-		private function addBubble(bubbleX:int,bubbleY:int):void{
-			_speachBubble=new SpeechBubble();
-			addChild(_speachBubble);
-			_speachBubble.x=bubbleX;
-			_speachBubble.y=bubbleY;
-			_speachBubble.visible=false;
-		}
 		public function get done():Boolean{
 			return _done;
 		}
@@ -118,7 +104,9 @@ package com.musicalInstruments.view.character {
 		public function stop():void{
 			if(_player){
 				_player.stop();
-				_eyes.stop();
+				if(_eyes){
+					_eyes.stop();
+				}
 			}
 		}
 	}

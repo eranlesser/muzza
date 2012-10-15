@@ -15,8 +15,6 @@ package com.musicalInstruments.model {
 		private var _width:				uint;
 		private var _height:			uint;
 		private var _eyes:				XML;
-		private var _bubbleX:			int;
-		private var _bubbleY:			int;
 		
 		public var ready:Signal = new Signal();
 		protected var _sequances:		Vector.<ISequance>;
@@ -28,10 +26,9 @@ package com.musicalInstruments.model {
 			_spriteSheet = instrument.@spriteSheet;
 			_width = instrument.@width;
 			_height = instrument.@height;
-			
-			_bubbleX=instrument.bubble.@x;
-			_bubbleY=instrument.bubble.@y;
+			try{
 			_eyes = XML(instrument.eyes);
+			}catch(e:Error){}
 			_components = new Vector.<InstrumentComponentModel>();
 			for each(var component:XML in instrument.components.children()){
 				_components.push(new InstrumentComponentModel(component));
@@ -46,12 +43,6 @@ package com.musicalInstruments.model {
 		
 		public function get height():uint{
 			return _height;
-		}
-		public function get bubbleX():int{
-			return _bubbleX;
-		}
-		public function get bubbleY():int{
-			return _bubbleY;
 		}
 		
 		public function get type():String{

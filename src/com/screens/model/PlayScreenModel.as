@@ -12,19 +12,18 @@ package com.screens.model {
 		private var _xml:XML;
 		private var _playSequance:uint;
 		private var _instrumentsModel:ThemeInstrumentsModel;
-		private var _backGraoundSound:String;
-		public var nowPlaying:String;
+		private var _nowPlayingIcon:String;
+		
+		
 		public function PlayScreenModel(xml:XML,instrumentsModel:ThemeInstrumentsModel){
 			super(xml);
 			_xml = xml;
 			_instrumentsModel=instrumentsModel;
-			
 		}
 		
 		private function parse(xml:XML):void{
 			_playSequance=xml.@playSequance;
-			_backGraoundSound=xml.backGroundSound.@source;
-			nowPlaying=xml.@nowPlaying;
+			_nowPlayingIcon=xml.@nowPlaying;
 			_instruments = new Vector.<InstrumentModel>();
 			for each(var instrument:XML in xml.instrument){
 				var insModel:CoreInstrumentModel =_instrumentsModel.getInstrumentByName(instrument.@type);
@@ -45,8 +44,8 @@ package com.screens.model {
 			return _instruments;
 		}
 		
-		public function get backGraoundSound():String{
-			return _backGraoundSound;
+		public function get nowPlaying():String{
+			return _nowPlayingIcon;
 		}
 	}
 }

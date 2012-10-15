@@ -9,19 +9,22 @@ public static var data:XML =
 {Drum.data}
 {Bass.data}
 {Bottles.data}
+{Quika.data}
 </instruments>
 <screens>
 
 <demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99" nowPlaying="WATERCOLORS_of_BRAZIL_nowPlaying.png">
-<backGroundSound id="0" source="brazil/drums/quika.mp3" />
-<instrument type="drum.png" >
-	<layout id="0" x='50' y='140' rotation="0" />
+	<instrument type="drum.png" >
+		<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>
 	<instrument type='bass_flash.jpg' >
-	<layout id="0" x='600' y='100' rotation="0" />
+		<layout id="0" x='600' y='100' rotation="0" />
 	</instrument>
 	<instrument type='bottles.png' >
-	<layout id="0" x='350' y='100'  rotation="0" />
+		<layout id="0" x='350' y='100'  rotation="0" />
+	</instrument>
+	<instrument type='quika' >
+		<layout id="0" x='750' y='300'  rotation="0" />
 	</instrument>
 </demoScreen>
 
