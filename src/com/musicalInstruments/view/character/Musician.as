@@ -9,6 +9,9 @@ package com.musicalInstruments.view.character {
 	import com.musicalInstruments.view.components.SpeechBubble;
 	
 	import flash.display.Sprite;
+	import flash.events.MouseEvent;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
 	
 	import org.osflash.signals.Signal;
 	
@@ -37,11 +40,16 @@ package com.musicalInstruments.view.character {
 			_sequanceDone=new Signal();
 			_model = model as NotesInstrumentModel;
 			addEyes();
+			addText();
 			 start();
 		}
 		
 		public function start():void{
 			addChildAt(_character,0);
+		}
+		
+		private function onClick(e:MouseEvent):void{
+			_player.onClick();
 		}
 		
 		public function get sequanceDone():Signal{
@@ -69,6 +77,18 @@ package com.musicalInstruments.view.character {
 				_eyes = new Eyes(CoreInstrumentModel(_model).eyes);
 				addChild(_eyes.view);
 			}
+		}
+		
+		private function addText():void{
+			if(_model.text==""){
+				return;
+			}
+			var fmt:TextFormat = new TextFormat(null,14);
+			var tField:TextField = new TextField();
+			tField.defaultTextFormat = fmt;
+			this.addChild(tField);
+			tField.text = _model.text;
+			this.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
 		public function set octave(level:uint):void{

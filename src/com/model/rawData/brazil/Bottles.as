@@ -10,7 +10,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="16" end="22" />
 	<blink start="22" end="26" />
 	<blink start="26" end="31" />
-	<blink start="31" end="34" />
 </eyes>							
 <components>
 
@@ -94,9 +93,10 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="6" location="9" soundLength="1"/>
 	<note id="6" location="11" soundLength="1"/>
 	<note id="5" location="13" soundLength="1"/>
+<note id="6" location="15" soundLength="4"/>
 </sequance>
 <sequance id="5">
-	<note id="6" location="1" soundLength="4"/>
+	
 </sequance>
 <sequance id="6">
 	<note id="7" location="1" soundLength="1"/>
@@ -121,27 +121,27 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 </sequance>
 	
 <sequance id="99">
-	<subSequance id="1" location="0" />
-	<subSequance id="2" location="16" />
-	<subSequance id="3" location="32" />
-	<subSequance id="4" location="48" />
-	<subSequance id="5" location="64" />
-	<subSequance id="4" location="80" />
-	<subSequance id="5" location="96" />
-	<subSequance id="4" location="112" />
-	<subSequance id="6" location="128" />
-	<subSequance id="7" location="144" />
-	<subSequance id="3" location="160" />
-	<subSequance id="4" location="176" />
-	<subSequance id="5" location="192" />
-	<subSequance id="4" location="208" />
-	<subSequance id="5" location="224" />
-	<subSequance id="4" location="240" />
-	<subSequance id="6" location="256" />
-	<subSequance id="7" location="272" />
-	<subSequance id="1" location="286" />
-	<subSequance id="8" location="302" />
-	<subSequance id="9" location="318" />
+	<subSequance id="1" location="16" />
+	<subSequance id="2" location="32" />
+	<subSequance id="3" location="48" />
+	<subSequance id="4" location="64" />
+	<subSequance id="5" location="80" />
+	<subSequance id="4" location="96" />
+	<subSequance id="5" location="112" />
+	<subSequance id="4" location="128" />
+	<subSequance id="6" location="144" />
+	<subSequance id="7" location="160" />
+	<subSequance id="3" location="176" />
+	<subSequance id="4" location="192" />
+	<subSequance id="5" location="208" />
+	<subSequance id="4" location="224" />
+	<subSequance id="5" location="240" />
+	<subSequance id="4" location="256" />
+	<subSequance id="6" location="272" />
+	<subSequance id="7" location="286" />
+	<subSequance id="1" location="302" />
+	<subSequance id="8" location="318" />
+	<subSequance id="9" location="334" />
 </sequance>
 </sequances>
 </bottles>

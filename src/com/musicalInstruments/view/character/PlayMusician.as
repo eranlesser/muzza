@@ -27,8 +27,8 @@ package com.musicalInstruments.view.character {
 		public function PlayMusician(themedInstrumentModel:InstrumentModel){
 			//super(themedInstrumentModel.coreModel);
 			_model = themedInstrumentModel;
-			this.mouseChildren = false;
-			this.mouseEnabled = false;  // clic on clock (metronom on/off)
+			//this.mouseChildren = false;
+			//this.mouseEnabled = false;  // clic on clock (metronom on/off)
 		}
 		
 		public function get type():String{

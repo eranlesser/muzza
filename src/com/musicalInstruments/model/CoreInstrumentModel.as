@@ -15,6 +15,7 @@ package com.musicalInstruments.model {
 		private var _width:				uint;
 		private var _height:			uint;
 		private var _eyes:				XML;
+		private var _text:String;
 		
 		public var ready:Signal = new Signal();
 		protected var _sequances:		Vector.<ISequance>;
@@ -29,6 +30,9 @@ package com.musicalInstruments.model {
 			try{
 			_eyes = XML(instrument.eyes);
 			}catch(e:Error){}
+			
+			_text=instrument.text;
+			
 			_components = new Vector.<InstrumentComponentModel>();
 			for each(var component:XML in instrument.components.children()){
 				_components.push(new InstrumentComponentModel(component));
@@ -64,6 +68,9 @@ package com.musicalInstruments.model {
 			return _eyes;
 		}
 		
+		public function get text():String{
+			return _text;
+		}
 		
 		public function getSequanceById(id:uint):ISequance{
 			var sm:ISequance;

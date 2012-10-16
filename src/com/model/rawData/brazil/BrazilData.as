@@ -10,6 +10,8 @@ public static var data:XML =
 {Bass.data}
 {Bottles.data}
 {Quika.data}
+{Ganza.data}
+{Agogo.data}
 </instruments>
 <screens>
 
@@ -24,7 +26,13 @@ public static var data:XML =
 		<layout id="0" x='350' y='100'  rotation="0" />
 	</instrument>
 	<instrument type='quika' >
-		<layout id="0" x='750' y='300'  rotation="0" />
+		<layout id="0" x='900' y='200'  rotation="0" />
+	</instrument>
+	<instrument type='ganza' >
+		<layout id="0" x='900' y='250'  rotation="0" />
+	</instrument>
+	<instrument type='agogo' >
+		<layout id="0" x='900' y='300'  rotation="0" />
 	</instrument>
 </demoScreen>
 

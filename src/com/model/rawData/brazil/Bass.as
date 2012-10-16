@@ -102,26 +102,26 @@ public static var data:XML =
 	<note id="4" location="13" soundLength="1"/>
 </sequance>
 <sequance id="99">
-	<subSequance id="1" location="0" />
 	<subSequance id="1" location="16" />
 	<subSequance id="1" location="32" />
 	<subSequance id="1" location="48" />
-	<subSequance id="2" location="64" />
-	<subSequance id="3" location="80" />
+	<subSequance id="1" location="64" />
+	<subSequance id="2" location="80" />
 	<subSequance id="3" location="96" />
-	<subSequance id="4" location="112" />
-	<subSequance id="1" location="128" />
-	<subSequance id="5" location="144" />
-	<subSequance id="1" location="160" />
-	<subSequance id="6" location="176" />
-	<subSequance id="2" location="192" />
-	<subSequance id="7" location="208" />
-	<subSequance id="3" location="224" />
-	<subSequance id="4" location="240" />
-	<subSequance id="8" location="256" />
-	<subSequance id="5" location="272" />
-	<subSequance id="1" location="286" />
+	<subSequance id="3" location="112" />
+	<subSequance id="4" location="128" />
+	<subSequance id="1" location="144" />
+	<subSequance id="5" location="160" />
+	<subSequance id="1" location="176" />
+	<subSequance id="6" location="192" />
+	<subSequance id="2" location="208" />
+	<subSequance id="7" location="224" />
+	<subSequance id="3" location="240" />
+	<subSequance id="4" location="256" />
+	<subSequance id="8" location="272" />
+	<subSequance id="5" location="286" />
 	<subSequance id="1" location="302" />
+	<subSequance id="1" location="318" />
 </sequance>
 </sequances>
 </bass>

@@ -141,6 +141,8 @@ package com.view.tools
 			"<image path='assets/band/bass/bassSheet.png' />"+
 			"<image path='assets/band/bass/bassBlink.png' />"+
 			"<image path='assets/band/bg/quika.png' />"+
+			"<image path='assets/band/bg/ganza.png' />"+
+			"<image path='assets/band/bg/agogo.png' />"+
 			"<image path='assets/metronome.png' />"+
 			//DEMOSCREEN
 			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+

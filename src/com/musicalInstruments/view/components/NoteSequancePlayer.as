@@ -48,6 +48,15 @@ package com.musicalInstruments.view.components {
 			_isPlaying = true;
 		}
 		
+		public function onClick():void{
+			if(_isPlaying){
+				_timeModel.soundTick.remove(onMetronomeTick);
+			}else{
+				_timeModel.soundTick.add(onMetronomeTick);
+			}
+			_isPlaying=!_isPlaying;
+		}
+		
 		public function get isAnimating():Boolean{
 			return _isAnimating;
 		}
