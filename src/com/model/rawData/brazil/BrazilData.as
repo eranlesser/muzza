@@ -4,7 +4,7 @@ package com.model.rawData.brazil
 public class BrazilData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='16'>
+<theme id='recycle' rhythm='14'>
 <instruments>
 {Drum.data}
 {Bass.data}

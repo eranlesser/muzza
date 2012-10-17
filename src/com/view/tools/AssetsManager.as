@@ -17,7 +17,7 @@ package com.view.tools
 		
 		private var _assets:XML = new XML(
 			"<assets>" +
-			"<image path='assets/crLogo.png' />"+
+			"<image path='assets/clamas.png' />"+
 			//OPEN
 			"<image path='assets/open/WAGON_TRAIN.png' />"+
 			"<image path='assets/open/STATION_WALL_TRIP.png' />"+
@@ -336,11 +336,15 @@ package com.view.tools
 			}
 		}
 		
-		public static function getAssetByName(name:String):DisplayObject{
+		public static function getAssetByName(name:String,smooth:Boolean=false):DisplayObject{
 			var displayObj:DisplayObject;
 			for each(var obj:Asset in _loadedAssets){
 				if(obj.name == name){
 					displayObj  = new Bitmap(Bitmap(obj.image).bitmapData.clone());//clone
+					if(smooth){
+						(displayObj as Bitmap).cacheAsBitmap=true;
+						(displayObj as Bitmap).smoothing=true;
+					}
 					break;	
 				}
 			}

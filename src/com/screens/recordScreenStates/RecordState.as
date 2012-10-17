@@ -34,11 +34,11 @@ package com.screens.recordScreenStates
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
 			if(_context.recordChannelController.score>0.75){
-				_context.bubble.setText("Good Stuff!!",true)
+				//_context.bubble.setText("Good Stuff!!",true)
 			}else if(_context.recordChannelController.score>0){
-				_context.bubble.setText("Not bad, give it another try.",true)
+				//_context.bubble.setText("Not bad, give it another try.",true)
 			}else{
-				_context.bubble.setText("Practice some more",true)
+				//_context.bubble.setText("Practice some more",true)
 			}
 			_context.instrumentRecorder.notePlayed.remove(record);
 			_timeModel.tickSignal.remove(onTimerTick);
@@ -62,7 +62,6 @@ package com.screens.recordScreenStates
 		}
 		
 		public function activate():void{
-			_context.bubble.visible=false;
 			_context.recordButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.addOnce(record);
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);

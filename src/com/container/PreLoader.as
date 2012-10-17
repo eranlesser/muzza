@@ -31,7 +31,7 @@ package com.container
 		}
 		
 		private function init():void{
-			var logo:DisplayObject = AssetsManager.getAssetByName("crLogo.png")
+			var logo:DisplayObject = AssetsManager.getAssetByName("clamas.png")
 			addChild(logo);
 			logo.x=(Dimentions.WIDTH-logo.width)/2
 			logo.y=(Dimentions.HEIGHT-logo.height)/2

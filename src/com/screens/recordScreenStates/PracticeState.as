@@ -61,7 +61,6 @@ package com.screens.recordScreenStates
 			_context.speed=Rhythms.RECORD_SPEED;
 			_context.practiceButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.addOnce(onInstrumentPlayed);
-			_context.bubble.setText("Look up!",false)
 			_totalAnswerTime=0;
 			_ofBeatNotes=0;
 			_correctAnswers=0;
@@ -80,9 +79,9 @@ package com.screens.recordScreenStates
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
 			if(_timeModel.currentTick>100){
 			if(_wrongAnswers<3&&_totalAnswerTime<50&&(_ofBeatNotes-_correctAnswers)<3){
-				_context.bubble.setText("You're ready to record!",true)
+				//_context.bubble.setText("You're ready to record!",true)
 			}else{
-				_context.bubble.setText("Practice some more",true)
+				//_context.bubble.setText("Practice some more",true)
 			}
 			}
 			
@@ -176,20 +175,20 @@ package com.screens.recordScreenStates
 			_context.unPauseTimer();
 			if(_correctAnswerTime<=1){
 				if(Math.random()>0.5){
-					_context.bubble.setText("excellent!",false)
+					//_context.bubble.setText("excellent!",false)
 				}else{
-					_context.bubble.setText("Amazing!",false)
+					//_context.bubble.setText("Amazing!",false)
 				}
 			}else if(_correctAnswerTime<2){
-				_context.bubble.setText("all right!",false)
+				//_context.bubble.setText("all right!",false)
 			}
 			else if(_correctAnswerTime<3){
-				_context.bubble.setText("ok!",false)
+				//_context.bubble.setText("ok!",false)
 			}else if(_goodAnsersInARow>6){
 				if(Math.random()>0.5){
-					_context.bubble.setText("Keep it up!",false);
+					//_context.bubble.setText("Keep it up!",false);
 				}else if(Math.random()>0.5){
-					_context.bubble.setText("You're good!",false);
+					//_context.bubble.setText("You're good!",false);
 				}
 				_goodAnsersInARow=0;
 			}
@@ -200,11 +199,11 @@ package com.screens.recordScreenStates
 			_goodAnsersInARow=0;
 			if(_wrongAnswers/3==Math.round(_wrongAnswers/3)){
 				if(Math.random()>0.7){
-					_context.bubble.setText("Pay attention to the numbers above",false);
+					//_context.bubble.setText("Pay attention to the numbers above",false);
 				}else if(Math.random()>0.3){
-					_context.bubble.setText("Ouuch! !",false);
+					//_context.bubble.setText("Ouuch! !",false);
 				}else{
-					_context.bubble.setText("Look Up",false);
+					//_context.bubble.setText("Look Up",false);
 				}
 			}
 		}

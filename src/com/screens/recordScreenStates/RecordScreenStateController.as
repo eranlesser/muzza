@@ -2,13 +2,12 @@ package com.screens.recordScreenStates
 {
 	import com.constants.Rhythms;
 	import com.constants.States;
-	import com.musicalInstruments.view.components.SpeechBubble;
 	import com.musicalInstruments.view.instrument.Instrument;
-	import com.screens.view.components.notes.INotesChannel;
-	import com.screens.view.components.notes.Notes;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.RecordScreen;
+	import com.screens.view.components.notes.INotesChannel;
+	import com.screens.view.components.notes.Notes;
 	import com.view.gui.Btn;
 
 	public class RecordScreenStateController
@@ -95,9 +94,6 @@ package com.screens.recordScreenStates
 		// QUERIES
 		// ------------------------------------------------
 		
-		public function get bubble():SpeechBubble{
-			return new SpeechBubble();
-		}
 		
 		public function get instrumentRecorder():Instrument{
 			return _recordScreen.recorder;

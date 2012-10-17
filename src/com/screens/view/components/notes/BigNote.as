@@ -13,8 +13,8 @@ package com.screens.view.components.notes
 		private var _value:uint;
 		
 		public function BigNote(noteValue:uint,channelType:String,loc:uint,channel:String,isFlatOrSharp:String=""){
-			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png");
-			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png");
+			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
+			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png",true);
 			_location=loc;
 			_value=noteValue;
 			init();

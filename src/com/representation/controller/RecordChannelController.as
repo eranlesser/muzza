@@ -69,11 +69,11 @@ package com.representation.controller {
 		}
 		
 		public function start():void{
-			_model.tickSignal.add(onTick);
+			_model.metronomeTick.add(onTick);
 		}
 		
 		public function stop():void{
-			_model.tickSignal.remove(onTick);
+			_model.metronomeTick.remove(onTick);
 			_channelView.setX(-((RepresentationSizes.notesArea)/64))//+RepresentationSizes.notesArea/2);
 		}
 		

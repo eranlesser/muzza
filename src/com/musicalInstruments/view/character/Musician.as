@@ -6,7 +6,6 @@ package com.musicalInstruments.view.character {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IMusicalView;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
-	import com.musicalInstruments.view.components.SpeechBubble;
 	
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;

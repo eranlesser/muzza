@@ -1,13 +1,7 @@
 package com.musicalInstruments.view.character {
 	import com.musicalInstruments.model.InstrumentModel;
-	import com.musicalInstruments.view.IMusicalView;
-	import com.musicalInstruments.view.components.SpeechBubble;
-	import com.musicalInstruments.view.instrument.TapInstrument;
-	import com.studio.StudioInstrument;
 	
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
 	
 	import org.osflash.signals.Signal;
 
