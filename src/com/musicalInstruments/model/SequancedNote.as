@@ -4,12 +4,12 @@ package com.musicalInstruments.model
 
 	public class SequancedNote
 	{
-		private var _noteId:uint;
+		private var _noteId:String;
 		private var _location:uint;
 		private var _endLocation:uint;
 		private var _soundLength:uint;
 		private var _octave:uint;
-		public function SequancedNote(noteId:uint,location:uint,soundLength:uint,octave:uint){
+		public function SequancedNote(noteId:String,location:uint,soundLength:uint,octave:uint){
 			_noteId = noteId;
 			_location = location;
 			_soundLength = soundLength;
@@ -20,7 +20,7 @@ package com.musicalInstruments.model
 			return _octave;
 		}
 		
-		public function get noteId():uint{
+		public function get noteId():String{
 			return _noteId;
 		}
 		

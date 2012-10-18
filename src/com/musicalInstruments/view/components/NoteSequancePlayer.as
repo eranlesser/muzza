@@ -68,8 +68,7 @@ package com.musicalInstruments.view.components {
 		public function  stop():void{
 			_timeModel.soundTick.remove(onMetronomeTick);
 			_isPlaying = false;
-			//if(_character){
-			_character.animateTo(0,0);
+			_character.animateTo(0,"");
 			_isAnimating=false;
 			animationStateChanged.dispatch();
 			if(_playingNote){
@@ -78,7 +77,7 @@ package com.musicalInstruments.view.components {
 			//}
 		}
 		
-		private function animateTo(indx:uint,id:uint):void{
+		private function animateTo(indx:uint,id:String):void{
 			//if(!_character){
 			//	return;
 			//}
@@ -97,7 +96,7 @@ package com.musicalInstruments.view.components {
 				if(_playingNote&&_playingNote.endLoction == _timeModel.currentTick){
 					var notePlayingModel:NoteModel = _noteFetcher.getNoteById(_playingNote.noteId);
 					notePlayingModel.player.stop();
-					animateTo(0,0)
+					animateTo(0,"");
 					if(_playingNote){
 						noteStopped.dispatch(_playingNote.noteId);
 					}

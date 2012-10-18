@@ -42,8 +42,8 @@ package com.musicalInstruments.view.components
 			}
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-			//this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-			//this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 			
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
@@ -91,7 +91,7 @@ package com.musicalInstruments.view.components
 			return _model.clickable;
 		}
 		
-		public function get noteId():uint{
+		public function get noteId():String{
 			return _model.noteId;
 		}
 		

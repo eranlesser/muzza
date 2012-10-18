@@ -4,7 +4,7 @@ package com.musicalInstruments.model.sequances
 
 	public interface INoteFetcher
 	{
-	function getNoteById(noteId:uint):NoteModel;
+	function getNoteById(noteId:String):NoteModel;
 	 function set octave(level:uint):void;
 	}
 }

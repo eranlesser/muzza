@@ -44,7 +44,7 @@ package com.musicalInstruments.view.character
 			return _animationIndex;
 		}
 		
-		public function animateTo(animationIndex:uint,id:uint):void{
+		public function animateTo(animationIndex:uint,id:String):void{
 			removeChildAt(0);
 			addChild(_animationSequance[animationIndex]);
 			_animationIndex = animationIndex;

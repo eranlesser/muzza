@@ -24,7 +24,6 @@ package com.model.rawData.brazil
 			<sequances>
 
 			<sequance id="1">
-<note id="1" location="1" soundLength="1"/>
 <note id="2" location="3" soundLength="1"/>
 <note id="3" location="6" soundLength="1"/>
 <note id="4" location="8" soundLength="1"/>

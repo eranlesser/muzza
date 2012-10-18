@@ -2,6 +2,6 @@ package com.musicalInstruments.view
 {
 	public interface IAnimateable
 	{
-		function animateTo(index:uint,id:uint):void;
+		function animateTo(index:uint,id:String):void;
 	}
 }

@@ -6,7 +6,7 @@ package com.musicalInstruments.model
 
 	public class NoteModel
 	{
-		private var _id:uint;
+		private var _id:String;
 		private var _animationIndex:uint;
 		private var _soundFile:String;
 		private var _representation:String;
@@ -32,7 +32,7 @@ package com.musicalInstruments.model
 		private function onPlayerReady():void{
 			ready.dispatch();
 		}
-		public function get id():uint{
+		public function get id():String{
 			return _id;
 		}
 		

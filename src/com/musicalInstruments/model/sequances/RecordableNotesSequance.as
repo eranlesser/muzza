@@ -30,7 +30,7 @@ package com.musicalInstruments.model.sequances
 		}
 		
 		
-		public function add(noteId:uint,location:uint,soundLength:uint,octave:uint):SequancedNote{
+		public function add(noteId:String,location:uint,soundLength:uint,octave:uint):SequancedNote{
 			var note:SequancedNote = new SequancedNote(noteId,location,soundLength,octave);
 			_notes.push(note);
 			_added.dispatch(note);

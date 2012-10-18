@@ -106,11 +106,11 @@ package com.representation {
 		
 		public function start():void{
 			//_cue.x = tickSize+RepresentationSizes.thumbNailWidth-_cue.width/2;
-			_timeModel.tickSignal.add(onTick);
+			_timeModel.metronomeTick.add(onTick);
 		}
 		
 		public function stop():void{
-			_timeModel.tickSignal.remove(onTick);
+			_timeModel.metronomeTick.remove(onTick);
 			_cue.x=52;
 		}
 		

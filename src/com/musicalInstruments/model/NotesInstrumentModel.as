@@ -62,7 +62,7 @@ package com.musicalInstruments.model
 			return _octaves[_currentOctave].length;
 		}
 		
-		public function getNoteById(id:uint):NoteModel{
+		public function getNoteById(id:String):NoteModel{
 			var ntm:NoteModel;
 			for each(var noteModel:NoteModel in _octaves[_currentOctave]){
 				if(noteModel.id == id){

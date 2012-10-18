@@ -7,7 +7,7 @@ package com.musicalInstruments.model
 		public var playImage:String;
 		public var x:int;
 		public var y:int;
-		private var _noteId:uint;
+		private var _noteId:String;
 		private var _noteX:int;
 		private var _noteY:int;
 		private var _noteOntwoFingerTap:String;
@@ -31,7 +31,7 @@ package com.musicalInstruments.model
 			return _clickable;
 		}
 		
-		public function get noteId():uint{
+		public function get noteId():String{
 			return _noteId;
 		}
 		

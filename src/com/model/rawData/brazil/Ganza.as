@@ -36,7 +36,6 @@ package com.model.rawData.brazil
 <note id="5" location="16" soundLength="1"/>
 		</sequance>
 <sequance id="99">
-	<subSequance id="1" location="0" />
 	<subSequance id="1" location="16" />
 	<subSequance id="1" location="32" />
 	<subSequance id="1" location="48" />

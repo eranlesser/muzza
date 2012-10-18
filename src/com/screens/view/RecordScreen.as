@@ -144,11 +144,11 @@ package com.screens.view {
 			}
 		}
 		
-		private function onPlayerNote(noteId:uint):void{
+		private function onPlayerNote(noteId:String):void{
 			_instrumentRecorder.animateNote(noteId,"play");
 		}
 		
-		private function onPlayerUnNote(noteId:uint):void{
+		private function onPlayerUnNote(noteId:String):void{
 			_instrumentRecorder.animateNote(noteId,"idle");
 		}
 		

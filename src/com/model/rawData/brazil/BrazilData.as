@@ -15,7 +15,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99" nowPlaying="WATERCOLORS_of_BRAZIL_nowPlaying.png">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99"  endAtFrame="400" nowPlaying="WATERCOLORS_of_BRAZIL_nowPlaying.png">
 	<instrument type="drum.png" >
 		<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>

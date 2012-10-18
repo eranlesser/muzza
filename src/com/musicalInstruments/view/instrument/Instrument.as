@@ -62,7 +62,7 @@ package com.musicalInstruments.view.instrument {
 			return _noteStopped;
 		}
 		
-		public function animateTo(indx:uint,id:uint):void{
+		public function animateTo(indx:uint,id:String):void{
 			for each(var component:MusicalInstrumentComponent in _musicalComponents){
 				component.state = "idle";
 			}
@@ -79,7 +79,7 @@ package com.musicalInstruments.view.instrument {
 			return _octave;
 		}
 		
-		private function getComponent(id:uint):MusicalInstrumentComponent{
+		private function getComponent(id:String):MusicalInstrumentComponent{
 			for each(var component:MusicalInstrumentComponent in _musicalComponents){
 				if(component.noteId == id){
 					return component;
@@ -111,7 +111,7 @@ package com.musicalInstruments.view.instrument {
 		}
 		
 		
-		public function animateNote(noteId:uint,state:String):void{
+		public function animateNote(noteId:String,state:String):void{
 			getComponentById(noteId).state = state;
 		}
 		
@@ -119,7 +119,7 @@ package com.musicalInstruments.view.instrument {
 		
 	
 		
-		protected function playNote(noteId:uint):void{
+		protected function playNote(noteId:String):void{
 			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
 			note.player.play();
 			animateNote(noteId , "play");
@@ -127,7 +127,7 @@ package com.musicalInstruments.view.instrument {
 			_notePlayed.dispatch(noteId);
 		}
 		
-		private function unPlayNote(noteId:uint):void{
+		private function unPlayNote(noteId:String):void{
 			animateNote( noteId , "idle");
 			//var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
 			//note.player.stop();
@@ -147,7 +147,7 @@ package com.musicalInstruments.view.instrument {
 			_noteStopped.dispatch(noteId,_startTick,soundLength,_octave);
 		}
 		
-		public function getComponentById(id:uint):MusicalInstrumentComponent{
+		public function getComponentById(id:String):MusicalInstrumentComponent{
 			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
 				if(comp.noteId == id){
 					return comp;

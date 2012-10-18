@@ -152,7 +152,7 @@ package com.screens.recordScreenStates
 		}
 		
 		
-		private function onNotePlayed(id:uint):void{
+		private function onNotePlayed(id:String):void{
 			if(!_currentNote){
 				_ofBeatNotes++;
 				return;

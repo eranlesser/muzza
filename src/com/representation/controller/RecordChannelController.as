@@ -86,11 +86,11 @@ package com.representation.controller {
 			return _channelView;
 		}
 		
-		public function add(noteId:uint,noteLength:uint,startLocation:uint,octave:uint):SequancedNote{
+		public function add(noteId:String,noteLength:uint,startLocation:uint,octave:uint):SequancedNote{
 			return _recordedSequance.add(noteId,startLocation,noteLength,octave);
 		}
 		
-		private function noteAdded(noteId:uint,noteLength:uint,startLocation:uint,octave:uint):void{
+		private function noteAdded(noteId:String,noteLength:uint,startLocation:uint,octave:uint):void{
 			var note:SequancedNote = add(noteId,startLocation,noteLength,octave);
 			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
