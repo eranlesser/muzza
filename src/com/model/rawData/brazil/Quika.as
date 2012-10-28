@@ -12,18 +12,18 @@ package com.model.rawData.brazil
 			<text>Quicka</text>
 			<octaves>
 			<notes>
-			<note id="1"   soundFile="brazil/quika/quika1.mp3" animationIndex='0' value="1"  />
-			<note id="2"   soundFile="brazil/quika/quika2.mp3" animationIndex='1' value="2"  />
-			<note id="3"   soundFile="brazil/quika/quika3.mp3" animationIndex='2' value="3"  />
-			<note id="4"   soundFile="brazil/quika/quika4.mp3" animationIndex='3' value="4"  />
-			<note id="5"   soundFile="brazil/quika/quika5.mp3" animationIndex='4' value="5"  />
-			<note id="6"   soundFile="brazil/quika/quika6.mp3" animationIndex='5' value="6"  />
-			<note id="7"   soundFile="brazil/quika/quika7.mp3" animationIndex='6' value="7"  />
-			<note id="8"   soundFile="brazil/quika/quika8.mp3" animationIndex='7' value="8"  />
-			<note id="9"   soundFile="brazil/quika/quika9.mp3" animationIndex='8' value="9"  />
-			<note id="10"   soundFile="brazil/quika/quika10.mp3" animationIndex='9' value="10"  />
-			<note id="11"   soundFile="brazil/quika/quika11.mp3" animationIndex='10' value="11"  />
-			<note id="12"   soundFile="brazil/quika/quika12.mp3" animationIndex='11' value="12"  />
+			<note id="C_1"   soundFile="brazil/quika/quika1.mp3" animationIndex='0' value="1"  />
+			<note id="C_2"   soundFile="brazil/quika/quika2.mp3" animationIndex='1' value="2"  />
+			<note id="C_3"   soundFile="brazil/quika/quika3.mp3" animationIndex='2' value="3"  />
+			<note id="C_4"   soundFile="brazil/quika/quika4.mp3" animationIndex='3' value="4"  />
+			<note id="C_5"   soundFile="brazil/quika/quika5.mp3" animationIndex='4' value="5"  />
+			<note id="C_6"   soundFile="brazil/quika/quika6.mp3" animationIndex='5' value="6"  />
+			<note id="C_7"   soundFile="brazil/quika/quika7.mp3" animationIndex='6' value="7"  />
+			<note id="C_8"   soundFile="brazil/quika/quika8.mp3" animationIndex='7' value="8"  />
+			<note id="C_9"   soundFile="brazil/quika/quika9.mp3" animationIndex='8' value="9"  />
+			<note id="C_10"   soundFile="brazil/quika/quika10.mp3" animationIndex='9' value="10"  />
+			<note id="C_11"   soundFile="brazil/quika/quika11.mp3" animationIndex='10' value="11"  />
+			<note id="C_12"   soundFile="brazil/quika/quika12.mp3" animationIndex='11' value="12"  />
 			</notes>
 			</octaves>
 			<gestures>
@@ -31,18 +31,7 @@ package com.model.rawData.brazil
 			<sequances>
 
 			<sequance id="1">
-<note id="1" location="1" soundLength="1"/>
-<note id="2" location="2" soundLength="1"/>
-<note id="3" location="4" soundLength="1"/>
-<note id="4" location="5" soundLength="1"/>
-<note id="5" location="6" soundLength="1"/>
-<note id="6" location="7" soundLength="1"/>
-<note id="7" location="8" soundLength="1"/>
-<note id="8" location="9" soundLength="1"/>
-<note id="9" location="10" soundLength="1"/>
-<note id="10" location="11" soundLength="1"/>
-<note id="11" location="13" soundLength="1"/>
-<note id="12" location="15" soundLength="1"/>
+<note id="C_1" location="1" soundLength="1"/><note id="C_2" location="2" soundLength="1"/><note id="C_3" location="4" soundLength="1"/><note id="C_4" location="6" soundLength="1"/><note id="C_5" location="7" soundLength="1"/><note id="C_6" location="8" soundLength="1"/><note id="C_7" location="9" soundLength="1"/><note id="C_8" location="10" soundLength="1"/><note id="C_9" location="11" soundLength="1"/><note id="C_10" location="12" soundLength="1"/><note id="C_11" location="13" soundLength="1"/><note id="C_12" location="15" soundLength="1"/>
 		</sequance>
 <sequance id="99">
 	<subSequance id="1" location="0" />

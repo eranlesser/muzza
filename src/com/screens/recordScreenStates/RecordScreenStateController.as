@@ -2,6 +2,7 @@ package com.screens.recordScreenStates
 {
 	import com.constants.Rhythms;
 	import com.constants.States;
+	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
@@ -108,7 +109,7 @@ package com.screens.recordScreenStates
 		
 		public function set speed(value:Number):void{
 			_recordScreen.stage.frameRate=Rhythms.FRAME_RATE*value;
-			trace(">>",Rhythms.FRAME_RATE*value)
+			trace("frame rate is",_recordScreen.stage.frameRate)
 		}
 		
 		
@@ -144,6 +145,10 @@ package com.screens.recordScreenStates
 		
 		public function get notes():Notes{
 			return _recordScreen.notes;
+		}
+		
+		public function get backUps():Vector.<NoteSequancePlayer>{
+			return _recordScreen.backUps;
 		}
 		
 		

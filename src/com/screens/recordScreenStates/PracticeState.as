@@ -134,7 +134,7 @@ package com.screens.recordScreenStates
 				return false;
 			}
 			
-			var curNote:BigNote=getNoteByDistance(20);
+			var curNote:BigNote=getNoteByDistance(4);
 			if(!curNote){return false}
 			
 			if(curNote!=_currentNote){
@@ -148,6 +148,7 @@ package com.screens.recordScreenStates
 				_context.pauseTimer();
 				_correctAnswerTime=0;
 			}
+			_context.instrumentRecorder.marc(_currentNote.id,4-(curNote.location-_timeModel.currentTick));
 			return noteChanged;
 		}
 		
@@ -173,6 +174,7 @@ package com.screens.recordScreenStates
 			_currentNote.state="idle";
 			_currentNoteIndx++;
 			_context.unPauseTimer();
+			_context.instrumentRecorder.marc("",0);
 			if(_correctAnswerTime<=1){
 				if(Math.random()>0.5){
 					//_context.bubble.setText("excellent!",false)

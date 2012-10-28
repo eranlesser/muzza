@@ -17,13 +17,13 @@ package com.screens.model {
 		private var _recordInstrumentY:int;
 		private var _playInstrumentX:int;
 		private var _playInstrumentY:int;
-		private var _bandInsruments:Vector.<InstrumentModel>;
+		private var _backUpInsruments:Vector.<InstrumentModel>;
 		private var _startAtCurPoint:int;
 		
 		public function RecordScreenModel(xml:XML,instruments:ThemeInstrumentsModel){
 			super(xml);
 			_instruments = instruments;
-			_bandInsruments=new Vector.<InstrumentModel>();
+			_backUpInsruments=new Vector.<InstrumentModel>();
 			parse(xml);
 		}
 		
@@ -36,10 +36,10 @@ package com.screens.model {
 			_recordInstrumentY= xml.playerInstrument.RecordedY;
 			_playInstrumentX= xml.playerInstrument.PlayX;
 			_playInstrumentY= xml.playerInstrument.PlayY;
-			for each(var instrument:XML in xml.bandInstrument){
+			for each(var instrument:XML in xml.backups.instrument){
 				var insModel:CoreInstrumentModel =_instruments.getInstrumentByName(instrument.@type);
 				var themedInsModel:InstrumentModel = new InstrumentModel(insModel,instrument);
-				_bandInsruments.push(themedInsModel);
+				_backUpInsruments.push(themedInsModel);
 			}
 		}
 		
@@ -72,8 +72,8 @@ package com.screens.model {
 			return insModel && (insModel.notes.length>0);
 		}
 		
-		public function get bandInstruments():Vector.<InstrumentModel>{
-			return _bandInsruments;
+		public function get backUpInsruments():Vector.<InstrumentModel>{
+			return _backUpInsruments;
 		}
 		
 		public function get recordeSequanceId():uint{

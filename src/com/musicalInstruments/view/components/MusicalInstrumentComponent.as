@@ -6,8 +6,10 @@ package com.musicalInstruments.view.components
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.representation.ChanelNotesType;
 	import com.view.tools.AssetsManager;
+	import com.view.tools.SpriteSheet;
 	
 	import flash.display.Bitmap;
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
@@ -21,7 +23,8 @@ package com.musicalInstruments.view.components
 		private var _playImage:		Bitmap;
 		private var _noteFetcher:	INoteFetcher;
 		private var _isPressed:		Boolean=false;
-
+		private var _mark:SpriteSheet;
+		private var _markIndex:uint;
 		public var tuch:			Signal=new Signal();
 		public var unTuch:			Signal=new Signal();
 		
@@ -34,17 +37,25 @@ package com.musicalInstruments.view.components
 		private function init():void{
 			_idleImage = AssetsManager.getBitmap(_model.image,true);
 			_playImage = AssetsManager.getBitmap(_model.playImage,true);
+			_mark = new SpriteSheet(AssetsManager.getBitmap("marc.png") ,64,59);
 			_idleImage.smoothing=true;
 			addChild(_idleImage);
 			if(_playImage){ // its a playable component (not bg etc.)
 				addChild(_playImage);
 				state="idle";
 			}
+			addChild(_mark)
+			if(_model.image.indexOf("bottle")==-1){
+			_mark.x=-10;
+			}else{
+			_mark.x=5;
+			_mark.y=8;
+			_mark.visible=false;
+			}
 			RepresentationtypeController.getInstane().register(this);
 			//dev
 			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
 			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
-			
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
@@ -96,6 +107,15 @@ package com.musicalInstruments.view.components
 		}
 		
 		public function updateDisplay():void{
+		}
+		
+		public function setMark(val:Boolean,index:uint):void{
+			_mark.visible=val;
+			if(val&&index!=_markIndex){
+				_mark.drawTile(index-1);
+				_markIndex=index
+			}
+
 		}
 		
 		

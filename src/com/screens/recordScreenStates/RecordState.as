@@ -6,9 +6,11 @@ package com.screens.recordScreenStates
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
+	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
 	import com.representation.controller.RecordChannelController;
+	import com.screens.view.components.notes.BigNote;
 	import com.view.MetronomView;
 	
 	import org.osflash.signals.Signal;
@@ -21,6 +23,7 @@ package com.screens.recordScreenStates
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
 		private var _preTicker:MetronomView;
 		private var _isRecording:Boolean = false;
+		private var _selectedNote:BigNote;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -33,13 +36,6 @@ package com.screens.recordScreenStates
 		
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
-			if(_context.recordChannelController.score>0.75){
-				//_context.bubble.setText("Good Stuff!!",true)
-			}else if(_context.recordChannelController.score>0){
-				//_context.bubble.setText("Not bad, give it another try.",true)
-			}else{
-				//_context.bubble.setText("Practice some more",true)
-			}
 			_context.instrumentRecorder.notePlayed.remove(record);
 			_timeModel.tickSignal.remove(onTimerTick);
 			_context.recordChannelController.endRecord();
@@ -52,6 +48,21 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.stop();
 			_preTicker.active=false;
 			_isRecording = false;
+			_context.instrumentRecorder.marc("",0);
+			_context.notes.backUpsBut.clicked.remove(setBackUps);
+			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
+				noteSequencePlayer.stop();
+			}
+		}
+		
+		private function setBackUps(str:String):void{
+			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
+				if(_context.notes.backUpsBut.selected){
+					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId),0.6);
+				}else{
+					noteSequencePlayer.stop();
+				}
+			}
 		}
 		
 		public function get name():String{
@@ -72,14 +83,19 @@ package com.screens.recordScreenStates
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_preTicker.active=true;
-			_context.speed=Rhythms.RECORD_SPEED
+			_context.speed=Rhythms.RECORD_SPEED;
+			_context.notes.backUpsBut.clicked.add(setBackUps);
 		}
 		
 		private function record(noteId:String):void{
 			_timeModel.tickSignal.add(onTimerTick);
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
+//			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
+//				noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId),0.6);
+//			}
 			//_preTicker.active=false;
+			setBackUps("");
 		}
 		
 		private function stop():void{
@@ -93,7 +109,35 @@ package com.screens.recordScreenStates
 			}
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				stop();
+				_context.instrumentRecorder.marc("",0);
 			}
+			if(_selectedNote){
+				_selectedNote.state = "idle";
+			}
+			var curNote:BigNote=getNoteByDistance(4);
+			if(curNote){
+				curNote.state="selected";
+				_context.instrumentRecorder.marc(curNote.id,4-(curNote.location-_timeModel.currentTick));
+				_selectedNote=curNote;
+			}else{
+				_context.instrumentRecorder.marc("",0);
+			}
+			
+			//if(curNote!=_currentNote){
+			//	_currentNote=curNote;
+			//	_currentNoteIndx=_timeModel.currentTick;
+				
+		}
+		
+		protected function getNoteByDistance(distance:uint):BigNote{
+			var curNote:BigNote;
+			for(var i:uint=0;i<distance;i++){//was i<4
+				if(_context.channel.getNoteByLocation(_timeModel.currentTick+i)){
+					curNote=_context.channel.getNoteByLocation(_timeModel.currentTick+i);
+					break;
+				}
+			}
+			return curNote;
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{

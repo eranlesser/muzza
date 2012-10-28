@@ -2,17 +2,19 @@ package com.screens.view {
 	import com.constants.Rhythms;
 	import com.container.BottomToolBar;
 	import com.metronom.*;
+	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.view.character.*;
+	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.*;
-	import com.screens.view.components.notes.INotesChannel;
-	import com.screens.view.components.notes.Notes;
 	import com.representation.controller.RecordChannelController;
 	import com.representation.view.Channel;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
+	import com.screens.view.components.notes.INotesChannel;
+	import com.screens.view.components.notes.Notes;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 
@@ -20,6 +22,7 @@ package com.screens.view {
 	public class RecordScreen extends MusicalScreen
 	{
 		private var _instrumentRecorder:		Instrument;
+		private var _backUps:Vector.<NoteSequancePlayer>;
 		private var _model:						RecordScreenModel;
 		private var _recordChannelController:	RecordChannelController;
 		private var _stateController:			RecordScreenStateController;
@@ -84,17 +87,18 @@ package com.screens.view {
 			if(!isInited){
 				_bg.addChild(AssetsManager.getAssetByName("PLAY_SCREEN_WALL_BCKGR.png"));
 				createPlayerAndInstrument();
+				addBackUps();
 				addRepresentation();
 				super.start();
 				_stageLayer.addChild(_instrumentRecorder);
 				_practiceBtn = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
 				addChild(_practiceBtn);
 				_practiceBtn.x=267;
-				_practiceBtn.y=60;
+				_practiceBtn.y=40;
 				_recordBtn = new Btn("RECORD_IDLE.png","RECORD_PRESSED.png");
 				addChild(_recordBtn);
 				_recordBtn.x=267+_practiceBtn.width+30;
-				_recordBtn.y=60;
+				_recordBtn.y=40;
 				var playChannel:INotesChannel=_notes.addChannel(_model.instrumentModel);
 				var channel:INotesChannel=_notes.addChannel(_model.instrumentModel);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
@@ -126,10 +130,16 @@ package com.screens.view {
 			
 		}
 		
-		private function addInstrument(insModel:InstrumentModel):PlayMusician{
-			var ins:PlayMusician = new PlayMusician(insModel);
-			_stageLayer.addChild(ins);
-			return ins;
+		private function addBackUps():void{
+			_backUps = new Vector.<NoteSequancePlayer>();
+			for each(var insModel:InstrumentModel in _model.backUpInsruments){
+				var player:NoteSequancePlayer = new NoteSequancePlayer(NotesInstrumentModel(insModel.coreModel));
+				_backUps.push(player);
+			}
+		}
+		
+		public function get backUps():Vector.<NoteSequancePlayer>{
+			return _backUps;
 		}
 		
 		private function createPlayerAndInstrument():void{

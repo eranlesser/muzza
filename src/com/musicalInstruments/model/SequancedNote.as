@@ -37,7 +37,7 @@ package com.musicalInstruments.model
 		}
 		
 		public function get endLoction():uint{
-			return _soundLength+_location;
+			return 1+_location;
 		}
 		
 		

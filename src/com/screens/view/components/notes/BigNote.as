@@ -11,15 +11,19 @@ package com.screens.view.components.notes
 		private var _selectedAsset:DisplayObject;
 		private var _location:uint;
 		private var _value:uint;
+		private var _id:String;
 		
-		public function BigNote(noteValue:uint,channelType:String,loc:uint,channel:String,isFlatOrSharp:String=""){
+		public function BigNote(noteValue:uint,channelType:String,loc:uint,channel:String,id:String,isFlatOrSharp:String){
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
 			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png",true);
 			_location=loc;
 			_value=noteValue;
+			_id=id;
 			init();
 		}
-		
+		public function get id():String{
+			return _id;
+		}
 		private function init():void{
 			addChild(_idleAsset);
 		}

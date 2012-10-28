@@ -143,6 +143,7 @@ package com.screens.view {
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
 			stage.frameRate=Rhythms.FRAME_RATE;
+			trace("frame rate is",stage.frameRate)
 			if(_timeSlider){
 				_timeSlider.setValue(0);
 			}

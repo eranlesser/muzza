@@ -42,13 +42,13 @@ package com.screens.view.components.notes
 		}
 		
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void{
-			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,isFlatOrSharp);
+			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId, isFlatOrSharp);
 			_notesContainer.addChild(note);
-			note.x=(noteModel.location*2)*((RepresentationSizes.notesArea)/64)+RepresentationSizes.notesArea/6+12;
-			//note.y=140-noteModel.*10;tdo
+			note.x=(noteModel.location*2)*((RepresentationSizes.notesArea)/64)+950/2-80;
+			note.y=140-noteValue*10;
 			_notes.push(note);
 			if(type==ChanelNotesType.TEACHER_PLAYING){
-				note.alpha=0.6;
+				//note.alpha=0.6;
 			}
 		}
 		

@@ -43,7 +43,7 @@ public static var data:XML =
 </studioScreen>
 
 <recordSession>
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
+<recordScreen type="RecordScreen"  beginAtFrame="16" endAtFrame="512" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" recordedSequance="102">
 	<RecordedX>167</RecordedX>
 	<RecordedY>360</RecordedY>

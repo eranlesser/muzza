@@ -30,7 +30,10 @@ package com.view.gui
 				state=0;
 			}
 			clicked.dispatch(_stateIndex);
-			
+		}
+		
+		public function get selected():Boolean{
+			return _stateIndex==1;
 		}
 		
 		public function set state(stt:uint):void{

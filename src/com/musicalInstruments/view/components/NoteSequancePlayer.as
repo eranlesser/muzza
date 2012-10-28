@@ -2,8 +2,10 @@ package com.musicalInstruments.view.components {
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NoteModel;
+	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
+	import com.musicalInstruments.model.sequances.ISequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IAnimateable;
 	import com.musicalInstruments.view.character.Character;
@@ -27,7 +29,7 @@ package com.musicalInstruments.view.components {
 		public var animationStateChanged:Signal;
 		public var sequenceDone:Signal;
 		
-		public function NoteSequancePlayer(noteFetcher:INoteFetcher, character:IAnimateable){
+		public function NoteSequancePlayer(noteFetcher:INoteFetcher, character:IAnimateable=null){
 			
 			_timeModel = Metronome.getTimeModel();
 			_noteFetcher = noteFetcher;
@@ -37,6 +39,10 @@ package com.musicalInstruments.view.components {
 			_character = character;
 			animationStateChanged = new Signal();
 			
+		}
+		
+		public function getSequance(id:uint):NoteSequanceModel{
+			return NotesInstrumentModel(_noteFetcher).getSequanceById(id) as NoteSequanceModel;
 		}
 		
 		public function play(sequance:NoteSequanceModel,volume:Number=1):void{
@@ -68,9 +74,11 @@ package com.musicalInstruments.view.components {
 		public function  stop():void{
 			_timeModel.soundTick.remove(onMetronomeTick);
 			_isPlaying = false;
-			_character.animateTo(0,"");
-			_isAnimating=false;
-			animationStateChanged.dispatch();
+			if(_character){
+				_character.animateTo(0,"");
+				_isAnimating=false;
+				animationStateChanged.dispatch();
+			}
 			if(_playingNote){
 				noteStopped.dispatch(_playingNote.noteId);
 			}
@@ -78,9 +86,9 @@ package com.musicalInstruments.view.components {
 		}
 		
 		private function animateTo(indx:uint,id:String):void{
-			//if(!_character){
-			//	return;
-			//}
+			if(!_character){
+				return;
+			}
 			_character.animateTo(indx,id);
 			if(indx==0){
 				_isAnimating = false;
@@ -93,7 +101,7 @@ package com.musicalInstruments.view.components {
 		
 		private function onMetronomeTick():void{
 			if(_currenSequance){
-				if(_playingNote&&_playingNote.endLoction == _timeModel.currentTick){
+				if(_playingNote&&(_playingNote.endLoction == _timeModel.currentTick)){
 					var notePlayingModel:NoteModel = _noteFetcher.getNoteById(_playingNote.noteId);
 					notePlayingModel.player.stop();
 					animateTo(0,"");
