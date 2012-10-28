@@ -13,27 +13,33 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="31" end="34" />
 </eyes>							
 <components>
-
-<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='0' y='0' >
+<bg image="bottles_frame.png" clickable="false"  y="10" />
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='70' y='0' >
 	<tap noteId="1" />
 </bottle>
-<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='80' y='0' >
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='170' y='0' >
 	<tap noteId="2" />
 </bottle>
-<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='160' y='0' >
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='270' y='0' >
 	<tap noteId="3" />
 </bottle>
-<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='240' y='0' >
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='370' y='0' >
 	<tap noteId="4" />
 </bottle>
-<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='320' y='0' >
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='470' y='0' >
 	<tap noteId="5" />
 </bottle>
-<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='400' y='0' >
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='570' y='0' >
 	<tap noteId="6" />
 </bottle>
-<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='470' y='0' >
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='670' y='0' >
 	<tap noteId="7" />
+</bottle>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='770' y='0' >
+	<tap noteId="8" />
+</bottle>
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='870' y='0' >
+	<tap noteId="9" />
 </bottle>
 </components>
 <studio>

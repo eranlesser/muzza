@@ -59,7 +59,7 @@ package com.screens.view.components.notes
 			_bg.x=0;
 			_bg.y=22;
 			addChild(_notesCanvas);
-			_cue = addChild(AssetsManager.getAssetByName("BLUE_NEEDLE.png"));
+			_cue = _notesCanvas.addChild(AssetsManager.getAssetByName("BLUE_NEEDLE.png"));
 			var frame:DisplayObject=addChild(AssetsManager.getAssetByName("notes_frame.png"));
 			_cue.x=frame.width/2-90;
 			var msk:Shape=new Shape();

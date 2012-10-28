@@ -49,7 +49,7 @@ public static var data:XML =
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>167</RecordedX>
+	<RecordedX>0</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
 </recordScreen>

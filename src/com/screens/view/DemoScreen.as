@@ -64,7 +64,7 @@ package com.screens.view {
 			
 			
 			
-			if(masked){
+			if(masked){ // demo - not listen
 				_mask=new Shape();
 				_mask.graphics.beginFill(0xFFFFFF);
 				_mask.graphics.drawRect(6,10,940,580);
@@ -91,7 +91,7 @@ package com.screens.view {
 				
 				_playPauseBtn = new ToggleBut("pause.png","play.png");
 				_stageLayer.addChild(_playPauseBtn);
-				_playPauseBtn.x=131+39+nowPlaying.x+nowPlaying.width;
+				_playPauseBtn.x=480;
 				_playPauseBtn.y=531+19+10;
 				_playPauseBtn.clicked.add(onPlay);
 				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_PRESSED.png");
@@ -103,6 +103,7 @@ package com.screens.view {
 				_stageLayer.addChild(_timeSlider);
 				_timeSlider.x=(Dimentions.WIDTH)/2+_frame.x-_timeSlider.width/2;
 				_timeSlider.y=531+19+40;
+				
 				//var timeBar:DisplayObject=AssetsManager.getAssetByName("");
 			}else{
 				_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));

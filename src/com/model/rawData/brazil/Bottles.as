@@ -12,32 +12,33 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="26" end="31" />
 </eyes>							
 <components>
+<bg image="bottles_frame.png" clickable="false"  y="10" />
 
-<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='0' y='0' >
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='70' y='0' >
 	<tap noteId="G_3" />
 </bottle>
-<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='80' y='0' >
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='170' y='0' >
 	<tap noteId="G#_3" />
 </bottle>
-<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='160' y='0' >
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='270' y='0' >
 	<tap noteId="A_3" />
 </bottle>
-<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='240' y='0' >
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='370' y='0' >
 	<tap noteId="B_3" />
 </bottle>
-<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='320' y='0' >
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='470' y='0' >
 	<tap noteId="C_4" />
 </bottle>
-<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='400' y='0' >
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='570' y='0' >
 	<tap noteId="D_4" />
 </bottle>
-<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='470' y='0' >
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='670' y='0' >
 	<tap noteId="E_4" />
 </bottle>
-<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='540' y='0' >
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='770' y='0' >
 	<tap noteId="F_4" />
 </bottle>
-<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='620' y='0' >
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='870' y='0' >
 	<tap noteId="G_4" />
 </bottle>
 </components>

@@ -2,7 +2,7 @@ package com.container
 {
 	import com.constants.Dimentions;
 	import com.screens.view.DemoScreen;
-	import com.screens.view.EndScreen;
+	import com.screens.view.ListenScreen;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
 	import com.screens.view.RecordScreen;
@@ -77,8 +77,8 @@ package com.container
 		public function addScreen(screen:DisplayObject):void{
 			_screensLayer.addChild(screen);
 			_toolBar.visible = (screen is RecordScreen);
-			if(screen is EndScreen){
-				(screen as EndScreen).goto.add(goToRequest);
+			if(screen is ListenScreen){
+				(screen as ListenScreen).goto.add(goToRequest);
 			}
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
@@ -93,8 +93,8 @@ package com.container
 				var scr:IScreen = _screensLayer.getChildAt(0) as IScreen;
 				scr.stop();
 				_screensLayer.removeChildAt(0);
-				if(scr is EndScreen){
-					(scr as EndScreen).goto.remove(goToRequest);
+				if(scr is ListenScreen){
+					(scr as ListenScreen).goto.remove(goToRequest);
 				}
 			}
 			

@@ -15,7 +15,7 @@ package com.screens.view
 	
 	import org.osflash.signals.Signal;
 
-	public class EndScreen extends DemoScreen
+	public class ListenScreen extends DemoScreen
 	{
 		private var _hat:					Hat;
 		private var _claps:					Claps;
@@ -23,15 +23,16 @@ package com.screens.view
 		private var _channelControllers:	Vector.<PlayChannelController>;
 		private var _toolBar:				ToolBar;
 		
-		public function EndScreen(){
+		public function ListenScreen(){
 			_channelControllers = new Vector.<PlayChannelController>();
+			addRepresentation();
 			addToolBar();
 		}
 		
 		
 		override public function start():void{
 			if(!isInited){
-				addRepresentation();
+				
 			}else{
 			
 			}
@@ -97,18 +98,20 @@ package com.screens.view
 		
 		private function addRepresentation():void{
 			_representation = new Representation();
-			_representation.y = 573+_toolBar.height-5;
+			_representation.y = 573+52-5;
 			_stageLayer.addChild(_representation);
 		}
 		
 		private function addToolBar():void{
-			_toolBar=new ToolBar();
+			_toolBar=new ToolBar(_representation);
 			_toolBar.y=573;
 			addChild(_toolBar)
 		}
 		
 	}
 }
+import com.gskinner.motion.GTween;
+import com.representation.Representation;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
@@ -119,7 +122,12 @@ import org.osflash.signals.Signal;
 
 class ToolBar extends Sprite{
 	public var goTo:Signal=new Signal();
-	public function ToolBar(){
+	private var _collapseBut:Btn;
+	private var _expandBut:Btn;
+	private var _representation:Representation;
+	private var _mouse:DisplayObject;
+	public function ToolBar(representation:Representation){
+		_representation=representation;
 		init();
 	}
 	
@@ -134,7 +142,37 @@ class ToolBar extends Sprite{
 		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
 		addChild(replay);
 		replay.x=439+playBtn.width;
-		
+		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
+		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
+		addChild(_expandBut);
+		addChild(_collapseBut);
+		_collapseBut.x=959;
+		_expandBut.x=959;
+		_collapseBut.clicked.add(onColapse);
+		_expandBut.clicked.add(onColapse);
+		_mouse = AssetsManager.getAssetByName("mouse.png");
+		addChild(_mouse);
+		_mouse.y=-_mouse.height+32;
+		_mouse.x=700;
+		_mouse.visible=false;
+			
+	}
+	
+	private function onColapse(str:String):void{
+		var curY:uint=this.y;
+		if(str=="collapse"){
+			_collapseBut.visible=false;
+			new GTween(this,0.5,{y:curY+130})
+			var colTween:GTween=new GTween(_representation,0.5,{y:curY+130+52-5});
+			colTween.onComplete=function():void{
+				_mouse.visible=true;
+			}
+		}else{
+			_collapseBut.visible=true;
+			new GTween(this,0.5,{y:curY-130})
+			var exTween:GTween=new GTween(_representation,0.5,{y:curY-130+52-5});
+			_mouse.visible=false;
+		}
 	}
 	
 	private function backClicked(id:String):void{

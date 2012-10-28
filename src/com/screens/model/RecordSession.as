@@ -2,7 +2,7 @@ package com.screens.model
 {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.view.DemoScreen;
-	import com.screens.view.EndScreen;
+	import com.screens.view.ListenScreen;
 	import com.screens.view.IScreen;
 	import com.screens.view.RecordScreen;
 	
@@ -15,7 +15,7 @@ package com.screens.model
 	 */
 	public class RecordSession
 	{
-		private var _endScreen:				EndScreen;
+		private var _endScreen:				ListenScreen;
 		private var _recordScreens:			Vector.<IScreen>;
 		private var _currentScreenIndex:	uint = 0;
 		private var _lastInstrumentIndex:	uint;
@@ -28,7 +28,7 @@ package com.screens.model
 				_recordScreens.push(scr);
 			}
 			
-			_endScreen = new EndScreen();
+			_endScreen = new ListenScreen();
 			_endScreen.parseXML(data.endScreen[0],instrumentsModel);
 			_recordScreens.push(_endScreen);
 		}
