@@ -3,6 +3,7 @@ package com.container
 	import com.constants.Rhythms;
 	import com.constants.Session;
 	import com.container.controller.ProgressControl;
+	import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.IThemeModel;
 	import com.model.MainThemeModel;
 	import com.model.rawData.Data;
@@ -31,6 +32,7 @@ package com.container
 		
 		private function onSongSelected(name:String):void{
 			startProgressControll(name,"record");
+			Flurry.getInstance().logEvent("in song selected",name);
 		}
 		
 		private function startProgressControll(name:String,mode:String):void{

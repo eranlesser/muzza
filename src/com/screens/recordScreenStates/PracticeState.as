@@ -56,7 +56,7 @@ package com.screens.recordScreenStates
 			_context.instrumentRecorder.notePlayed.add(onNotePlayed);
 			_context.practiceButton.clicked.add(onStop);
 			_context.recordButton.clicked.add(onRecordBtn);
-			_timeModel.tickSignal.add(highLightNext);
+			_timeModel.soundTick.add(highLightNext);
 			_context.startTimer();
 			_context.speed=Rhythms.RECORD_SPEED;
 			_context.practiceButton.state="pressed";
@@ -94,7 +94,7 @@ package com.screens.recordScreenStates
 			_context.recordButton.clicked.remove(onRecordBtn);
 			_context.instrumentRecorder.notePlayed.remove(onInstrumentPlayed);
 			_context.instrumentRecorder.notePlayed.remove(onNotePlayed);
-			_timeModel.tickSignal.remove(highLightNext);
+			_timeModel.soundTick.remove(highLightNext);
 			_context.stopTimer();
 			_answerTimer.stop();
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);

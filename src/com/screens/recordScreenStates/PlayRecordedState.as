@@ -18,7 +18,7 @@ package com.screens.recordScreenStates
 		}
 		
 		override protected function play():void{
-			_timeModel.tickSignal.add(onTimerTick);
+			_timeModel.soundTick.add(onTimerTick);
 			_context.startTimer();
 			//_context.instrumentPlayer.play(_context.model.recordeSequanceId,_context.model.beginAtFrame);
 		}

@@ -37,7 +37,7 @@ package com.musicalInstruments.view.components
 		private function init():void{
 			_idleImage = AssetsManager.getBitmap(_model.image,true);
 			_playImage = AssetsManager.getBitmap(_model.playImage,true);
-			_mark = new SpriteSheet(AssetsManager.getBitmap("marc.png") ,64,59);
+			_mark = new SpriteSheet(AssetsManager.getBitmap("marc.png",true) ,64,59);
 			_idleImage.smoothing=true;
 			addChild(_idleImage);
 			if(_playImage){ // its a playable component (not bg etc.)
@@ -46,16 +46,16 @@ package com.musicalInstruments.view.components
 			}
 			addChild(_mark)
 			if(_model.image.indexOf("bottle")==-1){
-			_mark.x=-10;
+				_mark.x=-10;
 			}else{
-			_mark.x=5;
-			_mark.y=8;
-			_mark.visible=false;
+				_mark.x=5;
+				_mark.y=8;
 			}
+			setMark(false,0);
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+//			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+//			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
@@ -95,6 +95,7 @@ package com.musicalInstruments.view.components
 			}else{
 				_idleImage.visible = true;
 				_playImage.visible = false;
+				setMark(false,0)
 			}
 		}
 		

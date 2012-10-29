@@ -63,9 +63,6 @@ public static var data:XML =
 <backups>
 <instrument type="drum.png" learnedSequanced="99" />
 <instrument type="bass_flash.jpg" learnedSequanced="99" />
-<instrument type="quika" learnedSequanced="99" />
-<instrument type="ganza" learnedSequanced="99" />
-<instrument type="agogo" learnedSequanced="99" />
 </backups>
 </recordScreen>
 
@@ -78,9 +75,6 @@ public static var data:XML =
 <backups>
 <instrument type="bottles.png" learnedSequanced="99" />
 <instrument type="bass_flash.jpg" learnedSequanced="99" />
-<instrument type="quika" learnedSequanced="99" />
-<instrument type="ganza" learnedSequanced="99" />
-<instrument type="agogo" learnedSequanced="99" />
 </backups>
 </recordScreen>
 
@@ -92,9 +86,6 @@ public static var data:XML =
 <backups>
 <instrument type="drum.png" learnedSequanced="99" />
 <instrument type="bottles.png" learnedSequanced="99" />
-<instrument type="quika" learnedSequanced="99" />
-<instrument type="ganza" learnedSequanced="99" />
-<instrument type="agogo" learnedSequanced="99" />
 </backups>
 </recordScreen>
 

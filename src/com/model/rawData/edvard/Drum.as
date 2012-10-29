@@ -92,12 +92,16 @@ package com.model.rawData.edvard
 	<note id="2" location="117" soundLength="1"/>
 	<note id="1" location="121" soundLength="1"/>
 </sequance>
-<sequance id="99">
+<sequance id="10">
 <subSequance id="3" location="0" />
 <subSequance id="3" location="128" />
 <subSequance id="3" location="256" />
 <subSequance id="3" location="384" />
 </sequance>	
+<sequance id="99">
+	<subSequance id="10" location="16" />
+	
+</sequance>
 </sequances>
 <gestures>
 	<gesture name='swipe' sequanceId='1' />

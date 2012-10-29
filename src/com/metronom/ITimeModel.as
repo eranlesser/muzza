@@ -7,7 +7,6 @@ package com.metronom {
 		function get currentTick():uint;
 		function get tickSignal():Signal;
 		function get soundTick():Signal;
-		function get stopSignal():Signal;
 		function get metronomeTick():Signal;
 		function get isPlaying():Boolean;
 	}

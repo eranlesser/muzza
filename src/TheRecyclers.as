@@ -2,6 +2,7 @@ package {
 	import com.container.PreLoader;
 	import com.container.Presenter;
 	import com.container.ThemesController;
+	import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.FileProxy;
 	import com.view.tools.AssetsManager;
 	
@@ -34,6 +35,11 @@ package {
 			assetsManage.complete.addOnce(preLoad);
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGING, orientationChange);
+			
+			Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
+			Flurry.getInstance().startSession();
+			Flurry.getInstance().setUserId("");//eran
+			
 		}
 		
 		private function orientationChange(e:StageOrientationEvent):void{

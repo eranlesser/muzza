@@ -46,7 +46,7 @@ package com.musicalInstruments.view.character
 			for each(var blink:XML in blinks.blink){
 				_blinks.push(new BlinkSequance(blink.@start,blink.@end));
 			}
-			_timeModel.tickSignal.add(animate);
+			_timeModel.soundTick.add(animate);
 		}
 		
 		public function stop():void{

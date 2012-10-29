@@ -34,13 +34,13 @@ package com.representation.controller {
 		}
 		
 		public function start():void{
-			_timeModel.tickSignal.add(onTick);
+			_timeModel.soundTick.add(onTick);
 			if(_instrument.getSequanceById(_playSequance))
 				drawNotes(NoteSequanceModel(_instrument.getSequanceById(_playSequance))); //getSequanceAtCycle(_timeModel.currentCycle);
 		}
 		
 		public function stop():void{
-			_timeModel.tickSignal.remove(onTick);
+			_timeModel.soundTick.remove(onTick);
 			_channelView.setX(0);
 		}
 		

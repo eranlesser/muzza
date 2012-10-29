@@ -4,7 +4,7 @@ package com.model.rawData.beethoven
 public class BeethovenData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='22'>
+<theme id='recycle' rhythm='24'>
 <instruments>
 {Drum.data}
 {Bass.data}
@@ -12,7 +12,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="512" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="512" playSequance="10" nowPlaying="ODE_TO_JOY_nowPlaying.png">
 	<instrument type="drum.png" >
 	<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>
@@ -48,6 +48,10 @@ public static var data:XML =
 	<RecordedX>0</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
+<backups>
+<instrument type="drum.png" learnedSequanced="99" />
+<instrument type="bass_flash.jpg" learnedSequanced="99" />
+</backups>
 </recordScreen>
 
 
@@ -56,7 +60,10 @@ public static var data:XML =
 	<RecordedX>380</RecordedX>
 	<RecordedY>370</RecordedY>
 	</playerInstrument>
-	
+<backups>
+<instrument type="bottles.png" learnedSequanced="99" />
+<instrument type="bass_flash.jpg" learnedSequanced="99" />
+</backups>
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
@@ -64,6 +71,10 @@ public static var data:XML =
 	<RecordedX>34</RecordedX>
 	<RecordedY>440</RecordedY>
 	</playerInstrument>
+<backups>
+<instrument type="drum.png" learnedSequanced="99" />
+<instrument type="bottles.png" learnedSequanced="99" />
+</backups>
 </recordScreen>
 
 <endScreen type="ThemeTemplate" beginAtFrame="1" playSequance="102">

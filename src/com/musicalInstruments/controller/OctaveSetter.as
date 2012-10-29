@@ -16,10 +16,10 @@ package com.musicalInstruments.controller
 		}
 		
 		public function start():void{
-			Metronome.getTimeModel().tickSignal.add(onTick);
+			Metronome.getTimeModel().soundTick.add(onTick);
 		}
 		public function stop():void{
-			Metronome.getTimeModel().tickSignal.remove(onTick);
+			Metronome.getTimeModel().soundTick.remove(onTick);
 		}
 		
 		private function onTick():void{

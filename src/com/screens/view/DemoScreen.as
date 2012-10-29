@@ -235,6 +235,9 @@ package com.screens.view {
 		
 		protected function endMusciPiece():void{
 			Clock.getInstance().stop();
+			if(_timeSlider){
+				_timeModel.soundTick.remove(setTimeSlider);
+			}
 		}
 		
 		
@@ -288,7 +291,7 @@ class TimeSlider extends Sprite{
 	}
 	
 	public function setValue(val:Number):void{
-		_bar.width=Math.round(width*val);
+		_bar.width=Math.round((_stroke.width-18)*val);
 		_rightSeg.x=_bar.width;
 		//_stroke.width=_rightSeg.x+_rightSeg.width;
 	}

@@ -36,8 +36,8 @@ package com.screens.recordScreenStates
 		
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
-			_context.instrumentRecorder.notePlayed.remove(record);
-			_timeModel.tickSignal.remove(onTimerTick);
+			//_context.instrumentRecorder.notePlayed.remove(record);
+			_timeModel.soundTick.remove(onTimerTick);
 			_context.recordChannelController.endRecord();
 			_context.stopTimer();
 			_context.recordButton.state="idle";
@@ -74,7 +74,7 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			_context.recordButton.state="pressed";
-			_context.instrumentRecorder.notePlayed.addOnce(record);
+			//_context.instrumentRecorder.notePlayed.addOnce(record);
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordChannelController.start();
 			_context.notes.start();
@@ -85,10 +85,11 @@ package com.screens.recordScreenStates
 			_preTicker.active=true;
 			_context.speed=Rhythms.RECORD_SPEED;
 			_context.notes.backUpsBut.clicked.add(setBackUps);
+			record();
 		}
 		
-		private function record(noteId:String):void{
-			_timeModel.tickSignal.add(onTimerTick);
+		private function record():void{
+			_timeModel.soundTick.add(onTimerTick);
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
 //			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){

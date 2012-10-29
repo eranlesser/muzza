@@ -152,12 +152,16 @@ public static var data:XML =
 		<note id="3" location="105" soundLength="2"/>
 		
 	</sequance>
-	<sequance id="99">
+	<sequance id="10">
 	<subSequance id="6" location="0" />
 	<subSequance id="7" location="128" />
 	<subSequance id="7" location="256" />
 	<subSequance id="8" location="384" />
 	</sequance>
+<sequance id="99">
+	<subSequance id="10" location="16" />
+	
+</sequance>
 	</sequances>
 </bass>
 		public function Bass()

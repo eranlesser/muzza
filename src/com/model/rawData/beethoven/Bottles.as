@@ -133,11 +133,15 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="4" location="97" soundLength="4"/>
 	<note id="3" location="113" soundLength="4"/>
 </sequance>
-<sequance id="99">
+<sequance id="10">
 <subSequance id="5" location="0" />
 <subSequance id="3" location="128" />
 <subSequance id="4" location="256" />
 <subSequance id="3" location="384" />
+</sequance>
+<sequance id="99">
+<subSequance id="10" location="16" />
+
 </sequance>
 </sequances>
 </bottles>

@@ -14,7 +14,6 @@ package com.model.rawData.edvard
 	<blink start="16" end="22" />
 	<blink start="22" end="26" />
 	<blink start="26" end="31" />
-	<blink start="31" end="34" />
 </eyes>						
 <components>
 <bg image="bottles_frame.png" clickable="false"  y="10" />
@@ -195,11 +194,15 @@ package com.model.rawData.edvard
 			
 			
 			
-<sequance id="99">
+<sequance id="10">
 	<subSequance id="15" location="0" />
 	<subSequance id="45" location="128" />
 	<subSequance id="46" location="256" />
 	<subSequance id="21" location="384" />
+</sequance>
+<sequance id="99">
+	<subSequance id="10" location="16" />
+	
 </sequance>
 			
 </sequances>

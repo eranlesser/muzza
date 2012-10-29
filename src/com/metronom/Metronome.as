@@ -26,7 +26,6 @@ package com.metronom
 		private var _stopPosition:			uint = 0;
 		private var _gtween:				GTween;
 		private var _soundTick:				Signal = new Signal();
-		private var _stopSignal:			Signal = new Signal();
 		private var _metronomeSignal:		Signal=new Signal();
 		 
 		public function Metronome(){
@@ -84,9 +83,6 @@ package com.metronom
 			return _metronomeSignal;
 		}
 		
-		public function get stopSignal():Signal{
-			return _stopSignal;
-		}
 		
 		public function get currentTick():uint{
 			return Math.round(_tickValue/2);
@@ -121,7 +117,6 @@ package com.metronom
 			_playActivated=false;
 			_isPlaying = false;
 			reset();
-			stopSignal.dispatch();
 		}
 		
 		public function pause():void{

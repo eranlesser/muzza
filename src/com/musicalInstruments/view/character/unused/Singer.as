@@ -98,7 +98,7 @@ package com.musicalInstruments.view.character.unused {
 				super.play(sequanceId,beginAtFrame);  // autoplay button toggle
 				_voiceSequance = VoiceSequanceModel(_model.getSequanceById(sequanceId));
 				if(_voiceSequance){
-					Metronome.getTimeModel().tickSignal.add(onbeginAtFrame);
+					Metronome.getTimeModel().soundTick.add(onbeginAtFrame);
 					//_sound = new Sound(new URLRequest(_voiceSequance.mp3File));
 					//_sound.play();
 					//_filter = filter;
@@ -122,7 +122,7 @@ package com.musicalInstruments.view.character.unused {
 		
 		
 		override public function stop():void{
-			//Metronome.getTimeModel().soundTickSignal.remove(onbeginAtFrame);
+			//Metronome.getTimeModel().soundsoundTick.remove(onbeginAtFrame);
 			if(_isPlaying){
 				_voiceSequance.mp3Player.stop();
 				removeEventListener(Event.ENTER_FRAME, checkVolume);
@@ -136,11 +136,11 @@ package com.musicalInstruments.view.character.unused {
 		private function onbeginAtFrame():void{
 		if(Metronome.getTimeModel().currentTick==2){
 		//onSingingbeginAtFrame();
-			Metronome.getTimeModel().tickSignal.remove(onbeginAtFrame);
+			Metronome.getTimeModel().soundTick.remove(onbeginAtFrame);
 			//_voiceSequance.mp3Player.soundComplete.addOnce(onSoundComplete);
 			_voiceSequance.mp3Player.play();
 			_isPlaying = true;
-			//Metronome.getTimeModel().soundTickSignal.remove(onbeginAtFrame);
+			//Metronome.getTimeModel().soundsoundTick.remove(onbeginAtFrame);
 		//addEventListener(Event.ENTER_FRAME, checkVolume);
 		}
 		}
