@@ -143,12 +143,14 @@ package com.screens.recordScreenStates
 				_currentNote.state="selected";
 				_correctAnswerTime=2;
 				noteChanged=true;
+				_currentNote.buzz();
 			}
 			if((_currentNote.location==_timeModel.currentTick)&&_currentNote.state=="selected"){
 				_context.pauseTimer();
 				_correctAnswerTime=0;
 			}
 			_context.instrumentRecorder.marc(_currentNote.id,4-(curNote.location-_timeModel.currentTick));
+			
 			return noteChanged;
 		}
 		

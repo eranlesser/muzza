@@ -92,17 +92,6 @@ package com.representation {
 		
 		
 		
-		private function upBtnClicked(flag:Boolean):void{
-			if(!flag){
-				new GTween(_bg,0.2,{y:-_bg.height+34});
-				new GTween(_cue,0.2,{y:-_bg.height+34});
-				//_cue.visible=false;
-			}else{
-				new GTween(_bg,0.2,{y:0});
-				new GTween(_cue,0.2,{y:0});
-				//_cue.visible=true;
-			}
-		}
 		
 		public function start():void{
 			//_cue.x = tickSize+RepresentationSizes.thumbNailWidth-_cue.width/2;

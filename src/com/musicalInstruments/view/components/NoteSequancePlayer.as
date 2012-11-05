@@ -50,6 +50,7 @@ package com.musicalInstruments.view.components {
 			_volume = volume;
 			if(!_isPlaying){
 				_timeModel.soundTick.add(onMetronomeTick);
+				_timeModel.tickSignal.add(onMetronomeUntick);
 			}
 			_isPlaying = true;
 		}
@@ -57,8 +58,10 @@ package com.musicalInstruments.view.components {
 		public function onClick():void{
 			if(_isPlaying){
 				_timeModel.soundTick.remove(onMetronomeTick);
+				_timeModel.tickSignal.remove(onMetronomeUntick);
 			}else{
 				_timeModel.soundTick.add(onMetronomeTick);
+				_timeModel.tickSignal.add(onMetronomeUntick);
 			}
 			_isPlaying=!_isPlaying;
 		}
@@ -73,6 +76,7 @@ package com.musicalInstruments.view.components {
 		
 		public function  stop():void{
 			_timeModel.soundTick.remove(onMetronomeTick);
+			_timeModel.tickSignal.remove(onMetronomeUntick);
 			_isPlaying = false;
 			if(_character){
 				_character.animateTo(0,"");
@@ -101,14 +105,7 @@ package com.musicalInstruments.view.components {
 		
 		private function onMetronomeTick():void{
 			if(_currenSequance){
-				if(_playingNote&&(_playingNote.endLoction == _timeModel.currentTick)){
-					var notePlayingModel:NoteModel = _noteFetcher.getNoteById(_playingNote.noteId);
-					notePlayingModel.player.stop();
-					animateTo(0,"");
-					if(_playingNote){
-						noteStopped.dispatch(_playingNote.noteId);
-					}
-				}
+				
 				var note:SequancedNote = _currenSequance.getNoteByLocation( _timeModel.currentTick);
 				if(note){
 					_noteFetcher.octave=note.octave;
@@ -125,6 +122,18 @@ package com.musicalInstruments.view.components {
 				trace("sequance done",this)
 				sequenceDone.dispatch();
 				stop();
+			}
+		}
+		private function onMetronomeUntick():void{
+			if(_currenSequance){
+				if(_playingNote&&(_playingNote.endLoction == _timeModel.currentTick)){
+					var notePlayingModel:NoteModel = _noteFetcher.getNoteById(_playingNote.noteId);
+					notePlayingModel.player.stop();
+					animateTo(0,"");
+					if(_playingNote){
+						noteStopped.dispatch(_playingNote.noteId);
+					}
+				}
 			}
 		}
 		

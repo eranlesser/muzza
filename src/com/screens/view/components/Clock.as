@@ -38,15 +38,7 @@ package com.screens.view.components
 			}
 		}
 		
-		public static function getInstance():Clock{
-			if (_instance == null) {
-				allowInstantiation = true;
-				_instance = new Clock();
-				allowInstantiation = false;
-				
-			}
-			return _instance;
-		}
+		
 		
 		public function stop():void{
 			_timeModel.tickSignal.remove(onTick);

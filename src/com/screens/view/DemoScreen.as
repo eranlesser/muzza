@@ -47,7 +47,7 @@ package com.screens.view {
 		
 		protected function init(masked:Boolean=true):void{
 			_model.start();
-			addSign();
+			//addSign();
 			for each(var instrumentModel:InstrumentModel in _model.instruments){
 				_instruments.push(addInstrument(instrumentModel));
 			}
@@ -60,7 +60,7 @@ package com.screens.view {
 			}
 			
 			unPause();
-			setClock();
+			//setClock();
 			
 			
 			
@@ -137,10 +137,9 @@ package com.screens.view {
 					ins.start();
 				}
 				
-				unPause();
-				setClock();
+				//setClock();
 			}
-			var tmr:Timer=new Timer(1000,1);
+			var tmr:Timer=new Timer(2000,1);
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
 			stage.frameRate=Rhythms.FRAME_RATE;
@@ -157,6 +156,10 @@ package com.screens.view {
 		
 		
 		private function onTimerComplete(e:Event):void{
+			if(!this.parent){
+				return;
+			}
+			unPause();
 			Timer(e.target).removeEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			_timeControll.beginAtFrame = _model.beginAtFrame;
 			for each(var ins:PlayMusician in _instruments){
@@ -188,7 +191,7 @@ package com.screens.view {
 		}
 		
 		protected function unPause():void{
-			Clock.getInstance().play();
+			//Clock.getInstance().play();
 			_timeControll.play();
 		}
 		
@@ -197,8 +200,8 @@ package com.screens.view {
 				ins.stop();
 			}
 			pause();
-			Clock.getInstance().reset();
-			Clock.getInstance().visible=false;
+			//Clock.getInstance().reset();
+			//Clock.getInstance().visible=false;
 			if(_timeSlider){
 				_timeModel.soundTick.remove(setTimeSlider);
 			}
@@ -207,15 +210,15 @@ package com.screens.view {
 		private function pause():void{
 			
 			_timeControll.pause();
-			Clock.getInstance().stop();
+			//Clock.getInstance().stop();
 		}
 		
 		protected function setClock():void{
-			var clock:Clock = Clock.getInstance()//new Clock(_guiLayer);
-			clock.x =  281;
-			clock.y = 54;
-			addChild(clock);
-			clock.visible = true;
+//			var clock:Clock = Clock.getInstance()//new Clock(_guiLayer);
+//			clock.x =  281;
+//			clock.y = 54;
+//			addChild(clock);
+//			clock.visible = true;
 		}
 		
 		override protected function layout():void{
@@ -234,7 +237,7 @@ package com.screens.view {
 		}
 		
 		protected function endMusciPiece():void{
-			Clock.getInstance().stop();
+			//Clock.getInstance().stop();
 			if(_timeSlider){
 				_timeModel.soundTick.remove(setTimeSlider);
 			}

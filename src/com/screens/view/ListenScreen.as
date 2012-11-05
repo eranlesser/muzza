@@ -91,7 +91,7 @@ package com.screens.view
 		private function addHat():void{
 			_hat = new Hat();
 			_stageLayer.addChild(_hat);
-			_hat.x=Dimentions.WIDTH-_hat.width-10;
+			_hat.x=Dimentions.WIDTH-_hat.width+80;
 			_hat.y=380;
 			_hat.start();
 		}

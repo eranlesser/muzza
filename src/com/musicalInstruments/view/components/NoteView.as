@@ -1,5 +1,6 @@
 package com.musicalInstruments.view.components {
 	import com.gamification.RepresentationtypeController;
+	import com.gskinner.motion.GTween;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.representation.ChanelNotesType;
 	import com.representation.RepresentationSizes;
@@ -96,19 +97,8 @@ package com.musicalInstruments.view.components {
 		
 		
 		
-		public function highLight():void{
-			this.scaleY=1.5;
-			this.scaleX=1.5;
-			this.y-=10;
-		}
-		public function deLight():void{
-			this.scaleY=1;
-			this.scaleX=1;
-			this.y+=10;
-		}
-		public function get isHighLight():Boolean{
-			return (this.scaleY==1.5);
-		}
+		
+		
 	}
 }
 
