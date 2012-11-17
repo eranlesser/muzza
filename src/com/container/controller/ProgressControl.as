@@ -33,10 +33,10 @@ package com.container.controller {
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			initNavigator();
-			if(!_demoShown){
-				openDemo();
-				_demoShown=true;
-			}
+//			if(!_demoShown){
+//				openDemo();
+//				_demoShown=true;
+//			}
 		}
 		
 		public function reset():void{

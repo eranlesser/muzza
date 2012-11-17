@@ -61,6 +61,18 @@ package com.screens.view.components.notes
 			return null;
 		};
 		
+		public function getNotesInRange(range:uint,curTick:uint):Vector.<BigNote>{
+			var rangeNotes:Vector.<BigNote> = new Vector.<BigNote>();
+			for each(var note:BigNote in _notes){
+				if(note.location>=(curTick-range)){
+					rangeNotes.push(note);
+					trace(note.location)
+				}
+				
+			}
+			return rangeNotes;
+		}
+		
 		private function drawFrame(size:Rectangle):void{
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)

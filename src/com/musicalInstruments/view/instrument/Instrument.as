@@ -113,10 +113,10 @@ package com.musicalInstruments.view.instrument {
 			_endAtFrame = endAtFrame;
 		}
 		
-		public function addRecordedSequance(sequance:IRecordableSequance,beginAtFrame:uint,endAtFrame:uint):void{
-			_model.addRecordedSequance(sequance, beginAtFrame,endAtFrame);
-		}
-		
+//		public function addRecordedSequance(sequance:IRecordableSequance,beginAtFrame:uint,endAtFrame:uint):void{
+//			_model.addRecordedSequance(sequance, beginAtFrame,endAtFrame);
+//		}
+//		
 		
 		public function animateNote(noteId:String,state:String):void{
 			getComponentById(noteId).state = state;

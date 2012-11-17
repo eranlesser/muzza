@@ -21,7 +21,6 @@ package com.container
 		private var _messageLayer:		Sprite;
 		private var _startScreen:		HomePage;
 		private var _toolBar:			BottomToolBar;
-		public var tutorialRequest:Signal=new Signal();
 		public var goto:Signal=new Signal();
 		
 		public function Presenter(){
@@ -47,18 +46,12 @@ package com.container
 		
 		public function addStartScreen():void{
 			_startScreen = new HomePage();
-			_startScreen.tutorialRequest.add(onTutorialRequest);
 			addScreen(_startScreen);
 		}
 		
 		public function get songMenu():SongsMenu{
 			return _startScreen.songMenu;
 		}
-		
-		private function onTutorialRequest():void{
-			tutorialRequest.dispatch("tutorial");
-		}
-		
 		
 		public function restart(protector:ThemesController):void{
 			addScreen(_startScreen);

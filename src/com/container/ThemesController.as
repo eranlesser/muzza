@@ -27,7 +27,7 @@ package com.container
 			_presenter.addStartScreen();
 			_presenter.start(this);
 			_presenter.songMenu.playRequest.add(onSongSelected);
-			_presenter.tutorialRequest.add(onSongSelected);
+			//_presenter.tutorialRequest.add(onSongSelected);
 		}
 		
 		private function onSongSelected(name:String):void{

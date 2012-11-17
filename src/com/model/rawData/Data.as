@@ -6,6 +6,7 @@ package com.model.rawData
 	import com.model.rawData.edvard.EdvardData;
 	import com.model.rawData.jingleBells.JingleBells;
 	import com.model.rawData.lennon.LennonData;
+	import com.model.rawData.ode.OdeData;
 	import com.model.rawData.somewhere.SomeWhereData;
 	import com.model.rawData.tarab.TarabData;
 
@@ -18,7 +19,7 @@ package com.model.rawData
 		public static var xml:XML=
 			<data>
 			<lessons type="lessons">
-				<song name="beethoven" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
+				<song name="ode" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
 				<song name="brazil"  thumbNail="BRAZIL_PICTURE.png"  title="WATERCOLORS_of_BRAZIL.png"  />
 				<song name="edvard"  thumbNail="EDVARD_GRIEG.png"  title="MOUNTAIN_KING.png"  />
 <!--
@@ -49,6 +50,9 @@ package com.model.rawData
 				case "beethoven":
 					songData = BeethovenData.data; 
 					break;
+				case "ode":
+					songData = OdeData.data; 
+					break;
 				case "lennon":
 					songData = LennonData.data;
 					break;
@@ -63,9 +67,6 @@ package com.model.rawData
 					break;
 				case "somewhere":
 						songData = SomeWhereData.data;
-					break;
-				case "tutorial":
-						songData = TutorialData.data;
 					break;
 				
 					

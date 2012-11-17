@@ -125,7 +125,7 @@ package com.model
 			outputStream.close();
 		}
 		
-		public static function reset(protector:TheRecyclers):void{
+		public static function reset(protector:TrainBeats):void{
 			var files:Array=File.applicationStorageDirectory.getDirectoryListing();
 			for each(var file:File in files){
 				if(file.isDirectory)

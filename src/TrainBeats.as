@@ -13,13 +13,13 @@ package {
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
 	
-	public class TheRecyclers extends Sprite
+	public class TrainBeats extends Sprite
 	{
 		private var _presenter:			Presenter;
 		private var _themesController:	ThemesController;
 		private var _preLoader:PreLoader;
 
-		public function TheRecyclers()
+		public function TrainBeats()
 		{
 			// support autoOrients
 			stage.align = StageAlign.TOP_LEFT;

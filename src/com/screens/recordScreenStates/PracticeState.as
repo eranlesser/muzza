@@ -66,6 +66,7 @@ package com.screens.recordScreenStates
 			_correctAnswers=0;
 			_context.recordChannelController.start();
 			_context.notes.start();
+			_context.notes.visible=false;
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
@@ -98,6 +99,7 @@ package com.screens.recordScreenStates
 			_context.stopTimer();
 			_answerTimer.stop();
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
+			_context.notes.visible=true;
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{

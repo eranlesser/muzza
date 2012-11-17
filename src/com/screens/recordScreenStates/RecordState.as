@@ -11,6 +11,7 @@ package com.screens.recordScreenStates
 	import com.representation.ChanelNotesType;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.view.components.notes.BigNote;
+	import com.screens.view.components.notes.NotesChannel;
 	import com.view.MetronomView;
 	
 	import org.osflash.signals.Signal;
@@ -118,10 +119,13 @@ package com.screens.recordScreenStates
 			var curNote:BigNote=getNoteByDistance(4);
 			if(curNote){
 				curNote.state="selected";
-				_context.instrumentRecorder.marc(curNote.id,4-(curNote.location-_timeModel.currentTick));
 				_selectedNote=curNote;
 			}else{
 				_context.instrumentRecorder.marc("",0);
+			}
+			
+			for each(var note:BigNote in (_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick)){
+				_context.instrumentRecorder.marc(note.id,4-(note.location-_timeModel.currentTick));
 			}
 			
 			//if(curNote!=_currentNote){

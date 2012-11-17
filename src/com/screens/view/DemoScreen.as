@@ -232,7 +232,11 @@ package com.screens.view {
 		
 		protected function addInstrument(insModel:InstrumentModel):PlayMusician{
 			var ins:PlayMusician = new PlayMusician(insModel);
-			_stageLayer.addChild(ins);
+			if(ins.type=="bg"){
+				_guiLayer.addChild(ins);
+			}else{
+				_stageLayer.addChild(ins);
+			}
 			return ins;
 		}
 		

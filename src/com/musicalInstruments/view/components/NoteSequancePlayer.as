@@ -50,7 +50,7 @@ package com.musicalInstruments.view.components {
 			_volume = volume;
 			if(!_isPlaying){
 				_timeModel.soundTick.add(onMetronomeTick);
-				_timeModel.tickSignal.add(onMetronomeUntick);
+				_timeModel.soundTick.add(onMetronomeUntick);
 			}
 			_isPlaying = true;
 		}
@@ -58,10 +58,10 @@ package com.musicalInstruments.view.components {
 		public function onClick():void{
 			if(_isPlaying){
 				_timeModel.soundTick.remove(onMetronomeTick);
-				_timeModel.tickSignal.remove(onMetronomeUntick);
+				_timeModel.soundTick.remove(onMetronomeUntick);
 			}else{
 				_timeModel.soundTick.add(onMetronomeTick);
-				_timeModel.tickSignal.add(onMetronomeUntick);
+				_timeModel.soundTick.add(onMetronomeUntick);
 			}
 			_isPlaying=!_isPlaying;
 		}
@@ -76,7 +76,7 @@ package com.musicalInstruments.view.components {
 		
 		public function  stop():void{
 			_timeModel.soundTick.remove(onMetronomeTick);
-			_timeModel.tickSignal.remove(onMetronomeUntick);
+			_timeModel.soundTick.remove(onMetronomeUntick);
 			_isPlaying = false;
 			if(_character){
 				_character.animateTo(0,"");

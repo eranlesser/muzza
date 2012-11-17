@@ -41,8 +41,8 @@ package com.screens.view.components.homePage
 			addChild(_wallLayer);
 			addChild(_thumbsLayer);
 			addChild(_poleLayer);
-			addTutoiralPannel();
-			var indx:uint=1;
+			//addTutoiralPannel();
+			var indx:uint=0;
 			for each(var song:XML in xml.song){
 				var songPannel:LearnSongPannel = getSongPannel(song);
 				_thumbsLayer.addChild(songPannel);
