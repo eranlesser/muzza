@@ -106,14 +106,16 @@ package com.musicalInstruments.view.components {
 		private function onMetronomeTick():void{
 			if(_currenSequance){
 				
-				var note:SequancedNote = _currenSequance.getNoteByLocation( _timeModel.currentTick);
-				if(note){
-					_noteFetcher.octave=note.octave;
-					var noteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
-					noteModel.player.play(_volume);
-					_playingNote = note;
-					notePlayed.dispatch(_playingNote.noteId);
-					animateTo(noteModel.animationIndex,note.noteId);
+				var notes:Vector.<SequancedNote> = _currenSequance.getNotesByLocation( _timeModel.currentTick);
+				if(notes.length>0){
+					_noteFetcher.octave=notes[0].octave;
+					for each (var note:SequancedNote in notes){
+						var noteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
+						noteModel.player.play(_volume);
+						_playingNote = note;
+						notePlayed.dispatch(_playingNote.noteId);
+					}
+					animateTo(noteModel.animationIndex,notes[0].noteId);
 				}else if(_currenSequance.ended(_timeModel.currentTick)){
 					stop();
 					sequenceDone.dispatch();

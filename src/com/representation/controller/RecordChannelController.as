@@ -74,12 +74,12 @@ package com.representation.controller {
 		
 		public function stop():void{
 			_model.metronomeTick.remove(onTick);
-			_channelView.setX(-((RepresentationSizes.notesArea)/64))//+RepresentationSizes.notesArea/2);
+			_channelView.setY(-((RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
 		}
 		
 		private function onTick():void{
 			
-			_channelView.setX((-(_model.currentTick*2)*(RepresentationSizes.notesArea)/64))//+RepresentationSizes.notesArea/2);
+			_channelView.setY(((_model.currentTick*2)*(RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
 		}
 		
 		public function get channel():INotesChannel{
@@ -94,20 +94,20 @@ package com.representation.controller {
 			var note:SequancedNote = add(noteId,startLocation,noteLength,octave);
 			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
-			for(var i:uint=0;i<=2;i++){
-				var closeNote:SequancedNote;
-				closeNote = learnedSequance.getNoteByLocation(note.location+i);
-				if(closeNote&&noteModel.id==closeNote.noteId){
-					note.location=closeNote.location;
-					break;
-				}
-				closeNote = learnedSequance.getNoteByLocation(note.location-i);
-				if(closeNote&&noteModel.id==closeNote.noteId){
-					note.location=closeNote.location;
-					break;
-				}
-			}
-			_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
+//			for(var i:uint=0;i<=2;i++){
+//				var closeNote:SequancedNote;
+//				closeNote = learnedSequance.getNoteByLocation(note.location+i);
+//				if(closeNote&&noteModel.id==closeNote.noteId){
+//					note.location=closeNote.location;
+//					break;
+//				}
+//				closeNote = learnedSequance.getNoteByLocation(note.location-i);
+//				if(closeNote&&noteModel.id==closeNote.noteId){
+//					note.location=closeNote.location;
+//					break;
+//				}
+//			}
+			//_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
 		}
 		
 		private function drawNotes(sequance:NoteSequanceModel,mode:String):void{

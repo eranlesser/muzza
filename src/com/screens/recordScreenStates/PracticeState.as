@@ -66,7 +66,6 @@ package com.screens.recordScreenStates
 			_correctAnswers=0;
 			_context.recordChannelController.start();
 			_context.notes.start();
-			_context.notes.visible=false;
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
@@ -136,7 +135,7 @@ package com.screens.recordScreenStates
 				return false;
 			}
 			
-			var curNote:BigNote=getNoteByDistance(4);
+			var curNote:BigNote=getNoteByDistance(2);
 			if(!curNote){return false}
 			
 			if(curNote!=_currentNote){
@@ -145,13 +144,13 @@ package com.screens.recordScreenStates
 				_currentNote.state="selected";
 				_correctAnswerTime=2;
 				noteChanged=true;
-				_currentNote.buzz();
 			}
+			
 			if((_currentNote.location==_timeModel.currentTick)&&_currentNote.state=="selected"){
 				_context.pauseTimer();
 				_correctAnswerTime=0;
 			}
-			_context.instrumentRecorder.marc(_currentNote.id,4-(curNote.location-_timeModel.currentTick));
+			_context.instrumentRecorder.marc(_currentNote.id,4);
 			
 			return noteChanged;
 		}

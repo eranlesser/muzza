@@ -50,7 +50,7 @@ package com.screens.recordScreenStates
 			_preTicker.active=false;
 			_isRecording = false;
 			_context.instrumentRecorder.marc("",0);
-			_context.notes.backUpsBut.clicked.remove(setBackUps);
+			//_context.notes.backUpsBut.clicked.remove(setBackUps);
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				noteSequencePlayer.stop();
 			}
@@ -58,11 +58,11 @@ package com.screens.recordScreenStates
 		
 		private function setBackUps(str:String):void{
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
-				if(_context.notes.backUpsBut.selected){
+				//if(_context.notes.backUpsBut.selected){
 					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId),0.6);
-				}else{
-					noteSequencePlayer.stop();
-				}
+				//}else{
+				//	noteSequencePlayer.stop();
+				//}
 			}
 		}
 		
@@ -80,12 +80,12 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.start();
 			_context.notes.start();
 			_context.recordButton.clicked.add(onRecordBtn);
-			_context.practiceButton.clicked.add(onPracticeClicked);
+			//_context.practiceButton.clicked.add(onPracticeClicked);
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_preTicker.active=true;
 			_context.speed=Rhythms.RECORD_SPEED;
-			_context.notes.backUpsBut.clicked.add(setBackUps);
+			//_context.notes.backUpsBut.clicked.add(setBackUps);
 			record();
 		}
 		
@@ -116,17 +116,13 @@ package com.screens.recordScreenStates
 			if(_selectedNote){
 				_selectedNote.state = "idle";
 			}
-			var curNote:BigNote=getNoteByDistance(4);
+			var curNote:BigNote=getNoteByDistance(2);
 			if(curNote){
 				curNote.state="selected";
 				_selectedNote=curNote;
-			}else{
-				_context.instrumentRecorder.marc("",0);
+				_context.instrumentRecorder.marc(curNote.id,4);
 			}
 			
-			for each(var note:BigNote in (_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick)){
-				_context.instrumentRecorder.marc(note.id,4-(note.location-_timeModel.currentTick));
-			}
 			
 			//if(curNote!=_currentNote){
 			//	_currentNote=curNote;

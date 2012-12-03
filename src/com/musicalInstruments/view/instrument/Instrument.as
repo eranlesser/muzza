@@ -15,6 +15,10 @@ package com.musicalInstruments.view.instrument {
 	import flash.display.Sprite;
 	
 	import org.osflash.signals.Signal;
+	
+	import views.Groovee;
+	import views.Pallet;
+	import views.Scratchee;
 
 
 	
@@ -35,7 +39,7 @@ package com.musicalInstruments.view.instrument {
 		protected var _notePlayed:			Signal;
 		protected var _noteStopped:			Signal;
 		private var _player:				NoteSequancePlayer;
-		
+		private var _pallet:Pallet;
 		public function Instrument(model:CoreInstrumentModel){
 			_notePlayed = new Signal();
 			_noteStopped = new Signal();
@@ -43,7 +47,7 @@ package com.musicalInstruments.view.instrument {
 			_model = model as CoreInstrumentModel;
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
 			addComponents(_model.components);
-			
+			addPallet(_model.pallet)
 		}
 		
 		public function get sequanceDone():Signal{
@@ -161,6 +165,22 @@ package com.musicalInstruments.view.instrument {
 				}
 			}
 			return null;
+		}
+		
+		private function addPallet(pallet:XML):void{
+			trace(pallet.@type)
+			switch(pallet.@type.toString()){
+				case "groovee":
+					_pallet = new Groovee(pallet);
+					break;
+				case "scratchee":
+					_pallet = new Scratchee();
+					break;
+			}
+			
+			addChild(_pallet);
+			_pallet.y=pallet.@y;
+			_pallet.x=pallet.@x;
 		}
 		
 		private function addComponents(components:Vector.<InstrumentComponentModel>):void{

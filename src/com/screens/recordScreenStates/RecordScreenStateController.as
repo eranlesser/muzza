@@ -102,13 +102,12 @@ package com.screens.recordScreenStates
 		public function get recordButton():Btn{
 			return _recordScreen.recordButton;
 		}
-		
 		public function get practiceButton():Btn{
-			return _recordScreen.practiceButton;
+			return _recordScreen.practiceBtn;
 		}
 		
 		public function set speed(value:Number):void{
-			_recordScreen.stage.frameRate=Rhythms.FRAME_RATE*value;
+			//_recordScreen.stage.frameRate=Rhythms.FRAME_RATE*value;
 			trace("frame rate is",_recordScreen.stage.frameRate)
 		}
 		

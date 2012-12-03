@@ -11,20 +11,22 @@ public static var data:XML =
 	<blink start="4" end="8" />
 	<blink start="9" end="15" />
 	<blink start="15" end="16" />
-</eyes>							
-<components>
+</eyes>		
+	
+<components notesGap="140" leftPad="50">
 
-<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='150' y='80'>
+<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='0' y='0'>
 <tap noteId="D_6" />
 </drum>
-<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='60' y='160'>
+<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='140' y='0'>
 <tap noteId="C_6" />
 </drum>
-<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='40' y='-10'>
+<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='280' y='0'>
 <tap noteId="C#_6" />
 </drum>
 
 </components>
+<pallet type="scratchee" sound="claps/claps.mp3" x='380' y='0' />
 <octaves>
 <notes>
 	<note id="D_6" value="1"  soundFile="ode/drums/claps.mp3" animationIndex='5'    />

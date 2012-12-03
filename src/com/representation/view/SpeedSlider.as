@@ -52,10 +52,10 @@ package com.representation.view {
 			_shadow.y=_btn.y-3;
 			_shadow.visible=(_shadow.y>_mask.y);
 			Rhythms.RECORD_SPEED=1-val*3/4;
-			if(stage){
-			stage.frameRate=Rhythms.FRAME_RATE*Rhythms.RECORD_SPEED;
-			trace("frame rate is",stage.frameRate)
-			}
+			//if(stage){
+			//stage.frameRate=Rhythms.FRAME_RATE*Rhythms.RECORD_SPEED;
+			//trace("frame rate is",stage.frameRate)
+			//}
 		}
 		
 		private function onBtnDown(e:MouseEvent):void{

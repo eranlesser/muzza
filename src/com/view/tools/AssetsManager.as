@@ -70,8 +70,6 @@ package com.view.tools
 			"<image path='assets/TOOL_BAR_ICONS/BOTTOM_TOOLBAR.png' />"+
 			//NOTES
 			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
-			"<image path='assets/NOTES/notes_frame.png' />"+
-			"<image path='assets/NOTES/notes_sheet.png' />"+
 			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
 			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
 			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_contour_highlight.png' />"+
@@ -131,6 +129,7 @@ package com.view.tools
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
+			"<image path='assets/OPEN/STATION_WALL_STRP.png' />"+
 			
 			//SPRITESHEET
 			"<image path='assets/band/drums_new/drumsSheet.png' />"+
@@ -208,6 +207,8 @@ package com.view.tools
 			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_PRESSED.png' />"+
 			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_IDLE.png' />"+
 			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_PRESSED.png' />"+
+			"<image path='assets/LISTEN_SCREEN/line.png' />"+
+			"<image path='assets/LISTEN_SCREEN/blue_strip.png' />"+
 
 			
 			//Rrpresentation Menu
@@ -240,18 +241,11 @@ package com.view.tools
 			"<image path='assets/gui/next_idle.png' />"+
 			"<image path='assets/gui/next_press.png' />"+
 			"<image path='assets/gui/swap.jpg' />"+
-			"<image path='assets/gui/lock.jpg' />"+
 
 			"<image path='assets/gui/btn_home.png' />"+
 			"<image path='assets/gui/icon_current_screen.png' />"+
 			"<image path='assets/gui/icon_screen.png' />"+
 			
-			"<image path='assets/gui/FaceBook.png' />"+
-			"<image path='assets/gui/start_icon.gif' />"+
-			"<image path='assets/gui/start.jpg' />"+
-			"<image path='assets/gui/instructions.jpg' />"+
-			"<image path='assets/gui/plus.gif' />"+
-			"<image path='assets/gui/Down_Arrow_Icon.png' />"+
 			//BACKGROUND
 			"<image path='assets/PLAY_SCREEN_WALL_BCKGR.png' />"+
 			"<image path='assets/themes/ny/BCKGR_1.jpg' />"+
@@ -400,7 +394,7 @@ package com.view.tools
 		}
 		
 		private function ioErrorHandler(event:IOErrorEvent):void {
-			trace("Unable to load file:(asset manager) "+LoaderInfo(event.target).url );
+			trace("Unable to load file:(asset manager) "+event.text );
 		}
 	}
 

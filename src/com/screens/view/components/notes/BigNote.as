@@ -70,24 +70,6 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		public function buzz():void{
-			var tween:GTween = new GTween(this.getChildAt(0),0.01,{scaleX:2.2,scaleY:2.2});
-			tween.onComplete = buzz3;
-		}
-		public function buzz2(g:GTween):void{
-			var tween:GTween = new GTween(this.getChildAt(0),0.01,{rotation:-12});
-			tween.onComplete = buzz3;
-		}
-		public function buzz3(g:GTween):void{
-			var tween:GTween = new GTween(this.getChildAt(0),0.01,{scaleX:1,scaleY:1});
-			//tween.onComplete = buzz4;
-		}
-//		public function buzz4(g:GTween):void{
-//			var tween:GTween = new GTween(this.getChildAt(0),0.01,{rotation:-4});
-//			tween.onComplete = buzz5;
-//		}
-//		public function buzz5(g:GTween):void{
-//			var tween:GTween = new GTween(this.getChildAt(0),0.01,{rotation:0});
-//		}
+		
 	}
 }

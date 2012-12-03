@@ -25,7 +25,7 @@ package com.screens.view
 		
 		public function ListenScreen(){
 			_channelControllers = new Vector.<PlayChannelController>();
-			addRepresentation();
+			//addRepresentation();
 			addToolBar();
 		}
 		
@@ -48,7 +48,7 @@ package com.screens.view
 		
 		private function onTimerComplete(e:Event):void{
 			Timer(e.target).removeEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
-			_representation.start();
+			//_representation.start();
 		}
 		
 		override public function stop():void{
@@ -58,7 +58,7 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
-			_representation.stop();
+			//_representation.stop();
 		}
 		
 		override protected function init(masked:Boolean=true):void{
@@ -69,8 +69,8 @@ package com.screens.view
 		}
 		override protected function addInstrument(insModel:InstrumentModel):PlayMusician{
 			var ins:PlayMusician = super.addInstrument(insModel);
-			var channel:Channel = _representation.addChannel(insModel.coreModel);
-			_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
+			//var channel:Channel = _representation.addChannel(insModel.coreModel);
+			//_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
 			return ins;
 		}
 
@@ -104,12 +104,13 @@ package com.screens.view
 		
 		private function addToolBar():void{
 			_toolBar=new ToolBar(_representation);
-			_toolBar.y=573;
+			_toolBar.y=-2;
 			addChild(_toolBar)
 		}
 		
 	}
 }
+import com.constants.Dimentions;
 import com.gskinner.motion.GTween;
 import com.representation.Representation;
 import com.view.gui.Btn;
@@ -132,29 +133,30 @@ class ToolBar extends Sprite{
 	}
 	
 	private function init():void{
-		var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
+		//var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
 		var backBtn:Btn = new Btn("BACK_BUTTON_IDLE.png","BACK_BUTTON_PRESSED.png");
 		addChild(backBtn);
+		backBtn.x=-3;
 		backBtn.clicked.add(backClicked);
-		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
-		addChild(playBtn);
-		playBtn.x=439;
+//		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
+//		addChild(playBtn);
+//		playBtn.x=439;
 		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
 		addChild(replay);
-		replay.x=439+playBtn.width;
-		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
-		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
-		addChild(_expandBut);
-		addChild(_collapseBut);
-		_collapseBut.x=959;
-		_expandBut.x=959;
-		_collapseBut.clicked.add(onColapse);
-		_expandBut.clicked.add(onColapse);
-		_mouse = AssetsManager.getAssetByName("mouse.png");
-		addChild(_mouse);
-		_mouse.y=-_mouse.height+32;
-		_mouse.x=700;
-		_mouse.visible=false;
+		replay.x=Dimentions.WIDTH-replay.width+6;
+//		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
+//		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
+//		addChild(_expandBut);
+//		addChild(_collapseBut);
+//		_collapseBut.x=959;
+//		_expandBut.x=959;
+//		_collapseBut.clicked.add(onColapse);
+//		_expandBut.clicked.add(onColapse);
+//		_mouse = AssetsManager.getAssetByName("mouse.png");
+//		addChild(_mouse);
+//		_mouse.y=-_mouse.height+32;
+//		_mouse.x=700;
+//		_mouse.visible=false;
 			
 	}
 	

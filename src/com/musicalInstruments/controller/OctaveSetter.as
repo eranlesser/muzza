@@ -23,10 +23,10 @@ package com.musicalInstruments.controller
 		}
 		
 		private function onTick():void{
-			var note:SequancedNote=_model.getNoteByLocation(Metronome.getTimeModel().currentTick);
-			if(note&&(_currentOctave!=note.octave)){
-				_view.octave=note.octave;
-				_currentOctave=note.octave;
+			var note:Vector.<SequancedNote>=_model.getNotesByLocation(Metronome.getTimeModel().currentTick);
+			if(note&&(_currentOctave!=note[0].octave)){
+				_view.octave=note[0].octave;
+				_currentOctave=note[0].octave;
 			}
 		}
 	}

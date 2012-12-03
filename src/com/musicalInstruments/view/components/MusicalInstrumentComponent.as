@@ -44,7 +44,7 @@ package com.musicalInstruments.view.components
 				addChild(_playImage);
 				state="idle";
 			}
-			addChild(_mark)
+			//addChild(_mark)
 			if(_model.image.indexOf("bottle")==-1){
 				_mark.x=-10;
 			}else{
@@ -111,11 +111,11 @@ package com.musicalInstruments.view.components
 		}
 		
 		public function setMark(val:Boolean,index:uint):void{
-			_mark.visible=val;
-			if(val&&index!=_markIndex){
-				_mark.drawTile(index-1);
-				_markIndex=index
-			}
+//			_mark.visible=val;
+//			if(val&&index!=_markIndex){
+//				_mark.drawTile(index-1);
+//				_markIndex=index
+//			}
 
 		}
 		

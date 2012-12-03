@@ -2,7 +2,6 @@ package {
 	import com.container.PreLoader;
 	import com.container.Presenter;
 	import com.container.ThemesController;
-	import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.FileProxy;
 	import com.view.tools.AssetsManager;
 	
@@ -36,9 +35,9 @@ package {
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGING, orientationChange);
 			
-			Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
-			Flurry.getInstance().startSession();
-			Flurry.getInstance().setUserId("");//eran
+//			Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
+//			Flurry.getInstance().startSession();
+//			Flurry.getInstance().setUserId("");//eran
 			
 		}
 		

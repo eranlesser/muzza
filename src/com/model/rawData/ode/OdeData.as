@@ -51,7 +51,7 @@ public static var data:XML =
 </studioScreen>
 
 <recordSession>
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="192" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" recordedSequance="102">
 	<RecordedX>0</RecordedX>
 	<RecordedY>360</RecordedY>
@@ -63,10 +63,10 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="512" >
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="192" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>380</RecordedX>
-	<RecordedY>370</RecordedY>
+	<RecordedX>50</RecordedX>
+	<RecordedY>450</RecordedY>
 	</playerInstrument>
 <backups>
 <instrument type="bottles.png" learnedSequanced="99" />
@@ -74,7 +74,7 @@ public static var data:XML =
 </backups>
 </recordScreen>
 
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="192" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102">
 	<RecordedX>34</RecordedX>
 	<RecordedY>440</RecordedY>

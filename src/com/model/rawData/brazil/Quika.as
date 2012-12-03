@@ -31,7 +31,18 @@ package com.model.rawData.brazil
 			<sequances>
 
 			<sequance id="1">
-<note id="C_1" location="1" soundLength="1"/><note id="C_2" location="2" soundLength="1"/><note id="C_3" location="4" soundLength="1"/><note id="C_4" location="6" soundLength="1"/><note id="C_5" location="7" soundLength="1"/><note id="C_6" location="8" soundLength="1"/><note id="C_7" location="9" soundLength="1"/><note id="C_8" location="10" soundLength="1"/><note id="C_9" location="11" soundLength="1"/><note id="C_10" location="12" soundLength="1"/><note id="C_11" location="13" soundLength="1"/><note id="C_12" location="15" soundLength="1"/>
+<note id="C_1" location="1" soundLength="1"/>
+<note id="C_2" location="2" soundLength="1"/>
+<note id="C_3" location="4" soundLength="1"/>
+<note id="C_4" location="6" soundLength="1"/>
+<note id="C_5" location="7" soundLength="1"/>
+<note id="C_6" location="8" soundLength="1"/>
+<note id="C_7" location="9" soundLength="1"/>
+<note id="C_8" location="10" soundLength="1"/>
+<note id="C_9" location="11" soundLength="1"/>
+<note id="C_10" location="12" soundLength="1"/>
+<note id="C_11" location="13" soundLength="1"/>
+<note id="C_12" location="15" soundLength="1"/>
 		</sequance>
 <sequance id="99">
 	<subSequance id="1" location="0" />

@@ -29,9 +29,9 @@ package com.screens.view.components.notes
 			drawFrame(size);
 		}
 		
-		public function setX(xx:int):void{
-			_notesContainer.x=xx//-_notesMask.width/2;
-			moved.dispatch(_notesContainer.x);
+		public function setY(yy:int):void{
+			_notesContainer.y=yy-240;//-_notesMask.width/2;
+			moved.dispatch(_notesContainer.y);
 		}
 		
 		public function clearNotes():void{
@@ -44,12 +44,10 @@ package com.screens.view.components.notes
 		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void{
 			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId, isFlatOrSharp);
 			_notesContainer.addChild(note);
-			note.x=(noteModel.location*2)*((RepresentationSizes.notesArea)/64)+950/2-80;
-			note.y=140-noteValue*10;
+			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+950/2-80;
+			note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad;
 			_notes.push(note);
-			if(type==ChanelNotesType.TEACHER_PLAYING){
-				//note.alpha=0.6;
-			}
+			
 		}
 		
 		public function getNoteByLocation(location:uint):BigNote{
@@ -66,7 +64,6 @@ package com.screens.view.components.notes
 			for each(var note:BigNote in _notes){
 				if(note.location>=(curTick-range)){
 					rangeNotes.push(note);
-					trace(note.location)
 				}
 				
 			}
@@ -76,7 +73,7 @@ package com.screens.view.components.notes
 		private function drawFrame(size:Rectangle):void{
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)
-			_notesMask.graphics.drawRect(50,0,size.width-100,size.height);
+			_notesMask.graphics.drawRect(0,0,size.width,size.height);
 			_notesMask.graphics.endFill();
 			addChild(_notesMask);
 			

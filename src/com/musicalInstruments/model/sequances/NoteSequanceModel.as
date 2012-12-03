@@ -26,15 +26,15 @@ package com.musicalInstruments.model.sequances {
 			return _xml;
 		}
 		
-		public function getNoteByLocation(location:uint):SequancedNote{
-			var note:SequancedNote;
+		public function getNotesByLocation(location:uint):Vector.<SequancedNote>{
+			var notes:Vector.<SequancedNote>=new Vector.<SequancedNote>();
 			for(var i:uint=0;i<_notes.length;i++){
 				var sequancedNote:SequancedNote = _notes[i];
 				if(sequancedNote.location == location){
-					note = sequancedNote;
+					notes.push(sequancedNote);
 				}
 			}
-			return note;
+			return notes;
 		}
 		
 		public function removeNote(note:SequancedNote):void{

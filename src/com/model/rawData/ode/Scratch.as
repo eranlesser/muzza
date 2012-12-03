@@ -37,7 +37,16 @@ package com.model.rawData.ode
 <note id="4" location="16" soundLength="1"/>
 		</sequance>
 <sequance id="10">
-<note id="1" location="40" soundLength="1"/><note id="2" location="43" soundLength="1"/><note id="3" location="44" soundLength="1"/><note id="4" location="45" soundLength="1"/><note id="5" location="104" soundLength="1"/><note id="6" location="106" soundLength="1"/><note id="7" location="107" soundLength="1"/><note id="8" location="108" soundLength="2"/><note id="9" location="110" soundLength="2"/>
+<note id="1" location="40" soundLength="1"/>
+<note id="2" location="43" soundLength="1"/>
+<note id="3" location="44" soundLength="1"/>
+<note id="4" location="45" soundLength="1"/>
+
+<note id="5" location="104" soundLength="1"/>
+<note id="6" location="106" soundLength="1"/>
+<note id="7" location="107" soundLength="1"/>
+<note id="8" location="108" soundLength="2"/>
+<note id="9" location="110" soundLength="2"/>
 	</sequance>
 <sequance id="99">
 <subSequance id="10" location="16" />
