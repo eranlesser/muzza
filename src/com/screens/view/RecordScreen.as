@@ -2,7 +2,13 @@ package com.screens.view {
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
+	import com.musicalInstruments.model.PalletModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
+	import com.musicalInstruments.palleta.Ipallet;
+	import com.musicalInstruments.palleta.views.Groovee;
+	import com.musicalInstruments.palleta.views.Pallet;
+	import com.musicalInstruments.palleta.views.Paw;
+	import com.musicalInstruments.palleta.views.Scratchee;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.*;
@@ -11,16 +17,17 @@ package com.screens.view {
 	import com.screens.recordScreenStates.RecordScreenStateController;
 	import com.screens.view.components.notes.INotesChannel;
 	import com.screens.view.components.notes.Notes;
+	import com.screens.view.components.notes.NotesChannel;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
 
 
-	public class RecordScreen extends MusicalScreen
+	public class RecordScreen extends AbstractScreen
 	{
 		private var _instrumentRecorder:		Instrument;
-		private var _backUps:Vector.<NoteSequancePlayer>;
+		private var _backUps:					Vector.<NoteSequancePlayer>;
 		private var _model:						RecordScreenModel;
 		private var _recordChannelController:	RecordChannelController;
 		private var _stateController:			RecordScreenStateController;
@@ -29,6 +36,7 @@ package com.screens.view {
 		private var _notes:						Notes;
 		private var _practiceBtn:				Btn;
 		private var _recordBtn:					Btn;
+		private var _pallet:					Instrument;
 		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll(this);
@@ -39,6 +47,10 @@ package com.screens.view {
 			return _instrumentRecorder;
 		}
 		
+		public function get pallet():Instrument{
+			return _pallet;
+		}
+		
 		public function get model():RecordScreenModel{
 			return _model;
 		}
@@ -46,7 +58,7 @@ package com.screens.view {
 		public function get recordChannelController():RecordChannelController{
 			return _recordChannelController;
 		}
-		public function get channel():INotesChannel{
+		public function get channel():NotesChannel{
 			return _recordChannelController.channel;
 		}
 		
@@ -87,11 +99,11 @@ package com.screens.view {
 				addBackUps();
 				addRepresentation();
 				super.start();
-				var strip:DisplayObject = AssetsManager.getAssetByName("STATION_WALL_STRP.png");
+				var strip:DisplayObject = AssetsManager.getAssetByName("bStrip.png");
 				addChild(strip);
 				//strip.y=_recordBtn.height+4;
-				_notes.y=strip.y+strip.height;
-				_stageLayer.addChild(_instrumentRecorder);
+				//_notes.y=strip.y+strip.height;
+				
 				_practiceBtn = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
 				addChild(_practiceBtn);
 				_practiceBtn.x=267;
@@ -102,8 +114,8 @@ package com.screens.view {
 				_recordBtn.y=(strip.height-practiceBtn.height)/2-2;
 				
 				
-				var playChannel:INotesChannel=_notes.addChannel(_model.instrumentModel);
-				var channel:INotesChannel=_notes.addChannel(_model.instrumentModel);
+				_notes.addChannel(_model.instrumentModel);
+				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll(this);
@@ -130,6 +142,8 @@ package com.screens.view {
 			super.layout();
 			_instrumentRecorder.x = _model.getRecordInstrumentX();
 			_instrumentRecorder.y = _model.getRecordInstrumentY();
+			_pallet.x = _model.getPalletX();
+			_pallet.y = _model.getPalletY();
 			//f_instrumentRecorder.scaleX=0.8;
 		}
 		
@@ -155,6 +169,14 @@ package com.screens.view {
 			}else if(_model.instrumentModel.type=="voice"){
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
 			}
+			if(_model.palletModel&&(_model.palletModel as PalletModel).palletType=="groovee"){
+				_pallet = new Groovee(_model.palletModel)
+				_stageLayer.addChild(_pallet);
+			}else{
+				trace(_model.instrumentModel.type)
+			}
+			_stageLayer.addChild(_instrumentRecorder);
+			
 		}
 		
 		private function onPlayerNote(noteId:String):void{
@@ -166,10 +188,34 @@ package com.screens.view {
 		}
 		
 		private function addRepresentation():void{
-			_notes = new Notes();
+			_notes = new Notes(_model.endAtFrame,_model.getRecordInstrumentY());
 			_stageLayer.addChild(_notes);
 		}
 		
+		public function tick(currentTick:int):void{
+			(_pallet as Ipallet).onTick(currentTick);
+		}
+		
+		public function set active(value:Boolean):void{
+			(_pallet as Ipallet).active = value;
+		}
+		
+		private function addPallet(pallet:XML):void{
+			switch(pallet.@type.toString()){
+				case "groovee":
+					_pallet = new Groovee(new PalletModel(pallet));
+					break;
+				case "scratchee":
+					//_pallet = new Scratchee();
+					break;
+				case "paw":
+					//_pallet = new Paw(pallet);
+					break;
+			}
+			addChild(_pallet);
+			_pallet.y=pallet.@y;
+			_pallet.x=pallet.@x;
+		}
 		
 		
 	}

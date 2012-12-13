@@ -8,7 +8,7 @@ package com.musicalInstruments.model.sequances {
 		private var _notes:				Vector.<SequancedNote>;
 		private var _sequanceFetcher:	CoreInstrumentModel;
 		private var _id:				uint;
-		private var _xml:XML;
+		private var _xml:				XML;
 		
 		public function NoteSequanceModel(xml:XML, sequanceFetcher:CoreInstrumentModel){
 			_notes = new Vector.<SequancedNote>();

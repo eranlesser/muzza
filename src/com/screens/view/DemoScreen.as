@@ -21,7 +21,7 @@ package com.screens.view {
 	
 	import org.osflash.signals.Signal;
 
-	public class DemoScreen extends MusicalScreen implements IScreen{
+	public class DemoScreen extends AbstractScreen implements IScreen{
 		
 		protected var _model:				PlayScreenModel;
 		private var _timeModel:				ITimeModel = Metronome.getTimeModel();

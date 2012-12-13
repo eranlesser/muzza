@@ -17,18 +17,12 @@ package com.musicalInstruments.view.instrument {
 		
 		public function TapInstrument(model:NotesInstrumentModel) {
 			super(model);
-			tuch.add(onTouchTap);
 			if(model.octavesLength>1){
 				_octvSelector=new OctaveSelector();
 				addOctaveSelector();
 			}
 		}
 		
-		private function onTouchTap(mc:MusicalInstrumentComponent):void { 
-			
-			playNote(mc.noteId);
-		}
-	
 		
 		private function addOctaveSelector():void{
 			addChild(_octvSelector);

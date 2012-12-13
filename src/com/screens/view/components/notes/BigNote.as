@@ -3,8 +3,12 @@ package com.screens.view.components.notes
 	import com.gskinner.motion.GTween;
 	import com.view.tools.AssetsManager;
 	
+	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
 	
 	public class BigNote extends Sprite{
 		
@@ -14,7 +18,7 @@ package com.screens.view.components.notes
 		private var _value:uint;
 		private var _id:String;
 		
-		public function BigNote(noteValue:uint,channelType:String,loc:uint,channel:String,id:String,isFlatOrSharp:String){
+		public function BigNote(noteValue:uint,channelType:String,loc:uint,channel:String,id:String){
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
 			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png",true);
 			_location=loc;
@@ -26,7 +30,25 @@ package com.screens.view.components.notes
 			return _id;
 		}
 		private function init():void{
-			addChild(_idleAsset);
+			var genericBmp:BitmapData = new BitmapData(100,100, false, 0x999999);
+			this.graphics.beginBitmapFill(genericBmp);
+			this.graphics.drawCircle(14,14,14);
+			this.graphics.endFill();
+			var tField:TextField = new TextField();
+			tField.text=_value+"";
+			//tField.autoSize=TextFieldAutoSize.CENTER;
+			tField.width=28;
+			tField.height=28;
+			tField.x=7;
+			tField.y=4;
+			tField.setTextFormat(new TextFormat(null,18))
+			addChild(tField);
+			tField.cacheAsBitmap=true;
+			//tField.border=true;
+			//addChild(_idleAsset);
+			//this.scaleX=0.65;
+			//this.scaleY=0.65;
+			//this.x+=width/2;
 		}
 		
 		private function getPrefix(tmbNail:String):String{
@@ -54,12 +76,19 @@ package com.screens.view.components.notes
 		}
 		
 		public function set state(stt:String):void{
-			removeChildAt(0);
 			if(stt=="selected"){
-				addChild(_selectedAsset);
+			this.graphics.lineStyle(3,0x333333);
+			this.graphics.drawCircle(14,14,14);
 			}else{
-				addChild(_idleAsset);
+				this.graphics.lineStyle(0,0x333333);
+				this.graphics.drawCircle(14,14,14);
 			}
+//			removeChildAt(0);
+//			if(stt=="selected"){
+//				addChild(_selectedAsset);
+//			}else{
+//				addChild(_idleAsset);
+//			}
 		}
 		
 		public function get state():String{

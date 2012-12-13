@@ -55,9 +55,9 @@ package com.screens.view.components.homePage
 				songPannel.songSelected.add(onSongSelected);
 				
 			}
-			_wallLayer.cacheAsBitmap=true;
+			//_wallLayer.cacheAsBitmap=true;
 			//_thumbsLayer.cacheAsBitmap=true;
-			_poleLayer.cacheAsBitmap=true;
+			//_poleLayer.cacheAsBitmap=true;
 			
 			_nextButton = new Btn("NEXT_IDLE.png","NEXT_PRESSED.png");
 			_prevButton = new Btn("PREVIOUS_IDLE.png","PREVIOUS_Pressed.png");
@@ -77,8 +77,8 @@ package com.screens.view.components.homePage
 			_thumbsLayer.addChild(tutPan);
 			var pole:DisplayObject = AssetsManager.getAssetByName("POLE_STATION.png");
 			_poleLayer.addChild(pole);
-			pole.cacheAsBitmap=true;
-			pole.cacheAsBitmapMatrix=new Matrix();
+			//pole.cacheAsBitmap=true;
+			//pole.cacheAsBitmapMatrix=new Matrix();
 			pole.x=Dimentions.WIDTH;
 		}
 		
@@ -178,13 +178,13 @@ class LearnSongPannel extends Sprite{
 		//bg.x=Dimentions.WIDTH;
 		_title=AssetsManager.getAssetByName(xml.@title);
 		addChild(_title);
-		_title.cacheAsBitmap=true;
+		//_title.cacheAsBitmap=true;
 		
-		addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png")).cacheAsBitmap=true;
+		addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png"))//.cacheAsBitmap=true;
 		
 		_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
 		addChild(_thumbNail);
-		_thumbNail.cacheAsBitmap=true;
+		//_thumbNail.cacheAsBitmap=true;
 		_name=xml.@name;
 		
 		

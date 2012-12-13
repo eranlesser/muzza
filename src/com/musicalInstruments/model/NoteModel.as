@@ -13,6 +13,7 @@ package com.musicalInstruments.model
 		private var _player:SoundPlayer;
 		private var _value:uint;
 		private var _isFlatOrSharp:String;
+		private var _x:uint; // used for pallet
 		public var ready:Signal = new Signal();
 		public function NoteModel(xml:XML){
 			
@@ -25,6 +26,7 @@ package com.musicalInstruments.model
 			_animationIndex = xml.@animationIndex;
 			_value = xml.@value;
 			_isFlatOrSharp = xml.@isFlatOrSharp;
+			_x=xml.@x;
 			_player = new SoundPlayer(_soundFile);
 			_player.ready.addOnce(onPlayerReady);
 		}
@@ -42,6 +44,10 @@ package com.musicalInstruments.model
 		
 		public function get value():uint{
 			return _value;
+		}
+		
+		public function get x():uint{
+			return _x;
 		}
 		
 		public function get animationIndex():uint{

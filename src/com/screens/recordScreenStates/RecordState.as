@@ -28,7 +28,7 @@ package com.screens.recordScreenStates
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
-			_preTicker=new MetronomView();
+			//=new MetronomView();
 		}
 		
 		public function get complete():Signal{
@@ -47,7 +47,7 @@ package com.screens.recordScreenStates
 			//_context.frameRate = Rhythms.DELAY_COUNT;
 			_context.notes.stop();
 			_context.recordChannelController.stop();
-			_preTicker.active=false;
+			//_preTicker.active=false;
 			_isRecording = false;
 			_context.instrumentRecorder.marc("",0);
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
@@ -59,7 +59,7 @@ package com.screens.recordScreenStates
 		private function setBackUps(str:String):void{
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				//if(_context.notes.backUpsBut.selected){
-					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId),0.6);
+					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId));
 				//}else{
 				//	noteSequencePlayer.stop();
 				//}
@@ -78,27 +78,21 @@ package com.screens.recordScreenStates
 			//_context.instrumentRecorder.notePlayed.addOnce(record);
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordChannelController.start();
-			_context.notes.start();
 			_context.recordButton.clicked.add(onRecordBtn);
 			//_context.practiceButton.clicked.add(onPracticeClicked);
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
-			_preTicker.active=true;
+			//_preTicker.active=true;
 			_context.speed=Rhythms.RECORD_SPEED;
 			//_context.notes.backUpsBut.clicked.add(setBackUps);
-			record();
-		}
-		
-		private function record():void{
 			_timeModel.soundTick.add(onTimerTick);
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
-//			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
-//				noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId),0.6);
-//			}
-			//_preTicker.active=false;
+			_context.pallet.active = true;
 			setBackUps("");
+			_context.notes.start();
 		}
+		
 		
 		private function stop():void{
 			_complete.dispatch();
@@ -116,13 +110,14 @@ package com.screens.recordScreenStates
 			if(_selectedNote){
 				_selectedNote.state = "idle";
 			}
-			var curNote:BigNote=getNoteByDistance(2);
-			if(curNote){
+			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(2,_timeModel.currentTick);
+			//var curNote:BigNote=getNoteByDistance(4);
+			for each(var curNote:BigNote in curNotes){
 				curNote.state="selected";
 				_selectedNote=curNote;
-				_context.instrumentRecorder.marc(curNote.id,4);
+				//_context.instrumentRecorder.marc(curNote.id,4);
 			}
-			
+			_context.pallet.onTick(_timeModel.currentTick);
 			
 			//if(curNote!=_currentNote){
 			//	_currentNote=curNote;
@@ -130,7 +125,7 @@ package com.screens.recordScreenStates
 				
 		}
 		
-		protected function getNoteByDistance(distance:uint):BigNote{
+		private function getNoteByDistance(distance:uint):BigNote{
 			var curNote:BigNote;
 			for(var i:uint=0;i<distance;i++){//was i<4
 				if(_context.channel.getNoteByLocation(_timeModel.currentTick+i)){

@@ -1,5 +1,6 @@
 package com.model.rawData.ode
 {
+	import com.musicalInstruments.palleta.views.Groovee;
 
 public class OdeData
 {
@@ -9,6 +10,7 @@ public static var data:XML =
 {Drum.data}
 {Bass.data}
 {Bottles.data}
+{Claps.data}
 {Chelo.data}
 {Scratch.data}
 </instruments>
@@ -51,39 +53,43 @@ public static var data:XML =
 </studioScreen>
 
 <recordSession>
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="192" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" recordedSequance="102">
 	<RecordedX>0</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
+	<pallet type="claps" learnedSequanced="99" rhythm="8" x='800' y='362'>
+		
+	</pallet>
 <backups>
-<instrument type="drum.png" learnedSequanced="99" />
-<instrument type="bass_flash.jpg" learnedSequanced="99" />
+
 </backups>
 </recordScreen>
 
-
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="192" >
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="176" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102">
 	<RecordedX>50</RecordedX>
 	<RecordedY>450</RecordedY>
 	</playerInstrument>
+<pallet type="claps" learnedSequanced="99" rhythm="8" x='800' y='362'>
+		
+	</pallet>
 <backups>
-<instrument type="bottles.png" learnedSequanced="99" />
-<instrument type="bass_flash.jpg" learnedSequanced="99" />
 </backups>
 </recordScreen>
 
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="192" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>34</RecordedX>
+	<RecordedX>4</RecordedX>
 	<RecordedY>440</RecordedY>
 	</playerInstrument>
+<pallet type="claps" learnedSequanced="99" rhythm="8" x='800' y='362'>
+		
+	</pallet>
 <backups>
-<instrument type="drum.png" learnedSequanced="99" />
-<instrument type="bottles.png" learnedSequanced="99" />
 </backups>
 </recordScreen>
+
 
 <endScreen type="ThemeTemplate" beginAtFrame="1" playSequance="102">
 	<instrument type="drum.png" >
@@ -101,3 +107,9 @@ public static var data:XML =
 </theme>
 	}
 }
+
+/*
+<backups>
+<instrument type="bottles.png" learnedSequanced="102" />
+</backups>
+*/

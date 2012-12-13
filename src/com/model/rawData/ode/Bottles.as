@@ -12,7 +12,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="26" end="31" />
 	
 </eyes>						
-<components notesGap="80" leftPad="58">
+<components notesGap="80" leftPad="80">
 <bg image="bottles_frame.png" clickable="false"  y="10" />
 <bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='0' >
 	<tap noteId="A_3" />
@@ -43,7 +43,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 </bottle>
 	
 </components>
-<pallet type="groovee" sound="claps/claps.mp3" x='800' y='22' />
+
 <studio>
 
 
@@ -59,6 +59,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="7" soundFile="edvard/notes/bottle/BHO.mp3" animationIndex='7' value="7" />
 	<note id="8" soundFile="edvard/notes/bottle/C+1HO.mp3" animationIndex='6' value="8" />
 	<note id="9" soundFile="edvard/notes/bottle/DHO.mp3" animationIndex='5' value="9" />
+	
 </notes>
 </octaves>
 <gestures>
@@ -136,8 +137,8 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="3" location="113" soundLength="4"/>
 </sequance>
 <sequance id="10">
-<note id="F#_4" location="9" soundLength="1"/><note id="D_4" location="11" soundLength="1"/>
-<note id="A_4" location="12" soundLength="1"/><note id="E_4" location="13" soundLength="1"/>
+<note id="F#_4" location="9" soundLength="1"/>
+<note id="A_4" location="12" soundLength="1"/>
 <note id="F#_4" location="17" soundLength="2"/><note id="F#_4" location="19" soundLength="2"/>
 <note id="G_4" location="21" soundLength="2"/><note id="A_4" location="23" soundLength="2"/>
 <note id="A_4" location="25" soundLength="2"/><note id="G_4" location="27" soundLength="2"/>
@@ -170,11 +171,11 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 <note id="D_4" location="131" soundLength="2"/><note id="E_4" location="133" soundLength="2"/>
 <note id="F#_4" location="135" soundLength="2"/><note id="E_4" location="137" soundLength="2"/>
 <note id="D_4" location="139" soundLength="2"/><note id="D_4" location="141" soundLength="4"/>
-
 </sequance>
-<sequance id="99">
-<subSequance id="10" location="16" />
 
+	
+<sequance id="99">
+<subSequance id="10" location="32" />
 </sequance>
 </sequances>
 </bottles>

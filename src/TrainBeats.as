@@ -9,6 +9,8 @@ package {
 	import flash.desktop.SystemIdleMode;
 	import flash.display.*;
 	import flash.events.StageOrientationEvent;
+	import flash.media.AudioPlaybackMode;
+	import flash.media.SoundMixer;
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
 	
@@ -25,6 +27,8 @@ package {
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.displayState = StageDisplayState.FULL_SCREEN;
 			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
+			SoundMixer.audioPlaybackMode  =  AudioPlaybackMode.AMBIENT;
+			stage.quality = StageQuality.LOW;
 			start();
 			FileProxy.reset(this)
 		}

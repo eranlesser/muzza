@@ -9,7 +9,7 @@ package com.musicalInstruments.model {
 		
 		
 		private var _components:		Vector.<InstrumentComponentModel>;
-		private var _pallet:XML;
+		
 		protected var _thumbNail:		String;
 		private var _spriteSheet:		String;
 		private var _type:				String;
@@ -39,9 +39,7 @@ package com.musicalInstruments.model {
 			_text=instrument.text;
 			
 			_components = new Vector.<InstrumentComponentModel>();
-			try{
-			_pallet = XML(instrument.pallet);
-			}catch(e:Error){}
+			
 			for each(var component:XML in instrument.components.children()){
 				_components.push(new InstrumentComponentModel(component));
 			}
@@ -75,9 +73,7 @@ package com.musicalInstruments.model {
 		public function get eyes():XML{
 			return _eyes;
 		}
-		public function get pallet():XML{
-			return _pallet;
-		}
+		
 		
 		public function get leftPad():uint{
 			return _leftPad;

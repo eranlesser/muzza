@@ -7,7 +7,7 @@ package com.model.rawData.ode
 		}
 		
 		public static var data:XML = 
-			<instrument type="bg" thumbNail='chelo' spriteSheet='agogo.png'>
+			<instrument type="pallet" thumbNail='chelo' spriteSheet='agogo.png'>
 <components />
 			<text>Chelo</text>
 			<octaves>

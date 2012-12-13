@@ -41,8 +41,8 @@ package com.screens.recordScreenStates
 			_context.instrumentRecorder.y=_context.model.getRecordInstrumentY();
 			_context.instrumentRecorder.octave=0;
 			_context.startTimer();
-			_context.notes.start();//move cue
-			_context.notes.stop();
+			//_context.notes.start();//move cue
+			//_context.notes.stop();
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{

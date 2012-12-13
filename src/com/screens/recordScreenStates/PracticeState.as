@@ -7,18 +7,12 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.components.NoteView;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
-	import com.representation.RepresentationSizes;
-	import com.representation.view.Channel;
 	import com.screens.view.components.notes.BigNote;
-	import com.screens.view.components.notes.INotesChannel;
+	import com.screens.view.components.notes.NotesChannel;
 	
-	import flash.display.DisplayObject;
-	import flash.display.Shape;
 	import flash.events.TimerEvent;
-	import flash.geom.Point;
 	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
@@ -27,7 +21,7 @@ package com.screens.recordScreenStates
 	{
 		protected var _context:			RecordScreenStateController;
 		protected var _currentNote:		BigNote;
-		private var _channel:			INotesChannel;
+		private var _channel:			NotesChannel;
 		private var _currentNoteIndx:	uint=0;
 		private var _noteFetcher:		INoteFetcher;
 		private var _complete:			Signal = new Signal();

@@ -108,8 +108,8 @@ package com.musicalInstruments.view.character {
 		}
 		
 		
-		public function play(sequanceId:uint,beginAtFrame:uint,volume:Number=1):Boolean{
-			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel,volume);
+		public function play(sequanceId:uint,beginAtFrame:uint):Boolean{
+			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel);
 			_player.sequenceDone.add(onSequenceDone);
 			_done=false;
 			return (sequanceId>0);

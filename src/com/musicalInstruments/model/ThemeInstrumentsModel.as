@@ -44,11 +44,14 @@ package com.musicalInstruments.model {
 			for each(var instrument:XML in instruments.children()){
 				if(instrument.@type == "voice"){
 					//instrumentModel = new VoiceInstrumentModel(instrument);
+				}else if(instrument.@type == "pallet"){
+					instrumentModel = new PalletModel(instrument);
 				}else{
 					instrumentModel = new NotesInstrumentModel(instrument);
 				}
 				instrumentModel.ready.addOnce(onInstrumentReady);
-				addInstrument(instrumentModel)
+				trace(instrumentModel.thumbNail)
+				_instruments.push(instrumentModel);
 			}
 		}
 		
@@ -57,10 +60,6 @@ package com.musicalInstruments.model {
 			if(_loadedInstruments == _instruments.length-1){//-1 for singer
 				ready.dispatch();
 			}
-		}
-		
-		private function addInstrument(ins:CoreInstrumentModel):void{
-			_instruments.push(ins);
 		}
 		
 		

@@ -25,6 +25,7 @@ package com.musicalInstruments.view.components
 		private var _isPressed:		Boolean=false;
 		private var _mark:SpriteSheet;
 		private var _markIndex:uint;
+		private var _startLocation:uint;
 		public var tuch:			Signal=new Signal();
 		public var unTuch:			Signal=new Signal();
 		
@@ -34,6 +35,16 @@ package com.musicalInstruments.view.components
 			init();
 		}
 		
+		public function get startLocation():uint
+		{
+			return _startLocation;
+		}
+
+		public function set startLocation(value:uint):void
+		{
+			_startLocation = value;
+		}
+
 		private function init():void{
 			_idleImage = AssetsManager.getBitmap(_model.image,true);
 			_playImage = AssetsManager.getBitmap(_model.playImage,true);

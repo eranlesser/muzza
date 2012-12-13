@@ -68,7 +68,7 @@ package com.musicalInstruments.view.character {
 			if(_musicianView){
 				_done=false;
 				_musicianView.sequanceDone.add(onSequanceDone);
-				return _musicianView.play(playSequance, beginAtFrame,volume);
+				return _musicianView.play(playSequance, beginAtFrame);
 			}
 			return false;
 		}

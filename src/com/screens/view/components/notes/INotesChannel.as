@@ -8,6 +8,6 @@ package com.screens.view.components.notes
 		function clearNotes():void;
 		function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void;
 		function getNoteByLocation(location:uint):BigNote;
-		function setY(yy:int):void;
+		//function setY(yy:int):void;
 	}
 }

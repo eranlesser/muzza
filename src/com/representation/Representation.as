@@ -79,7 +79,7 @@ package com.representation {
 			bg = AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_SHEET.png");
 			_cue = AssetsManager.getBitmap("LISTEN_SCREEN_BLUE_NEEDLE.png",true);
 			_cue.smoothing = true;
-			_cue.cacheAsBitmap = true;
+			//_cue.cacheAsBitmap = true;
 			_bg.addChild(bg);
 			
 			addChild(_bg);

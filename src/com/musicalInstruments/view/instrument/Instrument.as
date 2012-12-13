@@ -8,6 +8,10 @@ package com.musicalInstruments.view.instrument {
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.IRecordableSequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
+	import com.musicalInstruments.palleta.views.Groovee;
+	import com.musicalInstruments.palleta.views.Pallet;
+	import com.musicalInstruments.palleta.views.Paw;
+	import com.musicalInstruments.palleta.views.Scratchee;
 	import com.musicalInstruments.view.IAnimateable;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
@@ -15,10 +19,8 @@ package com.musicalInstruments.view.instrument {
 	import flash.display.Sprite;
 	
 	import org.osflash.signals.Signal;
+	import org.osmf.net.StreamType;
 	
-	import views.Groovee;
-	import views.Pallet;
-	import views.Scratchee;
 
 
 	
@@ -26,20 +28,17 @@ package com.musicalInstruments.view.instrument {
 		
 		protected var _musicalComponents:	Vector.<MusicalInstrumentComponent>;
 		private var _endAtFrame:			uint;
-		private var _startTick:				uint;
 		private var _octave:				uint;
-
-	
 		protected var _model:				CoreInstrumentModel;
 		protected var _beginAtFrame:		uint;
 		protected var _recordedSequanceId:	uint;
 		protected var tuch:					Signal=new Signal();
 		private var unTuch:					Signal=new Signal();
 		private var _sequanceDone:			Signal=new Signal();
-		protected var _notePlayed:			Signal;
-		protected var _noteStopped:			Signal;
+		private var _notePlayed:			Signal;
+		private var _noteStopped:			Signal;
 		private var _player:				NoteSequancePlayer;
-		private var _pallet:Pallet;
+		
 		public function Instrument(model:CoreInstrumentModel){
 			_notePlayed = new Signal();
 			_noteStopped = new Signal();
@@ -47,7 +46,7 @@ package com.musicalInstruments.view.instrument {
 			_model = model as CoreInstrumentModel;
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
 			addComponents(_model.components);
-			addPallet(_model.pallet)
+			
 		}
 		
 		public function get sequanceDone():Signal{
@@ -83,6 +82,8 @@ package com.musicalInstruments.view.instrument {
 			return _octave;
 		}
 		
+		
+		
 		private function getComponent(id:String):MusicalInstrumentComponent{
 			for each(var component:MusicalInstrumentComponent in _musicalComponents){
 				if(component.noteId == id){
@@ -99,8 +100,8 @@ package com.musicalInstruments.view.instrument {
 			
 		}
 		
-		public function play(sequanceId:uint,beginAtFrame:uint,volume:Number=1):Boolean{
-			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel,volume);
+		public function play(sequanceId:uint,beginAtFrame:uint):Boolean{
+			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel);
 			return false;
 		}
 		
@@ -129,20 +130,18 @@ package com.musicalInstruments.view.instrument {
 		
 		
 	
-		
-		protected function playNote(noteId:String):void{
-			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
+		private function onTouch(comp:MusicalInstrumentComponent):void{
+			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(comp.noteId);
 			note.player.play();
-			animateNote(noteId , "play");
-			_startTick = Metronome.getTimeModel().currentTick;
-			_notePlayed.dispatch(noteId);
+			animateNote(comp.noteId , "play");
+			comp.startLocation = Metronome.getTimeModel().currentTick;
+			_notePlayed.dispatch(comp.noteId);
 		}
-		
-		private function unPlayNote(noteId:String):void{
-			animateNote( noteId , "idle");
+		private function onUnTouch(comp:MusicalInstrumentComponent):void{
+			animateNote( comp.noteId , "idle");
 			//var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
 			//note.player.stop();
-			var soundLength:uint = (Metronome.getTimeModel().currentTick-_startTick);
+			var soundLength:uint = (Metronome.getTimeModel().currentTick-comp.startLocation);
 			if(soundLength==0){  // in case of fast tap
 				soundLength=1;
 			}
@@ -155,7 +154,7 @@ package com.musicalInstruments.view.instrument {
 			//if(!Metronome.getTimeModel().isPreTicking){
 			//}
 			
-			_noteStopped.dispatch(noteId,_startTick,soundLength,_octave);
+			_noteStopped.dispatch(comp.noteId,comp.startLocation,soundLength,_octave);
 		}
 		
 		public function getComponentById(id:String):MusicalInstrumentComponent{
@@ -167,21 +166,9 @@ package com.musicalInstruments.view.instrument {
 			return null;
 		}
 		
-		private function addPallet(pallet:XML):void{
-			trace(pallet.@type)
-			switch(pallet.@type.toString()){
-				case "groovee":
-					_pallet = new Groovee(pallet);
-					break;
-				case "scratchee":
-					_pallet = new Scratchee();
-					break;
-			}
-			
-			addChild(_pallet);
-			_pallet.y=pallet.@y;
-			_pallet.x=pallet.@x;
-		}
+		
+		
+		
 		
 		private function addComponents(components:Vector.<InstrumentComponentModel>):void{
 			for each(var compModel:InstrumentComponentModel in components){
@@ -201,12 +188,7 @@ package com.musicalInstruments.view.instrument {
 				this.mouseEnabled = false;
 			}
 		}
-		private function onTouch(mc:MusicalInstrumentComponent):void{
-			tuch.dispatch(mc);
-		}
-		private function onUnTouch(mc:MusicalInstrumentComponent):void{
-			unPlayNote(mc.noteId);
-		}
+		
 		
 		
 		

@@ -45,7 +45,7 @@ package com.musicalInstruments.model
 				_octaves.push(notes);
 			}
 		}
-		
+		//TODO - Create a pallet sequance
 		private function parseSequances(sequancesXML:XMLList):void{
 			for each(var sequance:XML in sequancesXML){
 				var noteSequanceModel:NoteSequanceModel = new NoteSequanceModel(sequance as XML,this);

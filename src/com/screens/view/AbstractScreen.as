@@ -11,7 +11,8 @@ package com.screens.view {
 		protected var _bg:				Sprite;
 		protected var _stageLayer:		Sprite;
 		protected var _guiLayer:		Sprite;
-		
+		protected var isInited:			Boolean = false;
+
 		public function AbstractScreen(){
 			addBg();
 		}
@@ -37,9 +38,7 @@ package com.screens.view {
 			
 		}
 		
-		protected function get container():Presenter{
-			return parent.parent as Presenter;
-		}
+		
 		
 		
 //_____________________________________________________END LAYOUT

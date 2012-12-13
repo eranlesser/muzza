@@ -10,10 +10,10 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
 	import com.musicalInstruments.view.instrument.Instrument;
-	import com.screens.view.components.notes.INotesChannel;
 	import com.representation.ChanelNotesType;
-	import com.representation.RepresentationSizes;
 	import com.screens.model.RecordScreenModel;
+	import com.screens.view.components.notes.INotesChannel;
+	import com.screens.view.components.notes.NotesChannel;
 
 	/**
 	 * @author eranlesser
@@ -21,14 +21,15 @@ package com.representation.controller {
 	public class RecordChannelController{
 		
 		private var _model:				ITimeModel;
-		private var _channelView:		INotesChannel;
+		private var _channelView:		NotesChannel;
 		private var _recordScreenModel:	RecordScreenModel;
 		private var _instrumentModel:	CoreInstrumentModel
 		private var _learnedSequance:	ISequance;
 		private var _recordedSequance:	RecordableNotesSequance;
+		private var _palletSequance:	RecordableNotesSequance;
 		private var _instrument:		Instrument;
 		
-		public function RecordChannelController(channelView:INotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument, recordScreenModel:RecordScreenModel):void{
+		public function RecordChannelController(channelView:NotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument, recordScreenModel:RecordScreenModel):void{
 			_model=Metronome.getTimeModel();
 			_channelView=channelView;
 			_recordScreenModel=recordScreenModel;
@@ -36,6 +37,7 @@ package com.representation.controller {
 			_instrument = instrument;
 			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
+			_palletSequance = new RecordableNotesSequance(_recordScreenModel.palletSequanceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
 				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.U_PLAYING);
 			}
@@ -74,26 +76,24 @@ package com.representation.controller {
 		
 		public function stop():void{
 			_model.metronomeTick.remove(onTick);
-			_channelView.setY(-((RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
+			//_channelView.setY(-((RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
 		}
 		
 		private function onTick():void{
 			
-			_channelView.setY(((_model.currentTick*2)*(RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
+			//_channelView.setY(((_model.currentTick*2)*(RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
 		}
 		
-		public function get channel():INotesChannel{
+		public function get channel():NotesChannel{
 			return _channelView;
 		}
 		
-		public function add(noteId:String,noteLength:uint,startLocation:uint,octave:uint):SequancedNote{
-			return _recordedSequance.add(noteId,startLocation,noteLength,octave);
-		}
+		
 		
 		private function noteAdded(noteId:String,noteLength:uint,startLocation:uint,octave:uint):void{
-			var note:SequancedNote = add(noteId,startLocation,noteLength,octave);
-			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
-			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
+			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
+			//var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
+			//var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
 //			for(var i:uint=0;i<=2;i++){
 //				var closeNote:SequancedNote;
 //				closeNote = learnedSequance.getNoteByLocation(note.location+i);
@@ -113,7 +113,7 @@ package com.representation.controller {
 		private function drawNotes(sequance:NoteSequanceModel,mode:String):void{
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
-				_channelView.drawNote(note,noteModel.value,mode,noteModel.isFlatOrSharp);
+				_channelView.drawNote(note,noteModel.value,mode,noteModel.x);
 			}
 		}
 		

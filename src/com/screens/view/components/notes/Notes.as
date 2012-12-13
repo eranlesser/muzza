@@ -1,42 +1,44 @@
 package com.screens.view.components.notes
 {
 	import com.constants.Dimentions;
+	import com.gskinner.motion.GTween;
 	import com.musicalInstruments.model.CoreInstrumentModel;
-	import com.representation.view.Channel;
+	import com.representation.RepresentationSizes;
 	import com.representation.view.SpeedSlider;
 	import com.view.gui.ToggleBut;
-	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.geom.Rectangle;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
 	
 	public class Notes extends Sprite{
 		
 		private var _cue:DisplayObject;
-		private var _channel:INotesChannel;
+		private var _channel:NotesChannel;
 		private var _notesCanvas:Sprite;
 		private var _bg:Shape;
 		private var _speedController:SpeedSlider;
 		private var _backUpBut:ToggleBut;
-		public function Notes()
+		private var _notesLength:uint;
+		private var _instrumentY:uint;
+		public function Notes(notesLength:uint,instrumentY:uint)
 		{
+			_notesLength=notesLength;
+			_instrumentY=instrumentY;
 			init();
 		}
 		
 		public function start():void{
-			
+			_channel.start(_notesLength);
 		}
 		
 		public function stop():void{
 			
 		}
 		
-		public function addChannel(model:CoreInstrumentModel):INotesChannel{
-			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,height));
+		public function addChannel(model:CoreInstrumentModel):NotesChannel{
+			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY+12));
 			_notesCanvas.addChild(_channel as DisplayObject);
 			NotesChannel(_channel).moved.add(onMoved);
 			return _channel;
@@ -54,7 +56,7 @@ package com.screens.view.components.notes
 		private function init():void{
 			_bg=new Shape();
 			_bg.graphics.beginFill(0x333333);
-			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT/2-100);
+			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
 			_bg.graphics.endFill();
 			_bg.alpha=0;
 			_notesCanvas = new Sprite();

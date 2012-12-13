@@ -2,6 +2,8 @@ package com.screens.recordScreenStates
 {
 	import com.constants.Rhythms;
 	import com.constants.States;
+	import com.musicalInstruments.palleta.Ipallet;
+	import com.musicalInstruments.palleta.views.Pallet;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.representation.controller.RecordChannelController;
@@ -9,6 +11,7 @@ package com.screens.recordScreenStates
 	import com.screens.view.RecordScreen;
 	import com.screens.view.components.notes.INotesChannel;
 	import com.screens.view.components.notes.Notes;
+	import com.screens.view.components.notes.NotesChannel;
 	import com.view.gui.Btn;
 
 	public class RecordScreenStateController
@@ -99,6 +102,10 @@ package com.screens.recordScreenStates
 		public function get instrumentRecorder():Instrument{
 			return _recordScreen.recorder;
 		}
+		
+		public function get pallet():Ipallet{
+			return _recordScreen.pallet as Ipallet;
+		}
 		public function get recordButton():Btn{
 			return _recordScreen.recordButton;
 		}
@@ -117,7 +124,7 @@ package com.screens.recordScreenStates
 			return _recordScreen.model;
 		}
 		
-		public function get channel():INotesChannel{
+		public function get channel():NotesChannel{
 			return _recordScreen.recordChannelController.channel;
 		}
 		

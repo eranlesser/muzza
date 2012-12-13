@@ -129,7 +129,7 @@ package com.view.tools
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
-			"<image path='assets/OPEN/STATION_WALL_STRP.png' />"+
+			"<image path='assets/open/bStrip.png' />"+
 			
 			//SPRITESHEET
 			"<image path='assets/band/drums_new/drumsSheet.png' />"+
@@ -338,7 +338,7 @@ package com.view.tools
 				if(obj.name == name){
 					displayObj  = new Bitmap(Bitmap(obj.image).bitmapData.clone());//clone
 					if(smooth){
-						(displayObj as Bitmap).cacheAsBitmap=true;
+						//(displayObj as Bitmap).cacheAsBitmap=true;
 						(displayObj as Bitmap).smoothing=true;
 					}
 					break;	

@@ -1,5 +1,6 @@
 package com.screens.view.components.notes
 {
+	import com.gskinner.motion.GTween;
 	import com.gskinner.motion.easing.Sine;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
@@ -14,24 +15,33 @@ package com.screens.view.components.notes
 	
 	import org.osflash.signals.Signal;
 	
-	public class NotesChannel extends Sprite implements INotesChannel
+	public class NotesChannel extends Sprite
 	{
 		private var _instrumentModel:	CoreInstrumentModel;
 		private var _notes:				Vector.<BigNote>;
 		private var _notesContainer:	Sprite;
 		private var _notesMask:			Shape;
+		private var _instrumentY:uint;
 		public var moved:Signal=new Signal();
 		
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle){
 			_instrumentModel = model;
 			_notes=new Vector.<BigNote>();
+			_instrumentY = size.height;
 			drawFrame(size);
 		}
 		
-		public function setY(yy:int):void{
-			_notesContainer.y=yy-240;//-_notesMask.width/2;
-			moved.dispatch(_notesContainer.y);
+//		public function setY(yy:int):void{
+//			_notesContainer.y=yy-240;//-_notesMask.width/2;
+//			moved.dispatch(_notesContainer.y);
+//		}
+		
+		public function start(notesLength:uint):void{
+			this.y=0;
+			
+			var twn:GTween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128))*(notesLength*2)});
+			twn.useFrames=true;
 		}
 		
 		public function clearNotes():void{
@@ -41,11 +51,15 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,isFlatOrSharp:String):void{
-			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId, isFlatOrSharp);
+		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,xx:uint):void{
+			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
-			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+950/2-80;
-			note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad;
+			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+_instrumentY;
+			if(xx>0){
+				note.x=xx-note.width/2;
+			}else{
+				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad;
+			}
 			_notes.push(note);
 			
 		}
@@ -62,7 +76,7 @@ package com.screens.view.components.notes
 		public function getNotesInRange(range:uint,curTick:uint):Vector.<BigNote>{
 			var rangeNotes:Vector.<BigNote> = new Vector.<BigNote>();
 			for each(var note:BigNote in _notes){
-				if(note.location>=(curTick-range)){
+				if(note.location<=(curTick+range)&&note.location>curTick){
 					rangeNotes.push(note);
 				}
 				

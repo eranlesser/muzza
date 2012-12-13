@@ -26,16 +26,19 @@ package com.musicalInstruments.view.components {
 		
 		public function SoundPlayer(soundFile:String){
 			_soundFile = soundFile;
+			if(_soundFile==""){
+				trace();
+			}
 			_metronom = Metronome.getTimeModel();
 			loadSound();
 		}
 		
-		public function play(volume:Number=1):void{
+		public function play():SoundChannel{
 			if(_channel){
 				_channel.stop();
 			}
 			_channel = _sound.play();
-			
+			return _channel;
 		}
 		
 		public function stop():void{

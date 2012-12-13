@@ -10,35 +10,38 @@ public static var data:XML =
 	<eyes swfSheet="bassBlink.png" x="0" y="0" width="250" height="350" >
 		<blink start="0" end="5" />
 	</eyes>	
-<components recordButtonX="0" recordButtonY="580">
+<components recordButtonX="0" recordButtonY="580" notesGap="100" leftPad="50">
 		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
 			<tap noteId="D_2" />
 		</bass>
-		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='120' y='0' >
+		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='110' y='0' >
 			<tap noteId="F_2" />
 		</bass>
-		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='240' y='0'  >
+		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='220' y='0'  >
 			<tap noteId="F#_2" />
 		</bass>
 		
-		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='360' y='0' >
+		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='330' y='0' >
 			<tap noteId="G_2" />
 		</bass>
-		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='480' y='0'  >
+		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='440' y='0'  >
 			<tap noteId="A_2" />
 		</bass>
-		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='600' y='0'  >
+		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='550' y='0'  >
 			<tap noteId="B_2" />
 		</bass>
-		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='720' y='0'  >
+		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='660' y='0'  >
 			<tap noteId="C_3" />
 		</bass>
-		<bass image="BASS_8_IDLE.png" playImage="BASS_8_SELECTED.png" x='840' y='0' >
+		<bass image="BASS_8_IDLE.png" playImage="BASS_8_SELECTED.png" x='770' y='0' >
 			<tap noteId="D_3" />
 		</bass>
-	
-		
 	</components>
+<pallet type="paw" x='1010' y='-230'>
+				<pawee sound="chelo/chelo_1.mp3" />
+				<pawee sound="chelo/chelo_2.mp3" />
+				<pawee sound="chelo/chelo_4.mp3" />
+			</pallet>
 <studio>
 <background image="backgr_solo.jpg" />
 <spotLight image="bass_spot_lights.png" />

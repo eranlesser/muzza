@@ -4,6 +4,7 @@ package com.screens.model {
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
+	import com.musicalInstruments.model.PalletModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 
@@ -13,12 +14,14 @@ package com.screens.model {
 		private var _instruments:ThemeInstrumentsModel;
 		private var _recordeSequanceId:uint;
 		private var _learnedSequancedId:uint;
+		private var _palletSequanceId:uint;
 		private var _recordInstrumentX:int;
 		private var _recordInstrumentY:int;
-		private var _playInstrumentX:int;
-		private var _playInstrumentY:int;
+		private var _palletX:int;
+		private var _palletY:int;
 		private var _backUpInsruments:Vector.<InstrumentModel>;
 		private var _startAtCurPoint:int;
+		private var _palletModel:CoreInstrumentModel;
 		
 		public function RecordScreenModel(xml:XML,instruments:ThemeInstrumentsModel){
 			super(xml);
@@ -27,15 +30,23 @@ package com.screens.model {
 			parse(xml);
 		}
 		
+		public function get palletSequanceId():uint
+		{
+			return _palletSequanceId;
+		}
+
 		private function parse(xml:XML):void{
 			_instrumentModel = _instruments.getInstrumentByName(xml.playerInstrument.@type);
 			_recordeSequanceId = xml.playerInstrument.@recordedSequance;
 			_learnedSequancedId =  xml.playerInstrument.@learnedSequanced;
+			_palletSequanceId =  xml.playerInstrument.@palletSequance;
 			_startAtCurPoint=xml.@startAtCurPoint;
 			_recordInstrumentX= xml.playerInstrument.RecordedX;
 			_recordInstrumentY= xml.playerInstrument.RecordedY;
-			_playInstrumentX= xml.playerInstrument.PlayX;
-			_playInstrumentY= xml.playerInstrument.PlayY;
+			_palletX= xml.pallet.@x;
+			_palletY= xml.pallet.@y;
+			if(xml.pallet is XMLList)
+			_palletModel =_instruments.getInstrumentByName(xml.pallet.@type);
 			for each(var instrument:XML in xml.backups.instrument){
 				var insModel:CoreInstrumentModel =_instruments.getInstrumentByName(instrument.@type);
 				var themedInsModel:InstrumentModel = new InstrumentModel(insModel,instrument);
@@ -47,16 +58,20 @@ package com.screens.model {
 			return _startAtCurPoint;
 		}
 		
-		public function getPlayInstrumentX():int{
-			return _playInstrumentX;
+		
+		public function get palletModel():CoreInstrumentModel{
+			return _palletModel;
 		}
 		
 		public function getRecordInstrumentX():int{
 			return _recordInstrumentX
 		}
+		public function getPalletX():int{
+			return _palletX;
+		}
 		
-		public function getPlayInstrumentY():int{
-			return _playInstrumentY;
+		public function getPalletY():int{
+			return _palletY;
 		}
 		
 		public function getRecordInstrumentY():int{
