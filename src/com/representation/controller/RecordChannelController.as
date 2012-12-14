@@ -39,7 +39,8 @@ package com.representation.controller {
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
 			_palletSequance = new RecordableNotesSequance(_recordScreenModel.palletSequanceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
-				drawNotes(NoteSequanceModel(_learnedSequance),ChanelNotesType.U_PLAYING);
+				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
+				drawNotes(_recordScreenModel.palletModel as NotesInstrumentModel,NoteSequanceModel(_recordScreenModel.palletModel.getSequanceById(_recordScreenModel.palletSequanceId)));
 			}
 			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
 				//drawNotes(NoteSequanceModel(_instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
@@ -50,7 +51,9 @@ package com.representation.controller {
 		public function reset(mode:String):void{
 			_channelView.clearNotes();
 			if(_learnedSequance is NoteSequanceModel){//temp
-				drawNotes(NoteSequanceModel(_learnedSequance),mode);
+				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
+				drawNotes(_recordScreenModel.palletModel as NotesInstrumentModel,NoteSequanceModel(_recordScreenModel.palletModel.getSequanceById(_recordScreenModel.palletSequanceId)));
+				
 			}
 		}
 		
@@ -110,10 +113,10 @@ package com.representation.controller {
 			//_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
 		}
 		
-		private function drawNotes(sequance:NoteSequanceModel,mode:String):void{
+		private function drawNotes(instrumentModel:NotesInstrumentModel,sequance:NoteSequanceModel):void{
 			for each(var note:SequancedNote in sequance.notes){
-				var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
-				_channelView.drawNote(note,noteModel.value,mode,noteModel.x);
+				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
+				_channelView.drawNote(note,noteModel.value,noteModel.x);
 			}
 		}
 		

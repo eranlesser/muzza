@@ -18,7 +18,7 @@ package com.screens.view.components.notes
 		private var _value:uint;
 		private var _id:String;
 		
-		public function BigNote(noteValue:uint,channelType:String,loc:uint,channel:String,id:String){
+		public function BigNote(noteValue:uint,loc:uint,channel:String,id:String){
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
 			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png",true);
 			_location=loc;
@@ -42,8 +42,8 @@ package com.screens.view.components.notes
 			tField.x=7;
 			tField.y=4;
 			tField.setTextFormat(new TextFormat(null,18))
-			addChild(tField);
-			tField.cacheAsBitmap=true;
+			//addChild(tField);
+			//tField.cacheAsBitmap=true;
 			//tField.border=true;
 			//addChild(_idleAsset);
 			//this.scaleX=0.65;
@@ -77,11 +77,11 @@ package com.screens.view.components.notes
 		
 		public function set state(stt:String):void{
 			if(stt=="selected"){
-			this.graphics.lineStyle(3,0x333333);
-			this.graphics.drawCircle(14,14,14);
+			this.graphics.lineStyle(5,0x3399FF);
+			this.graphics.drawCircle(14,15,15);
 			}else{
 				this.graphics.lineStyle(0,0x333333);
-				this.graphics.drawCircle(14,14,14);
+				this.graphics.drawCircle(14,15,15);
 			}
 //			removeChildAt(0);
 //			if(stt=="selected"){

@@ -23,6 +23,7 @@ package com.screens.view.components.notes
 		private var _notesMask:			Shape;
 		private var _instrumentY:uint;
 		public var moved:Signal=new Signal();
+		private var _tween:GTween;
 		
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle){
@@ -40,8 +41,18 @@ package com.screens.view.components.notes
 		public function start(notesLength:uint):void{
 			this.y=0;
 			
-			var twn:GTween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128))*(notesLength*2)});
-			twn.useFrames=true;
+			_tween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128))*(notesLength*2)});
+			_tween.useFrames=true;
+		}
+		
+		public function stop():void{
+			if(_tween)
+			_tween.end();
+			_notesContainer.y=0;
+		}
+		
+		public function pause():void{
+			_tween.paused = true;
 		}
 		
 		public function clearNotes():void{
@@ -51,8 +62,8 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		public function drawNote(noteModel:SequancedNote,noteValue:uint,type:String,xx:uint):void{
-			var note:BigNote = new BigNote(noteValue,type,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId);
+		public function drawNote(noteModel:SequancedNote,noteValue:uint,xx:uint):void{
+			var note:BigNote = new BigNote(noteValue,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
 			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+_instrumentY;
 			if(xx>0){

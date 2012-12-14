@@ -54,11 +54,11 @@ public static var data:XML =
 
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bottles.png" learnedSequanced="99" recordedSequance="102">
+	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="99" recordedSequance="102">
 	<RecordedX>0</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<pallet type="claps" learnedSequanced="99" rhythm="8" x='800' y='362'>
+	<pallet type="claps" learnedSequanced="99" rhythm="8" x='828' y='372'>
 		
 	</pallet>
 <backups>

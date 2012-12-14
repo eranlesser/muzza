@@ -50,6 +50,7 @@ package com.screens.recordScreenStates
 			//_preTicker.active=false;
 			_isRecording = false;
 			_context.instrumentRecorder.marc("",0);
+			_context.pallet.active = false;
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				noteSequencePlayer.stop();
@@ -110,7 +111,7 @@ package com.screens.recordScreenStates
 			if(_selectedNote){
 				_selectedNote.state = "idle";
 			}
-			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(2,_timeModel.currentTick);
+			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			for each(var curNote:BigNote in curNotes){
 				curNote.state="selected";

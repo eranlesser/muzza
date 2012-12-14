@@ -4,6 +4,7 @@ package com.musicalInstruments.palleta.views
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.PalletModel;
+	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.view.components.SoundPlayer;
 	import com.musicalInstruments.view.instrument.Instrument;
 	
@@ -12,7 +13,7 @@ package com.musicalInstruments.palleta.views
 	import flash.events.MouseEvent;
 	import flash.media.SoundChannel;
 
-	public class Groovee extends Instrument
+	public class Groovee extends Instrument implements Ipallet
 	{
 		
 		[Embed(source="assets/clap_bg.png")] 
@@ -27,10 +28,11 @@ package com.musicalInstruments.palleta.views
 		public function Groovee(model:CoreInstrumentModel)
 		{
 			_model=model as PalletModel;
-			//_soundPlayer = new SoundPlayer(_model.);
+			_soundPlayer = new SoundPlayer((_model as PalletModel).getNoteById("1").soundFile);
 			_rhythm = (model as PalletModel).rhythm;
 			super(model);
 			addChild(new _frame() as DisplayObject);
+			init();
 		}
 		
 		public function get active():Boolean
@@ -41,11 +43,14 @@ package com.musicalInstruments.palleta.views
 		public function set active(value:Boolean):void
 		{
 			_active = value;
+			if(!value){
+				_on=false;
+			}
 		}
 
 		
 		
-		protected function init():void{
+		private function init():void{
 			addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
@@ -57,8 +62,8 @@ package com.musicalInstruments.palleta.views
 			}
 		}
 		
-		public function onTick(tickValue:uint):void{
-			if(tickValue%_rhythm==0&&tickValue>_rhythm&&_on){
+		public function onTick(tickValue:int):void{
+			if((tickValue+(_model as PalletModel).rhythmOffset)%_rhythm==0&&tickValue>(_rhythm+(_model as PalletModel).rhythmOffset)&&_on){
 				playSound();
 			}
 		}
@@ -66,15 +71,16 @@ package com.musicalInstruments.palleta.views
 		private function playSound():void{
 			_channel=_soundPlayer.play();
 			var playCircle:Sprite = new Sprite();
-			playCircle.graphics.beginFill(0x038C8C,1);
-			playCircle.graphics.lineStyle(2,0xAFBA99);
+			playCircle.graphics.beginFill(0xAFBA99,1);
+			playCircle.graphics.lineStyle(2,0x038C8C);
 			playCircle.graphics.drawCircle(0,0,22);
 			playCircle.graphics.endFill();
-			playCircle.x=(width)/2+11;
-			playCircle.y=width/2+5;
+			playCircle.x=(width)/2//-playCircle.width/2;
+			playCircle.y=height/2//-playCircle.height/2;
 			addChild(playCircle);
-			
-			var tween:GTween = new GTween(playCircle,1,{scaleX:3,scaleY:3,alpha:0})
+			//this.graphics.beginFill(0x333333);
+			//this.graphics.drawRect(0,0,width,height);
+			var tween:GTween = new GTween(playCircle,1,{width:this.width,height:this.height,alpha:0})
 			tween.onComplete=onTweenEnd;
 			notePlayed.dispatch(this);
 		}

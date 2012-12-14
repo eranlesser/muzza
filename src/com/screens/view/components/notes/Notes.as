@@ -34,7 +34,7 @@ package com.screens.view.components.notes
 		}
 		
 		public function stop():void{
-			
+			_channel.stop();
 		}
 		
 		public function addChannel(model:CoreInstrumentModel):NotesChannel{
@@ -56,7 +56,7 @@ package com.screens.view.components.notes
 		private function init():void{
 			_bg=new Shape();
 			_bg.graphics.beginFill(0x333333);
-			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
+			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,_instrumentY+12);
 			_bg.graphics.endFill();
 			_bg.alpha=0;
 			_notesCanvas = new Sprite();

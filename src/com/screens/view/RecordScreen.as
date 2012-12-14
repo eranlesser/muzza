@@ -114,7 +114,7 @@ package com.screens.view {
 				_recordBtn.y=(strip.height-practiceBtn.height)/2-2;
 				
 				
-				_notes.addChannel(_model.instrumentModel);
+				//_notes.addChannel(_model.instrumentModel);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
 				initStateController();
