@@ -63,6 +63,9 @@ package com.screens.recordScreenStates
 			activate();
 		}
 		
+		public function set isRecorded(flag:Boolean):void{
+			_recordScreen.isRecorded=flag;
+		}
 		
 		
 		private function activate():void

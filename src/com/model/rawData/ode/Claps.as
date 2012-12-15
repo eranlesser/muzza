@@ -12,14 +12,14 @@ package com.model.rawData.ode
 <text>Claps</text>
 <octaves>
 <notes>
-<note id="1"  soundFile="pallet/claps/claps.mp3" animationIndex='1' value="0"  x="896" />
+<note id="claps"  soundFile="pallet/claps/claps.mp3" animationIndex='1' value="0"  x="896" />
 </notes>
 </octaves>
 			
 <sequances>
 <!--claps-->
 <sequance id="50">
-	<note id="1" location="5" />
+	<note id="claps" location="5" />
 </sequance>
 
 <sequance id="99">

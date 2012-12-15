@@ -1,40 +1,42 @@
 package com.musicalInstruments.palleta.views
 {
-	public class Paw extends Pallet
+	import com.musicalInstruments.model.CoreInstrumentModel;
+	import com.musicalInstruments.palleta.Ipallet;
+	import com.musicalInstruments.view.instrument.Instrument;
+	
+	import flash.display.DisplayObject;
+
+	public class Paw extends Instrument implements Ipallet
 	{
 		[Embed(source="assets/notes_sheet.png")] 
 		private var _bg:Class;
 		[Embed(source="assets/notes_frame.png")] 
 		private var _frame:Class;
-		public function Paw(data:XML)
+		public function Paw(model:CoreInstrumentModel)
 		{
-			_xml=data;
-			super();
+			
+			super(model);
+			init();
 		}
 		
-		override protected function get bg():Class{
-			return _bg;
+		public function onTick(val:int):void{
+			
+		}
+		public function set active(flag:Boolean):void{
+			
 		}
 		
-		override protected function get frame():Class{
-			return _bg;
-		}
-		
-		override public function get instrument():String{
-			return "PAW";
-		}
-		
-		override protected function init():void{
-			super.init();
+		private function init():void{
 			var xx:uint=202;
-			for each(var paweXml:XML in _xml.pawee){
-				var pawee:Pawee = new Pawee(paweXml,height*0.60);
-				addChild(pawee);
-				pawee.x=xx;
-				xx+=pawee.width+1;
-			}
-			this.scaleX=0.5;
-			this.scaleY=0.5;
+//			for each(var paweXml:XML in _xml.pawee){
+//				var pawee:Pawee = new Pawee(paweXml,height*0.60);
+//				addChild(pawee);
+//				pawee.x=xx;
+//				xx+=pawee.width+1;
+//			}
+			addChild(new _bg() as DisplayObject)
+			this.scaleX=0.3;
+			this.scaleY=0.4;
 			this.rotation=90;
 		}
 	}

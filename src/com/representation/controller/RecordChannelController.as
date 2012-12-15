@@ -10,9 +10,7 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
 	import com.musicalInstruments.view.instrument.Instrument;
-	import com.representation.ChanelNotesType;
 	import com.screens.model.RecordScreenModel;
-	import com.screens.view.components.notes.INotesChannel;
 	import com.screens.view.components.notes.NotesChannel;
 
 	/**
@@ -93,7 +91,7 @@ package com.representation.controller {
 		
 		
 		
-		private function noteAdded(noteId:String,noteLength:uint,startLocation:uint,octave:uint):void{
+		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
 			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
 			//var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 			//var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);

@@ -67,11 +67,11 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102">
+	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99">
 	<RecordedX>50</RecordedX>
 	<RecordedY>450</RecordedY>
 	</playerInstrument>
-<pallet type="claps" learnedSequanced="99" rhythm="8" x='800' y='362'>
+<pallet type="scratch" learnedSequanced="99" rhythm="8" x='500' y='452'>
 		
 	</pallet>
 <backups>
@@ -79,11 +79,11 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102">
+	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99">
 	<RecordedX>4</RecordedX>
-	<RecordedY>440</RecordedY>
+	<RecordedY>420</RecordedY>
 	</playerInstrument>
-<pallet type="claps" learnedSequanced="99" rhythm="8" x='800' y='362'>
+<pallet type="chelo" learnedSequanced="99" rhythm="8" x='1005' y='420'>
 		
 	</pallet>
 <backups>

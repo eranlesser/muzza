@@ -24,7 +24,6 @@ package com.screens.recordScreenStates
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
 		private var _preTicker:MetronomView;
 		private var _isRecording:Boolean = false;
-		private var _selectedNote:BigNote;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -57,7 +56,7 @@ package com.screens.recordScreenStates
 			}
 		}
 		
-		private function setBackUps(str:String):void{
+		private function setBackUps():void{
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				//if(_context.notes.backUpsBut.selected){
 					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId));
@@ -90,7 +89,7 @@ package com.screens.recordScreenStates
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
 			_context.pallet.active = true;
-			setBackUps("");
+			setBackUps();
 			_context.notes.start();
 		}
 		
@@ -108,14 +107,10 @@ package com.screens.recordScreenStates
 				stop();
 				_context.instrumentRecorder.marc("",0);
 			}
-			if(_selectedNote){
-				_selectedNote.state = "idle";
-			}
 			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			for each(var curNote:BigNote in curNotes){
 				curNote.state="selected";
-				_selectedNote=curNote;
 				//_context.instrumentRecorder.marc(curNote.id,4);
 			}
 			_context.pallet.onTick(_timeModel.currentTick);
@@ -126,16 +121,6 @@ package com.screens.recordScreenStates
 				
 		}
 		
-		private function getNoteByDistance(distance:uint):BigNote{
-			var curNote:BigNote;
-			for(var i:uint=0;i<distance;i++){//was i<4
-				if(_context.channel.getNoteByLocation(_timeModel.currentTick+i)){
-					curNote=_context.channel.getNoteByLocation(_timeModel.currentTick+i);
-					break;
-				}
-			}
-			return curNote;
-		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{
 			stop();

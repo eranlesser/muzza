@@ -2,8 +2,8 @@ package com.screens.model
 {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.view.DemoScreen;
-	import com.screens.view.ListenScreen;
 	import com.screens.view.IScreen;
+	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
 	
 	import org.osflash.signals.Signal;
@@ -43,6 +43,10 @@ package com.screens.model
 		
 		public function get currentScreen():IScreen{
 			return _recordScreens[_currentScreenIndex] as IScreen;
+		}
+		
+		public function get currenScreenIndex():uint{
+			return _currentScreenIndex;
 		}
 		
 		public function get isFirstScreen():Boolean{

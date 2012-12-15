@@ -7,14 +7,14 @@ package com.model.rawData.ode
 		}
 		
 		public static var data:XML = 
-			<instrument type="pallet" thumbNail='chelo' spriteSheet='agogo.png'>
+			<instrument type="pallet" palletType='chelo' thumbNail='chelo' spriteSheet='agogo.png'>
 <components />
 			<text>Chelo</text>
 			<octaves>
 			<notes>
-			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="1"  />
-			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="2"  />
-			<note id="D_6"   soundFile="ode/chelo/chelo_3.mp3" animationIndex='3' value="3"  />
+			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="0" x="954"  />
+			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="0" x="954" />
+			<note id="D_6"   soundFile="ode/chelo/chelo_3.mp3" animationIndex='3' value="0" x="954" />
 			
 			</notes>
 			</octaves>

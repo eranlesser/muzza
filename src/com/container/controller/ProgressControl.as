@@ -3,6 +3,7 @@ package com.container.controller {
 	import com.container.navigation.Navigator;
 	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
+	import com.screens.view.RecordScreen;
 	
 	import flash.display.DisplayObject;
 	
@@ -54,6 +55,7 @@ package com.container.controller {
 			_view.goto.add(goTo);
 			_view.menu.openDemo.add(openDemo);
 			_navigator.state=_model.recordSession;
+			_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
 		}
 		
 		public function get theme():String{
@@ -67,6 +69,9 @@ package com.container.controller {
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			_navigator.state=_model.recordSession;
+			if(_model.currentScreen is RecordScreen)
+			_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
+			
 		}
 		
 		private function openDemo():void{

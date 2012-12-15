@@ -34,7 +34,9 @@ package com.studio
 			
 		}
 		
-		
+		public function set isRecorded(flag:Boolean):void{
+			
+		}
 		
 		public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void{
 			_model=new StudioModel(screenData,instrumentsModel);

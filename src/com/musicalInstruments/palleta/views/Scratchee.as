@@ -1,13 +1,17 @@
 package com.musicalInstruments.palleta.views
 {
+	import com.musicalInstruments.model.CoreInstrumentModel;
+	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.palleta.Sounder;
+	import com.musicalInstruments.view.instrument.Instrument;
 	
+	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
 	import flash.geom.Point;
 	
 
-	public class Scratchee extends Pallet
+	public class Scratchee extends Instrument implements Ipallet
 	{
 		[Embed(source="assets/notes_sheet.png")] 
 		private var _bg:Class;
@@ -26,9 +30,12 @@ package com.musicalInstruments.palleta.views
 		
 		private var sounders:Vector.<Sounder>;
 		
-		public function Scratchee()
+		public function Scratchee(model:CoreInstrumentModel)
 		{
-			super();
+			super(model);
+			addChild(new _bg() as DisplayObject);
+			this.scaleX=0.6;
+			this.scaleY=0.6;
 			sounders = new Vector.<Sounder>();
 			sounders.push(new Sounder("1a","scratch/scrach_1a.mp3"));
 			sounders.push(new Sounder("1b","scratch/scrach_1b.mp3"));
@@ -36,22 +43,11 @@ package com.musicalInstruments.palleta.views
 			sounders.push(new Sounder("1d","scratch/scrach_1d.mp3"));
 			sounders.push(new Sounder("1e","scratch/scrach_1e.mp3"));
 			sounders.push(new Sounder("9","scratch/scrach_9.mp3"));
+			init();
 		}
 		
-		override protected function get bg():Class{
-			return _bg;
-		}
 		
-		override protected function get frame():Class{
-			return _bg;
-		}
-		
-		override public function get instrument():String{
-			return "SCRATCHEE";
-		}
-		
-		override protected function init():void{
-			super.init();
+		private function init():void{
 			this.scaleX=0.6;
 			this.scaleY=0.6;
 			this.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchBegin); 
@@ -61,6 +57,13 @@ package com.musicalInstruments.palleta.views
 		
 		private function onClick(e:MouseEvent):void{
 			sounders[4].play();
+		}
+		
+		public function onTick(val:int):void{
+			
+		}
+		public function set active(flag:Boolean):void{
+			
 		}
 		
 		private function getAngle (x1:Number, y1:Number, x2:Number, y2:Number):Number

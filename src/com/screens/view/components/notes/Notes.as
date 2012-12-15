@@ -36,6 +36,9 @@ package com.screens.view.components.notes
 		public function stop():void{
 			_channel.stop();
 		}
+		public function set paused(val:Boolean):void{
+			_channel.paused=val;
+		}
 		
 		public function addChannel(model:CoreInstrumentModel):NotesChannel{
 			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY+12));

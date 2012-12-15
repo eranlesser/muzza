@@ -46,7 +46,7 @@ package com.screens.model {
 			_palletX= xml.pallet.@x;
 			_palletY= xml.pallet.@y;
 			if(xml.pallet is XMLList)
-			_palletModel =_instruments.getInstrumentByName(xml.pallet.@type);
+				_palletModel =_instruments.getInstrumentByName(xml.pallet.@type);
 			for each(var instrument:XML in xml.backups.instrument){
 				var insModel:CoreInstrumentModel =_instruments.getInstrumentByName(instrument.@type);
 				var themedInsModel:InstrumentModel = new InstrumentModel(insModel,instrument);

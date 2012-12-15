@@ -4,9 +4,11 @@ package com.screens.recordScreenStates
 	import com.constants.States;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
+	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
+	import com.musicalInstruments.view.instrument.Instrument;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
 	import com.screens.view.components.notes.BigNote;
@@ -33,6 +35,7 @@ package com.screens.recordScreenStates
 		private var _ofBeatNotes:		uint=0;
 		private var _correctAnswers:	uint=0;
 		private var _goodAnsersInARow:	uint=0;
+		private var _curNotes:Vector.<BigNote>;
 
 		public function PracticeState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -48,9 +51,10 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			_context.instrumentRecorder.notePlayed.add(onNotePlayed);
+			(_context.pallet as Instrument).notePlayed.add(onNotePlayed);
 			_context.practiceButton.clicked.add(onStop);
 			_context.recordButton.clicked.add(onRecordBtn);
-			_timeModel.soundTick.add(highLightNext);
+			_timeModel.soundTick.add(onTimerTick);
 			_context.startTimer();
 			_context.speed=Rhythms.RECORD_SPEED;
 			_context.practiceButton.state="pressed";
@@ -78,7 +82,7 @@ package com.screens.recordScreenStates
 				//_context.bubble.setText("Practice some more",true)
 			}
 			}
-			
+			_context.isRecorded=true;
 			_context.notes.stop();
 			_context.recordChannelController.stop();
 			_currentNoteIndx=0;
@@ -88,7 +92,7 @@ package com.screens.recordScreenStates
 			_context.recordButton.clicked.remove(onRecordBtn);
 			_context.instrumentRecorder.notePlayed.remove(onInstrumentPlayed);
 			_context.instrumentRecorder.notePlayed.remove(onNotePlayed);
-			_timeModel.soundTick.remove(highLightNext);
+			_timeModel.soundTick.remove(onTimerTick);
 			_context.stopTimer();
 			_answerTimer.stop();
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
@@ -122,41 +126,45 @@ package com.screens.recordScreenStates
 			return curNote;
 		}
 		
-		protected function highLightNext():Boolean{
-			var noteChanged:Boolean=false;
-			if(_timeModel.currentTick==_context.model.endAtFrame){
-				_complete.dispatch();
-				return false;
+		private function onTimerTick():void{
+			if(_context.model.endAtFrame == _timeModel.currentTick){
+				deActivate();
+				_context.instrumentRecorder.marc("",0);
 			}
-			
-			var curNote:BigNote=getNoteByDistance(2);
-			if(!curNote){return false}
-			
-			if(curNote!=_currentNote){
-				_currentNote=curNote;
-				_currentNoteIndx=_timeModel.currentTick;
-				_currentNote.state="selected";
-				_correctAnswerTime=2;
-				noteChanged=true;
+			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(1,_timeModel.currentTick);
+			for each(var curNote:BigNote in curNotes){
+				curNote.state="selected";
+				//_context.instrumentRecorder.marc(curNote.id,4);
 			}
-			
-			if((_currentNote.location==_timeModel.currentTick)&&_currentNote.state=="selected"){
+			if(curNotes.length>0){
+				_context.notes.paused=true;
 				_context.pauseTimer();
-				_correctAnswerTime=0;
+				_curNotes=curNotes;
+			}else{
+				_context.unPauseTimer();
+				_curNotes=null;
 			}
-			_context.instrumentRecorder.marc(_currentNote.id,4);
+			_context.pallet.onTick(_timeModel.currentTick);
 			
-			return noteChanged;
+			//if(curNote!=_currentNote){
+			//	_currentNote=curNote;
+			//	_currentNoteIndx=_timeModel.currentTick;
+			
 		}
 		
 		
 		private function onNotePlayed(id:String):void{
 			if(!_currentNote){
 				_ofBeatNotes++;
-				return;
+				//return;
 			}
-			if((_noteFetcher.getNoteById(id).value==_currentNote.value)&&_currentNote.state=="selected"){
+			var playedNoteModel:NoteModel = _noteFetcher.getNoteById(id);
+			if(!playedNoteModel){
+				playedNoteModel = (_context.model.palletModel as INoteFetcher).getNoteById(id);
+			}
+			if(_curNotes&&_curNotes.length>0&&(playedNoteModel.value==_curNotes[0].value)){
 				calculateGoodFeedback();
+				_context.notes.paused=false;
 			}else{
 				calculateBadFeedback();
 			}
@@ -168,7 +176,7 @@ package com.screens.recordScreenStates
 			_goodAnsersInARow++;
 			_totalAnswerTime+=_correctAnswerTime;
 			_correctAnswers++;
-			_currentNote.state="idle";
+			//_currentNote.state="idle";
 			_currentNoteIndx++;
 			_context.unPauseTimer();
 			_context.instrumentRecorder.marc("",0);

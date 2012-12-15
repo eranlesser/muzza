@@ -51,8 +51,8 @@ package com.screens.view.components.notes
 			_notesContainer.y=0;
 		}
 		
-		public function pause():void{
-			_tween.paused = true;
+		public function set paused(val:Boolean):void{
+			_tween.paused = val;
 		}
 		
 		public function clearNotes():void{

@@ -88,6 +88,10 @@ package com.screens.view {
 		public function get notes():Notes{
 			return _notes;
 		}
+		
+		override public function set isRecorded(flag:Boolean):void{
+			_recordBtn.visible=flag;
+		}
 	
 		protected function initStateController():void{
 			_stateController = new RecordScreenStateController(this);
@@ -169,9 +173,19 @@ package com.screens.view {
 			}else if(_model.instrumentModel.type=="voice"){
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
 			}
-			if(_model.palletModel&&(_model.palletModel as PalletModel).palletType=="groovee"){
-				_pallet = new Groovee(_model.palletModel)
-				_stageLayer.addChild(_pallet);
+			trace((_model.palletModel is PalletModel))
+			if(_model.palletModel){
+				if((_model.palletModel as PalletModel).palletType=="groovee"){
+					_pallet = new Groovee(_model.palletModel)
+				}
+
+				if((_model.palletModel as PalletModel).palletType=="scratch"){
+					_pallet = new Scratchee(_model.palletModel)
+				}
+				if((_model.palletModel as PalletModel).palletType=="chelo"){
+					_pallet = new Paw(_model.palletModel)
+				}
+			_stageLayer.addChild(_pallet);
 			}else{
 				trace(_model.instrumentModel.type)
 			}
