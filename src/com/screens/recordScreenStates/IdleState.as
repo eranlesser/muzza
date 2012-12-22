@@ -1,5 +1,6 @@
 package com.screens.recordScreenStates
 {
+	import com.constants.Dimentions;
 	import com.constants.States;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	
@@ -43,6 +44,9 @@ package com.screens.recordScreenStates
 			_context.startTimer();
 			//_context.notes.start();//move cue
 			//_context.notes.stop();
+			
+			_context.practiceButton.visible=false;
+			_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{

@@ -77,6 +77,12 @@ package com.view.tools
 			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
 			"<image path='assets/NOTES/SPEED_SLIDER/SPEED.png' />"+
 			//BOTTLES
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/circle.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/circle_selected.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps_selected.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch_selected.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
@@ -142,6 +148,7 @@ package com.view.tools
 			"<image path='assets/band/bg/quika.png' />"+
 			"<image path='assets/band/bg/ganza.png' />"+
 			"<image path='assets/band/bg/agogo.png' />"+
+			"<image path='assets/band/bg/chelo.png' />"+
 			"<image path='assets/metronome.png' />"+
 			//DEMOSCREEN
 			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+

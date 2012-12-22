@@ -1,4 +1,5 @@
 package {
+	import com.constants.Dimentions;
 	import com.container.PreLoader;
 	import com.container.Presenter;
 	import com.container.ThemesController;
@@ -31,6 +32,14 @@ package {
 			stage.quality = StageQuality.LOW;
 			start();
 			FileProxy.reset(this)
+			setDisplaySize();
+		}
+		
+		private function setDisplaySize():void{
+			var ratioX:Number = Math.max(stage.fullScreenWidth,stage.fullScreenHeight) / Dimentions.WIDTH;
+			var ratioY:Number = Math.min(stage.fullScreenWidth,stage.fullScreenHeight) / Dimentions.HEIGHT;
+			this.scaleX=ratioX;
+			this.scaleY=ratioY;
 		}
 		
 		private function start():void{
@@ -70,6 +79,7 @@ package {
 			_presenter = new Presenter();
 			addChild(_presenter);
 			_themesController = new ThemesController(_presenter);
+			setDisplaySize();
 		}
 		/*
 		private function resetData():void{

@@ -11,6 +11,7 @@ package com.screens.view.components.notes
 	
 	import flash.display.Shape;
 	import flash.display.Sprite;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import org.osflash.signals.Signal;
@@ -38,11 +39,16 @@ package com.screens.view.components.notes
 //			moved.dispatch(_notesContainer.y);
 //		}
 		
+		public var currentTick:int=0;
 		public function start(notesLength:uint):void{
 			this.y=0;
 			
-			_tween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128))*(notesLength*2)});
+			_tween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
 			_tween.useFrames=true;
+			_tween.onChange=function t(tween:GTween):void{
+				trace(_tween.position);
+				currentTick=Math.floor(_tween.position/2);
+			}
 		}
 		
 		public function stop():void{
@@ -52,6 +58,9 @@ package com.screens.view.components.notes
 		}
 		
 		public function set paused(val:Boolean):void{
+			if(val){
+				//_tween.position++;
+			}
 			_tween.paused = val;
 		}
 		
@@ -62,8 +71,10 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		public function drawNote(noteModel:SequancedNote,noteValue:uint,xx:uint):void{
-			var note:BigNote = new BigNote(noteValue,noteModel.location,_instrumentModel.thumbNail,noteModel.noteId);
+		private var _pointToBasePoint:Point;
+		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
+			trace(noteModel.noteId,noteModel.location)
+			var note:BigNote = new BigNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
 			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+_instrumentY;
 			if(xx>0){
@@ -72,7 +83,17 @@ package com.screens.view.components.notes
 				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad;
 			}
 			_notes.push(note);
-			
+			if(_pointToBasePoint){
+				_notesContainer.graphics.lineStyle(1);
+				_notesContainer.graphics.moveTo(_pointToBasePoint.x,_pointToBasePoint.y+note.height/2);
+				_notesContainer.graphics.lineTo(note.x,note.y+note.height/2);
+			}
+			if(noteModel.pointToNote!=""){
+				_pointToBasePoint = new Point(note.x,note.y);
+			}
+			else{
+				_pointToBasePoint=null;
+			}
 		}
 		
 		public function getNoteByLocation(location:uint):BigNote{
@@ -87,7 +108,8 @@ package com.screens.view.components.notes
 		public function getNotesInRange(range:uint,curTick:uint):Vector.<BigNote>{
 			var rangeNotes:Vector.<BigNote> = new Vector.<BigNote>();
 			for each(var note:BigNote in _notes){
-				if(note.location<=(curTick+range)&&note.location>curTick){
+				trace(note.location,curTick+range)
+				if(note.location==(curTick+range)&&note.location>curTick){
 					rangeNotes.push(note);
 				}
 				

@@ -50,7 +50,7 @@ package com.studio
 		
 		public function start():void{
 			//_toolBar.studioClicked.add(onToolBar);
-			Metronome.getTimeControll(this).play();
+			//Metronome.getTimeControll(this).play();
 		}
 		
 		public function stop():void{
@@ -140,7 +140,7 @@ package com.studio
 			}
 			if(allInstruments){
 				Metronome.getTimeControll(this).beginAtFrame=1;
-				Metronome.getTimeControll(this).play();
+				//Metronome.getTimeControll(this).play();
 			}
 		}
 		

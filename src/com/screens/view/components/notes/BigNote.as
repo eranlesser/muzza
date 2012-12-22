@@ -19,8 +19,9 @@ package com.screens.view.components.notes
 		private var _id:String;
 		
 		public function BigNote(noteValue:uint,loc:uint,channel:String,id:String){
-			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
-			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png",true);
+            trace(getPrefix(channel));
+			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+".png",true);
+			_selectedAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_selected.png",true);
 			_location=loc;
 			_value=noteValue;
 			_id=id;
@@ -45,7 +46,7 @@ package com.screens.view.components.notes
 			//addChild(tField);
 			//tField.cacheAsBitmap=true;
 			//tField.border=true;
-			//addChild(_idleAsset);
+			addChild(_idleAsset);
 			//this.scaleX=0.65;
 			//this.scaleY=0.65;
 			//this.x+=width/2;
@@ -55,13 +56,22 @@ package com.screens.view.components.notes
 			var prefix:String;
 			switch(tmbNail){
 				case "bottles.png":
-					prefix =  "BOTTLES";
+					prefix =  "circle";
 					break;
 				case "drum.png":
-					prefix =  "DRUMS";
+					prefix =  "circle";
 					break;
 				case "bass_flash.jpg":
-					prefix =  "BASS";
+					prefix =  "circle";
+					break;
+				case "scratch":
+					prefix =  "claps";
+					break;
+				case "chelo":
+					prefix =  "claps";
+					break;
+				case "claps":
+					prefix="claps";
 					break;
 			}
 			return prefix;
@@ -76,19 +86,19 @@ package com.screens.view.components.notes
 		}
 		
 		public function set state(stt:String):void{
-			if(stt=="selected"){
-			this.graphics.lineStyle(5,0x3399FF);
-			this.graphics.drawCircle(14,15,15);
-			}else{
-				this.graphics.lineStyle(0,0x333333);
-				this.graphics.drawCircle(14,15,15);
-			}
-//			removeChildAt(0);
 //			if(stt=="selected"){
-//				addChild(_selectedAsset);
+//			this.graphics.lineStyle(5,0x3399FF);
+//			this.graphics.drawCircle(14,15,15);
 //			}else{
-//				addChild(_idleAsset);
+//				this.graphics.lineStyle(0,0x333333);
+//				this.graphics.drawCircle(14,15,15);
 //			}
+			removeChildAt(0);
+			if(stt=="selected"){
+				addChild(_selectedAsset);
+			}else{
+				addChild(_idleAsset);
+			}
 		}
 		
 		public function get state():String{

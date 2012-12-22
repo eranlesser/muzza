@@ -32,6 +32,9 @@ public static var data:XML =
 <instrument type='chelo' >
 		<layout id="0" x='720' y='570'  rotation="0" />
 	</instrument>
+<instrument type='claps' >
+		<layout id="0" x='880' y='570'  rotation="0" />
+	</instrument>
 </demoScreen>
 
 <studioScreen>
@@ -83,7 +86,7 @@ public static var data:XML =
 	<RecordedX>4</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
-<pallet type="chelo" learnedSequanced="99" rhythm="8" x='1005' y='420'>
+<pallet type="chelo" learnedSequanced="99" rhythm="8" x='900' y='420'>
 		
 	</pallet>
 <backups>
@@ -100,6 +103,15 @@ public static var data:XML =
 	</instrument>
 	<instrument type='bottles.png' >
 <layout id="0" x='350' y='100'  rotation="0" />	
+	</instrument>
+<instrument type='scratch' >
+		<layout id="0" x='650' y='580'  rotation="0" />
+	</instrument>
+<instrument type='chelo' >
+		<layout id="0" x='570' y='580'  rotation="0" />
+	</instrument>
+<instrument type='claps' >
+		<layout id="0" x='730' y='580'  rotation="0" />
 	</instrument>
 </endScreen>
 </recordSession>

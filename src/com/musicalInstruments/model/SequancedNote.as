@@ -1,6 +1,8 @@
 package com.musicalInstruments.model
 {
 	import com.musicalInstruments.view.components.SoundPlayer;
+	
+	import flash.geom.Point;
 
 	public class SequancedNote
 	{
@@ -9,11 +11,13 @@ package com.musicalInstruments.model
 		private var _endLocation:uint;
 		private var _soundLength:uint;
 		private var _octave:uint;
-		public function SequancedNote(noteId:String,location:uint,soundLength:uint,octave:uint){
+		private var _pointToNote:String;
+		public function SequancedNote(noteId:String,location:uint,soundLength:uint,octave:uint,pointToNote:String=""){
 			_noteId = noteId;
 			_location = location;
 			_soundLength = soundLength;
 			_octave=octave;
+			_pointToNote=pointToNote;
 		}
 		
 		public function get octave():uint{
@@ -40,6 +44,9 @@ package com.musicalInstruments.model
 			return 1+_location;
 		}
 		
+		public function get pointToNote():String{
+			return _pointToNote; 
+		}
 		
 	}
 }

@@ -7,7 +7,12 @@ package com.model.rawData.ode
 		}
 		
 		public static var data:XML = 
-			<instrument type="pallet" palletType='chelo' thumbNail='chelo' spriteSheet='agogo.png'>
+			<instrument type="pallet" palletType='chelo' thumbNail='chelo' spriteSheet='quika.png'>
+			<data>
+			<powee id="C_6"   sound="pallet/chelo/chelo_1.mp3"   />
+			<powee id="C#_6"   sound="pallet/chelo/chelo_2.mp3" />
+			<powee id="D_6"   sound="pallet/chelo/chelo_3.mp3" />
+			</data>
 <components />
 			<text>Chelo</text>
 			<octaves>

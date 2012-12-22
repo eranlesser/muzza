@@ -19,7 +19,6 @@ package com.musicalInstruments.model {
 		
 		public function getInstrumentByName(name:String):CoreInstrumentModel{
 			for each(var ins:CoreInstrumentModel in _instruments){
-				trace(ins.thumbNail,name)
 				if(ins.thumbNail == name){
 					return ins;
 				}
@@ -50,7 +49,6 @@ package com.musicalInstruments.model {
 					instrumentModel = new NotesInstrumentModel(instrument);
 				}
 				instrumentModel.ready.addOnce(onInstrumentReady);
-				trace(instrumentModel.thumbNail)
 				_instruments.push(instrumentModel);
 			}
 		}

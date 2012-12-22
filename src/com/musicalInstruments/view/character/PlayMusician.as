@@ -41,6 +41,8 @@ package com.musicalInstruments.view.character {
 				//}else if(_model.coreModel.type == "voice"){
 					//_musicianView = new Singer(_model,false);
 				//}
+			}else{
+				trace("ERROR",_model.coreModel.thumbNail)
 			}
 			_musicianView.start();
 			addChild(_musicianView);

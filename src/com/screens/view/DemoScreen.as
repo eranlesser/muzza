@@ -5,7 +5,6 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
-	import com.screens.view.components.Clock;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
@@ -104,10 +103,17 @@ package com.screens.view {
 				_timeSlider.x=(Dimentions.WIDTH)/2+_frame.x-_timeSlider.width/2;
 				_timeSlider.y=531+19+40;
 				
+				var anotherMask:Shape = new Shape();
+				anotherMask.graphics.beginFill(0xFFFFFF);
+				anotherMask.graphics.drawRect(6,10,940,580);
+				anotherMask.graphics.endFill();
+				_guiLayer.mask=anotherMask;
+				anotherMask.x=29+16;
+				anotherMask.y=19+22;
 				//var timeBar:DisplayObject=AssetsManager.getAssetByName("");
-			}else{
-				_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
 			}
+			_guiLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
+			
 		}
 		
 		private function onPlay(indx:uint):void{
@@ -139,14 +145,12 @@ package com.screens.view {
 				
 				//setClock();
 			}
-			var tmr:Timer=new Timer(2000,1);
-			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
-			tmr.start();
 			stage.frameRate=Rhythms.FRAME_RATE;
 			trace("frame rate is",stage.frameRate)
 			if(_timeSlider){
 				_timeSlider.setValue(0);
 			}
+			onTimerComplete();
 		}
 		
 		private function setTimeSlider():void{
@@ -155,12 +159,11 @@ package com.screens.view {
 		
 		
 		
-		private function onTimerComplete(e:Event):void{
+		private function onTimerComplete():void{
 			if(!this.parent){
 				return;
 			}
 			unPause();
-			Timer(e.target).removeEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			_timeControll.beginAtFrame = _model.beginAtFrame;
 			for each(var ins:PlayMusician in _instruments){
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
@@ -192,7 +195,7 @@ package com.screens.view {
 		
 		protected function unPause():void{
 			//Clock.getInstance().play();
-			_timeControll.play();
+			_timeControll.unPause();
 		}
 		
 		override public function stop():void{
@@ -232,11 +235,11 @@ package com.screens.view {
 		
 		protected function addInstrument(insModel:InstrumentModel):PlayMusician{
 			var ins:PlayMusician = new PlayMusician(insModel);
-			if(ins.type=="bg"){
+			//if(ins.type=="bg"){
 				_guiLayer.addChild(ins);
-			}else{
-				_stageLayer.addChild(ins);
-			}
+			//}else{
+			//	_stageLayer.addChild(ins);
+			//}
 			return ins;
 		}
 		

@@ -45,6 +45,7 @@ package com.musicalInstruments.view.character {
 		
 		public function start():void{
 			addChildAt(_character,0);
+			this.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
 		private function onClick(e:MouseEvent):void{
@@ -87,7 +88,6 @@ package com.musicalInstruments.view.character {
 			tField.defaultTextFormat = fmt;
 			this.addChild(tField);
 			tField.text = _model.text;
-			this.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
 		public function set octave(level:uint):void{

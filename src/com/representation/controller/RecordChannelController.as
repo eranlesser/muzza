@@ -37,6 +37,7 @@ package com.representation.controller {
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
 			_palletSequance = new RecordableNotesSequance(_recordScreenModel.palletSequanceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
+				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
 				drawNotes(_recordScreenModel.palletModel as NotesInstrumentModel,NoteSequanceModel(_recordScreenModel.palletModel.getSequanceById(_recordScreenModel.palletSequanceId)));
 			}
@@ -112,9 +113,10 @@ package com.representation.controller {
 		}
 		
 		private function drawNotes(instrumentModel:NotesInstrumentModel,sequance:NoteSequanceModel):void{
+			
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
-				_channelView.drawNote(note,noteModel.value,noteModel.x);
+				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x);
 			}
 		}
 		

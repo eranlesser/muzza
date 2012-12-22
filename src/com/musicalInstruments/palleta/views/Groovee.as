@@ -28,7 +28,7 @@ package com.musicalInstruments.palleta.views
 		public function Groovee(model:CoreInstrumentModel)
 		{
 			_model=model as PalletModel;
-			_soundPlayer = new SoundPlayer((_model as PalletModel).getNoteById("claps").soundFile);
+			_soundPlayer = new SoundPlayer((_model as PalletModel).getNoteById("22").soundFile);
 			_rhythm = (model as PalletModel).rhythm;
 			super(model);
 			addChild(new _frame() as DisplayObject);
@@ -82,7 +82,7 @@ package com.musicalInstruments.palleta.views
 			//this.graphics.drawRect(0,0,width,height);
 			var tween:GTween = new GTween(playCircle,1,{width:this.width,height:this.height,alpha:0})
 			tween.onComplete=onTweenEnd;
-			notePlayed.dispatch("claps");
+			notePlayed.dispatch("22");
 		}
 		
 		private function onTweenEnd(t:GTween):void

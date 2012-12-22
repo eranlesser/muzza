@@ -109,8 +109,8 @@ package com.screens.view.components.homePage
 		}
 		
 		private function enableNextPrev():void{
-			_prevButton.visible=true;
-			_nextButton.visible=true;
+			_prevButton.visible=false;//change these 2 to true when not in tease
+			_nextButton.visible=false;
 			if(_thumbsLayer.x==0){
 				_prevButton.visible=false;
 			}

@@ -9,6 +9,9 @@ package com.musicalInstruments.view.components {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IAnimateable;
 	import com.musicalInstruments.view.character.Character;
+	import com.musicalInstruments.view.character.Musician;
+	
+	import flash.display.DisplayObject;
 	
 	import org.osflash.signals.Signal;
 	

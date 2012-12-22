@@ -105,7 +105,6 @@ package com.musicalInstruments.view.character.unused {
 					//var timer:Timer = new Timer(10,1);
 					//timer.addEventListener(TimerEvent.TIMER_COMPLETE,realPlay);
 					//timer.start();
-					trace(Metronome.getTimeModel().currentTick)
 					_beginAtFrame = _voiceSequance.beginAtFrame;
 				}
 				return (sequanceId > 0)

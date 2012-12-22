@@ -1,6 +1,7 @@
 package com.musicalInstruments.palleta.views
 {
 	import com.musicalInstruments.model.CoreInstrumentModel;
+	import com.musicalInstruments.model.PalletModel;
 	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.view.instrument.Instrument;
 	
@@ -8,10 +9,8 @@ package com.musicalInstruments.palleta.views
 
 	public class Paw extends Instrument implements Ipallet
 	{
-		[Embed(source="assets/notes_sheet.png")] 
+		[Embed(source="assets/notes_sheet_v.png")] 
 		private var _bg:Class;
-		[Embed(source="assets/notes_frame.png")] 
-		private var _frame:Class;
 		public function Paw(model:CoreInstrumentModel)
 		{
 			
@@ -27,22 +26,21 @@ package com.musicalInstruments.palleta.views
 		}
 		
 		private function init():void{
-			var xx:uint=202;
-//			for each(var paweXml:XML in _xml.pawee){
-//				var pawee:Pawee = new Pawee(paweXml,height*0.60);
-//				addChild(pawee);
-//				pawee.x=xx;
-//				xx+=pawee.width+1;
-//			}
+			var yy:uint=0;
 			addChild(new _bg() as DisplayObject)
-			this.scaleX=0.3;
-			this.scaleY=0.4;
-			this.rotation=90;
+			for each(var paweXml:XML in (_model as PalletModel).data.data.children()){
+				var pawee:Pawee = new Pawee(paweXml,height/3);
+				addChild(pawee);
+				pawee.y=yy;
+				pawee.x = (width-pawee.width)/2;
+				yy+=height/3;
+			}
 		}
 	}
 }
 import com.gskinner.motion.GTween;
 import com.musicalInstruments.palleta.Sounder;
+import com.musicalInstruments.view.components.SoundPlayer;
 
 import flash.display.Sprite;
 import flash.events.Event;
@@ -52,21 +50,21 @@ import flash.media.SoundChannel;
 
 class Pawee extends Sprite{
 	private var _hgt:uint;
-	private var _soundPlayer:Sounder;
+	private var _soundPlayer:SoundPlayer;
 	private var _channel:SoundChannel;
 	public function Pawee(data:XML,hgt:uint){
-		_soundPlayer = new Sounder(data.@noteId,data.@sound);
+		_soundPlayer = new SoundPlayer(data.@sound);
 		init(hgt);
 	}
 	
 	private function init(hgt:uint):void{
-		this.graphics.beginFill(0x333333,0.4);
-		this.graphics.drawRect(0,40,hgt*1.5,hgt);
+		this.graphics.beginFill(0x000000,0);
+		this.graphics.drawRect(0,0,hgt,hgt);
 		this.graphics.endFill();
 		_hgt=hgt;
 		
 		this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
-		//this.addEventListener(MouseEvent.CLICK,onMouseClick);
+		//this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseClick);
 	}
 	
 	private function onClick(e:TouchEvent):void{
@@ -82,14 +80,14 @@ class Pawee extends Sprite{
 		var play:Sprite = new Sprite();
 		play.graphics.beginFill(0xFFFFFF,1);
 		play.graphics.lineStyle(1,0xEEEEEE);
-		play.graphics.drawCircle(0,0,22);
+		play.graphics.drawCircle(0,0,this.width/6);
 		play.graphics.endFill();
-		play.x=(_hgt*1.5)/2;
-		play.y=_hgt/2+40+11;
+		play.x=width/2;
+		play.y=height/2+4;
 		addChild(play);
 		
 		
-		var tween:GTween = new GTween(play,1,{scaleX:3,scaleY:3,alpha:0})
+		var tween:GTween = new GTween(play,1,{width:width,height:width,alpha:0})
 		tween.onComplete=onTweenEnd;
 	}
 	

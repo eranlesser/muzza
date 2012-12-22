@@ -2,6 +2,8 @@ package com.musicalInstruments.model.sequances
 {
 	import com.musicalInstruments.model.SequancedNote;
 	
+	import flash.geom.Point;
+	
 	import org.osflash.signals.Signal;
 	
 

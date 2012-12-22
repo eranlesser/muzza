@@ -75,7 +75,7 @@ package com.screens.recordScreenStates
 		
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
-			if(_timeModel.currentTick>100){
+			if(_context.recordChannelController.channel.currentTick>100){
 			if(_wrongAnswers<3&&_totalAnswerTime<50&&(_ofBeatNotes-_correctAnswers)<3){
 				//_context.bubble.setText("You're ready to record!",true)
 			}else{
@@ -115,16 +115,6 @@ package com.screens.recordScreenStates
 			_complete.dispatch();
 		}
 		
-		protected function getNoteByDistance(distance:uint):BigNote{
-			var curNote:BigNote;
-			for(var i:uint=0;i<distance;i++){//was i<4
-				if(_channel.getNoteByLocation(_timeModel.currentTick+i)){
-					curNote=_channel.getNoteByLocation(_timeModel.currentTick+i);
-					break;
-				}
-			}
-			return curNote;
-		}
 		
 		private function onTimerTick():void{
 			if(_context.model.endAtFrame == _timeModel.currentTick){
@@ -144,11 +134,11 @@ package com.screens.recordScreenStates
 				_context.unPauseTimer();
 				_curNotes=null;
 			}
-			_context.pallet.onTick(_timeModel.currentTick);
+			_context.pallet.onTick(_context.recordChannelController.channel.currentTick);
 			
 			//if(curNote!=_currentNote){
 			//	_currentNote=curNote;
-			//	_currentNoteIndx=_timeModel.currentTick;
+			//	_currentNoteIndx=_context.recordChannelController.currentTick;
 			
 		}
 		

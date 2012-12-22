@@ -91,6 +91,11 @@ package com.screens.view {
 		
 		override public function set isRecorded(flag:Boolean):void{
 			_recordBtn.visible=flag;
+			if(!flag){
+				_practiceBtn.x=(width-_practiceBtn.width)/2;
+			}else{
+				_practiceBtn.x=267;
+			}
 		}
 	
 		protected function initStateController():void{
