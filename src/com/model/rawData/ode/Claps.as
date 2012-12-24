@@ -8,6 +8,12 @@ package com.model.rawData.ode
 		
 		public static var data:XML = 
 <instrument type="pallet" palletType="groovee" thumbNail='claps' rhythmOffset="13" rhythm="8" width="22" height="22" spriteSheet='agogo.png'>
+<data>
+			<row><togi id="C_6"   sound="ode/drums/bd.mp3"  selected="true" /></row>
+			<row><togi id="C#_6"   sound="ode/drums/shaker.mp3" selected="true" /></row>
+			<row><togi id="C#_7"   sound="ode/drums/bd.mp3" selected="true" /></row>
+			<row><togi id="D_6"   sound="pallet/claps/claps.mp3" selected="true" /></row>
+			</data>
 <components />
 <text>Claps</text>
 <octaves>

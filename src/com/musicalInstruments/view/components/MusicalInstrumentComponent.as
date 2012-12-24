@@ -65,8 +65,8 @@ package com.musicalInstruments.view.components
 			setMark(false,0);
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+			//this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+			//this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);

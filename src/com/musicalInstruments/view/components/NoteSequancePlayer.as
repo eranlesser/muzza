@@ -131,7 +131,7 @@ package com.musicalInstruments.view.components {
 			if(_currenSequance){
 				if(_playingNote&&(_playingNote.endLoction == _timeModel.currentTick)){
 					var notePlayingModel:NoteModel = _noteFetcher.getNoteById(_playingNote.noteId);
-					notePlayingModel.player.stop();
+					//notePlayingModel.player.stop();
 					animateTo(0,"");
 					if(_playingNote){
 						noteStopped.dispatch(_playingNote.noteId);

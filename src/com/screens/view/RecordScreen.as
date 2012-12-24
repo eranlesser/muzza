@@ -6,9 +6,11 @@ package com.screens.view {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.palleta.views.Groovee;
+	import com.musicalInstruments.palleta.views.Loopee;
 	import com.musicalInstruments.palleta.views.Pallet;
 	import com.musicalInstruments.palleta.views.Paw;
 	import com.musicalInstruments.palleta.views.Scratchee;
+	import com.musicalInstruments.palleta.views.TurnTable;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.*;
@@ -181,11 +183,11 @@ package com.screens.view {
 			trace((_model.palletModel is PalletModel))
 			if(_model.palletModel){
 				if((_model.palletModel as PalletModel).palletType=="groovee"){
-					_pallet = new Groovee(_model.palletModel)
+					_pallet = new Loopee(_model.palletModel)
 				}
 
 				if((_model.palletModel as PalletModel).palletType=="scratch"){
-					_pallet = new Scratchee(_model.palletModel)
+					_pallet = new TurnTable(_model.palletModel)
 				}
 				if((_model.palletModel as PalletModel).palletType=="chelo"){
 					_pallet = new Paw(_model.palletModel)

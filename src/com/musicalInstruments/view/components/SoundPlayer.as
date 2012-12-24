@@ -18,7 +18,6 @@ package com.musicalInstruments.view.components {
 	public class SoundPlayer extends EventDispatcher
 	{
 		private var _sound:		Sound = new Sound();
-		private var _channel:	SoundChannel;
 		private var _metronom:	ITimeModel;
 		private var _soundFile:	String;
 		public var ready:Signal = new Signal();
@@ -33,19 +32,10 @@ package com.musicalInstruments.view.components {
 			loadSound();
 		}
 		
-		public function play():SoundChannel{
-			if(_channel){
-				_channel.stop();
-			}
-			_channel = _sound.play();
-			return _channel;
+		public function play():void{
+				_sound.play();
 		}
 		
-		public function stop():void{
-			if(_channel){
-				//_timer.start();
-			}
-		}
 		
 		
 		
@@ -56,8 +46,8 @@ package com.musicalInstruments.view.components {
 				_sound.addEventListener(Event.COMPLETE,onSoundReady);
 				_sound.load(req);
 				//performance - to avoid cutting sound beginings
-				_channel = _sound.play();
-				_channel.stop();
+				var channel:SoundChannel = _sound.play();
+				channel.stop();
 			}
 			catch (err:Error) {
 				trace(err.message);

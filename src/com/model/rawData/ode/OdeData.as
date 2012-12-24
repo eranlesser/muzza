@@ -61,7 +61,7 @@ public static var data:XML =
 	<RecordedX>0</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<pallet type="claps" learnedSequanced="99" rhythm="8" x='828' y='372'>
+	<pallet type="claps" learnedSequanced="99" rhythm="8" x='796' y='372'>
 		
 	</pallet>
 <backups>
@@ -74,7 +74,7 @@ public static var data:XML =
 	<RecordedX>50</RecordedX>
 	<RecordedY>450</RecordedY>
 	</playerInstrument>
-<pallet type="scratch" learnedSequanced="99" rhythm="8" x='500' y='452'>
+<pallet type="scratch" learnedSequanced="99" rhythm="8" x='700' y='452'>
 		
 	</pallet>
 <backups>
@@ -86,7 +86,7 @@ public static var data:XML =
 	<RecordedX>4</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
-<pallet type="chelo" learnedSequanced="99" rhythm="8" x='900' y='420'>
+<pallet type="chelo" learnedSequanced="99" x='710' y='430'>
 		
 	</pallet>
 <backups>

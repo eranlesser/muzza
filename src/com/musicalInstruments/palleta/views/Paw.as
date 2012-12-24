@@ -51,7 +51,6 @@ import flash.media.SoundChannel;
 class Pawee extends Sprite{
 	private var _hgt:uint;
 	private var _soundPlayer:SoundPlayer;
-	private var _channel:SoundChannel;
 	public function Pawee(data:XML,hgt:uint){
 		_soundPlayer = new SoundPlayer(data.@sound);
 		init(hgt);
@@ -75,7 +74,7 @@ class Pawee extends Sprite{
 	}
 	
 	private function play():void{
-		_channel=_soundPlayer.play();
+		_soundPlayer.play();
 		//_channel.addEventListener(Event.SOUND_COMPLETE,onSoundComplete)
 		var play:Sprite = new Sprite();
 		play.graphics.beginFill(0xFFFFFF,1);

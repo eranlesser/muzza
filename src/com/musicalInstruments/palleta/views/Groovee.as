@@ -21,7 +21,6 @@ package com.musicalInstruments.palleta.views
 		
 		private var _rhythm:uint;
 		private var _soundPlayer:SoundPlayer;
-		private var _channel:SoundChannel;
 		private var _on:Boolean=false;
 		private var _active:Boolean=false;
 		
@@ -69,7 +68,7 @@ package com.musicalInstruments.palleta.views
 		}
 		
 		private function playSound():void{
-			_channel=_soundPlayer.play();
+			_soundPlayer.play();
 			var playCircle:Sprite = new Sprite();
 			playCircle.graphics.beginFill(0xAFBA99,1);
 			playCircle.graphics.lineStyle(2,0x038C8C);
