@@ -17,9 +17,9 @@ package com.model.rawData.ode
 			<text>Chelo</text>
 			<octaves>
 			<notes>
-			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="0" x="755"  />
-			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="0" x="835" />
-			<note id="D_6"   soundFile="ode/chelo/chelo_3.mp3" animationIndex='3' value="0" x="915" />
+			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="0" x="60"  />
+			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="0" x="140" />
+			<note id="D_6"   soundFile="ode/chelo/chelo_3.mp3" animationIndex='3' value="0" x="220" />
 			
 			</notes>
 			</octaves>
