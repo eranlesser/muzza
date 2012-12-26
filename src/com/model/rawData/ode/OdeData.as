@@ -57,11 +57,11 @@ public static var data:XML =
 
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="99" recordedSequance="102">
-	<RecordedX>0</RecordedX>
+	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="99" recordedSequance="102" noteTargetsY="372">
+	<RecordedX>-10</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<pallet type="claps" learnedSequanced="99" rhythm="8" x='796' y='372'>
+	<pallet type="claps" learnedSequanced="99" rhythm="8" x='795' y='348'>
 		
 	</pallet>
 <backups>
@@ -70,7 +70,7 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99">
+	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454">
 	<RecordedX>50</RecordedX>
 	<RecordedY>450</RecordedY>
 	</playerInstrument>
@@ -82,11 +82,11 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99">
-	<RecordedX>4</RecordedX>
+	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="424">
+	<RecordedX>300</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
-<pallet type="chelo" learnedSequanced="99" x='710' y='430'>
+<pallet type="chelo" learnedSequanced="99" x='14' y='390'>
 		
 	</pallet>
 <backups>

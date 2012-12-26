@@ -41,7 +41,7 @@ package com.screens.view.components.notes
 		}
 		
 		public function addChannel(model:CoreInstrumentModel):NotesChannel{
-			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY+12));
+			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY+44));
 			_notesCanvas.addChild(_channel as DisplayObject);
 			NotesChannel(_channel).moved.add(onMoved);
 			return _channel;
@@ -59,7 +59,7 @@ package com.screens.view.components.notes
 		private function init():void{
 			_bg=new Shape();
 			_bg.graphics.beginFill(0x333333);
-			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,_instrumentY+12);
+			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,_instrumentY+44);
 			_bg.graphics.endFill();
 			_bg.alpha=0;
 			_notesCanvas = new Sprite();

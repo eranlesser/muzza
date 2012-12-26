@@ -12,7 +12,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="26" end="31" />
 	
 </eyes>						
-<components notesGap="80" leftPad="80">
+<components notesGap="80" leftPad="72">
 <bg image="bottles_frame.png" clickable="false"  y="10" />
 <bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='0' >
 	<tap noteId="A_3" />
@@ -172,14 +172,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 <note id="F#_4" location="135" soundLength="2"/><note id="E_4" location="137" soundLength="2"/>
 <note id="D_4" location="139" soundLength="2"/>
 
-<note id="D_4" location="141" soundLength="1" pointToNote="142"/>
-<note id="E_4" location="142" soundLength="1" pointToNote="143" />
-<note id="F#_4" location="143" soundLength="1" pointToNote="144"/>
-<note id="G_4" location="144" soundLength="1" pointToNote="145"/>
-<note id="A_4" location="145" soundLength="1" pointToNote="146"/>
-<note id="7" location="146" soundLength="1" pointToNote="147"/>
-<note id="8" location="147" soundLength="1" pointToNote="148"/>
-<note id="9" location="148" soundLength="1"/>
 </sequance>
 
 	

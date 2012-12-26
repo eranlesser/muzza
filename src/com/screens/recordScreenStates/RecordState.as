@@ -10,7 +10,7 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
 	import com.representation.controller.RecordChannelController;
-	import com.screens.view.components.notes.BigNote;
+	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
 	import com.view.MetronomView;
 	
@@ -48,7 +48,6 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.stop();
 			//_preTicker.active=false;
 			_isRecording = false;
-			_context.instrumentRecorder.marc("",0);
 			_context.pallet.active = false;
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
@@ -105,12 +104,11 @@ package com.screens.recordScreenStates
 			}
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				stop();
-				_context.instrumentRecorder.marc("",0);
 			}
-			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
+			var curNotes:Vector.<DroppingNote>=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
-			for each(var curNote:BigNote in curNotes){
-				curNote.state="selected";
+			for each(var curNote:DroppingNote in curNotes){
+				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
 			}
 			_context.pallet.onTick(_timeModel.currentTick);

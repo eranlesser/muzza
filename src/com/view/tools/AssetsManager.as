@@ -77,8 +77,16 @@ package com.view.tools
 			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
 			"<image path='assets/NOTES/SPEED_SLIDER/SPEED.png' />"+
 			//BOTTLES
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/circle.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/circle_selected.png' />"+
+			"<image path='assets/instruments/insCircle.png' />"+
+			"<image path='assets/instruments/insCircleDrop.png' />"+
+			"<image path='assets/instruments/insCircleFill.png' />"+
+			"<image path='assets/instruments/insCircleRight.png' />"+
+			"<image path='assets/instruments/insCircleWrong.png' />"+
+			"<image path='assets/instruments/insRect.png' />"+
+			"<image path='assets/instruments/insRectDrop.png' />"+
+			"<image path='assets/instruments/insRectFill.png' />"+
+			"<image path='assets/instruments/insRectRight.png' />"+
+			"<image path='assets/instruments/insRectWrong.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps_selected.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch.png' />"+

@@ -8,7 +8,9 @@ package com.screens.view.components.notes
 	import com.musicalInstruments.view.components.NoteView;
 	import com.representation.ChanelNotesType;
 	import com.representation.RepresentationSizes;
+	import com.view.tools.AssetsManager;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.geom.Point;
@@ -19,8 +21,11 @@ package com.screens.view.components.notes
 	public class NotesChannel extends Sprite
 	{
 		private var _instrumentModel:	CoreInstrumentModel;
-		private var _notes:				Vector.<BigNote>;
+		private var _notes:				Vector.<DroppingNote>;
+		
+		private var _bg:				Sprite;
 		private var _notesContainer:	Sprite;
+		private var _top:				Sprite;
 		private var _notesMask:			Shape;
 		private var _instrumentY:uint;
 		public var moved:Signal=new Signal();
@@ -29,7 +34,7 @@ package com.screens.view.components.notes
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle){
 			_instrumentModel = model;
-			_notes=new Vector.<BigNote>();
+			_notes=new Vector.<DroppingNote>();
 			_instrumentY = size.height;
 			drawFrame(size);
 		}
@@ -46,7 +51,6 @@ package com.screens.view.components.notes
 			_tween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
 			_tween.useFrames=true;
 			_tween.onChange=function t(tween:GTween):void{
-				trace(_tween.position);
 				currentTick=Math.floor(_tween.position/2);
 			}
 		}
@@ -66,15 +70,14 @@ package com.screens.view.components.notes
 		
 		public function clearNotes():void{
 			while(_notes.length>0){
-				var noteView:BigNote = _notes.pop();
+				var noteView:DroppingNote = _notes.pop();
 				_notesContainer.removeChild(noteView);
 			}
 		}
 		
 		private var _pointToBasePoint:Point;
-		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
-			trace(noteModel.noteId,noteModel.location)
-			var note:BigNote = new BigNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
+		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint,rotation:uint):void{
+			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId,rotation);
 			_notesContainer.addChild(note);
 			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+_instrumentY;
 			if(xx>0){
@@ -96,8 +99,53 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		public function getNoteByLocation(location:uint):BigNote{
-			for each(var note:BigNote in _notes){
+		private function getPrefix(tmbNail:String):String{
+			var prefix:String;
+			switch(tmbNail){
+				case "bottles.png":
+					prefix =  "insCircle";
+					break;
+				case "drum.png":
+					prefix =  "insCircle";
+					break;
+				case "bass_flash.jpg":
+					prefix =  "insCircle";
+					break;
+				case "scratch":
+					prefix =  "insRect";
+					break;
+				case "chelo":
+					prefix =  "insRect";
+					break;
+				case "claps":
+					prefix="insRect";
+					break;
+			}
+			return prefix;
+		}
+		
+		public function drawNoteTarget(noteValue:uint,xx:uint,yy:uint,type:String):void{
+			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill.png");
+			_bg.addChild(circ);
+			if(xx>0){
+				circ.x=xx-circ.width/2;
+			}else{
+				circ.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
+			}
+			circ.y=yy;
+			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
+			_top.addChild(circTop);
+			if(xx>0){
+				circTop.x=xx-circTop.width/2;
+			}else{
+				circTop.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
+			}
+			circTop.y=yy;
+			circTop.alpha=0.5;
+		}
+		
+		public function getNoteByLocation(location:uint):DroppingNote{
+			for each(var note:DroppingNote in _notes){
 				if(note.location==location){
 					return note;
 				}
@@ -105,10 +153,9 @@ package com.screens.view.components.notes
 			return null;
 		};
 		
-		public function getNotesInRange(range:uint,curTick:uint):Vector.<BigNote>{
-			var rangeNotes:Vector.<BigNote> = new Vector.<BigNote>();
-			for each(var note:BigNote in _notes){
-				trace(note.location,curTick+range)
+		public function getNotesInRange(range:uint,curTick:uint):Vector.<DroppingNote>{
+			var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
+			for each(var note:DroppingNote in _notes){
 				if(note.location==(curTick+range)&&note.location>curTick){
 					rangeNotes.push(note);
 				}
@@ -118,6 +165,11 @@ package com.screens.view.components.notes
 		}
 		
 		private function drawFrame(size:Rectangle):void{
+			_bg=new Sprite();
+			_bg.graphics.beginFill(0x33CCCC,0);
+			_bg.graphics.drawRect(0,0,size.width,size.height)
+			addChild(_bg);
+			
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)
 			_notesMask.graphics.drawRect(0,0,size.width,size.height);
@@ -129,6 +181,11 @@ package com.screens.view.components.notes
 			_notesContainer.graphics.drawRect(0,0,size.width,size.height)
 			addChild(_notesContainer);
 			_notesContainer.mask=_notesMask;
+			
+			_top=new Sprite();
+			_top.graphics.beginFill(0x33CCCC,0);
+			_top.graphics.drawRect(0,0,size.width,size.height)
+			addChild(_top);
 		}
 	}
 }

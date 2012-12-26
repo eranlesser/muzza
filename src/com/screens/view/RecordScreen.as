@@ -180,7 +180,6 @@ package com.screens.view {
 			}else if(_model.instrumentModel.type=="voice"){
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
 			}
-			trace((_model.palletModel is PalletModel))
 			if(_model.palletModel){
 				if((_model.palletModel as PalletModel).palletType=="groovee"){
 					_pallet = new Loopee(_model.palletModel)

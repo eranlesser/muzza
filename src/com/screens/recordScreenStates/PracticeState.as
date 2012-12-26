@@ -11,7 +11,7 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
-	import com.screens.view.components.notes.BigNote;
+	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
 	
 	import flash.events.TimerEvent;
@@ -22,7 +22,7 @@ package com.screens.recordScreenStates
 	public class PracticeState implements IRecordScreenState
 	{
 		protected var _context:			RecordScreenStateController;
-		protected var _currentNote:		BigNote;
+		protected var _currentNote:		DroppingNote;
 		private var _channel:			NotesChannel;
 		private var _currentNoteIndx:	uint=0;
 		private var _noteFetcher:		INoteFetcher;
@@ -35,7 +35,7 @@ package com.screens.recordScreenStates
 		private var _ofBeatNotes:		uint=0;
 		private var _correctAnswers:	uint=0;
 		private var _goodAnsersInARow:	uint=0;
-		private var _curNotes:Vector.<BigNote>;
+		private var _curNotes:Vector.<DroppingNote>;
 
 		public function PracticeState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -119,11 +119,10 @@ package com.screens.recordScreenStates
 		private function onTimerTick():void{
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				deActivate();
-				_context.instrumentRecorder.marc("",0);
 			}
-			var curNotes:Vector.<BigNote>=(_context.channel as NotesChannel).getNotesInRange(1,_timeModel.currentTick);
-			for each(var curNote:BigNote in curNotes){
-				curNote.state="selected";
+			var curNotes:Vector.<DroppingNote>=(_context.channel as NotesChannel).getNotesInRange(1,_timeModel.currentTick);
+			for each(var curNote:DroppingNote in curNotes){
+				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
 			}
 			if(curNotes.length>0){
@@ -169,7 +168,6 @@ package com.screens.recordScreenStates
 			//_currentNote.state="idle";
 			_currentNoteIndx++;
 			_context.unPauseTimer();
-			_context.instrumentRecorder.marc("",0);
 			if(_correctAnswerTime<=1){
 				if(Math.random()>0.5){
 					//_context.bubble.setText("excellent!",false)

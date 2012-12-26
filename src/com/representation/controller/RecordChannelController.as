@@ -116,8 +116,15 @@ package com.representation.controller {
 			
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
-				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x);
+				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x,noteModel.rotation);
 			}
+			
+			for(var i:uint=0;i<NotesInstrumentModel(instrumentModel).notesLength;i++){
+				var nte:NoteModel = NotesInstrumentModel(instrumentModel).getNoteAt(i);
+				_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY,instrumentModel.thumbNail);
+			}
+			
+			
 		}
 		
 		private function checkNotesMatch(playedNote:SequancedNote,recordeSequance:RecordableNotesSequance):Boolean{

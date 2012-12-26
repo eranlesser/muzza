@@ -95,7 +95,6 @@ package com.musicalInstruments.palleta.views
 		}
 		
 		private function playSound(newAngleIndex:int):void{
-			trace("playing "+newAngleIndex);
 			sounders[newAngleIndex].play();
 		}
 		

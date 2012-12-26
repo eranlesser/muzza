@@ -93,13 +93,6 @@ package com.musicalInstruments.view.instrument {
 			return null;
 		}
 		
-		public function marc(id:String,indx:uint):void{
-			for each(var component:MusicalInstrumentComponent in _musicalComponents){
-				component.setMark(id==component.noteId,indx);
-			}
-			
-		}
-		
 		public function play(sequanceId:uint,beginAtFrame:uint):Boolean{
 			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel);
 			return false;

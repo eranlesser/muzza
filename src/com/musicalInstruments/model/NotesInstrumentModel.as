@@ -73,6 +73,10 @@ package com.musicalInstruments.model
 			return ntm;
 		}
 		
+		public function getNoteAt(indx:uint):NoteModel{
+			return _octaves[_currentOctave][indx];
+		}
+		
 		override public function addRecordedSequance(sequance:IRecordableSequance,beginAtFrame:uint,endAtFrame:uint):void{
 			var recordedSequanceModel:NoteSequanceModel = new NoteSequanceModel(sequance.toXML(),this) as NoteSequanceModel;
 			var sequanceModelWithSameId:NoteSequanceModel = getSequanceById(recordedSequanceModel.id) as NoteSequanceModel;

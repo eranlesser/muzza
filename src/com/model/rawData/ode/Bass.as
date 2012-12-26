@@ -10,7 +10,7 @@ public static var data:XML =
 	<eyes swfSheet="bassBlink.png" x="0" y="0" width="250" height="350" >
 		<blink start="0" end="5" />
 	</eyes>	
-<components recordButtonX="0" recordButtonY="580" notesGap="110" leftPad="50">
+<components recordButtonX="0" recordButtonY="580" notesGap="110" leftPad="318">
 		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
 			<tap noteId="1" />
 		</bass>

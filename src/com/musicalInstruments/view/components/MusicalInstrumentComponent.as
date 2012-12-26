@@ -23,8 +23,6 @@ package com.musicalInstruments.view.components
 		private var _playImage:		Bitmap;
 		private var _noteFetcher:	INoteFetcher;
 		private var _isPressed:		Boolean=false;
-		private var _mark:SpriteSheet;
-		private var _markIndex:uint;
 		private var _startLocation:uint;
 		public var tuch:			Signal=new Signal();
 		public var unTuch:			Signal=new Signal();
@@ -48,21 +46,18 @@ package com.musicalInstruments.view.components
 		private function init():void{
 			_idleImage = AssetsManager.getBitmap(_model.image,true);
 			_playImage = AssetsManager.getBitmap(_model.playImage,true);
-			_mark = new SpriteSheet(AssetsManager.getBitmap("marc.png",true) ,64,59);
 			_idleImage.smoothing=true;
 			addChild(_idleImage);
 			if(_playImage){ // its a playable component (not bg etc.)
 				addChild(_playImage);
 				state="idle";
+				
+				//circ.scaleX=0.9;
+				//circ.scaleY=0.9;
 			}
+			
+			
 			//addChild(_mark)
-			if(_model.image.indexOf("bottle")==-1){
-				_mark.x=-10;
-			}else{
-				_mark.x=5;
-				_mark.y=8;
-			}
-			setMark(false,0);
 			RepresentationtypeController.getInstane().register(this);
 			//dev
 			//this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
@@ -106,7 +101,6 @@ package com.musicalInstruments.view.components
 			}else{
 				_idleImage.visible = true;
 				_playImage.visible = false;
-				setMark(false,0)
 			}
 		}
 		
@@ -119,15 +113,6 @@ package com.musicalInstruments.view.components
 		}
 		
 		public function updateDisplay():void{
-		}
-		
-		public function setMark(val:Boolean,index:uint):void{
-//			_mark.visible=val;
-//			if(val&&index!=_markIndex){
-//				_mark.drawTile(index-1);
-//				_markIndex=index
-//			}
-
 		}
 		
 		
