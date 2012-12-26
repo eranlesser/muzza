@@ -40,6 +40,15 @@ package com.representation.controller {
 				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
 				drawNotes(_recordScreenModel.palletModel as NotesInstrumentModel,NoteSequanceModel(_recordScreenModel.palletModel.getSequanceById(_recordScreenModel.palletSequanceId)));
+				
+				for(var i:uint=0;i<(_instrumentModel as NotesInstrumentModel).notesLength;i++){
+					var nte:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteAt(i);
+					_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY, NotesInstrumentModel(_instrumentModel).thumbNail);
+				}
+				for(var n:uint=0;n<NotesInstrumentModel(_recordScreenModel.palletModel).notesLength;n++){
+					var pnte:NoteModel = NotesInstrumentModel(_recordScreenModel.palletModel).getNoteAt(n);
+					_channelView.drawNoteTarget(pnte.value,pnte.x,_recordScreenModel.noteTargetsY,NotesInstrumentModel(_recordScreenModel.palletModel).thumbNail);
+				}
 			}
 			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
 				//drawNotes(NoteSequanceModel(_instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
@@ -117,11 +126,6 @@ package com.representation.controller {
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
 				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x,noteModel.rotation);
-			}
-			
-			for(var i:uint=0;i<NotesInstrumentModel(instrumentModel).notesLength;i++){
-				var nte:NoteModel = NotesInstrumentModel(instrumentModel).getNoteAt(i);
-				_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY,instrumentModel.thumbNail);
 			}
 			
 			
