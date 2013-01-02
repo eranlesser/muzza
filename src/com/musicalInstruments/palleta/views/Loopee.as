@@ -12,13 +12,14 @@ package com.musicalInstruments.palleta.views
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	
+	import org.osflash.signals.Signal;
 
 	public class Loopee extends Instrument implements Ipallet
 	{
 		private var _rows:Vector.<TogiRow>;
 		[Embed(source="assets/notes_sheet_sml.png")] 
 		private var _bg:Class;
-		
 		private var _muteBut:ToggleBut;
 		
 		public function Loopee(model:CoreInstrumentModel){
@@ -28,26 +29,28 @@ package com.musicalInstruments.palleta.views
 		
 		
 		private function init():void{
-			addChild(new _bg());
+			//addChild(new _bg());
+			_notePlayed = new Signal();
 			_rows = new Vector.<TogiRow>();
-			var xx:uint=48;
+			var xx:uint=0;
 			for each(var row:XML in (_model as PalletModel).data.data.children()){
 				var togiRow:TogiRow = new TogiRow(row);
 				addChild(togiRow);
 				togiRow.x=xx+4;
+				togiRow.y = 35;
 				xx+=togiRow.width+4;
-				togiRow.y=(this.height-togiRow.height)/2;
+				//togiRow.y=(this.height-togiRow.height)/2;
 				_rows.push(togiRow);
 			}
 			_muteBut = new ToggleBut("SOUND_ON.png","SOUND_OFF.png")
-			_muteBut.y=(this.height-_muteBut.height)/2;
-			_muteBut.x=15;
+			_muteBut.y=-5;//(this.height-_muteBut.height)/2;
+			_muteBut.x=(this.width - _muteBut.width)/2;//15;
 			addChild(_muteBut);
 			_muteBut.state=1;
 			_muteBut.addEventListener(MouseEvent.CLICK,onPlay);
 		}
 		private function onPlay(e:MouseEvent):void{
-			
+			_notePlayed.dispatch("22");
 		}
 		
 		public function set active(flag:Boolean):void{
@@ -60,6 +63,7 @@ package com.musicalInstruments.palleta.views
 				return;
 			}
 			var togValue:int=-1;
+			tickValue++;
 			if(tickValue%4==0){
 				togValue= tickValue/4;
 			}

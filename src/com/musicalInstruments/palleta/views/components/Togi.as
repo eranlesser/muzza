@@ -25,8 +25,8 @@ package com.musicalInstruments.palleta.views.components
 			_pressed.graphics.drawRoundRect(0,0,wdt,hgt,8);
 			_pressed.graphics.endFill();
 			_idle = new Sprite();
-			_idle.graphics.beginFill(0xEEEEEE,0.4);
-			_idle.graphics.lineStyle(1,0xEEEEEE);
+			_idle.graphics.beginFill(0xCCCCCC,0.8);
+			_idle.graphics.lineStyle(1,0x999999);
 			_idle.graphics.drawRoundRect(0,0,wdt,hgt,8);
 			_idle.graphics.endFill();
 			_play = new Sprite();

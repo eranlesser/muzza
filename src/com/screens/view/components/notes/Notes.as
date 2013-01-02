@@ -27,6 +27,8 @@ package com.screens.view.components.notes
 			_notesLength=notesLength;
 			_instrumentY=instrumentY;
 			init();
+			this.mouseChildren=false;
+			this.mouseEnabled=false;
 		}
 		
 		public function start():void{

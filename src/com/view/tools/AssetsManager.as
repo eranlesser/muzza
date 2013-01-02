@@ -87,6 +87,8 @@ package com.view.tools
 			"<image path='assets/instruments/insRectFill.png' />"+
 			"<image path='assets/instruments/insRectRight.png' />"+
 			"<image path='assets/instruments/insRectWrong.png' />"+
+			"<image path='assets/instruments/tableArrow.png' />"+
+			"<image path='assets/instruments/tableArrowFill.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps_selected.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch.png' />"+

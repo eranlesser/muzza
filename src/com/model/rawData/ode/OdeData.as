@@ -16,7 +16,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="144" playSequance="10" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="144" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
 	<instrument type="drum.png" >
 	<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>
@@ -61,7 +61,7 @@ public static var data:XML =
 	<RecordedX>-10</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<pallet type="claps" learnedSequanced="99" rhythm="8" x='795' y='348'>
+	<pallet type="claps" learnedSequanced="99" rhythm="8" x='815' y='380'>
 		
 	</pallet>
 <backups>
@@ -82,11 +82,11 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="424">
+	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="422">
 	<RecordedX>300</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
-<pallet type="chelo" learnedSequanced="99" x='14' y='390'>
+<pallet type="chelo" learnedSequanced="99" x='14' y='450'>
 		
 	</pallet>
 <backups>

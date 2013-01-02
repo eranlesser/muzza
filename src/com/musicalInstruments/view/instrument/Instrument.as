@@ -6,12 +6,7 @@ package com.musicalInstruments.view.instrument {
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
-	import com.musicalInstruments.model.sequances.IRecordableSequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.palleta.views.Groovee;
-	import com.musicalInstruments.palleta.views.Pallet;
-	import com.musicalInstruments.palleta.views.Paw;
-	import com.musicalInstruments.palleta.views.Scratchee;
 	import com.musicalInstruments.view.IAnimateable;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
@@ -19,7 +14,6 @@ package com.musicalInstruments.view.instrument {
 	import flash.display.Sprite;
 	
 	import org.osflash.signals.Signal;
-	import org.osmf.net.StreamType;
 	
 
 
@@ -35,7 +29,7 @@ package com.musicalInstruments.view.instrument {
 		protected var tuch:					Signal=new Signal();
 		private var unTuch:					Signal=new Signal();
 		private var _sequanceDone:			Signal=new Signal();
-		private var _notePlayed:			Signal;
+		protected var _notePlayed:			Signal;
 		private var _noteStopped:			Signal;
 		private var _player:				NoteSequancePlayer;
 		

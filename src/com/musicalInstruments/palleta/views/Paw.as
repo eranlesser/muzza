@@ -26,14 +26,14 @@ package com.musicalInstruments.palleta.views
 		}
 		
 		private function init():void{
-			var yy:uint=0;
+			var xx:uint=0;
 			addChild(new _bg() as DisplayObject)
 			for each(var paweXml:XML in (_model as PalletModel).data.data.children()){
-				var pawee:Pawee = new Pawee(paweXml,height/3);
+				var pawee:Pawee = new Pawee(paweXml,width/3);
 				addChild(pawee);
-				pawee.y=yy;
-				pawee.x = (width-pawee.width)/2;
-				yy+=height/3;
+				pawee.x=xx;
+				pawee.y = (height-pawee.height)/2;
+				xx+=width/3;
 			}
 		}
 	}
@@ -49,21 +49,21 @@ import flash.events.TouchEvent;
 import flash.media.SoundChannel;
 
 class Pawee extends Sprite{
-	private var _hgt:uint;
+	private var _wdt:uint;
 	private var _soundPlayer:SoundPlayer;
-	public function Pawee(data:XML,hgt:uint){
+	public function Pawee(data:XML,wdt:uint){
 		_soundPlayer = new SoundPlayer(data.@sound);
-		init(hgt);
+		init(wdt);
 	}
 	
-	private function init(hgt:uint):void{
+	private function init(wdt:uint):void{
 		this.graphics.beginFill(0x000000,0);
-		this.graphics.drawRect(0,0,hgt,hgt);
+		this.graphics.drawRect(0,0,wdt,wdt);
 		this.graphics.endFill();
-		_hgt=hgt;
+		_wdt=wdt;
 		
-		this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
-		//this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseClick);
+		//this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
+		this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseClick);
 	}
 	
 	private function onClick(e:TouchEvent):void{

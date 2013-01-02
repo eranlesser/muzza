@@ -18,7 +18,7 @@ package com.model.rawData.ode
 <text>Claps</text>
 <octaves>
 <notes>
-<note id="22"  soundFile="pallet/claps/claps.mp3" animationIndex='2' value="1"  x="825" />
+<note id="22"  soundFile="pallet/claps/claps.mp3" animationIndex='2' value="1"  x="900" />
 </notes>
 </octaves>
 			

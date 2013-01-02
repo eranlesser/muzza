@@ -1,5 +1,6 @@
 package com.musicalInstruments.palleta.views
 {
+	import com.gskinner.motion.GTween;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.palleta.Sounder;
@@ -9,6 +10,7 @@ package com.musicalInstruments.palleta.views
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.events.TouchEvent;
 	import flash.geom.Point;
 	
 	public class TurnTable extends Instrument implements Ipallet
@@ -48,31 +50,51 @@ package com.musicalInstruments.palleta.views
 			addChild(_record);
 			_record.x=50;
 			_record.y=100;
-			
-			_record.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
+			var top:Shape = new Shape();
+			top.graphics.beginFill(0x333333,0);
+			top.graphics.drawRect(-50,0,200,200);
+			addChild(top);
+			//addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
+			addEventListener(TouchEvent.TOUCH_BEGIN,onMouseDown);
 		}
 		
 		private var _downPoint:Point;
-		private function onMouseDown(e:MouseEvent):void{
+		private function onMouseDown(e:TouchEvent):void{
 			_downPoint = new Point(e.localX,e.localY);
-			addEventListener(MouseEvent.MOUSE_MOVE,onMouseMove);
-			stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
+			addEventListener(TouchEvent.TOUCH_MOVE,onMouseMove);
+			stage.addEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			//playSound(5);
 		}
 		
-		protected function onMouseUp(event:MouseEvent):void
+		protected function onMouseUp(event:TouchEvent):void
 		{
 			// TODO Auto-generated method stub
-			removeEventListener(MouseEvent.MOUSE_MOVE,onMouseMove);
-			stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
+			removeEventListener(TouchEvent.TOUCH_MOVE,onMouseMove);
+			stage.removeEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			
 		}
 		
-		protected function onMouseMove(event:MouseEvent):void
+		protected function onMouseMove(event:TouchEvent):void
 		{
-			if(Math.abs(event.localY-_downPoint.y)>40){
-			_record.rotation = event.localY - _downPoint.y;
-			playSound(Math.round(Math.random()*4))
+			trace(event.localY-_downPoint.y)
+			if(Math.abs(event.localY-_downPoint.y)>44){
+			var soundId:int=-1;
+			if(event.localY-_downPoint.y > 88){
+				soundId=0;
+			}else if(event.localY-_downPoint.y < -88){
+				soundId=1;
+				
+			}else if(event.localY-_downPoint.y > 44){
+				soundId=2;
+			}else if(event.localY-_downPoint.y < -44){
+				soundId=3;
+				
+			}
+			trace(soundId,"<<")
+			if(soundId>=0){
+				playSound(soundId,Math.abs(event.localY - _downPoint.y))
+				new GTween(_record,0.2,{rotation:180*((event.localY - _downPoint.y)/100)});
+			}
 			_downPoint.x = event.localX;
 			_downPoint.y = event.localY;
 			}
@@ -94,7 +116,7 @@ package com.musicalInstruments.palleta.views
 		{
 		}
 		
-		private function playSound(newAngleIndex:int):void{
+		private function playSound(newAngleIndex:int,width:uint):void{
 			sounders[newAngleIndex].play();
 		}
 		
