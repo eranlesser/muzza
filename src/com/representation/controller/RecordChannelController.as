@@ -79,6 +79,7 @@ package com.representation.controller {
 				FileProxy.exportSequance(_recordedSequance, _instrumentModel.thumbNail);
 			}
 			_instrument.noteStopped.remove(noteAdded);
+			trace(score)
 		}
 		
 		public function start():void{

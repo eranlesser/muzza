@@ -226,6 +226,9 @@ package com.view.tools
 			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_PRESSED.png' />"+
 			"<image path='assets/LISTEN_SCREEN/line.png' />"+
 			"<image path='assets/LISTEN_SCREEN/blue_strip.png' />"+
+			"<image path='assets/LISTEN_SCREEN/bottles_icon.png' />"+
+			"<image path='assets/LISTEN_SCREEN/bass_icon.png' />"+
+			"<image path='assets/LISTEN_SCREEN/drum_icon.png' />"+
 
 			
 			//Rrpresentation Menu
@@ -327,8 +330,21 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
 			"<image path='assets/instruments/marc.png' />"+
 			"<image path='assets/instruments/platein.png' />"+
+			//POPUP
+			"<image path='assets/POP_UP/POP_UP_LEFT_SEGMENT.png' />"+
+			"<image path='assets/POP_UP/POP_UP_LEFT_SIDE_ARROW.png' />"+
+			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
+			"<image path='assets/POP_UP/POP_UP_LOWER_ARROW_SEGMENT.png' />"+
+			"<image path='assets/POP_UP/POP_UP_LOWER_LEFT_CORNER.png' />"+
+			"<image path='assets/POP_UP/POP_UP_LOWER_RIGT_CORNER.png' />"+
+			"<image path='assets/POP_UP/POP_UP_UPPER_LEFT_CORNER.png' />"+
+			"<image path='assets/POP_UP/POP_UP_UPPER_RIGHT_CORNER.png' />"+
+			"<image path='assets/POP_UP/POP_UP_RIGHT_SEGMENT.png' />"+
+			"<image path='assets/POP_UP/POP_UP_RIGHT_SIDE_ARROW.png' />"+
+			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
+			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
 			
-			"<image path='assets/lv.png' />"+
+			
 			"</assets>"
 		
 		);

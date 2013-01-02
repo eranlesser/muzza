@@ -1,4 +1,6 @@
 package com.screens.view {
+	import com.constants.Dimentions;
+	import com.inf.PopUp;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
@@ -130,6 +132,14 @@ package com.screens.view {
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll(this);
+				_score = new ScorePannel(_model.instrumentModel.thumbNail);
+				addChild(_score);
+				_score.x=Dimentions.WIDTH-_score.width-12;
+				_score.y=(strip.height-_score.height)/2-2;
+				_popUp = new PopUp(200,PopUp.BUT_LEFT);
+				addChild(_popUp);
+				_popUp.x= (Dimentions.WIDTH-_popUp.width)/2;
+				_popUp.y=120;
 				layout();
 				isInited = true;
 				
@@ -137,8 +147,8 @@ package com.screens.view {
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 		}
-		
-		
+		private var _score:ScorePannel;
+		private var _popUp:PopUp;
 
 		override public function stop():void{
 			_stateController.deActivate();
@@ -239,6 +249,61 @@ package com.screens.view {
 		
 		
 	}
+}
+import com.view.tools.AssetsManager;
+
+import flash.display.DisplayObject;
+import flash.display.Sprite;
+import flash.text.TextField;
+import flash.text.TextFormat;
+
+import flashx.textLayout.formats.TextAlign;
+
+class ScorePannel extends Sprite{
+	
+	private var _scoreField:TextField;
+	private var _score:uint=0;
+	public function ScorePannel(thumbNail:String){
+		init(thumbNail);
+	}
+	
+	private function init(thumbNail:String):void{
+		this.graphics.beginFill(0x333333);
+		this.graphics.drawRect(0,0,150,40);
+		this.graphics.endFill();
+		_scoreField = new TextField();
+		_scoreField.defaultTextFormat = new TextFormat("Arial",22,0xFFFFFF,true,null,null,null,null,TextAlign.CENTER);
+		_scoreField.width = 100;
+		_scoreField.height = 30;
+		_scoreField.x=40;
+		_scoreField.y=5;
+		addChild(_scoreField);
+		_scoreField.text=_score+"";
+		addChild(getIcon(thumbNail));
+	}
+	
+	public function add():void{
+		_score++;
+		_scoreField.text = _score+"";
+	}
+	
+	private function getIcon(thumbNail:String):DisplayObject{
+		var icon:DisplayObject;
+		switch(thumbNail){
+			case "bottles.png":
+				icon = AssetsManager.getAssetByName("bottles_icon.png");
+				break;
+			case "drum.png":
+				icon = AssetsManager.getAssetByName("drum_icon.png");
+				break;
+			case "bass_flash.jpg":
+				icon = AssetsManager.getAssetByName("bass_icon.png");
+				break;
+		}
+		return icon;
+	}
+	
+	
 }
 
 /*
