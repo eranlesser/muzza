@@ -4,6 +4,9 @@ package com.inf
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	
 	
 	
@@ -11,53 +14,91 @@ package com.inf
 	{
 		public static const BUT_LEFT:String = "butLeft";
 		public static const BUT_RIGHT:String = "butRight";
-		public function PopUp(wdt:uint,arrowDirection:String)
+		private var _arrow:DisplayObject;
+		private var _thumbNail:DisplayObject;
+		private var _bg:Sprite;
+		private var _topContainerY:uint;
+		public function PopUp(wdt:uint,arrowDirection:String,thumbNail:String,location:Point,topContainerY:uint)
 		{
-			init(wdt);
-			addArrow(arrowDirection);
+			drawBg(wdt,arrowDirection);
+			_thumbNail = addChild(getThumbNail(thumbNail))
+			_thumbNail.x=10;
+			_thumbNail.y=10;
+			this.addEventListener(MouseEvent.CLICK,onClick);
+			this.x=location.x;
+			this.y=location.y;
+			_topContainerY=topContainerY;
 		}
 		
-		private function addArrow(arrowDirection:String):void{
+		private function onClick(event:Event):void
+		{
+			//_bg.width = _thumbNail.width+20;			
+			//_bg.height = _thumbNail.height+20;
+			_bg.visible=false;
+			this.x=11;
+			this.y=3;//(_topContainerY-_thumbNail.height)/2;
+		}
+		
+		private function addArrow(arrowDirection:String):DisplayObject{
 			var arrow:DisplayObject;
 			switch(arrowDirection){
 				case BUT_LEFT:
 					arrow = AssetsManager.getAssetByName("POP_UP_LOWER_ARROW_SEGMENT.png");
-					addChild(arrow);
-					arrow.x=40;
+					_bg.addChild(arrow);
+					arrow.x=20;
 					break;
 			}
+			return arrow;
 		}
 		
-		private function init(wdt:uint):void{
+		private function getThumbNail(thmb:String):DisplayObject{
+			var icon:DisplayObject;
+			switch(thmb){
+				case "bottles.png":
+					icon = AssetsManager.getAssetByName("DRUMMER_PROFILE_PIC.png");
+					break;
+				case "drum.png":
+					icon = AssetsManager.getAssetByName("GIRL_PROFILE_PIC.png");
+					break;
+				case "bass_flash.jpg":
+					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
+					break;
+			}
+			return icon;
+		}
+		
+		private function drawBg(wdt:uint,arrowDirection:String):void{
+			_bg = new Sprite();
 			var wdt:uint=wdt;
 			var seg:DisplayObject = AssetsManager.getAssetByName("POP_UP_VERTICAL_SEGMENT.png");
-			addChild(seg);
-			seg.width = wdt;
-			
+			_bg.addChild(seg);
+			_arrow = addArrow(arrowDirection);
+			seg.width = wdt-_arrow.width-_arrow.x;
+			seg.x=_arrow.width+_arrow.x;
 			var topLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_LEFT_CORNER.png");
-			addChild(topLeft);
+			_bg.addChild(topLeft);
 			var leftSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_LEFT_SEGMENT.png");
-			addChild(leftSeg);
+			_bg.addChild(leftSeg);
 			leftSeg.y=topLeft.height;
 			var butLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_LEFT_CORNER.png");
-			addChild(butLeft);
+			_bg.addChild(butLeft);
 			butLeft.y=seg.height-butLeft.height;
-			seg.x=butLeft.width;
 			
 			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
-			addChild(topRight);
-			topRight.x=seg.width+topLeft.width;
+			_bg.addChild(topRight);
+			topRight.x=seg.width+seg.x//+topLeft.width;
 			var butRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_RIGT_CORNER.png");
-			addChild(butRight);
+			_bg.addChild(butRight);
 			butRight.y=butLeft.y;
-			butRight.x=seg.width+butLeft.width;
+			butRight.x=seg.width +seg.x;//+butLeft.width;
 			
 			var rightSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_RIGHT_SEGMENT.png");
-			addChild(rightSeg);
+			_bg.addChild(rightSeg);
 			rightSeg.x=topRight.x;
 			rightSeg.y=topRight.height;
 			rightSeg.height=seg.height-topRight.height-butRight.height;
 			leftSeg.height=rightSeg.height;
+			addChild(_bg);
 		}
 	}
 }

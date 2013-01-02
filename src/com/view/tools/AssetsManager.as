@@ -343,6 +343,9 @@ package com.view.tools
 			"<image path='assets/POP_UP/POP_UP_RIGHT_SIDE_ARROW.png' />"+
 			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
+			"<image path='assets/POP_UP/BASS_PROFILE_PIC.png' />"+
+			"<image path='assets/POP_UP/DRUMMER_PROFILE_PIC.png' />"+
+			"<image path='assets/POP_UP/GIRL_PROFILE_PIC.png' />"+
 			
 			
 			"</assets>"

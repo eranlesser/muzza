@@ -26,6 +26,7 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
+	import flash.geom.Point;
 
 
 	public class RecordScreen extends AbstractScreen
@@ -136,10 +137,8 @@ package com.screens.view {
 				addChild(_score);
 				_score.x=Dimentions.WIDTH-_score.width-12;
 				_score.y=(strip.height-_score.height)/2-2;
-				_popUp = new PopUp(200,PopUp.BUT_LEFT);
+				_popUp = new PopUp(400,PopUp.BUT_LEFT,_model.instrumentModel.thumbNail,new Point((Dimentions.WIDTH-400)/2,120),strip.height);
 				addChild(_popUp);
-				_popUp.x= (Dimentions.WIDTH-_popUp.width)/2;
-				_popUp.y=120;
 				layout();
 				isInited = true;
 				
