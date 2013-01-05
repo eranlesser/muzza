@@ -168,7 +168,7 @@ public static var data:XML =
 
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="16" />
+<subSequance id="10" location="32" />
 
 </sequance>
 </sequances>

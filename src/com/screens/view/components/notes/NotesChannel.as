@@ -1,12 +1,8 @@
 package com.screens.view.components.notes
 {
 	import com.gskinner.motion.GTween;
-	import com.gskinner.motion.easing.Sine;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
-	import com.musicalInstruments.model.sequances.INoteFetcher;
-	import com.musicalInstruments.view.components.NoteView;
-	import com.representation.ChanelNotesType;
 	import com.representation.RepresentationSizes;
 	import com.view.tools.AssetsManager;
 	
@@ -15,8 +11,7 @@ package com.screens.view.components.notes
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	
-	import org.osflash.signals.Signal;
+	import flash.utils.Dictionary;
 	
 	public class NotesChannel extends Sprite
 	{
@@ -27,9 +22,9 @@ package com.screens.view.components.notes
 		private var _notesContainer:	Sprite;
 		private var _top:				Sprite;
 		private var _notesMask:			Shape;
-		private var _instrumentY:uint;
-		public var moved:Signal=new Signal();
-		private var _tween:GTween;
+		private var _instrumentY:		uint;
+		private var _pointToBasePoint:	Point;
+		private var _tween:				GTween;
 		
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle){
@@ -44,15 +39,11 @@ package com.screens.view.components.notes
 //			moved.dispatch(_notesContainer.y);
 //		}
 		
-		public var currentTick:int=0;
 		public function start(notesLength:uint):void{
 			this.y=0;
 			
 			_tween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
 			_tween.useFrames=true;
-			_tween.onChange=function t(tween:GTween):void{
-				currentTick=Math.floor(_tween.position/2);
-			}
 		}
 		
 		public function stop():void{
@@ -75,7 +66,6 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		private var _pointToBasePoint:Point;
 		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint,rotation:uint):void{
 			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId,rotation);
 			_notesContainer.addChild(note);
@@ -123,7 +113,7 @@ package com.screens.view.components.notes
 			}
 			return prefix;
 		}
-		
+		private var _noteTargets:Dictionary = new Dictionary();
 		public function drawNoteTarget(noteValue:uint,xx:uint,yy:uint,type:String):void{
 			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill.png");
 			_bg.addChild(circ);
@@ -142,6 +132,26 @@ package com.screens.view.components.notes
 			}
 			circTop.y=yy;
 			circTop.alpha=0.5;
+			_noteTargets[noteValue] = circTop;
+		}
+		
+		public function marc(value:uint,good:Boolean):void{
+			var feedBackAsset:DisplayObject;
+			if(good){
+				feedBackAsset = AssetsManager.getAssetByName("insCircleRight.png");
+			}else{
+				feedBackAsset = AssetsManager.getAssetByName("insCircleWrong.png");
+			}
+			var idleAsset:DisplayObject = _noteTargets[value];
+			_top.addChild(feedBackAsset);
+			feedBackAsset.x=idleAsset.x;
+			feedBackAsset.y=idleAsset.y;
+			var t:GTween = new GTween(feedBackAsset,0.5,{alpha:0});
+			t.onComplete = unMarc;
+		}
+		
+		private function unMarc(t:GTween):void{
+			_top.removeChild(t.target as DisplayObject);
 		}
 		
 		public function getNoteByLocation(location:uint):DroppingNote{
@@ -153,10 +163,15 @@ package com.screens.view.components.notes
 			return null;
 		};
 		
+		public function removeNote(note:DroppingNote):void{
+			_notes.splice(_notes.indexOf(note),1);
+			_notesContainer.removeChild(note);
+		}
+		
 		public function getNotesInRange(range:uint,curTick:uint):Vector.<DroppingNote>{
 			var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
 			for each(var note:DroppingNote in _notes){
-				if(note.location==(curTick+range)&&note.location>curTick){
+				if(note.location<(curTick+range)&&note.location>curTick){
 					rangeNotes.push(note);
 				}
 				

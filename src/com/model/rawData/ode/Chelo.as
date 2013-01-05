@@ -43,7 +43,7 @@ package com.model.rawData.ode
 <note id="C_6" location="129" soundLength="1"/>	
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="16" />
+<subSequance id="10" location="32" />
 </sequance>
 			</sequances>
 			</instrument>

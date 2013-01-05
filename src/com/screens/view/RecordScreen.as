@@ -245,7 +245,12 @@ package com.screens.view {
 			_pallet.y=pallet.@y;
 			_pallet.x=pallet.@x;
 		}
-		
+		public function addScore(val:int):void{
+			_score.addScore(val);
+		}
+		public function resetScore():void{
+			_score.reset();
+		}
 		
 	}
 }
@@ -281,9 +286,14 @@ class ScorePannel extends Sprite{
 		addChild(getIcon(thumbNail));
 	}
 	
-	public function add():void{
-		_score++;
+	public function addScore(val:int):void{
+		_score+=val;
 		_scoreField.text = _score+"";
+	}
+	
+	public function reset():void{
+		_score=0;
+		_scoreField.text=_score+"";
 	}
 	
 	private function getIcon(thumbNail:String):DisplayObject{

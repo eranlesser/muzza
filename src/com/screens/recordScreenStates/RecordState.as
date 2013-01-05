@@ -72,9 +72,26 @@ package com.screens.recordScreenStates
 			_context.practice();
 		}
 		
+		private function checkNotesMatch(noteId:String):void{
+			var match:Boolean = false;
+			for each(var curNote:DroppingNote in _toPlayNotes){
+				if(noteId==curNote.id){
+					//trace("good");
+					_context.addScore(1);
+					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
+					_context.notes.removeNote(curNote);
+					_context.notes.marc(curNote.value,true);
+					match = true;
+					break;
+				}
+			}
+			if(!match)
+				_context.notes.marc(NotesInstrumentModel(_context.model.instrumentModel).getNoteById(noteId).value,false);
+		}
+		
 		public function activate():void{
 			_context.recordButton.state="pressed";
-			//_context.instrumentRecorder.notePlayed.addOnce(record);
+			_context.instrumentRecorder.notePlayed.add(checkNotesMatch);
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordChannelController.start();
 			_context.recordButton.clicked.add(onRecordBtn);
@@ -90,12 +107,15 @@ package com.screens.recordScreenStates
 			_context.pallet.active = true;
 			setBackUps();
 			_context.notes.start();
+			_context.resetScore();
 		}
 		
 		
 		private function stop():void{
 			_complete.dispatch();
 		}
+		
+		private var _toPlayNotes:Vector.<DroppingNote>;
 		
 		private function onTimerTick():void{
 			if(!_isRecording){
@@ -105,9 +125,9 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				stop();
 			}
-			var curNotes:Vector.<DroppingNote>=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
-			for each(var curNote:DroppingNote in curNotes){
+			for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
 			}

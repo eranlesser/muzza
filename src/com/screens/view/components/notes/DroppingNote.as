@@ -75,6 +75,5 @@ package com.screens.view.components.notes
 		
 		
 		
-		
 	}
 }

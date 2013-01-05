@@ -50,6 +50,10 @@ package com.screens.recordScreenStates
 			setState(States.PRACTICE);
 		}
 		
+		public function addScore(val:int):void{
+			_recordScreen.addScore(val)
+		}
+		
 		
 		public function start():void{
 			setState(States.IDLE);
@@ -65,6 +69,10 @@ package com.screens.recordScreenStates
 		
 		public function set isRecorded(flag:Boolean):void{
 			_recordScreen.isRecorded=flag;
+		}
+		
+		public function resetScore():void{
+			_recordScreen.resetScore();
 		}
 		
 		

@@ -18,6 +18,7 @@ package com.inf
 		private var _thumbNail:DisplayObject;
 		private var _bg:Sprite;
 		private var _topContainerY:uint;
+		private var _location:Point;
 		public function PopUp(wdt:uint,arrowDirection:String,thumbNail:String,location:Point,topContainerY:uint)
 		{
 			drawBg(wdt,arrowDirection);
@@ -25,8 +26,10 @@ package com.inf
 			_thumbNail.x=10;
 			_thumbNail.y=10;
 			this.addEventListener(MouseEvent.CLICK,onClick);
-			this.x=location.x;
-			this.y=location.y;
+			_location=location;
+			_bg.visible=false;
+			this.x=11;
+			this.y=3;
 			_topContainerY=topContainerY;
 		}
 		
@@ -34,9 +37,15 @@ package com.inf
 		{
 			//_bg.width = _thumbNail.width+20;			
 			//_bg.height = _thumbNail.height+20;
-			_bg.visible=false;
-			this.x=11;
-			this.y=3;//(_topContainerY-_thumbNail.height)/2;
+			if(_bg.visible){
+				_bg.visible=false;
+				this.x=11;
+				this.y=3;//(_topContainerY-_thumbNail.height)/2;
+			}else{
+				_bg.visible = true;
+				this.x=_location.x;
+				this.y=_location.y;
+			}
 		}
 		
 		private function addArrow(arrowDirection:String):DisplayObject{

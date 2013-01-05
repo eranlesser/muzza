@@ -45,16 +45,16 @@ package com.screens.view.components.notes
 		public function addChannel(model:CoreInstrumentModel):NotesChannel{
 			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY+44));
 			_notesCanvas.addChild(_channel as DisplayObject);
-			NotesChannel(_channel).moved.add(onMoved);
 			return _channel;
 		}
 		
-		private function onMoved(xx:int):void{
-			//_bg.y=xx%680;
-		}
 		
 		public function get backUpsBut():ToggleBut{
 			return _backUpBut;
+		}
+		
+		public function removeNote(note:DroppingNote):void{
+			_channel.removeNote(note)
 		}
 		
 		
@@ -86,6 +86,10 @@ package com.screens.view.components.notes
 //			addChild(_backUpBut);
 //			_backUpBut.x=860;
 //			_backUpBut.y=frame.height/2-_backUpBut.height/2;
+		}
+		
+		public function marc(value:uint,good:Boolean):void{
+			_channel.marc(value,good);
 		}
 	}
 }

@@ -75,12 +75,10 @@ package com.screens.recordScreenStates
 		
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
-			if(_context.recordChannelController.channel.currentTick>100){
 			if(_wrongAnswers<3&&_totalAnswerTime<50&&(_ofBeatNotes-_correctAnswers)<3){
 				//_context.bubble.setText("You're ready to record!",true)
 			}else{
 				//_context.bubble.setText("Practice some more",true)
-			}
 			}
 			_context.isRecorded=true;
 			_context.notes.stop();
@@ -133,7 +131,6 @@ package com.screens.recordScreenStates
 				_context.unPauseTimer();
 				_curNotes=null;
 			}
-			_context.pallet.onTick(_context.recordChannelController.channel.currentTick);
 			
 			//if(curNote!=_currentNote){
 			//	_currentNote=curNote;

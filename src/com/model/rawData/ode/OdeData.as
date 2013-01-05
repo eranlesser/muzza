@@ -16,7 +16,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="144" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="176" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
 	<instrument type="drum.png" >
 	<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>
@@ -57,11 +57,11 @@ public static var data:XML =
 
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="99" recordedSequance="102" noteTargetsY="372">
+	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="372">
 	<RecordedX>-10</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<pallet type="claps" learnedSequanced="99" rhythm="8" x='815' y='380'>
+	<pallet type="claps"  rhythm="8" x='815' y='380'>
 		
 	</pallet>
 <backups>
