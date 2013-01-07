@@ -50,7 +50,7 @@ package com.container
 				_progressControlIndex=_themeProgressors.indexOf(progressControl);
 				
 			}
-			Rhythms.FRAME_RATE = _themeProgressors[_progressControlIndex].frameRate;
+			Rhythms.FRAME_RATE = _themeProgressors[_progressControlIndex].frameRate*4;
 			_presenter.stage.frameRate = Rhythms.FRAME_RATE;
 			trace("frame rate is",_presenter.stage.frameRate)
 			_themeProgressors[_progressControlIndex].goHomeSignal.add(reStartScreen);

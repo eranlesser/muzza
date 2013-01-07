@@ -42,7 +42,7 @@ package com.screens.view.components.notes
 		public function start(notesLength:uint):void{
 			this.y=0;
 			
-			_tween=new GTween(_notesContainer,notesLength*2,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
+			_tween=new GTween(_notesContainer,notesLength*8,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
 			_tween.useFrames=true;
 		}
 		
@@ -114,7 +114,7 @@ package com.screens.view.components.notes
 			return prefix;
 		}
 		private var _noteTargets:Dictionary = new Dictionary();
-		public function drawNoteTarget(noteValue:uint,xx:uint,yy:uint,type:String):void{
+		public function drawNoteTarget(noteValue:uint,xx:int,yy:int,yOffset:int,type:String):void{
 			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill.png");
 			_bg.addChild(circ);
 			if(xx>0){
@@ -122,7 +122,7 @@ package com.screens.view.components.notes
 			}else{
 				circ.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
 			}
-			circ.y=yy;
+			circ.y=yy+yOffset;
 			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
 			_top.addChild(circTop);
 			if(xx>0){
@@ -130,7 +130,7 @@ package com.screens.view.components.notes
 			}else{
 				circTop.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
 			}
-			circTop.y=yy;
+			circTop.y=yy+yOffset;
 			circTop.alpha=0.5;
 			_noteTargets[noteValue] = circTop;
 		}

@@ -137,7 +137,7 @@ package com.screens.view {
 				addChild(_score);
 				_score.x=Dimentions.WIDTH-_score.width-12;
 				_score.y=(strip.height-_score.height)/2-2;
-				_popUp = new PopUp(400,PopUp.BUT_LEFT,_model.instrumentModel.thumbNail,new Point((Dimentions.WIDTH-400)/2,120),strip.height);
+				_popUp = new PopUp(300,PopUp.TOP_RIGHT,_model.instrumentModel.thumbNail,new Point((Dimentions.WIDTH-400)/2,120),"Let's Start","Click Record when you are ready");
 				addChild(_popUp);
 				layout();
 				isInited = true;
@@ -217,7 +217,7 @@ package com.screens.view {
 		}
 		
 		private function addRepresentation():void{
-			_notes = new Notes(_model.endAtFrame,_model.getRecordInstrumentY());
+			_notes = new Notes(_model.endAtFrame,_model.noteTargetsY+_model.noteTargetsYOffset-11);
 			_stageLayer.addChild(_notes);
 		}
 		

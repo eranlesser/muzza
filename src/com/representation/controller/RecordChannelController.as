@@ -43,11 +43,11 @@ package com.representation.controller {
 				
 				for(var i:uint=0;i<(_instrumentModel as NotesInstrumentModel).notesLength;i++){
 					var nte:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteAt(i);
-					_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY, NotesInstrumentModel(_instrumentModel).thumbNail);
+					_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset ,NotesInstrumentModel(_instrumentModel).thumbNail);
 				}
 				for(var n:uint=0;n<NotesInstrumentModel(_recordScreenModel.palletModel).notesLength;n++){
 					var pnte:NoteModel = NotesInstrumentModel(_recordScreenModel.palletModel).getNoteAt(n);
-					_channelView.drawNoteTarget(pnte.value,pnte.x,_recordScreenModel.noteTargetsY,NotesInstrumentModel(_recordScreenModel.palletModel).thumbNail);
+					_channelView.drawNoteTarget(pnte.value,pnte.x,_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset,NotesInstrumentModel(_recordScreenModel.palletModel).thumbNail);
 				}
 			}
 			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp

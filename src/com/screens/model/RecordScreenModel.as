@@ -18,6 +18,7 @@ package com.screens.model {
 		private var _recordInstrumentX:int;
 		private var _recordInstrumentY:int;
 		private var _noteTargetsY:uint;
+		private var _noteTargetsYOffset:int;
 		private var _palletX:int;
 		private var _palletY:int;
 		private var _backUpInsruments:Vector.<InstrumentModel>;
@@ -45,6 +46,7 @@ package com.screens.model {
 			_recordInstrumentX= xml.playerInstrument.RecordedX;
 			_recordInstrumentY= xml.playerInstrument.RecordedY;
 			_noteTargetsY= xml.playerInstrument.@noteTargetsY;
+			_noteTargetsYOffset= xml.playerInstrument.@notesTargetYOffset;
 			_palletX= xml.pallet.@x;
 			_palletY= xml.pallet.@y;
 			if(xml.pallet is XMLList)
@@ -80,7 +82,7 @@ package com.screens.model {
 			return _recordInstrumentY;
 		}
 		
-		public function get noteTargetsY():uint{
+		public function get noteTargetsY():int{
 			return _noteTargetsY;
 		}
 		
@@ -103,6 +105,11 @@ package com.screens.model {
 		
 		public function get learnedSequanceId():uint{
 			return _learnedSequancedId;
+		}
+
+		public function get noteTargetsYOffset():int
+		{
+			return _noteTargetsYOffset;
 		}
 		
 		

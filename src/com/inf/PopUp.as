@@ -7,19 +7,23 @@ package com.inf
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
-	
+	import flash.text.TextField;
+	import flash.text.TextFieldType;
+	import flash.text.TextFormat;
 	
 	
 	public class PopUp extends Sprite
 	{
-		public static const BUT_LEFT:String = "butLeft";
-		public static const BUT_RIGHT:String = "butRight";
+		public static const BTM_LEFT:String = "butLeft";
+		public static const BTM_RIGHT:String = "butRight";
+		public static const TOP_LEFT:String = "topLeft";
+		public static const TOP_RIGHT:String = "topRight";
+		public static const NO_ARROW:String = "";
 		private var _arrow:DisplayObject;
 		private var _thumbNail:DisplayObject;
 		private var _bg:Sprite;
-		private var _topContainerY:uint;
 		private var _location:Point;
-		public function PopUp(wdt:uint,arrowDirection:String,thumbNail:String,location:Point,topContainerY:uint)
+		public function PopUp(wdt:uint,arrowDirection:String,thumbNail:String,location:Point,title:String,content:String)
 		{
 			drawBg(wdt,arrowDirection);
 			_thumbNail = addChild(getThumbNail(thumbNail))
@@ -30,7 +34,34 @@ package com.inf
 			_bg.visible=false;
 			this.x=11;
 			this.y=3;
-			_topContainerY=topContainerY;
+			addTitle(title,wdt);
+			addContent(content,wdt)
+		}
+		
+		private function addTitle(txt:String,wdt:uint):void{
+			var title:TextField = new TextField();
+			var fmt:TextFormat = new TextFormat("Arial",24,0xFFFFFF,true);
+			title.type = TextFieldType.DYNAMIC;
+			title.defaultTextFormat=fmt;
+			title.width=wdt-_thumbNail.width-20;
+			title.x=_thumbNail.width+20;
+			title.y=10;
+			title.text=txt;
+			_bg.addChild(title);
+			
+		}
+		private function addContent(txt:String,wdt:uint):void{
+			var content:TextField = new TextField();
+			var fmt:TextFormat = new TextFormat("Arial",18,0x372c2d);
+			content.type = TextFieldType.DYNAMIC;
+			content.defaultTextFormat=fmt;
+			content.width=wdt-_thumbNail.width-30;
+			content.x=_thumbNail.width+20;
+			content.y=50;
+			content.wordWrap = true;
+			content.multiline = true;
+			content.text=txt;
+			_bg.addChild(content);
 		}
 		
 		private function onClick(event:Event):void
@@ -51,10 +82,16 @@ package com.inf
 		private function addArrow(arrowDirection:String):DisplayObject{
 			var arrow:DisplayObject;
 			switch(arrowDirection){
-				case BUT_LEFT:
+				case BTM_LEFT:
+				case BTM_RIGHT:
 					arrow = AssetsManager.getAssetByName("POP_UP_LOWER_ARROW_SEGMENT.png");
 					_bg.addChild(arrow);
-					arrow.x=20;
+					break;
+				case TOP_LEFT:
+				case TOP_RIGHT:
+					arrow = AssetsManager.getAssetByName("POP_UP_UPPER_ARROW_SEGMENT.png");
+					_bg.addChild(arrow);
+					arrow.y=-25;
 					break;
 			}
 			return arrow;
@@ -81,11 +118,28 @@ package com.inf
 			var wdt:uint=wdt;
 			var seg:DisplayObject = AssetsManager.getAssetByName("POP_UP_VERTICAL_SEGMENT.png");
 			_bg.addChild(seg);
-			_arrow = addArrow(arrowDirection);
-			seg.width = wdt-_arrow.width-_arrow.x;
-			seg.x=_arrow.width+_arrow.x;
 			var topLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_LEFT_CORNER.png");
 			_bg.addChild(topLeft);
+			if(arrowDirection!=""){
+				_arrow = addArrow(arrowDirection);
+				seg.width = wdt-_arrow.width-20;
+				switch(arrowDirection){
+					case BTM_LEFT:
+					case TOP_LEFT:
+						_arrow.x=20;
+						seg.x=_arrow.width+_arrow.x;
+						break;
+					case BTM_RIGHT:
+					case TOP_RIGHT:
+						_arrow.x=wdt-_arrow.width;
+						seg.x=topLeft.width;
+						break;
+				}
+			}else{
+				seg.width = wdt-topLeft.width*2;
+				seg.x=topLeft.width;
+			}
+			
 			var leftSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_LEFT_SEGMENT.png");
 			_bg.addChild(leftSeg);
 			leftSeg.y=topLeft.height;
@@ -95,11 +149,11 @@ package com.inf
 			
 			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
 			_bg.addChild(topRight);
-			topRight.x=seg.width+seg.x//+topLeft.width;
+			topRight.x=wdt//-topRight.width//+topLeft.width;
 			var butRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_RIGT_CORNER.png");
 			_bg.addChild(butRight);
 			butRight.y=butLeft.y;
-			butRight.x=seg.width +seg.x;//+butLeft.width;
+			butRight.x=wdt//-butRight.width;//+butLeft.width;
 			
 			var rightSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_RIGHT_SEGMENT.png");
 			_bg.addChild(rightSeg);

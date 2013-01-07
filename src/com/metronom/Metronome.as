@@ -140,8 +140,12 @@ package com.metronom
 			_tickValue = _beginAtFrame*2;
 			_tickSignal.dispatch();
 		}
-			
+		private var _miniTick:uint=0;
 		private function onTick(tween:GTween):void{
+			_miniTick++;
+			if(_miniTick%4>0){
+				return;
+			}
 			if(_playActivated){
 				if(_tickValue/2 == Math.round(_tickValue/2)){
 					soundTick.dispatch();

@@ -70,9 +70,9 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454">
+	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454" notesTargetYOffset="8" >
 	<RecordedX>50</RecordedX>
-	<RecordedY>450</RecordedY>
+	<RecordedY>458</RecordedY>
 	</playerInstrument>
 <pallet type="scratch" learnedSequanced="99" rhythm="8" x='700' y='452'>
 		
