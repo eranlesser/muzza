@@ -79,6 +79,10 @@ package com.musicalInstruments.view.character {
 			return _done;
 		}
 		
+		public function get thumbnail():String{
+			return _model.coreModel.thumbNail;
+		}
+		
 		private function onSequanceDone():void{
 			_done=true;
 			sequanceDone.dispatch();

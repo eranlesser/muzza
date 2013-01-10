@@ -1,5 +1,6 @@
 package com.inf
 {
+	import com.gskinner.motion.GTween;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
@@ -14,28 +15,33 @@ package com.inf
 	
 	public class PopUp extends Sprite
 	{
-		public static const BTM_LEFT:String = "butLeft";
-		public static const BTM_RIGHT:String = "butRight";
-		public static const TOP_LEFT:String = "topLeft";
-		public static const TOP_RIGHT:String = "topRight";
+		public static const BTM_LEFT:String = "btm_left";
+		public static const BTM_RIGHT:String = "btm_right";
+		public static const TOP_LEFT:String = "top_left";
+		public static const TOP_RIGHT:String = "top_right";
 		public static const NO_ARROW:String = "";
 		private var _arrow:DisplayObject;
 		private var _thumbNail:DisplayObject;
+		private var _model:PopUpModel;
 		private var _bg:Sprite;
-		private var _location:Point;
-		public function PopUp(wdt:uint,arrowDirection:String,thumbNail:String,location:Point,title:String,content:String)
+		private var _mini_bg:Sprite;
+		
+		public function PopUp(popupModel:PopUpModel,enforcer:PopUpsManager)
 		{
-			drawBg(wdt,arrowDirection);
-			_thumbNail = addChild(getThumbNail(thumbNail))
-			_thumbNail.x=10;
-			_thumbNail.y=10;
+			_model = popupModel;
+			drawBg(_model.width,popupModel.direction);
+			drawMiniBg();
 			this.addEventListener(MouseEvent.CLICK,onClick);
-			_location=location;
 			_bg.visible=false;
-			this.x=11;
-			this.y=3;
-			addTitle(title,wdt);
-			addContent(content,wdt)
+			addTitle(_model.title,_model.width);
+			addContent(_model.content,_model.width)
+			this.x=6;
+			this.y=6;//(_topContainerY-_thumbNail.height)/2;
+			
+		}
+		
+		public function get id():String{
+			return _model.id;
 		}
 		
 		private function addTitle(txt:String,wdt:uint):void{
@@ -43,8 +49,8 @@ package com.inf
 			var fmt:TextFormat = new TextFormat("Arial",24,0xFFFFFF,true);
 			title.type = TextFieldType.DYNAMIC;
 			title.defaultTextFormat=fmt;
-			title.width=wdt-_thumbNail.width-20;
-			title.x=_thumbNail.width+20;
+			title.width=wdt-70-20;
+			title.x=70+20;
 			title.y=10;
 			title.text=txt;
 			_bg.addChild(title);
@@ -55,8 +61,8 @@ package com.inf
 			var fmt:TextFormat = new TextFormat("Arial",18,0x372c2d);
 			content.type = TextFieldType.DYNAMIC;
 			content.defaultTextFormat=fmt;
-			content.width=wdt-_thumbNail.width-30;
-			content.x=_thumbNail.width+20;
+			content.width=wdt-70-30;
+			content.x=70+20;
 			content.y=50;
 			content.wordWrap = true;
 			content.multiline = true;
@@ -66,17 +72,44 @@ package com.inf
 		
 		private function onClick(event:Event):void
 		{
-			//_bg.width = _thumbNail.width+20;			
+			//_bg.width = 70+20;			
 			//_bg.height = _thumbNail.height+20;
 			if(_bg.visible){
-				_bg.visible=false;
-				this.x=11;
-				this.y=3;//(_topContainerY-_thumbNail.height)/2;
+				close();
 			}else{
-				_bg.visible = true;
-				this.x=_location.x;
-				this.y=_location.y;
+				open();
 			}
+		}
+		
+		public function open():void{
+			_bg.visible = true;
+			_mini_bg.visible=false;
+			this.x=_model.x
+			this.y=_model.y;
+			_thumbNail.x=10;
+			_thumbNail.y=10;
+			this.alpha = 0;
+			new GTween(this,1,{alpha:1});
+		}
+		
+		public function set thumbNail(thumbNail:String):void{
+			if(_thumbNail){
+				removeChild(_thumbNail);
+			}
+			_thumbNail = addChild(getThumbNail(thumbNail))
+			_thumbNail.x=5;
+			_thumbNail.y=5;
+			//_thumbNail.visible=false;
+		}
+		
+		public function close():void{
+			_bg.visible=false;
+			_mini_bg.visible=true;
+			this.x=6;
+			this.y=6;//(_topContainerY-_thumbNail.height)/2;
+			_thumbNail.x=5;
+			_thumbNail.y=5;
+			this.alpha=1;
 		}
 		
 		private function addArrow(arrowDirection:String):DisplayObject{
@@ -112,7 +145,41 @@ package com.inf
 			}
 			return icon;
 		}
-		
+		private function drawMiniBg():void{
+			_mini_bg = new Sprite();
+			var topLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_LEFT_CORNER.png");
+			_mini_bg.addChild(topLeft);
+			var leftSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_LEFT_SEGMENT.png");
+			_mini_bg.addChild(leftSeg);
+			leftSeg.y=topLeft.height;
+			leftSeg.height=40;
+			var butLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_LEFT_CORNER.png");
+			_mini_bg.addChild(butLeft);
+			butLeft.y=40+topLeft.height;
+			
+			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
+			_mini_bg.addChild(topRight);
+			topRight.x=40+topLeft.width//-topRight.width//+topLeft.width;
+			var butRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_RIGT_CORNER.png");
+			_mini_bg.addChild(butRight);
+			butRight.y=butLeft.y;
+			butRight.x=40+topLeft.width//-butRight.width;//+butLeft.width;
+			
+			var rightSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_RIGHT_SEGMENT.png");
+			_mini_bg.addChild(rightSeg);
+			rightSeg.x=topRight.x;
+			rightSeg.y=topRight.height;
+			rightSeg.height=40;
+			leftSeg.height=40;
+			
+			var seg:DisplayObject = AssetsManager.getAssetByName("POP_UP_VERTICAL_SEGMENT.png");
+			_mini_bg.addChild(seg);
+			seg.width=40;
+			seg.height=83;
+			seg.x=20;
+			seg.y=0;
+			addChild(_mini_bg);
+		}
 		private function drawBg(wdt:uint,arrowDirection:String):void{
 			_bg = new Sprite();
 			var wdt:uint=wdt;

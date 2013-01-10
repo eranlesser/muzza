@@ -57,30 +57,6 @@ package com.model
 		}
 		
 		public  function getSongData(songInx:uint,instrument:String,id:uint):XML{
-			//iterate folder object and load all instruments into xml object
-			/*
-			* <songData>
-			* <instruments>
-			* <singer>
-			* <sequance>
-			* 
-			* </sequance>
-			* </singer>
-			* 
-			* <bottles>
-			* 
-			* </bottles>
-			* 
-			* </instruments>
-			* 
-			* 
-			* 
-			* 
-			* </songData>
-			*/
-			
-			
-			
 			var inputFile:File = File.applicationStorageDirectory.resolvePath("song"+songInx+"/instruments/"+instrument+"/sequance"+id.toString()+".xml") ;
 			var inputStream:FileStream = new FileStream();
 			inputStream.open(inputFile, FileMode.READ);

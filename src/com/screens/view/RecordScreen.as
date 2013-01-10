@@ -1,6 +1,8 @@
 package com.screens.view {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.inf.PopUp;
+	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
@@ -137,20 +139,26 @@ package com.screens.view {
 				addChild(_score);
 				_score.x=Dimentions.WIDTH-_score.width-12;
 				_score.y=(strip.height-_score.height)/2-2;
-				_popUp = new PopUp(300,PopUp.TOP_RIGHT,_model.instrumentModel.thumbNail,new Point((Dimentions.WIDTH-400)/2,120),"Let's Start","Click Record when you are ready");
-				addChild(_popUp);
 				layout();
 				isInited = true;
-				
+			}
+			PopUpsManager.thumbNail = _model.instrumentModel.thumbNail;
+			if(!Session.instance.demoClicked){
+				PopUpsManager.openPopUp(PopUpsManager.OPEN_DEMO);
+			}else{
+				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
+				if(Session.instance.recordClicked && Session.instance.recordClicked){
+					PopUpsManager.closePopUp();
+				}
 			}
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 		}
 		private var _score:ScorePannel;
-		private var _popUp:PopUp;
 
 		override public function stop():void{
 			_stateController.deActivate();
+			PopUpsManager.closePopUp();
 			super.stop();
 		}
 		

@@ -2,8 +2,12 @@ package com.screens.view
 {
 	import com.constants.Dimentions;
 	import com.gui.hat.Hat;
+	import com.inf.PopUpsManager;
 	import com.musicalInstruments.model.InstrumentModel;
+	import com.musicalInstruments.model.sequances.NoteSequanceModel;
+	import com.musicalInstruments.view.character.Musician;
 	import com.musicalInstruments.view.character.PlayMusician;
+	import com.musicalInstruments.view.instrument.Instrument;
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
@@ -34,7 +38,19 @@ package com.screens.view
 			if(!isInited){
 				
 			}else{
-			
+				for each(var instrumentModel:InstrumentModel in _model.instruments){
+					var onStage:Boolean = false;
+					for each(var ins:PlayMusician in _instruments){
+						if(ins.thumbnail==instrumentModel.coreModel.thumbNail){
+							onStage=true;
+							break;
+						}
+					}
+					if(!onStage){
+						(addInstrument(instrumentModel));
+						layout();
+					}
+				}
 			}
 			super.start(); // here _channelControllers gets filled
 			for each(var channelController:PlayChannelController in _channelControllers){
@@ -43,7 +59,7 @@ package com.screens.view
 			var tmr:Timer=new Timer(1000,1);
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
 			tmr.start();
-			
+			PopUpsManager.closePopUp(true);
 		}
 		
 		private function onTimerComplete(e:Event):void{
@@ -67,11 +83,12 @@ package com.screens.view
 			_claps = new Claps();
 			
 		}
-		override protected function addInstrument(insModel:InstrumentModel):PlayMusician{
-			var ins:PlayMusician = super.addInstrument(insModel);
+		override protected function addInstrument(insModel:InstrumentModel):void{
+			if(NoteSequanceModel(insModel.getSequanceById(_model.playSequance))){
+				 super.addInstrument(insModel);
 			//var channel:Channel = _representation.addChannel(insModel.coreModel);
 			//_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
-			return ins;
+			}
 		}
 
 		

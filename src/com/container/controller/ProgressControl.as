@@ -1,6 +1,8 @@
 package com.container.controller {
+	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
+	import com.inf.PopUpsManager;
 	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
 	import com.screens.view.RecordScreen;
@@ -18,7 +20,6 @@ package com.container.controller {
 		private var _themeName:		String;
 		private var _frameRate:		uint;
 		public var goHomeSignal:	Signal;
-		private var _demoShown:Boolean=false;
 		
 		public function ProgressControl(view:Presenter,model:ScreensModel,themeName:String,frameRate:uint){
 			_view = view;
@@ -77,9 +78,14 @@ package com.container.controller {
 		private function openDemo():void{
 			if(_view.isDemoOpen){
 				_view.closeDemo();
+				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
+				if(Session.instance.recordClicked){
+					PopUpsManager.closePopUp();
+				}
 			}else{
 				_view.openDemo(_model.demoScreen);
-				
+				PopUpsManager.closePopUp(true);
+				Session.instance.demoClicked=true;
 			}
 		}
 		

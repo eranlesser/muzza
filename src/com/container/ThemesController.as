@@ -43,7 +43,7 @@ package com.container
 			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){
 				_themeProgressors[_progressControlIndex].start(mode);
 			}else{
-				var themeModel:MainThemeModel = new MainThemeModel(Data.getSongData(name));
+				var themeModel:MainThemeModel = new MainThemeModel(Data.getSongData(name),_presenter);
 				var progressControl:ProgressControl = new ProgressControl(_presenter,themeModel.screensModel,name,themeModel.rhythm);
 				themeModel.ready.addOnce(onThemeReady);
 				_themeProgressors.push(progressControl);

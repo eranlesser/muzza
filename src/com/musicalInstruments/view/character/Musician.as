@@ -111,6 +111,9 @@ package com.musicalInstruments.view.character {
 		public function play(sequanceId:uint,beginAtFrame:uint):Boolean{
 			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel);
 			_player.sequenceDone.add(onSequenceDone);
+			if(_eyes){
+				_eyes.start();
+			}
 			_done=false;
 			return (sequanceId>0);
 		}

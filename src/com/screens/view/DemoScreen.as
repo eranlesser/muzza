@@ -1,5 +1,6 @@
 package com.screens.view {
 	import com.constants.*;
+	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.*;
 	import com.musicalInstruments.view.character.PlayMusician;
@@ -48,7 +49,7 @@ package com.screens.view {
 			_model.start();
 			//addSign();
 			for each(var instrumentModel:InstrumentModel in _model.instruments){
-				_instruments.push(addInstrument(instrumentModel));
+				(addInstrument(instrumentModel));
 			}
 			
 			layout();
@@ -132,6 +133,7 @@ package com.screens.view {
 		
 		private function onClose(btnid:String):void{
 			close.dispatch();
+			PopUpsManager.closePopUp();
 		}
 		
 		override public function start():void{
@@ -233,21 +235,28 @@ package com.screens.view {
 			
 		}
 		
-		protected function addInstrument(insModel:InstrumentModel):PlayMusician{
+		protected function addInstrument(insModel:InstrumentModel):void{
 			var ins:PlayMusician = new PlayMusician(insModel);
 			//if(ins.type=="bg"){
+			if(_model.instruments.indexOf(insModel)<2){
+				
+				_guiLayer.addChildAt(ins,0);
+			}else{
 				_guiLayer.addChild(ins);
+			}
 			//}else{
 			//	_stageLayer.addChild(ins);
 			//}
-			return ins;
+			_instruments.push(ins)
 		}
 		
 		protected function endMusciPiece():void{
 			//Clock.getInstance().stop();
 			if(_timeSlider){
 				_timeModel.soundTick.remove(setTimeSlider);
+				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 			}
+			
 		}
 		
 		

@@ -41,11 +41,11 @@ package com.gui.hat
 			_tField.text="0";
 			_tField.x = 42;
 			_tField.y = 43;
-			var sign:DisplayObject = AssetsManager.getAssetByName("lv.png")
-			addChild(sign);
-			sign.x=150;
-			sign.y=50;
-			sign.scaleX=0.9
+			//var sign:DisplayObject = AssetsManager.getAssetByName("lv.png")
+			//addChild(sign);
+			//sign.x=150;
+			//sign.y=50;
+			//sign.scaleX=0.9
 			progress();
 		}
 		

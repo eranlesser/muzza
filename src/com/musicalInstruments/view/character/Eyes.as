@@ -46,7 +46,10 @@ package com.musicalInstruments.view.character
 			for each(var blink:XML in blinks.blink){
 				_blinks.push(new BlinkSequance(blink.@start,blink.@end));
 			}
-			_timeModel.soundTick.add(animate);
+		}
+		
+		public function start():void{
+			_timeModel.metronomeTick.add(animate);
 		}
 		
 		public function stop():void{
@@ -54,6 +57,7 @@ package com.musicalInstruments.view.character
 			_currentBlinkSequance = _blinks[0];
 			_blinkSequanceCounter = 0;
 			_view.visible = true;
+			_timeModel.metronomeTick.remove(animate);
 			_view.bitmapData = _eyesSheet.drawTile(_currentBlinkSequance.startIndex);
 		}
 		

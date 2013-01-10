@@ -1,9 +1,13 @@
 package com.model
 {
+	import com.inf.PopUpsManager;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.model.ScreensModel;
 	
+	import flash.display.Sprite;
+	
 	import org.osflash.signals.Signal;
+
 	/**
 	 *Composes screens with instruments, each song learned has a mainthememodel
 	 * the idea is that since the instruments graphics are the same they will be reused in other songs for performance 
@@ -14,13 +18,14 @@ package com.model
 		
 		private var _screens:				ScreensModel;
 		private var _rhythm:				uint;
+		private var _popUps:				PopUpsManager;
 
-		private  var _instruments:	ThemeInstrumentsModel;
+		private  var _instruments:			ThemeInstrumentsModel;
 		public var ready:					Signal = new Signal();
 		
 		
-		public function MainThemeModel(xml:XML){
-			parse(xml);
+		public function MainThemeModel(xml:XML,guiLayer:Sprite){
+			parse(xml,guiLayer);
 		}
 		
 		public function get screensModel():ScreensModel{
@@ -43,10 +48,11 @@ package com.model
 			ready.dispatch();
 		}
 		
-		private function parse(xml:XML):void{
+		private function parse(xml:XML,guiLayer:Sprite):void{
 			_rhythm = xml.@rhythm;
 			_instruments = new ThemeInstrumentsModel(xml.instruments[0]);
-			_screens = new ScreensModel(xml,_instruments);		
+			_screens = new ScreensModel(xml,_instruments);	
+			_popUps = new PopUpsManager(xml,guiLayer);
 			_instruments.ready.addOnce(onInstrumentsReady)
 			
 		}

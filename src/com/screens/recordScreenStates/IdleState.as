@@ -1,7 +1,9 @@
 package com.screens.recordScreenStates
 {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.constants.States;
+	import com.inf.PopUpsManager;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	
 	import org.osflash.signals.Signal;
@@ -50,6 +52,8 @@ package com.screens.recordScreenStates
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{
+			PopUpsManager.closePopUp();
+			Session.instance.recordClicked = true;
 			_context.record();
 		}
 		
