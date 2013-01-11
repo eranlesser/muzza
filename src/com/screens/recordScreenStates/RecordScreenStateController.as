@@ -54,6 +54,10 @@ package com.screens.recordScreenStates
 			_recordScreen.addScore(val)
 		}
 		
+		public function get score():uint{
+			return _recordScreen.score;
+		}
+		
 		
 		public function start():void{
 			setState(States.IDLE);

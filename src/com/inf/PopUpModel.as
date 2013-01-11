@@ -8,6 +8,7 @@ package com.inf
 		private var _x:uint;
 		private var _y:uint;
 		private var _id:String;
+		private var _next:Boolean=false;
 		public function PopUpModel(xml:XML){
 			_id=xml.@id;
 			_width = xml.@width;
@@ -16,6 +17,7 @@ package com.inf
 			_title = xml.title;
 			_content = xml.content;
 			_direction=xml.direction;
+			_next = (xml.next=="true");
 		}
 		
 		public function get title():String
@@ -52,6 +54,11 @@ package com.inf
 		public function get id():String
 		{
 			return _id;
+		}
+
+		public function get next():Boolean
+		{
+			return _next;
 		}
 
 

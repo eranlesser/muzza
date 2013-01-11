@@ -9,6 +9,8 @@ package com.inf
 		public static const OPEN_DEMO:String = "open_demo";
 		public static const CLOSE_DEMO:String = "close_demo";
 		public static const PRESS_RECORD:String = "press_record";
+		public static const END_RECORD:String = "end_record";
+		public static const LISTEN:String = "listen";
 		private static var _presenter:Sprite;
 		private static var _popUp:PopUp;
 		private static var _thumbNail:String;
@@ -26,7 +28,16 @@ package com.inf
 			}
 		}
 		
-		public static function openPopUp(id:String):void{
+		public static function getPopUpModel(id:String):PopUpModel{
+			for each(var popUp:PopUp in _popUps){
+				if(popUp.id == id){
+					return popUp.model;
+				}
+			}
+		return null;
+		}
+		
+		public static function openPopUp(id:String,title:String="",content:String=""):PopUp{
 			for each(var popUp:PopUp in _popUps){
 				if(popUp.id == id){
 					if(_popUp){
@@ -34,11 +45,17 @@ package com.inf
 					}
 					_popUp = _presenter.addChild(popUp) as PopUp;
 					_popUp.thumbNail = _thumbNail;
+					if(title!=""){
+						_popUp.title=title;
+					}
+					if(content!=""){
+						_popUp.content=content;
+					}
 					_popUp.visible = true;
 					_popUp.open();
 				}
 			}
-			//return null;
+			return _popUp;
 		}
 		
 		public static function closePopUp(hide:Boolean=false):void{

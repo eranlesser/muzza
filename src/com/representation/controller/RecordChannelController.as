@@ -82,6 +82,10 @@ package com.representation.controller {
 			trace(score)
 		}
 		
+		public function get length():uint{
+			return (_learnedSequance as NoteSequanceModel).notes.length;
+		}
+		
 		public function start():void{
 			_model.metronomeTick.add(onTick);
 		}

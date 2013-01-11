@@ -2,6 +2,8 @@ package com.screens.recordScreenStates
 {
 	import com.constants.Rhythms;
 	import com.constants.States;
+	import com.inf.PopUpModel;
+	import com.inf.PopUpsManager;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NotesInstrumentModel;
@@ -53,6 +55,36 @@ package com.screens.recordScreenStates
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				noteSequencePlayer.stop();
 			}
+			var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
+			var title:String = strReplace(popUpModel.title,"$",getTitleFromScore(_context.score,_context.recordChannelController.length));
+			var content:String = strReplace(popUpModel.content,"$points",_context.score.toString());
+			content = strReplace(popUpModel.content,"$points",_context.score.toString());
+			content = strReplace(content,"$total", _context.recordChannelController.length.toString());
+			PopUpsManager.openPopUp(PopUpsManager.END_RECORD,title,content).nextSignal.addOnce(
+				function():void{
+					PopUpsManager.openPopUp(PopUpsManager.LISTEN)
+				}
+			);
+		}
+		private function strReplace(str:String, search:String, replace:String):String {
+			return str.split(search).join(replace);
+		}
+		
+		private function getTitleFromScore(score:uint,total:uint):String{
+			var fb:String;
+			if(score==total){
+				fb = "Awsome !";
+			}
+			else if(score/total>3/4){
+				fb = "Great Job";
+			}
+			else if(score/total>1/2){
+				fb = "Not Bad";
+			}
+			else{
+				fb = "Lets Try Again";
+			}
+			return fb;
 		}
 		
 		private function setBackUps():void{
@@ -125,7 +157,7 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				stop();
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(6,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";

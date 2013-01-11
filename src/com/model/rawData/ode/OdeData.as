@@ -118,22 +118,33 @@ public static var data:XML =
 </screens>
 
 <popups>
-<popup id="open_demo" width="250" x="85" y="500">
+<popup id="open_demo" width="250" x="85" y="520">
 <title>Demo</title>
-<content>Click to hear a demo of what we are about to record together</content>
+<content>Click "Demo" to hear a demo of what we are about to record together</content>
 <direction>btm_left</direction>
 </popup>
 
 <popup id="close_demo" width="240" x="760" y="85" >
 <title>Close</title>
-<content>Click to close demo screen</content>
+<content>Click "x" to close demo screen</content>
 <direction>top_right</direction>
 </popup>
 
-<popup id="press_record" width="280" x="250" y="100" >
+<popup id="press_record" width="280" x="250" y="90" >
 <title>Record</title>
-<content>Click when you are ready to begin recording</content>
+<content>Click "Record" when you are ready to begin recording</content>
 <direction>top_right</direction>
+</popup>
+<popup id="end_record" width="280" x="350" y="250" >
+<title>$</title>
+<content>you got $points out of $total</content>
+<next>true</next>
+<direction>none</direction>
+</popup>
+<popup id="listen" width="280" x="718" y="520" >
+<title>Listen</title>
+<content>Click "Listen" to hear what you have recorded.</content>
+<direction>btm_right</direction>
 </popup>
 </popups>
 </theme>

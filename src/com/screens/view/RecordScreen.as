@@ -253,6 +253,10 @@ package com.screens.view {
 			_pallet.y=pallet.@y;
 			_pallet.x=pallet.@x;
 		}
+		
+		public function get score():uint{
+			return _score.score;
+		}
 		public function addScore(val:int):void{
 			_score.addScore(val);
 		}
@@ -297,6 +301,10 @@ class ScorePannel extends Sprite{
 	public function addScore(val:int):void{
 		_score+=val;
 		_scoreField.text = _score+"";
+	}
+	
+	public function get score():uint{
+		return _score;
 	}
 	
 	public function reset():void{
