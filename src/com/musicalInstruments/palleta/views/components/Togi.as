@@ -15,6 +15,7 @@ package com.musicalInstruments.palleta.views.components
 		private var _idle:Sprite;
 		private var _play:Sprite;
 		private var _soundPlayer:SoundPlayer;
+		private var _noteId:String;
 		public function Togi(data:XML){
 			
 			var wdt:uint=38;
@@ -35,6 +36,7 @@ package com.musicalInstruments.palleta.views.components
 			_play.graphics.drawRoundRect(0,0,wdt,hgt,8);
 			_play.graphics.endFill();
 			_soundPlayer = new SoundPlayer(data.@sound);
+			_noteId = data.@id;
 			init(data.@selected=="true");
 			
 		}
@@ -69,6 +71,11 @@ package com.musicalInstruments.palleta.views.components
 		
 		public function get selected():Boolean{
 			return  _pressed.visible;
+		}
+
+		public function get noteId():String
+		{
+			return _noteId;
 		}
 		
 		

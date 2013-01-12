@@ -11,6 +11,7 @@ package com.inf
 		public static const PRESS_RECORD:String = "press_record";
 		public static const END_RECORD:String = "end_record";
 		public static const LISTEN:String = "listen";
+		public static const TRY_AGAIN:String = "try_again";
 		private static var _presenter:Sprite;
 		private static var _popUp:PopUp;
 		private static var _thumbNail:String;

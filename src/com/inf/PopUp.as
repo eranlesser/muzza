@@ -62,7 +62,7 @@ package com.inf
 			var lineSplitter:DisplayObject = AssetsManager.getAssetByName("POP_UP_LINE_SPLITTER_SEGMENT.png");
 			_bg.addChild(lineSplitter);
 			lineSplitter.x=seg.x;
-			lineSplitter.width = _bg.width - 28;
+			lineSplitter.width = _bg.width - seg.x*2;
 			lineSplitter.y = _next.y-14;
 			_next.clicked.add(
 				function onNext():void{

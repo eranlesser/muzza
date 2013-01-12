@@ -9,6 +9,7 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.ISequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
+	import com.musicalInstruments.palleta.views.Pallet;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.components.notes.NotesChannel;
@@ -21,21 +22,25 @@ package com.representation.controller {
 		private var _model:				ITimeModel;
 		private var _channelView:		NotesChannel;
 		private var _recordScreenModel:	RecordScreenModel;
-		private var _instrumentModel:	CoreInstrumentModel
+		private var _instrumentModel:	CoreInstrumentModel;
+		private var _palletModel:	CoreInstrumentModel;
 		private var _learnedSequance:	ISequance;
 		private var _recordedSequance:	RecordableNotesSequance;
 		private var _palletSequance:	RecordableNotesSequance;
 		private var _instrument:		Instrument;
+		private var _pallet:		Instrument;
 		
-		public function RecordChannelController(channelView:NotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument, recordScreenModel:RecordScreenModel):void{
+		public function RecordChannelController(channelView:NotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument, palet:Instrument , palletModel:CoreInstrumentModel ,recordScreenModel:RecordScreenModel):void{
 			_model=Metronome.getTimeModel();
 			_channelView=channelView;
 			_recordScreenModel=recordScreenModel;
 			_instrumentModel=instrumentModel;
+			_palletModel = palletModel;
 			_instrument = instrument;
+			_pallet = palet;
 			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
-			_palletSequance = new RecordableNotesSequance(_recordScreenModel.palletSequanceId);
+			_palletSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
 				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
@@ -69,7 +74,10 @@ package com.representation.controller {
 		
 		public function beginRecord():void{
 			_recordedSequance.reset();
+			_palletSequance.reset();
 			_instrument.noteStopped.add(noteAdded);
+			_pallet.noteStopped.add(paletNoteAdded);
+			
 		}
 		
 		public function endRecord():void{
@@ -78,8 +86,13 @@ package com.representation.controller {
 				_instrumentModel.addRecordedSequance(_recordedSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
 				FileProxy.exportSequance(_recordedSequance, _instrumentModel.thumbNail);
 			}
+			if(!_palletSequance.isEmpty){
+				//write sequance somewhere
+				_palletModel.addRecordedSequance(_palletSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
+				FileProxy.exportSequance(_palletSequance, _palletModel.thumbNail);
+			}
 			_instrument.noteStopped.remove(noteAdded);
-			trace(score)
+			_pallet.noteStopped.remove(paletNoteAdded);
 		}
 		
 		public function get length():uint{
@@ -104,7 +117,9 @@ package com.representation.controller {
 			return _channelView;
 		}
 		
-		
+		private function paletNoteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
+			var note:SequancedNote = _palletSequance.add(noteId,startLocation,noteLength,octave);
+		}
 		
 		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
 			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
@@ -147,7 +162,7 @@ package com.representation.controller {
 			}
 			return false;
 		}
-		
+		/*
 		public function get score():Number{
 			var goodNotes:int=0;
 			var recordedSequance:RecordableNotesSequance = _recordedSequance as RecordableNotesSequance;
@@ -164,6 +179,6 @@ package com.representation.controller {
 			}
 			return goodNotes/NoteSequanceModel(_learnedSequance).notes.length;
 		}
-		
+		*/
 	}
 }

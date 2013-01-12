@@ -73,6 +73,7 @@ package com.musicalInstruments.palleta.views
 			if(togValue>=0&&_rows[togValue].selectedTogi){
 				_selectedTog = _rows[togValue].selectedTogi;
 				_selectedTog.play();
+				noteStopped.dispatch(_selectedTog.noteId,tickValue,1,0)
 			}
 			if(togValue>0&&_rows[togValue-1].selectedTogi){
 				_rows[togValue-1].selectedTogi.unPlay();

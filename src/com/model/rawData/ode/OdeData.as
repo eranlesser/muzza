@@ -78,6 +78,7 @@ public static var data:XML =
 		
 	</pallet>
 <backups>
+<instrument type="bottles.png" learnedSequanced="102" />
 </backups>
 </recordScreen>
 
@@ -90,6 +91,8 @@ public static var data:XML =
 		
 	</pallet>
 <backups>
+<instrument type="drum.png" learnedSequanced="102" />
+<instrument type="bottles.png" learnedSequanced="102" />
 </backups>
 </recordScreen>
 
@@ -132,6 +135,11 @@ public static var data:XML =
 
 <popup id="press_record" width="280" x="250" y="90" >
 <title>Record</title>
+<content>Click "Record" when you are ready to begin recording</content>
+<direction>top_right</direction>
+</popup>
+<popup id="try_again" width="280" x="250" y="90" >
+<title>Try Again</title>
 <content>Click "Record" when you are ready to begin recording</content>
 <direction>top_right</direction>
 </popup>

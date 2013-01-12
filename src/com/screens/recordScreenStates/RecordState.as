@@ -62,7 +62,11 @@ package com.screens.recordScreenStates
 			content = strReplace(content,"$total", _context.recordChannelController.length.toString());
 			PopUpsManager.openPopUp(PopUpsManager.END_RECORD,title,content).nextSignal.addOnce(
 				function():void{
-					PopUpsManager.openPopUp(PopUpsManager.LISTEN)
+					if(_context.score/_context.recordChannelController.length>3/4){
+						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
+					}else{
+						PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
+					}
 				}
 			);
 		}
@@ -90,7 +94,7 @@ package com.screens.recordScreenStates
 		private function setBackUps():void{
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				//if(_context.notes.backUpsBut.selected){
-					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.learnedSequanceId));
+					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.recordeSequanceId));
 				//}else{
 				//	noteSequencePlayer.stop();
 				//}

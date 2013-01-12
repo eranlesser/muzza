@@ -132,7 +132,7 @@ package com.screens.view {
 				
 				//_notes.addChannel(_model.instrumentModel);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel);
-				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder ,_model);
+				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_pallet ,_model.palletModel,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll(this);
 				_score = new ScorePannel(_model.instrumentModel.thumbNail);
