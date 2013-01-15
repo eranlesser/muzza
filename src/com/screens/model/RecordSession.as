@@ -65,6 +65,22 @@ package com.screens.model
 			return (_recordScreens[scrIndex] as RecordScreen).model.isRecorded;
 		}
 		
+		public function getScreenIndex(scr:String):int{
+			var curIndex:int=-1;
+			for each(var isc:IScreen in _recordScreens){
+				if(isc is RecordScreen){
+					if(RecordScreen(isc).model.instrumentModel.thumbNail==scr){
+						curIndex = _recordScreens.indexOf(isc);
+					}
+				}
+			}
+			if(curIndex==-1){
+				curIndex = _recordScreens.length-1;//End Screen
+			}
+			return curIndex;
+		}
+		
+		
 		public function goTo(scr:String):void{
 			var curIndex:int=-1;
 			if(scr=="back"){

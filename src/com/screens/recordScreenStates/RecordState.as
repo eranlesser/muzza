@@ -1,6 +1,7 @@
 package com.screens.recordScreenStates
 {
 	import com.constants.Rhythms;
+	import com.constants.Session;
 	import com.constants.States;
 	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
@@ -27,7 +28,7 @@ package com.screens.recordScreenStates
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
 		private var _preTicker:MetronomView;
 		private var _isRecording:Boolean = false;
-		private const fixNum:uint=5;
+		public static const fixNum:uint=4;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -65,6 +66,7 @@ package com.screens.recordScreenStates
 				function():void{
 					if(_context.score/_context.recordChannelController.length>3/4){
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
+						Session.instance.registerGoodrecoredScreen(_context.model);
 					}else{
 						PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
 					}

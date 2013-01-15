@@ -1,5 +1,8 @@
 package com.constants {
 	import com.model.FileProxy;
+	import com.screens.model.RecordScreenModel;
+	import com.screens.view.RecordScreen;
+
 	/**
 	 * @author eranlesser
 	 */
@@ -9,8 +12,9 @@ package com.constants {
 		private var _demoClicked:Boolean=false;
 		private var _recordClicked:Boolean=false;
 		private static var _session:Session;
-		
+		private var _recordedScreens:Vector.<RecordScreenModel>;
 		public function Session(enforcer:enforcer){
+			_recordedScreens = new Vector.<RecordScreenModel>();
 		}
 		
 		public static function get instance():Session{
@@ -30,14 +34,14 @@ package com.constants {
 			_demoClicked = value;
 		}
 
-		public function get recordClicked():Boolean
-		{
-			return _recordClicked;
-		}
 
-		public function set recordClicked(value:Boolean):void
-		{
-			_recordClicked = value;
+		
+		public function recordScreenGood(recordScreenModel:RecordScreenModel):Boolean{
+			return _recordedScreens.indexOf(recordScreenModel)>-1;
+		}
+		
+		public function registerGoodrecoredScreen(scr:RecordScreenModel):void{
+			_recordedScreens.push(scr);
 		}
 		
 		

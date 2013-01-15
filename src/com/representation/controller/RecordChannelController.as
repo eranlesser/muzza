@@ -12,6 +12,7 @@ package com.representation.controller {
 	import com.musicalInstruments.palleta.views.Pallet;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.screens.model.RecordScreenModel;
+	import com.screens.recordScreenStates.RecordState;
 	import com.screens.view.components.notes.NotesChannel;
 
 	/**
@@ -101,7 +102,7 @@ package com.representation.controller {
 			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
 			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
-			for(var i:uint=0;i<=2;i++){
+			for(var i:uint=0;i<=RecordState.fixNum;i++){
 				var closeNotes:Vector.<SequancedNote>;
 				closeNotes = learnedSequance.getNotesByLocation(note.location+i);
 				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){

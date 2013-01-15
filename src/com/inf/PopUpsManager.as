@@ -1,5 +1,7 @@
 package com.inf
 {
+	import com.testflightapp.sdk.TestFlight;
+	
 	import flash.display.Sprite;
 	import flash.utils.Dictionary;
 
@@ -12,6 +14,9 @@ package com.inf
 		public static const END_RECORD:String = "end_record";
 		public static const LISTEN:String = "listen";
 		public static const TRY_AGAIN:String = "try_again";
+		public static const DRUMS:String = "drums";
+		public static const BASS:String = "bass";
+		public static const DONE:String = "done";
 		private static var _presenter:Sprite;
 		private static var _popUp:PopUp;
 		private static var _thumbNail:String;
@@ -37,7 +42,7 @@ package com.inf
 			}
 		return null;
 		}
-		
+		private static var _visitedPopUps:Vector.<PopUp> = new Vector.<PopUp>();
 		public static function openPopUp(id:String,title:String="",content:String=""):PopUp{
 			for each(var popUp:PopUp in _popUps){
 				if(popUp.id == id){
@@ -54,8 +59,14 @@ package com.inf
 					}
 					_popUp.visible = true;
 					_popUp.open();
+					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN && id != TRY_AGAIN){
+						closePopUp();
+					}else{
+						_visitedPopUps.push(_popUp);
+					}
 				}
 			}
+			TestFlight.submitFeedback("open popup "+id+" , "+_thumbNail);
 			return _popUp;
 		}
 		

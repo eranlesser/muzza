@@ -139,19 +139,33 @@ package com.screens.view {
 				isInited = true;
 			}
 			PopUpsManager.thumbNail = _model.instrumentModel.thumbNail;
-			if(!Session.instance.demoClicked){
+			if(Session.instance.recordScreenGood(_model)){
+				PopUpsManager.openPopUp(getNextPopUp(_model.instrumentModel.thumbNail));
+			}
+			else if(!Session.instance.demoClicked){
 				PopUpsManager.openPopUp(PopUpsManager.OPEN_DEMO);
 			}else{
 				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
-				if(Session.instance.recordClicked && Session.instance.recordClicked){
-					PopUpsManager.closePopUp();
-				}
 			}
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 		}
 		private var _score:ScorePannel;
-
+		private function getNextPopUp(scr:String):String{
+			var nextStr:String;
+			switch(scr){
+				case "bottles.png":
+					nextStr = PopUpsManager.DRUMS;
+					break;
+				case "drum.png":
+					nextStr = PopUpsManager.BASS;
+					break;
+				case "bass_flash.jpg":
+					nextStr = PopUpsManager.DONE;
+					break;
+			}
+			return nextStr;
+		}
 		override public function stop():void{
 			_stateController.deActivate();
 			PopUpsManager.closePopUp();

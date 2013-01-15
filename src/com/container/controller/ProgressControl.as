@@ -2,9 +2,11 @@ package com.container.controller {
 	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
+	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
 	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
+	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
 	import com.testflightapp.sdk.TestFlight;
 	
@@ -65,25 +67,35 @@ package com.container.controller {
 		}
 		
 		private function goTo(scr:String):void{
+			if(_model.currentScreen is RecordScreen)
+			var curScrTmbnail:String = (_model.currentScreen as RecordScreen).model.instrumentModel.thumbNail;
+			if(_model.currentScreen is RecordScreen 
+				&& ( (Session.instance.recordScreenGood((_model.currentScreen as RecordScreen).model) 
+				&& (_model.getScreenIndex(scr)==_model.getScreenIndex(curScrTmbnail)+1) )//next on flow
+				|| _model.getScreenIndex(scr)<_model.getScreenIndex(curScrTmbnail)) // or previous
+				|| scr == "" // listen is next
+				|| (_model.currentScreen is ListenScreen))  // from listen 
+			{
 			_model.currentScreen.stop();
 			_view.removeScreens();
 			_model.goTo(scr);
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
+			
 			_navigator.state=_model.recordSession;
 			TestFlight.submitFeedback("go to "+scr);
+			
+			
 			//if(_model.currentScreen is RecordScreen)
 			//_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
-			
+			}
 		}
+		
 		
 		private function openDemo():void{
 			if(_view.isDemoOpen){
 				_view.closeDemo();
-				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
-				if(Session.instance.recordClicked){
-					PopUpsManager.closePopUp();
-				}
+				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				TestFlight.submitFeedback("close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);

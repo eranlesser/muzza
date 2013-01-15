@@ -53,7 +53,6 @@ package com.screens.recordScreenStates
 		
 		private function onRecordBtn(buttonState:Boolean):void{
 			PopUpsManager.closePopUp();
-			Session.instance.recordClicked = true;
 			_context.record();
 		}
 		

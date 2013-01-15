@@ -136,6 +136,23 @@ public static var data:XML =
 <content>Click "Listen" to hear what you have recorded.</content>
 <direction>btm_right</direction>
 </popup>
+<popup id="drums" width="280" x="562" y="520" >
+<title>Drums</title>
+<content>Lets see how you keep the rhythm</content>
+<direction>btm_right</direction>
+</popup>
+<popup id="bass" width="280" x="645" y="520" >
+<title>Bass</title>
+<content>Add some grove with the human bass</content>
+<direction>btm_right</direction>
+</popup>
+
+<popup id="done" width="340" x="320" y="200" >
+<title>You Rock</title>
+<content>keep practicing we have more songs and instruments comming soon !</content>
+<direction>none</direction>
+</popup>
+
 </popups>
 </theme>
 
