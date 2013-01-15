@@ -17,9 +17,9 @@ package com.musicalInstruments.palleta.views
 			super(model);
 			init();
 		}
-		
+		private var _tick:uint;
 		public function onTick(val:int):void{
-			
+			_tick=val;
 		}
 		public function set active(flag:Boolean):void{
 			
@@ -34,7 +34,12 @@ package com.musicalInstruments.palleta.views
 				pawee.x=xx;
 				pawee.y = (height-pawee.height)/2;
 				xx+=width/3;
+				pawee.soundComplete.add(onSoundComplete);
 			}
+		}
+		private  function onSoundComplete(id:String):void{
+			trace(">>",id,_tick)
+			noteStopped.dispatch(id,_tick,2,0);
 		}
 	}
 }
@@ -48,11 +53,15 @@ import flash.events.MouseEvent;
 import flash.events.TouchEvent;
 import flash.media.SoundChannel;
 
+import org.osflash.signals.Signal;
+
 class Pawee extends Sprite{
 	private var _wdt:uint;
 	private var _soundPlayer:SoundPlayer;
+	private var _id:String;
 	public function Pawee(data:XML,wdt:uint){
 		_soundPlayer = new SoundPlayer(data.@sound);
+		_id=data.@id;
 		init(wdt);
 	}
 	
@@ -62,8 +71,8 @@ class Pawee extends Sprite{
 		this.graphics.endFill();
 		_wdt=wdt;
 		
-		//this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
-		this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseClick);
+		this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
+		//this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseClick);
 	}
 	
 	private function onClick(e:TouchEvent):void{
@@ -72,10 +81,13 @@ class Pawee extends Sprite{
 	private function onMouseClick(e:MouseEvent):void{
 		play()
 	}
-	
+	public var soundComplete:Signal=new Signal();
 	private function play():void{
-		_soundPlayer.play();
-		//_channel.addEventListener(Event.SOUND_COMPLETE,onSoundComplete)
+		var channel:SoundChannel = _soundPlayer.play();
+		
+		//channel.addEventListener(Event.SOUND_COMPLETE,function onSoundComplete():void{
+		//	channel.removeEventListener(Event.SOUND_COMPLETE,onSoundComplete)
+		soundComplete.dispatch(_id);
 		var play:Sprite = new Sprite();
 		play.graphics.beginFill(0xFFFFFF,1);
 		play.graphics.lineStyle(1,0xEEEEEE);
@@ -95,5 +107,10 @@ class Pawee extends Sprite{
 		t.onComplete=null;
 		removeChild(t.target as Sprite)
 	}	
+
+	public function get id():String
+	{
+		return _id;
+	}
 	
 }

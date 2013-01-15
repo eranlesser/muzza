@@ -65,7 +65,7 @@ package com.musicalInstruments.view.components
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
 			//addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
-			addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
+			//addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
 		}
 		
 		private function onTouch(e:MouseEvent):void{

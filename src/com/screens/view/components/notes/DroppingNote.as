@@ -17,13 +17,12 @@ package com.screens.view.components.notes
 		private var _value:uint;
 		private var _id:String;
 		public static const WIDTH:uint=22;
-		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String,rotation:uint){
+		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+".png",true);
 			_location=loc;
 			_value=noteValue;
 			_id=id;
 			
-			this.rotation=rotation;
 			init();
 		}
 		public function get id():String{

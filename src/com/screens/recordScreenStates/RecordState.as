@@ -14,6 +14,7 @@ package com.screens.recordScreenStates
 	import com.representation.controller.RecordChannelController;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
+	import com.testflightapp.sdk.TestFlight;
 	import com.view.MetronomView;
 	
 	import org.osflash.signals.Signal;
@@ -26,6 +27,7 @@ package com.screens.recordScreenStates
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
 		private var _preTicker:MetronomView;
 		private var _isRecording:Boolean = false;
+		private const fixNum:uint=5;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -69,6 +71,7 @@ package com.screens.recordScreenStates
 					}
 				}
 			);
+			TestFlight.submitFeedback(_context.model.instrumentModel.thumbNail+" Recording done score= "+ _context.score+" / "+_context.recordChannelController.length);
 		}
 		private function strReplace(str:String, search:String, replace:String):String {
 			return str.split(search).join(replace);
@@ -117,6 +120,7 @@ package com.screens.recordScreenStates
 					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
 					_context.notes.marc(curNote.value,true);
+					//_context.recordChannelController.fix(noteId,curNote.location,5);
 					match = true;
 					break;
 				}
@@ -161,12 +165,12 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				stop();
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(6,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(5,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
-			for each(var curNote:DroppingNote in _toPlayNotes){
+			//for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
-			}
+			//}
 			_context.pallet.onTick(_timeModel.currentTick);
 			
 			//if(curNote!=_currentNote){

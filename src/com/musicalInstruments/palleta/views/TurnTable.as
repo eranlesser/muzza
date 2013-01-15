@@ -1,8 +1,11 @@
 package com.musicalInstruments.palleta.views
 {
 	import com.musicalInstruments.model.CoreInstrumentModel;
+	import com.musicalInstruments.model.NoteModel;
+	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.palleta.Sounder;
+	import com.musicalInstruments.view.components.SoundPlayer;
 	import com.musicalInstruments.view.instrument.Instrument;
 	
 	import flash.display.Shape;
@@ -15,8 +18,8 @@ package com.musicalInstruments.palleta.views
 	public class TurnTable extends Instrument implements Ipallet
 	{
 		private var _record:Sprite;
-		private var sounders:Vector.<Sounder>;
-		private var _hey:Sounder;
+		private var notes:Vector.<NoteModel>;
+		private var _hey:NoteModel;
 		
 		public function TurnTable(model:CoreInstrumentModel)
 		{
@@ -26,15 +29,15 @@ package com.musicalInstruments.palleta.views
 		
 		private function init():void{
 			
-			sounders = new Vector.<Sounder>();
-			sounders.push(new Sounder("1a","scratch/scrach_1_a.mp3"));
-			sounders.push(new Sounder("1b","scratch/scrach_1_b.mp3"));
-			sounders.push(new Sounder("1c","scratch/scrach_1_c.mp3"));
-			sounders.push(new Sounder("1d","scratch/scrach_1_d.mp3"));
-			sounders.push(new Sounder("1e","scratch/scrach_1_e.mp3"));
-			sounders.push(new Sounder("1f","scratch/scrach_1_f.mp3"));
+			notes = new Vector.<NoteModel>();
+			notes.push(new NoteModel(<noteModel id="1" soundFile="ode/scrach/scratch/scrach_1_a.mp3" animationIndex="1" />));
+			notes.push(new NoteModel(<noteModel id="2" soundFile="ode/scrach/scratch/scrach_1_b.mp3" animationIndex="2" />));
+			notes.push(new NoteModel(<noteModel id="3" soundFile="ode/scrach/scratch/scrach_1_c.mp3" animationIndex="3" />));
+			notes.push(new NoteModel(<noteModel id="4" soundFile="ode/scrach/scratch/scrach_1_d.mp3" animationIndex="4" />));
+			notes.push(new NoteModel(<noteModel id="5" soundFile="ode/scrach/scratch/scrach_1_e.mp3" animationIndex="5" />));
+			notes.push(new NoteModel(<noteModel id="6" soundFile="ode/scrach/scratch/scrach_1_f.mp3" animationIndex="6" />));
 			//sounders.push(new Sounder("9","scratch/scrach_9.mp3"));
-			_hey = new Sounder("hey","scratch/scrach_hey.mp3");
+			_hey = new NoteModel(<noteModel id="7" soundFile="ode/scrach/scratch/scrach_hey.mp3" animationIndex="7" />);
 			_record= new Sprite();
 			_record.graphics.lineStyle(1,0x111111);
 			_record.graphics.beginFill(0x333333);
@@ -63,7 +66,7 @@ package com.musicalInstruments.palleta.views
 		private function onClick(event:MouseEvent):void
 		{
 			if(!_wasTurning){
-			_hey.play();
+			_hey.player.play();
 			}
 		}
 		
@@ -91,43 +94,46 @@ package com.musicalInstruments.palleta.views
 			line.graphics.lineTo(200,0);
 			return line;
 		}
-		
+		private var _tick:uint;
 		public function onTick(currentTick:int):void
 		{
+			_tick = currentTick;
 		}
 		
 		public function set active(value:Boolean):void
 		{
 		}
 		
-		private function playSound(newAngleIndex:int,width:uint):void{
-			sounders[newAngleIndex].play();
+		private function playSound(note:NoteModel):void{
+			_isPlaying = true;
+			note.player.play();
+			var startTick:uint = _tick;
+			
+			note.player.soundComplete.addOnce(
+				function onSoundComplete():void{
+					noteStopped.dispatch(note.id,startTick,_tick-startTick,0);
+					_isPlaying=false;
+				}
+			)
 		}
 		
 		private var _moveCounter:uint=0;
 		private var _isPlaying:Boolean = false;
 		private var _wasTurning:Boolean = false;
 		private function rotate (e:MouseEvent):void{
-			var soundFile:String = "1_";
 			var theX:int = mouseX - _record.x;
 			var theY:int = (mouseY - _record.y) * -1;
 			var angle:Number = Math.atan(theY/theX)/(Math.PI/180);
 			if (theX<0) {
 				angle += 180;
-				soundFile+="up";
 			}
 			if (theX>=0 && theY<0) {
 				angle += 360;
-				soundFile+="down";
 			}
 			_moveCounter++;
 			if(_moveCounter>5&&!_isPlaying){
-				var sounder:Sounder = sounders[Math.round(Math.random()*(sounders.length-1))]; 
-				var channel:SoundChannel = sounder.play();
-				_isPlaying = true;
-				channel.addEventListener(Event.SOUND_COMPLETE,function soundComplete(e:Event):void{
-					_isPlaying=false;
-				});
+				var note:NoteModel = notes[Math.round(Math.random()*(notes.length-1))]; 
+				playSound(note);
 				_moveCounter = 0;
 				_wasTurning = true;
 			}

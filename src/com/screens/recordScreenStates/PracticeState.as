@@ -6,6 +6,7 @@ package com.screens.recordScreenStates
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
+	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.instrument.Instrument;
@@ -69,7 +70,7 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
 		}
 		
-		private function onInstrumentPlayed(noteId:String):void{
+		private function onInstrumentPlayed(note:SequancedNote):void{
 			_answerTimer.start();
 		}
 		
@@ -139,14 +140,14 @@ package com.screens.recordScreenStates
 		}
 		
 		
-		private function onNotePlayed(id:String):void{
+		private function onNotePlayed(note:SequancedNote):void{
 			if(!_currentNote){
 				_ofBeatNotes++;
 				//return;
 			}
-			var playedNoteModel:NoteModel = _noteFetcher.getNoteById(id);
+			var playedNoteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
 			if(!playedNoteModel){
-				playedNoteModel = (_context.model.palletModel as INoteFetcher).getNoteById(id);
+				playedNoteModel = (_context.model.palletModel as INoteFetcher).getNoteById(note.noteId);
 			}
 			if(_curNotes&&_curNotes.length>0&&(playedNoteModel.value==_curNotes[0].value)){
 				calculateGoodFeedback();

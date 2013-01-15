@@ -6,6 +6,7 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
+	import com.testflightapp.sdk.TestFlight;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
@@ -255,6 +256,8 @@ package com.screens.view {
 			if(_timeSlider){
 				_timeModel.soundTick.remove(setTimeSlider);
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
+				TestFlight.submitFeedback("demo complete");
+				
 			}
 			
 		}

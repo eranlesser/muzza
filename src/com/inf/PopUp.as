@@ -77,7 +77,7 @@ package com.inf
 		
 		private function addTitle(txt:String,wdt:uint):void{
 			_title = new TextField();
-			var fmt:TextFormat = new TextFormat("Arial",24,0xFFFFFF,true);
+			var fmt:TextFormat = new TextFormat("Vardena",24,0xFFFFFF,true);
 			_title.type = TextFieldType.DYNAMIC;
 			_title.defaultTextFormat=fmt;
 			_title.width=wdt-70-20;
@@ -93,7 +93,7 @@ package com.inf
 		}
 		private function addContent(txt:String,wdt:uint):void{
 			_content = new TextField();
-			var fmt:TextFormat = new TextFormat("Arial",18,0x372c2d);
+			var fmt:TextFormat = new TextFormat("Vardena",18,0x372c2d);
 			_content.type = TextFieldType.DYNAMIC;
 			_content.defaultTextFormat=fmt;
 			_content.width=wdt-70-30;

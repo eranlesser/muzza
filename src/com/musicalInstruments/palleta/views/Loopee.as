@@ -3,6 +3,7 @@ package com.musicalInstruments.palleta.views
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.PalletModel;
+	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.palleta.views.components.Togi;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
@@ -56,16 +57,17 @@ package com.musicalInstruments.palleta.views
 		public function set active(flag:Boolean):void{
 			_muteBut.state = 1;
 		}
-		
+		private var _tickValue:uint;
 		private var _selectedTog:Togi;
 		public function onTick(tickValue:int):void{
+			_tickValue=tickValue;
 			if(_muteBut.selected){
 				return;
 			}
 			var togValue:int=-1;
 			tickValue++;
-			if(tickValue%4==0){
-				togValue= tickValue/4;
+			if(tickValue%2==0){
+				togValue= tickValue/2;
 			}
 			while(togValue>=_rows.length){
 				togValue-=_rows.length;
@@ -82,7 +84,7 @@ package com.musicalInstruments.palleta.views
 				_rows[_rows.length-1].selectedTogi.unPlay();
 			}
 			if(_selectedTog)
-				_selectedTog.update(tickValue%4);
+				_selectedTog.update(tickValue%2);
 		}
 	}
 }

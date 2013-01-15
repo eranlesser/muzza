@@ -123,21 +123,21 @@ package com.representation.controller {
 		
 		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
 			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
-			//var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
-			//var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
-//			for(var i:uint=0;i<=2;i++){
-//				var closeNote:SequancedNote;
-//				closeNote = learnedSequance.getNoteByLocation(note.location+i);
-//				if(closeNote&&noteModel.id==closeNote.noteId){
-//					note.location=closeNote.location;
-//					break;
-//				}
-//				closeNote = learnedSequance.getNoteByLocation(note.location-i);
-//				if(closeNote&&noteModel.id==closeNote.noteId){
-//					note.location=closeNote.location;
-//					break;
-//				}
-//			}
+			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
+			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
+			for(var i:uint=0;i<=2;i++){
+				var closeNotes:Vector.<SequancedNote>;
+				closeNotes = learnedSequance.getNotesByLocation(note.location+i);
+				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){
+					note.location=closeNotes[0].location;
+					break;
+				}
+				closeNotes = learnedSequance.getNotesByLocation(note.location-i);
+				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){
+					note.location=closeNotes[0].location;
+					break;
+				}
+			}
 			//_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
 		}
 		
@@ -145,12 +145,12 @@ package com.representation.controller {
 			
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
-				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x,noteModel.rotation);
+				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x);
 			}
 			
 			
 		}
-		
+		/*
 		private function checkNotesMatch(playedNote:SequancedNote,recordeSequance:RecordableNotesSequance):Boolean{
 			var estimateLocation:uint = playedNote.location-2;
 			for(var i:uint=0;i<=4;i++){
@@ -162,7 +162,7 @@ package com.representation.controller {
 			}
 			return false;
 		}
-		/*
+		
 		public function get score():Number{
 			var goodNotes:int=0;
 			var recordedSequance:RecordableNotesSequance = _recordedSequance as RecordableNotesSequance;

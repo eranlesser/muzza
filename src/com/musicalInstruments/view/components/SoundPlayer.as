@@ -1,5 +1,4 @@
 package com.musicalInstruments.view.components {
-	import com.gskinner.motion.GTween;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	
@@ -8,9 +7,7 @@ package com.musicalInstruments.view.components {
 	import flash.events.IOErrorEvent;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
-	import flash.media.SoundTransform;
 	import flash.net.URLRequest;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -31,9 +28,16 @@ package com.musicalInstruments.view.components {
 			_metronom = Metronome.getTimeModel();
 			loadSound();
 		}
-		
-		public function play():void{
-				_sound.play();
+		public var soundComplete:Signal=new Signal();
+		public function play():SoundChannel{
+			var channel:SoundChannel = _sound.play();
+			channel.addEventListener(Event.SOUND_COMPLETE,
+				function onSoundComplete(e:Event):void{
+					channel.removeEventListener(Event.SOUND_COMPLETE,onSoundComplete);
+					soundComplete.dispatch();
+				}
+				);
+			return channel;
 		}
 		
 		

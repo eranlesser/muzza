@@ -66,8 +66,8 @@ package com.screens.view.components.notes
 			}
 		}
 		
-		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint,rotation:uint):void{
-			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId,rotation);
+		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
+			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
 			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+_instrumentY;
 			if(xx>0){

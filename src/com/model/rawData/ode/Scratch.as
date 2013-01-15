@@ -13,30 +13,25 @@ package com.model.rawData.ode
 			<octaves>
 			<notes>
 			
-			<note id="10"   soundFile="ode/scrach/scrach_1.mp3" animationIndex='3' value="9" x="600" />
-			<note id="15"   soundFile="ode/scrach/scrach_5.mp3" animationIndex='3' value="9" x="900"  />
+			<note id="C_5"   soundFile="ode/scrach/do.mp3" animationIndex='1' value="0" x="0"  />
+			<note id="C#_5"   soundFile="ode/scrach/do_diez.mp3" animationIndex='2' value="0" x="0"  />
+			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='3' value="0" x="0"  />
+			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='4' value="0" x="0"  />
+			<note id="G"   soundFile="ode/scrach/sol.mp3" animationIndex='5' value="0" x="0"  />
 			</notes>
 			</octaves>
 			<gestures>
 			</gestures>
 			<sequances>
 
-			<sequance id="1">
-<note id="2" location="3" soundLength="1"/>
-<note id="3" location="6" soundLength="1"/>
-<note id="4" location="8" soundLength="1"/>
-<note id="1" location="9" soundLength="1"/>
-<note id="2" location="11" soundLength="1"/>
-<note id="3" location="14" soundLength="1"/>
-<note id="4" location="16" soundLength="1"/>
-		</sequance>
+			
 <sequance id="10">
-<note id="10" location="40" soundLength="1" />
-
-
-<note id="15" location="104" soundLength="1" />
-
-	</sequance>
+<note id="C_5" location="40" soundLength="1"/><note id="C#_5" location="43" soundLength="1"/>
+<note id="D_5" location="44" soundLength="1"/><note id="E_5" location="45" soundLength="1"/><note id="G" location="47" soundLength="1"/>
+<note id="C_5" location="104" soundLength="1"/><note id="C#_5" location="106" soundLength="1"/>
+<note id="D_5" location="107" soundLength="1"/><note id="E_5" location="108" soundLength="1"/>
+<note id="E_5" location="109" soundLength="1"/><note id="G" location="111" soundLength="1"/>
+</sequance>
 <sequance id="99">
 <subSequance id="10" location="32" />
 </sequance>
