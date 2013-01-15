@@ -134,7 +134,6 @@ package com.screens.view {
 		
 		private function onClose(btnid:String):void{
 			close.dispatch();
-			PopUpsManager.closePopUp();
 		}
 		
 		override public function start():void{
@@ -148,6 +147,7 @@ package com.screens.view {
 				
 				//setClock();
 			}
+			Metronome.getTimeControll(this).play(_model.endAtFrame*16);
 			stage.frameRate=Rhythms.FRAME_RATE;
 			trace("frame rate is",stage.frameRate)
 			if(_timeSlider){

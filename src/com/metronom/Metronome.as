@@ -30,10 +30,7 @@ package com.metronom
 		 
 		public function Metronome(){
 			_tickSignal = new Signal();
-			_gtween = new GTween(this,100);
-			_gtween.onChange = onTick;
-			_gtween.repeatCount = 0;
-			_gtween.useFrames=true;
+			
 			if (!allowInstantiation) {
 				throw new Error("Error: Instantiation failed: Use SingletonDemo.getInstance() instead of new.");
 			}
@@ -94,12 +91,16 @@ package com.metronom
 		//________________ITimeControll  Methods
 		
 		
-		public function play():void{
+		public function play(duration:int):void{
 			if(_isPlaying){
 				trace("metronom is playing")
 			}else{
 				_isPlaying = true;
 				_playActivated = true;
+				_gtween = new GTween(this,duration);
+				_gtween.onChange = onTick;
+				//_gtween.repeatCount = 0;
+				_gtween.useFrames=true;
 			}
 		}
 		

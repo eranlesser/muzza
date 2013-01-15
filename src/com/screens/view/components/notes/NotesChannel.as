@@ -41,8 +41,7 @@ package com.screens.view.components.notes
 		
 		public function start(notesLength:uint):void{
 			this.y=0;
-			
-			_tween=new GTween(_notesContainer,notesLength*8,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
+			_tween=new GTween(_notesContainer,notesLength*16,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*4))});
 			_tween.useFrames=true;
 		}
 		

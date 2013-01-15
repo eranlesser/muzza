@@ -73,7 +73,7 @@ package com.screens.view {
 			return _practiceBtn;
 		}
 		public function startTimer():void{
-			_timerControll.play();
+			_timerControll.play(_model.endAtFrame*16);
 		}
 		
 		public function stopTimer():void{
