@@ -17,7 +17,6 @@ package com.screens.view
 	public class HomePage extends AbstractScreen
 	{
 		private var _songMenu:	SongsMenu;
-		public var tutorialRequest:Signal=new Signal();
 		public function HomePage(){
 			init();
 		}

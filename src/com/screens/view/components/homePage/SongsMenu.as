@@ -12,7 +12,10 @@ package com.screens.view.components.homePage
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.TimerEvent;
 	import flash.geom.Matrix;
+	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -70,6 +73,19 @@ package com.screens.view.components.homePage
 			_nextButton.clicked.add(onNext);
 			_prevButton.clicked.add(onPrev);
 			enableNextPrev();
+			
+			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
+			_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
+			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
+			var tmr:Timer = new Timer(3000,1);
+			tmr.start()
+			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
+				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
+				var wtween:GTween = new GTween(_wallLayer,6,{x:0},{ease:Circular.easeInOut});
+				var tween:GTween = new GTween(_thumbsLayer,6,{x:0},{ease:Circular.easeInOut});
+				var ptween:GTween = new GTween(_poleLayer,7.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
+			});
+			
 		}
 		
 		private function addTutoiralPannel():void{
@@ -180,7 +196,7 @@ class LearnSongPannel extends Sprite{
 		addChild(_title);
 		//_title.cacheAsBitmap=true;
 		
-		addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png"))//.cacheAsBitmap=true;
+		//addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png"))//.cacheAsBitmap=true;
 		
 		_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
 		addChild(_thumbNail);
@@ -210,9 +226,9 @@ class TutorialPannel extends Sprite{
 	
 
 	private function init():void{
-		addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png"));
+		//addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png"));
 		var light:DisplayObject = AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png");
-		addChild(light);
+		//addChild(light);
 		light.x=Dimentions.WIDTH;
 		_tutorialButton = new Btn("Start_tutorial_idle.png","Start_tutorial_PRESSED_V_2.png");
 		addChild(_tutorialButton);

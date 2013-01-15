@@ -52,7 +52,6 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.stop();
 			//_preTicker.active=false;
 			_isRecording = false;
-			_context.pallet.active = false;
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				noteSequencePlayer.stop();
@@ -144,7 +143,6 @@ package com.screens.recordScreenStates
 			_timeModel.soundTick.add(onTimerTick);
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
-			_context.pallet.active = true;
 			setBackUps();
 			_context.notes.start();
 			_context.resetScore();
@@ -171,7 +169,6 @@ package com.screens.recordScreenStates
 				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
 			//}
-			_context.pallet.onTick(_timeModel.currentTick);
 			
 			//if(curNote!=_currentNote){
 			//	_currentNote=curNote;

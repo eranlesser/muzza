@@ -43,7 +43,6 @@ package com.screens.view {
 		private var _notes:						Notes;
 		private var _practiceBtn:				Btn;
 		private var _recordBtn:					Btn;
-		private var _pallet:					Instrument;
 		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll(this);
@@ -54,9 +53,6 @@ package com.screens.view {
 			return _instrumentRecorder;
 		}
 		
-		public function get pallet():Instrument{
-			return _pallet;
-		}
 		
 		public function get model():RecordScreenModel{
 			return _model;
@@ -132,7 +128,7 @@ package com.screens.view {
 				
 				//_notes.addChannel(_model.instrumentModel);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel);
-				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_pallet ,_model.palletModel,_model);
+				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll(this);
 				_score = new ScorePannel(_model.instrumentModel.thumbNail);
@@ -170,8 +166,6 @@ package com.screens.view {
 			super.layout();
 			_instrumentRecorder.x = _model.getRecordInstrumentX();
 			_instrumentRecorder.y = _model.getRecordInstrumentY();
-			_pallet.x = _model.getPalletX();
-			_pallet.y = _model.getPalletY();
 			//f_instrumentRecorder.scaleX=0.8;
 		}
 		
@@ -196,19 +190,6 @@ package com.screens.view {
 				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="voice"){
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
-			}
-			if(_model.palletModel){
-				if((_model.palletModel as PalletModel).palletType=="groovee"){
-					_pallet = new Loopee(_model.palletModel)
-				}
-
-				if((_model.palletModel as PalletModel).palletType=="scratch"){
-					_pallet = new TurnTable(_model.palletModel)
-				}
-				if((_model.palletModel as PalletModel).palletType=="chelo"){
-					_pallet = new Paw(_model.palletModel)
-				}
-			_stageLayer.addChild(_pallet);
 			}else{
 				trace(_model.instrumentModel.type)
 			}
@@ -229,30 +210,6 @@ package com.screens.view {
 			_stageLayer.addChild(_notes);
 		}
 		
-		public function tick(currentTick:int):void{
-			(_pallet as Ipallet).onTick(currentTick);
-		}
-		
-		public function set active(value:Boolean):void{
-			(_pallet as Ipallet).active = value;
-		}
-		
-		private function addPallet(pallet:XML):void{
-			switch(pallet.@type.toString()){
-				case "groovee":
-					_pallet = new Groovee(new PalletModel(pallet));
-					break;
-				case "scratchee":
-					//_pallet = new Scratchee();
-					break;
-				case "paw":
-					//_pallet = new Paw(pallet);
-					break;
-			}
-			addChild(_pallet);
-			_pallet.y=pallet.@y;
-			_pallet.x=pallet.@x;
-		}
 		
 		public function get score():uint{
 			return _score.score;

@@ -118,9 +118,6 @@ package com.screens.recordScreenStates
 			return _recordScreen.recorder;
 		}
 		
-		public function get pallet():Ipallet{
-			return _recordScreen.pallet as Ipallet;
-		}
 		public function get recordButton():Btn{
 			return _recordScreen.recordButton;
 		}

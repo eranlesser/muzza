@@ -52,7 +52,6 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			_context.instrumentRecorder.notePlayed.add(onNotePlayed);
-			(_context.pallet as Instrument).notePlayed.add(onNotePlayed);
 			_context.practiceButton.clicked.add(onStop);
 			_context.recordButton.clicked.add(onRecordBtn);
 			_timeModel.soundTick.add(onTimerTick);
@@ -147,7 +146,7 @@ package com.screens.recordScreenStates
 			}
 			var playedNoteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
 			if(!playedNoteModel){
-				playedNoteModel = (_context.model.palletModel as INoteFetcher).getNoteById(note.noteId);
+				//playedNoteModel = (_context.model.palletModel as INoteFetcher).getNoteById(note.noteId);
 			}
 			if(_curNotes&&_curNotes.length>0&&(playedNoteModel.value==_curNotes[0].value)){
 				calculateGoodFeedback();

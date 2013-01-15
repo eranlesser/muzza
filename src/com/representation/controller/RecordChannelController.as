@@ -23,36 +23,25 @@ package com.representation.controller {
 		private var _channelView:		NotesChannel;
 		private var _recordScreenModel:	RecordScreenModel;
 		private var _instrumentModel:	CoreInstrumentModel;
-		private var _palletModel:	CoreInstrumentModel;
 		private var _learnedSequance:	ISequance;
 		private var _recordedSequance:	RecordableNotesSequance;
-		private var _palletSequance:	RecordableNotesSequance;
 		private var _instrument:		Instrument;
-		private var _pallet:		Instrument;
 		
-		public function RecordChannelController(channelView:NotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument, palet:Instrument , palletModel:CoreInstrumentModel ,recordScreenModel:RecordScreenModel):void{
+		public function RecordChannelController(channelView:NotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument,recordScreenModel:RecordScreenModel):void{
 			_model=Metronome.getTimeModel();
 			_channelView=channelView;
 			_recordScreenModel=recordScreenModel;
 			_instrumentModel=instrumentModel;
-			_palletModel = palletModel;
 			_instrument = instrument;
-			_pallet = palet;
 			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
-			_palletSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
 				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
-				drawNotes(_recordScreenModel.palletModel as NotesInstrumentModel,NoteSequanceModel(_recordScreenModel.palletModel.getSequanceById(_recordScreenModel.palletSequanceId)));
 				
 				for(var i:uint=0;i<(_instrumentModel as NotesInstrumentModel).notesLength;i++){
 					var nte:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteAt(i);
 					_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset ,NotesInstrumentModel(_instrumentModel).thumbNail);
-				}
-				for(var n:uint=0;n<NotesInstrumentModel(_recordScreenModel.palletModel).notesLength;n++){
-					var pnte:NoteModel = NotesInstrumentModel(_recordScreenModel.palletModel).getNoteAt(n);
-					_channelView.drawNoteTarget(pnte.value,pnte.x,_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset,NotesInstrumentModel(_recordScreenModel.palletModel).thumbNail);
 				}
 			}
 			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
@@ -65,8 +54,6 @@ package com.representation.controller {
 			_channelView.clearNotes();
 			if(_learnedSequance is NoteSequanceModel){//temp
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
-				drawNotes(_recordScreenModel.palletModel as NotesInstrumentModel,NoteSequanceModel(_recordScreenModel.palletModel.getSequanceById(_recordScreenModel.palletSequanceId)));
-				
 			}
 		}
 		
@@ -74,9 +61,7 @@ package com.representation.controller {
 		
 		public function beginRecord():void{
 			_recordedSequance.reset();
-			_palletSequance.reset();
 			_instrument.noteStopped.add(noteAdded);
-			_pallet.noteStopped.add(paletNoteAdded);
 			
 		}
 		
@@ -86,13 +71,7 @@ package com.representation.controller {
 				_instrumentModel.addRecordedSequance(_recordedSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
 				FileProxy.exportSequance(_recordedSequance, _instrumentModel.thumbNail);
 			}
-			if(!_palletSequance.isEmpty){
-				//write sequance somewhere
-				_palletModel.addRecordedSequance(_palletSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
-				FileProxy.exportSequance(_palletSequance, _palletModel.thumbNail);
-			}
 			_instrument.noteStopped.remove(noteAdded);
-			_pallet.noteStopped.remove(paletNoteAdded);
 		}
 		
 		public function get length():uint{
@@ -117,9 +96,6 @@ package com.representation.controller {
 			return _channelView;
 		}
 		
-		private function paletNoteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
-			var note:SequancedNote = _palletSequance.add(noteId,startLocation,noteLength,octave);
-		}
 		
 		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
 			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);

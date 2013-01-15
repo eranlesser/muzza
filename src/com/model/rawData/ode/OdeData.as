@@ -10,9 +10,7 @@ public static var data:XML =
 {Drum.data}
 {Bass.data}
 {Bottles.data}
-{Claps.data}
-{Chelo.data}
-{Scratch.data}
+
 </instruments>
 <screens>
 
@@ -26,15 +24,7 @@ public static var data:XML =
 	<instrument type='bottles.png' >
 	<layout id="0" x='350' y='100'  rotation="0" />
 	</instrument>
-<instrument type='scratch' >
-		<layout id="0" x='800' y='570'  rotation="0" />
-	</instrument>
-<instrument type='chelo' >
-		<layout id="0" x='720' y='570'  rotation="0" />
-	</instrument>
-<instrument type='claps' >
-		<layout id="0" x='880' y='570'  rotation="0" />
-	</instrument>
+
 </demoScreen>
 
 <studioScreen>
@@ -58,7 +48,7 @@ public static var data:XML =
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="372">
-	<RecordedX>-10</RecordedX>
+	<RecordedX>102.5</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
 	<pallet type="claps"  rhythm="8" x='815' y='380'>
@@ -71,7 +61,7 @@ public static var data:XML =
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="176" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454" notesTargetYOffset="8" >
-	<RecordedX>50</RecordedX>
+	<RecordedX>308</RecordedX>
 	<RecordedY>458</RecordedY>
 	</playerInstrument>
 <pallet type="scratch" learnedSequanced="99" rhythm="8" x='700' y='452'>
@@ -83,8 +73,8 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="176" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="422">
-	<RecordedX>300</RecordedX>
+	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="425">
+	<RecordedX>178</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
 <pallet type="chelo" learnedSequanced="99" x='14' y='450'>
@@ -107,15 +97,7 @@ public static var data:XML =
 	<instrument type='bottles.png' >
 <layout id="0" x='350' y='100'  rotation="0" />	
 	</instrument>
-<instrument type='scratch' >
-		<layout id="0" x='650' y='580'  rotation="0" />
-	</instrument>
-<instrument type='chelo' >
-		<layout id="0" x='570' y='580'  rotation="0" />
-	</instrument>
-<instrument type='claps' >
-		<layout id="0" x='730' y='580'  rotation="0" />
-	</instrument>
+
 </endScreen>
 </recordSession>
 </screens>
