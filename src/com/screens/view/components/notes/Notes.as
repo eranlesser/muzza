@@ -22,9 +22,9 @@ package com.screens.view.components.notes
 		private var _backUpBut:ToggleBut;
 		private var _notesLength:uint;
 		private var _instrumentY:uint;
-		public function Notes(notesLength:uint,instrumentY:uint)
+		public function Notes(instrumentY:uint)
 		{
-			_notesLength=notesLength;
+			//_notesLength=notesLength;
 			_instrumentY=instrumentY;
 			init();
 			this.mouseChildren=false;
@@ -32,22 +32,22 @@ package com.screens.view.components.notes
 		}
 		
 		public function start():void{
-			_channel.start(_notesLength);
+			_channel.start();
 		}
 		
 		public function stop():void{
 			_channel.stop();
 		}
-		public function set paused(val:Boolean):void{
-			_channel.paused=val;
-		}
 		
-		public function addChannel(model:CoreInstrumentModel):NotesChannel{
-			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY+44));
-			_notesCanvas.addChild(_channel as DisplayObject);
+		
+		public function addChannel(model:CoreInstrumentModel,notesLength:uint):NotesChannel{
+			_channel = new NotesChannel(model,new Rectangle(0,0,Dimentions.WIDTH,_instrumentY),notesLength);
+			addChild(_channel as DisplayObject);
 			return _channel;
 		}
-		
+		public function get channel():NotesChannel{
+			return _channel;
+		}
 		
 		public function get backUpsBut():ToggleBut{
 			return _backUpBut;
@@ -59,15 +59,15 @@ package com.screens.view.components.notes
 		
 		
 		private function init():void{
-			_bg=new Shape();
-			_bg.graphics.beginFill(0x333333);
-			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,_instrumentY+44);
-			_bg.graphics.endFill();
-			_bg.alpha=0;
-			_notesCanvas = new Sprite();
-			_notesCanvas.addChild(_bg);
-			_bg.x=0;
-			addChild(_notesCanvas);
+//			_bg=new Shape();
+//			_bg.graphics.beginFill(0x333333);
+//			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,_instrumentY+44);
+//			_bg.graphics.endFill();
+//			_bg.alpha=0;
+//			_notesCanvas = new Sprite();
+//			_notesCanvas.addChild(_bg);
+//			_bg.x=0;
+			//addChild(_notesCanvas);
 //			_cue = _notesCanvas.addChild(AssetsManager.getAssetByName("BLUE_NEEDLE.png"));
 //			var frame:DisplayObject=addChild(AssetsManager.getAssetByName("notes_frame.png"));
 //			_cue.x=frame.width/2-90;

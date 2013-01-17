@@ -80,11 +80,11 @@ package com.representation.controller {
 		}
 		
 		public function start():void{
-			_model.metronomeTick.add(onTick);
+			_model.tickSignal.add(onTick);
 		}
 		
 		public function stop():void{
-			_model.metronomeTick.remove(onTick);
+			_model.tickSignal.remove(onTick);
 			//_channelView.setY(-((RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
 		}
 		

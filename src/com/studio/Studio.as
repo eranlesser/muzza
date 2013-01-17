@@ -139,7 +139,7 @@ package com.studio
 				}
 			}
 			if(allInstruments){
-				Metronome.getTimeControll(this).beginAtFrame=1;
+				Metronome.getTimeControll().beginAtFrame=1;
 				//Metronome.getTimeControll(this).play();
 			}
 		}
@@ -161,7 +161,7 @@ package com.studio
 		
 		private function onDelayDone(t:GTween):void{
 			t.onComplete=null;
-			Metronome.getTimeControll(this).beginAtFrame=1;
+			Metronome.getTimeControll().beginAtFrame=1;
 			for each(var ins:StudioInstrument in _instruments){
 				if(ins.viewType==StudioInstrument.CHARACTER){
 					ins.play();

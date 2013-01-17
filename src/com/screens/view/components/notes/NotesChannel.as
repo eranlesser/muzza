@@ -2,6 +2,7 @@ package com.screens.view.components.notes
 {
 	import com.gskinner.motion.GTween;
 	import com.musicalInstruments.model.CoreInstrumentModel;
+	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.representation.RepresentationSizes;
 	import com.view.tools.AssetsManager;
@@ -25,13 +26,14 @@ package com.screens.view.components.notes
 		private var _instrumentY:		uint;
 		private var _pointToBasePoint:	Point;
 		private var _tween:				GTween;
+		private var _notesGap:Number;
 		
-		
-		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle){
+		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle,notesLength:uint){
 			_instrumentModel = model;
 			_notes=new Vector.<DroppingNote>();
 			_instrumentY = size.height;
 			drawFrame(size);
+			_notesGap = 30;
 		}
 		
 //		public function setY(yy:int):void{
@@ -39,11 +41,15 @@ package com.screens.view.components.notes
 //			moved.dispatch(_notesContainer.y);
 //		}
 		
-		public function start(notesLength:uint):void{
+		public function start():void{
 			this.y=0;
 			
-			_tween=new GTween(_notesContainer,notesLength*8,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
-			_tween.useFrames=true;
+			//_tween=new GTween(_notesContainer,notesLength*8,{y:(((RepresentationSizes.notesArea)/128)*(notesLength*2))});
+			//_tween.useFrames=true;
+		}
+		
+		public function get notesContainer():Sprite{
+			return _notesContainer;
 		}
 		
 		public function stop():void{
@@ -52,12 +58,7 @@ package com.screens.view.components.notes
 			_notesContainer.y=0;
 		}
 		
-		public function set paused(val:Boolean):void{
-			if(val){
-				//_tween.position++;
-			}
-			_tween.paused = val;
-		}
+		
 		
 		public function clearNotes():void{
 			while(_notes.length>0){
@@ -69,7 +70,7 @@ package com.screens.view.components.notes
 		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
 			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
-			note.y=-(noteModel.location*2)*((RepresentationSizes.notesArea)/128)+_instrumentY;
+			note.y=_instrumentY-note.location*_notesGap;
 			if(xx>0){
 				note.x=xx-note.width/2;
 			}else{
@@ -77,9 +78,9 @@ package com.screens.view.components.notes
 			}
 			_notes.push(note);
 			if(_pointToBasePoint){
-				_notesContainer.graphics.lineStyle(1);
-				_notesContainer.graphics.moveTo(_pointToBasePoint.x,_pointToBasePoint.y+note.height/2);
-				_notesContainer.graphics.lineTo(note.x,note.y+note.height/2);
+//				_notesContainer.graphics.lineStyle(1);
+//				_notesContainer.graphics.moveTo(_pointToBasePoint.x,_pointToBasePoint.y+note.height/2);
+//				_notesContainer.graphics.lineTo(note.x,note.y+note.height/2);
 			}
 			if(noteModel.pointToNote!=""){
 				_pointToBasePoint = new Point(note.x,note.y);
@@ -171,7 +172,7 @@ package com.screens.view.components.notes
 		public function getNotesInRange(range:uint,curTick:uint):Vector.<DroppingNote>{
 			var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
 			for each(var note:DroppingNote in _notes){
-				if(note.location<(curTick+range)&&note.location>curTick){
+				if(note.location<(curTick+range)&&note.location>=curTick){
 					rangeNotes.push(note);
 				}
 				
@@ -181,19 +182,21 @@ package com.screens.view.components.notes
 		
 		private function drawFrame(size:Rectangle):void{
 			_bg=new Sprite();
+			
 			_bg.graphics.beginFill(0x33CCCC,0);
 			_bg.graphics.drawRect(0,0,size.width,size.height)
 			addChild(_bg);
 			
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)
-			_notesMask.graphics.drawRect(0,0,size.width,size.height);
+			_notesMask.graphics.drawRect(0,30,size.width,size.height);
 			_notesMask.graphics.endFill();
 			addChild(_notesMask);
 			
 			_notesContainer=new Sprite();
-			_notesContainer.graphics.beginFill(0x33CCCC,0);
-			_notesContainer.graphics.drawRect(0,0,size.width,size.height)
+//			_notesContainer.graphics.lineStyle(1);
+//			_notesContainer.graphics.beginFill(0x33CCCC,0);
+//			_notesContainer.graphics.drawRect(0,0,size.width,size.height)
 			addChild(_notesContainer);
 			_notesContainer.mask=_notesMask;
 			

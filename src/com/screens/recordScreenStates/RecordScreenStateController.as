@@ -153,13 +153,6 @@ package com.screens.recordScreenStates
 		public function stopTimer():void{
 			_recordScreen.stopTimer();
 		}
-		public function pauseTimer():void{
-			_recordScreen.pauseTimer();
-		}
-		
-		public function unPauseTimer():void{
-			_recordScreen.unPauseTimer();
-		}
 		
 		public function get notes():Notes{
 			return _recordScreen.notes;

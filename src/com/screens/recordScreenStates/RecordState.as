@@ -3,6 +3,7 @@ package com.screens.recordScreenStates
 	import com.constants.Rhythms;
 	import com.constants.Session;
 	import com.constants.States;
+	import com.gskinner.motion.GTween;
 	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
 	import com.metronom.ITimeModel;
@@ -12,7 +13,9 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
+	import com.representation.RepresentationSizes;
 	import com.representation.controller.RecordChannelController;
+	import com.screens.view.AbstractScreen;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
 	import com.testflightapp.sdk.TestFlight;
@@ -42,7 +45,7 @@ package com.screens.recordScreenStates
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
 			//_context.instrumentRecorder.notePlayed.remove(record);
-			_timeModel.soundTick.remove(onTimerTick);
+			_timeModel.tickSignal.remove(onTimerTick);
 			_context.recordChannelController.endRecord();
 			_context.stopTimer();
 			_context.recordButton.state="idle";
@@ -64,7 +67,7 @@ package com.screens.recordScreenStates
 			content = strReplace(content,"$total", _context.recordChannelController.length.toString());
 			PopUpsManager.openPopUp(PopUpsManager.END_RECORD,title,content).nextSignal.addOnce(
 				function():void{
-					if(_context.score/_context.recordChannelController.length>3/4){
+					if(_context.score/_context.recordChannelController.length>3/40){
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
 						Session.instance.registerGoodrecoredScreen(_context.model);
 					}else{
@@ -142,16 +145,18 @@ package com.screens.recordScreenStates
 			//_preTicker.active=true;
 			_context.speed=Rhythms.RECORD_SPEED;
 			//_context.notes.backUpsBut.clicked.add(setBackUps);
-			_timeModel.soundTick.add(onTimerTick);
+			_timeModel.tickSignal.add(onTimerTick);
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
 			setBackUps();
+			_tween = Metronome.getTimeControll().play(_context.notes.channel.notesContainer,_context.model.endAtFrame*2,{y:_context.model.endAtFrame*30});
+			_tween.onComplete = stop;
 			_context.notes.start();
 			_context.resetScore();
 		}
 		
-		
-		private function stop():void{
+		private var _tween:GTween;
+		private function stop(t:GTween):void{
 			_complete.dispatch();
 		}
 		
@@ -163,9 +168,9 @@ package com.screens.recordScreenStates
 				//_context.frameRate = Rhythms.DELAY_COUNT*((Levels.CURRENT_LEVEL)/100)
 			}
 			if(_context.model.endAtFrame == _timeModel.currentTick){
-				stop();
+				//stop();
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(5,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(1,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			//for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";
@@ -180,7 +185,7 @@ package com.screens.recordScreenStates
 		
 		
 		private function onRecordBtn(buttonState:Boolean):void{
-			stop();
+			stop(null);
 		}
 		
 		

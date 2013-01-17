@@ -2,14 +2,13 @@ package com.screens.recordScreenStates
 {
 	import com.constants.Rhythms;
 	import com.constants.States;
+	import com.gskinner.motion.GTween;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.instrument.Instrument;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
 	import com.screens.view.components.notes.DroppingNote;
@@ -49,12 +48,12 @@ package com.screens.recordScreenStates
 		public function get name():String{
 			return States.PRACTICE;
 		}
-		
+		private var _tween:GTween;
 		public function activate():void{
 			_context.instrumentRecorder.notePlayed.add(onNotePlayed);
 			_context.practiceButton.clicked.add(onStop);
 			_context.recordButton.clicked.add(onRecordBtn);
-			_timeModel.soundTick.add(onTimerTick);
+			_timeModel.tickSignal.add(onTimerTick);
 			_context.startTimer();
 			_context.speed=Rhythms.RECORD_SPEED;
 			_context.practiceButton.state="pressed";
@@ -63,13 +62,15 @@ package com.screens.recordScreenStates
 			_ofBeatNotes=0;
 			_correctAnswers=0;
 			_context.recordChannelController.start();
+			_tween = Metronome.getTimeControll().play(_context.notes.channel.notesContainer,_context.model.endAtFrame*2,{y:_context.model.endAtFrame*50});
+			
 			_context.notes.start();
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
 		}
 		
-		private function onInstrumentPlayed(note:SequancedNote):void{
+		private function onInstrumentPlayed(note:String):void{
 			_answerTimer.start();
 		}
 		
@@ -90,7 +91,7 @@ package com.screens.recordScreenStates
 			_context.recordButton.clicked.remove(onRecordBtn);
 			_context.instrumentRecorder.notePlayed.remove(onInstrumentPlayed);
 			_context.instrumentRecorder.notePlayed.remove(onNotePlayed);
-			_timeModel.soundTick.remove(onTimerTick);
+			_timeModel.tickSignal.remove(onTimerTick);
 			_context.stopTimer();
 			_answerTimer.stop();
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
@@ -124,11 +125,10 @@ package com.screens.recordScreenStates
 				//_context.instrumentRecorder.marc(curNote.id,4);
 			}
 			if(curNotes.length>0){
-				_context.notes.paused=true;
-				_context.pauseTimer();
+				//_context.notes.paused=true;
+				_tween.paused=true;
 				_curNotes=curNotes;
 			}else{
-				_context.unPauseTimer();
 				_curNotes=null;
 			}
 			
@@ -139,18 +139,18 @@ package com.screens.recordScreenStates
 		}
 		
 		
-		private function onNotePlayed(note:SequancedNote):void{
+		private function onNotePlayed(noteId:String):void{
 			if(!_currentNote){
 				_ofBeatNotes++;
 				//return;
 			}
-			var playedNoteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
+			var playedNoteModel:NoteModel = _noteFetcher.getNoteById(noteId);
 			if(!playedNoteModel){
 				//playedNoteModel = (_context.model.palletModel as INoteFetcher).getNoteById(note.noteId);
 			}
 			if(_curNotes&&_curNotes.length>0&&(playedNoteModel.value==_curNotes[0].value)){
 				calculateGoodFeedback();
-				_context.notes.paused=false;
+				_tween.paused=false;
 			}else{
 				calculateBadFeedback();
 			}
@@ -164,7 +164,6 @@ package com.screens.recordScreenStates
 			_correctAnswers++;
 			//_currentNote.state="idle";
 			_currentNoteIndx++;
-			_context.unPauseTimer();
 			if(_correctAnswerTime<=1){
 				if(Math.random()>0.5){
 					//_context.bubble.setText("excellent!",false)

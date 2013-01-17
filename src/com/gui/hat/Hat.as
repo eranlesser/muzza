@@ -50,12 +50,12 @@ package com.gui.hat
 		}
 		
 		public function start():void{
-			_timeModel.soundTick.add(onTick);
+			_timeModel.tickSignal.add(onTick);
 //			_timeModel.cycleSignal.add(onCycle);
 		}
 		
 		public function stop():void{
-			_timeModel.soundTick.remove(onTick);
+			_timeModel.tickSignal.remove(onTick);
 //			_timeModel.cycleSignal.remove(onCycle);
 		}
 		
@@ -74,7 +74,7 @@ package com.gui.hat
 		}
 		
 		private function onHatFull(tween:GTween):void{
-			_timeModel.soundTick.remove(onTick);
+			_timeModel.tickSignal.remove(onTick);
 //			_timeModel.cycleSignal.remove(onCycle);
 		}
 		private function onFillHat(tween:GTween):void{

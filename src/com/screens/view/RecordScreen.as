@@ -1,6 +1,7 @@
 package com.screens.view {
 	import com.constants.Dimentions;
 	import com.constants.Session;
+	import com.gskinner.motion.GTween;
 	import com.inf.PopUp;
 	import com.inf.PopUpsManager;
 	import com.metronom.*;
@@ -8,6 +9,7 @@ package com.screens.view {
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.PalletModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
+	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.palleta.Ipallet;
 	import com.musicalInstruments.palleta.views.Groovee;
 	import com.musicalInstruments.palleta.views.Loopee;
@@ -43,9 +45,9 @@ package com.screens.view {
 		private var _notes:						Notes;
 		private var _practiceBtn:				Btn;
 		private var _recordBtn:					Btn;
-		
+		private var _recordTween:GTween;
 		public function RecordScreen(){
-			_timerControll = Metronome.getTimeControll(this);
+			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
 		}
 		
@@ -73,19 +75,12 @@ package com.screens.view {
 			return _practiceBtn;
 		}
 		public function startTimer():void{
-			_timerControll.play();
+			//todo12
+			//_timerControll.play();
 		}
 		
 		public function stopTimer():void{
 			_timerControll.stop();
-		}
-		
-		public function pauseTimer():void{
-			_timerControll.pause();
-		}
-		
-		public function unPauseTimer():void{
-			_timerControll.unPause();
 		}
 		
 		public function get notes():Notes{
@@ -127,10 +122,10 @@ package com.screens.view {
 				
 				
 				//_notes.addChannel(_model.instrumentModel);
-				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel);
+				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel,_model.endAtFrame);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
-				_timerControll=Metronome.getTimeControll(this);
+				_timerControll=Metronome.getTimeControll();
 				_score = new ScorePannel(_model.instrumentModel.thumbNail);
 				addChild(_score);
 				_score.x=Dimentions.WIDTH-_score.width-12;
@@ -220,7 +215,7 @@ package com.screens.view {
 		}
 		
 		private function addRepresentation():void{
-			_notes = new Notes(_model.endAtFrame,_model.noteTargetsY+_model.noteTargetsYOffset-11);
+			_notes = new Notes(_model.noteTargetsY+_model.noteTargetsYOffset);
 			_stageLayer.addChild(_notes);
 		}
 		

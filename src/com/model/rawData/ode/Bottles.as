@@ -143,7 +143,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 
 	
 <sequance id="99">
-<subSequance id="10" location="32" />
+<subSequance id="10" location="16" />
 </sequance>
 </sequances>
 </bottles>

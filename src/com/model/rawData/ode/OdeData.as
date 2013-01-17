@@ -5,7 +5,7 @@ package com.model.rawData.ode
 public class OdeData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='10'>
+<theme id='recycle' rhythm='8'>
 <instruments>
 {Drum.data}
 {Bass.data}
@@ -87,7 +87,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<endScreen type="ThemeTemplate" beginAtFrame="1" playSequance="102">
+<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="176" playSequance="102">
 	<instrument type="drum.png" >
 <layout id="0" x='50' y='140'  rotation="0" />	
 	</instrument>

@@ -7,6 +7,7 @@ package com.musicalInstruments.view.character
 	import com.view.tools.SpriteSheet;
 	
 	import flash.display.Bitmap;
+	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
@@ -20,7 +21,6 @@ package com.musicalInstruments.view.character
 		private var _currentBlinkSequance:	BlinkSequance;
 		private var _currentBlinkIndex:		uint;
 		private var _blinkSequanceCounter:	uint=0;
-		private var _timeModel:				ITimeModel;
 		private var _performer:				IPerformer;
 		
 		public function Eyes(data:XML,performer:IPerformer=null){
@@ -29,7 +29,6 @@ package com.musicalInstruments.view.character
 			_view.bitmapData = _eyesSheet.drawTile(0);
 			_view.x = data.@x;
 			_view.y = data.@y;
-			_timeModel = Metronome.getTimeModel();
 			if(performer){
 				_performer = performer;
 				_performer.animationStateChanged.add(onAnimationStateChanged);
@@ -49,23 +48,28 @@ package com.musicalInstruments.view.character
 		}
 		
 		public function start():void{
-			_timeModel.metronomeTick.add(animate);
+			_view.addEventListener(Event.ENTER_FRAME,animate);
 		}
 		
 		public function stop():void{
 			_isAnimating=false;
+			_view.removeEventListener(Event.ENTER_FRAME,animate);
 			_currentBlinkSequance = _blinks[0];
 			_blinkSequanceCounter = 0;
 			_view.visible = true;
-			_timeModel.metronomeTick.remove(animate);
 			_view.bitmapData = _eyesSheet.drawTile(_currentBlinkSequance.startIndex);
 		}
 		
 		public function get view():Bitmap{
 			return _view;
 		}
-		
-		private function animate():void{
+		private  var _delayer:uint=0;
+		private function animate(e:Event):void{
+			_delayer++;
+			if(_delayer%12!=0){
+				return;
+			}
+			_delayer=0;
 			if(_performer&&_performer.isPerforming){//for bass only
 				_view.visible = false;
 				return;

@@ -77,7 +77,7 @@ package com.screens.view.components.homePage
 			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
 			_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
-			var tmr:Timer = new Timer(3000,1);
+			var tmr:Timer = new Timer(500,1);
 			tmr.start()
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
 				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);

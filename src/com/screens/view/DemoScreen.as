@@ -38,7 +38,7 @@ package com.screens.view {
 		
 		public function DemoScreen(){
 			_instruments = new Vector.<PlayMusician>();
-			_timeControll= Metronome.getTimeControll(this);
+			_timeControll= Metronome.getTimeControll();
 			
 		}
 		
@@ -59,11 +59,6 @@ package com.screens.view {
 			for each(var ins:PlayMusician in _instruments){
 				ins.start();
 			}
-			
-			unPause();
-			//setClock();
-			
-			
 			
 			if(masked){ // demo - not listen
 				_mask=new Shape();
@@ -94,7 +89,7 @@ package com.screens.view {
 				_stageLayer.addChild(_playPauseBtn);
 				_playPauseBtn.x=480;
 				_playPauseBtn.y=531+19+10;
-				_playPauseBtn.clicked.add(onPlay);
+				//_playPauseBtn.clicked.add(onPlay);
 				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_PRESSED.png");
 				_stageLayer.addChild(reloader);
 				reloader.x=_playPauseBtn.x+_playPauseBtn.width;
@@ -118,13 +113,6 @@ package com.screens.view {
 			
 		}
 		
-		private function onPlay(indx:uint):void{
-			if(_timeModel.isPlaying){
-				pause();
-			}else{
-				unPause();
-			}
-		}
 		
 		private function reload(str:String):void{
 			_timeControll.stop();
@@ -148,6 +136,7 @@ package com.screens.view {
 				
 				//setClock();
 			}
+			_timeControll.play(this,_model.endAtFrame*2,null);
 			stage.frameRate=Rhythms.FRAME_RATE;
 			trace("frame rate is",stage.frameRate)
 			if(_timeSlider){
@@ -166,14 +155,13 @@ package com.screens.view {
 			if(!this.parent){
 				return;
 			}
-			unPause();
 			_timeControll.beginAtFrame = _model.beginAtFrame;
 			for each(var ins:PlayMusician in _instruments){
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
 				ins.sequanceDone.add(onPlayerDone);
 			}
 			if(_timeSlider){
-				_timeModel.soundTick.add(setTimeSlider);
+				_timeModel.tickSignal.add(setTimeSlider);
 				_playPauseBtn.state=0;
 			}
 		}
@@ -196,28 +184,18 @@ package com.screens.view {
 			}
 		}
 		
-		protected function unPause():void{
-			//Clock.getInstance().play();
-			_timeControll.unPause();
-		}
 		
 		override public function stop():void{
 			for each(var ins:PlayMusician in _instruments){
 				ins.stop();
 			}
-			pause();
 			//Clock.getInstance().reset();
 			//Clock.getInstance().visible=false;
 			if(_timeSlider){
-				_timeModel.soundTick.remove(setTimeSlider);
+				_timeModel.tickSignal.remove(setTimeSlider);
 			}
 		}
 		
-		private function pause():void{
-			
-			_timeControll.pause();
-			//Clock.getInstance().stop();
-		}
 		
 		protected function setClock():void{
 //			var clock:Clock = Clock.getInstance()//new Clock(_guiLayer);
@@ -254,7 +232,7 @@ package com.screens.view {
 		protected function endMusciPiece():void{
 			//Clock.getInstance().stop();
 			if(_timeSlider){
-				_timeModel.soundTick.remove(setTimeSlider);
+				_timeModel.tickSignal.remove(setTimeSlider);
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 				TestFlight.submitFeedback("demo complete");
 				

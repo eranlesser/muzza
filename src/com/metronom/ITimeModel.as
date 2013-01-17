@@ -6,8 +6,5 @@ package com.metronom {
 	public interface ITimeModel {
 		function get currentTick():uint;
 		function get tickSignal():Signal;
-		function get soundTick():Signal;
-		function get metronomeTick():Signal;
-		function get isPlaying():Boolean;
 	}
 }

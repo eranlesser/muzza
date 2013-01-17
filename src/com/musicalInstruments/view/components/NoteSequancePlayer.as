@@ -50,19 +50,19 @@ package com.musicalInstruments.view.components {
 		public function play(sequance:NoteSequanceModel):void{
 			_currenSequance = sequance;
 			if(!_isPlaying){
-				_timeModel.soundTick.add(onMetronomeTick);
-				_timeModel.soundTick.add(onMetronomeUntick);
+				_timeModel.tickSignal.add(onMetronomeTick);
+				_timeModel.tickSignal.add(onMetronomeUntick);
 			}
 			_isPlaying = true;
 		}
 		
 		public function onClick():void{
 			if(_isPlaying){
-				_timeModel.soundTick.remove(onMetronomeTick);
-				_timeModel.soundTick.remove(onMetronomeUntick);
+				_timeModel.tickSignal.remove(onMetronomeTick);
+				_timeModel.tickSignal.remove(onMetronomeUntick);
 			}else{
-				_timeModel.soundTick.add(onMetronomeTick);
-				_timeModel.soundTick.add(onMetronomeUntick);
+				_timeModel.tickSignal.add(onMetronomeTick);
+				_timeModel.tickSignal.add(onMetronomeUntick);
 			}
 			_isPlaying=!_isPlaying;
 		}
@@ -76,8 +76,8 @@ package com.musicalInstruments.view.components {
 		}
 		
 		public function  stop():void{
-			_timeModel.soundTick.remove(onMetronomeTick);
-			_timeModel.soundTick.remove(onMetronomeUntick);
+			_timeModel.tickSignal.remove(onMetronomeTick);
+			_timeModel.tickSignal.remove(onMetronomeUntick);
 			_isPlaying = false;
 			if(_character){
 				_character.animateTo(0,"");
@@ -115,6 +115,7 @@ package com.musicalInstruments.view.components {
 						noteModel.player.play();
 						_playingNote = note;
 						notePlayed.dispatch(_playingNote.noteId);
+						trace("",_playingNote.noteId,"<<",_timeModel.currentTick)
 					}
 					animateTo(noteModel.animationIndex,notes[0].noteId);
 				}else if(_currenSequance.ended(_timeModel.currentTick)){
