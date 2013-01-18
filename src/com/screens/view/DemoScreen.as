@@ -116,7 +116,7 @@ package com.screens.view {
 		
 		private function reload(str:String):void{
 			_timeControll.stop();
-			_timeSlider.setValue(0);
+			_timeSlider.value=(0);
 			_playPauseBtn.state=1;
 		}
 		
@@ -136,32 +136,36 @@ package com.screens.view {
 				
 				//setClock();
 			}
-			_timeControll.play(this,_model.endAtFrame*2,null);
+			if(_timeSlider){
+			_timeControll.play(_timeSlider,_model.endAtFrame,{value:100});
+			}else{
+			_timeControll.play(this,_model.endAtFrame,null);
+			}
 			stage.frameRate=Rhythms.FRAME_RATE;
 			trace("frame rate is",stage.frameRate)
 			if(_timeSlider){
-				_timeSlider.setValue(0);
+				_timeSlider.value=(0);
 			}
-			onTimerComplete();
+			startPlayers();
 		}
 		
-		private function setTimeSlider():void{
-			_timeSlider.setValue(_timeModel.currentTick/_model.endAtFrame)
-		}
+//		private function setTimeSlider():void{
+//			_timeSlider.setValue(_timeModel.currentTick/_model.endAtFrame)
+//		}
 		
 		
 		
-		private function onTimerComplete():void{
+		private function startPlayers():void{
 			if(!this.parent){
 				return;
 			}
 			_timeControll.beginAtFrame = _model.beginAtFrame;
 			for each(var ins:PlayMusician in _instruments){
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
-				ins.sequanceDone.add(onPlayerDone);
+				//ins.sequanceDone.add(onPlayerDone);
 			}
 			if(_timeSlider){
-				_timeModel.tickSignal.add(setTimeSlider);
+				//_timeModel.tickSignal.add(setTimeSlider);
 				_playPauseBtn.state=0;
 			}
 		}
@@ -192,7 +196,7 @@ package com.screens.view {
 			//Clock.getInstance().reset();
 			//Clock.getInstance().visible=false;
 			if(_timeSlider){
-				_timeModel.tickSignal.remove(setTimeSlider);
+				//_timeModel.tickSignal.remove(setTimeSlider);
 			}
 		}
 		
@@ -232,7 +236,7 @@ package com.screens.view {
 		protected function endMusciPiece():void{
 			//Clock.getInstance().stop();
 			if(_timeSlider){
-				_timeModel.tickSignal.remove(setTimeSlider);
+				//_timeModel.tickSignal.remove(setTimeSlider);
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 				TestFlight.submitFeedback("demo complete");
 				
@@ -282,17 +286,21 @@ class TimeSlider extends Sprite{
 		_rightSeg=addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_RIGHT_SEGMENT.png"));
 		_bar=addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_SEGMENT.png"));
 		_bar.y=_rightSeg.y=5;
+		_bar.x=10;
 		_stroke=AssetsManager.getAssetByName("TIMESLIDER_STROKE_upper_layer.png");
 		addChild(_stroke);
 		var msk:DisplayObject=AssetsManager.getAssetByName("TIMESLIDER_BACKGROUND.png");
 		addChild(msk);
-		mask=msk;
-		msk.x=10;
+		_bar.mask=msk;
+		//msk.x=10;
 	}
-	
-	public function setValue(val:Number):void{
-		_bar.width=Math.round((_stroke.width-18)*val);
-		_rightSeg.x=_bar.width;
+	private var _val:Number=0;
+	public function get value():Number{
+		return _val;
+	}
+	public function set value(val:Number):void{
+		_bar.width=Math.round(((_stroke.width)-22)*val/100);
+		_rightSeg.x=_bar.width-1+_bar.x;
 		//_stroke.width=_rightSeg.x+_rightSeg.width;
 	}
 	

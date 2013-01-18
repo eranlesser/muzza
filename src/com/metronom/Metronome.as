@@ -87,7 +87,7 @@ package com.metronom
 				_gtween.onChange=null;
 				_gtween.init();
 			}
-			_gtween = new GTween(target,duration*4,props);
+			_gtween = new GTween(target,duration*8,props);
 			_gtween.onChange = onTick;
 			_gtween.useFrames=true;
 			return _gtween;

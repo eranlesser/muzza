@@ -149,7 +149,7 @@ package com.screens.recordScreenStates
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
 			setBackUps();
-			_tween = Metronome.getTimeControll().play(_context.notes.channel.notesContainer,_context.model.endAtFrame*2,{y:_context.model.endAtFrame*30});
+			_tween = Metronome.getTimeControll().play(_context.notes.channel.notesContainer,_context.model.endAtFrame,{y:_context.model.endAtFrame*NotesChannel._notesGap});
 			_tween.onComplete = stop;
 			_context.notes.start();
 			_context.resetScore();

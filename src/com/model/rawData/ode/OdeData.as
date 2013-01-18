@@ -5,7 +5,7 @@ package com.model.rawData.ode
 public class OdeData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='8'>
+<theme id='recycle' rhythm='10'>
 <instruments>
 {Drum.data}
 {Bass.data}

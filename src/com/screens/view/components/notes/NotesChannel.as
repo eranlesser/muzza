@@ -26,7 +26,7 @@ package com.screens.view.components.notes
 		private var _instrumentY:		uint;
 		private var _pointToBasePoint:	Point;
 		private var _tween:				GTween;
-		private var _notesGap:Number;
+		public static var _notesGap:int;
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle,notesLength:uint){
 			_instrumentModel = model;
