@@ -125,7 +125,7 @@ public static var data:XML =
 <content>Click "Record" when you are ready to begin recording</content>
 <direction>top_right</direction>
 </popup>
-<popup id="end_record" width="280" x="350" y="250" >
+<popup id="end_record" width="280" x="372" y="250" >
 <title>$</title>
 <content>you got $points out of $total</content>
 <next>true</next>
@@ -147,7 +147,7 @@ public static var data:XML =
 <direction>btm_right</direction>
 </popup>
 
-<popup id="done" width="340" x="320" y="200" >
+<popup id="done" width="340" x="342" y="200" >
 <title>You Rock</title>
 <content>keep practicing we have more songs and instruments comming soon !</content>
 <direction>none</direction>

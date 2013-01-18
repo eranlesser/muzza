@@ -37,6 +37,7 @@ package com.musicalInstruments.view.components {
 					soundComplete.dispatch();
 				}
 				);
+			//trace("play "+_soundFile)
 			return channel;
 		}
 		
