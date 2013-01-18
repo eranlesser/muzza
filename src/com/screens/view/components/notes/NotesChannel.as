@@ -172,7 +172,7 @@ package com.screens.view.components.notes
 		public function getNotesInRange(range:uint,curTick:uint):Vector.<DroppingNote>{
 			var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
 			for each(var note:DroppingNote in _notes){
-				if(note.location<(curTick+range)&&note.location>=curTick){
+				if(note.location<(curTick+range)&&note.location>=curTick-range){
 					rangeNotes.push(note);
 				}
 				

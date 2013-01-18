@@ -93,7 +93,7 @@ package com.gui.hat
 			_coinsLevel++;
 		}
 		private function onTick():void{
-			if(Math.random()>0.96){
+			if(Math.random()>0.98){
 				throwCoin();
 			}
 		}

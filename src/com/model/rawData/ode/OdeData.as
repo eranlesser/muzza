@@ -14,7 +14,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="565" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
 	<instrument type="drum.png" >
 	<layout id="0" x='50' y='140' rotation="0" />
 	</instrument>
@@ -46,7 +46,7 @@ public static var data:XML =
 </studioScreen>
 
 <recordSession>
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="565" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="372">
 	<RecordedX>102.5</RecordedX>
 	<RecordedY>360</RecordedY>
@@ -59,7 +59,7 @@ public static var data:XML =
 </backups>
 </recordScreen>
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="565" >
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454" notesTargetYOffset="8" >
 	<RecordedX>308</RecordedX>
 	<RecordedY>458</RecordedY>
@@ -72,7 +72,7 @@ public static var data:XML =
 </backups>
 </recordScreen>
 
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="565" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="425">
 	<RecordedX>178</RecordedX>
 	<RecordedY>420</RecordedY>
@@ -87,7 +87,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="565" playSequance="102">
+<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="102">
 	<instrument type="drum.png" >
 <layout id="0" x='50' y='140'  rotation="0" />	
 	</instrument>

@@ -11,6 +11,7 @@ package {
 	import flash.desktop.SystemIdleMode;
 	import flash.display.*;
 	import flash.events.StageOrientationEvent;
+	import flash.filesystem.File;
 	import flash.media.AudioPlaybackMode;
 	import flash.media.SoundMixer;
 	import flash.ui.Multitouch;
@@ -35,7 +36,16 @@ package {
 			FileProxy.reset(this)
 			setDisplaySize();
 			TestFlight.takeOff("0cba08ebd9f80c67ac7b65b412c0c284_MzU0ODgyMDExLTEyLTMxIDA4OjI2OjU4LjU1NzMyMw");
+			TestFlight.setDeviceIdentifier();
 		}
+		
+			public static function get currentOSUser():String
+			{
+				var userDir:String = File.userDirectory.nativePath;
+				var userName:String = userDir.substr(userDir.lastIndexOf(File.separator) + 1);
+				return userName;
+			}
+			
 		
 		private function setDisplaySize():void{
 			var ratioX:Number = Math.max(stage.fullScreenWidth,stage.fullScreenHeight) / Dimentions.WIDTH;

@@ -67,15 +67,18 @@ package com.screens.recordScreenStates
 			content = strReplace(content,"$total", _context.recordChannelController.length.toString());
 			PopUpsManager.openPopUp(PopUpsManager.END_RECORD,title,content).nextSignal.addOnce(
 				function():void{
-					if(_context.score/_context.recordChannelController.length>3/40){
+					if(_context.score/_context.recordChannelController.length>3/4){
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
 						Session.instance.registerGoodrecoredScreen(_context.model);
+						TestFlight.passCheckpoint("Recorded GOOD");
 					}else{
 						PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
+						TestFlight.passCheckpoint("Recorded BAD");
 					}
 				}
 			);
 			TestFlight.submitFeedback(_context.model.instrumentModel.thumbNail+" Recording done score= "+ _context.score+" / "+_context.recordChannelController.length);
+			
 		}
 		private function strReplace(str:String, search:String, replace:String):String {
 			return str.split(search).join(replace);
@@ -170,7 +173,7 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				//stop();
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(1,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			//for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";

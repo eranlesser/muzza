@@ -11,6 +11,9 @@ package com.container.controller {
 	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.DisplayObject;
+	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 
@@ -23,7 +26,7 @@ package com.container.controller {
 		private var _themeName:		String;
 		private var _frameRate:		uint;
 		public var goHomeSignal:	Signal;
-		
+		private var _demoShown:Boolean=false;
 		public function ProgressControl(view:Presenter,model:ScreensModel,themeName:String,frameRate:uint){
 			_view = view;
 			_model = model;
@@ -38,10 +41,15 @@ package com.container.controller {
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			initNavigator();
-//			if(!_demoShown){
-//				openDemo();
-//				_demoShown=true;
-//			}
+			if(!_demoShown){
+				_demoShown=true;
+				var tmr:Timer = new Timer(50,1);
+				tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function onTimer(e:Event):void{
+					_view.openDemo(_model.demoScreen,true);
+					_view.closeDemo(true);
+				});
+				tmr.start();
+			}
 		}
 		
 		public function reset():void{
@@ -95,10 +103,11 @@ package com.container.controller {
 		private function openDemo():void{
 			if(_view.isDemoOpen){
 				_view.closeDemo();
-				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
+				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				TestFlight.submitFeedback("close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);
+				_model.demoScreen.visible=true;
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
 				TestFlight.submitFeedback("open demo");

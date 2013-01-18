@@ -1,5 +1,6 @@
 package com.screens.view {
 	import com.constants.*;
+	import com.gskinner.motion.GTween;
 	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.*;
@@ -162,7 +163,7 @@ package com.screens.view {
 			_timeControll.beginAtFrame = _model.beginAtFrame;
 			for each(var ins:PlayMusician in _instruments){
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
-				//ins.sequanceDone.add(onPlayerDone);
+				ins.sequanceDone.addOnce(onPlayerDone);
 			}
 			if(_timeSlider){
 				//_timeModel.tickSignal.add(setTimeSlider);
@@ -180,7 +181,7 @@ package com.screens.view {
 				}
 			}
 			if(donePlayers==_instruments.length){
-				if(_timeModel.currentTick>0){
+				if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
 					endMusciPiece();
 				}else{
 					stop();

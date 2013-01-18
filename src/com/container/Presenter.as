@@ -2,9 +2,9 @@ package com.container
 {
 	import com.constants.Dimentions;
 	import com.screens.view.DemoScreen;
-	import com.screens.view.ListenScreen;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
+	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
 	import com.screens.view.components.homePage.SongsMenu;
 	
@@ -93,19 +93,23 @@ package com.container
 			
 		}
 		
-		public function openDemo(demoScreen:DemoScreen):void{
+		public function openDemo(demoScreen:DemoScreen,silentMode:Boolean=false):void{
 			_screensLayer.addChild(demoScreen);
 			demoScreen.start();
+			if(!silentMode){
 			_toolBar.demoButton.state="pressed";
 			demoScreen.close.add(closeDemo);
+			}
 		}
 		
-		public function closeDemo():void{
+		public function closeDemo(silentMode:Boolean=false):void{
 			var demoScreen:DemoScreen = _screensLayer.getChildAt(1) as DemoScreen;
 			demoScreen.stop();
 			_screensLayer.removeChild(demoScreen);
-			_toolBar.demoButton.state="idle";
-			(_screensLayer.getChildAt(0) as IScreen).start();
+			if(!silentMode){
+				_toolBar.demoButton.state="idle";
+				(_screensLayer.getChildAt(0) as IScreen).start();
+			}
 		}
 		
 		public function get isDemoOpen():Boolean{

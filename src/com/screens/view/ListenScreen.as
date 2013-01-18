@@ -151,16 +151,17 @@ class ToolBar extends Sprite{
 	
 	private function init():void{
 		//var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
-		var backBtn:Btn = new Btn("BACK_BUTTON_IDLE.png","BACK_BUTTON_PRESSED.png");
+		var backBtn:Btn = new Btn("CLOSE_BUTTON_IDLE.png","CLOSE_BUTTON_SELECTED.png");
 		addChild(backBtn);
-		backBtn.x=-3;
+		backBtn.x=Dimentions.WIDTH-backBtn.width-8;
+		backBtn.y=8;
 		backBtn.clicked.add(backClicked);
 //		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
 //		addChild(playBtn);
 //		playBtn.x=439;
-		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
-		addChild(replay);
-		replay.x=Dimentions.WIDTH-replay.width+6;
+//		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
+//		addChild(replay);
+//		replay.x=Dimentions.WIDTH-replay.width+6;
 //		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
 //		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
 //		addChild(_expandBut);
