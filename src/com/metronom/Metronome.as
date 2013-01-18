@@ -87,7 +87,7 @@ package com.metronom
 				_gtween.onChange=null;
 				_gtween.init();
 			}
-			_gtween = new GTween(target,duration*8,props);
+			_gtween = new GTween(target,duration*2,props);
 			_gtween.onChange = onTick;
 			_gtween.useFrames=true;
 			return _gtween;
@@ -118,10 +118,10 @@ package com.metronom
 			}
 		}
 		private function onTick(tween:GTween):void{
-			if(Math.round(tween.position/8)==_tickValue){
+			if(Math.round(tween.position/2)==_tickValue){
 				return;
 			}
-			_tickValue = Math.round(tween.position/8);
+			_tickValue = Math.round(tween.position/2);
 			_tickSignal.dispatch();
 			trace(_tickValue,"met")
 		}

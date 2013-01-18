@@ -116,10 +116,46 @@ public static var data:XML =
 	
 		</sequance>
 <sequance id="10">
-<note id="D_2" location="17" soundLength="4"/><note id="F#_2" location="21" soundLength="2"/><note id="A_2" location="25" soundLength="4"/><note id="F#_2" location="29" soundLength="4"/><note id="D_2" location="33" soundLength="4"/><note id="F#_2" location="37" soundLength="2"/><note id="D_2" location="39" soundLength="2"/><note id="A_2" location="41" soundLength="4"/><note id="G_2" location="45" soundLength="2"/><note id="D_2" location="49" soundLength="4"/><note id="F#_2" location="53" soundLength="2"/><note id="B_2" location="55" soundLength="2"/><note id="A_2" location="57" soundLength="4"/><note id="F#_2" location="61" soundLength="2"/><note id="D_2" location="65" soundLength="4"/><note id="E_2" location="69" soundLength="2"/><note id="F#_2" location="71" soundLength="2"/><note id="A_2" location="73" soundLength="4"/><note id="D_2" location="77" soundLength="4"/><note id="A_2" location="81" soundLength="4"/><note id="A_2" location="87" soundLength="2"/><note id="A_2" location="89" soundLength="2"/><note id="A_2" location="95" soundLength="2"/><note id="A_2" location="97" soundLength="2"/><note id="A_2" location="103" soundLength="2"/><note id="B_2" location="105" soundLength="2"/><note id="A_2" location="109" soundLength="1"/><note id="D_2" location="113" soundLength="4"/><note id="D_2" location="119" soundLength="2"/><note id="G_2" location="121" soundLength="4"/><note id="F#_2" location="125" soundLength="2"/><note id="D_2" location="129" soundLength="4"/><note id="E_2" location="133" soundLength="2"/><note id="F#_2" location="135" soundLength="2"/><note id="A_2" location="137" soundLength="2"/><note id="E_2" location="139" soundLength="2"/><note id="D_2" location="141" soundLength="4"/>
+  <note id="D_2" location="68" soundLength="16"/>
+  <note id="F#_2" location="84" soundLength="8"/>
+  <note id="A_2" location="100" soundLength="16"/>
+  <note id="F#_2" location="116" soundLength="16"/>
+  <note id="D_2" location="132" soundLength="16"/>
+  <note id="F#_2" location="148" soundLength="8"/>
+  <note id="D_2" location="156" soundLength="8"/>
+  <note id="A_2" location="164" soundLength="16"/>
+  <note id="G_2" location="180" soundLength="8"/>
+  <note id="D_2" location="196" soundLength="16"/>
+  <note id="F#_2" location="212" soundLength="8"/>
+  <note id="B_2" location="220" soundLength="8"/>
+  <note id="A_2" location="228" soundLength="16"/>
+  <note id="F#_2" location="244" soundLength="8"/>
+  <note id="D_2" location="260" soundLength="16"/>
+  <note id="E_2" location="276" soundLength="8"/>
+  <note id="F#_2" location="284" soundLength="8"/>
+  <note id="A_2" location="292" soundLength="16"/>
+  <note id="D_2" location="308" soundLength="16"/>
+  <note id="A_2" location="324" soundLength="16"/>
+  <note id="A_2" location="348" soundLength="8"/>
+  <note id="A_2" location="356" soundLength="8"/>
+  <note id="A_2" location="380" soundLength="8"/>
+  <note id="A_2" location="388" soundLength="8"/>
+  <note id="A_2" location="412" soundLength="8"/>
+  <note id="B_2" location="420" soundLength="8"/>
+  <note id="A_2" location="436" soundLength="4"/>
+  <note id="D_2" location="452" soundLength="16"/>
+  <note id="D_2" location="476" soundLength="8"/>
+  <note id="G_2" location="484" soundLength="16"/>
+  <note id="F#_2" location="500" soundLength="8"/>
+  <note id="D_2" location="516" soundLength="16"/>
+  <note id="E_2" location="532" soundLength="8"/>
+  <note id="F#_2" location="540" soundLength="8"/>
+  <note id="A_2" location="548" soundLength="8"/>
+  <note id="E_2" location="556" soundLength="8"/>
+  <note id="D_2" location="564" soundLength="16"/>
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="16" />
+<subSequance id="10" location="64" />
 
 </sequance>
 </sequances>

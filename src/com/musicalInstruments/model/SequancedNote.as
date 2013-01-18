@@ -41,7 +41,7 @@ package com.musicalInstruments.model
 		}
 		
 		public function get endLoction():uint{
-			return 1+_location;
+			return 4+_location;
 		}
 		
 		public function get pointToNote():String{

@@ -33,7 +33,7 @@ package com.screens.view.components.notes
 			_notes=new Vector.<DroppingNote>();
 			_instrumentY = size.height;
 			drawFrame(size);
-			_notesGap = 30;
+			_notesGap = 6;
 		}
 		
 //		public function setY(yy:int):void{

@@ -76,10 +76,70 @@ public static var data:XML =
 	<note id="1" location="121" soundLength="2"/>
 </sequance>
 <sequance id="10">
-<note id="C_6" location="1" soundLength="1"/><note id="C#_6" location="3" soundLength="1"/><note id="D_6" location="5" soundLength="1"/><note id="C_6" location="9" soundLength="1"/><note id="D_6" location="13" soundLength="1"/><note id="C_6" location="17" soundLength="1"/><note id="C#_6" location="19" soundLength="1"/><note id="D_6" location="21" soundLength="1"/><note id="C#_6" location="23" soundLength="1"/><note id="C_6" location="25" soundLength="1"/><note id="C_6" location="27" soundLength="1"/><note id="D_6" location="29" soundLength="1"/><note id="C#_6" location="31" soundLength="1"/><note id="C_6" location="33" soundLength="1"/><note id="C#_6" location="35" soundLength="1"/><note id="D_6" location="37" soundLength="1"/><note id="C#_6" location="39" soundLength="1"/><note id="C_6" location="41" soundLength="1"/><note id="C#_6" location="47" soundLength="1"/><note id="C_6" location="49" soundLength="1"/><note id="C#_6" location="51" soundLength="1"/><note id="D_6" location="53" soundLength="1"/><note id="C#_6" location="55" soundLength="1"/><note id="C_6" location="57" soundLength="1"/><note id="C_6" location="59" soundLength="1"/><note id="D_6" location="61" soundLength="1"/><note id="C#_6" location="63" soundLength="1"/><note id="C_6" location="65" soundLength="1"/><note id="C#_6" location="67" soundLength="1"/><note id="D_6" location="69" soundLength="1"/><note id="C#_6" location="71" soundLength="1"/><note id="C_6" location="73" soundLength="1"/><note id="C_6" location="75" soundLength="1"/><note id="D_6" location="77" soundLength="1"/><note id="C_6" location="81" soundLength="1"/><note id="C#_6" location="83" soundLength="1"/><note id="D_6" location="85" soundLength="1"/><note id="C_6" location="87" soundLength="1"/><note id="C_6" location="89" soundLength="1"/><note id="C#_6" location="91" soundLength="1"/><note id="D_6" location="93" soundLength="1"/><note id="C_6" location="97" soundLength="1"/><note id="C#_6" location="99" soundLength="1"/><note id="D_6" location="101" soundLength="1"/><note id="C_6" location="103" soundLength="1"/><note id="C_6" location="105" soundLength="1"/><note id="C#_6" location="107" soundLength="1"/><note id="C_6" location="113" soundLength="1"/><note id="C#_6" location="115" soundLength="1"/><note id="D_6" location="117" soundLength="1"/><note id="C#_6" location="119" soundLength="1"/><note id="C_6" location="121" soundLength="1"/><note id="C_6" location="123" soundLength="1"/><note id="D_6" location="125" soundLength="1"/><note id="C#_6" location="127" soundLength="1"/><note id="C_6" location="129" soundLength="1"/><note id="D_6" location="133" soundLength="1"/><note id="C#_6" location="135" soundLength="1"/><note id="C_6" location="136" soundLength="1"/><note id="C_6" location="139" soundLength="1"/><note id="D_6" location="141" soundLength="1"/>
+  <note id="C_6" location="4" soundLength="4"/>
+  <note id="C#_6" location="12" soundLength="4"/>
+  <note id="D_6" location="20" soundLength="4"/>
+  <note id="C_6" location="36" soundLength="4"/>
+  <note id="D_6" location="52" soundLength="4"/>
+  <note id="C_6" location="68" soundLength="4"/>
+  <note id="C#_6" location="76" soundLength="4"/>
+  <note id="D_6" location="84" soundLength="4"/>
+  <note id="C#_6" location="92" soundLength="4"/>
+  <note id="C_6" location="100" soundLength="4"/>
+  <note id="C_6" location="108" soundLength="4"/>
+  <note id="D_6" location="116" soundLength="4"/>
+  <note id="C#_6" location="124" soundLength="4"/>
+  <note id="C_6" location="132" soundLength="4"/>
+  <note id="C#_6" location="140" soundLength="4"/>
+  <note id="D_6" location="148" soundLength="4"/>
+  <note id="C#_6" location="156" soundLength="4"/>
+  <note id="C_6" location="164" soundLength="4"/>
+  <note id="C#_6" location="188" soundLength="4"/>
+  <note id="C_6" location="196" soundLength="4"/>
+  <note id="C#_6" location="204" soundLength="4"/>
+  <note id="D_6" location="212" soundLength="4"/>
+  <note id="C#_6" location="220" soundLength="4"/>
+  <note id="C_6" location="228" soundLength="4"/>
+  <note id="C_6" location="236" soundLength="4"/>
+  <note id="D_6" location="244" soundLength="4"/>
+  <note id="C#_6" location="252" soundLength="4"/>
+  <note id="C_6" location="260" soundLength="4"/>
+  <note id="C#_6" location="268" soundLength="4"/>
+  <note id="D_6" location="276" soundLength="4"/>
+  <note id="C#_6" location="284" soundLength="4"/>
+  <note id="C_6" location="292" soundLength="4"/>
+  <note id="C_6" location="300" soundLength="4"/>
+  <note id="D_6" location="308" soundLength="4"/>
+  <note id="C_6" location="324" soundLength="4"/>
+  <note id="C#_6" location="332" soundLength="4"/>
+  <note id="D_6" location="340" soundLength="4"/>
+  <note id="C_6" location="348" soundLength="4"/>
+  <note id="C_6" location="356" soundLength="4"/>
+  <note id="C#_6" location="364" soundLength="4"/>
+  <note id="D_6" location="372" soundLength="4"/>
+  <note id="C_6" location="388" soundLength="4"/>
+  <note id="C#_6" location="396" soundLength="4"/>
+  <note id="D_6" location="404" soundLength="4"/>
+  <note id="C_6" location="412" soundLength="4"/>
+  <note id="C_6" location="420" soundLength="4"/>
+  <note id="C#_6" location="428" soundLength="4"/>
+  <note id="C_6" location="452" soundLength="4"/>
+  <note id="C#_6" location="460" soundLength="4"/>
+  <note id="D_6" location="468" soundLength="4"/>
+  <note id="C#_6" location="476" soundLength="4"/>
+  <note id="C_6" location="484" soundLength="4"/>
+  <note id="C_6" location="492" soundLength="4"/>
+  <note id="D_6" location="500" soundLength="4"/>
+  <note id="C#_6" location="508" soundLength="4"/>
+  <note id="C_6" location="516" soundLength="4"/>
+  <note id="D_6" location="532" soundLength="4"/>
+  <note id="C#_6" location="540" soundLength="4"/>
+  <note id="C_6" location="544" soundLength="4"/>
+  <note id="C_6" location="556" soundLength="4"/>
+  <note id="D_6" location="564" soundLength="4"/>
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="16" />
+<subSequance id="10" location="64" />
 
 </sequance>
 </sequances>
