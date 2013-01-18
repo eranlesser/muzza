@@ -66,7 +66,7 @@ package com.musicalInstruments.view.character
 		private  var _delayer:uint=0;
 		private function animate(e:Event):void{
 			_delayer++;
-			if(_delayer%8!=0){
+			if(_delayer%6!=0){
 				return;
 			}
 			_delayer=0;

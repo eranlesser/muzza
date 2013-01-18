@@ -137,9 +137,9 @@ package com.screens.view {
 				//setClock();
 			}
 			if(_timeSlider){
-			_timeControll.play(_timeSlider,_model.endAtFrame,{value:100});
+				_timeControll.play(_timeSlider,_model.endAtFrame,{value:100});
 			}else{
-			_timeControll.play(this,_model.endAtFrame,null);
+				_timeControll.play(this,_model.endAtFrame,null);
 			}
 			stage.frameRate=Rhythms.FRAME_RATE;
 			trace("frame rate is",stage.frameRate)
@@ -280,18 +280,18 @@ class TimeSlider extends Sprite{
 	public function TimeSlider(){
 		
 		addChild(AssetsManager.getAssetByName("TIMESLIDER_BACKGROUND.png"));
-		//var leftSlider:DisplayObject = addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_RIGHT_SEGMENT.png"));
-		//leftSlider.rotation=180;
-		//leftSlider.y=leftSlider.height+5;
+		var leftSlider:DisplayObject = addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_RIGHT_SEGMENT.png"));
+		leftSlider.scaleX=-1;
+		leftSlider.x=21;
 		_rightSeg=addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_RIGHT_SEGMENT.png"));
 		_bar=addChild(AssetsManager.getAssetByName("TIMESLIDER_BLUE_SEGMENT.png"));
-		_bar.y=_rightSeg.y=5;
-		_bar.x=10;
+		_bar.y=_rightSeg.y=leftSlider.y=5;
+		_bar.x=21;
 		_stroke=AssetsManager.getAssetByName("TIMESLIDER_STROKE_upper_layer.png");
 		addChild(_stroke);
 		var msk:DisplayObject=AssetsManager.getAssetByName("TIMESLIDER_BACKGROUND.png");
 		addChild(msk);
-		_bar.mask=msk;
+		mask=msk;
 		//msk.x=10;
 	}
 	private var _val:Number=0;
@@ -299,7 +299,7 @@ class TimeSlider extends Sprite{
 		return _val;
 	}
 	public function set value(val:Number):void{
-		_bar.width=Math.round(((_stroke.width)-22)*val/100);
+		_bar.width=Math.round(((_stroke.width)-_rightSeg.width-28)*val/100);
 		_rightSeg.x=_bar.width-1+_bar.x;
 		//_stroke.width=_rightSeg.x+_rightSeg.width;
 	}
