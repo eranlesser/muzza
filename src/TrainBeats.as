@@ -4,6 +4,7 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	import com.view.tools.AssetsManager;
 	
@@ -35,6 +36,8 @@ package {
 			start();
 			FileProxy.reset(this)
 			setDisplaySize();
+			Flurry.startSession("8R342X54FKMXSYP793P9");
+			
 			TestFlight.takeOff("0cba08ebd9f80c67ac7b65b412c0c284_MzU0ODgyMDExLTEyLTMxIDA4OjI2OjU4LjU1NzMyMw");
 			TestFlight.setDeviceIdentifier();
 		}

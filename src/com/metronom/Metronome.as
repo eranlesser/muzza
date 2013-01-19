@@ -93,10 +93,17 @@ package com.metronom
 			return _gtween;
 		}
 		
+		public function pause():void{
+			_gtween.paused = !_gtween.paused;
+		}
+		
 		public function set beginAtFrame(frame:uint):void{
 			_beginAtFrame = frame-1;//metronome dispaches first tick signal with frame+1 as value (because 0 is never played)
 		}
-		
+		public function toZero():void{
+			_gtween.paused=true;
+			_gtween.position=0;
+		}
 		
 		public function stop():void{
 			reset();
@@ -112,8 +119,8 @@ package com.metronom
 			_tickValue = _beginAtFrame*2;
 			_tickSignal.dispatch();
 			if(_gtween){
-				_gtween.end();
 				_gtween.onChange=null;
+				_gtween.end();
 				_gtween.init();
 			}
 		}

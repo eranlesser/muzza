@@ -105,7 +105,7 @@ public static var data:XML =
 <popups>
 <popup id="open_demo" width="250" x="85" y="520">
 <title>Demo</title>
-<content>Click "Demo" to hear a demo of what we are about to record together</content>
+<content>Click "Demo" to hear what we are about to record together</content>
 <direction>btm_left</direction>
 </popup>
 

@@ -8,6 +8,7 @@ package com.container.controller {
 	import com.screens.model.ScreensModel;
 	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.DisplayObject;
@@ -39,14 +40,20 @@ package com.container.controller {
 		public function start(mode:String):void{
 			_model.playMode=mode;
 			_view.addScreen(_model.currentScreen as DisplayObject);
+			_view.mouseEnabled=false;
+			_view.mouseChildren=false;
 			_model.currentScreen.start();
 			initNavigator();
 			if(!_demoShown){
 				_demoShown=true;
-				var tmr:Timer = new Timer(50,1);
+				var tmr:Timer = new Timer(100,1);
 				tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function onTimer(e:Event):void{
+					tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, onTimer);
 					_view.openDemo(_model.demoScreen,true);
 					_view.closeDemo(true);
+					_view.mouseEnabled=true;
+					_view.mouseChildren=true;
+					
 				});
 				tmr.start();
 			}
@@ -92,6 +99,7 @@ package com.container.controller {
 			
 			_navigator.state=_model.recordSession;
 			TestFlight.submitFeedback("go to "+scr);
+			Flurry.logEvent("go to "+scr);
 			
 			
 			//if(_model.currentScreen is RecordScreen)
@@ -103,14 +111,15 @@ package com.container.controller {
 		private function openDemo():void{
 			if(_view.isDemoOpen){
 				_view.closeDemo();
-				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
+				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				TestFlight.submitFeedback("close demo");
+				Flurry.logEvent("Close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);
-				_model.demoScreen.visible=true;
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
 				TestFlight.submitFeedback("open demo");
+				Flurry.logEvent("Open demo");
 			}
 		}
 		
@@ -121,6 +130,7 @@ package com.container.controller {
 			_model.reset();
 			PopUpsManager.closePopUp(true);
 			TestFlight.submitFeedback("go home");
+			Flurry.logEvent("go home");
 		}
 		
 		

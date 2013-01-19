@@ -60,12 +60,12 @@ package com.musicalInstruments.view.components
 			//addChild(_mark)
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+			//this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+			//this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
-			//addEventListener(TouchEvent.TOUCH_OVER, onTouchTap);
+			addEventListener(TouchEvent.TOUCH_ROLL_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
-			//addEventListener(TouchEvent.TOUCH_OUT, onTouchTapEnd);
+			addEventListener(TouchEvent.TOUCH_ROLL_OUT, onTouchTapEnd);
 		}
 		
 		private function onTouch(e:MouseEvent):void{
@@ -87,6 +87,7 @@ package com.musicalInstruments.view.components
 			e.updateAfterEvent();
 		}
 		private function onTouchTapEnd(e:TouchEvent):void{
+			if(!_isPressed){return;}
 			_isPressed=false;
 			unTuch.dispatch(this);
 			state="idle";

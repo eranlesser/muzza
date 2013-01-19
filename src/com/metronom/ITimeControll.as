@@ -8,5 +8,7 @@ package com.metronom {
 		function stop():void;
 		function set beginAtFrame(frame:uint):void;
 		function play(target:Object,duration:uint,props:Object):GTween;
+		function pause():void;
+		function toZero():void;
 	}
 }

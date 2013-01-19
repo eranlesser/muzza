@@ -18,6 +18,7 @@ package com.screens.recordScreenStates
 	import com.screens.view.AbstractScreen;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	import com.view.MetronomView;
 	
@@ -71,9 +72,11 @@ package com.screens.recordScreenStates
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
 						Session.instance.registerGoodrecoredScreen(_context.model);
 						TestFlight.passCheckpoint("Recorded GOOD");
+						Flurry.logEvent("Recorded GOOD");
 					}else{
 						PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
 						TestFlight.passCheckpoint("Recorded BAD");
+						Flurry.logEvent("Recorded BAD");
 					}
 				}
 			);
@@ -173,7 +176,7 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				//stop();
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(4,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(6,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			//for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";

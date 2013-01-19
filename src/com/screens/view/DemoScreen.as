@@ -7,6 +7,7 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
@@ -87,12 +88,12 @@ package com.screens.view {
 				nowPlaying.y=531+19;
 				
 				_playPauseBtn = new ToggleBut("pause.png","play.png");
-				_stageLayer.addChild(_playPauseBtn);
+				_guiLayer.addChild(_playPauseBtn);
 				_playPauseBtn.x=480;
 				_playPauseBtn.y=531+19+10;
-				//_playPauseBtn.clicked.add(onPlay);
+				_playPauseBtn.clicked.add(onPlay);
 				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_PRESSED.png");
-				_stageLayer.addChild(reloader);
+				_guiLayer.addChild(reloader);
 				reloader.x=_playPauseBtn.x+_playPauseBtn.width;
 				reloader.y=531+19+10;
 				reloader.clicked.add(reload);
@@ -116,9 +117,12 @@ package com.screens.view {
 		
 		
 		private function reload(str:String):void{
-			_timeControll.stop();
-			_timeSlider.value=(0);
+			_timeControll.toZero();
 			_playPauseBtn.state=1;
+		}
+		
+		private function onPlay(btnId:String):void{
+			_timeControll.pause();
 		}
 		
 		private function onClose(btnid:String):void{
@@ -238,9 +242,12 @@ package com.screens.view {
 			//Clock.getInstance().stop();
 			if(_timeSlider){
 				//_timeModel.tickSignal.remove(setTimeSlider);
+				if(_model.endAtFrame-10 <= _timeModel.currentTick){
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
+				_playPauseBtn.state=1;
 				TestFlight.submitFeedback("demo complete");
-				
+				Flurry.logEvent("demo complete");
+				}
 			}
 			
 		}

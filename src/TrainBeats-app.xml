@@ -262,5 +262,6 @@
 
 <extensions>
         <extensionID>com.testflightapp.sdk</extensionID>
+    <extensionID>com.sticksports.nativeExtensions.Flurry</extensionID>
     </extensions>
 </application>
