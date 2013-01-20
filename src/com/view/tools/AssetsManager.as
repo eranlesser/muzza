@@ -21,7 +21,12 @@ package com.view.tools
 			//OPEN
 			"<image path='assets/open/WAGON_TRAIN.png' />"+
 			"<image path='assets/open/STATION_WALL_TRIP.png' />"+
+			"<image path='assets/open/CREDITS_IDLE.png' />"+
+			"<image path='assets/open/CREDITS_PRESSED.png' />"+
 			"<image path='assets/wall.png' />"+
+			"<image path='assets/facebook.png' />"+
+			"<image path='assets/twitter.png' />"+
+			"<image path='assets/mail.png' />"+
 			//MENU
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
 			"<image path='assets/open/MOZART_PICTURE.png' />"+

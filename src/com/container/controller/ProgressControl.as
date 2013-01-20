@@ -40,11 +40,12 @@ package com.container.controller {
 		public function start(mode:String):void{
 			_model.playMode=mode;
 			_view.addScreen(_model.currentScreen as DisplayObject);
-			_view.mouseEnabled=false;
-			_view.mouseChildren=false;
+			
 			_model.currentScreen.start();
 			initNavigator();
 			if(!_demoShown){
+				_view.mouseEnabled=false;
+				_view.mouseChildren=false;
 				_demoShown=true;
 				var tmr:Timer = new Timer(100,1);
 				tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function onTimer(e:Event):void{
