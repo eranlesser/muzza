@@ -134,9 +134,9 @@ class Credits extends Sprite{
 			"<div> The Human Bass: Idan </div><br><br><br>" +
 			"<div> Special Thanks To:</ul></div><br><br><br>" +
 			"<div> Yair Katz, Yoran Bar: UX</div><br><br>" +
-			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br><br>" +
-			"<div> My loving and supporting parents </div><br><br><br><br>" +
-			"<div> Sima & Alma </div>"
+			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br><br>" 
+			//"<div> My loving and supporting parents </div><br><br><br><br>" +
+			//"<div> Sima & Alma </div>"
 			
 			;
 		tField.setTextFormat(new TextFormat("Vardena",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));

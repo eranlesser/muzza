@@ -12,9 +12,9 @@ package com.constants {
 		private var _demoClicked:Boolean=false;
 		private var _recordClicked:Boolean=false;
 		private static var _session:Session;
-		private var _recordedScreens:Vector.<RecordScreenModel>;
+		private var _recordedScreensGood:Vector.<RecordScreenModel>;
 		public function Session(enforcer:enforcer){
-			_recordedScreens = new Vector.<RecordScreenModel>();
+			_recordedScreensGood = new Vector.<RecordScreenModel>();
 		}
 		
 		public static function get instance():Session{
@@ -34,14 +34,16 @@ package com.constants {
 			_demoClicked = value;
 		}
 
-
+		public function get goodScreensLength():int{
+			return _recordedScreensGood.length;
+		}
 		
 		public function recordScreenGood(recordScreenModel:RecordScreenModel):Boolean{
-			return _recordedScreens.indexOf(recordScreenModel)>-1;
+			return _recordedScreensGood.indexOf(recordScreenModel)>-1;
 		}
 		
 		public function registerGoodrecoredScreen(scr:RecordScreenModel):void{
-			_recordedScreens.push(scr);
+			_recordedScreensGood.push(scr);
 		}
 		
 		

@@ -126,7 +126,7 @@ package com.screens.view {
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll();
-				_score = new ScorePannel(_model.instrumentModel.thumbNail);
+				_score = new ScorePannel(_model.instrumentModel.thumbNail,NoteSequanceModel(NotesInstrumentModel(_model.instrumentModel).getSequanceById(_model.learnedSequanceId)).notes.length);
 				addChild(_score);
 				_score.x=Dimentions.WIDTH-_score.width-12;
 				_score.y=(strip.height-_score.height)/2-2;
@@ -245,8 +245,10 @@ class ScorePannel extends Sprite{
 	
 	private var _scoreField:TextField;
 	private var _score:uint=0;
-	public function ScorePannel(thumbNail:String){
+	private var _total:uint;
+	public function ScorePannel(thumbNail:String,total:uint){
 		init(thumbNail);
+		_total=total;
 	}
 	
 	private function init(thumbNail:String):void{
@@ -266,7 +268,7 @@ class ScorePannel extends Sprite{
 	
 	public function addScore(val:int):void{
 		_score+=val;
-		_scoreField.text = _score+"";
+		_scoreField.text = _score+" / "+_total;
 	}
 	
 	public function get score():uint{
@@ -275,7 +277,7 @@ class ScorePannel extends Sprite{
 	
 	public function reset():void{
 		_score=0;
-		_scoreField.text=_score+"";
+		_scoreField.text=_score+" / "+_total;
 	}
 	
 	private function getIcon(thumbNail:String):DisplayObject{

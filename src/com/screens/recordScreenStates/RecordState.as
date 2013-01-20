@@ -22,6 +22,8 @@ package com.screens.recordScreenStates
 	import com.testflightapp.sdk.TestFlight;
 	import com.view.MetronomView;
 	
+	import flash.events.Event;
+	
 	import org.osflash.signals.Signal;
 
 	public class RecordState implements IRecordScreenState
@@ -30,8 +32,11 @@ package com.screens.recordScreenStates
 		protected var _context:		RecordScreenStateController;
 		protected var _complete:		Signal = new Signal();
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
-		private var _preTicker:MetronomView;
-		private var _isRecording:Boolean = false;
+		private var _toPlayNotes:Vector.<DroppingNote>;
+		private var _framesDelay:uint=0;
+		private var _goodNotes:uint=0;
+		private var _practiceMode:Boolean;
+		private var _tween:GTween;
 		public static const fixNum:uint=4;
 		
 		public function RecordState(stateController:RecordScreenStateController){
@@ -56,7 +61,6 @@ package com.screens.recordScreenStates
 			_context.notes.stop();
 			_context.recordChannelController.stop();
 			//_preTicker.active=false;
-			_isRecording = false;
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				noteSequencePlayer.stop();
@@ -68,7 +72,7 @@ package com.screens.recordScreenStates
 			content = strReplace(content,"$total", _context.recordChannelController.length.toString());
 			PopUpsManager.openPopUp(PopUpsManager.END_RECORD,title,content).nextSignal.addOnce(
 				function():void{
-					if(_context.score/_context.recordChannelController.length>3/4){
+					if(_context.score/_context.recordChannelController.length>5/8){
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
 						Session.instance.registerGoodrecoredScreen(_context.model);
 						TestFlight.passCheckpoint("Recorded GOOD");
@@ -92,7 +96,7 @@ package com.screens.recordScreenStates
 			if(score==total){
 				fb = "Awsome !";
 			}
-			else if(score/total>3/4){
+			else if(score/total>5/8){
 				fb = "Great Job";
 			}
 			else if(score/total>1/2){
@@ -132,11 +136,24 @@ package com.screens.recordScreenStates
 					_context.notes.marc(curNote.value,true);
 					//_context.recordChannelController.fix(noteId,curNote.location,5);
 					match = true;
+					if(_tween.paused){
+						_tween.paused=false;
+						if(_framesDelay<30){
+							_goodNotes++;
+							if(_goodNotes>8){
+								_practiceMode=false;
+							}
+						}
+						_context.instrumentRecorder.removeEventListener(Event.ENTER_FRAME,countFrames);
+						_framesDelay=0;
+					}
 					break;
 				}
 			}
-			if(!match)
+			if(!match){
 				_context.notes.marc(NotesInstrumentModel(_context.model.instrumentModel).getNoteById(noteId).value,false);
+				_goodNotes--;				
+			}
 		}
 		
 		public function activate():void{
@@ -159,29 +176,34 @@ package com.screens.recordScreenStates
 			_tween.onComplete = stop;
 			_context.notes.start();
 			_context.resetScore();
+			_practiceMode = (Session.instance.goodScreensLength==0);
+			_goodNotes=0;
 		}
 		
-		private var _tween:GTween;
 		private function stop(t:GTween):void{
 			_complete.dispatch();
 		}
-		
-		private var _toPlayNotes:Vector.<DroppingNote>;
+		private function countFrames(e:Event):void{
+			_framesDelay++;
+		}
 		
 		private function onTimerTick():void{
-			if(!_isRecording){
-				_isRecording = true;
-				//_context.frameRate = Rhythms.DELAY_COUNT*((Levels.CURRENT_LEVEL)/100)
-			}
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				//stop();
 			}
 			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(6,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
-			//for each(var curNote:DroppingNote in _toPlayNotes){
+			if(_practiceMode){
+			for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
-			//}
+				if(curNote.location==_timeModel.currentTick){
+					_tween.paused=true;
+					_framesDelay=0;
+					_context.instrumentRecorder.addEventListener(Event.ENTER_FRAME,countFrames);
+				}
+			}
+			}
 			
 			//if(curNote!=_currentNote){
 			//	_currentNote=curNote;

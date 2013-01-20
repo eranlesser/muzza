@@ -25,7 +25,6 @@ package com.screens.view.components.notes
 		private var _notesMask:			Shape;
 		private var _instrumentY:		uint;
 		private var _pointToBasePoint:	Point;
-		private var _tween:				GTween;
 		public static var _notesGap:int;
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle,notesLength:uint){
@@ -53,8 +52,6 @@ package com.screens.view.components.notes
 		}
 		
 		public function stop():void{
-			if(_tween)
-			_tween.end();
 			_notesContainer.y=0;
 		}
 		
@@ -70,7 +67,7 @@ package com.screens.view.components.notes
 		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
 			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
-			note.y=_instrumentY-note.location*_notesGap;
+			note.y=_instrumentY-note.location*_notesGap+15;
 			if(xx>0){
 				note.x=xx-note.width/2;
 			}else{
