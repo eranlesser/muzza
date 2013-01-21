@@ -36,7 +36,6 @@ package com.musicalInstruments.model.sequances
 			var note:SequancedNote = new SequancedNote(noteId,location,soundLength,octave);
 			_notes.push(note);
 			_added.dispatch(note);
-			trace(noteId,location)
 			return note;
 		}
 		

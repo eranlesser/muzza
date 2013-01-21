@@ -262,6 +262,6 @@
 
 <extensions>
         <extensionID>com.testflightapp.sdk</extensionID>
-    <extensionID>com.sticksports.nativeExtensions.Flurry</extensionID>
+    <extensionID>com.freshplanet.AirFlurry</extensionID>
     </extensions>
 </application>

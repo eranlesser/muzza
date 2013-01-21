@@ -7,6 +7,7 @@ package com.musicalInstruments.view.components {
 	import flash.events.IOErrorEvent;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.net.URLRequest;
 	
 	import org.osflash.signals.Signal;
@@ -17,6 +18,7 @@ package com.musicalInstruments.view.components {
 		private var _sound:		Sound = new Sound();
 		private var _metronom:	ITimeModel;
 		private var _soundFile:	String;
+		public var soundComplete:Signal=new Signal();
 		public var ready:Signal = new Signal();
 		
 		
@@ -28,16 +30,19 @@ package com.musicalInstruments.view.components {
 			_metronom = Metronome.getTimeModel();
 			loadSound();
 		}
-		public var soundComplete:Signal=new Signal();
-		public function play():SoundChannel{
+		
+		public function play(volume:Number):SoundChannel{
 			var channel:SoundChannel = _sound.play();
+			if(volume<1){
+				var soundTransform:SoundTransform = new SoundTransform(volume);
+				channel.soundTransform = soundTransform;
+			}
 			channel.addEventListener(Event.SOUND_COMPLETE,
 				function onSoundComplete(e:Event):void{
 					channel.removeEventListener(Event.SOUND_COMPLETE,onSoundComplete);
 					soundComplete.dispatch();
 				}
 				);
-			//trace("play "+_soundFile)
 			return channel;
 		}
 		

@@ -87,10 +87,6 @@ package com.musicalInstruments.view.instrument {
 			return null;
 		}
 		
-		public function play(sequanceId:uint,beginAtFrame:uint):Boolean{
-			_player.play(_model.getSequanceById(sequanceId) as NoteSequanceModel);
-			return false;
-		}
 		
 		public function stop():void{
 			_player.stop();
@@ -119,7 +115,7 @@ package com.musicalInstruments.view.instrument {
 	
 		private function onTouch(comp:MusicalInstrumentComponent):void{
 			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(comp.noteId);
-			note.player.play();
+			note.player.play(1);
 			animateNote(comp.noteId , "play");
 			comp.startLocation = Metronome.getTimeModel().currentTick;
 			_notePlayed.dispatch(comp.noteId);

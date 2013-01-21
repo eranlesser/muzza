@@ -67,11 +67,11 @@ package com.screens.view.components.notes
 		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
 			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
 			_notesContainer.addChild(note);
-			note.y=_instrumentY-note.location*_notesGap+15;
+			note.y=_instrumentY-note.location*_notesGap+16.5;
 			if(xx>0){
 				note.x=xx-note.width/2;
 			}else{
-				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad;
+				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-1.75;
 			}
 			_notes.push(note);
 			if(_pointToBasePoint){
@@ -113,7 +113,7 @@ package com.screens.view.components.notes
 		}
 		private var _noteTargets:Dictionary = new Dictionary();
 		public function drawNoteTarget(noteValue:uint,xx:int,yy:int,yOffset:int,type:String):void{
-			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill.png");
+			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill2.png");
 			_bg.addChild(circ);
 			if(xx>0){
 				circ.x=xx-circ.width/2;
@@ -122,7 +122,7 @@ package com.screens.view.components.notes
 			}
 			circ.y=yy+yOffset;
 			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
-			_top.addChild(circTop);
+			//_top.addChild(circTop);
 			if(xx>0){
 				circTop.x=xx-circTop.width/2;
 			}else{
@@ -136,9 +136,9 @@ package com.screens.view.components.notes
 		public function marc(value:uint,good:Boolean):void{
 			var feedBackAsset:DisplayObject;
 			if(good){
-				feedBackAsset = AssetsManager.getAssetByName("insCircleRight.png");
+				feedBackAsset = AssetsManager.getAssetByName("insCircleRight2.png");
 			}else{
-				feedBackAsset = AssetsManager.getAssetByName("insCircleWrong.png");
+				feedBackAsset = AssetsManager.getAssetByName("insCircleWrong2.png");
 			}
 			var idleAsset:DisplayObject = _noteTargets[value];
 			_top.addChild(feedBackAsset);
@@ -181,12 +181,12 @@ package com.screens.view.components.notes
 			_bg=new Sprite();
 			
 			_bg.graphics.beginFill(0x33CCCC,0);
-			_bg.graphics.drawRect(0,0,size.width,size.height)
+			_bg.graphics.drawRect(0,0,size.width,size.height+8)
 			addChild(_bg);
 			
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)
-			_notesMask.graphics.drawRect(0,30,size.width,size.height);
+			_notesMask.graphics.drawRect(0,30,size.width,size.height+15);
 			_notesMask.graphics.endFill();
 			addChild(_notesMask);
 			

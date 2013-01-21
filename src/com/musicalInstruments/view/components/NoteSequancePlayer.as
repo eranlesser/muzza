@@ -27,6 +27,7 @@ package com.musicalInstruments.view.components {
 		private var _isAnimating:		Boolean=false;
 		private var _isPlaying:			Boolean=false;
 		private var _character:			IAnimateable;
+		private var _volume:Number;
 		
 		public var animationStateChanged:Signal;
 		public var sequenceDone:Signal;
@@ -47,8 +48,9 @@ package com.musicalInstruments.view.components {
 			return NotesInstrumentModel(_noteFetcher).getSequanceById(id) as NoteSequanceModel;
 		}
 		
-		public function play(sequance:NoteSequanceModel):void{
+		public function play(sequance:NoteSequanceModel,volume:Number):void{
 			_currenSequance = sequance;
+			_volume=volume;
 			if(!_isPlaying){
 				_timeModel.tickSignal.add(onMetronomeTick);
 				_timeModel.tickSignal.add(onMetronomeUntick);
@@ -112,7 +114,7 @@ package com.musicalInstruments.view.components {
 					_noteFetcher.octave=notes[0].octave;
 					for each (var note:SequancedNote in notes){
 						var noteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
-						noteModel.player.play();
+						noteModel.player.play(_volume);
 						_playingNote = note;
 						notePlayed.dispatch(_playingNote.noteId);
 						trace("",_playingNote.noteId,"<<",_timeModel.currentTick)

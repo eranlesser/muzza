@@ -4,6 +4,7 @@ package com.screens.view
 	import com.gui.hat.Hat;
 	import com.inf.PopUpsManager;
 	import com.musicalInstruments.model.InstrumentModel;
+	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.character.Musician;
 	import com.musicalInstruments.view.character.PlayMusician;
@@ -14,7 +15,9 @@ package com.screens.view
 	import com.utils.Claps;
 	
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
+	import flash.text.TextField;
 	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
@@ -33,10 +36,28 @@ package com.screens.view
 			addToolBar();
 		}
 		
+		private function onClick(e:Event):void{
+			for each(var instrumentModel:InstrumentModel in _model.instruments){
+				var tfield:TextField = new TextField();
+				tfield.multiline=true;
+				tfield.wordWrap=true;
+				tfield.width=Dimentions.WIDTH;
+				tfield.height=Dimentions.HEIGHT;
+				tfield.text="";
+				tfield.background=true
+				if(instrumentModel.getSequanceById(_model.playSequance)){
+					for each(var note:SequancedNote in (instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes){
+					tfield.text = tfield.text+note.noteId+" " + note.location+" , ";
+					}
+				}
+				addChild(tfield);
+				//trace((instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes)
+			}
+		}
 		
 		override public function start():void{
 			if(!isInited){
-				
+				addEventListener(MouseEvent.CLICK,onClick);
 			}else{
 				for each(var instrumentModel:InstrumentModel in _model.instruments){
 					var onStage:Boolean = false;
@@ -56,16 +77,9 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.start();
 			}
-			var tmr:Timer=new Timer(1000,1);
-			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
-			tmr.start();
 			PopUpsManager.closePopUp(true);
 		}
 		
-		private function onTimerComplete(e:Event):void{
-			Timer(e.target).removeEventListener(TimerEvent.TIMER_COMPLETE,onTimerComplete);
-			//_representation.start();
-		}
 		
 		override public function stop():void{
 			super.stop();
@@ -151,9 +165,9 @@ class ToolBar extends Sprite{
 	
 	private function init():void{
 		//var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
-		var backBtn:Btn = new Btn("CLOSE_BUTTON_IDLE.png","CLOSE_BUTTON_SELECTED.png");
+		var backBtn:Btn = new Btn("exit_idle.png","exit_press.png");
 		addChild(backBtn);
-		backBtn.x=Dimentions.WIDTH-backBtn.width-8;
+		backBtn.x=1;
 		backBtn.y=8;
 		backBtn.clicked.add(backClicked);
 //		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
@@ -176,6 +190,11 @@ class ToolBar extends Sprite{
 //		_mouse.x=700;
 //		_mouse.visible=false;
 			
+	}
+	
+	
+	override public function set visible(value:Boolean):void{
+		trace("b");
 	}
 	
 	private function onColapse(str:String):void{

@@ -3,6 +3,7 @@ package com.screens.recordScreenStates
 	import com.constants.Rhythms;
 	import com.constants.Session;
 	import com.constants.States;
+	import com.freshplanet.nativeExtensions.Flurry;
 	import com.gskinner.motion.GTween;
 	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
@@ -18,7 +19,6 @@ package com.screens.recordScreenStates
 	import com.screens.view.AbstractScreen;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	import com.view.MetronomView;
 	
@@ -38,6 +38,7 @@ package com.screens.recordScreenStates
 		private var _practiceMode:Boolean;
 		private var _tween:GTween;
 		public static const fixNum:uint=4;
+		public static const PASS_PERCENT:Number = 6/8;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -72,15 +73,17 @@ package com.screens.recordScreenStates
 			content = strReplace(content,"$total", _context.recordChannelController.length.toString());
 			PopUpsManager.openPopUp(PopUpsManager.END_RECORD,title,content).nextSignal.addOnce(
 				function():void{
-					if(_context.score/_context.recordChannelController.length>5/8){
+					if(_context.score/_context.recordChannelController.length>PASS_PERCENT){
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
 						Session.instance.registerGoodrecoredScreen(_context.model);
 						TestFlight.passCheckpoint("Recorded GOOD");
-						Flurry.logEvent("Recorded GOOD");
+						Flurry.getInstance().logEvent("Recorded GOOD");
 					}else{
-						PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
+						var tryAgainPopUp:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.TRY_AGAIN);
+						var hitsContent:String = strReplace(tryAgainPopUp.content,"$hits",Math.ceil(_context.notesLength*PASS_PERCENT).toString());
+						PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN,"",hitsContent)
 						TestFlight.passCheckpoint("Recorded BAD");
-						Flurry.logEvent("Recorded BAD");
+						Flurry.getInstance().logEvent("Recorded BAD");
 					}
 				}
 			);
@@ -96,7 +99,7 @@ package com.screens.recordScreenStates
 			if(score==total){
 				fb = "Awsome !";
 			}
-			else if(score/total>5/8){
+			else if(score/total>PASS_PERCENT){
 				fb = "Great Job";
 			}
 			else if(score/total>1/2){
@@ -111,7 +114,7 @@ package com.screens.recordScreenStates
 		private function setBackUps():void{
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
 				//if(_context.notes.backUpsBut.selected){
-					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.recordeSequanceId));
+					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.recordeSequanceId),0.5);
 				//}else{
 				//	noteSequencePlayer.stop();
 				//}
@@ -138,10 +141,12 @@ package com.screens.recordScreenStates
 					match = true;
 					if(_tween.paused){
 						_tween.paused=false;
-						if(_framesDelay<30){
+						if(_framesDelay<22){
 							_goodNotes++;
-							if(_goodNotes>8){
+							if(_goodNotes>14){
 								_practiceMode=false;
+								TestFlight.submitFeedback("practicemode false at "+curNote.location);
+								Flurry.getInstance().logEvent("practicemode false at "+curNote.location);
 							}
 						}
 						_context.instrumentRecorder.removeEventListener(Event.ENTER_FRAME,countFrames);
@@ -176,7 +181,7 @@ package com.screens.recordScreenStates
 			_tween.onComplete = stop;
 			_context.notes.start();
 			_context.resetScore();
-			_practiceMode = (Session.instance.goodScreensLength==0);
+			_practiceMode = (Session.instance.goodScreensLength<3 && !Session.instance.recordScreenGood(_context.model)) ;
 			_goodNotes=0;
 		}
 		

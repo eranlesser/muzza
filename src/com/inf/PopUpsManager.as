@@ -1,6 +1,6 @@
 package com.inf
 {
-	import com.sticksports.nativeExtensions.flurry.Flurry;
+	import com.freshplanet.nativeExtensions.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.Sprite;
@@ -60,7 +60,8 @@ package com.inf
 					}
 					_popUp.visible = true;
 					_popUp.open();
-					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN && id != TRY_AGAIN&& id != CLOSE_DEMO&& id != PRESS_RECORD){
+					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN && id != TRY_AGAIN&& id != CLOSE_DEMO&& id != PRESS_RECORD && 
+						id !=DRUMS && id!= BASS){
 						closePopUp();
 					}else{
 						_visitedPopUps.push(_popUp);
@@ -68,7 +69,7 @@ package com.inf
 				}
 			}
 			TestFlight.submitFeedback("open popup "+id+" , "+_thumbNail);
-			Flurry.logEvent("open popup "+id+" , "+_thumbNail);
+			Flurry.getInstance().logEvent("open popup "+id+" , "+_thumbNail);
 			return _popUp;
 		}
 		

@@ -47,7 +47,7 @@ public static var data:XML =
 
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="372">
+	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="370">
 	<RecordedX>102.5</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
@@ -60,7 +60,7 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454" notesTargetYOffset="8" >
+	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454" notesTargetYOffset="4" >
 	<RecordedX>308</RecordedX>
 	<RecordedY>458</RecordedY>
 	</playerInstrument>
@@ -73,7 +73,7 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="425">
+	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="424">
 	<RecordedX>178</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
@@ -122,7 +122,7 @@ public static var data:XML =
 </popup>
 <popup id="try_again" width="280" x="250" y="90" >
 <title>Try Again</title>
-<content>Click "Record" when you are ready to begin recording</content>
+<content>Try to get at least $hits correct notes to go to the next level</content>
 <direction>top_right</direction>
 </popup>
 <popup id="end_record" width="280" x="372" y="250" >

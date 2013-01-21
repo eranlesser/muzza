@@ -223,6 +223,9 @@ package com.screens.view {
 		public function get score():uint{
 			return _score.score;
 		}
+		public function get notesLength():uint{
+			return _score.total;
+		}
 		public function addScore(val:int):void{
 			_score.addScore(val);
 		}
@@ -247,22 +250,22 @@ class ScorePannel extends Sprite{
 	private var _score:uint=0;
 	private var _total:uint;
 	public function ScorePannel(thumbNail:String,total:uint){
-		init(thumbNail);
 		_total=total;
+		init(thumbNail);
 	}
 	
 	private function init(thumbNail:String):void{
-		this.graphics.beginFill(0x333333);
-		this.graphics.drawRect(0,0,150,40);
+		this.graphics.beginFill(0x323232);
+		this.graphics.drawRoundRect(0,0,150,40,6,6);
 		this.graphics.endFill();
 		_scoreField = new TextField();
-		_scoreField.defaultTextFormat = new TextFormat("Arial",22,0xFFFFFF,true,null,null,null,null,TextAlign.CENTER);
+		_scoreField.defaultTextFormat = new TextFormat("Verdana",26,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER);
 		_scoreField.width = 100;
-		_scoreField.height = 30;
-		_scoreField.x=40;
-		_scoreField.y=5;
+		_scoreField.height = 40;
+		_scoreField.x=45;
+		_scoreField.y=0;
 		addChild(_scoreField);
-		_scoreField.text=_score+"";
+		reset();
 		addChild(getIcon(thumbNail));
 	}
 	
@@ -278,6 +281,10 @@ class ScorePannel extends Sprite{
 	public function reset():void{
 		_score=0;
 		_scoreField.text=_score+" / "+_total;
+	}
+	
+	public function get total():uint{
+		return _total;
 	}
 	
 	private function getIcon(thumbNail:String):DisplayObject{

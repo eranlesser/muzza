@@ -38,7 +38,6 @@ package com.musicalInstruments.palleta.views
 			}
 		}
 		private  function onSoundComplete(id:String):void{
-			trace(">>",id,_tick)
 			noteStopped.dispatch(id,_tick,2,0);
 		}
 	}

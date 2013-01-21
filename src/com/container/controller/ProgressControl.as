@@ -2,13 +2,13 @@ package com.container.controller {
 	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
+	import com.freshplanet.nativeExtensions.Flurry;
 	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
 	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
 	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.DisplayObject;
@@ -100,7 +100,7 @@ package com.container.controller {
 			
 			_navigator.state=_model.recordSession;
 			TestFlight.submitFeedback("go to "+scr);
-			Flurry.logEvent("go to "+scr);
+			Flurry.getInstance().logEvent("go to "+scr);
 			
 			
 			//if(_model.currentScreen is RecordScreen)
@@ -114,13 +114,13 @@ package com.container.controller {
 				_view.closeDemo();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				TestFlight.submitFeedback("close demo");
-				Flurry.logEvent("Close demo");
+				Flurry.getInstance().logEvent("Close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
 				TestFlight.submitFeedback("open demo");
-				Flurry.logEvent("Open demo");
+				Flurry.getInstance().logEvent("Open demo");
 			}
 		}
 		
@@ -131,7 +131,7 @@ package com.container.controller {
 			_model.reset();
 			PopUpsManager.closePopUp(true);
 			TestFlight.submitFeedback("go home");
-			Flurry.logEvent("go home");
+			Flurry.getInstance().logEvent("go home");
 		}
 		
 		

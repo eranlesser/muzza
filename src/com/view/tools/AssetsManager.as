@@ -84,9 +84,9 @@ package com.view.tools
 			//BOTTLES
 			"<image path='assets/instruments/insCircle.png' />"+
 			"<image path='assets/instruments/insCircleDrop.png' />"+
-			"<image path='assets/instruments/insCircleFill.png' />"+
-			"<image path='assets/instruments/insCircleRight.png' />"+
-			"<image path='assets/instruments/insCircleWrong.png' />"+
+			"<image path='assets/instruments/insCircleFill2.png' />"+
+			"<image path='assets/instruments/insCircleRight2.png' />"+
+			"<image path='assets/instruments/insCircleWrong2.png' />"+
 			"<image path='assets/instruments/insRect.png' />"+
 			"<image path='assets/instruments/insRectDrop.png' />"+
 			"<image path='assets/instruments/insRectFill.png' />"+
@@ -266,6 +266,8 @@ package com.view.tools
 			"<image path='assets/gui/next_idle.png' />"+
 			"<image path='assets/gui/next_press.png' />"+
 			"<image path='assets/gui/swap.jpg' />"+
+			"<image path='assets/gui/exit_idle.png' />"+
+			"<image path='assets/gui/exit_press.png' />"+
 
 			"<image path='assets/gui/btn_home.png' />"+
 			"<image path='assets/gui/icon_current_screen.png' />"+

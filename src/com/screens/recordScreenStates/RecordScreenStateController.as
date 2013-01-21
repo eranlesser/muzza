@@ -57,6 +57,9 @@ package com.screens.recordScreenStates
 		public function get score():uint{
 			return _recordScreen.score;
 		}
+		public function get notesLength():uint{
+			return _recordScreen.notesLength;
+		}
 		
 		
 		public function start():void{
