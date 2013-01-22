@@ -36,28 +36,28 @@ package com.screens.view
 			addToolBar();
 		}
 		
-		private function onClick(e:Event):void{
-			for each(var instrumentModel:InstrumentModel in _model.instruments){
-				var tfield:TextField = new TextField();
-				tfield.multiline=true;
-				tfield.wordWrap=true;
-				tfield.width=Dimentions.WIDTH;
-				tfield.height=Dimentions.HEIGHT;
-				tfield.text="";
-				tfield.background=true
-				if(instrumentModel.getSequanceById(_model.playSequance)){
-					for each(var note:SequancedNote in (instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes){
-					tfield.text = tfield.text+note.noteId+" " + note.location+" , ";
-					}
-				}
-				addChild(tfield);
-				//trace((instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes)
-			}
-		}
+//		private function onClick(e:Event):void{
+//			for each(var instrumentModel:InstrumentModel in _model.instruments){
+//				var tfield:TextField = new TextField();
+//				tfield.multiline=true;
+//				tfield.wordWrap=true;
+//				tfield.width=Dimentions.WIDTH;
+//				tfield.height=Dimentions.HEIGHT;
+//				tfield.text="";
+//				tfield.background=true
+//				if(instrumentModel.getSequanceById(_model.playSequance)){
+//					for each(var note:SequancedNote in (instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes){
+//					tfield.text = tfield.text+note.noteId+" " + note.location+" , ";
+//					}
+//				}
+//				addChild(tfield);
+//				//trace((instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes)
+//			}
+//		}
 		
 		override public function start():void{
 			if(!isInited){
-				addEventListener(MouseEvent.CLICK,onClick);
+				//addEventListener(MouseEvent.CLICK,onClick);
 			}else{
 				for each(var instrumentModel:InstrumentModel in _model.instruments){
 					var onStage:Boolean = false;

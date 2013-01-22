@@ -28,9 +28,14 @@ package com.screens.view
 			_songMenu=new SongsMenu();
 			_songMenu.data=XML(Data.xml.lessons);
 			addChild(_songMenu);
+			_songMenu.ready.addOnce(addCredits);
 			addChild(AssetsManager.getAssetByName("WAGON_TRAIN.png"));
 			//_songMenu.y=200;
 			//_songMenu.x=320;
+			
+		}
+		
+		private function addCredits():void{
 			var creditsBut:Btn = new Btn("CREDITS_IDLE.png","CREDITS_PRESSED.png");
 			addChild(creditsBut);
 			creditsBut.x=140;
@@ -54,7 +59,9 @@ package com.screens.view
 	}
 }
 import com.constants.Dimentions;
+import com.freshplanet.nativeExtensions.Flurry;
 import com.gskinner.motion.GTween;
+import com.mailchimp.subscribe;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
@@ -63,7 +70,10 @@ import flash.display.Shape;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
+import flash.net.URLRequest;
+import flash.net.navigateToURL;
 import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
 import flash.text.TextFieldType;
 import flash.text.TextFormat;
 import flash.text.TextInteractionMode;
@@ -87,14 +97,14 @@ class Credits extends Sprite{
 	private function onMouseUp(e:Event):void{
 		_tween.paused=false;
 	}
-	
+	private var email:TextField = new TextField();
 	private function addSubscribe():void{
 //		var tField:TextField = new TextField();
 //		tField.width=400;
 //		tField.height=400;
 //		tField.multiline=true;
 //		tField.htmlText="<div>Exciting new features are comming soon, <br> subscribe for updates: </div>"
-//		tField.setTextFormat(new TextFormat("Vardena",18,0xFFFFFF,null,null,null,null,null,TextAlign.LEFT));
+//		tField.setTextFormat(new TextFormat("Verdana",18,0xFFFFFF,null,null,null,null,null,TextAlign.LEFT));
 //		
 //		addChild(tField);
 //		tField.x=70;
@@ -109,18 +119,68 @@ class Credits extends Sprite{
 //		addChild(email);
 //		email.x=70;
 //		email.y=140;
-		var fb:DisplayObject=AssetsManager.getAssetByName("facebook.png");
+		var line:Shape = new Shape();
+		line.graphics.lineStyle(3,0x111111,0.8);
+		line.graphics.lineTo(880,0);
+		line.graphics.moveTo(0,0);
+		addChild(line);
+		line.y=460;
+		line.x=(Dimentions.WIDTH-line.width)/2;
+		
+		var tField:TextField = new TextField();
+		addChild(tField);
+		tField.autoSize = TextFieldAutoSize.LEFT;
+		tField.text = "Stay tuned, we have exiting updates comming soon:";
+		tField.x=70;
+		tField.y=495;
+		tField.setTextFormat(new TextFormat("Verdana",18,0xFFFFFF,null,null,null,null,null,TextAlign.LEFT));
+		
+		
+		email.type = TextFieldType.INPUT;
+		email.border=true;
+		email.borderColor=0x111111;
+		email.background=true;
+		email.backgroundColor=0xFFFFFF;
+		//email.background=true;
+		email.width=220;
+		email.height=30;
+		addChild(email);
+		email.x=565;
+		email.y=495;
+		email.defaultTextFormat = (new TextFormat("Verdana",16,0x111111,null,null,null,null,null,TextAlign.LEFT));
+		var fb:Btn=new Btn("facebook.png","facebook.png");
 		addChild(fb);
-		fb.x=90;
+		fb.x=905;
 		fb.y=495;
-		var tw:DisplayObject=AssetsManager.getAssetByName("twitter.png");
+		fb.clicked.add(onFaceBook);
+		var tw:Btn=new Btn("twitter.png","twitter.png");
 		addChild(tw);
-		tw.x=160;
+		tw.x=850;
 		tw.y=495;
-		var mail:DisplayObject=AssetsManager.getAssetByName("mail.png");
+		tw.clicked.add(onTwitter);
+		var mail:Btn=new Btn("mail.png","mail.png");
 		addChild(mail);
-		mail.x=520;
+		mail.x=790;
 		mail.y=495;
+		mail.clicked.add(onMail);
+	}
+	
+	private function onFaceBook(id:String):void{
+		// navigate to http://www.facebook.com/TrainBeats
+		var url:URLRequest = new URLRequest("http://www.facebook.com/TrainBeats");
+		navigateToURL(url, "_blank");
+	}
+	private function onTwitter(id:String):void{
+		// https://twitter.com/TrainBeats
+		var url:URLRequest = new URLRequest("https://twitter.com/TrainBeats");
+		navigateToURL(url, "_blank");
+	}
+	private function onMail(id:String):void{
+		if(email.text!=""){
+			var sucscribe:subscribe = new subscribe("us6","81ad977f3622acbeeb9f9db111625ea0-us6","97a5200186",email.text);
+			Flurry.getInstance().logEvent("email added "+email.text);
+			email.text="";
+		}
 	}
 	
 	private function addPeople():void{
@@ -134,12 +194,12 @@ class Credits extends Sprite{
 			"<div> The Human Bass: Idan </div><br><br><br>" +
 			"<div> Special Thanks To:</ul></div><br><br><br>" +
 			"<div> Yair Katz, Yoran Bar: UX</div><br><br>" +
-			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br><br>" 
-			//"<div> My loving and supporting parents </div><br><br><br><br>" +
-			//"<div> Sima & Alma </div>"
+			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br>" +
+			"<div> Dear supporting parents </div><br><br><br><br>" +
+			"<div> Sima & Alma </div>"
 			
 			;
-		tField.setTextFormat(new TextFormat("Vardena",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
+		tField.setTextFormat(new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
 		
 		addChild(tField);
 		tField.x=(Dimentions.WIDTH-tField.width)/2;
@@ -156,7 +216,7 @@ class Credits extends Sprite{
 	}
 	protected function init():void{
 			var bg:Shape = new Shape();
-			bg.graphics.beginFill(0x333333);
+			bg.graphics.beginFill(0x323232);
 			bg.graphics.drawRect(50,30,920,560);
 			bg.graphics.endFill();
 			addChild(bg);

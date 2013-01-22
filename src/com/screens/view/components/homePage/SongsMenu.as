@@ -84,10 +84,13 @@ package com.screens.view.components.homePage
 				var wtween:GTween = new GTween(_wallLayer,6,{x:0},{ease:Circular.easeInOut});
 				var tween:GTween = new GTween(_thumbsLayer,6,{x:0},{ease:Circular.easeInOut});
 				var ptween:GTween = new GTween(_poleLayer,7.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
+				ptween.onComplete = function dispatchComplete(t:GTween):void{
+					ready.dispatch();
+				}
 			});
 			
 		}
-		
+		public var ready:Signal = new Signal();
 		private function addTutoiralPannel():void{
 			var tutPan:TutorialPannel = new TutorialPannel();
 			_thumbsLayer.addChild(tutPan);
