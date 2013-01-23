@@ -75,8 +75,11 @@ package com.representation.controller {
 			_instrument.noteStopped.remove(noteAdded);
 		}
 		
-		public function get length():uint{
+		public function get learnedLength():uint{
 			return (_learnedSequance as NoteSequanceModel).notes.length;
+		}
+		public function get recordedLength():uint{
+			return (_recordedSequance as RecordableNotesSequance).length;
 		}
 		
 		public function start():void{

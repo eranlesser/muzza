@@ -15,13 +15,13 @@ public static var data:XML =
 	
 <components notesGap="140" leftPad="325">
 
-<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='280' y='0'>
+<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='0' y='0'>
 <tap noteId="D_6" />
 </drum>
-<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='0' y='0'>
+<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='140' y='0'>
 <tap noteId="C_6" />
 </drum>
-<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='140' y='0'>
+<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='280' y='0'>
 <tap noteId="C#_6" />
 </drum>
 
@@ -29,9 +29,9 @@ public static var data:XML =
 <pallet type="scratchee" sound="claps/claps.mp3" x='380' y='0' />
 <octaves>
 <notes>
-	<note id="D_6" value="3"  soundFile="ode/drums/snar.mp3" animationIndex='5'    />
-	<note id="C_6" value="1" soundFile="ode/drums/bd.mp3" animationIndex='4'  />
-	<note id="C#_6"  value="2" soundFile="ode/drums/shaker.mp3" animationIndex='2' />
+	<note id="D_6" value="1"  soundFile="ode/drums/snar.mp3" animationIndex='5'    />
+	<note id="C_6" value="2" soundFile="ode/drums/bd.mp3" animationIndex='4'  />
+	<note id="C#_6" value="3" soundFile="ode/drums/shaker.mp3" animationIndex='2' />
 </notes>
 </octaves>
 <sequances>

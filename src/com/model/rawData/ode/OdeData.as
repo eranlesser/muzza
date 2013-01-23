@@ -47,7 +47,7 @@ public static var data:XML =
 
 <recordSession>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="370">
+	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="220">
 	<RecordedX>102.5</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
@@ -60,7 +60,7 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="454" notesTargetYOffset="4" >
+	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220"  >
 	<RecordedX>308</RecordedX>
 	<RecordedY>458</RecordedY>
 	</playerInstrument>
@@ -73,7 +73,7 @@ public static var data:XML =
 </recordScreen>
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="424">
+	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220">
 	<RecordedX>178</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
@@ -111,7 +111,7 @@ public static var data:XML =
 
 <popup id="close_demo" width="240" x="760" y="85" >
 <title>Close</title>
-<content>Click "x" to close demo screen</content>
+<content>Click "x" to close the demo screen</content>
 <direction>top_right</direction>
 </popup>
 
@@ -122,18 +122,27 @@ public static var data:XML =
 </popup>
 <popup id="try_again" width="280" x="250" y="90" >
 <title>Try Again</title>
-<content>Try to get at least $hits correct notes to go to the next level</content>
+<content>Click record to start</content>
 <direction>top_right</direction>
 </popup>
+
 <popup id="end_record" width="280" x="372" y="250" >
-<title>$</title>
-<content>you got $points out of $total</content>
+<title>Sounds Great</title>
+<content>You made it on time!</content>
 <next>true</next>
 <direction>none</direction>
 </popup>
+
+<popup id="time_out" width="280" x="372" y="250" >
+<title>Out of Time</title>
+<content>Time has run out, try again.</content>
+<next>true</next>
+<direction>none</direction>
+</popup>
+
 <popup id="listen" width="280" x="718" y="520" >
 <title>Listen</title>
-<content>Click "Listen" to hear what you have recorded.</content>
+<content>Click "Listen" to hear what you have recorded</content>
 <direction>btm_right</direction>
 </popup>
 <popup id="drums" width="280" x="562" y="520" >

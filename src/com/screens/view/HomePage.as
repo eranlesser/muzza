@@ -177,7 +177,7 @@ class Credits extends Sprite{
 	}
 	private function onMail(id:String):void{
 		if(email.text!=""){
-			var sucscribe:subscribe = new subscribe("us6","81ad977f3622acbeeb9f9db111625ea0-us6","97a5200186",email.text);
+			var sucscribe:subscribe = new subscribe("us6","81ad977f3622acbeeb9f9db111625ea0-us6","97a5200186",email.text,"eran", "lesser");
 			Flurry.getInstance().logEvent("email added "+email.text);
 			email.text="";
 		}
@@ -186,8 +186,9 @@ class Credits extends Sprite{
 	private function addPeople():void{
 		var tField:TextField = new TextField();
 		tField.width=920;
-		tField.height=600;
+		tField.height=770;
 		tField.multiline=true;
+		tField.defaultTextFormat = (new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
 		tField.htmlText = "<div> Production & Development: <a href='http://www.creativelamas.com'>Creative Lamas</a></div><br><br>" +
 			"<div> Art & Animations: <a href='http://www.lefrenchbulldog.com'>LeFrenchBulldog</a> </div><br><br>" +
 			"<div> Sound Production: <a href='http://www.moca.co.il'>Moca Studio</a></div><br><br>" +
@@ -196,15 +197,18 @@ class Credits extends Sprite{
 			"<div> Yair Katz, Yoran Bar: UX</div><br><br>" +
 			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br>" +
 			"<div> Dear supporting parents </div><br><br><br><br>" +
-			"<div> Sima & Alma </div>"
+			"<div> Sima & Alma </div><br><br><br><br>"+
+			"<font size='18'> We have awsome updates comming soon, sucsribe below to keep in touch. </font><br>" +
+			"<font size='18' align='left'> Thank you for downlodaing TrainBeats !</font> <br><br> " +
+			"<font size='18' align='left'><a href='mailto:creativelamas@gmail.com'>Eran Lesser creativelamas@gmail.com</a> </font>";
+			
 			
 			;
-		tField.setTextFormat(new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
 		
 		addChild(tField);
 		tField.x=(Dimentions.WIDTH-tField.width)/2;
-		tField.y=tField.height+50;
-		_tween = new GTween(tField,25,{y:-tField.height});
+		tField.y=Dimentions.HEIGHT-200;
+		_tween = new GTween(tField,30,{y:-tField.height});
 		_tween.repeatCount=0;
 		var msk:Shape = new Shape();
 		msk.graphics.beginFill(0xFFFFFF);

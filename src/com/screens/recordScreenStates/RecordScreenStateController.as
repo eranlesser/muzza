@@ -9,6 +9,7 @@ package com.screens.recordScreenStates
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.RecordScreen;
+	import com.screens.view.TimeSlider;
 	import com.screens.view.components.notes.INotesChannel;
 	import com.screens.view.components.notes.Notes;
 	import com.screens.view.components.notes.NotesChannel;
@@ -50,13 +51,7 @@ package com.screens.recordScreenStates
 			setState(States.PRACTICE);
 		}
 		
-		public function addScore(val:int):void{
-			_recordScreen.addScore(val)
-		}
 		
-		public function get score():uint{
-			return _recordScreen.score;
-		}
 		public function get notesLength():uint{
 			return _recordScreen.notesLength;
 		}
@@ -76,10 +71,6 @@ package com.screens.recordScreenStates
 		
 		public function set isRecorded(flag:Boolean):void{
 			_recordScreen.isRecorded=flag;
-		}
-		
-		public function resetScore():void{
-			_recordScreen.resetScore();
 		}
 		
 		
@@ -163,6 +154,10 @@ package com.screens.recordScreenStates
 		
 		public function get backUps():Vector.<NoteSequancePlayer>{
 			return _recordScreen.backUps;
+		}
+		
+		public function get timeSlider():TimeSlider{
+			return _recordScreen.timeSlider;
 		}
 		
 		

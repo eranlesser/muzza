@@ -2,35 +2,27 @@ package com.screens.view {
 	import com.constants.Dimentions;
 	import com.constants.Session;
 	import com.gskinner.motion.GTween;
-	import com.inf.PopUp;
 	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.model.PalletModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.palleta.Ipallet;
-	import com.musicalInstruments.palleta.views.Groovee;
-	import com.musicalInstruments.palleta.views.Loopee;
-	import com.musicalInstruments.palleta.views.Pallet;
-	import com.musicalInstruments.palleta.views.Paw;
-	import com.musicalInstruments.palleta.views.Scratchee;
-	import com.musicalInstruments.palleta.views.TurnTable;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.*;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
-	import com.screens.view.components.notes.INotesChannel;
 	import com.screens.view.components.notes.Notes;
 	import com.screens.view.components.notes.NotesChannel;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
-	import flash.geom.Point;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
 
 
 	public class RecordScreen extends AbstractScreen
@@ -45,7 +37,9 @@ package com.screens.view {
 		private var _notes:						Notes;
 		private var _practiceBtn:				Btn;
 		private var _recordBtn:					Btn;
-		private var _recordTween:GTween;
+		private var _recordTween:				GTween;
+		private var _timeSlider:TimeSlider = new TimeSlider();
+		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
@@ -126,10 +120,20 @@ package com.screens.view {
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll();
-				_score = new ScorePannel(_model.instrumentModel.thumbNail,NoteSequanceModel(NotesInstrumentModel(_model.instrumentModel).getSequanceById(_model.learnedSequanceId)).notes.length);
-				addChild(_score);
-				_score.x=Dimentions.WIDTH-_score.width-12;
-				_score.y=(strip.height-_score.height)/2-2;
+				addChild(_timeSlider);
+				//_timeSlider.x=Dimentions.WIDTH-_timeSlider.width-12;
+				//_timeSlider.y=(strip.height-_timeSlider.height)/2-2;
+				_timeSlider.x=Dimentions.WIDTH-8;
+				_timeSlider.y=280;
+				_timeSlider.value=1;
+				_timeSlider.rotation = 90;
+				var tfield:TextField = new TextField();
+				tfield.autoSize = TextFieldAutoSize.LEFT;
+				tfield.text = "Timer";
+				tfield.setTextFormat(new TextFormat("Verdana",18,0x142933));
+				addChild(tfield);
+				tfield.y = _timeSlider.y+12;
+				tfield.x = _timeSlider.x-tfield.width-_timeSlider.width+3;
 				layout();
 				isInited = true;
 			}
@@ -145,7 +149,8 @@ package com.screens.view {
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 		}
-		private var _score:ScorePannel;
+		
+		
 		private function getNextPopUp(scr:String):String{
 			var nextStr:String;
 			switch(scr){
@@ -219,22 +224,20 @@ package com.screens.view {
 			_stageLayer.addChild(_notes);
 		}
 		
+		public function get timeSlider():TimeSlider{
+			return _timeSlider;
+		}
 		
-		public function get score():uint{
-			return _score.score;
-		}
+		
 		public function get notesLength():uint{
-			return _score.total;
-		}
-		public function addScore(val:int):void{
-			_score.addScore(val);
-		}
-		public function resetScore():void{
-			_score.reset();
+			return NoteSequanceModel(NotesInstrumentModel(_model.instrumentModel).getSequanceById(_model.learnedSequanceId)).notes.length
 		}
 		
 	}
 }
+
+
+
 import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
@@ -263,7 +266,7 @@ class ScorePannel extends Sprite{
 		_scoreField.width = 100;
 		_scoreField.height = 40;
 		_scoreField.x=45;
-		_scoreField.y=0;
+		_scoreField.y=2;
 		addChild(_scoreField);
 		reset();
 		addChild(getIcon(thumbNail));

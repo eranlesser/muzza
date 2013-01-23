@@ -15,6 +15,7 @@ package com.inf
 		public static const END_RECORD:String = "end_record";
 		public static const LISTEN:String = "listen";
 		public static const TRY_AGAIN:String = "try_again";
+		public static const TIME_OUT:String = "time_out";
 		public static const DRUMS:String = "drums";
 		public static const BASS:String = "bass";
 		public static const DONE:String = "done";
@@ -60,7 +61,9 @@ package com.inf
 					}
 					_popUp.visible = true;
 					_popUp.open();
-					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN && id != TRY_AGAIN&& id != CLOSE_DEMO&& id != PRESS_RECORD){
+					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN &&
+						id != TRY_AGAIN&& id != CLOSE_DEMO&& id != PRESS_RECORD
+						&& id != TIME_OUT){
 						closePopUp();
 					}else{
 						_visitedPopUps.push(_popUp);

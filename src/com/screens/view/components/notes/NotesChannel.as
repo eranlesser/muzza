@@ -1,5 +1,6 @@
 package com.screens.view.components.notes
 {
+	import com.constants.Dimentions;
 	import com.gskinner.motion.GTween;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
@@ -8,6 +9,7 @@ package com.screens.view.components.notes
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Shader;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.geom.Point;
@@ -71,7 +73,8 @@ package com.screens.view.components.notes
 			if(xx>0){
 				note.x=xx-note.width/2;
 			}else{
-				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-1.75;
+				//note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-1.75;
+				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-5;
 			}
 			_notes.push(note);
 			if(_pointToBasePoint){
@@ -113,14 +116,28 @@ package com.screens.view.components.notes
 		}
 		private var _noteTargets:Dictionary = new Dictionary();
 		public function drawNoteTarget(noteValue:uint,xx:int,yy:int,yOffset:int,type:String):void{
+			var line:Shape = new Shape();
+			line.graphics.lineStyle(1);
+			line.graphics.moveTo(10,0);
+			line.graphics.lineTo(Dimentions.WIDTH-20,0);
+			//addChild(line);
 			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill2.png");
-			_bg.addChild(circ);
+			//_bg.addChild(circ);
 			if(xx>0){
 				circ.x=xx-circ.width/2;
 			}else{
 				circ.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
 			}
 			circ.y=yy+yOffset;
+			line.y = yy + yOffset+circ.height/2;
+			var lne:DisplayObject = AssetsManager.getAssetByName("BLUE_NEEDLE.png");
+			//lne.rotation=-90;
+			lne.width=Dimentions.WIDTH;
+			lne.scaleY=0.5;
+			lne.y=yy+yOffset+8;
+			addChild(lne);
+			
+			
 			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
 			//_top.addChild(circTop);
 			if(xx>0){
@@ -141,7 +158,7 @@ package com.screens.view.components.notes
 				feedBackAsset = AssetsManager.getAssetByName("insCircleWrong2.png");
 			}
 			var idleAsset:DisplayObject = _noteTargets[value];
-			_top.addChild(feedBackAsset);
+			//_top.addChild(feedBackAsset);
 			feedBackAsset.x=idleAsset.x;
 			feedBackAsset.y=idleAsset.y;
 			var t:GTween = new GTween(feedBackAsset,0.5,{alpha:0});
@@ -149,7 +166,7 @@ package com.screens.view.components.notes
 		}
 		
 		private function unMarc(t:GTween):void{
-			_top.removeChild(t.target as DisplayObject);
+			//_top.removeChild(t.target as DisplayObject);
 		}
 		
 		public function getNoteByLocation(location:uint):DroppingNote{

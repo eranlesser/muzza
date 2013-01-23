@@ -12,20 +12,20 @@ public static var data:XML =
 			<tap noteId="D_2" />
 		</bass>
 		
-		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='110' y='0'  >
+		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='110' y='0'  >
 			<tap noteId="E_2" />
 		</bass>
 		
-		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='220' y='0' >
+		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='220' y='0' >
 			<tap noteId="F#_2" />
 		</bass>
-		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='330' y='0'  >
+		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='330' y='0'  >
 			<tap noteId="G_2" />
 		</bass>
-		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='440' y='0'  >
+		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='440' y='0'  >
 			<tap noteId="A_2" />
 		</bass>
-		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='550' y='0'  >
+		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='550' y='0'  >
 			<tap noteId="B_2" />
 		</bass>
 		
