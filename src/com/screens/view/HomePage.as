@@ -189,7 +189,8 @@ class Credits extends Sprite{
 		tField.height=770;
 		tField.multiline=true;
 		tField.defaultTextFormat = (new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
-		tField.htmlText = "<div> Production & Development: <a href='http://www.creativelamas.com'>Creative Lamas</a></div><br><br>" +
+		tField.htmlText = 
+			"<div> Production & Development: <a href='http://www.creativelamas.com'>Creative Lamas</a></div><br><br>" +
 			"<div> Art & Animations: <a href='http://www.lefrenchbulldog.com'>LeFrenchBulldog</a> </div><br><br>" +
 			"<div> Sound Production: <a href='http://www.moca.co.il'>Moca Studio</a></div><br><br>" +
 			"<div> The Human Bass: Idan </div><br><br><br>" +
@@ -198,10 +199,9 @@ class Credits extends Sprite{
 			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br>" +
 			"<div> Dear supporting parents </div><br><br><br><br>" +
 			"<div> Sima & Alma </div><br><br><br><br>"+
-			"<font size='18'> We have awsome updates comming soon, sucsribe below to keep in touch. </font><br>" +
-			"<font size='18' align='left'> Thank you for downlodaing TrainBeats !</font> <br><br> " +
+			"<font size='18'> We have awesome updates coming soon, subscribe below to keep in touch. </font><br>" +
+			"<font size='18' align='left'> Thank you for downloading TrainBeats !</font> <br><br> " +
 			"<font size='18' align='left'><a href='mailto:creativelamas@gmail.com'>Eran Lesser creativelamas@gmail.com</a> </font>";
-			
 			
 			;
 		

@@ -15,6 +15,9 @@ package com.screens.view.components.homePage
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.geom.Matrix;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.net.URLRequest;
 	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
@@ -77,8 +80,10 @@ package com.screens.view.components.homePage
 			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
 			_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
-			var tmr:Timer = new Timer(500,1);
-			tmr.start()
+			var tmr:Timer = new Timer(800,1);
+			tmr.start();
+			var enterSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"));
+			enterSound.play();
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
 				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
 				var wtween:GTween = new GTween(_wallLayer,6,{x:0},{ease:Circular.easeInOut});
@@ -86,6 +91,12 @@ package com.screens.view.components.homePage
 				var ptween:GTween = new GTween(_poleLayer,7.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
 				ptween.onComplete = function dispatchComplete(t:GTween):void{
 					ready.dispatch();
+					//var loopSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainloop1.mp3"));
+					//var cnl:SoundChannel = loopSound.play();
+//					cnl.addEventListener(Event.SOUND_COMPLETE,function loop(e:Event):void{
+//						cnl = loopSound.play();
+//						cnl.addEventListener(Event.SOUND_COMPLETE,loop);
+//					});
 				}
 			});
 			

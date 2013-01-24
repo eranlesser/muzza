@@ -20,6 +20,7 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Shape;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
@@ -38,8 +39,8 @@ package com.screens.view {
 		private var _practiceBtn:				Btn;
 		private var _recordBtn:					Btn;
 		private var _recordTween:				GTween;
-		private var _timeSlider:TimeSlider = new TimeSlider();
-		
+		private var _timeSlider:TimeSlider = new TimeSlider(true);
+		private var _timeField:TextField;
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
@@ -120,20 +121,7 @@ package com.screens.view {
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
 				_timerControll=Metronome.getTimeControll();
-				addChild(_timeSlider);
-				//_timeSlider.x=Dimentions.WIDTH-_timeSlider.width-12;
-				//_timeSlider.y=(strip.height-_timeSlider.height)/2-2;
-				_timeSlider.x=Dimentions.WIDTH-8;
-				_timeSlider.y=280;
-				_timeSlider.value=1;
-				_timeSlider.rotation = 90;
-				var tfield:TextField = new TextField();
-				tfield.autoSize = TextFieldAutoSize.LEFT;
-				tfield.text = "Timer";
-				tfield.setTextFormat(new TextFormat("Verdana",18,0x142933));
-				addChild(tfield);
-				tfield.y = _timeSlider.y+12;
-				tfield.x = _timeSlider.x-tfield.width-_timeSlider.width+3;
+				addTimer();
 				layout();
 				isInited = true;
 			}
@@ -141,7 +129,7 @@ package com.screens.view {
 			if(Session.instance.recordScreenGood(_model)){
 				PopUpsManager.openPopUp(getNextPopUp(_model.instrumentModel.thumbNail));
 			}
-			else if(!Session.instance.demoClicked){
+			else if(!Session.instance.demoClicked && _model.instrumentModel.thumbNail == "bottles.png"){
 				PopUpsManager.openPopUp(PopUpsManager.OPEN_DEMO);
 			}else{
 				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
@@ -149,7 +137,33 @@ package com.screens.view {
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 		}
+		private function addTimer():void{
+			var tBg:Shape = new Shape();
+			tBg.graphics.beginFill(0x174C5B,0.9);
+			tBg.graphics.drawRoundRect(0,0,60,300,16,16);
+			tBg.graphics.endFill();
+			addChild(tBg);
+			tBg.x=Dimentions.WIDTH-80;
+			tBg.y=260;
+			addChild(_timeSlider);
+			//_timeSlider.x=Dimentions.WIDTH-_timeSlider.width-12;
+			//_timeSlider.y=(strip.height-_timeSlider.height)/2-2;
+			_timeSlider.x=tBg.x+40;
+			_timeSlider.y=282;
+			_timeSlider.value=1;
+			_timeSlider.rotation = 90;
+			_timeField = new TextField();
+			_timeField.autoSize = TextFieldAutoSize.LEFT;
+			_timeField.text = "Time";
+			_timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFFFFF));
+			addChild(_timeField);
+			_timeField.y = 266;
+			_timeField.x = tBg.x+(tBg.width-_timeField.width)/2;
+		}
 		
+		public function get timeField():TextField{
+			return _timeField;
+		}
 		
 		private function getNextPopUp(scr:String):String{
 			var nextStr:String;

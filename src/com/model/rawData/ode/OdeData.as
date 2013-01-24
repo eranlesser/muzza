@@ -104,8 +104,8 @@ public static var data:XML =
 
 <popups>
 <popup id="open_demo" width="250" x="85" y="520">
-<title>Demo</title>
-<content>Click "Demo" to hear what we are about to record together</content>
+<title>Listen</title>
+<content>Click to hear what we are about to record together</content>
 <direction>btm_left</direction>
 </popup>
 
@@ -135,7 +135,7 @@ public static var data:XML =
 
 <popup id="time_out" width="280" x="372" y="250" >
 <title>Out of Time</title>
-<content>Time has run out, try again.</content>
+<content>Time has run out, try again</content>
 <next>true</next>
 <direction>none</direction>
 </popup>
@@ -158,7 +158,7 @@ public static var data:XML =
 
 <popup id="done" width="340" x="342" y="200" >
 <title>You Rock</title>
-<content>keep practicing we have more songs and instruments comming soon !</content>
+<content>keep practicing we have more songs and instruments coming soon !</content>
 <direction>none</direction>
 </popup>
 

@@ -23,6 +23,7 @@ package com.screens.recordScreenStates
 	import com.view.MetronomView;
 	
 	import flash.events.Event;
+	import flash.text.TextFormat;
 	
 	import org.osflash.signals.Signal;
 
@@ -36,7 +37,7 @@ package com.screens.recordScreenStates
 		private var _practiceMode:Boolean;
 		private var _tween:GTween;
 		private var _timerTween:GTween;
-		public static const fixNum:uint=4;
+		public static const fixNum:uint=6;
 		public static const PASS_PERCENT:Number = 6/8;
 		
 		public function RecordState(stateController:RecordScreenStateController){
@@ -174,42 +175,64 @@ package com.screens.recordScreenStates
 			_timerTween = new GTween(_context.timeSlider,_context.model.endAtFrame*3,{value:100});
 			_timerTween.useFrames = true;
 			_timerTween.onComplete = onTimeOut;
+			_timerTween.onChange = onTimeChanged;
+			_context.timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFFFFF));
 			//_context.resetScore();
 			_practiceMode = true;//(Session.instance.goodScreensLength<3 && !Session.instance.recordScreenGood(_context.model)) ;
 			//_goodNotes=0;
 		}
+		private var _timeEnding:Boolean=false;
+		private function onTimeChanged(t:GTween):void{
+			if(t.position>=t.duration*7/8){
+				if(Math.round(t.position)%10==0){
+					_timeEnding = !_timeEnding;
+				}
+				if(_timeEnding)
+					_context.timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFB244));
+				else
+					_context.timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFFFFF));
+			}
+		}
 		
 		private function onTimeOut(t:GTween):void{
 			stop();
+			TestFlight.passCheckpoint("Recorded BAD");
+			Flurry.getInstance().logEvent("Recorded BAD");
 			PopUpsManager.openPopUp(PopUpsManager.TIME_OUT).nextSignal.addOnce(
 				function():void{
 					var tryAgainPopUp:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.TRY_AGAIN);
 					PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN)
-					TestFlight.passCheckpoint("Recorded BAD");
-					Flurry.getInstance().logEvent("Recorded BAD");
+					
 				}
 			);
 		}
-		
+		private function onCompleteBeforeTimer():void{
+			if(_context.recordChannelController.recordedLength >= _context.recordChannelController.learnedLength ){
+				var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
+				Session.instance.registerGoodrecoredScreen(_context.model);
+				TestFlight.passCheckpoint("Recorded GOOD");
+				Flurry.getInstance().logEvent("Recorded GOOD onCompleteBeforeTimer");
+				PopUpsManager.openPopUp(PopUpsManager.END_RECORD).nextSignal.addOnce(
+					function():void{
+						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
+						
+					}
+				);
+			}else{
+				PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
+				Flurry.getInstance().logEvent("Recorded BAD onCompleteBeforeTimer");
+			}
+		}
 		private function onComplete(t:GTween):void{
 			stop();
-			if(_context.recordChannelController.recordedLength >= _context.recordChannelController.learnedLength ){
-			var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
-			PopUpsManager.openPopUp(PopUpsManager.END_RECORD).nextSignal.addOnce(
-				function():void{
-					PopUpsManager.openPopUp(PopUpsManager.LISTEN);
-					Session.instance.registerGoodrecoredScreen(_context.model);
-					TestFlight.passCheckpoint("Recorded GOOD");
-					Flurry.getInstance().logEvent("Recorded GOOD");
-				}
-			);
-			}
+			onCompleteBeforeTimer();
 		}
 		
 		private function stop():void{
 			_complete.dispatch();
 			_timerTween.paused=true;
 			_timerTween.onComplete = null;
+			_timerTween.onChange = null;
 			_timerTween.init();
 		}
 		
@@ -217,15 +240,18 @@ package com.screens.recordScreenStates
 			if(_context.model.endAtFrame == _timeModel.currentTick){
 				//stop();
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(6,_timeModel.currentTick);
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(fixNum,_timeModel.currentTick);
 			//var curNote:BigNote=getNoteByDistance(4);
 			if(_practiceMode){
+				if(_toPlayNotes.length>0){
+					_toPlayNotes[0].selected=true;
+				}
 			for each(var curNote:DroppingNote in _toPlayNotes){
 				//curNote.state="selected";
 				//_context.instrumentRecorder.marc(curNote.id,4);
 				if(curNote.location==_timeModel.currentTick){
 					_tween.paused=true;
-					curNote.selected=true;
+					//curNote.selected=true;
 				}
 			}
 			}
@@ -239,6 +265,7 @@ package com.screens.recordScreenStates
 		
 		private function onRecordBtn(buttonState:Boolean):void{
 			stop();
+			onCompleteBeforeTimer();
 		}
 		
 		

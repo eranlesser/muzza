@@ -107,15 +107,15 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_7.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_8.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_9.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_7.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_8.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_SELECTED_9.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_9.png' />"+
 			//BASS
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_2.png' />"+
@@ -126,24 +126,24 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_7.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_8.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_9.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_7.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_8.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_SELECTED_9.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_9.png' />"+
 			//DRUMS
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_2.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_3.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_SELECTED_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_4.png' />"+
 			
 			//RECORD SCREEN BUTTONS
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+
@@ -184,6 +184,8 @@ package com.view.tools
 			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_BLUE_SEGMENT.png' />"+
 			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_STROKE_upper_layer.png' />"+
 			
+			"<image path='assets/DEMO_SCREEN/TIME_SLIDERv/TIMESLIDER_BLUE_RIGHT_SEGMENTv.png' />"+
+			"<image path='assets/DEMO_SCREEN/TIME_SLIDERv/TIMESLIDER_BLUE_SEGMENTv.png' />"+
 			
 			//HAT
 			"<image path='assets/band/hat/hat.png' />"+

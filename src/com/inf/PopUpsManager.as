@@ -62,7 +62,7 @@ package com.inf
 					_popUp.visible = true;
 					_popUp.open();
 					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN &&
-						id != TRY_AGAIN&& id != CLOSE_DEMO&& id != PRESS_RECORD
+						id != TRY_AGAIN&& id != CLOSE_DEMO && id != PRESS_RECORD && id != OPEN_DEMO
 						&& id != TIME_OUT){
 						closePopUp();
 					}else{

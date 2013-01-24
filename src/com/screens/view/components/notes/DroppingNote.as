@@ -20,7 +20,7 @@ package com.screens.view.components.notes
 		public static const WIDTH:uint=22;
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
-			_selectAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_SELECTED_"+noteValue+".png",true);
+			_selectAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_S_"+noteValue+".png",true);
 			_location=loc;
 			_value=noteValue;
 			_id=id;
