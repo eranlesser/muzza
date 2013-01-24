@@ -40,13 +40,7 @@ package com.representation.controller {
 				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
 				
-				for(var i:uint=0;i<(_instrumentModel as NotesInstrumentModel).notesLength;i++){
-					var nte:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteAt(i);
-					_channelView.drawNoteTarget(nte.value,nte.x,_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset ,NotesInstrumentModel(_instrumentModel).thumbNail);
-				}
-			}
-			if( _instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId) is NoteSequanceModel){//temp
-				//drawNotes(NoteSequanceModel(_instrumentModel.getSequanceById(_recordScreenModel.recordeSequanceId)),ChanelNotesType.U_PLAYING);
+			_channelView.drawNoteTarget(_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset);
 			}
 			onTick();
 		}

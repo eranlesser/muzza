@@ -12,6 +12,7 @@ package com.screens.view
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
+	import com.testflightapp.sdk.TestFlight;
 	import com.utils.Claps;
 	
 	import flash.events.Event;
@@ -112,6 +113,7 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
+			TestFlight.passCheckpoint("CLAPS");
 			super.endMusciPiece();
 		}
 		

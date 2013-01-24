@@ -88,8 +88,8 @@ package com.screens.view.components.notes
 //			_backUpBut.y=frame.height/2-_backUpBut.height/2;
 		}
 		
-		public function marc(value:uint,good:Boolean):void{
-			_channel.marc(value,good);
-		}
+//		public function marc(value:uint,good:Boolean):void{
+//			_channel.marc(value,good);
+//		}
 	}
 }

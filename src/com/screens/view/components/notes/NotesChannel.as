@@ -115,21 +115,21 @@ package com.screens.view.components.notes
 			return prefix;
 		}
 		private var _noteTargets:Dictionary = new Dictionary();
-		public function drawNoteTarget(noteValue:uint,xx:int,yy:int,yOffset:int,type:String):void{
-			var line:Shape = new Shape();
-			line.graphics.lineStyle(1);
-			line.graphics.moveTo(10,0);
-			line.graphics.lineTo(Dimentions.WIDTH-20,0);
+		public function drawNoteTarget(yy:int,yOffset:int):void{
+//			var line:Shape = new Shape();
+//			line.graphics.lineStyle(1);
+//			line.graphics.moveTo(10,0);
+//			line.graphics.lineTo(Dimentions.WIDTH-20,0);
 			//addChild(line);
-			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill2.png");
-			//_bg.addChild(circ);
-			if(xx>0){
-				circ.x=xx-circ.width/2;
-			}else{
-				circ.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
-			}
-			circ.y=yy+yOffset;
-			line.y = yy + yOffset+circ.height/2;
+//			var circ:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+"Fill2.png");
+//			//_bg.addChild(circ);
+//			if(xx>0){
+//				circ.x=xx-circ.width/2;
+//			}else{
+//				circ.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
+//			}
+//			circ.y=yy+yOffset;
+//			line.y = yy + yOffset+circ.height/2;
 			var lne:DisplayObject = AssetsManager.getAssetByName("BLUE_NEEDLE.png");
 			//lne.rotation=-90;
 			lne.width=Dimentions.WIDTH;
@@ -138,32 +138,32 @@ package com.screens.view.components.notes
 			addChild(lne);
 			
 			
-			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
-			//_top.addChild(circTop);
-			if(xx>0){
-				circTop.x=xx-circTop.width/2;
-			}else{
-				circTop.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
-			}
-			circTop.y=yy+yOffset;
-			circTop.alpha=0.5;
-			_noteTargets[noteValue] = circTop;
+//			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
+//			//_top.addChild(circTop);
+//			if(xx>0){
+//				circTop.x=xx-circTop.width/2;
+//			}else{
+//				circTop.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-(circ.width-DroppingNote.WIDTH)/2;
+//			}
+//			circTop.y=yy+yOffset;
+//			circTop.alpha=0.5;
+//			_noteTargets[noteValue] = circTop;
 		}
 		
-		public function marc(value:uint,good:Boolean):void{
-			var feedBackAsset:DisplayObject;
-			if(good){
-				feedBackAsset = AssetsManager.getAssetByName("insCircleRight2.png");
-			}else{
-				feedBackAsset = AssetsManager.getAssetByName("insCircleWrong2.png");
-			}
-			var idleAsset:DisplayObject = _noteTargets[value];
-			//_top.addChild(feedBackAsset);
-			feedBackAsset.x=idleAsset.x;
-			feedBackAsset.y=idleAsset.y;
-			var t:GTween = new GTween(feedBackAsset,0.5,{alpha:0});
-			t.onComplete = unMarc;
-		}
+//		public function marc(value:uint,good:Boolean):void{
+//			var feedBackAsset:DisplayObject;
+//			if(good){
+//				feedBackAsset = AssetsManager.getAssetByName("insCircleRight2.png");
+//			}else{
+//				feedBackAsset = AssetsManager.getAssetByName("insCircleWrong2.png");
+//			}
+//			var idleAsset:DisplayObject = _noteTargets[value];
+//			//_top.addChild(feedBackAsset);
+//			feedBackAsset.x=idleAsset.x;
+//			feedBackAsset.y=idleAsset.y;
+//			var t:GTween = new GTween(feedBackAsset,0.5,{alpha:0});
+//			t.onComplete = unMarc;
+//		}
 		
 		private function unMarc(t:GTween):void{
 			//_top.removeChild(t.target as DisplayObject);

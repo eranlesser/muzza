@@ -33,7 +33,6 @@ package com.screens.recordScreenStates
 		protected var _complete:		Signal = new Signal();
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
 		private var _toPlayNotes:Vector.<DroppingNote>;
-		private var _goodNotes:int=0;
 		private var _practiceMode:Boolean;
 		private var _tween:GTween;
 		private var _timerTween:GTween;
@@ -139,17 +138,17 @@ package com.screens.recordScreenStates
 					_tween.paused=false;
 					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
-					_context.notes.marc(curNote.value,true);
+					//_context.notes.marc(curNote.value,true);
 					//_context.recordChannelController.fix(noteId,curNote.location,5);
 					match = true;
 					//break;
 				}
 			}
 			//}
-			if(!match){
-				_context.notes.marc(NotesInstrumentModel(_context.model.instrumentModel).getNoteById(noteId).value,false);
-				_goodNotes--;				
-			}
+//			if(!match){
+//				//_context.notes.marc(NotesInstrumentModel(_context.model.instrumentModel).getNoteById(noteId).value,false);
+//				_goodNotes--;				
+//			}
 		}
 		
 		public function activate():void{
@@ -177,7 +176,7 @@ package com.screens.recordScreenStates
 			_timerTween.onComplete = onTimeOut;
 			//_context.resetScore();
 			_practiceMode = true;//(Session.instance.goodScreensLength<3 && !Session.instance.recordScreenGood(_context.model)) ;
-			_goodNotes=0;
+			//_goodNotes=0;
 		}
 		
 		private function onTimeOut(t:GTween):void{
