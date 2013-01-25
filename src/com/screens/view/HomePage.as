@@ -130,7 +130,7 @@ class Credits extends Sprite{
 		var tField:TextField = new TextField();
 		addChild(tField);
 		tField.autoSize = TextFieldAutoSize.LEFT;
-		tField.text = "Stay tuned, we have exiting updates comming soon:";
+		tField.text = "Stay tuned, we have exiting updates coming soon:";
 		tField.x=70;
 		tField.y=495;
 		tField.setTextFormat(new TextFormat("Verdana",18,0xFFFFFF,null,null,null,null,null,TextAlign.LEFT));
