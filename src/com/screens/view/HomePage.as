@@ -130,7 +130,7 @@ class Credits extends Sprite{
 		var tField:TextField = new TextField();
 		addChild(tField);
 		tField.autoSize = TextFieldAutoSize.LEFT;
-		tField.text = "Stay tuned, we have exiting updates coming soon:";
+		tField.text = "Stay tuned, we have exciting updates coming soon:";
 		tField.x=70;
 		tField.y=495;
 		tField.setTextFormat(new TextFormat("Verdana",18,0xFFFFFF,null,null,null,null,null,TextAlign.LEFT));
@@ -186,7 +186,7 @@ class Credits extends Sprite{
 	private function addPeople():void{
 		var tField:TextField = new TextField();
 		tField.width=920;
-		tField.height=770;
+		tField.height=820;
 		tField.multiline=true;
 		tField.defaultTextFormat = (new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
 		tField.htmlText = 
@@ -196,6 +196,7 @@ class Credits extends Sprite{
 			"<div> The Human Bass: Idan </div><br><br><br>" +
 			"<div> Special Thanks To:</ul></div><br><br><br>" +
 			"<div> Yair Katz, Yoran Bar: UX</div><br><br>" +
+			"<div> BackYard Studio: Additional sounds</div><br><br>" +
 			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br><br>" +
 			"<div> Dear supporting parents & family </div><br><br><br>" +
 			"<div> Sima & Alma </div><br><br><br><br>"+
