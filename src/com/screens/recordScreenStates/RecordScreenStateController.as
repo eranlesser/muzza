@@ -66,7 +66,7 @@ package com.screens.recordScreenStates
 		protected function setState(name:String):void
 		{
 			deActivate();
-			trace("state",name)
+			//trace("state",name)
 			_state = getStateByName(name);
 			activate();
 		}
@@ -123,7 +123,7 @@ package com.screens.recordScreenStates
 		
 		public function set speed(value:Number):void{
 			//_recordScreen.stage.frameRate=Rhythms.FRAME_RATE*value;
-			trace("frame rate is",_recordScreen.stage.frameRate)
+			//trace("frame rate is",_recordScreen.stage.frameRate)
 		}
 		
 		

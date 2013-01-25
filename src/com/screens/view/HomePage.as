@@ -196,8 +196,8 @@ class Credits extends Sprite{
 			"<div> The Human Bass: Idan </div><br><br><br>" +
 			"<div> Special Thanks To:</ul></div><br><br><br>" +
 			"<div> Yair Katz, Yoran Bar: UX</div><br><br>" +
-			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br>" +
-			"<div> Dear supporting parents </div><br><br><br><br>" +
+			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br><br>" +
+			"<div> Dear supporting parents & family </div><br><br><br>" +
 			"<div> Sima & Alma </div><br><br><br><br>"+
 			"<font size='18'> We have awesome updates coming soon, subscribe below to keep in touch. </font><br>" +
 			"<font size='18' align='left'> Thank you for downloading TrainBeats !</font> <br><br> " +

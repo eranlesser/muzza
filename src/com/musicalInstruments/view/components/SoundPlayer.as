@@ -25,7 +25,7 @@ package com.musicalInstruments.view.components {
 		public function SoundPlayer(soundFile:String){
 			_soundFile = soundFile;
 			if(_soundFile==""){
-				trace();
+				//trace();
 			}
 			_metronom = Metronome.getTimeModel();
 			loadSound();

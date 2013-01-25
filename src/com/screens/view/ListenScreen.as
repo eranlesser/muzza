@@ -196,7 +196,7 @@ class ToolBar extends Sprite{
 	
 	
 	override public function set visible(value:Boolean):void{
-		trace("b");
+		//trace("b");
 	}
 	
 	private function onColapse(str:String):void{

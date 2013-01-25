@@ -219,7 +219,7 @@ package com.screens.view {
 			}else if(_model.instrumentModel.type=="voice"){
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
 			}else{
-				trace(_model.instrumentModel.type)
+				//trace(_model.instrumentModel.type)
 			}
 			_stageLayer.addChild(_instrumentRecorder);
 			

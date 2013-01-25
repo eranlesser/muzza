@@ -80,9 +80,14 @@ package com.screens.view.components.homePage
 			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
 			_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
-			var tmr:Timer = new Timer(800,1);
-			tmr.start();
-			var enterSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"));
+			var tmr:Timer = new Timer(400,1);
+			
+			var enterSound:Sound = new Sound();
+			enterSound.load(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"))
+			enterSound.addEventListener(Event.COMPLETE,function onSoundReady(e:Event):void{
+				enterSound.removeEventListener(Event.COMPLETE, onSoundReady);
+				tmr.start();
+			});
 			enterSound.play();
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
 				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);

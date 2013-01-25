@@ -28,7 +28,7 @@ package com.musicalInstruments.view.character
 		
 		private function init(positionsLength:uint):void{
 			//load all animationSequance
-			trace("new character")
+			//trace("new character")
 			var i:uint=0;
 			while(i<=positionsLength+1){
 				var img:Bitmap = new Bitmap();

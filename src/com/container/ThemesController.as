@@ -52,7 +52,7 @@ package com.container
 			}
 			Rhythms.FRAME_RATE = _themeProgressors[_progressControlIndex].frameRate*4;
 			_presenter.stage.frameRate = Rhythms.FRAME_RATE;
-			trace("frame rate is",_presenter.stage.frameRate)
+			//trace("frame rate is",_presenter.stage.frameRate)
 			_themeProgressors[_progressControlIndex].goHomeSignal.add(reStartScreen);
 		}
 		

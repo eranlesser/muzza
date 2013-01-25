@@ -117,7 +117,7 @@ package com.musicalInstruments.view.components {
 						noteModel.player.play(_volume);
 						_playingNote = note;
 						notePlayed.dispatch(_playingNote.noteId);
-						trace("",_playingNote.noteId,"<<",_timeModel.currentTick)
+						//trace("",_playingNote.noteId,"<<",_timeModel.currentTick)
 					}
 					animateTo(noteModel.animationIndex,notes[0].noteId);
 				}else if(_currenSequance.ended(_timeModel.currentTick)){
@@ -125,7 +125,7 @@ package com.musicalInstruments.view.components {
 					sequenceDone.dispatch();
 				}
 			}else{
-				trace("sequance done",this)
+				//trace("sequance done",this)
 				sequenceDone.dispatch();
 				stop();
 			}

@@ -147,7 +147,7 @@ package com.screens.view {
 				_timeControll.play(this,_model.endAtFrame,null);
 			}
 			stage.frameRate=Rhythms.FRAME_RATE;
-			trace("frame rate is",stage.frameRate)
+			//trace("frame rate is",stage.frameRate)
 			if(_timeSlider){
 				_timeSlider.value=(0);
 			}

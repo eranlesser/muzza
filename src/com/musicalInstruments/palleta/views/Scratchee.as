@@ -81,7 +81,7 @@ package com.musicalInstruments.palleta.views
 		
 		private function onTouchBegin(event:TouchEvent):void { 
 			if(touchMoveID != 0) { 
-				trace("already moving. ignoring new touch"); 
+				//trace("already moving. ignoring new touch"); 
 				playSound(5);
 				return; 
 			} 
