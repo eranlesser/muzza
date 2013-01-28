@@ -126,8 +126,8 @@ package com.screens.view {
 		}
 		
 		private function onClose(btnid:String):void{
-			close.dispatch();
 			PopUpsManager.closePopUp();
+			close.dispatch();
 		}
 		
 		override public function start():void{

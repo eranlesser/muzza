@@ -59,6 +59,7 @@ package com.musicalInstruments.view.components {
 		}
 		
 		public function onClick():void{
+			return //
 			if(_isPlaying){
 				_timeModel.tickSignal.remove(onMetronomeTick);
 				_timeModel.tickSignal.remove(onMetronomeUntick);

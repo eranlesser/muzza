@@ -79,6 +79,9 @@ package com.screens.view
 				channelController.start();
 			}
 			PopUpsManager.closePopUp(true);
+			if(_instruments.length==0){
+				PopUpsManager.openPopUp(PopUpsManager.CLOSE_LISTEN);
+			}
 		}
 		
 		
@@ -89,6 +92,7 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
+			PopUpsManager.openPopUp(PopUpsManager.CLOSE_LISTEN);
 			//_representation.stop();
 		}
 		

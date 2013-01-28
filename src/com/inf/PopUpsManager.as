@@ -1,5 +1,6 @@
 package com.inf
 {
+	import com.constants.Session;
 	import com.freshplanet.nativeExtensions.Flurry;
 	import com.testflightapp.sdk.TestFlight;
 	
@@ -19,6 +20,7 @@ package com.inf
 		public static const DRUMS:String = "drums";
 		public static const BASS:String = "bass";
 		public static const DONE:String = "done";
+		public static const CLOSE_LISTEN:String = "close_listen";
 		private static var _presenter:Sprite;
 		private static var _popUp:PopUp;
 		private static var _thumbNail:String;
@@ -61,11 +63,14 @@ package com.inf
 					}
 					_popUp.visible = true;
 					_popUp.open();
-					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN &&
+					if(_visitedPopUps.indexOf(_popUp)>-1 && id!=END_RECORD && id!= LISTEN && id !=CLOSE_LISTEN &&
 						id != TRY_AGAIN&& id != CLOSE_DEMO && id != PRESS_RECORD && id != OPEN_DEMO
 						&& id != TIME_OUT){
 						closePopUp();
-					}else{
+					}else if(Session.instance.goodScreensLength == 3 && (id == BASS || id == DRUMS) ){
+						closePopUp();
+					}
+					else{
 						_visitedPopUps.push(_popUp);
 					}
 				}

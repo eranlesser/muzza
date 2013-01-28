@@ -103,24 +103,24 @@ public static var data:XML =
 </screens>
 
 <popups>
-<popup id="open_demo" width="250" x="85" y="520">
+<popup id="open_demo" width="250" x="85" y="515">
 <title>Listen</title>
 <content>Click to hear what we are about to record together</content>
 <direction>btm_left</direction>
 </popup>
 
-<popup id="close_demo" width="240" x="760" y="85" >
+<popup id="close_demo" width="220" x="780" y="85" >
 <title>Close</title>
-<content>Click "x" to close the demo screen</content>
+<content>Click "x" to close </content>
 <direction>top_right</direction>
 </popup>
 
-<popup id="press_record" width="280" x="250" y="90" >
+<popup id="press_record" width="280" x="250" y="95" >
 <title>Record</title>
 <content>Click "Record" when you are ready to begin recording</content>
 <direction>top_right</direction>
 </popup>
-<popup id="try_again" width="280" x="250" y="90" >
+<popup id="try_again" width="280" x="250" y="95" >
 <title>Try Again</title>
 <content>Click record to start</content>
 <direction>top_right</direction>
@@ -140,20 +140,25 @@ public static var data:XML =
 <direction>none</direction>
 </popup>
 
-<popup id="listen" width="280" x="718" y="520" >
+<popup id="listen" width="280" x="718" y="515" >
 <title>Listen</title>
 <content>Click "Listen" to hear what you have recorded</content>
 <direction>btm_right</direction>
 </popup>
-<popup id="drums" width="280" x="562" y="520" >
+<popup id="drums" width="280" x="562" y="515" >
 <title>Drums</title>
 <content>Lets see how you keep the rhythm</content>
 <direction>btm_right</direction>
 </popup>
-<popup id="bass" width="280" x="645" y="520" >
+<popup id="bass" width="280" x="645" y="515" >
 <title>Bass</title>
-<content>Add some grove with the human bass</content>
+<content>Add some groove with the human bass</content>
 <direction>btm_right</direction>
+</popup>
+<popup id="close_listen" width="200" x="2" y="95" >
+<title>Back</title>
+<content>Click to continue playing</content>
+<direction>top_left</direction>
 </popup>
 
 <popup id="done" width="340" x="342" y="200" >
