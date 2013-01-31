@@ -15,6 +15,7 @@ package com.screens.recordScreenStates
 	import com.screens.view.components.notes.NotesChannel;
 	import com.view.gui.Btn;
 	
+	import flash.display.DisplayObject;
 	import flash.text.TextField;
 
 	public class RecordScreenStateController
@@ -162,8 +163,8 @@ package com.screens.recordScreenStates
 			return _recordScreen.timeSlider;
 		}
 		
-		public function get timeField():TextField{
-			return _recordScreen.timeField;
+		public function get timeAlert():DisplayObject{
+			return _recordScreen.timeAlert;
 		}
 		
 	}

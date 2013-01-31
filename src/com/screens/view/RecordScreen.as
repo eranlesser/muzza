@@ -40,7 +40,7 @@ package com.screens.view {
 		private var _recordBtn:					Btn;
 		private var _recordTween:				GTween;
 		private var _timeSlider:TimeSlider = new TimeSlider(true);
-		private var _timeField:TextField;
+		private var _timeAlert:DisplayObject;
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
@@ -139,42 +139,44 @@ package com.screens.view {
 		}
 		private function addTimer():void{
 			var tBg:Shape = new Shape();
-			tBg.graphics.beginFill(0x174C5B,0.9);
-			tBg.graphics.drawRoundRect(0,0,60,300,16,16);
+			tBg.graphics.beginFill(0x174C5B,0.8);
+			tBg.graphics.drawRoundRect(0,0,_timeSlider.width+10,50,6,6);
 			tBg.graphics.endFill();
-			addChild(tBg);
-			tBg.x=Dimentions.WIDTH-80;
-			tBg.y=260;
+			//addChild(tBg);
+			tBg.x=Dimentions.WIDTH-tBg.width-3;
+			tBg.y=21;
 			addChild(_timeSlider);
-			//_timeSlider.x=Dimentions.WIDTH-_timeSlider.width-12;
-			//_timeSlider.y=(strip.height-_timeSlider.height)/2-2;
-			_timeSlider.x=tBg.x+40;
-			_timeSlider.y=282;
+			_timeSlider.x=(Dimentions.WIDTH-_timeSlider.width)/2;
+			_timeSlider.y=77;
+			var timeIcon:DisplayObject = AssetsManager.getAssetByName("hour_glass.png");
+			addChild(timeIcon);
+			timeIcon.x=_timeSlider.x-timeIcon.width+2;
+			timeIcon.y=_timeSlider.y+(_timeSlider.height-timeIcon.height)/2;
+			_timeAlert = AssetsManager.getAssetByName("hour_glass_alert.png");
+			addChild(_timeAlert);
+			_timeAlert.x = timeIcon.x;
+			_timeAlert.y = timeIcon.y;
+			_timeAlert.visible=false;
+			//_timeSlider.x=tBg.x;
+			//_timeSlider.y=282;
 			_timeSlider.value=1;
-			_timeSlider.rotation = 90;
-			_timeField = new TextField();
-			_timeField.autoSize = TextFieldAutoSize.LEFT;
-			_timeField.text = "Time";
-			_timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFFFFF));
-			addChild(_timeField);
-			_timeField.y = 266;
-			_timeField.x = tBg.x+(tBg.width-_timeField.width)/2;
+			//_timeSlider.rotation = 90;
 		}
 		
-		public function get timeField():TextField{
-			return _timeField;
+		public function get timeAlert():DisplayObject{
+			return _timeAlert;
 		}
 		
 		private function getNextPopUp(scr:String):String{
 			var nextStr:String;
 			switch(scr){
 				case "bottles.png":
-					nextStr = PopUpsManager.DRUMS;
-					break;
-				case "drum.png":
 					nextStr = PopUpsManager.BASS;
 					break;
 				case "bass_flash.jpg":
+					nextStr = PopUpsManager.DRUMS;
+					break;
+				case "drum.png":
 					nextStr = PopUpsManager.DONE;
 					break;
 			}

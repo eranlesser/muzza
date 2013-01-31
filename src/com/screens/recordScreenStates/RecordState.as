@@ -52,6 +52,7 @@ package com.screens.recordScreenStates
 		public function deActivate():void{
 			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
 			//_context.instrumentRecorder.notePlayed.remove(record);
+			_context.instrumentRecorder.notePlayed.remove(checkNotesMatch);
 			_timeModel.tickSignal.remove(onTimerTick);
 			_context.recordChannelController.endRecord();
 			_context.stopTimer();
@@ -127,9 +128,8 @@ package com.screens.recordScreenStates
 		private function onPracticeClicked(buttonState:Boolean):void{
 			_context.practice();
 		}
-		
+		private var _goodNotes:int=0;
 		private function checkNotesMatch(noteId:String):void{
-			var match:Boolean = false;
 			//for each(var curNote:DroppingNote in _toPlayNotes){
 			if(_toPlayNotes.length>0){
 			var curNote:DroppingNote = _toPlayNotes[0];
@@ -139,9 +139,9 @@ package com.screens.recordScreenStates
 					_tween.paused=false;
 					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
+					_goodNotes++;
 					//_context.notes.marc(curNote.value,true);
 					//_context.recordChannelController.fix(noteId,curNote.location,5);
-					match = true;
 					//break;
 				}
 			}
@@ -163,6 +163,7 @@ package com.screens.recordScreenStates
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			//_preTicker.active=true;
+			_goodNotes=0;
 			_context.speed=Rhythms.RECORD_SPEED;
 			//_context.notes.backUpsBut.clicked.add(setBackUps);
 			_timeModel.tickSignal.add(onTimerTick);
@@ -176,7 +177,7 @@ package com.screens.recordScreenStates
 			_timerTween.useFrames = true;
 			_timerTween.onComplete = onTimeOut;
 			_timerTween.onChange = onTimeChanged;
-			_context.timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFFFFF));
+			_context.timeAlert.visible=false;
 			//_context.resetScore();
 			_practiceMode = true;//(Session.instance.goodScreensLength<3 && !Session.instance.recordScreenGood(_context.model)) ;
 			//_goodNotes=0;
@@ -188,9 +189,9 @@ package com.screens.recordScreenStates
 					_timeEnding = !_timeEnding;
 				}
 				if(_timeEnding)
-					_context.timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFB244));
+					_context.timeAlert.visible=true;
 				else
-					_context.timeField.setTextFormat(new TextFormat("Helvetica",20,0xFFFFFF));
+					_context.timeAlert.visible=false;
 			}
 		}
 		
@@ -207,7 +208,7 @@ package com.screens.recordScreenStates
 			);
 		}
 		private function onCompleteBeforeTimer():void{
-			if(_context.recordChannelController.recordedLength >= _context.recordChannelController.learnedLength ){
+			if(_goodNotes == _context.recordChannelController.learnedLength ){
 				var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
 				Session.instance.registerGoodrecoredScreen(_context.model);
 				TestFlight.passCheckpoint("Recorded GOOD");

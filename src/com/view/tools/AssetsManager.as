@@ -359,6 +359,8 @@ package com.view.tools
 			"<image path='assets/POP_UP/next_PRESSED.png' />"+
 			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
 			
+			"<image path='assets/hour_glass.png' />"+
+			"<image path='assets/hour_glass_alert.png' />"+
 			
 			"</assets>"
 		

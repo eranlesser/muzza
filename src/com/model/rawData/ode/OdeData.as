@@ -59,19 +59,6 @@ public static var data:XML =
 </backups>
 </recordScreen>
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220"  >
-	<RecordedX>308</RecordedX>
-	<RecordedY>458</RecordedY>
-	</playerInstrument>
-<pallet type="scratch" learnedSequanced="99" rhythm="8" x='700' y='452'>
-		
-	</pallet>
-<backups>
-<instrument type="bottles.png" learnedSequanced="102" />
-</backups>
-</recordScreen>
-
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220">
 	<RecordedX>178</RecordedX>
@@ -85,6 +72,21 @@ public static var data:XML =
 <instrument type="bottles.png" learnedSequanced="102" />
 </backups>
 </recordScreen>
+
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220"  >
+	<RecordedX>308</RecordedX>
+	<RecordedY>458</RecordedY>
+	</playerInstrument>
+<pallet type="scratch" learnedSequanced="99" rhythm="8" x='700' y='452'>
+		
+	</pallet>
+<backups>
+<instrument type="bottles.png" learnedSequanced="102" />
+</backups>
+</recordScreen>
+
+
 
 
 <endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="102">
@@ -103,9 +105,9 @@ public static var data:XML =
 </screens>
 
 <popups>
-<popup id="open_demo" width="250" x="85" y="515">
+<popup id="open_demo" width="320" x="85" y="515">
 <title>Listen</title>
-<content>Click to hear what we are about to record together</content>
+<content>Click the button below to hear what we are about to record together</content>
 <direction>btm_left</direction>
 </popup>
 
@@ -145,12 +147,12 @@ public static var data:XML =
 <content>Click "Listen" to hear what you have recorded</content>
 <direction>btm_right</direction>
 </popup>
-<popup id="drums" width="280" x="562" y="515" >
+<popup id="drums" width="280" x="645" y="515" >
 <title>Drums</title>
 <content>Lets see how you keep the rhythm</content>
 <direction>btm_right</direction>
 </popup>
-<popup id="bass" width="280" x="645" y="515" >
+<popup id="bass" width="280" x="562" y="515" >
 <title>Bass</title>
 <content>Add some groove with the human bass</content>
 <direction>btm_right</direction>
