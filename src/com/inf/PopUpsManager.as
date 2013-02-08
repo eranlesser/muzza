@@ -2,7 +2,6 @@ package com.inf
 {
 	import com.constants.Session;
 	import com.freshplanet.nativeExtensions.Flurry;
-	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.Sprite;
 	import flash.utils.Dictionary;
@@ -67,7 +66,7 @@ package com.inf
 						id != TRY_AGAIN&& id != CLOSE_DEMO && id != PRESS_RECORD && id != OPEN_DEMO
 						&& id != TIME_OUT){
 						closePopUp();
-					}else if(Session.instance.goodScreensLength == 3 && (id == BASS || id == DRUMS) ){
+					}else if(Session.instance.goodScreensLength == 3 && id != DRUMS && id != TIME_OUT && id != END_RECORD && id != LISTEN && id != CLOSE_LISTEN && id != CLOSE_DEMO){
 						closePopUp();
 					}
 					else{
@@ -75,7 +74,6 @@ package com.inf
 					}
 				}
 			}
-			TestFlight.submitFeedback("open popup "+id+" , "+_thumbNail);
 			Flurry.getInstance().logEvent("open popup "+id+" , "+_thumbNail);
 			return _popUp;
 		}

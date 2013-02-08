@@ -1,5 +1,6 @@
 package com.container.navigation
 {
+	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.model.RecordSession;
 	import com.view.gui.Btn;
 	
@@ -25,6 +26,7 @@ package com.container.navigation
 			//draw(0,0);
 		}
 		
+		
 		private function onNavigate(btn:String):void{
 			goto.dispatch(btn);
 		}
@@ -36,9 +38,14 @@ package com.container.navigation
 		public function reset():void{
 			_breadCrumbs.reset();
 		}
-		
+		public function set instruments(instumnts:ThemeInstrumentsModel):void{
+			_breadCrumbs.instruments = instumnts;
+			
+		}
 	}
 }
+import com.musicalInstruments.model.CoreInstrumentModel;
+import com.musicalInstruments.model.ThemeInstrumentsModel;
 import com.screens.model.RecordSession;
 import com.view.gui.Btn;
 
@@ -51,7 +58,7 @@ class BreadCrumbs extends Sprite{
 	private var _index:uint=0;
 	public var onNavigate:Signal = new Signal();
 	public function BreadCrumbs(){
-		init();
+		//init();
 	}
 	private function init():void{
 		_icons=new Vector.<Btn>();
@@ -71,6 +78,36 @@ class BreadCrumbs extends Sprite{
 		_icons[_index].state="idle";
 	}
 	
+	override public function set x(value:Number):void{
+		super.x=value;
+	}
+	
+	public function set instruments(instumnts:ThemeInstrumentsModel):void{
+		_icons=new Vector.<Btn>();
+		for each(var ins:CoreInstrumentModel in instumnts.instruments){
+			var btn:Btn;
+			switch(ins.thumbNail){
+				case "bottles.png":
+						btn=new Btn("bottle_IDLE.png","bottle_PRESSED.png","BOTTLES_DONE.png","bottles.png");
+					break;
+				case "drum.png":
+						btn=new Btn("DRUMS_IDLE.png","DRUMS_PRESSED.png","DRUMS_DONE.png","drum.png");
+					break;
+				case "bass_flash.jpg":
+						btn=new Btn("BASS_IDLE.png","BASS_PRESSED.png","BASS_DONE.png","bass_flash.jpg");
+					break;
+				case "turnTable":
+						btn=new Btn("bottle_IDLE.png","bottle_IDLE.png","bottle_IDLE.png","scratch");
+					break;
+			}
+			addButton(btn)
+			// need to move btn assets to data and add buttons here
+		}
+		var allIcon:Btn=new Btn("LISTEN_IDLE.png","LISTEN_PRESSED.png","LISTEN_DONE.png");
+		addButton(allIcon);
+		_icons[_index].state="idle";
+	}
+	
 	public function set state(session:RecordSession):void{
 		for(var i:uint=0;i<_icons.length-1;i++){ // last screen is listen
 			if(session.isRecorded(i)){
@@ -85,6 +122,7 @@ class BreadCrumbs extends Sprite{
 	
 	private function addButton(btn:Btn):void{
 		addChild(btn);
+		btn.x = _icons.length*btn.width;
 		_icons.push(btn);
 		btn.clicked.add(navigate);
 	}

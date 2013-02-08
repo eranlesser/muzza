@@ -188,7 +188,7 @@ package com.mailchimp {
 					check to see for errors or success. Errors are returned
 					in XML format, so we'll parse the XML
 				*/
-				function completeHandler(e:Event) {
+				function completeHandler(e:Event):void {
 						var _t:String = unescape(e.target.data); //decode the uri
 						var _xml:XMLList = new XMLList(_t); //parse the xml						
 						trace(_xml.@type);
@@ -240,7 +240,7 @@ package com.mailchimp {
 			Simple check to make sure none of the required fields are
 			empty and that the email address is valid
 		**/
-		function checkRequirements( dc:String, ak:String, li:String, ea:String ) : Boolean {
+		private function checkRequirements( dc:String, ak:String, li:String, ea:String ) : Boolean {
 			
 			//check for valid email address
 			var exp:RegExp = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;

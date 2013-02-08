@@ -66,7 +66,7 @@ package com.screens.recordScreenStates
 			
 			_context.notes.start();
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
-			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
+			//TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			_context.recordChannelController.reset(ChanelNotesType.U_PLAYING);
 		}
 		
@@ -75,13 +75,12 @@ package com.screens.recordScreenStates
 		}
 		
 		public function deActivate():void{
-			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
+			//TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
 			if(_wrongAnswers<3&&_totalAnswerTime<50&&(_ofBeatNotes-_correctAnswers)<3){
 				//_context.bubble.setText("You're ready to record!",true)
 			}else{
 				//_context.bubble.setText("Practice some more",true)
 			}
-			_context.isRecorded=true;
 			_context.notes.stop();
 			_context.recordChannelController.stop();
 			_currentNoteIndx=0;

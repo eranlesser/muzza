@@ -9,7 +9,6 @@ package com.container.controller {
 	import com.screens.model.ScreensModel;
 	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
-	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -99,7 +98,6 @@ package com.container.controller {
 			_model.currentScreen.start();
 			
 			_navigator.state=_model.recordSession;
-			TestFlight.submitFeedback("go to "+scr);
 			Flurry.getInstance().logEvent("go to "+scr);
 			
 			
@@ -113,13 +111,11 @@ package com.container.controller {
 			if(_view.isDemoOpen){
 				_view.closeDemo();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
-				TestFlight.submitFeedback("close demo");
 				Flurry.getInstance().logEvent("Close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
-				TestFlight.submitFeedback("open demo");
 				Flurry.getInstance().logEvent("Open demo");
 			}
 		}
@@ -130,7 +126,6 @@ package com.container.controller {
 			goHomeSignal.dispatch();
 			_model.reset();
 			PopUpsManager.closePopUp(true);
-			TestFlight.submitFeedback("go home");
 			Flurry.getInstance().logEvent("go home");
 		}
 		

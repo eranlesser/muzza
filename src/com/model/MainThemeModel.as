@@ -1,5 +1,6 @@
 package com.model
 {
+	import com.container.Presenter;
 	import com.inf.PopUpsManager;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.model.ScreensModel;
@@ -24,7 +25,7 @@ package com.model
 		public var ready:					Signal = new Signal();
 		
 		
-		public function MainThemeModel(xml:XML,guiLayer:Sprite){
+		public function MainThemeModel(xml:XML,guiLayer:Presenter){
 			parse(xml,guiLayer);
 		}
 		
@@ -48,13 +49,13 @@ package com.model
 			ready.dispatch();
 		}
 		
-		private function parse(xml:XML,guiLayer:Sprite):void{
+		private function parse(xml:XML,guiLayer:Presenter):void{
 			_rhythm = xml.@rhythm;
 			_instruments = new ThemeInstrumentsModel(xml.instruments[0]);
 			_screens = new ScreensModel(xml,_instruments);	
 			_popUps = new PopUpsManager(xml,guiLayer);
 			_instruments.ready.addOnce(onInstrumentsReady)
-			
+			guiLayer.menu.instruments = _instruments;
 		}
 	}
 }

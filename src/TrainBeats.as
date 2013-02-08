@@ -5,7 +5,6 @@ package {
 	import com.container.ThemesController;
 	import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.FileProxy;
-	import com.testflightapp.sdk.TestFlight;
 	import com.view.tools.AssetsManager;
 	
 	import flash.desktop.NativeApplication;
@@ -38,17 +37,15 @@ package {
 			setDisplaySize();
 			Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
 			Flurry.getInstance().startSession();
-			Flurry.getInstance().setUserId(currentOSUser);//eran
-			TestFlight.takeOff("0cba08ebd9f80c67ac7b65b412c0c284_MzU0ODgyMDExLTEyLTMxIDA4OjI2OjU4LjU1NzMyMw");
-			TestFlight.setDeviceIdentifier();
+			//Flurry.getInstance().setUserId(currentOSUser);//eran
 		}
 		
-			public static function get currentOSUser():String
-			{
-				var userDir:String = File.userDirectory.nativePath;
-				var userName:String = userDir.substr(userDir.lastIndexOf(File.separator) + 1);
-				return userName;
-			}
+//			public static function get currentOSUser():String
+//			{
+//				var userDir:String = File.userDirectory.nativePath;
+//				var userName:String = userDir.substr(userDir.lastIndexOf(File.separator) + 1);
+//				return userName;
+//			}
 			
 		
 		private function setDisplaySize():void{

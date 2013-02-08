@@ -10,7 +10,6 @@ package com.musicalInstruments.model
 		private var _noteId:String;
 		private var _noteX:int;
 		private var _noteY:int;
-		private var _noteOntwoFingerTap:String;
 		private var _clickable:Boolean=true;
 		
 		

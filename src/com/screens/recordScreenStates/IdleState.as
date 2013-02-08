@@ -42,7 +42,7 @@ package com.screens.recordScreenStates
 			_context.recordButton.clicked.add(onRecordBtn);
 			_context.practiceButton.clicked.add(onPracticeClicked);
 			_context.instrumentRecorder.y=_context.model.getRecordInstrumentY();
-			_context.instrumentRecorder.octave=0;
+			//_context.instrumentRecorder.octave=0;
 			//_context.startTimer();
 			//_context.notes.start();//move cue
 			//_context.notes.stop();

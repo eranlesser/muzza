@@ -4,10 +4,13 @@ package com.screens.view {
 	import com.gskinner.motion.GTween;
 	import com.inf.PopUpsManager;
 	import com.metronom.*;
+	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
+	import com.musicalInstruments.palleta.views.Scratchee;
+	import com.musicalInstruments.palleta.views.TurnTable;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.*;
@@ -82,14 +85,7 @@ package com.screens.view {
 			return _notes;
 		}
 		
-		override public function set isRecorded(flag:Boolean):void{
-			_recordBtn.visible=flag;
-			if(!flag){
-				_practiceBtn.x=(width-_practiceBtn.width)/2;
-			}else{
-				_practiceBtn.x=267;
-			}
-		}
+		
 	
 		protected function initStateController():void{
 			_stateController = new RecordScreenStateController(this);
@@ -126,10 +122,13 @@ package com.screens.view {
 				isInited = true;
 			}
 			PopUpsManager.thumbNail = _model.instrumentModel.thumbNail;
-			if(Session.instance.recordScreenGood(_model)){
+			if(Session.instance.recordScreenGood(_model)&&Session.instance.goodScreensLength<3){
 				PopUpsManager.openPopUp(getNextPopUp(_model.instrumentModel.thumbNail));
+			}else if(Session.instance.goodScreensLength==3 && !Session.instance.completePopUpShowen){
+				PopUpsManager.openPopUp(getNextPopUp(_model.instrumentModel.thumbNail));
+				Session.instance.completePopUpShowen = true;				
 			}
-			else if(!Session.instance.demoClicked && _model.instrumentModel.thumbNail == "bottles.png"){
+			else if(!Session.instance.recordScreenGood(_model) && !Session.instance.demoClicked && _model.instrumentModel.thumbNail == "bottles.png"){
 				PopUpsManager.openPopUp(PopUpsManager.OPEN_DEMO);
 			}else{
 				PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
@@ -185,6 +184,7 @@ package com.screens.view {
 		override public function stop():void{
 			_stateController.deActivate();
 			PopUpsManager.closePopUp();
+			_instrumentRecorder.stop();
 			super.stop();
 		}
 		
@@ -212,9 +212,12 @@ package com.screens.view {
 		}
 		
 		private function createPlayerAndInstrument():void{
-			if(_model.instrumentModel.type=="bottles"){
+			if(_model.instrumentModel.type=="turnTable"){
+				_instrumentRecorder = new TurnTable(_model.instrumentModel as NotesInstrumentModel);
+			}else{
 				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
-			}else if(_model.instrumentModel.type=="bass"){
+			}
+			/*}else if(_model.instrumentModel.type=="bass"){
 				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="drums"){
 				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
@@ -222,18 +225,18 @@ package com.screens.view {
 				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
 			}else{
 				//trace(_model.instrumentModel.type)
-			}
+			}*/
 			_stageLayer.addChild(_instrumentRecorder);
 			
 		}
 		
-		private function onPlayerNote(noteId:String):void{
-			_instrumentRecorder.animateNote(noteId,"play");
-		}
-		
-		private function onPlayerUnNote(noteId:String):void{
-			_instrumentRecorder.animateNote(noteId,"idle");
-		}
+//		private function onPlayerNote(noteId:String):void{
+//			_instrumentRecorder.animateNote(noteId,"play");
+//		}
+//		
+//		private function onPlayerUnNote(noteId:String):void{
+//			_instrumentRecorder.animateNote(noteId,"idle");
+//		}
 		
 		private function addRepresentation():void{
 			_notes = new Notes(_model.noteTargetsY+_model.noteTargetsYOffset);

@@ -124,6 +124,8 @@ package com.inf
 			_thumbNail.x=10;
 			_thumbNail.y=10;
 			this.alpha = 0;
+			this.scaleX=1;
+			this.scaleY=1;
 			new GTween(this,0.5,{alpha:1});
 		}
 		
@@ -145,11 +147,13 @@ package com.inf
 		public function close():void{
 			_bg.visible=false;
 			_mini_bg.visible=true;
-			this.x=6;
-			this.y=6;//(_topContainerY-_thumbNail.height)/2;
+			this.x=10;
+			this.y=18;//(_topContainerY-_thumbNail.height)/2;
 			_thumbNail.x=5;
 			_thumbNail.y=5;
 			this.alpha=1;
+			this.scaleX=0.7;
+			this.scaleY=0.7;
 		}
 		
 		private function addArrow(arrowDirection:String):DisplayObject{
@@ -180,6 +184,9 @@ package com.inf
 					icon = AssetsManager.getAssetByName("GIRL_PROFILE_PIC.png");
 					break;
 				case "bass_flash.jpg":
+					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
+					break;
+				case "turnTable":
 					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
 					break;
 			}

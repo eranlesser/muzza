@@ -65,8 +65,8 @@ package com.screens.view.components.notes
 					//prefix =  "insCircleDrop";
 					prefix="BASS"
 					break;
-				case "scratch":
-					prefix =  "insRectDrop";
+				case "turnTable":
+					prefix =  "BASS";
 					break;
 				case "chelo":
 					prefix =  "insRectDrop";

@@ -18,7 +18,8 @@ package com.musicalInstruments.model {
 		private var _leftPad:			uint;
 		private var _notesGap:			uint;
 		private var _eyes:				XML;
-		private var _text:String;
+		private var _text:				String;
+		private var _rawData:XML;
 		
 		public var ready:Signal = new Signal();
 		protected var _sequances:		Vector.<ISequance>;
@@ -33,7 +34,10 @@ package com.musicalInstruments.model {
 			_leftPad = instrument.components.@leftPad;
 			_notesGap = instrument.components.@notesGap
 			try{
-			_eyes = XML(instrument.eyes);
+				_rawData = XML(instrument.rawData);
+			}catch(e:Error){}
+			try{
+				_eyes = XML(instrument.eyes);
 			}catch(e:Error){}
 			
 			_text=instrument.text;
@@ -47,6 +51,11 @@ package com.musicalInstruments.model {
 			
 		}
 		
+		public function get rawData():XML
+		{
+			return _rawData;
+		}
+
 		public function get width():uint{
 			return _width;
 		}

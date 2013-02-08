@@ -179,7 +179,7 @@ class Credits extends Sprite{
 		if(email.text!=""){
 			var sucscribe:subscribe = new subscribe("us6","81ad977f3622acbeeb9f9db111625ea0-us6","97a5200186",email.text,"eran", "lesser");
 			Flurry.getInstance().logEvent("email added "+email.text);
-			email.text="";
+			email.text="Thank You!";
 		}
 	}
 	

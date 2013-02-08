@@ -1,6 +1,7 @@
 package com.screens.view
 {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.gui.hat.Hat;
 	import com.inf.PopUpsManager;
 	import com.musicalInstruments.model.InstrumentModel;
@@ -12,7 +13,6 @@ package com.screens.view
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
-	import com.testflightapp.sdk.TestFlight;
 	import com.utils.Claps;
 	
 	import flash.events.Event;
@@ -112,13 +112,16 @@ package com.screens.view
 
 		
 		override protected function endMusciPiece():void{
+			if(Session.instance.goodScreensLength==3){
 			_claps.play();
 			_hat.fillHat();
+			}
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
-			TestFlight.passCheckpoint("CLAPS");
-			super.endMusciPiece();
+			if(Session.instance.goodScreensLength==3){
+				super.endMusciPiece();
+			}
 		}
 		
 		public function get goto():Signal{

@@ -264,7 +264,7 @@
     </iPhone>
 
 <extensions>
-        <extensionID>com.testflightapp.sdk</extensionID>
+        
     <extensionID>com.freshplanet.AirFlurry</extensionID>
     </extensions>
 </application>

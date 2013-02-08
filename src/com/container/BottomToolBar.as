@@ -2,6 +2,7 @@ package com.container
 {
 	import com.constants.Dimentions;
 	import com.container.navigation.Navigator;
+	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
@@ -25,7 +26,6 @@ package com.container
 		private function init():void{
 			addChild(AssetsManager.getAssetByName("BOTTOM_TOOLBAR.png"));
 			_navigator = addChild(new Navigator()) as Navigator;
-			_navigator.x = Dimentions.WIDTH-10-_navigator.width;
 			_navigator.y=7;
 			_homeButton = new Btn("HOME_IDLE.png","HOME_PRESSED.png");
 			addChild(_homeButton);
@@ -53,6 +53,11 @@ package com.container
 		
 		public function get navigator():Navigator{
 			return _navigator;
+		}
+		
+		public function set instruments(instmnts:ThemeInstrumentsModel):void{
+			_navigator.instruments = instmnts;
+			_navigator.x = Dimentions.WIDTH-10-_navigator.width;
 		}
 		
 	}

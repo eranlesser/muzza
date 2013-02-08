@@ -43,8 +43,6 @@ package com.musicalInstruments.model {
 			for each(var instrument:XML in instruments.children()){
 				if(instrument.@type == "voice"){
 					//instrumentModel = new VoiceInstrumentModel(instrument);
-				}else if(instrument.@type == "pallet"){
-					instrumentModel = new PalletModel(instrument);
 				}else{
 					instrumentModel = new NotesInstrumentModel(instrument);
 				}

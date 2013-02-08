@@ -19,7 +19,6 @@ package com.screens.recordScreenStates
 	import com.screens.view.AbstractScreen;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
-	import com.testflightapp.sdk.TestFlight;
 	import com.view.MetronomView;
 	
 	import flash.events.Event;
@@ -50,7 +49,9 @@ package com.screens.recordScreenStates
 		}
 		
 		public function deActivate():void{
-			TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
+			if(_context.instrumentRecorder is TapInstrument){
+				//TapInstrument(_context.instrumentRecorder).deAutoSetOctave();
+			}
 			//_context.instrumentRecorder.notePlayed.remove(record);
 			_context.instrumentRecorder.notePlayed.remove(checkNotesMatch);
 			_timeModel.tickSignal.remove(onTimerTick);
@@ -161,7 +162,9 @@ package com.screens.recordScreenStates
 			_context.recordButton.clicked.add(onRecordBtn);
 			//_context.practiceButton.clicked.add(onPracticeClicked);
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
-			TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
+			if(_context.instrumentRecorder is TapInstrument){
+				//TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
+			}
 			//_preTicker.active=true;
 			_goodNotes=0;
 			_context.speed=Rhythms.RECORD_SPEED;
@@ -197,7 +200,6 @@ package com.screens.recordScreenStates
 		
 		private function onTimeOut(t:GTween):void{
 			stop();
-			TestFlight.passCheckpoint("Recorded BAD");
 			Flurry.getInstance().logEvent("Recorded BAD");
 			PopUpsManager.openPopUp(PopUpsManager.TIME_OUT).nextSignal.addOnce(
 				function():void{
@@ -211,7 +213,6 @@ package com.screens.recordScreenStates
 			if(_goodNotes == _context.recordChannelController.learnedLength ){
 				var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
 				Session.instance.registerGoodrecoredScreen(_context.model);
-				TestFlight.passCheckpoint("Recorded GOOD");
 				Flurry.getInstance().logEvent("Recorded GOOD onCompleteBeforeTimer");
 				PopUpsManager.openPopUp(PopUpsManager.END_RECORD).nextSignal.addOnce(
 					function():void{

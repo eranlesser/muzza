@@ -144,6 +144,8 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_2.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_3.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_4.png' />"+
+			//SCRATCH
+			"<image path='assets/instruments/scratch/Vinyl.png' />"+
 			
 			//RECORD SCREEN BUTTONS
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+

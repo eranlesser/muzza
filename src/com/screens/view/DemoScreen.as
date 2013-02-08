@@ -7,7 +7,6 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
-	import com.testflightapp.sdk.TestFlight;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
@@ -245,7 +244,6 @@ package com.screens.view {
 				if(_model.endAtFrame-10 <= _timeModel.currentTick){
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 				_playPauseBtn.state=1;
-				TestFlight.submitFeedback("demo complete");
 				Flurry.getInstance().logEvent("demo complete");
 				}
 			}

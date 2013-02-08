@@ -30,10 +30,6 @@ package com.screens.view {
 			trace("EEERRRROOOORRR parseXML not implemented");
 		}
 		
-		public function set isRecorded(flag:Boolean):void{
-			
-		}
-		
 		
 //______________________________________________________LAYOUT
 		

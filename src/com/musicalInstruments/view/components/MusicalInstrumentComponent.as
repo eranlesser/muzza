@@ -11,6 +11,8 @@ package com.musicalInstruments.view.components
 	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
 	
@@ -60,8 +62,8 @@ package com.musicalInstruments.view.components
 			//addChild(_mark)
 			RepresentationtypeController.getInstane().register(this);
 			//dev
-			//this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
-			//this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
+			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
+			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);
 			addEventListener(TouchEvent.TOUCH_BEGIN, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_ROLL_OVER, onTouchTap);
 			addEventListener(TouchEvent.TOUCH_END, onTouchTapEnd);
@@ -80,18 +82,27 @@ package com.musicalInstruments.view.components
 			state="idle";
 			e.updateAfterEvent();
 		}
-		private function onTouchTap(e:TouchEvent):void{
+		public function onTouchTap(e:Event):void{
 			if(_isPressed){return;}
 			_isPressed=true;
 			tuch.dispatch(this);
-			e.updateAfterEvent();
+			if(e is KeyboardEvent){
+				(e as KeyboardEvent).updateAfterEvent();
+			}else{
+				(e as TouchEvent).updateAfterEvent();
+			}
+			
 		}
-		private function onTouchTapEnd(e:TouchEvent):void{
+		public function onTouchTapEnd(e:Event):void{
 			if(!_isPressed){return;}
 			_isPressed=false;
 			unTuch.dispatch(this);
 			state="idle";
-			e.updateAfterEvent();
+			if(e is KeyboardEvent){
+				(e as KeyboardEvent).updateAfterEvent();
+			}else{
+				(e as TouchEvent).updateAfterEvent();
+			}
 		}
 		
 		

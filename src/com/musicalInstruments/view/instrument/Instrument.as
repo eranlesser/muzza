@@ -12,6 +12,12 @@ package com.musicalInstruments.view.instrument {
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.FocusEvent;
+	import flash.events.KeyboardEvent;
+	import flash.text.TextField;
+	import flash.text.TextFieldType;
+	import flash.ui.Keyboard;
 	
 	import org.osflash.signals.Signal;
 	
@@ -22,7 +28,6 @@ package com.musicalInstruments.view.instrument {
 		
 		protected var _musicalComponents:	Vector.<MusicalInstrumentComponent>;
 		private var _endAtFrame:			uint;
-		private var _octave:				uint;
 		protected var _model:				CoreInstrumentModel;
 		protected var _beginAtFrame:		uint;
 		protected var _recordedSequanceId:	uint;
@@ -30,8 +35,10 @@ package com.musicalInstruments.view.instrument {
 		private var unTuch:					Signal=new Signal();
 		private var _sequanceDone:			Signal=new Signal();
 		protected var _notePlayed:			Signal;
-		private var _noteStopped:			Signal;
+		protected var _noteStopped:			Signal;
 		private var _player:				NoteSequancePlayer;
+		
+		private var _tField:TextField;
 		
 		public function Instrument(model:CoreInstrumentModel){
 			_notePlayed = new Signal();
@@ -39,8 +46,78 @@ package com.musicalInstruments.view.instrument {
 			_musicalComponents = new Vector.<MusicalInstrumentComponent>();
 			_model = model as CoreInstrumentModel;
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
-			addComponents(_model.components);
+			addEventListener(KeyboardEvent.KEY_DOWN,onKeyPressed);
+			addEventListener(Event.ADDED_TO_STAGE,onAdded);
+			_tField = new TextField();
+			_tField.type = TextFieldType.INPUT;
+			addChild(_tField);
+			_tField.alpha=0;
+		}
+		
+		private function onAdded(e:Event):void{
 			
+			stage.focus = _tField;
+			_tField.addEventListener(FocusEvent.FOCUS_OUT,onFocusOut);
+		}
+		
+		private function onFocusOut(e:Event):void{
+			if(stage)
+				stage.focus = e.target as TextField;
+		}
+		
+		private function onKeyPressed(e:KeyboardEvent):void{
+			var compValue:int;
+			var keyValue:int = getValueFromChar(e.keyCode);
+			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
+				compValue = NotesInstrumentModel(_model).getNoteById(comp.noteId).value
+				if(compValue == keyValue){
+					comp.onTouchTap(e);
+					addEventListener(KeyboardEvent.KEY_UP, function keyUp(event:Event):void{
+						removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
+						comp.onTouchTapEnd(event);
+					}
+					);
+					break;
+				}
+			}
+			TextField(e.target).text="";
+		}
+		
+		private function getValueFromChar(char:int):int{
+			var val:int;
+			switch(char){
+				case Keyboard.NUMBER_0:
+					val =  0;
+					break;
+				case Keyboard.NUMBER_1:
+					val =  1;
+					break;
+				case Keyboard.NUMBER_2:
+					val =  2;
+					break;
+				case Keyboard.NUMBER_3:
+					val =  3;
+					break;
+				case Keyboard.NUMBER_4:
+					val =  4;
+					break;
+				case Keyboard.NUMBER_5:
+					val =  5;
+					break;
+				case Keyboard.NUMBER_6:
+					val =  6;
+					break;
+				case Keyboard.NUMBER_7:
+					val =  7;
+					break;
+				case Keyboard.NUMBER_8:
+					val =  8;
+					break;
+				case Keyboard.NUMBER_9:
+					val =  9;
+					break;
+			}
+			return val;
 		}
 		
 		public function get sequanceDone():Signal{
@@ -63,35 +140,23 @@ package com.musicalInstruments.view.instrument {
 			for each(var component:MusicalInstrumentComponent in _musicalComponents){
 				component.state = "idle";
 			}
-			if(indx>0)
-				getComponent(id).state="play";
-		}
-		
-		public function set octave(oct:uint):void{
-			_octave=oct;
-			NotesInstrumentModel(_model).octave=oct;
-		}
-		
-		public function get octave():uint{
-			return _octave;
+			//if(indx>0)
+				//getComponent(id).state="play";
 		}
 		
 		
 		
-		private function getComponent(id:String):MusicalInstrumentComponent{
-			for each(var component:MusicalInstrumentComponent in _musicalComponents){
-				if(component.noteId == id){
-					return component;
-				}
-			}
-			return null;
-		}
+		
 		
 		
 		public function stop():void{
 			_player.stop();
 			for each(var component:MusicalInstrumentComponent in _musicalComponents){
 				component.state = "idle";
+			}
+			if(stage){
+				_tField.removeEventListener(FocusEvent.FOCUS_OUT,onFocusOut);
+				stage.focus=null;
 			}
 		}
 		
@@ -106,73 +171,9 @@ package com.musicalInstruments.view.instrument {
 //		}
 //		
 		
-		public function animateNote(noteId:String,state:String):void{
-			getComponentById(noteId).state = state;
-		}
-		
-		
-		
-	
-		private function onTouch(comp:MusicalInstrumentComponent):void{
-			var note:NoteModel = NotesInstrumentModel(_model).getNoteById(comp.noteId);
-			note.player.play(1);
-			animateNote(comp.noteId , "play");
-			comp.startLocation = Metronome.getTimeModel().currentTick;
-			_notePlayed.dispatch(comp.noteId);
-		}
-		private function onUnTouch(comp:MusicalInstrumentComponent):void{
-			animateNote( comp.noteId , "idle");
-			//var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
-			//note.player.stop();
-			var soundLength:uint = (Metronome.getTimeModel().currentTick-comp.startLocation);
-			if(soundLength==0){  // in case of fast tap
-				soundLength=1;
-			}
-			if(soundLength>4){   // in case of slow tap
-				soundLength = 4;
-			}
-			if(soundLength==3){   // no 3 soundlength yet
-				soundLength = 2;
-			}
-			//if(!Metronome.getTimeModel().isPreTicking){
-			//}
-			
-			_noteStopped.dispatch(comp.noteId,comp.startLocation,soundLength,_octave);
-		}
-		
-		public function getComponentById(id:String):MusicalInstrumentComponent{
-			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
-				if(comp.noteId == id){
-					return comp;
-				}
-			}
-			return null;
-		}
-		
-		
-		
-		
-		
-		private function addComponents(components:Vector.<InstrumentComponentModel>):void{
-			for each(var compModel:InstrumentComponentModel in components){
-				var comp:MusicalInstrumentComponent;
-				comp = new MusicalInstrumentComponent(compModel,_model as INoteFetcher);
-				addChild(comp);
-				comp.tuch.add(onTouch);
-				comp.unTuch.add(onUnTouch);
-				comp.x = compModel.x;
-				comp.y = compModel.y;
-				if(comp.clickable){
-					_musicalComponents.push(comp)
-				}else{
-					comp.mouseChildren = false;
-					comp.mouseEnabled = false;
-				}
-				this.mouseEnabled = false;
-			}
-		}
-		
-		
+//		public function animateNote(noteId:String,state:String):void{
+//			getComponentById(noteId).state = state;
+//		}
 		
 		
 		

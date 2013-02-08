@@ -33,12 +33,12 @@ package com.studio
 		public function StudioInstrument(model:InstrumentModel)
 		{
 			
-			_musicalView = _instrument = new TapInstrument(model.coreModel as NotesInstrumentModel);
-			if((_musicalView as TapInstrument).octaveSelector){
-				(_musicalView as TapInstrument).octaveSelector.enabled=true;
-			}
+			//_musicalView = _instrument = new TapInstrument(model.coreModel as NotesInstrumentModel);
+			//if((_musicalView as TapInstrument).octaveSelector){
+			//	(_musicalView as TapInstrument).octaveSelector.enabled=true;
+			//}
 			_instrumentModel=model;
-			(_musicalView as TapInstrument).reLayout()
+			//(_musicalView as TapInstrument).reLayout()
 			addChild(_musicalView as Sprite);
 			_cover = new Sprite();
 			_cover.graphics.lineStyle(1,0,0.5);

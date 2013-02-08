@@ -7,10 +7,10 @@ public class OdeData
 public static var data:XML = 
 <theme id='recycle' rhythm='10'>
 <instruments>
-{Drum.data}
-{Bass.data}
+{TurnTableData.data}
 {Bottles.data}
-
+{Bass.data}
+{Drum.data}
 </instruments>
 <screens>
 
@@ -46,14 +46,24 @@ public static var data:XML =
 </studioScreen>
 
 <recordSession>
+
+
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+	<playerInstrument type="turnTable" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220"  >
+	<RecordedX>120</RecordedX>
+	<RecordedY>320</RecordedY>
+	</playerInstrument>
+
+<backups>
+<instrument type="bottles.png" learnedSequanced="102" />
+<instrument type="bass_flash.jpg" learnedSequanced="102" />
+</backups>
+</recordScreen>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="220">
 	<RecordedX>102.5</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
-	<pallet type="claps"  rhythm="8" x='815' y='380'>
-		
-	</pallet>
 <backups>
 
 </backups>
@@ -64,11 +74,7 @@ public static var data:XML =
 	<RecordedX>178</RecordedX>
 	<RecordedY>420</RecordedY>
 	</playerInstrument>
-<pallet type="chelo" learnedSequanced="99" x='14' y='450'>
-		
-	</pallet>
 <backups>
-<instrument type="drum.png" learnedSequanced="102" />
 <instrument type="bottles.png" learnedSequanced="102" />
 </backups>
 </recordScreen>
@@ -78,13 +84,13 @@ public static var data:XML =
 	<RecordedX>308</RecordedX>
 	<RecordedY>458</RecordedY>
 	</playerInstrument>
-<pallet type="scratch" learnedSequanced="99" rhythm="8" x='700' y='452'>
-		
-	</pallet>
+
 <backups>
 <instrument type="bottles.png" learnedSequanced="102" />
+<instrument type="bass_flash.jpg" learnedSequanced="102" />
 </backups>
 </recordScreen>
+
 
 
 
@@ -101,6 +107,8 @@ public static var data:XML =
 	</instrument>
 
 </endScreen>
+
+
 </recordSession>
 </screens>
 

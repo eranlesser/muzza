@@ -4,8 +4,6 @@ public class Drum
 {
 public static var data:XML = 
 <drum type="drums" thumbNail='drum.png' spriteSheet="drumsSheet.png">
-<bubble x="-100" y="42">
-</bubble>
 <eyes swfSheet="drumsEyes.png" x="0" y="0" width="410" height="350" >
 	<blink start="0" end="4" />
 	<blink start="4" end="8" />
@@ -26,7 +24,6 @@ public static var data:XML =
 </drum>
 
 </components>
-<pallet type="scratchee" sound="claps/claps.mp3" x='380' y='0' />
 <octaves>
 <notes>
 	<note id="D_6" value="1"  soundFile="ode/drums/snar.mp3" animationIndex='5'    />
