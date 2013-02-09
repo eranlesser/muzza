@@ -2,8 +2,7 @@ package com.musicalInstruments.palleta.views
 {
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.palleta.Ipallet;
-	import com.musicalInstruments.view.instrument.TapInstrument;
+	import com.musicalInstruments.view.instrument.Instrument;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
@@ -12,18 +11,21 @@ package com.musicalInstruments.palleta.views
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
+	import flash.geom.Point;
 	
-	public class TurnTable extends TapInstrument implements Ipallet
+	public class TurnTable extends Instrument
 	{
 		private var _vinyl:Sprite;
+		private var _chelo:Sprite;
 		private var _upNoteId:String;
 		private var _downNoteId:String;
-		
+		private var _mouseDownPoint:Point;
 		public function TurnTable(model:NotesInstrumentModel)
 		{
 			super(model);
 			//init();
 			addVinyl(_model.rawData);
+			addChelo(_model.rawData)
 		}
 		
 		private function addVinyl(xml:XML):void{
@@ -36,12 +38,33 @@ package com.musicalInstruments.palleta.views
 			_vinyl.x = xml.vinyl.@x;
 			_vinyl.y = xml.vinyl.@y;
 			
-			_upNoteId = xml.vinyl.up.@noteId;
-			_downNoteId = xml.vinyl.down.@noteId;
+			_upNoteId = xml.vinyl.notes.up.@noteId;
+			_downNoteId = xml.vinyl.notes.down.@noteId;
 			
 			_vinyl.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
 			_vinyl.addEventListener(TouchEvent.TOUCH_BEGIN,onMouseDown);
 			_vinyl.addEventListener(MouseEvent.CLICK,onClick);
+		}
+		private function addChelo(xml:XML):void{
+			_chelo = new Sprite();
+			var cheloBg:DisplayObject = AssetsManager.getAssetByName(xml.chelo.@image);
+			_chelo.addChild(cheloBg);
+			addChild(_chelo);
+			_chelo.x = xml.chelo.@x;
+			_chelo.y = xml.chelo.@y;
+			var xx:int=_chelo.x;
+			for each(var paweXml:XML in xml.chelo.children()){
+				var pawee:Pawee = new Pawee(paweXml,_chelo.width/3);
+				addChild(pawee);
+				pawee.x=xx;
+				pawee.y = _chelo.y;
+				xx+=_chelo.width/3;
+				pawee.soundComplete.add(onSoundComplete);
+			}
+			
+		}
+		private  function onSoundComplete(id:String):void{
+			noteStopped.dispatch(id,_tick,2,0);
 		}
 		
 //		private function init():void{
@@ -92,6 +115,7 @@ package com.musicalInstruments.palleta.views
 			stage.addEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 			_wasTurning = false;
+			_mouseDownPoint = new Point((e as MouseEvent).stageX,(e as MouseEvent).stageY);
 			//playSound(5);
 		}
 		
@@ -100,7 +124,7 @@ package com.musicalInstruments.palleta.views
 			removeEventListener(MouseEvent.MOUSE_MOVE,rotate);
 			stage.removeEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
-			
+			_isPlaying=false;
 		}
 		
 		
@@ -125,10 +149,10 @@ package com.musicalInstruments.palleta.views
 			_isPlaying = true;
 			note.player.play(1);
 			var startTick:uint = _tick;
+			_notePlayed.dispatch(note.id);
 			note.player.soundComplete.addOnce(
 				function onSoundComplete():void{
 					noteStopped.dispatch(note.id,startTick,_tick-startTick,0);
-					_isPlaying=false;
 				}
 			)
 		}
@@ -148,8 +172,12 @@ package com.musicalInstruments.palleta.views
 			}
 			_moveCounter++;
 			if(_moveCounter>5&&!_isPlaying){
-				//var note:NoteModel = notes[Math.round(Math.random()*(notes.length-1))]; 
-				//playSound(note);
+				var noteId:String = _downNoteId;
+				if(e.stageY > _mouseDownPoint.y){
+					noteId = _upNoteId;
+				}
+				var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
+				playSound(note);
 				_moveCounter = 0;
 				_wasTurning = true;
 			}
@@ -160,4 +188,73 @@ package com.musicalInstruments.palleta.views
 		}
 		
 	}
+}
+import com.gskinner.motion.GTween;
+import com.musicalInstruments.view.components.SoundPlayer;
+
+import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.events.TouchEvent;
+import flash.media.SoundChannel;
+
+import org.osflash.signals.Signal;
+
+class Pawee extends Sprite{
+	private var _wdt:uint;
+	private var _soundPlayer:SoundPlayer;
+	private var _id:String;
+	public function Pawee(data:XML,wdt:uint){
+		_soundPlayer = new SoundPlayer(data.@sound);
+		_id=data.@id;
+		init(wdt);
+	}
+	
+	private function init(wdt:uint):void{
+		this.graphics.beginFill(0x000000,0.4);
+		this.graphics.drawRect(0,0,wdt,wdt);
+		this.graphics.endFill();
+		_wdt=wdt;
+		
+		this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
+		this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseClick);
+	}
+	
+	private function onClick(e:TouchEvent):void{
+		play()
+	}
+	private function onMouseClick(e:MouseEvent):void{
+		play()
+	}
+	public var soundComplete:Signal=new Signal();
+	private function play():void{
+		var channel:SoundChannel = _soundPlayer.play(1);
+		
+		//channel.addEventListener(Event.SOUND_COMPLETE,function onSoundComplete():void{
+		//	channel.removeEventListener(Event.SOUND_COMPLETE,onSoundComplete)
+		soundComplete.dispatch(_id);
+		var play:Sprite = new Sprite();
+		play.graphics.beginFill(0xFFFFFF,1);
+		play.graphics.lineStyle(1,0xEEEEEE);
+		play.graphics.drawCircle(0,0,this.width/6);
+		play.graphics.endFill();
+		play.x=width/2;
+		play.y=height/2+4;
+		addChild(play);
+		
+		
+		var tween:GTween = new GTween(play,1,{width:width,height:width,alpha:0})
+		tween.onComplete=onTweenEnd;
+	}
+	
+	private function onTweenEnd(t:GTween):void
+	{
+		t.onComplete=null;
+		removeChild(t.target as Sprite)
+	}	
+	
+	public function get id():String
+	{
+		return _id;
+	}
+	
 }

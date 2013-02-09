@@ -12,20 +12,17 @@ package com.model.rawData.ode
 <rawData>
 	<vinyl image="Vinyl.png" x="500" y="150" >
 		<notes>
-			<up noteId="C_5" />
+			<up noteId="E_5" />
 			<down noteId="D_5" />
 		</notes>
 	</vinyl>
+	<chelo image="notes_sheet_v.png" x="-20" y="-20" >
+		<powee id="C_6"   sound="pallet/chelo/chelo_1.mp3"   />
+		<powee id="C#_6"   sound="pallet/chelo/chelo_2.mp3" />
+		<powee id="D_6"   sound="pallet/chelo/chelo_3.mp3" />
+	</chelo>
 </rawData>
-<components  notesGap="110" leftPad="195">
-		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
-			<tap noteId="C_5" />
-		</bass>
-		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='150' y='0'  >
-			<tap noteId="C_5" />
-		</bass>
-</components>
-			<text>Scrach</text>
+
 			<octaves>
 			<notes>
 			
@@ -34,6 +31,10 @@ package com.model.rawData.ode
 			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='3' value="3" x="0"  />
 			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='4' value="4" x="0"  />
 			<note id="G"   soundFile="ode/scrach/sol.mp3" animationIndex='5' value="5" x="0"  />
+			
+			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="0" x="60"  />
+			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="0" x="140" />
+			<note id="D_6"   soundFile="ode/chelo/chelo_4.mp3" animationIndex='3' value="0" x="220" />
 			</notes>
 			</octaves>
 			<gestures>
@@ -42,6 +43,13 @@ package com.model.rawData.ode
 
 			
 <sequance id="10">
+<note id="E_5" location="160" soundLength="1"/><note id="D_5" location="172" soundLength="1"/>
+<note id="E_5" location="176" soundLength="1"/><note id="D_5" location="180" soundLength="1"/><note id="E_5" location="188" soundLength="1"/>
+<note id="C_5" location="416" soundLength="1"/><note id="E_5" location="424" soundLength="1"/>
+<note id="D_5" location="428" soundLength="1"/><note id="E_5" location="432" soundLength="1"/>
+<note id="E_5" location="436" soundLength="1"/><note id="D_5" location="444" soundLength="1"/>
+</sequance>
+<sequance id="11">
 <note id="C_5" location="160" soundLength="1"/><note id="C#_5" location="172" soundLength="1"/>
 <note id="D_5" location="176" soundLength="1"/><note id="E_5" location="180" soundLength="1"/><note id="G" location="188" soundLength="1"/>
 <note id="C_5" location="416" soundLength="1"/><note id="C#_5" location="424" soundLength="1"/>
