@@ -43,7 +43,6 @@ package com.musicalInstruments.palleta.views
 			
 			_vinyl.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
 			_vinyl.addEventListener(TouchEvent.TOUCH_BEGIN,onMouseDown);
-			_vinyl.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		private function addChelo(xml:XML):void{
 			_chelo = new Sprite();
@@ -59,12 +58,16 @@ package com.musicalInstruments.palleta.views
 				pawee.x=xx;
 				pawee.y = _chelo.y;
 				xx+=_chelo.width/3;
-				pawee.soundComplete.add(onSoundComplete);
+				pawee.notePlayed.add(onNotePlayed);
+				pawee.noteStopped.add(onNoteStopped);
 			}
 			
 		}
-		private  function onSoundComplete(id:String):void{
-			noteStopped.dispatch(id,_tick,2,0);
+		private  function onNotePlayed(id:String):void{
+			_notePlayed.dispatch(id);
+		}
+		private  function onNoteStopped(id:String):void{
+			_noteStopped.dispatch(id,_tick,2,0);
 		}
 		
 //		private function init():void{
@@ -103,18 +106,11 @@ package com.musicalInstruments.palleta.views
 //			_record.addEventListener(MouseEvent.CLICK,onClick);
 //		}
 		
-		private function onClick(event:MouseEvent):void
-		{
-			if(!_wasTurning){
-				//_hey.player.play(1);
-			}
-		}
 		
 		private function onMouseDown(e:Event):void{
 			addEventListener(MouseEvent.MOUSE_MOVE,rotate);
 			stage.addEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
-			_wasTurning = false;
 			_mouseDownPoint = new Point((e as MouseEvent).stageX,(e as MouseEvent).stageY);
 			//playSound(5);
 		}
@@ -141,9 +137,6 @@ package com.musicalInstruments.palleta.views
 			_tick = currentTick;
 		}
 		
-		public function set active(value:Boolean):void
-		{
-		}
 		
 		private function playSound(note:NoteModel):void{
 			_isPlaying = true;
@@ -159,7 +152,7 @@ package com.musicalInstruments.palleta.views
 		
 		private var _moveCounter:uint=0;
 		private var _isPlaying:Boolean = false;
-		private var _wasTurning:Boolean = false;
+		private var _turnDirection:int;
 		private function rotate (e:MouseEvent):void{
 			var theX:int = mouseX - _vinyl.x;
 			var theY:int = (mouseY - _vinyl.y) * -1;
@@ -171,15 +164,19 @@ package com.musicalInstruments.palleta.views
 				angle += 360;
 			}
 			_moveCounter++;
-			if(_moveCounter>5&&!_isPlaying){
+			if(_moveCounter>5){
 				var noteId:String = _downNoteId;
+				var turnDirection:int = -1;
 				if(e.stageY > _mouseDownPoint.y){
 					noteId = _upNoteId;
+					turnDirection = 1;
 				}
+				if(!_isPlaying || _turnDirection!=turnDirection){
 				var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
-				playSound(note);
-				_moveCounter = 0;
-				_wasTurning = true;
+					playSound(note);
+					_moveCounter = 0;
+					_turnDirection = turnDirection;
+				}
 			}
 			
 			//trace(_vinyl.rotation-((angle*-1) + 90));
@@ -203,6 +200,8 @@ class Pawee extends Sprite{
 	private var _wdt:uint;
 	private var _soundPlayer:SoundPlayer;
 	private var _id:String;
+	public var notePlayed:Signal=new Signal();
+	public var noteStopped:Signal=new Signal();
 	public function Pawee(data:XML,wdt:uint){
 		_soundPlayer = new SoundPlayer(data.@sound);
 		_id=data.@id;
@@ -225,13 +224,12 @@ class Pawee extends Sprite{
 	private function onMouseClick(e:MouseEvent):void{
 		play()
 	}
-	public var soundComplete:Signal=new Signal();
 	private function play():void{
 		var channel:SoundChannel = _soundPlayer.play(1);
 		
 		//channel.addEventListener(Event.SOUND_COMPLETE,function onSoundComplete():void{
 		//	channel.removeEventListener(Event.SOUND_COMPLETE,onSoundComplete)
-		soundComplete.dispatch(_id);
+		notePlayed.dispatch(_id);
 		var play:Sprite = new Sprite();
 		play.graphics.beginFill(0xFFFFFF,1);
 		play.graphics.lineStyle(1,0xEEEEEE);
@@ -249,7 +247,8 @@ class Pawee extends Sprite{
 	private function onTweenEnd(t:GTween):void
 	{
 		t.onComplete=null;
-		removeChild(t.target as Sprite)
+		removeChild(t.target as Sprite);
+		noteStopped.dispatch(_id);
 	}	
 	
 	public function get id():String
