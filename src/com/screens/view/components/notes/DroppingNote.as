@@ -66,7 +66,7 @@ package com.screens.view.components.notes
 					prefix="BASS"
 					break;
 				case "turnTable":
-					prefix =  "BASS";
+					prefix =  "tableArrow";
 					break;
 				case "chelo":
 					prefix =  "insRectDrop";

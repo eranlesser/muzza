@@ -102,7 +102,7 @@ package com.screens.view.components.notes
 				case "bass_flash.jpg":
 					prefix =  "insCircle";
 					break;
-				case "scratch":
+				case "turnTable":
 					prefix =  "insRect";
 					break;
 				case "chelo":

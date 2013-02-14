@@ -73,6 +73,9 @@ package com.view.tools
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_PRESSED.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BOTTOM_TOOLBAR.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/vinyl_done_but.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/vinyl_idle_but.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/vinyl_press_but.png' />"+
 			//NOTES
 			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
 			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
@@ -92,8 +95,16 @@ package com.view.tools
 			"<image path='assets/instruments/insRectFill.png' />"+
 			"<image path='assets/instruments/insRectRight.png' />"+
 			"<image path='assets/instruments/insRectWrong.png' />"+
-			"<image path='assets/instruments/tableArrow.png' />"+
-			"<image path='assets/instruments/tableArrowFill.png' />"+
+			"<image path='assets/instruments/tableArrow_IDLE_1.png' />"+
+			"<image path='assets/instruments/tableArrow_IDLE_2.png' />"+
+			"<image path='assets/instruments/tableArrow_IDLE_7.png' />"+
+			"<image path='assets/instruments/tableArrow_IDLE_8.png' />"+
+			"<image path='assets/instruments/tableArrow_IDLE_9.png' />"+
+			"<image path='assets/instruments/tableArrow_S_1.png' />"+
+			"<image path='assets/instruments/tableArrow_S_2.png' />"+
+			"<image path='assets/instruments/tableArrow_S_7.png' />"+
+			"<image path='assets/instruments/tableArrow_S_8.png' />"+
+			"<image path='assets/instruments/tableArrow_S_9.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps_selected.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch.png' />"+
@@ -356,6 +367,7 @@ package com.view.tools
 			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/BASS_PROFILE_PIC.png' />"+
+			"<image path='assets/POP_UP/dj.jpg' />"+
 			"<image path='assets/POP_UP/DRUMMER_PROFILE_PIC.png' />"+
 			"<image path='assets/POP_UP/GIRL_PROFILE_PIC.png' />"+
 			"<image path='assets/POP_UP/next_IDLE.png' />"+

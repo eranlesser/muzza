@@ -1,7 +1,9 @@
 package com.musicalInstruments.palleta.views
 {
+	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
+	import com.musicalInstruments.view.components.SoundPlayer;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.view.tools.AssetsManager;
 	
@@ -12,6 +14,9 @@ package com.musicalInstruments.palleta.views
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
 	import flash.geom.Point;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
 	
 	public class TurnTable extends Instrument
 	{
@@ -20,12 +25,14 @@ package com.musicalInstruments.palleta.views
 		private var _upNoteId:String;
 		private var _downNoteId:String;
 		private var _mouseDownPoint:Point;
+		private var _hey:TextField;
 		public function TurnTable(model:NotesInstrumentModel)
 		{
 			super(model);
 			//init();
 			addVinyl(_model.rawData);
-			addChelo(_model.rawData)
+			addChelo(_model.rawData);
+			addHey(_model.rawData)
 		}
 		
 		private function addVinyl(xml:XML):void{
@@ -63,11 +70,33 @@ package com.musicalInstruments.palleta.views
 			}
 			
 		}
+		private function addHey(xml:XML):void{
+			_hey = new TextField();
+			_hey.backgroundColor=0x999999;
+			_hey.background=true;
+			_hey.autoSize = TextFieldAutoSize.CENTER;
+			_hey.defaultTextFormat = new TextFormat(null,32);
+			_hey.text = xml.hey.text;
+			_hey.x = xml.hey.@x;
+			_hey.y = xml.hey.@y;
+			addChild(_hey);
+			var soundPlayer:SoundPlayer = new SoundPlayer(xml.hey.@sound);
+			_hey.addEventListener(MouseEvent.CLICK,function heyClicked():void{
+				soundPlayer.play(1);
+				onNotePlayed(xml.hey.@noteId);
+				var startTime:uint = Metronome.getTimeModel().currentTick;
+				soundPlayer.soundComplete.add(
+					function soundDone():void{
+						onNoteStopped(xml.hey.@noteId,startTime) 	
+					}
+				)
+			});
+		}
 		private  function onNotePlayed(id:String):void{
 			_notePlayed.dispatch(id);
 		}
-		private  function onNoteStopped(id:String):void{
-			_noteStopped.dispatch(id,_tick,2,0);
+		private  function onNoteStopped(id:String,startTime:uint):void{
+			_noteStopped.dispatch(id,startTime,2,0);
 		}
 		
 //		private function init():void{
@@ -131,21 +160,16 @@ package com.musicalInstruments.palleta.views
 			line.graphics.lineTo(200,0);
 			return line;
 		}
-		private var _tick:uint;
-		public function onTick(currentTick:int):void
-		{
-			_tick = currentTick;
-		}
 		
 		
 		private function playSound(note:NoteModel):void{
 			_isPlaying = true;
 			note.player.play(1);
-			var startTick:uint = _tick;
+			var startTick:uint = Metronome.getTimeModel().currentTick;
 			_notePlayed.dispatch(note.id);
 			note.player.soundComplete.addOnce(
 				function onSoundComplete():void{
-					noteStopped.dispatch(note.id,startTick,_tick-startTick,0);
+					noteStopped.dispatch(note.id,startTick,Metronome.getTimeModel().currentTick-startTick,0);
 				}
 			)
 		}
@@ -164,7 +188,7 @@ package com.musicalInstruments.palleta.views
 				angle += 360;
 			}
 			_moveCounter++;
-			if(_moveCounter>5){
+			if(_moveCounter>3){
 				var noteId:String = _downNoteId;
 				var turnDirection:int = -1;
 				if(e.stageY > _mouseDownPoint.y){
@@ -187,6 +211,7 @@ package com.musicalInstruments.palleta.views
 	}
 }
 import com.gskinner.motion.GTween;
+import com.metronom.Metronome;
 import com.musicalInstruments.view.components.SoundPlayer;
 
 import flash.display.Sprite;
@@ -202,6 +227,7 @@ class Pawee extends Sprite{
 	private var _id:String;
 	public var notePlayed:Signal=new Signal();
 	public var noteStopped:Signal=new Signal();
+	private var _startTick:uint;
 	public function Pawee(data:XML,wdt:uint){
 		_soundPlayer = new SoundPlayer(data.@sound);
 		_id=data.@id;
@@ -209,7 +235,7 @@ class Pawee extends Sprite{
 	}
 	
 	private function init(wdt:uint):void{
-		this.graphics.beginFill(0x000000,0.4);
+		this.graphics.beginFill(0x000000,0);
 		this.graphics.drawRect(0,0,wdt,wdt);
 		this.graphics.endFill();
 		_wdt=wdt;
@@ -238,7 +264,7 @@ class Pawee extends Sprite{
 		play.x=width/2;
 		play.y=height/2+4;
 		addChild(play);
-		
+		_startTick = Metronome.getTimeModel().currentTick;
 		
 		var tween:GTween = new GTween(play,1,{width:width,height:width,alpha:0})
 		tween.onComplete=onTweenEnd;
@@ -248,7 +274,7 @@ class Pawee extends Sprite{
 	{
 		t.onComplete=null;
 		removeChild(t.target as Sprite);
-		noteStopped.dispatch(_id);
+		noteStopped.dispatch(_id,_startTick);
 	}	
 	
 	public function get id():String

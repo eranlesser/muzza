@@ -1,6 +1,7 @@
 package com.screens.view
 {
 	import com.constants.Dimentions;
+	import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.rawData.Data;
 	import com.screens.view.components.homePage.SongsMenu;
 	import com.view.gui.Btn;
@@ -49,6 +50,7 @@ package com.screens.view
 				_credits.close.add(function close():void{removeChild(_credits)});
 			}
 			addChild(_credits);
+			Flurry.getInstance().logEvent("openCredits");
 		}
 		
 		public function get songMenu():SongsMenu{

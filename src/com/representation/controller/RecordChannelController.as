@@ -42,7 +42,6 @@ package com.representation.controller {
 				
 			_channelView.drawNoteTarget(_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset);
 			}
-			onTick();
 		}
 		
 		public function reset(mode:String):void{
@@ -76,19 +75,6 @@ package com.representation.controller {
 			return (_recordedSequance as RecordableNotesSequance).length;
 		}
 		
-		public function start():void{
-			_model.tickSignal.add(onTick);
-		}
-		
-		public function stop():void{
-			_model.tickSignal.remove(onTick);
-			//_channelView.setY(-((RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
-		}
-		
-		private function onTick():void{
-			
-			//_channelView.setY(((_model.currentTick*2)*(RepresentationSizes.notesArea)/128))//+RepresentationSizes.notesArea/2);
-		}
 		
 		public function get channel():NotesChannel{
 			return _channelView;

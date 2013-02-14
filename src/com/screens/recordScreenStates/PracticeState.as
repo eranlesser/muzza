@@ -61,7 +61,6 @@ package com.screens.recordScreenStates
 			_totalAnswerTime=0;
 			_ofBeatNotes=0;
 			_correctAnswers=0;
-			_context.recordChannelController.start();
 			_tween = Metronome.getTimeControll().play(_context.notes.channel.notesContainer,_context.model.endAtFrame*2,{y:_context.model.endAtFrame*50});
 			
 			_context.notes.start();
@@ -82,7 +81,6 @@ package com.screens.recordScreenStates
 				//_context.bubble.setText("Practice some more",true)
 			}
 			_context.notes.stop();
-			_context.recordChannelController.stop();
 			_currentNoteIndx=0;
 			_wrongAnswers=0;
 			_context.practiceButton.state="idle";

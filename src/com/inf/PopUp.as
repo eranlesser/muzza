@@ -187,7 +187,7 @@ package com.inf
 					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
 					break;
 				case "turnTable":
-					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
+					icon = AssetsManager.getAssetByName("dj.jpg");
 					break;
 			}
 			return icon;

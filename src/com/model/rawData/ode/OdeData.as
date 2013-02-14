@@ -7,10 +7,10 @@ public class OdeData
 public static var data:XML = 
 <theme id='recycle' rhythm='10'>
 <instruments>
-{TurnTableData.data}
 {Bottles.data}
 {Bass.data}
 {Drum.data}
+{TurnTableData.data}
 </instruments>
 <screens>
 
@@ -24,41 +24,16 @@ public static var data:XML =
 	<instrument type='bottles.png' >
 	<layout id="0" x='350' y='100'  rotation="0" />
 	</instrument>
+	<instrument type='turnTable' >
+	<layout id="0" x='900' y='600'  rotation="0" />
+	</instrument>
 
 </demoScreen>
 
-<studioScreen>
-	<instrument type='bass_flash.jpg'>
-	<layout id="0" x="-7" y="560" rotation="0" />
-	<layout id="1" x="-7" y="568" rotation="0" />
-	<layout id="2" x="-7" y="568" rotation="0" />
-	</instrument>
-	<instrument type="drum.png">
-	<layout id="0" x="12" y="130" rotation="0"/>
-	<layout id="1" x="320" y="190" rotation="90"/>
-	<layout id="2" x="620" y="130" />
-	</instrument>
-	<instrument type='bottles.png' >
-	<layout id="0" x="320" y="40" rotation="0"/>
-	<layout id="1" x="160" y="2"  rotation="180"/>
-	<layout id="2" x="-12" y="-10" rotation="140"/>
-	</instrument>
-</studioScreen>
 
 <recordSession>
 
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
-	<playerInstrument type="turnTable" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220"  >
-	<RecordedX>120</RecordedX>
-	<RecordedY>320</RecordedY>
-	</playerInstrument>
-
-<backups>
-<instrument type="bottles.png" learnedSequanced="102" />
-<instrument type="bass_flash.jpg" learnedSequanced="102" />
-</backups>
-</recordScreen>
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="220">
 	<RecordedX>102.5</RecordedX>
@@ -93,6 +68,18 @@ public static var data:XML =
 
 
 
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+	<playerInstrument type="turnTable" learnedSequanced="99" recordedSequance="102" palletSequance="99" noteTargetsY="220"  >
+	<RecordedX>120</RecordedX>
+	<RecordedY>320</RecordedY>
+	</playerInstrument>
+
+<backups>
+<instrument type="bottles.png" learnedSequanced="102" />
+<instrument type="bass_flash.jpg" learnedSequanced="102" />
+<instrument type="drum.png" learnedSequanced="102" />
+</backups>
+</recordScreen>
 
 
 <endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="102">
@@ -105,7 +92,9 @@ public static var data:XML =
 	<instrument type='bottles.png' >
 <layout id="0" x='350' y='100'  rotation="0" />	
 	</instrument>
-
+<instrument type='turnTable' >
+	<layout id="0" x='900' y='600'  rotation="0" />
+	</instrument>
 </endScreen>
 
 
@@ -155,14 +144,19 @@ public static var data:XML =
 <content>Click "Listen" to hear what you have recorded</content>
 <direction>btm_right</direction>
 </popup>
-<popup id="drums" width="280" x="645" y="515" >
+<popup id="drums" width="280" x="562" y="515" >
 <title>Drums</title>
 <content>Lets see how you keep the rhythm</content>
 <direction>btm_right</direction>
 </popup>
-<popup id="bass" width="280" x="562" y="515" >
+<popup id="bass" width="280" x="480" y="515" >
 <title>Bass</title>
 <content>Add some groove with the human bass</content>
+<direction>btm_right</direction>
+</popup>
+<popup id="turnTable" width="280" x="645" y="515" >
+<title>DJ</title>
+<content>Any hipsters in the crowd?</content>
 <direction>btm_right</direction>
 </popup>
 <popup id="close_listen" width="200" x="2" y="95" >

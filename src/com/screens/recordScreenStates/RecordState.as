@@ -62,7 +62,6 @@ package com.screens.recordScreenStates
 			_context.practiceButton.clicked.remove(onPracticeClicked);
 			//_context.frameRate = Rhythms.DELAY_COUNT;
 			_context.notes.stop();
-			_context.recordChannelController.stop();
 			//_preTicker.active=false;
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
 			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
@@ -158,7 +157,6 @@ package com.screens.recordScreenStates
 			_context.recordButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.add(checkNotesMatch);
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
-			_context.recordChannelController.start();
 			_context.recordButton.clicked.add(onRecordBtn);
 			//_context.practiceButton.clicked.add(onPracticeClicked);
 			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
@@ -200,7 +198,7 @@ package com.screens.recordScreenStates
 		
 		private function onTimeOut(t:GTween):void{
 			stop();
-			Flurry.getInstance().logEvent("Recorded BAD");
+			Flurry.getInstance().logEvent("Recorded BAD " + _context.model.instrumentModel.thumbNail);
 			PopUpsManager.openPopUp(PopUpsManager.TIME_OUT).nextSignal.addOnce(
 				function():void{
 					var tryAgainPopUp:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.TRY_AGAIN);
@@ -213,7 +211,7 @@ package com.screens.recordScreenStates
 			if(_goodNotes == _context.recordChannelController.learnedLength ){
 				var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
 				Session.instance.registerGoodrecoredScreen(_context.model);
-				Flurry.getInstance().logEvent("Recorded GOOD onCompleteBeforeTimer");
+				Flurry.getInstance().logEvent("Recorded GOOD " + _context.model.instrumentModel.thumbNail);
 				PopUpsManager.openPopUp(PopUpsManager.END_RECORD).nextSignal.addOnce(
 					function():void{
 						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
@@ -222,7 +220,7 @@ package com.screens.recordScreenStates
 				);
 			}else{
 				PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
-				Flurry.getInstance().logEvent("Recorded BAD onCompleteBeforeTimer");
+				Flurry.getInstance().logEvent("Recorded BAD onCompleteBeforeTimer "  + _context.model.instrumentModel.thumbNail);
 			}
 		}
 		private function onComplete(t:GTween):void{

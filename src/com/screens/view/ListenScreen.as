@@ -112,14 +112,14 @@ package com.screens.view
 
 		
 		override protected function endMusciPiece():void{
-			if(Session.instance.goodScreensLength==3){
+			if(Session.instance.goodScreensLength==4){
 			_claps.play();
 			_hat.fillHat();
 			}
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
-			if(Session.instance.goodScreensLength==3){
+			if(Session.instance.goodScreensLength==4){
 				super.endMusciPiece();
 			}
 		}

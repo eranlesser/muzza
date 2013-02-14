@@ -122,9 +122,9 @@ package com.screens.view {
 				isInited = true;
 			}
 			PopUpsManager.thumbNail = _model.instrumentModel.thumbNail;
-			if(Session.instance.recordScreenGood(_model)&&Session.instance.goodScreensLength<3){
+			if(Session.instance.recordScreenGood(_model)&&Session.instance.goodScreensLength<4){
 				PopUpsManager.openPopUp(getNextPopUp(_model.instrumentModel.thumbNail));
-			}else if(Session.instance.goodScreensLength==3 && !Session.instance.completePopUpShowen){
+			}else if(Session.instance.goodScreensLength==4 && !Session.instance.completePopUpShowen){
 				PopUpsManager.openPopUp(getNextPopUp(_model.instrumentModel.thumbNail));
 				Session.instance.completePopUpShowen = true;				
 			}
@@ -176,6 +176,9 @@ package com.screens.view {
 					nextStr = PopUpsManager.DRUMS;
 					break;
 				case "drum.png":
+					nextStr = PopUpsManager.TURN_TABLE;
+					break;
+				case "turnTable":
 					nextStr = PopUpsManager.DONE;
 					break;
 			}

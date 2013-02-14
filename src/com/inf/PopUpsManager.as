@@ -18,6 +18,7 @@ package com.inf
 		public static const TIME_OUT:String = "time_out";
 		public static const DRUMS:String = "drums";
 		public static const BASS:String = "bass";
+		public static const TURN_TABLE:String = "turnTable";
 		public static const DONE:String = "done";
 		public static const CLOSE_LISTEN:String = "close_listen";
 		private static var _presenter:Sprite;
@@ -66,7 +67,7 @@ package com.inf
 						id != TRY_AGAIN&& id != CLOSE_DEMO && id != PRESS_RECORD && id != OPEN_DEMO
 						&& id != TIME_OUT){
 						closePopUp();
-					}else if(Session.instance.goodScreensLength == 3 && id != DRUMS && id != TIME_OUT && id != END_RECORD && id != LISTEN && id != CLOSE_LISTEN && id != CLOSE_DEMO){
+					}else if(Session.instance.goodScreensLength == 4 && id != DRUMS && id != TIME_OUT && id != END_RECORD && id != LISTEN && id != CLOSE_LISTEN && id != CLOSE_DEMO){
 						closePopUp();
 					}
 					else{
@@ -74,7 +75,7 @@ package com.inf
 					}
 				}
 			}
-			Flurry.getInstance().logEvent("open popup "+id+" , "+_thumbNail);
+			//Flurry.getInstance().logEvent("open popup "+id+" , "+_thumbNail);
 			return _popUp;
 		}
 		

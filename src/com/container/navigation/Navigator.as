@@ -60,23 +60,23 @@ class BreadCrumbs extends Sprite{
 	public function BreadCrumbs(){
 		//init();
 	}
-	private function init():void{
-		_icons=new Vector.<Btn>();
-		var bottleIcon:Btn=new Btn("bottle_IDLE.png","bottle_PRESSED.png","BOTTLES_DONE.png","bottles.png");
-		var bassIcon:Btn=new Btn("BASS_IDLE.png","BASS_PRESSED.png","BASS_DONE.png","bass_flash.jpg");
-		var drumIcon:Btn=new Btn("DRUMS_IDLE.png","DRUMS_PRESSED.png","DRUMS_DONE.png","drum.png");
-		var allIcon:Btn=new Btn("LISTEN_IDLE.png","LISTEN_PRESSED.png","LISTEN_DONE.png");
-		
-		
-		addButton(bottleIcon);
-		addButton(bassIcon);
-		addButton(drumIcon);
-		addButton(allIcon);
-		bassIcon.x=bottleIcon.x+bottleIcon.width;
-		drumIcon.x=bassIcon.x+bassIcon.width;
-		allIcon.x=drumIcon.x+drumIcon.width;
-		_icons[_index].state="idle";
-	}
+//	private function init():void{
+//		_icons=new Vector.<Btn>();
+//		var bottleIcon:Btn=new Btn("bottle_IDLE.png","bottle_PRESSED.png","BOTTLES_DONE.png","bottles.png");
+//		var bassIcon:Btn=new Btn("BASS_IDLE.png","BASS_PRESSED.png","BASS_DONE.png","bass_flash.jpg");
+//		var drumIcon:Btn=new Btn("DRUMS_IDLE.png","DRUMS_PRESSED.png","DRUMS_DONE.png","drum.png");
+//		var allIcon:Btn=new Btn("LISTEN_IDLE.png","LISTEN_PRESSED.png","LISTEN_DONE.png");
+//		
+//		
+//		addButton(bottleIcon);
+//		addButton(bassIcon);
+//		addButton(drumIcon);
+//		addButton(allIcon);
+//		bassIcon.x=bottleIcon.x+bottleIcon.width;
+//		drumIcon.x=bassIcon.x+bassIcon.width;
+//		allIcon.x=drumIcon.x+drumIcon.width;
+//		_icons[_index].state="idle";
+//	}
 	
 	override public function set x(value:Number):void{
 		super.x=value;
@@ -97,7 +97,7 @@ class BreadCrumbs extends Sprite{
 						btn=new Btn("BASS_IDLE.png","BASS_PRESSED.png","BASS_DONE.png","bass_flash.jpg");
 					break;
 				case "turnTable":
-						btn=new Btn("bottle_IDLE.png","bottle_IDLE.png","bottle_IDLE.png","scratch");
+						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","turnTable");
 					break;
 			}
 			addButton(btn)
