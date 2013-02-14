@@ -25,7 +25,7 @@ package com.musicalInstruments.palleta.views
 		private var _upNoteId:String;
 		private var _downNoteId:String;
 		private var _mouseDownPoint:Point;
-		private var _hey:TextField;
+		private var _hey:Sprite;
 		public function TurnTable(model:NotesInstrumentModel)
 		{
 			super(model);
@@ -71,22 +71,24 @@ package com.musicalInstruments.palleta.views
 			
 		}
 		private function addHey(xml:XML):void{
-			_hey = new TextField();
-			_hey.backgroundColor=0x999999;
-			_hey.background=true;
-			_hey.autoSize = TextFieldAutoSize.CENTER;
-			_hey.defaultTextFormat = new TextFormat(null,32);
-			_hey.text = xml.hey.text;
+			_hey = new Sprite();
+			_hey.addChild(AssetsManager.getAssetByName("hey_idle.png"));
 			_hey.x = xml.hey.@x;
 			_hey.y = xml.hey.@y;
 			addChild(_hey);
 			var soundPlayer:SoundPlayer = new SoundPlayer(xml.hey.@sound);
-			_hey.addEventListener(MouseEvent.CLICK,function heyClicked():void{
+			_hey.addEventListener(MouseEvent.MOUSE_DOWN,function heyClicked():void{
 				soundPlayer.play(1);
+				if(_hey.numChildren==1){
+					_hey.addChild(AssetsManager.getAssetByName("hey_s.png"));
+				}
 				onNotePlayed(xml.hey.@noteId);
 				var startTime:uint = Metronome.getTimeModel().currentTick;
 				soundPlayer.soundComplete.add(
 					function soundDone():void{
+						if(_hey.numChildren==2){
+							_hey.removeChildAt(1);
+						}
 						onNoteStopped(xml.hey.@noteId,startTime) 	
 					}
 				)
@@ -169,6 +171,7 @@ package com.musicalInstruments.palleta.views
 			_notePlayed.dispatch(note.id);
 			note.player.soundComplete.addOnce(
 				function onSoundComplete():void{
+					_isPlaying=false;
 					noteStopped.dispatch(note.id,startTick,Metronome.getTimeModel().currentTick-startTick,0);
 				}
 			)
@@ -187,20 +190,25 @@ package com.musicalInstruments.palleta.views
 			if (theX>=0 && theY<0) {
 				angle += 360;
 			}
-			_moveCounter++;
-			if(_moveCounter>3){
+			//_moveCounter++;
+			if(_moveCounter>4){
 				var noteId:String = _downNoteId;
 				var turnDirection:int = -1;
 				if(e.stageY > _mouseDownPoint.y){
 					noteId = _upNoteId;
 					turnDirection = 1;
 				}
-				if(!_isPlaying || _turnDirection!=turnDirection){
-				var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
+				if(e.stageY == _mouseDownPoint.y){
+					turnDirection = 0;
+				}
+				if(!_isPlaying && _turnDirection!=turnDirection){
+					var note:NoteModel = NotesInstrumentModel(_model).getNoteById(noteId);
 					playSound(note);
 					_moveCounter = 0;
 					_turnDirection = turnDirection;
+					
 				}
+			_mouseDownPoint = new Point((e as MouseEvent).stageX,(e as MouseEvent).stageY);
 			}
 			
 			//trace(_vinyl.rotation-((angle*-1) + 90));

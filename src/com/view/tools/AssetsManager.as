@@ -157,6 +157,8 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_4.png' />"+
 			//SCRATCH
 			"<image path='assets/instruments/scratch/Vinyl.png' />"+
+			"<image path='assets/instruments/scratch/hey_idle.png' />"+
+			"<image path='assets/instruments/scratch/hey_s.png' />"+
 			"<image path='assets/instruments/scratch/notes_sheet_v.png' />"+
 			
 			//RECORD SCREEN BUTTONS

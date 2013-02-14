@@ -29,13 +29,13 @@ package com.model.rawData.ode
 			<octaves>
 			<notes>
 			
-			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='3' value="2" x="670"  />
-			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='4' value="1" x="670"  />
+			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='3' value="2" x="690"  />
+			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='4' value="1" x="690"  />
 			<note id="G"   soundFile="ode/scrach/sol.mp3" animationIndex='5' value="7" x="900"  />
 			
-			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="7" x="150"  />
-			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="8" x="240" />
-			<note id="D_6"   soundFile="ode/chelo/chelo_4.mp3" animationIndex='3' value="9" x="330" />
+			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="7" x="147"  />
+			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="8" x="242" />
+			<note id="D_6"   soundFile="ode/chelo/chelo_4.mp3" animationIndex='3' value="9" x="337" />
 			</notes>
 			</octaves>
 			<gestures>
