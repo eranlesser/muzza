@@ -1,6 +1,6 @@
 package com.screens.view {
 	import com.constants.*;
-	import com.freshplanet.nativeExtensions.Flurry;
+	//import com.freshplanet.nativeExtensions.Flurry;
 	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.*;
@@ -105,8 +105,10 @@ package com.screens.view {
 			}
 			_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
 			if(_timeSlider)
-			_stageLayer.mask = addChild(getMask());
+				_stageLayer.mask = addChild(getMask());
 		}
+		
+		
 		private function getMask():Shape{
 			var gmask:Shape=new Shape();
 			gmask.graphics.beginFill(0xFFFFFF);
@@ -227,9 +229,9 @@ package com.screens.view {
 			//if(ins.type=="bg"){
 			if(_model.instruments.indexOf(insModel)<2){
 				
-				_guiLayer.addChildAt(ins,0);
+				_stageLayer.addChildAt(ins,0);
 			}else{
-				_guiLayer.addChild(ins);
+				_stageLayer.addChild(ins);
 			}
 			//}else{
 			//	_stageLayer.addChild(ins);
@@ -244,7 +246,7 @@ package com.screens.view {
 				if(_model.endAtFrame-10 <= _timeModel.currentTick){
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 				_playPauseBtn.state=1;
-				Flurry.getInstance().logEvent("demo complete");
+				//Flurry.getInstance().logEvent("demo complete");
 				}
 			}
 			

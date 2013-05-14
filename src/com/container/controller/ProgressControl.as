@@ -2,7 +2,7 @@ package com.container.controller {
 	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
-	import com.freshplanet.nativeExtensions.Flurry;
+	//import com.freshplanet.nativeExtensions.Flurry;
 	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
 	import com.model.FileProxy;
@@ -84,7 +84,7 @@ package com.container.controller {
 		private function goTo(scr:String):void{
 			if(_model.currentScreen is RecordScreen)
 			var curScrTmbnail:String = (_model.currentScreen as RecordScreen).model.instrumentModel.thumbNail;
-			if(_model.currentScreen is RecordScreen 
+			if(true || _model.currentScreen is RecordScreen 
 				&& ( (Session.instance.recordScreenGood((_model.currentScreen as RecordScreen).model) 
 				&& (_model.getScreenIndex(scr)==_model.getScreenIndex(curScrTmbnail)+1) )//next on flow
 				|| _model.getScreenIndex(scr)<_model.getScreenIndex(curScrTmbnail)) // or previous
@@ -98,7 +98,7 @@ package com.container.controller {
 			_model.currentScreen.start();
 			
 			_navigator.state=_model.recordSession;
-			Flurry.getInstance().logEvent("go to "+scr);
+			//Flurry.getInstance().logEvent("go to "+scr);
 			
 			
 			//if(_model.currentScreen is RecordScreen)
@@ -111,12 +111,12 @@ package com.container.controller {
 			if(_view.isDemoOpen){
 				_view.closeDemo();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
-				Flurry.getInstance().logEvent("Close demo");
+				//Flurry.getInstance().logEvent("Close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
-				Flurry.getInstance().logEvent("Open demo");
+				//Flurry.getInstance().logEvent("Open demo");
 			}
 		}
 		
@@ -126,7 +126,7 @@ package com.container.controller {
 			goHomeSignal.dispatch();
 			_model.reset();
 			PopUpsManager.closePopUp(true);
-			Flurry.getInstance().logEvent("go home");
+			//Flurry.getInstance().logEvent("go home");
 		}
 		
 		

@@ -92,7 +92,7 @@
 package com.mailchimp {
 
 	
-	import com.freshplanet.nativeExtensions.Flurry;
+	//import com.freshplanet.nativeExtensions.Flurry;
 	
 	import flash.display.*;
 	import flash.events.*;
@@ -199,13 +199,13 @@ package com.mailchimp {
 							trace(_xml.error);
 							progressResponse = _xml.error;
 							dispatchEvent( new Event("subscribeError", true, true) );
-							Flurry.getInstance().logEvent(_xml.error);
+							//Flurry.getInstance().logEvent(_xml.error);
 							
 						} 
 						
 						//check to see if successfully added
 						else if (_xml.@type == "boolean") { 
-							Flurry.getInstance().logEvent("successfully added to list");
+							//Flurry.getInstance().logEvent("successfully added to list");
 							trace("successfully added to list");
 							progressResponse = "You have beeen successfully added to our list. Thank you!";				
 							dispatchEvent( new Event("subscribeSuccess", true, true) );

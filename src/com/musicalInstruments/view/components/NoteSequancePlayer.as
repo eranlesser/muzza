@@ -49,6 +49,7 @@ package com.musicalInstruments.view.components {
 		}
 		
 		public function play(sequance:NoteSequanceModel,volume:Number):void{
+			trace(sequance.id , ",,")
 			_currenSequance = sequance;
 			_volume=volume;
 			if(!_isPlaying){

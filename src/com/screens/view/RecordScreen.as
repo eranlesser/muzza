@@ -24,6 +24,7 @@ package com.screens.view {
 	
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
+	import flash.filters.BlurFilter;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
@@ -32,7 +33,6 @@ package com.screens.view {
 	public class RecordScreen extends AbstractScreen
 	{
 		private var _instrumentRecorder:		Instrument;
-		private var _backUps:					Vector.<NoteSequancePlayer>;
 		private var _model:						RecordScreenModel;
 		private var _recordChannelController:	RecordChannelController;
 		private var _stateController:			RecordScreenStateController;
@@ -92,24 +92,24 @@ package com.screens.view {
 		}
 		override public function start():void{
 			if(!isInited){
-				_bg.addChild(AssetsManager.getAssetByName("PLAY_SCREEN_WALL_BCKGR.png"));
-				createPlayerAndInstrument();
-				addBackUps();
+				_bg.addChild(AssetsManager.getAssetByName("BCKGR_1.jpg"));
+				_bg.filters = [new BlurFilter()]
 				addRepresentation();
+				createPlayerAndInstrument();
 				super.start();
-				var strip:DisplayObject = AssetsManager.getAssetByName("bStrip.png");
-				addChild(strip);
+				//var strip:DisplayObject = AssetsManager.getAssetByName("line.png");
+				//addChild(strip);
 				//strip.y=_recordBtn.height+4;
 				//_notes.y=strip.y+strip.height;
 				
 				_practiceBtn = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
 				addChild(_practiceBtn);
 				_practiceBtn.x=267;
-				_practiceBtn.y=(strip.height-practiceBtn.height)/2-2;
+				_practiceBtn.y=12;
 				_recordBtn = new Btn("RECORD_IDLE.png","RECORD_PRESSED.png");
 				addChild(_recordBtn);
 				_recordBtn.x=_practiceBtn.x+_practiceBtn.width+30;
-				_recordBtn.y=(strip.height-practiceBtn.height)/2-2;
+				_recordBtn.y=12//(strip.height-practiceBtn.height)/2-2;
 				
 				
 				//_notes.addChannel(_model.instrumentModel);
@@ -135,6 +135,7 @@ package com.screens.view {
 			}
 			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
+			addBackUps();
 		}
 		private function addTimer():void{
 			var tBg:Shape = new Shape();
@@ -188,6 +189,9 @@ package com.screens.view {
 			_stateController.deActivate();
 			PopUpsManager.closePopUp();
 			_instrumentRecorder.stop();
+			for each(var player:PlayMusician in _players){
+				player.stop();
+			}
 			super.stop();
 		}
 		
@@ -202,17 +206,47 @@ package com.screens.view {
 			//f_instrumentRecorder.scaleX=0.8;
 		}
 		
+		private function isOnStage(playerModel:InstrumentModel):PlayMusician{
+			for each(var playMusician:PlayMusician in _players){
+				if(playMusician.thumbnail == playerModel.coreModel.thumbNail){
+					return playMusician;
+				}
+			}
+			return null;
+		}
+		
+		private var _players:Vector.<PlayMusician> = new Vector.<PlayMusician>();
 		private function addBackUps():void{
-			_backUps = new Vector.<NoteSequancePlayer>();
+			
+//			if(_players.length>0){
+//				for each(var playMusician:PlayMusician in _players){
+//					_stageLayer.addChild(playMusician);
+//					playMusician.start();
+//					player.play(_model.recordeSequanceId,0);
+//				}
+//				return;
+//			}
+			var player:PlayMusician;
 			for each(var insModel:InstrumentModel in _model.backUpInsruments){
-				var player:NoteSequancePlayer = new NoteSequancePlayer(NotesInstrumentModel(insModel.coreModel));
-				_backUps.push(player);
+				//var player:NoteSequancePlayer = new NoteSequancePlayer(NotesInstrumentModel(insModel.coreModel));
+				//_backUps.push(player);
+				player = isOnStage(insModel)
+				if(player == null){
+					player = new PlayMusician(insModel);
+					player.x = player.getX();
+					player.y = player.getY();
+					player.filters = [new BlurFilter()];
+					_players.push(player);
+				}
+				if(player.isRecorded(_model.recordeSequanceId)){
+					_stageLayer.addChild(player);
+					player.start();
+					player.play(_model.recordeSequanceId,0);
+				}
+				
 			}
 		}
 		
-		public function get backUps():Vector.<NoteSequancePlayer>{
-			return _backUps;
-		}
 		
 		private function createPlayerAndInstrument():void{
 			if(_model.instrumentModel.type=="turnTable"){
@@ -229,7 +263,7 @@ package com.screens.view {
 			}else{
 				//trace(_model.instrumentModel.type)
 			}*/
-			_stageLayer.addChild(_instrumentRecorder);
+			_guiLayer.addChild(_instrumentRecorder);
 			
 		}
 		
@@ -243,7 +277,7 @@ package com.screens.view {
 		
 		private function addRepresentation():void{
 			_notes = new Notes(_model.noteTargetsY+_model.noteTargetsYOffset);
-			_stageLayer.addChild(_notes);
+			_guiLayer.addChild(_notes);
 		}
 		
 		public function get timeSlider():TimeSlider{

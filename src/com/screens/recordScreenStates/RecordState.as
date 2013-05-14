@@ -3,7 +3,7 @@ package com.screens.recordScreenStates
 	import com.constants.Rhythms;
 	import com.constants.Session;
 	import com.constants.States;
-	import com.freshplanet.nativeExtensions.Flurry;
+	//import com.freshplanet.nativeExtensions.Flurry;
 	import com.gskinner.motion.GTween;
 	import com.inf.PopUpModel;
 	import com.inf.PopUpsManager;
@@ -36,7 +36,7 @@ package com.screens.recordScreenStates
 		private var _practiceMode:Boolean;
 		private var _tween:GTween;
 		private var _timerTween:GTween;
-		public static const fixNum:uint=6;
+		public static const fixNum:uint=10;
 		public static const PASS_PERCENT:Number = 6/8;
 		
 		public function RecordState(stateController:RecordScreenStateController){
@@ -64,9 +64,7 @@ package com.screens.recordScreenStates
 			_context.notes.stop();
 			//_preTicker.active=false;
 			//_context.notes.backUpsBut.clicked.remove(setBackUps);
-			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
-				noteSequencePlayer.stop();
-			}
+			
 //			var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
 //			var title:String = strReplace(popUpModel.title,"$",getTitleFromScore(_context.score,_context.recordChannelController.length));
 //			var content:String = strReplace(popUpModel.content,"$points",_context.score.toString());
@@ -110,16 +108,6 @@ package com.screens.recordScreenStates
 				fb = "Lets Try Again";
 			}
 			return fb;
-		}
-		
-		private function setBackUps():void{
-			for each(var noteSequencePlayer:NoteSequancePlayer in _context.backUps){
-				//if(_context.notes.backUpsBut.selected){
-					noteSequencePlayer.play(noteSequencePlayer.getSequance(_context.model.recordeSequanceId),0.3);
-				//}else{
-				//	noteSequencePlayer.stop();
-				//}
-			}
 		}
 		
 		public function get name():String{
@@ -170,7 +158,6 @@ package com.screens.recordScreenStates
 			_timeModel.tickSignal.add(onTimerTick);
 			_context.startTimer();
 			_context.recordChannelController.beginRecord();
-			setBackUps();
 			_tween = Metronome.getTimeControll().play(_context.notes.channel.notesContainer,_context.model.endAtFrame,{y:_context.model.endAtFrame*NotesChannel._notesGap});
 			_tween.onComplete = onComplete;
 			_context.notes.start();
@@ -198,29 +185,29 @@ package com.screens.recordScreenStates
 		
 		private function onTimeOut(t:GTween):void{
 			stop();
-			Flurry.getInstance().logEvent("Recorded BAD " + _context.model.instrumentModel.thumbNail);
-			PopUpsManager.openPopUp(PopUpsManager.TIME_OUT).nextSignal.addOnce(
-				function():void{
-					var tryAgainPopUp:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.TRY_AGAIN);
-					PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN)
-					
-				}
-			);
+			//Flurry.getInstance().logEvent("Recorded BAD " + _context.model.instrumentModel.thumbNail);
+//			PopUpsManager.openPopUp(PopUpsManager.TIME_OUT).nextSignal.addOnce(
+//				function():void{
+//					var tryAgainPopUp:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.TRY_AGAIN);
+//					PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN)
+//					
+//				}
+//			);
 		}
 		private function onCompleteBeforeTimer():void{
 			if(_goodNotes == _context.recordChannelController.learnedLength ){
 				var popUpModel:PopUpModel = PopUpsManager.getPopUpModel(PopUpsManager.END_RECORD);
 				Session.instance.registerGoodrecoredScreen(_context.model);
-				Flurry.getInstance().logEvent("Recorded GOOD " + _context.model.instrumentModel.thumbNail);
-				PopUpsManager.openPopUp(PopUpsManager.END_RECORD).nextSignal.addOnce(
-					function():void{
-						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
-						
-					}
-				);
+				//Flurry.getInstance().logEvent("Recorded GOOD " + _context.model.instrumentModel.thumbNail);
+//				PopUpsManager.openPopUp(PopUpsManager.END_RECORD).nextSignal.addOnce(
+//					function():void{
+//						PopUpsManager.openPopUp(PopUpsManager.LISTEN);
+//						
+//					}
+//				);
 			}else{
-				PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
-				Flurry.getInstance().logEvent("Recorded BAD onCompleteBeforeTimer "  + _context.model.instrumentModel.thumbNail);
+				//PopUpsManager.openPopUp(PopUpsManager.TRY_AGAIN);
+				//Flurry.getInstance().logEvent("Recorded BAD onCompleteBeforeTimer "  + _context.model.instrumentModel.thumbNail);
 			}
 		}
 		private function onComplete(t:GTween):void{

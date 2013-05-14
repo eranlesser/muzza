@@ -130,13 +130,22 @@ package com.screens.view.components.notes
 //			}
 //			circ.y=yy+yOffset;
 //			line.y = yy + yOffset+circ.height/2;
-			var lne:DisplayObject = AssetsManager.getAssetByName("BLUE_NEEDLE.png");
+			var lne:DisplayObject = AssetsManager.getAssetByName("line.png");
 			//lne.rotation=-90;
-			lne.width=Dimentions.WIDTH;
-			lne.scaleY=0.5;
-			lne.y=yy+yOffset+8;
-			addChild(lne);
+			//lne.width=Dimentions.WIDTH;
+			//lne.scaleY=0.5;
+			lne.y=yy+yOffset-24;
 			
+//			var bg:Shape = new Shape();
+//			bg.graphics.beginFill(0x205A8C);
+//			bg.graphics.drawRect(0,0,Dimentions.WIDTH,56);
+//			bg.graphics.endFill();
+//			//bg.width=Dimentions.WIDTH;
+//			//bg.height=80;
+//			bg.alpha=0.2;
+//			bg.y=lne.y-bg.height+4;
+//			addChild(bg);
+			addChild(lne);
 			
 //			var circTop:DisplayObject = AssetsManager.getAssetByName(getPrefix(type)+".png");
 //			//_top.addChild(circTop);

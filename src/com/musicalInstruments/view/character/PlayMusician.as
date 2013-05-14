@@ -1,5 +1,6 @@
 package com.musicalInstruments.view.character {
 	import com.musicalInstruments.model.InstrumentModel;
+	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	
 	import flash.display.Sprite;
 	
@@ -63,7 +64,12 @@ package com.musicalInstruments.view.character {
 			return _model.getY(0);
 		}
 		
-		
+		public function isRecorded(sequanceId:uint):Boolean{
+			if(_model.getSequanceById(sequanceId)){
+				return NoteSequanceModel(_model.getSequanceById(sequanceId)).notes.length>0;
+			}
+			return false;
+		}
 		
 		public function play(playSequance:uint,beginAtFrame:uint,volume:Number=1):Boolean{
 			//playSequance = _model.getSequanceAtCycle(currentCycle);

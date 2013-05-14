@@ -88,7 +88,7 @@ package com.screens.view.components.homePage
 				enterSound.removeEventListener(Event.COMPLETE, onSoundReady);
 				tmr.start();
 			});
-			//enterSound.play();
+			enterSound.play();
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
 				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
 				var wtween:GTween = new GTween(_wallLayer,6,{x:0},{ease:Circular.easeInOut});

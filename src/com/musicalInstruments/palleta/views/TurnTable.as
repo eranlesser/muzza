@@ -84,7 +84,7 @@ package com.musicalInstruments.palleta.views
 				}
 				onNotePlayed(xml.hey.@noteId);
 				var startTime:uint = Metronome.getTimeModel().currentTick;
-				soundPlayer.soundComplete.add(
+				soundPlayer.soundComplete.addOnce(
 					function soundDone():void{
 						if(_hey.numChildren==2){
 							_hey.removeChildAt(1);
@@ -190,7 +190,7 @@ package com.musicalInstruments.palleta.views
 			if (theX>=0 && theY<0) {
 				angle += 360;
 			}
-			//_moveCounter++;
+			_moveCounter++;
 			if(_moveCounter>4){
 				var noteId:String = _downNoteId;
 				var turnDirection:int = -1;
@@ -206,10 +206,11 @@ package com.musicalInstruments.palleta.views
 					playSound(note);
 					_moveCounter = 0;
 					_turnDirection = turnDirection;
-					
+					_mouseDownPoint = new Point((e as MouseEvent).stageX,(e as MouseEvent).stageY);
 				}
-			_mouseDownPoint = new Point((e as MouseEvent).stageX,(e as MouseEvent).stageY);
+			
 			}
+			
 			
 			//trace(_vinyl.rotation-((angle*-1) + 90));
 			_vinyl.rotation = (angle*-1) + 90;

@@ -167,6 +167,7 @@ package com.view.tools
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
 			"<image path='assets/open/bStrip.png' />"+
+			"<image path='assets/line.png' />"+
 			
 			//SPRITESHEET
 			"<image path='assets/band/drums_new/drumsSheet.png' />"+

@@ -1,7 +1,7 @@
 package com.inf
 {
 	import com.constants.Session;
-	import com.freshplanet.nativeExtensions.Flurry;
+	//import com.freshplanet.nativeExtensions.Flurry;
 	
 	import flash.display.Sprite;
 	import flash.utils.Dictionary;
@@ -48,6 +48,7 @@ package com.inf
 		}
 		private static var _visitedPopUps:Vector.<PopUp> = new Vector.<PopUp>();
 		public static function openPopUp(id:String,title:String="",content:String=""):PopUp{
+			return null;
 			for each(var popUp:PopUp in _popUps){
 				if(popUp.id == id){
 					if(_popUp){
@@ -80,6 +81,7 @@ package com.inf
 		}
 		
 		public static function closePopUp(hide:Boolean=false):void{
+			return;
 			_popUp.close();
 			if(hide){
 				_popUp.visible=false;

@@ -151,9 +151,6 @@ package com.screens.recordScreenStates
 			return _recordScreen.notes;
 		}
 		
-		public function get backUps():Vector.<NoteSequancePlayer>{
-			return _recordScreen.backUps;
-		}
 		
 		public function get timeSlider():TimeSlider{
 			return _recordScreen.timeSlider;
