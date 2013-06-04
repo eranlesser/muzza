@@ -3,7 +3,6 @@ package {
 	import com.container.PreLoader;
 	import com.container.Presenter;
 	import com.container.ThemesController;
-	//import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.FileProxy;
 	import com.view.tools.AssetsManager;
 	
@@ -11,7 +10,6 @@ package {
 	import flash.desktop.SystemIdleMode;
 	import flash.display.*;
 	import flash.events.StageOrientationEvent;
-	import flash.filesystem.File;
 	import flash.media.AudioPlaybackMode;
 	import flash.media.SoundMixer;
 	import flash.ui.Multitouch;
@@ -28,13 +26,16 @@ package {
 			// support autoOrients
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
+			
 			stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 			NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
 			SoundMixer.audioPlaybackMode  =  AudioPlaybackMode.AMBIENT;
 			stage.quality = StageQuality.LOW;
+			
 			start();
 			FileProxy.reset(this)
 			setDisplaySize();
+				
 			//Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
 			//Flurry.getInstance().startSession();
 			//Flurry.getInstance().setUserId(currentOSUser);//eran

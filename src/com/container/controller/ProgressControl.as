@@ -82,37 +82,22 @@ package com.container.controller {
 		}
 		
 		private function goTo(scr:String):void{
-			if(_model.currentScreen is RecordScreen)
-			var curScrTmbnail:String = (_model.currentScreen as RecordScreen).model.instrumentModel.thumbNail;
-			if(true || _model.currentScreen is RecordScreen 
-				&& ( (Session.instance.recordScreenGood((_model.currentScreen as RecordScreen).model) 
-				&& (_model.getScreenIndex(scr)==_model.getScreenIndex(curScrTmbnail)+1) )//next on flow
-				|| _model.getScreenIndex(scr)<_model.getScreenIndex(curScrTmbnail)) // or previous
-				|| scr == "" // listen is next
-				|| (_model.currentScreen is ListenScreen))  // from listen 
-			{
-			_model.currentScreen.stop();
 			_view.removeScreens();
 			_model.goTo(scr);
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
-			
 			_navigator.state=_model.recordSession;
-			//Flurry.getInstance().logEvent("go to "+scr);
-			
-			
-			//if(_model.currentScreen is RecordScreen)
-			//_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
-			}
 		}
 		
 		
 		private function openDemo():void{
 			if(_view.isDemoOpen){
 				_view.closeDemo();
+				_model.currentScreen.start();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				//Flurry.getInstance().logEvent("Close demo");
 			}else{
+				_model.currentScreen.stop();
 				_view.openDemo(_model.demoScreen);
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;

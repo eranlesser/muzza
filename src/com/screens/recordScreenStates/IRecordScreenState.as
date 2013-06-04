@@ -8,6 +8,7 @@ package com.screens.recordScreenStates
 		function deActivate():void;
 		function get complete():Signal;
 		function get name():String;
+		function get isActive():Boolean;
 		
 		//function get context():RecordScreenStateController;
 	}

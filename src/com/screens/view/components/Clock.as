@@ -28,7 +28,7 @@ package com.screens.view.components
 		private var _innerCount:uint = 0;
 		
 		private static var _instance:Clock;
-		private static var allowInstantiation:Boolean;
+		private static var allowInstantiation:Boolean=true;
 		
 		public function Clock(){
 			_timeModel = Metronome.getTimeModel();
@@ -36,6 +36,14 @@ package com.screens.view.components
 			if (!allowInstantiation) {
 				throw new Error("Error: Instantiation failed: Use SingletonDemo.getInstance() instead of new.");
 			}
+		}
+		
+		public static function get instance():Clock{
+			if(allowInstantiation){
+				_instance = new Clock();
+				allowInstantiation = false;
+			}
+			return _instance;
 		}
 		
 		
@@ -54,8 +62,8 @@ package com.screens.view.components
 		public function play():void{
 			_timeModel.tickSignal.add(onTick);
 //			_timeModel.cycleSignal.add(rotateCycle);
-//			_smallTicker.rotation = 360/(8/(_timeModel.currentCycle-1));
-			_bigTicker.rotation = 360/(128/_timeModel.currentTick);
+			_bigTicker.rotation = 360/(128/_timeModel.currentTick/2);
+			_smallTicker.rotation = _bigTicker.rotation;
 		}
 		
 		
@@ -129,7 +137,9 @@ package com.screens.view.components
 		
 		
 		private function onTick():void{
-			_bigTicker.rotation = 360/(128/_timeModel.currentTick);
+			_bigTicker.rotation = 360/(128/_timeModel.currentTick)/2;
+			_smallTicker.rotation = (360/(128/_timeModel.currentTick)/2)/8
+			//trace(_smallTicker.rotation,_bigTicker.rotation)
 			_innerCount++;
 			if(_innerCount==16){
 				_innerCount=0;
@@ -147,8 +157,5 @@ package com.screens.view.components
 		}
 		
 		
-		private function rotateCycle():void{
-//			_smallTicker.rotation = 360/(8/(_timeModel.currentCycle-1));
-		}
 	}
 }

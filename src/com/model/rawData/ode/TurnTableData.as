@@ -10,18 +10,18 @@ package com.model.rawData.ode
 <instrument type="turnTable"  thumbNail='turnTable' spriteSheet='ganza.png'>
 <components />
 <rawData>
-	<vinyl image="Vinyl.png" x="500" y="150" >
+	<vinyl image="Vinyl.png" x="500" y="260" >
 		<notes>
 			<up noteId="E_5" />
 			<down noteId="D_5" />
 		</notes>
 	</vinyl>
-	<chelo image="notes_sheet_v.png" x="-33" y="-23" >
+	<chelo image="notes_sheet_v.png" x="0" y="220" >
 		<powee id="C_6"   sound="pallet/chelo/chelo_1.mp3"   />
 		<powee id="C#_6"   sound="pallet/chelo/chelo_2.mp3" />
 		<powee id="D_6"   sound="pallet/chelo/chelo_3.mp3" />
 	</chelo>
-	<hey x="750" y="-20" noteId="G" sound="ode/scrach/sol.mp3">
+	<hey x="600" y="200" noteId="G" sound="ode/scrach/sol.mp3">
 		<text>Hey</text>
 	</hey>
 </rawData>

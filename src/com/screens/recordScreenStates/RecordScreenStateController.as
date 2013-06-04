@@ -16,6 +16,7 @@ package com.screens.recordScreenStates
 	import com.view.gui.Btn;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Sprite;
 	import flash.text.TextField;
 
 	public class RecordScreenStateController
@@ -32,13 +33,16 @@ package com.screens.recordScreenStates
 		
 		protected function initStates():void{
 			_states.push(new IdleState(this));
-			_states.push(new PracticeState(this));
 			_states.push(new RecordState(this));
 		}
 		
 		private function init():void{
 			initStates();
-			instrumentRecorder.setRecordable(model.beginAtFrame,model.endAtFrame);
+			//instrumentRecorder.setRecordable(model.beginAtFrame,model.endAtFrame);
+		}
+		
+		public function get stageLayer():Sprite{
+			return _recordScreen.stageLayer;
 		}
 		
 		// ------------------------------------------------
@@ -75,13 +79,15 @@ package com.screens.recordScreenStates
 		
 		private function activate():void
 		{
-			_state.activate();
-			_state.complete.add(onStateComplete);
+			if(!_state.isActive){
+				_state.activate();
+				_state.complete.add(onStateComplete);
+			}
 		}
 		
 		public function deActivate():void
 		{
-			if(_state){
+			if(_state && _state.isActive){
 				_state.complete.remove(onStateComplete);
 				_state.deActivate();
 			}
@@ -114,16 +120,6 @@ package com.screens.recordScreenStates
 		public function get recordButton():Btn{
 			return _recordScreen.recordButton;
 		}
-		public function get practiceButton():Btn{
-			return _recordScreen.practiceBtn;
-		}
-		
-		public function set speed(value:Number):void{
-			//_recordScreen.stage.frameRate=Rhythms.FRAME_RATE*value;
-			//trace("frame rate is",_recordScreen.stage.frameRate)
-		}
-		
-		
 		
 		public function get model():RecordScreenModel{
 			return _recordScreen.model;
@@ -137,12 +133,6 @@ package com.screens.recordScreenStates
 			return _recordScreen.recordChannelController;
 		}
 		
-	  
-		
-		public function startTimer():void{
-			_recordScreen.startTimer();
-		}
-		
 		public function stopTimer():void{
 			_recordScreen.stopTimer();
 		}
@@ -152,13 +142,7 @@ package com.screens.recordScreenStates
 		}
 		
 		
-		public function get timeSlider():TimeSlider{
-			return _recordScreen.timeSlider;
-		}
 		
-		public function get timeAlert():DisplayObject{
-			return _recordScreen.timeAlert;
-		}
 		
 	}
 }

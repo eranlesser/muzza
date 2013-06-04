@@ -189,7 +189,8 @@ package com.screens.view {
 				if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
 					endMusciPiece();
 				}else{
-					stop();
+					_timeControll.stop();
+					//stop();
 				}
 			}
 		}
@@ -199,6 +200,7 @@ package com.screens.view {
 			for each(var ins:PlayMusician in _instruments){
 				ins.stop();
 			}
+			_timeControll.stop();
 			//Clock.getInstance().reset();
 			//Clock.getInstance().visible=false;
 			if(_timeSlider){
@@ -244,8 +246,8 @@ package com.screens.view {
 			if(_timeSlider){
 				//_timeModel.tickSignal.remove(setTimeSlider);
 				if(_model.endAtFrame-10 <= _timeModel.currentTick){
-				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
-				_playPauseBtn.state=1;
+				//PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
+					_playPauseBtn.state=1;
 				//Flurry.getInstance().logEvent("demo complete");
 				}
 			}

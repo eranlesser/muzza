@@ -33,6 +33,9 @@ package com.musicalInstruments.view.components {
 		
 		public function play(volume:Number):SoundChannel{
 			var channel:SoundChannel = _sound.play();
+			if(channel == null){
+				return channel;
+			}
 			if(volume<1){
 				var soundTransform:SoundTransform = new SoundTransform(volume);
 				channel.soundTransform = soundTransform;

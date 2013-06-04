@@ -11,6 +11,7 @@ package com.screens.recordScreenStates
 	public class IdleState implements IRecordScreenState
 	{
 		protected var _context:	RecordScreenStateController;
+		private var _isActive:Boolean = false;
 		private var _complete:	Signal = new Signal();
 		
 		public function IdleState(stateController:RecordScreenStateController)
@@ -24,31 +25,28 @@ package com.screens.recordScreenStates
 		
 		public function deActivate():void{
 			_context.recordButton.clicked.remove(onRecordBtn);
-			_context.practiceButton.clicked.remove(onPracticeClicked);
-			
-			
-			
 			_context.stopTimer();
 			_context.notes.stop();
+			_isActive = false;
 		}
-		
+		public function get isActive():Boolean{
+			return _isActive;
+		}
 		public function get name():String{
 			return States.IDLE;
 		}
 		
 		public function activate():void{
 			_context.recordButton.state="idle";
-			_context.practiceButton.state="idle";
 			_context.recordButton.clicked.add(onRecordBtn);
-			_context.practiceButton.clicked.add(onPracticeClicked);
 			_context.instrumentRecorder.y=_context.model.getRecordInstrumentY();
 			//_context.instrumentRecorder.octave=0;
 			//_context.startTimer();
 			//_context.notes.start();//move cue
 			//_context.notes.stop();
 			
-			_context.practiceButton.visible=false;
-			_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2
+			_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2;
+			_isActive = true;
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{

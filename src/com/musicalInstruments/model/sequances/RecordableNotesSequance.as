@@ -33,6 +33,10 @@ package com.musicalInstruments.model.sequances
 		
 		
 		public function add(noteId:String,location:uint,soundLength:uint,octave:uint):SequancedNote{
+			if(_notes.length>0 && _notes[_notes.length-1].location == location && _notes[_notes.length-1].noteId == noteId){
+				trace("DUPLICATE "+_notes[_notes.length-1].location)
+				return null;
+			}
 			var note:SequancedNote = new SequancedNote(noteId,location,soundLength,octave);
 			_notes.push(note);
 			_added.dispatch(note);
@@ -59,7 +63,20 @@ package com.musicalInstruments.model.sequances
 			return (_notes.length == 0)
 		}
 		
+//		private function clean():void{
+//			var prevNote:SequancedNote;
+//			for(var i:uint=_notes.length-1;i>0;i--){
+//				var note:SequancedNote = _notes[i];
+//				if(prevNote && prevNote.noteId == note.noteId && prevNote.location == note.location){
+//					trace("XXXXX",note.noteId,note.location);
+//					_notes.splice(i,1);
+//				}
+//				prevNote = note;
+//			}
+//		}
+		
 		public function toXML():XML{
+			//clean();
 			var xml:XML=<sequance id={_id} />
 			for each(var note:SequancedNote in _notes){
 				xml.appendChild(<note id={note.noteId} location={note.location} octave={note.octave} soundLength={note.soundLength} />);

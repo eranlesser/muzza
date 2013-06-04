@@ -11,6 +11,7 @@ package com.musicalInstruments.view.instrument {
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	
 	import flash.events.MouseEvent;
+	import flash.filters.GlowFilter;
 
 	/**
 	 * @author eranlesser
@@ -38,6 +39,16 @@ package com.musicalInstruments.view.instrument {
 				}
 				this.mouseEnabled = false;
 			}
+		}
+		
+		override public function set active(flag:Boolean):void{
+//			for each (var comp:MusicalInstrumentComponent in _musicalComponents){
+//				if(flag){	
+//					comp.filters = [new GlowFilter(0xF2D8A7)]
+//				}else{
+//					comp.filters = null;
+//				}
+//			}
 		}
 		
 		public function getComponentById(id:String):MusicalInstrumentComponent{

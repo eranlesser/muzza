@@ -38,7 +38,7 @@ package com.musicalInstruments.view.character {
 			if(!_musicianView){
 				//if(_model.coreModel.type == "bottles" ||_model.coreModel.type == "drums" || _model.coreModel.type == "bass"){
 					//_musicianView = Band.instance.getMusician(_model.coreModel);
-					_musicianView=new Musician(_model.coreModel);
+				_musicianView=new Musician(_model.coreModel);
 				//}else if(_model.coreModel.type == "voice"){
 					//_musicianView = new Singer(_model,false);
 				//}

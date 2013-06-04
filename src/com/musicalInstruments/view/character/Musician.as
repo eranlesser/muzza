@@ -41,11 +41,11 @@ package com.musicalInstruments.view.character {
 			addEyes();
 			addText();
 			 start();
+			this.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
 		public function start():void{
 			addChildAt(_character,0);
-			this.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
 		private function onClick(e:MouseEvent):void{

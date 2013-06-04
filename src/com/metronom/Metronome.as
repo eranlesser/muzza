@@ -106,7 +106,11 @@ package com.metronom
 		}
 		
 		public function stop():void{
-			reset();
+			if(_gtween){
+				_gtween.onChange=null;
+				_gtween.end();
+				_gtween.init();
+			}		
 		}
 		
 		

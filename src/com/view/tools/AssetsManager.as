@@ -18,6 +18,7 @@ package com.view.tools
 		private var _assets:XML = new XML(
 			"<assets>" +
 			"<image path='assets/clamas.png' />"+
+			"<image path='assets/logo.png' />"+
 			//OPEN
 			"<image path='assets/open/WAGON_TRAIN.png' />"+
 			"<image path='assets/open/STATION_WALL_TRIP.png' />"+
@@ -248,7 +249,6 @@ package com.view.tools
 			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_PRESSED.png' />"+
 			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_IDLE.png' />"+
 			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_PRESSED.png' />"+
-			"<image path='assets/LISTEN_SCREEN/line.png' />"+
 			"<image path='assets/LISTEN_SCREEN/blue_strip.png' />"+
 			"<image path='assets/LISTEN_SCREEN/bottles_icon.png' />"+
 			"<image path='assets/LISTEN_SCREEN/bass_icon.png' />"+
@@ -379,6 +379,9 @@ package com.view.tools
 			
 			"<image path='assets/hour_glass.png' />"+
 			"<image path='assets/hour_glass_alert.png' />"+
+			"<image path='assets/vica/bgBlur.png' />"+
+			"<image path='assets/vica/record_BTN_puse.png' />"+
+			"<image path='assets/vica/record_BTN_play.png' />"+
 			
 			"</assets>"
 		

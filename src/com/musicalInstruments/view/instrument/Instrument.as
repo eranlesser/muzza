@@ -146,7 +146,9 @@ package com.musicalInstruments.view.instrument {
 		
 		
 		
-		
+		public function set active(flag:Boolean):void{
+			
+		}
 		
 		
 		public function stop():void{

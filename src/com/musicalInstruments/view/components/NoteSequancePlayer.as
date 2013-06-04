@@ -49,7 +49,6 @@ package com.musicalInstruments.view.components {
 		}
 		
 		public function play(sequance:NoteSequanceModel,volume:Number):void{
-			trace(sequance.id , ",,")
 			_currenSequance = sequance;
 			_volume=volume;
 			if(!_isPlaying){
@@ -119,7 +118,7 @@ package com.musicalInstruments.view.components {
 						noteModel.player.play(_volume);
 						_playingNote = note;
 						notePlayed.dispatch(_playingNote.noteId);
-						//trace("",_playingNote.noteId,"<<",_timeModel.currentTick)
+						//trace("",_playingNote.noteId,"<<",_timeModel.currentTick,_currenSequance.thumbNail)
 					}
 					animateTo(noteModel.animationIndex,notes[0].noteId);
 				}else if(_currenSequance.ended(_timeModel.currentTick)){

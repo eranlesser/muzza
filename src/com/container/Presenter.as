@@ -1,6 +1,7 @@
 package com.container
 {
 	import com.constants.Dimentions;
+	import com.metronom.Metronome;
 	import com.screens.view.DemoScreen;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
@@ -71,7 +72,7 @@ package com.container
 			_screensLayer.addChild(screen);
 			_toolBar.visible = (screen is RecordScreen);
 			if(screen is ListenScreen){
-				(screen as ListenScreen).goto.add(goToRequest);
+				(screen as ListenScreen).goTo.add(goToRequest);
 			}
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
@@ -87,10 +88,9 @@ package com.container
 				scr.stop();
 				_screensLayer.removeChildAt(0);
 				if(scr is ListenScreen){
-					(scr as ListenScreen).goto.remove(goToRequest);
+					(scr as ListenScreen).goTo.remove(goToRequest);
 				}
 			}
-			
 		}
 		
 		public function openDemo(demoScreen:DemoScreen,silentMode:Boolean=false):void{
@@ -106,6 +106,7 @@ package com.container
 			var demoScreen:DemoScreen = _screensLayer.getChildAt(1) as DemoScreen;
 			demoScreen.stop();
 			_screensLayer.removeChild(demoScreen);
+			Metronome.getTimeControll().stop();
 			if(!silentMode){
 				_toolBar.demoButton.state="idle";
 				(_screensLayer.getChildAt(0) as IScreen).start();

@@ -83,21 +83,24 @@ package com.representation.controller {
 		
 		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
 			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
+			if(note == null){
+				return;
+			}
 			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
-			for(var i:uint=0;i<=RecordState.fixNum;i++){
-				var closeNotes:Vector.<SequancedNote>;
-				closeNotes = learnedSequance.getNotesByLocation(note.location+i);
-				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){
-					note.location=closeNotes[0].location;
-					break;
-				}
-				closeNotes = learnedSequance.getNotesByLocation(note.location-i);
-				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){
-					note.location=closeNotes[0].location;
-					break;
-				}
-			}
+//			for(var i:uint=0;i<=RecordState.fixNum;i++){
+//				var closeNotes:Vector.<SequancedNote>;
+//				closeNotes = learnedSequance.getNotesByLocation(note.location+i);
+//				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){
+//					note.location=closeNotes[0].location;
+//					break;
+//				}
+//				closeNotes = learnedSequance.getNotesByLocation(note.location-i);
+//				if(closeNotes.length>0&&noteModel.id==closeNotes[0].noteId){
+//					note.location=closeNotes[0].location;
+//					break;
+//				}
+//			}
 			//_channelView.drawNote(note,noteModel.value,ChanelNotesType.U_PLAYING,noteModel.isFlatOrSharp);
 		}
 		

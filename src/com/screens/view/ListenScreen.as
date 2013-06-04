@@ -14,6 +14,7 @@ package com.screens.view
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
 	import com.utils.Claps;
+	import com.view.gui.Btn;
 	
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -30,12 +31,14 @@ package com.screens.view
 		private var _representation:		Representation;
 		private var _channelControllers:	Vector.<PlayChannelController>;
 		private var _toolBar:				ToolBar;
+		public var goTo:Signal=new Signal();
 		
 		public function ListenScreen(){
 			_channelControllers = new Vector.<PlayChannelController>();
-			//addRepresentation();
+			addRepresentation();
 			addToolBar();
 		}
+		
 		
 //		private function onClick(e:Event):void{
 //			for each(var instrumentModel:InstrumentModel in _model.instruments){
@@ -93,7 +96,7 @@ package com.screens.view
 				channelController.stop();
 			}
 			PopUpsManager.openPopUp(PopUpsManager.CLOSE_LISTEN);
-			//_representation.stop();
+			_representation.stop();
 		}
 		
 		override protected function init(masked:Boolean=true):void{
@@ -105,17 +108,17 @@ package com.screens.view
 		override protected function addInstrument(insModel:InstrumentModel):void{
 			if(NoteSequanceModel(insModel.getSequanceById(_model.playSequance))){
 				 super.addInstrument(insModel);
-			//var channel:Channel = _representation.addChannel(insModel.coreModel);
-			//_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
+			var channel:Channel = _representation.addChannel(insModel.coreModel);
+			_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
 			}
 		}
 
 		
 		override protected function endMusciPiece():void{
-			if(Session.instance.goodScreensLength==4){
-			_claps.play();
-			_hat.fillHat();
-			}
+			//if(Session.instance.goodScreensLength==4){
+				_claps.play();
+				_hat.fillHat();
+			//}
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
@@ -124,10 +127,6 @@ package com.screens.view
 			}
 		}
 		
-		public function get goto():Signal{
-			return _toolBar.goTo;
-		}
-
 		private function addHat():void{
 			_hat = new Hat();
 			_stageLayer.addChild(_hat);
@@ -144,8 +143,16 @@ package com.screens.view
 		
 		private function addToolBar():void{
 			_toolBar=new ToolBar(_representation);
-			_toolBar.y=-2;
-			addChild(_toolBar)
+			_toolBar.y=_representation.y-40//-_toolBar.height;
+			addChild(_toolBar);
+			var backBtn:Btn = new Btn("exit_idle.png","exit_press.png");
+			addChild(backBtn);
+			backBtn.x=1;
+			backBtn.y=8;
+			backBtn.clicked.add(backClicked);
+		}
+		private function backClicked(id:String):void{
+			goTo.dispatch("back");
 		}
 		
 	}
@@ -162,42 +169,40 @@ import flash.display.Sprite;
 import org.osflash.signals.Signal;
 
 class ToolBar extends Sprite{
-	public var goTo:Signal=new Signal();
+	
 	private var _collapseBut:Btn;
 	private var _expandBut:Btn;
 	private var _representation:Representation;
 	private var _mouse:DisplayObject;
+	private var _bar:DisplayObject;
 	public function ToolBar(representation:Representation){
 		_representation=representation;
 		init();
+		//this.scaleY=0.9;
 	}
 	
 	private function init():void{
-		//var bg:DisplayObject=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
-		var backBtn:Btn = new Btn("exit_idle.png","exit_press.png");
-		addChild(backBtn);
-		backBtn.x=1;
-		backBtn.y=8;
-		backBtn.clicked.add(backClicked);
+		_bar=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
+		
 //		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
 //		addChild(playBtn);
 //		playBtn.x=439;
 //		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
 //		addChild(replay);
 //		replay.x=Dimentions.WIDTH-replay.width+6;
-//		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
-//		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
-//		addChild(_expandBut);
-//		addChild(_collapseBut);
-//		_collapseBut.x=959;
-//		_expandBut.x=959;
-//		_collapseBut.clicked.add(onColapse);
-//		_expandBut.clicked.add(onColapse);
-//		_mouse = AssetsManager.getAssetByName("mouse.png");
-//		addChild(_mouse);
-//		_mouse.y=-_mouse.height+32;
-//		_mouse.x=700;
-//		_mouse.visible=false;
+		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
+		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
+		addChild(_expandBut);
+		addChild(_collapseBut);
+		_collapseBut.x=959;
+		_expandBut.x=959;
+		_collapseBut.clicked.add(onColapse);
+		_expandBut.clicked.add(onColapse);
+		_mouse = AssetsManager.getAssetByName("mouse.png");
+		addChild(_mouse);
+		_mouse.y=-_mouse.height+32;
+		_mouse.x=700;
+		_mouse.visible=false;
 			
 	}
 	
@@ -211,19 +216,20 @@ class ToolBar extends Sprite{
 		if(str=="collapse"){
 			_collapseBut.visible=false;
 			new GTween(this,0.5,{y:curY+130})
+			new GTween(_bar,0.5,{alpha:0.2})
 			var colTween:GTween=new GTween(_representation,0.5,{y:curY+130+52-5});
 			colTween.onComplete=function():void{
 				_mouse.visible=true;
+				
 			}
 		}else{
 			_collapseBut.visible=true;
 			new GTween(this,0.5,{y:curY-130})
+			new GTween(_bar,0.5,{alpha:1})
 			var exTween:GTween=new GTween(_representation,0.5,{y:curY-130+52-5});
 			_mouse.visible=false;
 		}
 	}
 	
-	private function backClicked(id:String):void{
-		goTo.dispatch("back");
-	}
+	
 }

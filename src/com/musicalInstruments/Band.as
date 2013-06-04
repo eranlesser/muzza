@@ -35,14 +35,14 @@ package com.musicalInstruments
 			_characters.push(character);
 		}
 		
-		public function getCharacter(model:NotesInstrumentModel):Character{
+		public function getCharacter(mdl:NotesInstrumentModel):Character{
 			var character:Character;
 			for each(var char:Character in _characters){
-				if(char.spriteSheetUrl==model.spriteSheet){
+				if(char.spriteSheetUrl==mdl.spriteSheet){
 					return char;
 				}
 			}
-			character=new Character(model.spriteSheet ,model.notesLength,model.width,model.height);
+			character=new Character(mdl.spriteSheet ,mdl.notesLength,mdl.width,mdl.height);
 			_characters.push(character);
 			return character;
 		}

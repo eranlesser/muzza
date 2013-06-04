@@ -46,6 +46,10 @@ package com.musicalInstruments.model.sequances {
 			_notes.push(note);
 		}
 		
+		public function get thumbNail():String{
+			return _sequanceFetcher.thumbNail;
+		}
+		
 		/**
 		 	
 		public function get firstNoteLocation():uint{
