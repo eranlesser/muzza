@@ -81,7 +81,7 @@ package com.screens.view {
 				_guiLayer.addChild(_playPauseBtn);
 				_playPauseBtn.x=480;
 				_playPauseBtn.y=531+19+10;
-				_playPauseBtn.clicked.add(onPlay);
+				_playPauseBtn.clicked.add(onPlayPause);
 				var reloader:Btn = new Btn("RELOAD_IDLE.png","RELOAD_PRESSED.png");
 				_guiLayer.addChild(reloader);
 				reloader.x=_playPauseBtn.x+_playPauseBtn.width;
@@ -120,8 +120,8 @@ package com.screens.view {
 			_playPauseBtn.state=1;
 		}
 		
-		private function onPlay(btnId:String):void{
-			_timeControll.pause();
+		public function onPlayPause(btnId:String):void{
+			_timeControll.togglePause();
 		}
 		
 		private function onClose(btnid:String):void{
@@ -186,7 +186,7 @@ package com.screens.view {
 				if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
 					endMusciPiece();
 				}else{
-					_timeControll.stop();
+					//_timeControll.stop();
 					//stop();
 				}
 			}
@@ -267,11 +267,7 @@ package com.screens.view {
 			tField.maxChars = 14;
 			tField.x=15;
 			tField.y=32;
-			tField.addEventListener(MouseEvent.CLICK,onTextClikced)
 		}
 		
-		private function onTextClikced(e:Event):void{
-			trace("rrr")
-		}
 	}
 }

@@ -122,13 +122,13 @@ package com.musicalInstruments.view.components {
 					}
 					animateTo(noteModel.animationIndex,notes[0].noteId);
 				}else if(_currenSequance.ended(_timeModel.currentTick)){
-					stop();
+					//stop();
 					sequenceDone.dispatch();
 				}
 			}else{
 				//trace("sequance done",this)
 				sequenceDone.dispatch();
-				stop();
+				//stop();
 			}
 		}
 		private function onMetronomeUntick():void{

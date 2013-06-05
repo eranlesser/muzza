@@ -93,7 +93,7 @@ package com.metronom
 			return _gtween;
 		}
 		
-		public function pause():void{
+		public function togglePause():void{
 			_gtween.paused = !_gtween.paused;
 		}
 		

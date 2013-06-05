@@ -25,30 +25,10 @@ package com.screens.view
 		
 		public function ListenScreen(){
 			_channelControllers = new Vector.<PlayChannelController>();
-			addRepresentation();
+			//addRepresentation();
 			addToolBar();
 		}
-		
-		
-//		private function onClick(e:Event):void{
-//			for each(var instrumentModel:InstrumentModel in _model.instruments){
-//				var tfield:TextField = new TextField();
-//				tfield.multiline=true;
-//				tfield.wordWrap=true;
-//				tfield.width=Dimentions.WIDTH;
-//				tfield.height=Dimentions.HEIGHT;
-//				tfield.text="";
-//				tfield.background=true
-//				if(instrumentModel.getSequanceById(_model.playSequance)){
-//					for each(var note:SequancedNote in (instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes){
-//					tfield.text = tfield.text+note.noteId+" " + note.location+" , ";
-//					}
-//				}
-//				addChild(tfield);
-//				//trace((instrumentModel.getSequanceById(_model.playSequance) as NoteSequanceModel).notes)
-//			}
-//		}
-		
+
 		override public function start():void{
 			if(!isInited){
 				//addEventListener(MouseEvent.CLICK,onClick);
@@ -71,6 +51,7 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.start();
 			}
+			//_toolBar.playPauseBut.state = 1;
 		}
 		
 		
@@ -81,7 +62,8 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
-			_representation.stop();
+			//_representation.stop();
+			//_toolBar.playPauseBut.state = 0;
 		}
 		
 		override protected function init(masked:Boolean=true):void{
@@ -93,8 +75,8 @@ package com.screens.view
 		override protected function addInstrument(insModel:InstrumentModel):void{
 			if(NoteSequanceModel(insModel.getSequanceById(_model.playSequance))){
 				 super.addInstrument(insModel);
-			var channel:Channel = _representation.addChannel(insModel.coreModel);
-			_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
+			//var channel:Channel = _representation.addChannel(insModel.coreModel);
+			//_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
 			}
 		}
 
@@ -120,16 +102,16 @@ package com.screens.view
 			_hat.start();
 		}
 		
-		private function addRepresentation():void{
-			_representation = new Representation();
-			_representation.y = 573+52-5;
-			_stageLayer.addChild(_representation);
-		}
+//		private function addRepresentation():void{
+//			_representation = new Representation();
+//			_representation.y = 573+52-5;
+//			_stageLayer.addChild(_representation);
+//		}
 		
 		private function addToolBar():void{
-			_toolBar=new ToolBar(_representation);
-			_toolBar.y=_representation.y-40//-_toolBar.height;
-			addChild(_toolBar);
+//			_toolBar=new ToolBar(_representation);
+//			_toolBar.y=_representation.y-40//-_toolBar.height;
+//			addChild(_toolBar);
 			var backBtn:Btn = new Btn("exit_idle.png","exit_press.png");
 			addChild(backBtn);
 			backBtn.x=1;
@@ -144,8 +126,10 @@ package com.screens.view
 }
 import com.constants.Dimentions;
 import com.gskinner.motion.GTween;
+import com.metronom.Metronome;
 import com.representation.Representation;
 import com.view.gui.Btn;
+import com.view.gui.ToggleBut;
 import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
@@ -160,6 +144,7 @@ class ToolBar extends Sprite{
 	private var _representation:Representation;
 	private var _mouse:DisplayObject;
 	private var _bar:DisplayObject;
+	private var _playPauseBtn:ToggleBut;
 	public function ToolBar(representation:Representation){
 		_representation=representation;
 		init();
@@ -169,12 +154,14 @@ class ToolBar extends Sprite{
 	private function init():void{
 		_bar=addChild(AssetsManager.getAssetByName("LISTEN_SCREEN_NOTES_BAR.png"));
 		
-//		var playBtn:Btn = new Btn("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
-//		addChild(playBtn);
-//		playBtn.x=439;
-//		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
-//		addChild(replay);
-//		replay.x=Dimentions.WIDTH-replay.width+6;
+		_playPauseBtn = new ToggleBut("PLAY_BUTTON_IDLE.png","PLAY_BUTTON_PRESSED.png");
+		addChild(_playPauseBtn);
+		_playPauseBtn.x=0;
+		_playPauseBtn.clicked.add(onPlayPause);
+		var replay:Btn = new Btn("REPLAY_BUTTON_IDLE.png","REPLAY_BUTTON_PRESSED.png");
+		addChild(replay);
+		replay.x=100;
+		replay.clicked.add(reload);
 		_expandBut = new Btn("EXPAND_IDLE.png","EXPAND_PRESSED.png","","expand");
 		_collapseBut = new Btn("COLLAPSE_IDLE.png","COLLAPSE_PRESSED.png","","collapse");
 		addChild(_expandBut);
@@ -191,6 +178,18 @@ class ToolBar extends Sprite{
 			
 	}
 	
+	public function get playPauseBut():ToggleBut{
+		return _playPauseBtn;
+	}
+	
+	private function reload(str:String):void{
+		Metronome.getTimeControll().toZero();
+		_playPauseBtn.state=0;
+	}
+	
+	private function onPlayPause(btnId:String):void{
+		Metronome.getTimeControll().togglePause();
+	}
 	
 	override public function set visible(value:Boolean):void{
 		//trace("b");
