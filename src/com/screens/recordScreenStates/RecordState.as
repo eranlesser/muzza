@@ -1,10 +1,8 @@
 package com.screens.recordScreenStates
 {
 	import com.constants.Dimentions;
-	import com.constants.Rhythms;
 	import com.constants.States;
 	import com.gskinner.motion.GTween;
-	import com.inf.PopUpsManager;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NotesInstrumentModel;
@@ -55,6 +53,10 @@ package com.screens.recordScreenStates
 		}
 		
 		private function checkNotesMatch(noteId:String):void{
+			if(!_context.notes.visible){
+				_tween.paused=false;
+				return;
+			}
 			if(_toPlayNotes.length>0){
 			var curNote:DroppingNote = _toPlayNotes[0];
 				if(noteId==curNote.id){
@@ -66,7 +68,6 @@ package com.screens.recordScreenStates
 		}
 		
 		public function activate():void{
-			PopUpsManager.closePopUp();
 			_context.recordButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.add(checkNotesMatch);
 			_context.instrumentRecorder.active = true;
@@ -113,6 +114,9 @@ package com.screens.recordScreenStates
 		}
 		
 		private function onTimerTick():void{
+			if(!_context.notes.visible){
+				return;
+			}
 			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(fixNum,_timeModel.currentTick);
 			if(_toPlayNotes.length>0){
 				_toPlayNotes[0].selected=true;

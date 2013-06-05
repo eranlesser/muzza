@@ -26,7 +26,6 @@ package com.screens.view.components.notes
 		{
 			//_notesLength=notesLength;
 			_instrumentY=instrumentY;
-			init();
 			this.mouseChildren=false;
 			this.mouseEnabled=false;
 		}
@@ -57,39 +56,5 @@ package com.screens.view.components.notes
 			_channel.removeNote(note)
 		}
 		
-		
-		private function init():void{
-//			_bg=new Shape();
-//			_bg.graphics.beginFill(0x333333);
-//			_bg.graphics.drawRect(0,0,Dimentions.WIDTH,_instrumentY+44);
-//			_bg.graphics.endFill();
-//			_bg.alpha=0;
-//			_notesCanvas = new Sprite();
-//			_notesCanvas.addChild(_bg);
-//			_bg.x=0;
-			//addChild(_notesCanvas);
-//			_cue = _notesCanvas.addChild(AssetsManager.getAssetByName("BLUE_NEEDLE.png"));
-//			var frame:DisplayObject=addChild(AssetsManager.getAssetByName("notes_frame.png"));
-//			_cue.x=frame.width/2-90;
-//			var msk:Shape=new Shape();
-//			msk.graphics.beginFill(0xFFFFFF);
-//			msk.graphics.drawRect(40,0,frame.width-100,frame.height);
-//			msk.graphics.endFill();
-//			_speedController=new SpeedSlider();
-//			addChild(_speedController);
-//			_speedController.x=760;
-//			_speedController.y=30;
-//			_notesCanvas.addChild(msk);
-//			_notesCanvas.mask=msk;
-//			addChild(_cue);
-//			_backUpBut = new ToggleBut("SOUND_OFF.png","SOUND_ON.png");
-//			addChild(_backUpBut);
-//			_backUpBut.x=860;
-//			_backUpBut.y=frame.height/2-_backUpBut.height/2;
-		}
-		
-//		public function marc(value:uint,good:Boolean):void{
-//			_channel.marc(value,good);
-//		}
 	}
 }

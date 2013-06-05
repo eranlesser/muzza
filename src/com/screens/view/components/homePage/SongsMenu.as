@@ -74,7 +74,7 @@ package com.screens.view.components.homePage
 			logo.y=220;
 			//_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
-			var tmr:Timer = new Timer(1000,1);
+			var tmr:Timer = new Timer(100,1);
 			
 			var enterSound:Sound = new Sound();
 			enterSound.load(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"))
@@ -85,9 +85,11 @@ package com.screens.view.components.homePage
 			
 			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
 				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
-				var wtween:GTween = new GTween(_wallLayer,6,{x:0},{ease:Circular.easeInOut});
+				//var wtween:GTween = new GTween(_wallLayer,6,{x:0},{ease:Circular.easeInOut});
+				var wtween:GTween = new GTween(_wallLayer,1,{x:0},{ease:Circular.easeInOut});
 				//var tween:GTween = new GTween(_thumbsLayer,6,{x:0},{ease:Circular.easeInOut});
-				var ptween:GTween = new GTween(_poleLayer,7.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
+				//var ptween:GTween = new GTween(_poleLayer,7.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
+				var ptween:GTween = new GTween(_poleLayer,1.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
 				//enterSound.play();
 				ptween.onComplete = function dispatchComplete(t:GTween):void{
 					ready.dispatch();

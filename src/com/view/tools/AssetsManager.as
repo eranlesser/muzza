@@ -30,30 +30,30 @@ package com.view.tools
 			"<image path='assets/mail.png' />"+
 			//MENU
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
-			"<image path='assets/open/MOZART_PICTURE.png' />"+
-			"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
-			"<image path='assets/open/OVER_THE_RAINBOW.png' />"+
-			"<image path='assets/open/OVER_THE_RAINBOW_pic.png' />"+
-			"<image path='assets/open/BRAZIL_PICTURE.png' />"+
-			"<image path='assets/open/WATERCOLORS_of_BRAZIL.png' />"+
-			"<image path='assets/gui/menu/blank.png' />"+
-			"<image path='assets/open/EDVARD_GRIEG.png' />"+
+			//"<image path='assets/open/MOZART_PICTURE.png' />"+
+			//"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
+//			"<image path='assets/open/OVER_THE_RAINBOW.png' />"+
+//			"<image path='assets/open/OVER_THE_RAINBOW_pic.png' />"+
+//			"<image path='assets/open/BRAZIL_PICTURE.png' />"+
+//			"<image path='assets/open/WATERCOLORS_of_BRAZIL.png' />"+
+//			"<image path='assets/gui/menu/blank.png' />"+
+//			"<image path='assets/open/EDVARD_GRIEG.png' />"+
 			"<image path='assets/open/NEXT_IDLE.png' />"+
 			"<image path='assets/open/NEXT_PRESSED.png' />"+
 			"<image path='assets/open/PREVIOUS_IDLE.png' />"+
 			"<image path='assets/open/PREVIOUS_Pressed.png' />"+
-			"<image path='assets/open/WHITE_LIGHT_TOP.png' />"+
+//			"<image path='assets/open/WHITE_LIGHT_TOP.png' />"+
 			"<image path='assets/open/POLE_STATION.png' />"+
-			"<image path='assets/open/Start_tutorial_idle.png' />"+
-			"<image path='assets/open/Start_tutorial_PRESSED_V_2.png' />"+
+//			"<image path='assets/open/Start_tutorial_idle.png' />"+
+//			"<image path='assets/open/Start_tutorial_PRESSED_V_2.png' />"+
 			"<image path='assets/open/PLAY_IDLE.png' />"+
 			"<image path='assets/open/PLAY_PRESSED.png' />"+
-			"<image path='assets/open/Flagbig.png' />"+
-			"<image path='assets/open/Tarab.png' />"+
+//			"<image path='assets/open/Flagbig.png' />"+
+//			"<image path='assets/open/Tarab.png' />"+
 			//TITLES
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
-			"<image path='assets/open/JINGLE_BELLS.png' />"+
-			"<image path='assets/open/MOUNTAIN_KING.png' />"+
+//			"<image path='assets/open/JINGLE_BELLS.png' />"+
+//			"<image path='assets/open/MOUNTAIN_KING.png' />"+
 			//TOOLBAR
 			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_IDLE.png' />"+
@@ -79,23 +79,23 @@ package com.view.tools
 			"<image path='assets/TOOL_BAR_ICONS/vinyl_press_but.png' />"+
 			//NOTES
 			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_contour_highlight.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_mask.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/SPEED.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_contour_highlight.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_mask.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED.png' />"+
 			//BOTTLES
-			"<image path='assets/instruments/insCircle.png' />"+
-			"<image path='assets/instruments/insCircleDrop.png' />"+
-			"<image path='assets/instruments/insCircleFill2.png' />"+
-			"<image path='assets/instruments/insCircleRight2.png' />"+
-			"<image path='assets/instruments/insCircleWrong2.png' />"+
-			"<image path='assets/instruments/insRect.png' />"+
-			"<image path='assets/instruments/insRectDrop.png' />"+
-			"<image path='assets/instruments/insRectFill.png' />"+
-			"<image path='assets/instruments/insRectRight.png' />"+
-			"<image path='assets/instruments/insRectWrong.png' />"+
+//			"<image path='assets/instruments/insCircle.png' />"+
+//			"<image path='assets/instruments/insCircleDrop.png' />"+
+//			"<image path='assets/instruments/insCircleFill2.png' />"+
+//			"<image path='assets/instruments/insCircleRight2.png' />"+
+//			"<image path='assets/instruments/insCircleWrong2.png' />"+
+//			"<image path='assets/instruments/insRect.png' />"+
+//			"<image path='assets/instruments/insRectDrop.png' />"+
+//			"<image path='assets/instruments/insRectFill.png' />"+
+//			"<image path='assets/instruments/insRectRight.png' />"+
+//			"<image path='assets/instruments/insRectWrong.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_1.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_2.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_7.png' />"+
@@ -167,7 +167,7 @@ package com.view.tools
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
-			"<image path='assets/open/bStrip.png' />"+
+		//	"<image path='assets/open/bStrip.png' />"+
 			"<image path='assets/line.png' />"+
 			
 			//SPRITESHEET
@@ -182,13 +182,13 @@ package com.view.tools
 			"<image path='assets/band/bg/ganza.png' />"+
 			"<image path='assets/band/bg/agogo.png' />"+
 			"<image path='assets/band/bg/chelo.png' />"+
-			"<image path='assets/metronome.png' />"+
+//			"<image path='assets/metronome.png' />"+
 			//DEMOSCREEN
-			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
-			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
-			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
+//			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
+//			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
+//			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+
-			"<image path='assets/DEMO_SCREEN/WATERCOLORS_of_BRAZIL_nowPlaying.png' />"+
+//			"<image path='assets/DEMO_SCREEN/WATERCOLORS_of_BRAZIL_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/DEMO_SCREEN_FRAME.png' />"+
 			"<image path='assets/DEMO_SCREEN/CLOSE_BUTTON_IDLE.png' />"+
 			"<image path='assets/DEMO_SCREEN/CLOSE_BUTTON_SELECTED.png' />"+
@@ -210,29 +210,29 @@ package com.view.tools
 			"<image path='assets/band/hat/coin.png' />"+
 			//NOTES
 			
-			"<image path='assets/representation/notes/note_h.png' />"+
-			"<image path='assets/representation/notes/note_hf.png' />"+
-			"<image path='assets/representation/notes/note_hs.png' />"+
-			"<image path='assets/representation/notes/note_q.png' />"+
-			"<image path='assets/representation/notes/note_qf.png' />"+
-			"<image path='assets/representation/notes/note_qs.png' />"+
-			"<image path='assets/representation/notes/note_w.png' />"+
-			"<image path='assets/representation/notes/note_wf.png' />"+
-			"<image path='assets/representation/notes/note_ws.png' />"+
+//			"<image path='assets/representation/notes/note_h.png' />"+
+//			"<image path='assets/representation/notes/note_hf.png' />"+
+//			"<image path='assets/representation/notes/note_hs.png' />"+
+//			"<image path='assets/representation/notes/note_q.png' />"+
+//			"<image path='assets/representation/notes/note_qf.png' />"+
+//			"<image path='assets/representation/notes/note_qs.png' />"+
+//			"<image path='assets/representation/notes/note_w.png' />"+
+//			"<image path='assets/representation/notes/note_wf.png' />"+
+//			"<image path='assets/representation/notes/note_ws.png' />"+
 			//visuals
-			"<image path='assets/representation/visuals/vis_1.png' />"+
-			"<image path='assets/representation/visuals/vis_2.png' />"+
-			"<image path='assets/representation/visuals/vis_4.png' />"+
-			//symbols
-			"<image path='assets/representation/symbols/icon_1.png' />"+
-			"<image path='assets/representation/symbols/icon_2.png' />"+
-			"<image path='assets/representation/symbols/icon_3.png' />"+
-			"<image path='assets/representation/symbols/icon_4.png' />"+
-			"<image path='assets/representation/symbols/icon_5.png' />"+
-			"<image path='assets/representation/symbols/icon_6.png' />"+
-			"<image path='assets/representation/symbols/icon_7.png' />"+
-			"<image path='assets/representation/symbols/icon_8.png' />"+
-			"<image path='assets/representation/symbols/icon_9.png' />"+
+//			"<image path='assets/representation/visuals/vis_1.png' />"+
+//			"<image path='assets/representation/visuals/vis_2.png' />"+
+//			"<image path='assets/representation/visuals/vis_4.png' />"+
+//			//symbols
+//			"<image path='assets/representation/symbols/icon_1.png' />"+
+//			"<image path='assets/representation/symbols/icon_2.png' />"+
+//			"<image path='assets/representation/symbols/icon_3.png' />"+
+//			"<image path='assets/representation/symbols/icon_4.png' />"+
+//			"<image path='assets/representation/symbols/icon_5.png' />"+
+//			"<image path='assets/representation/symbols/icon_6.png' />"+
+//			"<image path='assets/representation/symbols/icon_7.png' />"+
+//			"<image path='assets/representation/symbols/icon_8.png' />"+
+//			"<image path='assets/representation/symbols/icon_9.png' />"+
 			//Representation
 			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_SHEET.png' />"+
 			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_BAR.png' />"+
@@ -255,42 +255,42 @@ package com.view.tools
 			"<image path='assets/LISTEN_SCREEN/drum_icon.png' />"+
 
 			
-			//Rrpresentation Menu
-			"<image path='assets/representation/menu/note.png' />"+
-			"<image path='assets/representation/menu/vis.png' />"+
-			"<image path='assets/representation/menu/number.png' />"+
+//			//Rrpresentation Menu
+//			"<image path='assets/representation/menu/note.png' />"+
+//			"<image path='assets/representation/menu/vis.png' />"+
+//			"<image path='assets/representation/menu/number.png' />"+
 			//Rrpresentation RadioList
-			"<image path='assets/gui/radioList/autoBtn.png' />"+
-			"<image path='assets/gui/radioList/autoBtn_selected.png' />"+
-			"<image path='assets/gui/radioList/noteBtn.png' />"+
-			"<image path='assets/gui/radioList/noteBtn_selected.png' />"+
-			"<image path='assets/gui/radioList/symbolBtn.png' />"+
-			"<image path='assets/gui/radioList/symbolBtn_selected.png' />"+
-			"<image path='assets/gui/radioList/numBtn.png' />"+
-			"<image path='assets/gui/radioList/numBtn_selected.png' />"+
+//			"<image path='assets/gui/radioList/autoBtn.png' />"+
+//			"<image path='assets/gui/radioList/autoBtn_selected.png' />"+
+//			"<image path='assets/gui/radioList/noteBtn.png' />"+
+//			"<image path='assets/gui/radioList/noteBtn_selected.png' />"+
+//			"<image path='assets/gui/radioList/symbolBtn.png' />"+
+//			"<image path='assets/gui/radioList/symbolBtn_selected.png' />"+
+//			"<image path='assets/gui/radioList/numBtn.png' />"+
+//			"<image path='assets/gui/radioList/numBtn_selected.png' />"+
 			
 			//GUI BUTTONS
-			"<image path='assets/gui/play_idle.png' />"+
-			"<image path='assets/gui/stop_idle.png' />"+
-			"<image path='assets/gui/play_pressed.png' />"+
-			"<image path='assets/gui/stop_pressed.png' />"+
-			"<image path='assets/gui/record_idle.png' />"+
-			"<image path='assets/gui/right_idle.png' />"+
-			"<image path='assets/gui/right_pressed.png' />"+
-			"<image path='assets/gui/left_idle.png' />"+
-			"<image path='assets/gui/left_pressed.png' />"+
-			"<image path='assets/gui/close.png' />"+
-			"<image path='assets/gui/info.png' />"+
-			"<image path='assets/gui/restart.png' />"+
-			"<image path='assets/gui/next_idle.png' />"+
-			"<image path='assets/gui/next_press.png' />"+
-			"<image path='assets/gui/swap.jpg' />"+
+//			"<image path='assets/gui/play_idle.png' />"+
+//			"<image path='assets/gui/stop_idle.png' />"+
+//			"<image path='assets/gui/play_pressed.png' />"+
+//			"<image path='assets/gui/stop_pressed.png' />"+
+//			"<image path='assets/gui/record_idle.png' />"+
+//			"<image path='assets/gui/right_idle.png' />"+
+//			"<image path='assets/gui/right_pressed.png' />"+
+//			"<image path='assets/gui/left_idle.png' />"+
+//			"<image path='assets/gui/left_pressed.png' />"+
+//			"<image path='assets/gui/close.png' />"+
+//			"<image path='assets/gui/info.png' />"+
+//			"<image path='assets/gui/restart.png' />"+
+//			"<image path='assets/gui/next_idle.png' />"+
+//			"<image path='assets/gui/next_press.png' />"+
+//			"<image path='assets/gui/swap.jpg' />"+
 			"<image path='assets/gui/exit_idle.png' />"+
 			"<image path='assets/gui/exit_press.png' />"+
 
-			"<image path='assets/gui/btn_home.png' />"+
-			"<image path='assets/gui/icon_current_screen.png' />"+
-			"<image path='assets/gui/icon_screen.png' />"+
+//			"<image path='assets/gui/btn_home.png' />"+
+//			"<image path='assets/gui/icon_current_screen.png' />"+
+//			"<image path='assets/gui/icon_screen.png' />"+
 			
 			//BACKGROUND
 			"<image path='assets/PLAY_SCREEN_WALL_BCKGR.png' />"+
@@ -357,28 +357,28 @@ package com.view.tools
 			"<image path='assets/instruments/marc.png' />"+
 			"<image path='assets/instruments/platein.png' />"+
 			//POPUP
-			"<image path='assets/POP_UP/POP_UP_LEFT_SEGMENT.png' />"+
-			"<image path='assets/POP_UP/POP_UP_LEFT_SIDE_ARROW.png' />"+
-			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
-			"<image path='assets/POP_UP/POP_UP_LOWER_ARROW_SEGMENT.png' />"+
-			"<image path='assets/POP_UP/POP_UP_LOWER_LEFT_CORNER.png' />"+
-			"<image path='assets/POP_UP/POP_UP_LOWER_RIGT_CORNER.png' />"+
-			"<image path='assets/POP_UP/POP_UP_UPPER_LEFT_CORNER.png' />"+
-			"<image path='assets/POP_UP/POP_UP_UPPER_RIGHT_CORNER.png' />"+
-			"<image path='assets/POP_UP/POP_UP_RIGHT_SEGMENT.png' />"+
-			"<image path='assets/POP_UP/POP_UP_RIGHT_SIDE_ARROW.png' />"+
-			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
-			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
-			"<image path='assets/POP_UP/BASS_PROFILE_PIC.png' />"+
-			"<image path='assets/POP_UP/dj.jpg' />"+
-			"<image path='assets/POP_UP/DRUMMER_PROFILE_PIC.png' />"+
-			"<image path='assets/POP_UP/GIRL_PROFILE_PIC.png' />"+
-			"<image path='assets/POP_UP/next_IDLE.png' />"+
-			"<image path='assets/POP_UP/next_PRESSED.png' />"+
-			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
-			
-			"<image path='assets/hour_glass.png' />"+
-			"<image path='assets/hour_glass_alert.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LEFT_SEGMENT.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LEFT_SIDE_ARROW.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LOWER_ARROW_SEGMENT.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LOWER_LEFT_CORNER.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LOWER_RIGT_CORNER.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_UPPER_LEFT_CORNER.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_UPPER_RIGHT_CORNER.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_RIGHT_SEGMENT.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_RIGHT_SIDE_ARROW.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
+//			"<image path='assets/POP_UP/BASS_PROFILE_PIC.png' />"+
+//			"<image path='assets/POP_UP/dj.jpg' />"+
+//			"<image path='assets/POP_UP/DRUMMER_PROFILE_PIC.png' />"+
+//			"<image path='assets/POP_UP/GIRL_PROFILE_PIC.png' />"+
+//			"<image path='assets/POP_UP/next_IDLE.png' />"+
+//			"<image path='assets/POP_UP/next_PRESSED.png' />"+
+//			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
+//			
+//			"<image path='assets/hour_glass.png' />"+
+//			"<image path='assets/hour_glass_alert.png' />"+
 			"<image path='assets/vica/bgBlur.png' />"+
 			"<image path='assets/vica/record_BTN_puse.png' />"+
 			"<image path='assets/vica/record_BTN_play.png' />"+

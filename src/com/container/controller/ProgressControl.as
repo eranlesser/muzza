@@ -2,13 +2,7 @@ package com.container.controller {
 	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
-	//import com.freshplanet.nativeExtensions.Flurry;
-	import com.inf.PopUpModel;
-	import com.inf.PopUpsManager;
-	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
-	import com.screens.view.ListenScreen;
-	import com.screens.view.RecordScreen;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -99,7 +93,6 @@ package com.container.controller {
 			}else{
 				_model.currentScreen.stop();
 				_view.openDemo(_model.demoScreen);
-				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
 				//Flurry.getInstance().logEvent("Open demo");
 			}
@@ -110,7 +103,6 @@ package com.container.controller {
 			_model.currentScreen.stop();
 			goHomeSignal.dispatch();
 			_model.reset();
-			PopUpsManager.closePopUp(true);
 			//Flurry.getInstance().logEvent("go home");
 		}
 		

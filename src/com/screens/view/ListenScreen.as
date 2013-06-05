@@ -3,24 +3,14 @@ package com.screens.view
 	import com.constants.Dimentions;
 	import com.constants.Session;
 	import com.gui.hat.Hat;
-	import com.inf.PopUpsManager;
 	import com.musicalInstruments.model.InstrumentModel;
-	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.character.Musician;
 	import com.musicalInstruments.view.character.PlayMusician;
-	import com.musicalInstruments.view.instrument.Instrument;
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
 	import com.representation.view.Channel;
 	import com.utils.Claps;
 	import com.view.gui.Btn;
-	
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.events.TimerEvent;
-	import flash.text.TextField;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 
@@ -81,10 +71,6 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.start();
 			}
-			PopUpsManager.closePopUp(true);
-			if(_instruments.length==0){
-				PopUpsManager.openPopUp(PopUpsManager.CLOSE_LISTEN);
-			}
 		}
 		
 		
@@ -95,7 +81,6 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
-			PopUpsManager.openPopUp(PopUpsManager.CLOSE_LISTEN);
 			_representation.stop();
 		}
 		

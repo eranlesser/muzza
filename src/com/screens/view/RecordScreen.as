@@ -1,8 +1,5 @@
 package com.screens.view {
-	import com.constants.Dimentions;
-	import com.constants.Session;
 	import com.gskinner.motion.GTween;
-	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
@@ -20,11 +17,7 @@ package com.screens.view {
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
-	import flash.display.DisplayObject;
-	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
 
 
 	public class RecordScreen extends AbstractScreen
@@ -39,6 +32,7 @@ package com.screens.view {
 		private var _recordBtn:					Btn;
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
+		private var _improviseButton:Btn;
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
@@ -88,6 +82,12 @@ package com.screens.view {
 				addChild(_recordBtn);
 				_recordBtn.x=443;
 				_recordBtn.y=27//(strip.height-practiceBtn.height)/2-2;
+				_improviseButton = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
+				addChild(_improviseButton);
+				_improviseButton.x=12;
+				_improviseButton.y=176;
+				_improviseButton.scaleX=0.3;
+				_improviseButton.clicked.add(onImprovise);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel,_model.endAtFrame);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
@@ -104,10 +104,21 @@ package com.screens.view {
 			_clock.reset();
 			addBackUps();
 		}
-
+		
+		private function onImprovise(val:String):void
+		{
+			// TODO Auto Generated method stub
+			if(_improviseButton.state == "pressed"){
+				_improviseButton.state = "idle" ;
+				_notes.visible=true;
+			}else{
+				_improviseButton.state = "pressed" ;
+				_notes.visible = false;
+			}
+		}
+		
 		override public function stop():void{
 			_stateController.deActivate();
-			PopUpsManager.closePopUp();
 			_instrumentRecorder.stop();
 			for each(var player:PlayMusician in _players){
 				player.stop();

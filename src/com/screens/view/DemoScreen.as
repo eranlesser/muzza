@@ -1,7 +1,5 @@
 package com.screens.view {
 	import com.constants.*;
-	//import com.freshplanet.nativeExtensions.Flurry;
-	import com.inf.PopUpsManager;
 	import com.metronom.*;
 	import com.musicalInstruments.model.*;
 	import com.musicalInstruments.view.character.PlayMusician;
@@ -127,7 +125,6 @@ package com.screens.view {
 		}
 		
 		private function onClose(btnid:String):void{
-			PopUpsManager.closePopUp();
 			close.dispatch();
 		}
 		
