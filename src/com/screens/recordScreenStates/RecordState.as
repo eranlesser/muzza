@@ -9,18 +9,23 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
+	import com.screens.mediator.ScoreMediator;
 	import com.screens.view.components.Clock;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
 	
 	import flash.display.Shape;
+	import flash.display.Sprite;
+	import flash.display.Stage;
 	
 	import org.osflash.signals.Signal;
 
 	public class RecordState implements IRecordScreenState
 	{
 		
-		public static const fixNum:		uint=10;
+		public static const fixNum:		uint=16;
+		public var scoreSignal:			Signal=new Signal();
+		public var pauseSignal:			Signal = new Signal();
 		protected var _context:			RecordScreenStateController;
 		protected var _complete:		Signal = new Signal();
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
@@ -33,6 +38,7 @@ package com.screens.recordScreenStates
 			_context = stateController;
 			_msk.graphics.beginFill(0x111111,0.8);
 			_msk.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
+			new ScoreMediator(this);
 		}
 		
 		public function get isActive():Boolean
@@ -58,11 +64,15 @@ package com.screens.recordScreenStates
 				return;
 			}
 			if(_toPlayNotes.length>0){
-			var curNote:DroppingNote = _toPlayNotes[0];
+				var curNote:DroppingNote = _toPlayNotes[0];
 				if(noteId==curNote.id){
+					if(_tween.paused){// do it before setting the tween to false, this happens .
+						pauseSignal.dispatch(false);
+					}
 					_tween.paused=false;
 					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
+					scoreSignal.dispatch(curNote.location,_timeModel.currentTick);
 				}
 			}
 		}
@@ -113,6 +123,10 @@ package com.screens.recordScreenStates
 			_complete.dispatch();
 		}
 		
+		public function get view():Stage{
+			return _context.stageLayer.stage;
+		}
+		
 		private function onTimerTick():void{
 			if(!_context.notes.visible){
 				return;
@@ -123,6 +137,7 @@ package com.screens.recordScreenStates
 			}
 			for each(var curNote:DroppingNote in _toPlayNotes){
 				if(curNote.location==_timeModel.currentTick){
+					pauseSignal.dispatch(true);
 					_tween.paused=true;
 					break;
 				}
