@@ -88,7 +88,7 @@ public static var data:XML =
 
 <recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
 	<playerInstrument type="turnTable" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
-	<RecordedX>120</RecordedX>
+	<RecordedX>30</RecordedX>
 	<RecordedY>320</RecordedY>
 	</playerInstrument>
 <backups>

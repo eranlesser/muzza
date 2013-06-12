@@ -157,10 +157,26 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_3.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_4.png' />"+
 			//SCRATCH
-			"<image path='assets/instruments/scratch/Vinyl.png' />"+
-			"<image path='assets/instruments/scratch/hey_idle.png' />"+
-			"<image path='assets/instruments/scratch/hey_s.png' />"+
-			"<image path='assets/instruments/scratch/notes_sheet_v.png' />"+
+//			"<image path='assets/instruments/scratch/Vinyl.png' />"+
+//			"<image path='assets/instruments/scratch/hey_idle.png' />"+
+//			"<image path='assets/instruments/scratch/hey_s.png' />"+
+//			"<image path='assets/instruments/scratch/notes_sheet_v.png' />"+
+			"<image path='assets/vica/DJnormal.png' />"+
+			"<image path='assets/vica/DJtap.png' />"+
+			"<image path='assets/vica/hey.png' />"+
+			"<image path='assets/vica/heyD.png' />"+
+			"<image path='assets/vica/iron1normal.png' />"+
+			"<image path='assets/vica/iron1tap.png' />"+
+			"<image path='assets/vica/iron2normal.png' />"+
+			"<image path='assets/vica/iron2tap.png' />"+
+			"<image path='assets/vica/iron3normal.png' />"+
+			"<image path='assets/vica/iron3tap.png' />"+
+			"<image path='assets/vica/mic.png' />"+
+			"<image path='assets/vica/pole.png' />"+
+			"<image path='assets/vica/violin.png' />"+
+			"<image path='assets/vica/red_arrow.png' />"+
+			"<image path='assets/vica/record.png' />"+
+			
 			
 			//RECORD SCREEN BUTTONS
 			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+

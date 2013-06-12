@@ -145,7 +145,7 @@ package com.screens.view.components.notes
 			
 			_notesMask=new Shape();
 			_notesMask.graphics.beginFill(0x333333)
-			_notesMask.graphics.drawRect(0,30,size.width,size.height+15);
+			_notesMask.graphics.drawRect(0,120,size.width,size.height+15);
 			_notesMask.graphics.endFill();
 			addChild(_notesMask);
 			

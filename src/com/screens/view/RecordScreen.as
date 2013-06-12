@@ -84,6 +84,7 @@ package com.screens.view {
 				_recordBtn.y=27//(strip.height-practiceBtn.height)/2-2;
 				_improviseButton = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
 				addChild(_improviseButton);
+				//_improviseButton.visible = false;
 				_improviseButton.x=12;
 				_improviseButton.y=176;
 				_improviseButton.scaleX=0.3;
