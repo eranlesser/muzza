@@ -1,5 +1,6 @@
 package com.screens.model
 {
+	import com.constants.Session;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.view.DemoScreen;
 	import com.screens.view.IScreen;
@@ -86,12 +87,15 @@ package com.screens.model
 			if(scr=="back"){
 				curIndex = _lastInstrumentIndex//  = last screen played
 			}else{
+				var score:int=0;
 				for each(var isc:IScreen in _recordScreens){
 					if(isc is RecordScreen){
 						if(RecordScreen(isc).model.instrumentModel.thumbNail==scr){
 							curIndex = _recordScreens.indexOf(isc);
 						}
+						score = score+RecordScreen(isc).model.score;
 					}
+					Session.instance.score = score;
 				}
 			}
 			if(curIndex==-1){

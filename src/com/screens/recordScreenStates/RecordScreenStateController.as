@@ -18,6 +18,8 @@ package com.screens.recordScreenStates
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.text.TextField;
+	
+	import org.osflash.signals.Signal;
 
 	public class RecordScreenStateController
 	{
@@ -36,13 +38,26 @@ package com.screens.recordScreenStates
 			_states.push(new RecordState(this));
 		}
 		
+		public function get improviseMode():Signal{
+			return _recordScreen.improviseMode;
+		}
+		
 		private function init():void{
 			initStates();
 			//instrumentRecorder.setRecordable(model.beginAtFrame,model.endAtFrame);
 		}
 		
+		
+		public function get thumbNail():String{
+			return _recordScreen.model.instrumentModel.thumbNail;
+		}
+		
 		public function get stageLayer():Sprite{
 			return _recordScreen.stageLayer;
+		}
+		
+		public function get guiLayer():Sprite{
+			return _recordScreen.guiLayer;
 		}
 		
 		// ------------------------------------------------

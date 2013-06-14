@@ -18,6 +18,8 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
+	
+	import org.osflash.signals.Signal;
 
 
 	public class RecordScreen extends AbstractScreen
@@ -32,7 +34,8 @@ package com.screens.view {
 		private var _recordBtn:					Btn;
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
-		private var _improviseButton:Btn;
+		private var _improviseButton:			Btn;
+		public var improviseMode:Signal = new Signal();
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
@@ -112,9 +115,11 @@ package com.screens.view {
 			if(_improviseButton.state == "pressed"){
 				_improviseButton.state = "idle" ;
 				_notes.visible=true;
+				improviseMode.dispatch(false);
 			}else{
 				_improviseButton.state = "pressed" ;
 				_notes.visible = false;
+				improviseMode.dispatch(true);
 			}
 		}
 		
@@ -200,6 +205,9 @@ package com.screens.view {
 		
 		public function get stageLayer():Sprite{
 			return _stageLayer;
+		}
+		public function get guiLayer():Sprite{
+			return _guiLayer;
 		}
 		
 	}

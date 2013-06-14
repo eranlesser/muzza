@@ -14,6 +14,7 @@ package com.screens.recordScreenStates
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.display.Stage;
@@ -33,12 +34,21 @@ package com.screens.recordScreenStates
 		private var _msk:				Shape = new Shape();
 		private var _toPlayNotes:		Vector.<DroppingNote>;
 		private var _isActive:Boolean = false;
-		
+		private var _scoreMediator:ScoreMediator;
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
 			_msk.graphics.beginFill(0x111111,0.8);
 			_msk.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
-			new ScoreMediator(this);
+			_scoreMediator = new ScoreMediator(this);
+			_context.improviseMode.add(onImprovise);
+		}
+		
+		private function onImprovise(val:Boolean):void{
+			_scoreMediator.visible=val;
+		}
+		
+		public function get thumbNail():String{
+			return _context.thumbNail;
 		}
 		
 		public function get isActive():Boolean
@@ -54,9 +64,6 @@ package com.screens.recordScreenStates
 			return States.RECORD;
 		}
 
-		private function onPracticeClicked(buttonState:Boolean):void{
-			_context.practice();
-		}
 		
 		private function checkNotesMatch(noteId:String):void{
 			if(!_context.notes.visible){
@@ -94,6 +101,7 @@ package com.screens.recordScreenStates
 			_context.notes.start();
 			Clock.instance.play();
 			_context.stageLayer.addChild(_msk);
+			_scoreMediator.active=true;
 			_isActive = true;
 		}
 		
@@ -111,6 +119,8 @@ package com.screens.recordScreenStates
 			if(_tween){
 				_tween.onComplete = null;
 			}
+			_scoreMediator.active=false;
+			_context.model.score = _scoreMediator.score;
 			_isActive = false;
 			
 		}
@@ -123,8 +133,8 @@ package com.screens.recordScreenStates
 			_complete.dispatch();
 		}
 		
-		public function get view():Stage{
-			return _context.stageLayer.stage;
+		public function get view():Sprite{
+			return _context.guiLayer;
 		}
 		
 		private function onTimerTick():void{

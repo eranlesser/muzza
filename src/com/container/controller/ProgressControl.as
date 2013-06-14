@@ -93,7 +93,6 @@ package com.container.controller {
 			}else{
 				_model.currentScreen.stop();
 				_view.openDemo(_model.demoScreen);
-				Session.instance.demoClicked=true;
 				//Flurry.getInstance().logEvent("Open demo");
 			}
 		}

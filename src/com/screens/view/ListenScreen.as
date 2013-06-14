@@ -51,6 +51,7 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.start();
 			}
+			_hat.reStart();
 			//_toolBar.playPauseBut.state = 1;
 		}
 		
@@ -80,7 +81,6 @@ package com.screens.view
 			}
 		}
 
-		
 		override protected function endMusciPiece():void{
 			//if(Session.instance.goodScreensLength==4){
 				_claps.play();
@@ -89,9 +89,6 @@ package com.screens.view
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
 			}
-			if(Session.instance.goodScreensLength==4){
-				super.endMusciPiece();
-			}
 		}
 		
 		private function addHat():void{
@@ -99,7 +96,7 @@ package com.screens.view
 			_stageLayer.addChild(_hat);
 			_hat.x=Dimentions.WIDTH-_hat.width+80;
 			_hat.y=380;
-			_hat.start();
+			
 		}
 		
 //		private function addRepresentation():void{

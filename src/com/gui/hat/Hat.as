@@ -1,5 +1,6 @@
 package com.gui.hat
 {
+	import com.constants.Session;
 	import com.gskinner.motion.GTween;
 	import com.gskinner.motion.easing.Sine;
 	import com.metronom.ITimeModel;
@@ -22,7 +23,7 @@ package com.gui.hat
 		private var _coinsLevel:uint = 0;
 		private var _timeModel:ITimeModel;
 		private var _tField:TextField;
-		
+		private var _isDone:Boolean = false;
 		public function Hat(){
 			_timeModel = Metronome.getTimeModel();
 			init();
@@ -35,10 +36,9 @@ package com.gui.hat
 			_hat.scaleX = -1;
 			_hat.x = 230;
 			_tField = new TextField();
-			_tField.defaultTextFormat=(new TextFormat("Chalkduster",26));
+			_tField.defaultTextFormat=(new TextFormat("Arial",26,0xFFFFFF));
 			_tField.autoSize = TextFieldAutoSize.CENTER;
-			//addChild(_tField);
-			_tField.text="0";
+			addChild(_tField);
 			_tField.x = 42;
 			_tField.y = 43;
 			//var sign:DisplayObject = AssetsManager.getAssetByName("lv.png")
@@ -49,21 +49,15 @@ package com.gui.hat
 			progress();
 		}
 		
-		public function start():void{
-			_timeModel.tickSignal.add(onTick);
-//			_timeModel.cycleSignal.add(onCycle);
-		}
 		
-		public function stop():void{
-			_timeModel.tickSignal.remove(onTick);
-//			_timeModel.cycleSignal.remove(onCycle);
-		}
+		
 		
 		public function reset():void{
 			_coinsLevel = 0;
 			_coinCounter = 0;
-			_tField.text="0";
+			//_tField.text="0";
 			progress();
+			_timeModel.tickSignal.remove(onTick);
 		}
 		
 		public function fillHat():void{
@@ -73,8 +67,20 @@ package com.gui.hat
 			tween.onComplete = onHatFull;
 		}
 		
+		private function setScore():void{
+			_tField.text = Session.instance.score.toString();
+		}
+		
+		public function reStart():void{
+			_tField.text="0";
+			_timeModel.tickSignal.add(onTick);
+			_isDone=false;
+		}
+		
 		private function onHatFull(tween:GTween):void{
 			_timeModel.tickSignal.remove(onTick);
+			setScore();
+			_isDone=true;
 //			_timeModel.cycleSignal.remove(onCycle);
 		}
 		private function onFillHat(tween:GTween):void{
@@ -93,7 +99,7 @@ package com.gui.hat
 			_coinsLevel++;
 		}
 		private function onTick():void{
-			if(Math.random()>0.995){
+			if(Math.random()>0.98){
 				throwCoin();
 			}
 		}
@@ -125,7 +131,9 @@ package com.gui.hat
 		}
 		private function onCoinComplete(tween:GTween):void{
 			removeChild(tween.target as DisplayObject);
-			_tField.text = "$"+(_coinCounter + (_coinsLevel-1)*8).toString();
+			if(!_isDone)
+				_tField.text=int(Session.instance.score*(_timeModel.currentTick/(_timeModel.duration/1.8))).toString();
+			//_tField.text = "$"+(_coinCounter + (_coinsLevel-1)*8).toString();
 		}
 	}
 }

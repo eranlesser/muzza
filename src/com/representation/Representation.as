@@ -1,5 +1,4 @@
 package com.representation {
-	import com.gskinner.motion.GTween;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.CoreInstrumentModel;

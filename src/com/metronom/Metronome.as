@@ -137,6 +137,10 @@ package com.metronom
 			//trace(_tickValue,"met")
 		}
 		
+		public function get duration():int{
+			return _gtween.duration;
+		}
+		
 		
 	}
 }

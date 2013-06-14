@@ -20,7 +20,7 @@ package com.screens.model {
 		private var _noteTargetsYOffset:int;
 		private var _backUpInsruments:Vector.<InstrumentModel>;
 		private var _startAtCurPoint:int;
-		
+		public var score:int;
 		public function RecordScreenModel(xml:XML,instruments:ThemeInstrumentsModel){
 			super(xml);
 			_instruments = instruments;

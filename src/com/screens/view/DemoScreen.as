@@ -183,15 +183,12 @@ package com.screens.view {
 				}
 			}
 			if(donePlayers==_instruments.length){
-				if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
+				//if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
+				if(_timeModel.currentTick>0 && donePlayers==_instruments.length){
 					endMusciPiece();
-				}else{
-					//_timeControll.stop();
-					//stop();
 				}
 			}
 		}
-		
 		
 		override public function stop():void{
 			for each(var ins:PlayMusician in _instruments){

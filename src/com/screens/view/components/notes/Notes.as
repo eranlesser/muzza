@@ -14,12 +14,9 @@ package com.screens.view.components.notes
 	
 	public class Notes extends Sprite{
 		
-		private var _cue:DisplayObject;
 		private var _channel:NotesChannel;
 		private var _notesCanvas:Sprite;
 		private var _bg:Shape;
-		private var _speedController:SpeedSlider;
-		private var _backUpBut:ToggleBut;
 		private var _notesLength:uint;
 		private var _instrumentY:uint;
 		public function Notes(instrumentY:uint)
@@ -46,10 +43,6 @@ package com.screens.view.components.notes
 		}
 		public function get channel():NotesChannel{
 			return _channel;
-		}
-		
-		public function get backUpsBut():ToggleBut{
-			return _backUpBut;
 		}
 		
 		public function removeNote(note:DroppingNote):void{

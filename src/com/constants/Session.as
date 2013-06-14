@@ -9,13 +9,10 @@ package com.constants {
 	public class Session {
 		//Determins folder location for saved output
 		public static var SONG_NAME:String;
-		private var _demoClicked:Boolean=false;
-		private var _recordClicked:Boolean=false;
-		public var completePopUpShowen:Boolean = false;
 		private static var _session:Session;
-		private var _recordedScreensGood:Vector.<String>;
+		private var _score:int;
+		
 		public function Session(enforcer:enforcer){
-			_recordedScreensGood = new Vector.<String>();
 		}
 		
 		public static function get instance():Session{
@@ -25,27 +22,11 @@ package com.constants {
 			return _session;
 		}
 
-		public function get demoClicked():Boolean
-		{
-			return _demoClicked;
+		public function get score():int{
+			return _score;
 		}
-
-		public function set demoClicked(value:Boolean):void
-		{
-			_demoClicked = value;
-		}
-
-		public function get goodScreensLength():int{
-			return _recordedScreensGood.length;
-		}
-		
-		public function recordScreenGood(recordScreenModel:RecordScreenModel):Boolean{
-			return _recordedScreensGood.indexOf(recordScreenModel.instrumentModel.thumbNail)>-1;
-		}
-		
-		public function registerGoodrecoredScreen(scr:RecordScreenModel):void{
-			if(_recordedScreensGood.indexOf(scr.instrumentModel.thumbNail)==-1)
-				_recordedScreensGood.push(scr.instrumentModel.thumbNail);
+		public function set score(scr:int):void{
+			_score = scr;
 		}
 		
 		

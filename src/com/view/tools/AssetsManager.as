@@ -372,6 +372,9 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
 			"<image path='assets/instruments/marc.png' />"+
 			"<image path='assets/instruments/platein.png' />"+
+			"<image path='assets/representation/icon_bottles.png' />"+
+			"<image path='assets/representation/icon_bass.png' />"+
+			"<image path='assets/representation/icon_drums.png' />"+
 			//POPUP
 //			"<image path='assets/POP_UP/POP_UP_LEFT_SEGMENT.png' />"+
 //			"<image path='assets/POP_UP/POP_UP_LEFT_SIDE_ARROW.png' />"+
