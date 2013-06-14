@@ -11,17 +11,17 @@ package com.model.rawData.ode
 <components />
 <rawData>
 	
-	<chelo  x="22" y="77" >
+	<chelo  x="22" y="6" >
 		<powee id="C_6" image="iron1normal.png" imageTap="iron1tap.png" x="20"  sound="pallet/chelo/chelo_1.mp3"   />
 		<powee id="C#_6" image="iron2normal.png" imageTap="iron2tap.png" x="110"  sound="pallet/chelo/chelo_2.mp3" />
 		<powee id="D_6"   image="iron3normal.png" imageTap="iron3tap.png" x="220" sound="pallet/chelo/chelo_3.mp3" />
 	</chelo>
 			
-	<hey x="380" y="120" noteId="G" sound="ode/scrach/sol.mp3">
+	<hey x="380" y="50" noteId="G" sound="ode/scrach/sol.mp3">
 		<text>Hey</text>
 	</hey>
 			
-	<vinyl image="DJnormal.png" imageTap="DJtap.png" x="740" y="208" >
+	<vinyl image="DJnormal.png" imageTap="DJtap.png" x="740" y="138" >
 		<notes>
 			<up noteId="E_5" />
 			<down noteId="D_5" />
@@ -32,13 +32,13 @@ package com.model.rawData.ode
 			<octaves>
 			<notes>
 			
-			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='3' value="2" x="740"  />
-			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='4' value="1" x="740"  />
-			<note id="G"   soundFile="ode/scrach/sol.mp3" animationIndex='5' value="7" x="380"  />
+			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='3' value="2" x="790"  />
+			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='4' value="1" x="760"  />
+			<note id="G"   soundFile="ode/scrach/sol.mp3" animationIndex='5' value="3" x="534"  />
 			
-			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="7" x="54"  />
-			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="8" x="142" />
-			<note id="D_6"   soundFile="ode/chelo/chelo_4.mp3" animationIndex='3' value="9" x="252" />
+			<note id="C_6"   soundFile="ode/chelo/chelo_1.mp3" animationIndex='1' value="7" x="133"  />
+			<note id="C#_6"   soundFile="ode/chelo/chelo_2.mp3" animationIndex='2' value="8" x="238" />
+			<note id="D_6"   soundFile="ode/chelo/chelo_4.mp3" animationIndex='3' value="9" x="340" />
 			</notes>
 			</octaves>
 			<gestures>

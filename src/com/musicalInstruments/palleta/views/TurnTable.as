@@ -32,7 +32,7 @@ package com.musicalInstruments.palleta.views
 			super(model);
 			var pole:DisplayObject = AssetsManager.getAssetByName("pole.png");
 			addChild(pole);
-			pole.y=200;
+			pole.y=130;
 			addVinyl(_model.rawData);
 			addChelo(_model.rawData);
 			addHey(_model.rawData)

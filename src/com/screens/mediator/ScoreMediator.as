@@ -37,6 +37,7 @@ package com.screens.mediator
 			}else{
 				_recordState.scoreSignal.remove(onScoreSignal)
 				_recordState.pauseSignal.remove(onPauseSignal)
+				_recordState.view.removeEventListener(Event.ENTER_FRAME,onEnterFrame);
 			}
 		}
 		
@@ -46,8 +47,6 @@ package com.screens.mediator
 		
 		private function onPauseSignal(val:Boolean):void
 		{
-			trace("_pauseCounter",_pauseCounter)
-			// TODO Auto Generated method stub
 			if(!val){
 				_recordState.view.removeEventListener(Event.ENTER_FRAME,onEnterFrame);
 			}else{
@@ -59,6 +58,9 @@ package com.screens.mediator
 		
 		private function onEnterFrame(e:Event):void{
 			_pauseCounter++;
+			if(_pauseCounter>100){
+				_recordState.showHint();
+			}
 		}
 		
 		private function onScoreSignal(toPlayTime:int,curTime:int):void
@@ -76,9 +78,12 @@ package com.screens.mediator
 			}
 			_scores.push(new scoreData(Math.max(value,0),toPlayTime));
 			if(_scores[_scores.length-1].score==2){
-				showScoreFeedBack("+2");
+				showScoreFeedBack("+2",0,0xECF0F1);
+				_score = _score + 2 ;
 			}
 			_pauseCounter=0;
+			
+			//combo
 			var isCombo:Boolean=true;
 			const comboLength:uint=5;
 			var i:int;
@@ -89,20 +94,38 @@ package com.screens.mediator
 				}
 			}
 			if(isCombo){
-				showScoreFeedBack("combo +4",100);
+				showScoreFeedBack("combo +6",100,0x3498DB);
+				_score = _score + 6 ;
 				for(i=_scores.length-1;i>_scores.length-comboLength;i--){
 					_scores[i].wasInCombo = true;
+				}
+			}
+			//sequance
+			var isSequance:Boolean=true;
+			const sequanceLength:uint=12;
+			var n:int;
+			for(n=_scores.length-1;n>_scores.length-sequanceLength;n--){
+				if(n<0 || _scores[n].value<0 || _scores[n].wasInSequance){
+					isSequance=false;
+					break;
+				}
+			}
+			if(isSequance){
+				showScoreFeedBack("sequance +4",50,0xF24B0F);
+				_score = _score + 4 ;
+				for(i=_scores.length-1;i>_scores.length-sequanceLength;i--){
+					_scores[i].wasInSequance = true;
 				}
 			}
 			_score = _score + _scores[_scores.length-1].score;
 			_scorePanel.setScore(_score);
 		}
-		private function showScoreFeedBack(str:String,yOffset:int=0):void{
-			var _scoreFeedBack:ScoreFeedBack = new ScoreFeedBack(str);
+		private function showScoreFeedBack(str:String,yOffset:int,color:int):void{
+			var _scoreFeedBack:ScoreFeedBack = new ScoreFeedBack(str,color);
 			_recordState.view.addChild(_scoreFeedBack);
 			_scoreFeedBack.x=(Dimentions.WIDTH-_scoreFeedBack.width)/2;
 			_scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset;
-			var gt:GTween = new GTween(_scoreFeedBack,1,{alpha:0,scaleX:2,scaleY:2});
+			var gt:GTween = new GTween(_scoreFeedBack,1,{alpha:0,scaleX:1.4,scaleY:1.4});
 			gt.onComplete = function():void{_recordState.view.removeChild(_scoreFeedBack)}
 			gt.onChange = function():void{_scoreFeedBack.x=(Dimentions.WIDTH-_scoreFeedBack.width)/2; _scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset}
 		}
@@ -119,12 +142,12 @@ import flash.text.TextFormat;
 
 class ScoreFeedBack extends Sprite{
 	private var _txt:TextField;
-	function ScoreFeedBack(str:String){
+	function ScoreFeedBack(str:String,color:int){
 		_txt = new TextField();
 		_txt.autoSize = TextFieldAutoSize.LEFT;
 		_txt.text = str;
 		addChild(_txt);
-		_txt.setTextFormat(new TextFormat("Arial",32,0xFFFFFF))
+		_txt.setTextFormat(new TextFormat("Arial",30,color))
 	}
 	
 }
@@ -134,6 +157,7 @@ class scoreData{
 	public var scoreTime:int;
 	public var value:int;
 	public var wasInCombo:Boolean=false;
+	public var wasInSequance:Boolean=false;
 	
 	function scoreData(_value:int,_scoreTime:int):void{
 		scoreTime=_scoreTime;
@@ -157,12 +181,16 @@ class scoreData{
 class ScorePanel extends Sprite{
 	private var _scoreField:TextField;
 	public function ScorePanel(tmb:String){
+		this.graphics.beginFill(0xFFFFFF,0.2);
+		this.graphics.lineStyle(2,0x999999,0.4);
+		this.graphics.drawRect(6,8,120,34);
+		this.graphics.endFill();
 		_scoreField = new TextField();
 		_scoreField.width=130;
 		_scoreField.x = 14;
-		_scoreField.y=4;
+		_scoreField.y=12;
 		_scoreField.autoSize = TextFieldAutoSize.CENTER;
-		_scoreField.defaultTextFormat = new TextFormat(null,32,0xFFFFFF);
+		_scoreField.defaultTextFormat = new TextFormat(null,26,0xFFFFFF);
 		addChild(_scoreField);
 		_scoreField.text ="0";
 		var icon:DisplayObject;
@@ -179,9 +207,9 @@ class ScorePanel extends Sprite{
 		}
 		if(icon){
 			addChild(icon);
-			icon.y=4;
-			icon.x=8;
-			icon.filters = [new GlowFilter(0XFFFFFF)]
+			icon.y=10;
+			icon.x=12;
+			//icon.filters = [new GlowFilter(0XFFFFFF)]
 		}
 	}
 	

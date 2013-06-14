@@ -85,12 +85,11 @@ package com.screens.view {
 				addChild(_recordBtn);
 				_recordBtn.x=443;
 				_recordBtn.y=27//(strip.height-practiceBtn.height)/2-2;
-				_improviseButton = new Btn("PRACTICE_IDLE.png","PRACTICE_PRESSED.png");
+				_improviseButton = new Btn("SPEED_SLIDER_button.png","SPEED_SLIDER_button.png");
 				addChild(_improviseButton);
 				//_improviseButton.visible = false;
 				_improviseButton.x=12;
-				_improviseButton.y=176;
-				_improviseButton.scaleX=0.3;
+				_improviseButton.y=184;
 				_improviseButton.clicked.add(onImprovise);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel,_model.endAtFrame);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);

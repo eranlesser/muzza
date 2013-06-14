@@ -69,9 +69,9 @@ package com.screens.view.components.homePage
 			enableNextPrev();
 			
 			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
-			var logo:DisplayObject = _wallLayer.addChild(AssetsManager.getAssetByName("logo.png"));
-			logo.x = 1440;
-			logo.y=220;
+//			var logo:DisplayObject = _wallLayer.addChild(AssetsManager.getAssetByName("logo.png"));
+//			logo.x = 1440;
+//			logo.y=220;
 			//_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
 			var tmr:Timer = new Timer(100,1);

@@ -11,7 +11,7 @@ public static var data:XML =
 	<blink start="15" end="16" />
 </eyes>		
 	
-<components notesGap="140" leftPad="325">
+<components notesGap="140" leftPad="350">
 
 <drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='0' y='0'>
 <tap noteId="D_6" />

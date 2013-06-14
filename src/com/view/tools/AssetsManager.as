@@ -80,7 +80,7 @@ package com.view.tools
 			//NOTES
 			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
-//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
+			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_contour_highlight.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_mask.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
@@ -98,18 +98,16 @@ package com.view.tools
 //			"<image path='assets/instruments/insRectWrong.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_1.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_2.png' />"+
+			"<image path='assets/instruments/tableArrow_IDLE_3.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_7.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_8.png' />"+
 			"<image path='assets/instruments/tableArrow_IDLE_9.png' />"+
 			"<image path='assets/instruments/tableArrow_S_1.png' />"+
 			"<image path='assets/instruments/tableArrow_S_2.png' />"+
+			"<image path='assets/instruments/tableArrow_S_3.png' />"+
 			"<image path='assets/instruments/tableArrow_S_7.png' />"+
 			"<image path='assets/instruments/tableArrow_S_8.png' />"+
 			"<image path='assets/instruments/tableArrow_S_9.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/claps_selected.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/scratch_selected.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+

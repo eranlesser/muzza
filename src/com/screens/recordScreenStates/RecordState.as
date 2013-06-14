@@ -35,6 +35,8 @@ package com.screens.recordScreenStates
 		private var _toPlayNotes:		Vector.<DroppingNote>;
 		private var _isActive:Boolean = false;
 		private var _scoreMediator:ScoreMediator;
+		private var _hintArrow:Sprite;
+		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
 			_msk.graphics.beginFill(0x111111,0.8);
@@ -63,7 +65,31 @@ package com.screens.recordScreenStates
 		public function get name():String{
 			return States.RECORD;
 		}
-
+		
+		public function showHint():void{
+			if(!_hintArrow){
+				_hintArrow = new Sprite();
+				var shp:Shape = new Shape();
+				shp.graphics.beginFill(0xFFFFFF,0.8);
+				shp.graphics.drawRoundRect(0,0,4,_context.model.getRecordInstrumentY()-(_context.model.noteTargetsY+40),2,2);
+				shp.graphics.endFill();
+				_hintArrow.addChild(shp);
+				var arrowHead:Shape = new Shape();
+				arrowHead.graphics.beginFill(0xFFFFFF,0.8);
+				arrowHead.graphics.lineTo(12,0);
+				arrowHead.graphics.lineTo(6,6);
+				arrowHead.graphics.lineTo(0,0);
+				arrowHead.graphics.endFill();
+				_hintArrow.addChild(arrowHead);
+				arrowHead.y=shp.height-1;
+				arrowHead.x=(shp.width-arrowHead.width)/2;
+			}
+			
+			_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/2;
+			_hintArrow.y = _context.model.noteTargetsY+30;
+			
+			_context.guiLayer.addChild(_hintArrow)
+		}
 		
 		private function checkNotesMatch(noteId:String):void{
 			if(!_context.notes.visible){
@@ -76,10 +102,15 @@ package com.screens.recordScreenStates
 					if(_tween.paused){// do it before setting the tween to false, this happens .
 						pauseSignal.dispatch(false);
 					}
+					if(_hintArrow&&_hintArrow.parent){
+						_context.guiLayer.removeChild(_hintArrow)
+					}
 					_tween.paused=false;
 					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
 					scoreSignal.dispatch(curNote.location,_timeModel.currentTick);
+				}else{
+					scoreSignal.dispatch(-1,-1);
 				}
 			}
 		}
@@ -90,7 +121,6 @@ package com.screens.recordScreenStates
 			_context.instrumentRecorder.active = true;
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordButton.clicked.add(onRecordBtn);
-			var noteSequance:NoteSequanceModel=NoteSequanceModel(NotesInstrumentModel(_context.model.instrumentModel).getSequanceById(_context.model.learnedSequanceId));
 			if(_context.instrumentRecorder is TapInstrument){
 				//TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			}
@@ -118,6 +148,9 @@ package com.screens.recordScreenStates
 			_context.stageLayer.removeChild(_msk);
 			if(_tween){
 				_tween.onComplete = null;
+			}
+			if(_hintArrow&&_hintArrow.parent){
+				_context.guiLayer.removeChild(_hintArrow)
 			}
 			_scoreMediator.active=false;
 			_context.model.score = _scoreMediator.score;

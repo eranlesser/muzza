@@ -19,6 +19,7 @@ package com.screens.view.components.notes
 		private var _id:String;
 		public static const WIDTH:uint=22;
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
+			trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
 			_selectAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_S_"+noteValue+".png",true);
 			_location=loc;
@@ -67,12 +68,6 @@ package com.screens.view.components.notes
 					break;
 				case "turnTable":
 					prefix =  "tableArrow";
-					break;
-				case "chelo":
-					prefix =  "insRectDrop";
-					break;
-				case "claps":
-					prefix="insRectDrop";
 					break;
 			}
 			return prefix;
