@@ -47,6 +47,11 @@ package com.screens.recordScreenStates
 		
 		private function onImprovise(val:Boolean):void{
 			_scoreMediator.visible=val;
+			if(val){
+				if(_hintArrow&&_hintArrow.parent){
+					_context.guiLayer.removeChild(_hintArrow)
+				}
+			}
 		}
 		
 		public function get thumbNail():String{

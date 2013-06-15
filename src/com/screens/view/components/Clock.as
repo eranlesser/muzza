@@ -21,8 +21,8 @@ package com.screens.view.components
 		private var _timeModel:ITimeModel;
 		private var _smallTicker:Sprite;
 		private var _bigTicker:Sprite;
-		private var _soundButton:DisplayObject;
-		private var _muteButton:DisplayObject;
+		//private var _soundButton:DisplayObject;
+		//private var _muteButton:DisplayObject;
 		//private var _preTickSound:Sound;
 		//private var _tickSound:Sound;
 		private var _innerCount:uint = 0;
@@ -92,14 +92,14 @@ package com.screens.view.components
 			_bigTicker.y=46;
 			_smallTicker.x=49;
 			_smallTicker.y=46;
-			_soundButton = AssetsManager.getBitmap("SOUND_ON.png",true);
-			_muteButton = AssetsManager.getBitmap("SOUND_OFF.png",true);
-			//addChild(_soundButton)
-			//addChild(_muteButton)
-			_soundButton.x=-29;
-			_soundButton.y=26;
-			_muteButton.x=-29;
-			_muteButton.y=26;
+//			_soundButton = AssetsManager.getBitmap("SOUND_ON.png",true);
+//			_muteButton = AssetsManager.getBitmap("SOUND_OFF.png",true);
+//			//addChild(_soundButton)
+//			//addChild(_muteButton)
+//			_soundButton.x=-29;
+//			_soundButton.y=26;
+//			_muteButton.x=-29;
+//			_muteButton.y=26;
 			
 			var onClickSignal:NativeSignal = new NativeSignal(this,MouseEvent.CLICK);
 			//onClickSignal.add(onClick);
@@ -115,23 +115,23 @@ package com.screens.view.components
 		}
 		
 		public function toggleSoundState(state:String):void{
-			switch(state){
-				case "": // toggle
-					if(_soundButton.visible){
-						toggleSoundState("off");
-					}else{
-						toggleSoundState("on");
-					}
-					break;
-				case "on":
-					_soundButton.visible = true;
-					_muteButton.visible = false;
-					break;
-				case "off":
-					_soundButton.visible = false;
-					_muteButton.visible = true;
-					break;
-			}
+//			switch(state){
+//				case "": // toggle
+//					if(_soundButton.visible){
+//						toggleSoundState("off");
+//					}else{
+//						toggleSoundState("on");
+//					}
+//					break;
+//				case "on":
+//					_soundButton.visible = true;
+//					_muteButton.visible = false;
+//					break;
+//				case "off":
+//					_soundButton.visible = false;
+//					_muteButton.visible = true;
+//					break;
+//			}
 		}
 		
 		

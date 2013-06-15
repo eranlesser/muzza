@@ -17,7 +17,6 @@ package com.view.tools
 		
 		private var _assets:XML = new XML(
 			"<assets>" +
-			"<image path='assets/clamas.png' />"+
 			"<image path='assets/logo.png' />"+
 			//OPEN
 			"<image path='assets/open/WAGON_TRAIN.png' />"+
@@ -27,7 +26,7 @@ package com.view.tools
 			"<image path='assets/wall.png' />"+
 			"<image path='assets/facebook.png' />"+
 			"<image path='assets/twitter.png' />"+
-			"<image path='assets/mail.png' />"+
+			//"<image path='assets/mail.png' />"+
 			//MENU
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
 			//"<image path='assets/open/MOZART_PICTURE.png' />"+
@@ -69,7 +68,6 @@ package com.view.tools
 			"<image path='assets/TOOL_BAR_ICONS/DRUMS_PRESSED.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/HOME_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/HOME_PRESSED.png' />"+
-			"<image path='assets/TOOL_BAR_ICONS/ICONS_POSITIONS.jpg' />"+
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/LISTEN_PRESSED.png' />"+
@@ -78,9 +76,9 @@ package com.view.tools
 			"<image path='assets/TOOL_BAR_ICONS/vinyl_idle_but.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/vinyl_press_but.png' />"+
 			//NOTES
-			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
+//			"<image path='assets/NOTES/BLUE_NEEDLE.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/BUTTON_SHADOW.png' />"+
-			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
+//			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_button.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_contour_highlight.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER_mask.png' />"+
 //			"<image path='assets/NOTES/SPEED_SLIDER/SPEED_SLIDER.png' />"+
@@ -117,15 +115,6 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_7.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_8.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_9.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_7.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_8.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_S_9.png' />"+
 			//BASS
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_2.png' />"+
@@ -136,24 +125,11 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_7.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_8.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_9.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_7.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_8.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_S_9.png' />"+
 			//DRUMS
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_2.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_3.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_S_4.png' />"+
 			//SCRATCH
 //			"<image path='assets/instruments/scratch/Vinyl.png' />"+
 //			"<image path='assets/instruments/scratch/hey_idle.png' />"+
@@ -307,7 +283,6 @@ package com.view.tools
 //			"<image path='assets/gui/icon_screen.png' />"+
 			
 			//BACKGROUND
-			"<image path='assets/PLAY_SCREEN_WALL_BCKGR.png' />"+
 			"<image path='assets/themes/ny/BCKGR_1.jpg' />"+
 			"<image path='assets/themes/ny/sign.png' />"+
 			//CLOCK
@@ -317,8 +292,6 @@ package com.view.tools
 			"<image path='assets/themes/ny/clock.png' />"+
 			"<image path='assets/themes/ny/clock_highLight.png' />"+
 			"<image path='assets/themes/ny/Pole_Left.png' />"+
-			"<image path='assets/themes/ny/SOUND_OFF.png' />"+
-			"<image path='assets/themes/ny/SOUND_ON.png' />"+
 			// INSTRUMENTS
 			"<image path='assets/instruments/BASS/BASS_1_IDLE.png' />"+
 			"<image path='assets/instruments/BASS/BASS_1_SELECTED.png' />"+
@@ -368,8 +341,8 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_3_PRESSED.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
-			"<image path='assets/instruments/marc.png' />"+
-			"<image path='assets/instruments/platein.png' />"+
+//			"<image path='assets/instruments/marc.png' />"+
+//			"<image path='assets/instruments/platein.png' />"+
 			"<image path='assets/representation/icon_bottles.png' />"+
 			"<image path='assets/representation/icon_bass.png' />"+
 			"<image path='assets/representation/icon_drums.png' />"+

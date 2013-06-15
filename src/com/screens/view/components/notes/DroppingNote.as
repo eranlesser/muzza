@@ -13,15 +13,13 @@ package com.screens.view.components.notes
 	public class DroppingNote extends Sprite{
 		
 		private var _idleAsset:DisplayObject;
-		private var _selectAsset:DisplayObject;
 		private var _location:uint;
 		private var _value:uint;
 		private var _id:String;
 		public static const WIDTH:uint=22;
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
-			trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
+			//trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
-			_selectAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_S_"+noteValue+".png",true);
 			_location=loc;
 			_value=noteValue;
 			_id=id;
@@ -37,18 +35,18 @@ package com.screens.view.components.notes
 			//tField.cacheAsBitmap=true;
 			//tField.border=true;
 			addChild(_idleAsset);
-			addChild(_selectAsset);
+			
 			
 			this.scaleX=0.65;
 			this.scaleY=0.65;
 			_idleAsset.y=-height-10;
-			_selectAsset.y=_idleAsset.y;
-			_selectAsset.visible=false;
+			
+			//_selectAsset.visible=false;
 			//this.x+=width/2;
 		}
 		
 		public function set selected(flag:Boolean):void{
-			_selectAsset.visible=flag;
+			
 		}
 		
 		private function getPrefix(tmbNail:String):String{
