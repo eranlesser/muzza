@@ -56,7 +56,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="F#_4"  soundFile="ode/xilofon/fa_diez.mp3" animationIndex='4'  value="4"/>
 	<note id="G_4"  soundFile="ode/xilofon/sol.mp3" animationIndex='9'  value="5"/>
 	<note id="A_4" soundFile="ode/xilofon/la.mp3" animationIndex='8' value="6" />
-	<note id="7" soundFile="brazil/bottle/ci.mp3" animationIndex='7' value="7" />
+	<note id="7" soundFile="ode/xilofon/ci.mp3" animationIndex='7' value="7" />
 	<note id="8" soundFile="ode/xilofon/do_diez_up.mp3" animationIndex='6' value="8" />
 	<note id="9" soundFile="ode/xilofon/re_up.mp3" animationIndex='5' value="9" />
 	

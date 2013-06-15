@@ -16,6 +16,9 @@ package com.musicalInstruments.view.character
 		
 		
 		public function Character(spriteSheet:String,positionsLength:uint,wdt:uint,hgt:uint){
+			if(spriteSheet==""){
+				return;
+			}
 			_spriteSheetUrl=spriteSheet;
 			_spriteSheet  = new SpriteSheet(AssetsManager.getBitmap(spriteSheet),wdt,hgt);
 			_animationSequance = new Vector.<Bitmap>();
@@ -29,6 +32,9 @@ package com.musicalInstruments.view.character
 		private function init(positionsLength:uint):void{
 			//load all animationSequance
 			//trace("new character")
+			if(!_spriteSheet){
+				return;
+			}
 			var i:uint=0;
 			while(i<=positionsLength+1){
 				var img:Bitmap = new Bitmap();
@@ -45,6 +51,9 @@ package com.musicalInstruments.view.character
 		}
 		
 		public function animateTo(animationIndex:uint,id:String):void{
+			if(!_spriteSheet){
+				return;
+			}
 			removeChildAt(0);
 			addChild(_animationSequance[animationIndex]);
 			_animationIndex = animationIndex;

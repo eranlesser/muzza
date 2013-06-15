@@ -94,18 +94,12 @@ package com.view.tools
 //			"<image path='assets/instruments/insRectFill.png' />"+
 //			"<image path='assets/instruments/insRectRight.png' />"+
 //			"<image path='assets/instruments/insRectWrong.png' />"+
-			"<image path='assets/instruments/tableArrow_IDLE_1.png' />"+
-			"<image path='assets/instruments/tableArrow_IDLE_2.png' />"+
-			"<image path='assets/instruments/tableArrow_IDLE_3.png' />"+
-			"<image path='assets/instruments/tableArrow_IDLE_7.png' />"+
-			"<image path='assets/instruments/tableArrow_IDLE_8.png' />"+
-			"<image path='assets/instruments/tableArrow_IDLE_9.png' />"+
-			"<image path='assets/instruments/tableArrow_S_1.png' />"+
-			"<image path='assets/instruments/tableArrow_S_2.png' />"+
-			"<image path='assets/instruments/tableArrow_S_3.png' />"+
-			"<image path='assets/instruments/tableArrow_S_7.png' />"+
-			"<image path='assets/instruments/tableArrow_S_8.png' />"+
-			"<image path='assets/instruments/tableArrow_S_9.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_6.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
@@ -153,10 +147,10 @@ package com.view.tools
 			
 			
 			//RECORD SCREEN BUTTONS
-			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+
-			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+
-			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
-			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
+//			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_IDLE.png' />"+
+//			"<image path='assets/PRACTICE_RECORD_BUTTONS/PRACTICE_PRESSED.png' />"+
+//			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_IDLE.png' />"+
+//			"<image path='assets/PRACTICE_RECORD_BUTTONS/RECORD_PRESSED.png' />"+
 		//	"<image path='assets/open/bStrip.png' />"+
 			"<image path='assets/line.png' />"+
 			
@@ -168,10 +162,10 @@ package com.view.tools
 			
 			"<image path='assets/band/bass/bassSheet.png' />"+
 			"<image path='assets/band/bass/bassBlink.png' />"+
-			"<image path='assets/band/bg/quika.png' />"+
-			"<image path='assets/band/bg/ganza.png' />"+
-			"<image path='assets/band/bg/agogo.png' />"+
-			"<image path='assets/band/bg/chelo.png' />"+
+//			"<image path='assets/band/bg/quika.png' />"+
+//			"<image path='assets/band/bg/ganza.png' />"+
+//			"<image path='assets/band/bg/agogo.png' />"+
+//			"<image path='assets/band/bg/chelo.png' />"+
 //			"<image path='assets/metronome.png' />"+
 			//DEMOSCREEN
 //			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
@@ -224,26 +218,26 @@ package com.view.tools
 //			"<image path='assets/representation/symbols/icon_8.png' />"+
 //			"<image path='assets/representation/symbols/icon_9.png' />"+
 			//Representation
-			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_SHEET.png' />"+
-			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_BAR.png' />"+
-			"<image path='assets/LISTEN_SCREEN/BACK_BUTTON_IDLE.png' />"+
-			"<image path='assets/LISTEN_SCREEN/BACK_BUTTON_PRESSED.png' />"+
-			"<image path='assets/LISTEN_SCREEN/COLLAPSE_IDLE.png' />"+
-			"<image path='assets/LISTEN_SCREEN/COLLAPSE_PRESSED.png' />"+
-			"<image path='assets/LISTEN_SCREEN/EXPAND_IDLE.png' />"+
-			"<image path='assets/LISTEN_SCREEN/EXPAND_PRESSED.png' />"+
-			"<image path='assets/LISTEN_SCREEN/INSTRUMENT_TAB_AND_SHADOWS.png' />"+
-			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_BLUE_NEEDLE.png' />"+
-			"<image path='assets/LISTEN_SCREEN/mouse.png' />"+
-			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_IDLE.png' />"+
-			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_PRESSED.png' />"+
-			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_IDLE.png' />"+
-			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_PRESSED.png' />"+
-			"<image path='assets/LISTEN_SCREEN/blue_strip.png' />"+
-			"<image path='assets/LISTEN_SCREEN/bottles_icon.png' />"+
-			"<image path='assets/LISTEN_SCREEN/bass_icon.png' />"+
-			"<image path='assets/LISTEN_SCREEN/drum_icon.png' />"+
-
+//			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_SHEET.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_NOTES_BAR.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/BACK_BUTTON_IDLE.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/BACK_BUTTON_PRESSED.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/COLLAPSE_IDLE.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/COLLAPSE_PRESSED.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/EXPAND_IDLE.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/EXPAND_PRESSED.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/INSTRUMENT_TAB_AND_SHADOWS.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/LISTEN_SCREEN_BLUE_NEEDLE.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/mouse.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_IDLE.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/PLAY_BUTTON_PRESSED.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_IDLE.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/REPLAY_BUTTON_PRESSED.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/blue_strip.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/bottles_icon.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/bass_icon.png' />"+
+//			"<image path='assets/LISTEN_SCREEN/drum_icon.png' />"+
+//
 			
 //			//Rrpresentation Menu
 //			"<image path='assets/representation/menu/note.png' />"+

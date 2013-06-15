@@ -42,15 +42,19 @@ package com.musicalInstruments.palleta.views
 //____________________________________________________________________________________________________VINYL		
 		
 		private function addVinyl(xml:XML):void{
+			var vBg:DisplayObject = (AssetsManager.getAssetByName(xml.vinyl.@image));
+			addChild(vBg);
+			
 			_vinylContainer = new Sprite();
-			_vinyl = new Vinyl(AssetsManager.getAssetByName(xml.vinyl.@image),AssetsManager.getAssetByName(xml.vinyl.@imageTap));
+			_vinyl = new Vinyl(AssetsManager.getAssetByName(xml.vinyl.@imageTap));
 			_vinylContainer.addChild(_vinyl);
 			_vinyl.x=-_vinyl.width/2;
 			_vinyl.y=-_vinyl.height/2;
 			addChild(_vinylContainer);
 			_vinylContainer.x = xml.vinyl.@x;
 			_vinylContainer.y = xml.vinyl.@y;
-			
+			vBg.x = xml.vinyl.@x-vBg.width/2;
+			vBg.y = xml.vinyl.@y-vBg.height/2;
 			_upNoteId = xml.vinyl.notes.up.@noteId;
 			_downNoteId = xml.vinyl.notes.down.@noteId;
 			
@@ -63,7 +67,6 @@ package com.musicalInstruments.palleta.views
 			stage.addEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 			_mouseDownPoint = new Point((e as MouseEvent).stageX,(e as MouseEvent).stageY);
-			_vinyl.play();
 		}
 		
 		private function onMouseUp(event:Event):void
@@ -72,7 +75,6 @@ package com.musicalInstruments.palleta.views
 			stage.removeEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 			_isPlaying=false;
-			_vinyl.unPlay();
 		}
 		
 		private function rotate (e:MouseEvent):void{
@@ -86,7 +88,7 @@ package com.musicalInstruments.palleta.views
 				angle += 360;
 			}
 			_moveCounter++;
-			if(_moveCounter>4){
+			if(_moveCounter>2){
 				var noteId:String = _downNoteId;
 				var turnDirection:int = -1;
 				if(e.stageY > _mouseDownPoint.y){
@@ -251,24 +253,12 @@ class Pawee extends Sprite{
 }
 
 class Vinyl extends Sprite{
-	private var _upImage:DisplayObject;
 	private var _tapImage:DisplayObject;
-	public function Vinyl(upImage:DisplayObject,tapImage:DisplayObject){
-		_upImage = upImage;
+	public function Vinyl(tapImage:DisplayObject){
 		_tapImage = tapImage;
-		addChild(_upImage)
 		addChild(_tapImage)
-		_tapImage.visible = false;
+		//_tapImage.visible = false;
 	}
 	
-	public function play():void{
-		_tapImage.visible = true;
-		_upImage.visible = false;
-	}
-	
-	public function unPlay():void{
-		_tapImage.visible = false;
-		_upImage.visible = true;
-	}
 	
 }

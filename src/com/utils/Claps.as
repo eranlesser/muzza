@@ -13,7 +13,7 @@ package com.utils
 		private var _channel:SoundChannel;
 		public function Claps(){
 			_sound = new Sound();
-			var req:URLRequest = new URLRequest("../../assets/sounds/theme/CLAPS.mp3");
+			var req:URLRequest = new URLRequest("../../assets/sounds/CLAPS.mp3");
 			try {
 				_sound.load(req);
 				//performance - to avoid cutting sound beginings

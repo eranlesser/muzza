@@ -65,7 +65,7 @@ package com.screens.view.components.notes
 					prefix="BASS"
 					break;
 				case "turnTable":
-					prefix =  "tableArrow";
+					prefix =  "dj";
 					break;
 			}
 			return prefix;
