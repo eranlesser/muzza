@@ -1,17 +1,12 @@
 package com.musicalInstruments.view.instrument {
 	
 	import com.metronom.Metronome;
-	import com.musicalInstruments.controller.OctaveSetter;
 	import com.musicalInstruments.model.InstrumentComponentModel;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
-	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IMusicalView;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
-	
-	import flash.events.MouseEvent;
-	import flash.filters.GlowFilter;
 
 	/**
 	 * @author eranlesser

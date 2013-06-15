@@ -240,6 +240,7 @@ class Pawee extends Sprite{
 	
 	private function onMouseUp(e:Event):void
 	{
+		stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 		_upState.visible=true;
 		_tapState.visible=false;
 		noteStopped.dispatch(_id,_startTick);

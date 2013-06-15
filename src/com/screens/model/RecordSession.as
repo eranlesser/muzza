@@ -95,8 +95,8 @@ package com.screens.model
 						}
 						score = score+RecordScreen(isc).model.score;
 					}
-					Session.instance.score = score;
 				}
+				Session.instance.score = score;
 			}
 			if(curIndex==-1){
 				curIndex = _recordScreens.length-1;//End Screen

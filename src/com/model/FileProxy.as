@@ -9,6 +9,7 @@ package com.model
 	
 	public class FileProxy
 	{
+		private static var _highScore:int=0;
 		public function FileProxy(){
 			
 		}
@@ -55,6 +56,40 @@ package com.model
 				return new Array();
 			
 		}
+		
+		public static function setHighScore(score:int):void{
+			if(score<=getHighScore()){
+				return;
+			}
+			var folder:File = File.applicationStorageDirectory.resolvePath("score");
+			if (!folder.exists) { 
+				folder.createDirectory();
+			} 
+			var outputFile:File = folder.resolvePath("highScore.xml");
+			if(outputFile.exists){
+				outputFile.deleteFile();
+			}
+			var outputStream:FileStream = new FileStream();
+			outputStream.open(outputFile,FileMode.WRITE);
+			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
+			outputString += '<data><score high="'+score.toString()+'" /></data>';
+			outputStream.writeUTFBytes(outputString);
+			outputStream.close();
+		}
+		
+		public static function getHighScore():int{
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("score/highScore.xml") ;
+			if(inputFile.exists){
+				var inputStream:FileStream = new FileStream();
+				inputStream.open(inputFile, FileMode.READ);
+				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
+				inputStream.close();
+				return sessionXML.score.@high;
+			}else{
+				return 0;
+			}
+		}
+		
 		
 		public  function getSongData(songInx:uint,instrument:String,id:uint):XML{
 			var inputFile:File = File.applicationStorageDirectory.resolvePath("song"+songInx+"/instruments/"+instrument+"/sequance"+id.toString()+".xml") ;
@@ -104,10 +139,14 @@ package com.model
 		public static function reset(protector:TrainBeats):void{
 			var files:Array=File.applicationStorageDirectory.getDirectoryListing();
 			for each(var file:File in files){
-				if(file.isDirectory)
-				file.deleteDirectory(true);
-				else
-				file.deleteFile();
+				if(file.isDirectory){
+					trace(file.name)
+					if(file.name != "score"){
+						file.deleteDirectory(true);
+					}
+				}else{
+					file.deleteFile();
+				}
 			}
 		}
 		

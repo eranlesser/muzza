@@ -86,8 +86,8 @@ package com.representation.controller {
 			if(note == null){
 				return;
 			}
-			var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
-			var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
+			//var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
+			//var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
 //			for(var i:uint=0;i<=RecordState.fixNum;i++){
 //				var closeNotes:Vector.<SequancedNote>;
 //				closeNotes = learnedSequance.getNotesByLocation(note.location+i);

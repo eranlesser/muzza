@@ -12,7 +12,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="26" end="31" />
 	
 </eyes>						
-<components notesGap="80" leftPad="186">
+<components notesGap="80" leftPad="184">
 <bg image="bottles_frame.png" clickable="false"  y="10" />
 <bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='0' >
 	<tap noteId="A_3" />

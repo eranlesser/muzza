@@ -9,6 +9,7 @@ package com.screens.view.components
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.geom.Matrix;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.media.SoundTransform;
@@ -71,6 +72,8 @@ package com.screens.view.components
 			addChild(AssetsManager.getAssetByName("clock.png"));
 			_smallTicker = new Sprite();
 			var smallTickAsset:Bitmap = AssetsManager.getBitmap("mahog_small.png",true);
+			smallTickAsset.cacheAsBitmap = true;
+			smallTickAsset.cacheAsBitmapMatrix = new Matrix();
 			smallTickAsset.smoothing = true;
 			_smallTicker.addChild(smallTickAsset);
 			smallTickAsset.x=-50;
@@ -78,6 +81,8 @@ package com.screens.view.components
 			
 			_bigTicker = new Sprite();
 			var bigTickAsset:Bitmap = AssetsManager.getBitmap("mahog_big.png",true);
+			bigTickAsset.cacheAsBitmap = true;
+			bigTickAsset.cacheAsBitmapMatrix = new Matrix();
 			bigTickAsset.smoothing = true;
 			_bigTicker.addChild(bigTickAsset);
 			bigTickAsset.x=-50;

@@ -11,7 +11,6 @@ package com.constants {
 		public static var SONG_NAME:String;
 		private static var _session:Session;
 		private var _score:int;
-		
 		public function Session(enforcer:enforcer){
 		}
 		
@@ -27,6 +26,7 @@ package com.constants {
 		}
 		public function set score(scr:int):void{
 			_score = scr;
+			FileProxy.setHighScore(scr);
 		}
 		
 		
