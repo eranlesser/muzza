@@ -5,6 +5,7 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
@@ -242,7 +243,7 @@ package com.screens.view {
 				if(_model.endAtFrame-10 <= _timeModel.currentTick){
 				//PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 					_playPauseBtn.state=1;
-				//Flurry.getInstance().logEvent("demo complete");
+				Flurry.logEvent("demo complete");
 				}
 			}
 			

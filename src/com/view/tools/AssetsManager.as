@@ -26,7 +26,7 @@ package com.view.tools
 			"<image path='assets/wall.png' />"+
 			"<image path='assets/facebook.png' />"+
 			"<image path='assets/twitter.png' />"+
-			//"<image path='assets/mail.png' />"+
+			"<image path='assets/gui/mail.png' />"+
 			//MENU
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
 			//"<image path='assets/open/MOZART_PICTURE.png' />"+
@@ -282,7 +282,7 @@ package com.view.tools
 			
 			//BACKGROUND
 			"<image path='assets/themes/ny/BCKGR_1.jpg' />"+
-			"<image path='assets/themes/ny/sign.png' />"+
+			//"<image path='assets/themes/ny/sign.png' />"+
 			//CLOCK
 			"<image path='assets/themes/ny/mahog_big.png' />"+
 			"<image path='assets/themes/ny/mahog_small.png' />"+
@@ -344,6 +344,7 @@ package com.view.tools
 			"<image path='assets/representation/icon_bottles.png' />"+
 			"<image path='assets/representation/icon_bass.png' />"+
 			"<image path='assets/representation/icon_drums.png' />"+
+			"<image path='assets/representation/icon_mic.png' />"+
 			//POPUP
 //			"<image path='assets/POP_UP/POP_UP_LEFT_SEGMENT.png' />"+
 //			"<image path='assets/POP_UP/POP_UP_LEFT_SIDE_ARROW.png' />"+
@@ -370,6 +371,7 @@ package com.view.tools
 			"<image path='assets/vica/bgBlur.png' />"+
 			"<image path='assets/vica/record_BTN_puse.png' />"+
 			"<image path='assets/vica/record_BTN_play.png' />"+
+			"<image path='assets/gui/sign.png' />"+
 			
 			"</assets>"
 		

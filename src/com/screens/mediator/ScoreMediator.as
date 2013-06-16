@@ -188,7 +188,7 @@ class ScorePanel extends Sprite{
 		_scoreField = new TextField();
 		_scoreField.width=130;
 		_scoreField.x = 14;
-		_scoreField.y=11;
+		_scoreField.y=10;
 		_scoreField.autoSize = TextFieldAutoSize.CENTER;
 		_scoreField.defaultTextFormat = new TextFormat(null,34,0xFFFFFF);
 		addChild(_scoreField);
@@ -203,6 +203,9 @@ class ScorePanel extends Sprite{
 				break;
 			case "bass_flash.jpg":
 				icon = AssetsManager.getAssetByName("icon_bass.png");
+				break;
+			case "turnTable":
+				icon = AssetsManager.getAssetByName("icon_mic.png");
 				break;
 		}
 		if(icon){

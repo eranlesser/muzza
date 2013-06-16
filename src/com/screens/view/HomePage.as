@@ -1,9 +1,9 @@
 package com.screens.view
 {
 	import com.constants.Dimentions;
-	//import com.freshplanet.nativeExtensions.Flurry;
 	import com.model.rawData.Data;
 	import com.screens.view.components.homePage.SongsMenu;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
@@ -50,7 +50,7 @@ package com.screens.view
 				_credits.close.add(function close():void{removeChild(_credits)});
 			}
 			addChild(_credits);
-			//Flurry.getInstance().logEvent("openCredits");
+			Flurry.logEvent("openCredits");
 		}
 		
 		public function get songMenu():SongsMenu{
@@ -61,9 +61,9 @@ package com.screens.view
 	}
 }
 import com.constants.Dimentions;
-//import com.freshplanet.nativeExtensions.Flurry;
 import com.gskinner.motion.GTween;
 import com.mailchimp.subscribe;
+import com.sticksports.nativeExtensions.flurry.Flurry;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
@@ -180,7 +180,7 @@ class Credits extends Sprite{
 	private function onMail(id:String):void{
 		if(email.text!=""){
 			var sucscribe:subscribe = new subscribe("us6","81ad977f3622acbeeb9f9db111625ea0-us6","97a5200186",email.text,"eran", "lesser");
-			//Flurry.getInstance().logEvent("email added "+email.text);
+			Flurry.logEvent("email added "+email.text);
 			email.text="Thank You!";
 		}
 	}
@@ -194,6 +194,7 @@ class Credits extends Sprite{
 		tField.htmlText = 
 			"<div> Production & Development: <a href='http://www.creativelamas.com'>Creative Lamas</a></div><br><br>" +
 			"<div> Art & Animations: <a href='http://www.lefrenchbulldog.com'>LeFrenchBulldog</a> </div><br><br>" +
+			"<div> UX: <a href='http://vicadesign.me'>Vica</a> </div><br><br>" +
 			"<div> Sound Production: <a href='http://www.moca.co.il'>Moca Studio</a></div><br><br>" +
 			"<div> The Human Bass: Idan </div><br><br><br>" +
 			"<div> Special Thanks To:</ul></div><br><br><br>" +

@@ -91,16 +91,16 @@ package com.screens.view {
 				_improviseButton = new Btn("notes_idle.png","notes_selected.png");
 				addChild(_improviseButton);
 				//_improviseButton.visible = false;
-				_improviseButton.x=-2;
-				_improviseButton.y=226;
+				_improviseButton.x=1;
+				_improviseButton.y=223;
 				//_improviseButton.scaleX=0.6;
 				//_improviseButton.scaleY=0.6;
 				_improviseButton.clicked.add(onImprovise);
 				
 				_muteButton = new Btn("SOUND_ON.png","SOUND_OFF.png");
 				_guiLayer.addChild(_muteButton);
-				_muteButton.x=_recordBtn.x+_recordBtn.width+12;
-				_muteButton.y=_recordBtn.y+_recordBtn.height-_muteButton.height;
+				_muteButton.x=Dimentions.WIDTH-_muteButton.width-8//_recordBtn.x+_recordBtn.width+12;
+				_muteButton.y=8//_recordBtn.y+_recordBtn.height-_muteButton.height;
 				_muteButton.clicked.add(onMute);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel,_model.endAtFrame);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);

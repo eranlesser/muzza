@@ -35,8 +35,8 @@ package com.model.rawData.ode
 			<note id="C#_6"   soundFile="ode/scrach/chelo_2.mp3" animationIndex='2' value="2" x="238" />
 			<note id="D_6"   soundFile="ode/scrach/chelo_3.mp3" animationIndex='3' value="3" x="340" />
 			<note id="G"   soundFile="ode/scrach/sol.mp3" animationIndex='4' value="4" x="534"  />
-			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='5' value="5" x="760"  />
-			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='6' value="6" x="790"  />
+			<note id="D_5"   soundFile="ode/scrach/re.mp3" animationIndex='5' value="5" x="790"  />
+			<note id="E_5"   soundFile="ode/scrach/mi.mp3" animationIndex='6' value="6" x="760"  />
 			
 			
 			</notes>

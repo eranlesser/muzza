@@ -4,6 +4,7 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.view.tools.AssetsManager;
 	
 	import flash.desktop.NativeApplication;
@@ -35,7 +36,7 @@ package {
 			start();
 			FileProxy.reset(this)
 			setDisplaySize();
-				
+			Flurry.startSession("8R342X54FKMXSYP793P9");
 			//Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
 			//Flurry.getInstance().startSession();
 			//Flurry.getInstance().setUserId(currentOSUser);//eran

@@ -26,29 +26,34 @@ package com.gui.hat
 		private var _tField:TextField;
 		private var _highScore:TextField;
 		private var _isDone:Boolean = false;
+		private var _sign:DisplayObject;
 		public function Hat(){
 			_timeModel = Metronome.getTimeModel();
 			init();
 		}
 		
 		private function init():void{
+			_sign = AssetsManager.getAssetByName("sign.png");
+			addChild(_sign);
+			_sign.x = 20;
+			_sign.y=-60;
 			_spriteSheet = new SpriteSheet(AssetsManager.getBitmap("hat.png"),212,185);
 			_hat = new Sprite();
 			addChild(_hat);
 			_hat.scaleX = -1;
 			_hat.x = 230;
 			_tField = new TextField();
-			_tField.defaultTextFormat=(new TextFormat("Arial",26,0x111111));
+			_tField.defaultTextFormat=(new TextFormat("Arial",18,0x111111));
 			_tField.autoSize = TextFieldAutoSize.CENTER;
 			addChild(_tField);
-			_tField.x = 64;
-			_tField.y = 43;
+			_tField.x = 85;
+			_tField.y = 10;
 			_highScore = new TextField();
-			_highScore.defaultTextFormat=(new TextFormat("Arial",18,0x111111));
+			_highScore.defaultTextFormat=(new TextFormat("Arial",14,0x111111));
 			_highScore.autoSize = TextFieldAutoSize.CENTER;
 			addChild(_highScore);
-			_highScore.x = 64;
-			_highScore.y = 70;
+			_highScore.x = 85;
+			_highScore.y = 55;
 			//var sign:DisplayObject = AssetsManager.getAssetByName("lv.png")
 			//addChild(sign);
 			//sign.x=150;
@@ -66,14 +71,14 @@ package com.gui.hat
 			//_tField.text="0";
 			progress();
 			_timeModel.tickSignal.remove(onTick);
-			_highScore.text = "Best score: "+FileProxy.getHighScore();
+			_highScore.text = ""+FileProxy.getHighScore();
 		}
 		
 		public function fillHat(score:int):void{
 			if(score==0){
 				return;
 			}
-			var amount:Number;
+			var amount:Number=0.5;
 			if(score<10){
 				amount=0.5;
 			}else if(score<32){
@@ -93,7 +98,7 @@ package com.gui.hat
 				
 			}else if(score<250){
 				amount=4;
-			}else if(score<350){
+			}else{
 				amount=5;
 			}
 			trace("amount=",amount)
@@ -104,13 +109,13 @@ package com.gui.hat
 		}
 		
 		private function setScore():void{
-			_tField.text = "SCORE: "+Session.instance.score.toString();
+			_tField.text = Session.instance.score.toString();
 		}
 		
 		public function reStart():void{
-			_tField.text="SCORE: "+"0";
+			_tField.text="0";
 			_timeModel.tickSignal.add(onTick);
-			_highScore.text = "Best score: "+FileProxy.getHighScore();
+			_highScore.text =""+ FileProxy.getHighScore();
 			_isDone=false;
 		}
 		
@@ -169,7 +174,7 @@ package com.gui.hat
 		private function onCoinComplete(tween:GTween):void{
 			removeChild(tween.target as DisplayObject);
 			if(!_isDone)
-				_tField.text="SCORE: "+ int(Session.instance.score*(_timeModel.currentTick/(_timeModel.duration/1.8))).toString();
+				_tField.text=int(Session.instance.score*(_timeModel.currentTick/(_timeModel.duration/1.8))).toString();
 			//_tField.text = "$"+(_coinCounter + (_coinsLevel-1)*8).toString();
 		}
 	}
