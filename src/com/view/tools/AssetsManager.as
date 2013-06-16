@@ -144,6 +144,10 @@ package com.view.tools
 			"<image path='assets/vica/violin.png' />"+
 			"<image path='assets/vica/red_arrow.png' />"+
 			"<image path='assets/vica/record.png' />"+
+			"<image path='assets/gui/notes_idle.png' />"+
+			"<image path='assets/gui/notes_selected.png' />"+
+			"<image path='assets/gui/SOUND_OFF.png' />"+
+			"<image path='assets/gui/SOUND_ON.png' />"+
 			
 			
 			//RECORD SCREEN BUTTONS

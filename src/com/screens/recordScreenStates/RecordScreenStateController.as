@@ -42,6 +42,14 @@ package com.screens.recordScreenStates
 			return _recordScreen.improviseMode;
 		}
 		
+		public function get muteBtn():Btn{
+			return _recordScreen.musteButton;
+		}
+		
+		public function get hasBackUps():Boolean{
+			return _recordScreen.hasBackUps;
+		}
+		
 		private function init():void{
 			initStates();
 			//instrumentRecorder.setRecordable(model.beginAtFrame,model.endAtFrame);

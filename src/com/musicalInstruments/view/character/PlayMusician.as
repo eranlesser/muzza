@@ -34,6 +34,12 @@ package com.musicalInstruments.view.character {
 			initView();
 		}
 		
+		public function set paused(val:Boolean):void{
+			if(_musicianView){
+				_musicianView.paused = val;
+			}
+		}
+		
 		private function initView():void{
 			if(!_musicianView){
 				//if(_model.coreModel.type == "bottles" ||_model.coreModel.type == "drums" || _model.coreModel.type == "bass"){

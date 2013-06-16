@@ -48,6 +48,10 @@ package com.musicalInstruments.view.character {
 			addChildAt(_character,0);
 		}
 		
+		public function set paused(val:Boolean):void{
+			_player.paused=val;
+		}
+		
 		private function onClick(e:MouseEvent):void{
 			_player.onClick();
 		}

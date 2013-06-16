@@ -183,14 +183,14 @@ class ScorePanel extends Sprite{
 	public function ScorePanel(tmb:String){
 		this.graphics.beginFill(0xFFFFFF,0.2);
 		this.graphics.lineStyle(2,0x999999,0.4);
-		this.graphics.drawRect(6,8,120,34);
+		this.graphics.drawRect(6,8,120,38);
 		this.graphics.endFill();
 		_scoreField = new TextField();
 		_scoreField.width=130;
 		_scoreField.x = 14;
-		_scoreField.y=10;
+		_scoreField.y=11;
 		_scoreField.autoSize = TextFieldAutoSize.CENTER;
-		_scoreField.defaultTextFormat = new TextFormat(null,26,0xFFFFFF);
+		_scoreField.defaultTextFormat = new TextFormat(null,34,0xFFFFFF);
 		addChild(_scoreField);
 		_scoreField.text ="0";
 		var icon:DisplayObject;
@@ -207,7 +207,7 @@ class ScorePanel extends Sprite{
 		}
 		if(icon){
 			addChild(icon);
-			icon.y=10;
+			icon.y=11;
 			icon.x=12;
 			//icon.filters = [new GlowFilter(0XFFFFFF)]
 		}

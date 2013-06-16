@@ -89,11 +89,12 @@ package com.screens.recordScreenStates
 				arrowHead.y=shp.height-1;
 				arrowHead.x=(shp.width-arrowHead.width)/2;
 			}
-			
-			_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/2;
-			_hintArrow.y = _context.model.noteTargetsY+30;
-			
-			_context.guiLayer.addChild(_hintArrow)
+			if(_toPlayNotes.length>0 && _context.notes.visible){
+				_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/2;
+				_hintArrow.y = _context.model.noteTargetsY+30;
+				
+				_context.guiLayer.addChild(_hintArrow)
+			}
 		}
 		
 		private function checkNotesMatch(noteId:String):void{
@@ -137,6 +138,9 @@ package com.screens.recordScreenStates
 			Clock.instance.play();
 			_context.stageLayer.addChild(_msk);
 			_scoreMediator.active=true;
+			if(_context.hasBackUps){
+				_context.muteBtn.visible=true;
+			}
 			_isActive = true;
 		}
 		
@@ -176,10 +180,15 @@ package com.screens.recordScreenStates
 		}
 		
 		private function onTimerTick():void{
+			
+			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(fixNum,_timeModel.currentTick);
 			if(!_context.notes.visible){
+				if(_toPlayNotes.length>0){
+					_context.notes.removeNote(_toPlayNotes[0]);
+					_toPlayNotes.splice(0,1);
+				}
 				return;
 			}
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(fixNum,_timeModel.currentTick);
 			if(_toPlayNotes.length>0){
 				_toPlayNotes[0].selected=true;
 			}

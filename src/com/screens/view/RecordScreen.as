@@ -1,4 +1,5 @@
 package com.screens.view {
+	import com.constants.Dimentions;
 	import com.gskinner.motion.GTween;
 	import com.metronom.*;
 	import com.musicalInstruments.model.InstrumentModel;
@@ -35,6 +36,8 @@ package com.screens.view {
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
 		private var _improviseButton:			Btn;
+		private var _muteButton:Btn;
+		
 		public var improviseMode:Signal = new Signal();
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
@@ -85,12 +88,20 @@ package com.screens.view {
 				addChild(_recordBtn);
 				_recordBtn.x=443;
 				_recordBtn.y=27//(strip.height-practiceBtn.height)/2-2;
-//				_improviseButton = new Btn("SPEED_SLIDER_button.png","SPEED_SLIDER_button.png");
-//				addChild(_improviseButton);
-//				//_improviseButton.visible = false;
-//				_improviseButton.x=12;
-//				_improviseButton.y=184;
-//				_improviseButton.clicked.add(onImprovise);
+				_improviseButton = new Btn("notes_idle.png","notes_selected.png");
+				addChild(_improviseButton);
+				//_improviseButton.visible = false;
+				_improviseButton.x=-2;
+				_improviseButton.y=226;
+				//_improviseButton.scaleX=0.6;
+				//_improviseButton.scaleY=0.6;
+				_improviseButton.clicked.add(onImprovise);
+				
+				_muteButton = new Btn("SOUND_ON.png","SOUND_OFF.png");
+				_guiLayer.addChild(_muteButton);
+				_muteButton.x=_recordBtn.x+_recordBtn.width+12;
+				_muteButton.y=_recordBtn.y+_recordBtn.height-_muteButton.height;
+				_muteButton.clicked.add(onMute);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel,_model.endAtFrame);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
 				initStateController();
@@ -106,6 +117,23 @@ package com.screens.view {
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 			_clock.reset();
 			addBackUps();
+		}
+		
+		private function onMute(id:String):void
+		{
+			var player:PlayMusician;
+			if(_muteButton.state == "pressed"){
+				_muteButton.state = "idle" ;
+				for each(player in _players){
+					player.paused=false
+				}
+			}else{
+				_muteButton.state = "pressed" ;
+				for each(player in _players){
+					player.paused=true
+				}
+			}
+			
 		}
 		
 		private function onImprovise(val:String):void
@@ -148,6 +176,19 @@ package com.screens.view {
 				}
 			}
 			return null;
+		}
+		
+		public function get musteButton():Btn{
+			return _muteButton;
+		}
+		
+		public function get hasBackUps():Boolean{
+			for each(var player:PlayMusician in _players){
+				if(player.isRecorded(_model.recordeSequanceId)){
+					return true;
+				}
+			}
+			return false;
 		}
 		
 		private var _players:Vector.<PlayMusician> = new Vector.<PlayMusician>();

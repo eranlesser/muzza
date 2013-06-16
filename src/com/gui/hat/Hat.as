@@ -74,24 +74,29 @@ package com.gui.hat
 				return;
 			}
 			var amount:Number;
-			if(score>0){
+			if(score<10){
 				amount=0.5;
-			}else if(score>22){
+			}else if(score<32){
 				amount=1;
 				
-			}else if(score>60){
+			}else if(score<60){
+				amount=1.5;
+				
+			}else if(score<100){
 				amount=2;
 				
-			}else if(score>100){
+			}else if(score<150){
+				amount=2.5;
+				
+			}else if(score<200){
 				amount=3;
 				
-			}else if(score>200){
+			}else if(score<250){
 				amount=4;
-				
-			}else if(score>300){
+			}else if(score<350){
 				amount=5;
-				
 			}
+			trace("amount=",amount)
 			var tween:GTween = new GTween(null,amount);
 			tween.ease = Sine.easeInOut;
 			tween.onChange = onFillHat;

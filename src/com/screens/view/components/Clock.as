@@ -24,7 +24,7 @@ package com.screens.view.components
 		private var _bigTicker:Sprite;
 		//private var _soundButton:DisplayObject;
 		//private var _muteButton:DisplayObject;
-		//private var _preTickSound:Sound;
+		private var _preTickSound:Sound;
 		//private var _tickSound:Sound;
 		private var _innerCount:uint = 0;
 		
@@ -109,7 +109,7 @@ package com.screens.view.components
 			var onClickSignal:NativeSignal = new NativeSignal(this,MouseEvent.CLICK);
 			//onClickSignal.add(onClick);
 			
-			//_preTickSound = new Sound(new URLRequest("../../../../assets/sounds/theme/tick.mp3"));
+			_preTickSound = new Sound(new URLRequest("../../../../assets/sounds/tick.mp3"));
 			//_tickSound = new Sound(new URLRequest("../../../../assets/sounds/theme/preTick.mp3"));
 			//toggleSoundState("on")
 			
@@ -146,19 +146,19 @@ package com.screens.view.components
 			_smallTicker.rotation = (360/(128/_timeModel.currentTick)/2)/8
 			//trace(_smallTicker.rotation,_bigTicker.rotation)
 			_innerCount++;
-//			if(_innerCount==16){
-//				_innerCount=0;
-//				if(_soundButton.visible){
-//					var channel:SoundChannel = _preTickSound.play();
-//					if(channel){
-//						var sndTansform:SoundTransform = channel.soundTransform;
-//						sndTansform.volume = 0.2;
-//						channel.soundTransform = sndTansform;
-//					}else{
-//						trace("no channel available!! (clock)")
-//					}
-//				}
-//			}
+			if(_innerCount==16){
+				_innerCount=0;
+				//if(_soundButton.visible){
+					var channel:SoundChannel = _preTickSound.play();
+					if(channel){
+						var sndTansform:SoundTransform = channel.soundTransform;
+						sndTansform.volume = 0.1;
+						channel.soundTransform = sndTansform;
+					}else{
+						trace("no channel available!! (clock)")
+					}
+				//}
+			}
 		}
 		
 		

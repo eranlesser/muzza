@@ -41,7 +41,7 @@ package com.screens.recordScreenStates
 			//_context.startTimer();
 			//_context.notes.start();//move cue
 			//_context.notes.stop();
-			
+			_context.muteBtn.visible=false;
 			_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2;
 			_isActive = true;
 		}

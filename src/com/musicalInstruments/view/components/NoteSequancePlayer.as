@@ -58,6 +58,16 @@ package com.musicalInstruments.view.components {
 			_isPlaying = true;
 		}
 		
+		public function set paused(val:Boolean):void{
+			if(val){
+				_timeModel.tickSignal.remove(onMetronomeTick);
+				_timeModel.tickSignal.remove(onMetronomeUntick);
+			}else{
+				_timeModel.tickSignal.add(onMetronomeTick);
+				_timeModel.tickSignal.add(onMetronomeUntick);
+			}
+		}
+		
 		public function onClick():void{
 			return //
 			if(_isPlaying){
