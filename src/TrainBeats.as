@@ -6,7 +6,6 @@ package {
 	import com.model.FileProxy;
 	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.view.tools.AssetsManager;
-	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
 	import flash.display.*;
