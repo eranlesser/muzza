@@ -4,7 +4,6 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
-	import com.testflightapp.sdk.TestFlight;
 	import com.view.tools.AssetsManager;
 	
 	import flash.desktop.NativeApplication;
@@ -34,7 +33,6 @@ package {
 			start();
 			FileProxy.reset(this)
 			setDisplaySize();
-			TestFlight.takeOff("0cba08ebd9f80c67ac7b65b412c0c284_MzU0ODgyMDExLTEyLTMxIDA4OjI2OjU4LjU1NzMyMw");
 		}
 		
 		private function setDisplaySize():void{

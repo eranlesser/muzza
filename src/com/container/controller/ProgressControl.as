@@ -3,10 +3,7 @@ package com.container.controller {
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
 	import com.inf.PopUpsManager;
-	import com.model.FileProxy;
 	import com.screens.model.ScreensModel;
-	import com.screens.view.RecordScreen;
-	import com.testflightapp.sdk.TestFlight;
 	
 	import flash.display.DisplayObject;
 	
@@ -71,7 +68,6 @@ package com.container.controller {
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			_navigator.state=_model.recordSession;
-			TestFlight.submitFeedback("go to "+scr);
 			//if(_model.currentScreen is RecordScreen)
 			//_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
 			
@@ -84,12 +80,10 @@ package com.container.controller {
 				if(Session.instance.recordClicked){
 					PopUpsManager.closePopUp();
 				}
-				TestFlight.submitFeedback("close demo");
 			}else{
 				_view.openDemo(_model.demoScreen);
 				PopUpsManager.closePopUp(true);
 				Session.instance.demoClicked=true;
-				TestFlight.submitFeedback("open demo");
 			}
 		}
 		
@@ -99,7 +93,6 @@ package com.container.controller {
 			goHomeSignal.dispatch();
 			_model.reset();
 			PopUpsManager.closePopUp(true);
-			TestFlight.submitFeedback("go home");
 		}
 		
 		

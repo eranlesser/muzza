@@ -11,10 +11,8 @@ package com.screens.recordScreenStates
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
-	import com.representation.controller.RecordChannelController;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
-	import com.testflightapp.sdk.TestFlight;
 	import com.view.MetronomView;
 	
 	import org.osflash.signals.Signal;
@@ -71,7 +69,6 @@ package com.screens.recordScreenStates
 					}
 				}
 			);
-			TestFlight.submitFeedback(_context.model.instrumentModel.thumbNail+" Recording done score= "+ _context.score+" / "+_context.recordChannelController.length);
 		}
 		private function strReplace(str:String, search:String, replace:String):String {
 			return str.split(search).join(replace);

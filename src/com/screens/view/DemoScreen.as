@@ -6,7 +6,6 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
-	import com.testflightapp.sdk.TestFlight;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
@@ -16,9 +15,7 @@ package com.screens.view {
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.events.TimerEvent;
 	import flash.text.*;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 
@@ -256,7 +253,6 @@ package com.screens.view {
 			if(_timeSlider){
 				_timeModel.soundTick.remove(setTimeSlider);
 				PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
-				TestFlight.submitFeedback("demo complete");
 				
 			}
 			
