@@ -14,6 +14,8 @@ package com.screens.mediator
 		private var _scores:Vector.<scoreData>;
 		private var _scorePanel:ScorePanel;
 		private var _score:int=0;
+		private var _accuracy:int;
+		private var _wrongNotes:uint=0;
 		
 		public function ScoreMediator(recordState:RecordState){
 			_recordState = recordState;
@@ -24,6 +26,16 @@ package com.screens.mediator
 			_recordState.view.addChild(_scorePanel);
 		}
 		
+		public function get wrongNotes():uint
+		{
+			return _wrongNotes;
+		}
+
+		public function get accuracy():int
+		{
+			return 100-(_accuracy/_scores.length)*10;
+		}
+
 		public function get score():int{
 			return _score;
 		}
@@ -31,6 +43,8 @@ package com.screens.mediator
 		public function set active(flag:Boolean):void{
 			if(flag){
 				_score=0;
+				_accuracy=0;
+				_wrongNotes=0;
 				_scorePanel.setScore(_score);
 				_recordState.scoreSignal.add(onScoreSignal)
 				_recordState.pauseSignal.add(onPauseSignal)
@@ -66,6 +80,7 @@ package com.screens.mediator
 		private function onScoreSignal(toPlayTime:int,curTime:int):void
 		{
 			if(toPlayTime==-1){
+				_wrongNotes++;
 				_scores.push(new scoreData(-1,-1));
 				return;
 			}
@@ -73,8 +88,10 @@ package com.screens.mediator
 			var value:int ;
 			if(_pauseCounter>0){ // late
 				value = 10 - _pauseCounter;
+				_accuracy = _accuracy+_pauseCounter;
 			}else{  // early
 				value = 10 - (toPlayTime - curTime);
+				_accuracy = _accuracy+(toPlayTime - curTime);
 			}
 			_scores.push(new scoreData(Math.max(value,0),toPlayTime));
 			if(_scores[_scores.length-1].score==2){
@@ -111,7 +128,7 @@ package com.screens.mediator
 				}
 			}
 			if(isSequance){
-				showScoreFeedBack("Bonus +4",50,0xF24B0F);
+				showScoreFeedBack("Bonus +4",50,0x50AC6A);
 				_score = _score + 4 ;
 				for(i=_scores.length-1;i>_scores.length-sequanceLength;i--){
 					_scores[i].wasInSequance = true;

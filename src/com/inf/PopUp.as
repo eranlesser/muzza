@@ -31,7 +31,7 @@ package com.inf
 		private var _score:TextField;
 		private var seg:DisplayObject;
 		private static var wdt:uint=330;
-		private static var hgt:uint=272;
+		private static var hgt:uint=210;
 		public function PopUp()
 		{
 			drawBg(wdt);
@@ -62,7 +62,7 @@ package com.inf
 			_bg.addChild(lineSplitter);
 			lineSplitter.x=seg.x;
 			lineSplitter.width = _bg.width - seg.x*2;
-			lineSplitter.y = _next.y-14;
+			lineSplitter.y = _next.y-12;
 			_next.clicked.add(
 				function onNext():void{
 					nextSignal.dispatch();
@@ -87,10 +87,9 @@ package com.inf
 				_bg.addChild(_bestScore);
 				var fmt:TextFormat = new TextFormat("Vardena",18,0x333333);
 				_bestScore.type = TextFieldType.DYNAMIC;
-				fmt.align = TextFormatAlign.CENTER;
+				fmt.align = TextFormatAlign.RIGHT;
 				_bestScore.defaultTextFormat=fmt;
-				_bestScore.width=wdt-40;
-				_bestScore.x=40;
+				_bestScore.width=wdt-55;
 				_bestScore.y=50;
 			}
 			_bestScore.htmlText=txt;
@@ -123,7 +122,7 @@ package com.inf
 			fmt.leading=8;
 			_content.type = TextFieldType.DYNAMIC;
 			_content.defaultTextFormat=fmt;
-			_content.width=wdt-100;
+			_content.width=wdt-120;
 			_content.height=hgt-140;
 			_content.x=40;
 			_content.y=90;
@@ -139,7 +138,7 @@ package com.inf
 			fmt.leading=8;
 			_score.type = TextFieldType.DYNAMIC;
 			_score.defaultTextFormat=fmt;
-			_score.width=40;
+			_score.width=60;
 			_score.height=hgt-140;
 			_score.x=_content.width+_content.x;
 			_score.y=90;
@@ -148,11 +147,11 @@ package com.inf
 			_score.htmlText=txt;
 			_bg.addChild(_score);
 		}
-		public function setScore(hits:uint,perfectTimingBonus:uint,inARowBonus:uint,sequanceBonus:uint):void{
-			title="Your Score: 230";
+		public function setScore(accuracy:uint,wrongNotes:uint,instrumentScore:uint):void{
+			title="Your Score: "+instrumentScore;
 			setBestScore("Best Score: 670");
-			content = "<p>Good Notes: </p><p>Perfect timing bonus: </p><p>4 in a row bonus: </p><p>Sequance bonus:</p> ";
-			score = "<p>"+hits+"</p><p>"+ perfectTimingBonus+"</p><p>"+inARowBonus+"</p><p>"+sequanceBonus+"</p>";
+			content = "<p>Timing: </p><p>Wrong Notes:</p> ";
+			score = "<p>"+ accuracy+"% </p><p>"+wrongNotes+"</p>";
 		}
 		
 		public function open():void{
@@ -229,7 +228,7 @@ package com.inf
 			_bg.addChild(leftSeg);
 			var butLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_LEFT_CORNER.png");
 			_bg.addChild(butLeft);
-			butLeft.y=seg.height-butLeft.height-4;
+			butLeft.y=seg.height-butLeft.height-2;
 			
 			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
 			_bg.addChild(topRight);
@@ -244,7 +243,7 @@ package com.inf
 			rightSeg.x=topRight.x;
 			rightSeg.y=topRight.height-1;
 			leftSeg.y=topLeft.height-1;
-			rightSeg.height=seg.height-topRight.height-butRight.height-3;
+			rightSeg.height=seg.height-topRight.height-butRight.height;
 			leftSeg.height=rightSeg.height;
 			addChild(_bg);
 		}

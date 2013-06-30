@@ -24,12 +24,12 @@ package com.inf
 			_mask.graphics.endFill();
 		}
 		
-		public function openPopUp(hits:uint,perfectTimingBonus:uint,inARowBonus:uint,sequanceBunus:uint):PopUp{
+		public function openPopUp(accuracy:uint,wrongNotes:uint,insScore:uint):PopUp{
 			_presenter.addChild(_mask);
 			_popUp = new PopUp();
 			_presenter.addChild(_popUp);
 			_popUp.thumbNail = _thumbNail;
-			_popUp.setScore(hits,perfectTimingBonus,inARowBonus,sequanceBunus);
+			_popUp.setScore(accuracy,wrongNotes,insScore);
 			//_popUp.title=title;
 			//_popUp.content=content;
 			_popUp.open();

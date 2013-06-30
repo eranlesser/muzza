@@ -136,7 +136,6 @@ package com.screens.recordScreenStates
 				_context.muteBtn.visible=true;
 			}
 			_isActive = true;
-			_popUpsManager.openPopUp(36,120,0,22);
 		}
 		
 		public function deActivate():void{
@@ -158,6 +157,7 @@ package com.screens.recordScreenStates
 			if(_hintArrow&&_hintArrow.parent){
 				_context.guiLayer.removeChild(_hintArrow)
 			}
+			_popUpsManager.openPopUp(_scoreMediator.accuracy,_scoreMediator.wrongNotes,_scoreMediator.score);
 			_scoreMediator.active=false;
 			_context.model.score = _scoreMediator.score;
 			//Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail+" "+_scoreMediator.score);
