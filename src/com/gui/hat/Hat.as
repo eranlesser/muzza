@@ -142,7 +142,7 @@ package com.gui.hat
 		}
 		private function onTick():void{
 			if(Math.random()>0.98){
-				throwCoin();
+				//throwCoin();
 			}
 		}
 		/*

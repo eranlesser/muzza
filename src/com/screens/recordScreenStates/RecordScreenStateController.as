@@ -1,23 +1,15 @@
 package com.screens.recordScreenStates
 {
-	import com.constants.Rhythms;
 	import com.constants.States;
-	import com.musicalInstruments.palleta.Ipallet;
-	import com.musicalInstruments.palleta.views.Pallet;
-	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.view.RecordScreen;
-	import com.screens.view.TimeSlider;
-	import com.screens.view.components.notes.INotesChannel;
 	import com.screens.view.components.notes.Notes;
 	import com.screens.view.components.notes.NotesChannel;
 	import com.view.gui.Btn;
 	
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.text.TextField;
 	
 	import org.osflash.signals.Signal;
 
@@ -36,10 +28,6 @@ package com.screens.recordScreenStates
 		protected function initStates():void{
 			_states.push(new IdleState(this));
 			_states.push(new RecordState(this));
-		}
-		
-		public function get improviseMode():Signal{
-			return _recordScreen.improviseMode;
 		}
 		
 		public function get muteBtn():Btn{
@@ -142,6 +130,9 @@ package com.screens.recordScreenStates
 		
 		public function get recordButton():Btn{
 			return _recordScreen.recordButton;
+		}
+		public function get playButton():Btn{
+			return _recordScreen.playButton;
 		}
 		
 		public function get model():RecordScreenModel{

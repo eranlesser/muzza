@@ -5,7 +5,6 @@ package com.container
 	import com.container.controller.ProgressControl;
 	import com.model.MainThemeModel;
 	import com.model.rawData.Data;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 
 	public class ThemesController{
 		
@@ -29,7 +28,7 @@ package com.container
 		
 		private function onSongSelected(name:String):void{
 			startProgressControll(name,"record");
-			Flurry.logEvent("in song selected",name);
+			//Flurry.logEvent("in song selected",name);
 		}
 		
 		private function startProgressControll(name:String,mode:String):void{

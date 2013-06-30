@@ -1,7 +1,9 @@
 package com.screens.view {
 	import com.constants.Dimentions;
 	import com.gskinner.motion.GTween;
+	import com.gskinner.motion.easing.Bounce;
 	import com.metronom.*;
+	import com.model.FileProxy;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
@@ -19,6 +21,8 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 
@@ -33,12 +37,11 @@ package com.screens.view {
 		private var _timeModel:					ITimeModel;
 		private var _notes:						Notes;
 		private var _recordBtn:					Btn;
+		private var _playBtn:					Btn;
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
-		private var _improviseButton:			Btn;
 		private var _muteButton:Btn;
 		
-		public var improviseMode:Signal = new Signal();
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
 			_timeModel = Metronome.getTimeModel();
@@ -64,6 +67,10 @@ package com.screens.view {
 		public function get recordButton():Btn{
 			return _recordBtn;
 		}
+
+		public function get playButton():Btn{
+			return _playBtn;
+		}
 		
 		public function stopTimer():void{
 			_timerControll.stop();
@@ -86,17 +93,22 @@ package com.screens.view {
 				super.start();
 				_recordBtn = new Btn("record_BTN_play.png","record_BTN_puse.png");
 				addChild(_recordBtn);
-				_recordBtn.x=443;
-				_recordBtn.y=27//(strip.height-practiceBtn.height)/2-2;
-				_improviseButton = new Btn("notes_idle.png","notes_selected.png");
-				addChild(_improviseButton);
-				//_improviseButton.visible = false;
-				_improviseButton.x=1;
-				_improviseButton.y=223;
-				//_improviseButton.scaleX=0.6;
-				//_improviseButton.scaleY=0.6;
-				_improviseButton.clicked.add(onImprovise);
-				
+				_recordBtn.x=413;
+				_recordBtn.y=44//(strip.height-practiceBtn.height)/2-2;
+				_recordBtn.visible=false;
+				_playBtn = new Btn("play_BTN_play.png","play_BTN_puse.png");
+				addChild(_playBtn);
+				_playBtn.x=443;
+				_playBtn.y=44//(strip.height-practiceBtn.height)/2-2;
+				var tmr:Timer = new Timer(2000,1);
+				tmr.addEventListener(TimerEvent.TIMER_COMPLETE,function onTimer():void{
+					tmr.removeEventListener(TimerEvent.TIMER_COMPLETE,onTimer);
+					var playTween1:GTween = new GTween(_playBtn,0.8,{scaleX:1.15,scaleY:1.1,x:428});
+					playTween1.onComplete = function():void{
+						new GTween(_playBtn,0.8,{scaleX:1,scaleY:1,x:443},{ease:Bounce.easeOut});
+					}
+				});
+				tmr.start();
 				_muteButton = new Btn("SOUND_ON.png","SOUND_OFF.png");
 				_guiLayer.addChild(_muteButton);
 				_muteButton.x=Dimentions.WIDTH-_muteButton.width-8//_recordBtn.x+_recordBtn.width+12;
@@ -136,19 +148,6 @@ package com.screens.view {
 			
 		}
 		
-		private function onImprovise(val:String):void
-		{
-			// TODO Auto Generated method stub
-			if(_improviseButton.state == "pressed"){
-				_improviseButton.state = "idle" ;
-				_notes.visible=true;
-				improviseMode.dispatch(false);
-			}else{
-				_improviseButton.state = "pressed" ;
-				_notes.visible = false;
-				improviseMode.dispatch(true);
-			}
-		}
 		
 		override public function stop():void{
 			_stateController.deActivate();

@@ -22,6 +22,7 @@ package com.screens.recordScreenStates
 		
 		public function deActivate():void{
 			_context.recordButton.clicked.remove(onRecordBtn);
+			_context.playButton.clicked.remove(onRecordBtn);
 			_context.stopTimer();
 			_context.notes.stop();
 			_isActive = false;
@@ -36,13 +37,14 @@ package com.screens.recordScreenStates
 		public function activate():void{
 			_context.recordButton.state="idle";
 			_context.recordButton.clicked.add(onRecordBtn);
+			_context.playButton.clicked.add(onRecordBtn);
 			_context.instrumentRecorder.y=_context.model.getRecordInstrumentY();
 			//_context.instrumentRecorder.octave=0;
 			//_context.startTimer();
 			//_context.notes.start();//move cue
 			//_context.notes.stop();
 			_context.muteBtn.visible=false;
-			_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2;
+			//_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2;
 			_isActive = true;
 		}
 		

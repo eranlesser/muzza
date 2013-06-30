@@ -1,6 +1,7 @@
 package com.screens.model
 {
 	import com.constants.Session;
+	import com.model.FileProxy;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.view.DemoScreen;
 	import com.screens.view.IScreen;

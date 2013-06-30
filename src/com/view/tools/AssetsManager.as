@@ -29,14 +29,14 @@ package com.view.tools
 			"<image path='assets/gui/mail.png' />"+
 			//MENU
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
-			//"<image path='assets/open/MOZART_PICTURE.png' />"+
+			"<image path='assets/open/MOZART_PICTURE.png' />"+
 			//"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
 //			"<image path='assets/open/OVER_THE_RAINBOW.png' />"+
 //			"<image path='assets/open/OVER_THE_RAINBOW_pic.png' />"+
 //			"<image path='assets/open/BRAZIL_PICTURE.png' />"+
 //			"<image path='assets/open/WATERCOLORS_of_BRAZIL.png' />"+
 //			"<image path='assets/gui/menu/blank.png' />"+
-//			"<image path='assets/open/EDVARD_GRIEG.png' />"+
+			"<image path='assets/open/EDVARD_GRIEG.png' />"+
 			"<image path='assets/open/NEXT_IDLE.png' />"+
 			"<image path='assets/open/NEXT_PRESSED.png' />"+
 			"<image path='assets/open/PREVIOUS_IDLE.png' />"+
@@ -52,7 +52,7 @@ package com.view.tools
 			//TITLES
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
 //			"<image path='assets/open/JINGLE_BELLS.png' />"+
-//			"<image path='assets/open/MOUNTAIN_KING.png' />"+
+			"<image path='assets/open/MOUNTAIN_KING.png' />"+
 			//TOOLBAR
 			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_IDLE.png' />"+
@@ -144,8 +144,8 @@ package com.view.tools
 			"<image path='assets/vica/violin.png' />"+
 			"<image path='assets/vica/red_arrow.png' />"+
 			"<image path='assets/vica/record.png' />"+
-			"<image path='assets/gui/notes_idle.png' />"+
-			"<image path='assets/gui/notes_selected.png' />"+
+			"<image path='assets/gui/freeStyle_select.png' />"+
+			"<image path='assets/gui/freeStyle_idle.png' />"+
 			"<image path='assets/gui/SOUND_OFF.png' />"+
 			"<image path='assets/gui/SOUND_ON.png' />"+
 			
@@ -174,7 +174,7 @@ package com.view.tools
 			//DEMOSCREEN
 //			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
 //			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
-//			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+
 //			"<image path='assets/DEMO_SCREEN/WATERCOLORS_of_BRAZIL_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/DEMO_SCREEN_FRAME.png' />"+
@@ -190,8 +190,8 @@ package com.view.tools
 			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_BLUE_SEGMENT.png' />"+
 			"<image path='assets/DEMO_SCREEN/TIME_SLIDER/TIMESLIDER_STROKE_upper_layer.png' />"+
 			
-			"<image path='assets/DEMO_SCREEN/TIME_SLIDERv/TIMESLIDER_BLUE_RIGHT_SEGMENTv.png' />"+
-			"<image path='assets/DEMO_SCREEN/TIME_SLIDERv/TIMESLIDER_BLUE_SEGMENTv.png' />"+
+		//	"<image path='assets/DEMO_SCREEN/TIME_SLIDERv/TIMESLIDER_BLUE_RIGHT_SEGMENTv.png' />"+
+		//	"<image path='assets/DEMO_SCREEN/TIME_SLIDERv/TIMESLIDER_BLUE_SEGMENTv.png' />"+
 			
 			//HAT
 			"<image path='assets/band/hat/hat.png' />"+
@@ -273,6 +273,8 @@ package com.view.tools
 //			"<image path='assets/gui/next_idle.png' />"+
 //			"<image path='assets/gui/next_press.png' />"+
 //			"<image path='assets/gui/swap.jpg' />"+
+			"<image path='assets/gui/back.png' />"+
+			"<image path='assets/gui/back_press.png' />"+
 			"<image path='assets/gui/exit_idle.png' />"+
 			"<image path='assets/gui/exit_press.png' />"+
 
@@ -371,6 +373,8 @@ package com.view.tools
 			"<image path='assets/vica/bgBlur.png' />"+
 			"<image path='assets/vica/record_BTN_puse.png' />"+
 			"<image path='assets/vica/record_BTN_play.png' />"+
+			"<image path='assets/vica/play_BTN_puse.png' />"+
+			"<image path='assets/vica/play_BTN_play.png' />"+
 			"<image path='assets/gui/sign.png' />"+
 			
 			"</assets>"

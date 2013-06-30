@@ -5,20 +5,15 @@ package com.screens.recordScreenStates
 	import com.gskinner.motion.GTween;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
-	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
 	import com.screens.mediator.ScoreMediator;
 	import com.screens.view.components.Clock;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 	
-	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.display.Stage;
 	
 	import org.osflash.signals.Signal;
 
@@ -43,17 +38,8 @@ package com.screens.recordScreenStates
 			_msk.graphics.beginFill(0x111111,0.8);
 			_msk.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
 			_scoreMediator = new ScoreMediator(this);
-			_context.improviseMode.add(onImprovise);
 		}
 		
-		private function onImprovise(val:Boolean):void{
-			_scoreMediator.visible=val;
-			if(val){
-				if(_hintArrow&&_hintArrow.parent){
-					_context.guiLayer.removeChild(_hintArrow)
-				}
-			}
-		}
 		
 		public function get thumbNail():String{
 			return _context.thumbNail;
@@ -124,10 +110,12 @@ package com.screens.recordScreenStates
 		
 		public function activate():void{
 			_context.recordButton.state="pressed";
+			_context.playButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.add(checkNotesMatch);
 			_context.instrumentRecorder.active = true;
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordButton.clicked.add(onRecordBtn);
+			_context.playButton.clicked.add(onRecordBtn);
 			if(_context.instrumentRecorder is TapInstrument){
 				//TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			}
@@ -152,7 +140,9 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.endRecord();
 			_context.stopTimer();
 			_context.recordButton.state="idle";
+			_context.playButton.state="idle";
 			_context.recordButton.clicked.remove(onRecordBtn);
+			_context.playButton.clicked.remove(onRecordBtn);
 			_context.notes.stop();
 			Clock.instance.stop();
 			_context.stageLayer.removeChild(_msk);
@@ -164,7 +154,7 @@ package com.screens.recordScreenStates
 			}
 			_scoreMediator.active=false;
 			_context.model.score = _scoreMediator.score;
-			Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail,_scoreMediator.score);
+			//Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail+" "+_scoreMediator.score);
 			_isActive = false;
 			
 		}

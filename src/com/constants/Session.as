@@ -11,6 +11,7 @@ package com.constants {
 		public static var SONG_NAME:String;
 		private static var _session:Session;
 		private var _score:int;
+		public var goodScreensLength:uint;
 		public function Session(enforcer:enforcer){
 		}
 		

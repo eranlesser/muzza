@@ -5,7 +5,6 @@ package com.screens.view {
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
 	import com.view.tools.AssetsManager;
@@ -13,8 +12,6 @@ package com.screens.view {
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
 	import flash.text.*;
 	
 	import org.osflash.signals.Signal;
@@ -183,6 +180,7 @@ package com.screens.view {
 					break;
 				}
 			}
+			Session.instance.goodScreensLength = donePlayers;
 			if(donePlayers==_instruments.length){
 				//if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
 				if(_timeModel.currentTick>0 && donePlayers==_instruments.length){
@@ -243,7 +241,7 @@ package com.screens.view {
 				if(_model.endAtFrame-10 <= _timeModel.currentTick){
 				//PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 					_playPauseBtn.state=1;
-				Flurry.logEvent("demo complete");
+				//Flurry.logEvent("demo complete");
 				}
 			}
 			

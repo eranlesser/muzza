@@ -23,6 +23,7 @@ package com.container
 		private var _startScreen:		HomePage;
 		private var _toolBar:			BottomToolBar;
 		public var goto:Signal=new Signal();
+		public var goHome:Signal=new Signal();
 		
 		public function Presenter(){
 			init();
@@ -43,6 +44,9 @@ package com.container
 		
 		private function goToRequest(scr:String):void{
 			goto.dispatch(scr);
+		}
+		private function goHomeRequest():void{
+			goHome.dispatch();
 		}
 		
 		public function addStartScreen():void{
@@ -73,6 +77,7 @@ package com.container
 			_toolBar.visible = (screen is RecordScreen);
 			if(screen is ListenScreen){
 				(screen as ListenScreen).goTo.add(goToRequest);
+				(screen as ListenScreen).goHome.add(goHomeRequest);
 			}
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
@@ -89,6 +94,7 @@ package com.container
 				_screensLayer.removeChildAt(0);
 				if(scr is ListenScreen){
 					(scr as ListenScreen).goTo.remove(goToRequest);
+					(scr as ListenScreen).goHome.remove(goHomeRequest);
 				}
 			}
 		}

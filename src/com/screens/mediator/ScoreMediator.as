@@ -94,7 +94,7 @@ package com.screens.mediator
 				}
 			}
 			if(isCombo){
-				showScoreFeedBack("combo +6",100,0x3498DB);
+				showScoreFeedBack("Awesome +6",100,0x3498DB);
 				_score = _score + 6 ;
 				for(i=_scores.length-1;i>_scores.length-comboLength;i--){
 					_scores[i].wasInCombo = true;
@@ -111,7 +111,7 @@ package com.screens.mediator
 				}
 			}
 			if(isSequance){
-				showScoreFeedBack("sequance +4",50,0xF24B0F);
+				showScoreFeedBack("Bonus +4",50,0xF24B0F);
 				_score = _score + 4 ;
 				for(i=_scores.length-1;i>_scores.length-sequanceLength;i--){
 					_scores[i].wasInSequance = true;
@@ -125,7 +125,7 @@ package com.screens.mediator
 			_recordState.view.addChild(_scoreFeedBack);
 			_scoreFeedBack.x=(Dimentions.WIDTH-_scoreFeedBack.width)/2;
 			_scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset;
-			var gt:GTween = new GTween(_scoreFeedBack,1,{alpha:0,scaleX:1.4,scaleY:1.4});
+			var gt:GTween = new GTween(_scoreFeedBack,1.5,{alpha:0.2,scaleX:1.2,scaleY:1.2});
 			gt.onComplete = function():void{_recordState.view.removeChild(_scoreFeedBack)}
 			gt.onChange = function():void{_scoreFeedBack.x=(Dimentions.WIDTH-_scoreFeedBack.width)/2; _scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset}
 		}

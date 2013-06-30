@@ -3,6 +3,7 @@ package com.model
 	import com.constants.Session;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
 	
+	import flash.display.DisplayObjectContainer;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
@@ -90,6 +91,40 @@ package com.model
 			}
 		}
 		
+		public static function setImproviseEnabled(flag:Boolean,stage:DisplayObjectContainer):void{
+			if(getImproviseEnabled() == false && flag){
+				trace("***POPUP****");
+				return; // temp
+			}
+			var folder:File = File.applicationStorageDirectory.resolvePath("config");
+			if (!folder.exists) { 
+				folder.createDirectory();
+			} 
+			var outputFile:File = folder.resolvePath("improvise3.xml");
+			if(outputFile.exists){
+				outputFile.deleteFile();
+			}
+			var outputStream:FileStream = new FileStream();
+			outputStream.open(outputFile,FileMode.WRITE);
+			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
+			outputString += '<data><improvise enabled="'+flag.toString()+'" /></data>';
+			outputStream.writeUTFBytes(outputString);
+			outputStream.close();
+		}
+		
+		public static function getImproviseEnabled():Boolean{
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("config/improvise3.xml") ;
+			if(inputFile.exists){
+				var inputStream:FileStream = new FileStream();
+				inputStream.open(inputFile, FileMode.READ);
+				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
+				inputStream.close();
+				return true//sessionXML.improvise.@enabled=="true";
+			}else{
+				return true;
+			}
+		}
+		
 		
 		public  function getSongData(songInx:uint,instrument:String,id:uint):XML{
 			var inputFile:File = File.applicationStorageDirectory.resolvePath("song"+songInx+"/instruments/"+instrument+"/sequance"+id.toString()+".xml") ;
@@ -140,8 +175,7 @@ package com.model
 			var files:Array=File.applicationStorageDirectory.getDirectoryListing();
 			for each(var file:File in files){
 				if(file.isDirectory){
-					trace(file.name)
-					if(file.name != "score"){
+					if(file.name != "score" && file.name != "config"){
 						file.deleteDirectory(true);
 					}
 				}else{

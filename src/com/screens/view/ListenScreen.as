@@ -3,6 +3,7 @@ package com.screens.view
 	import com.constants.Dimentions;
 	import com.constants.Session;
 	import com.gui.hat.Hat;
+	import com.model.FileProxy;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.character.PlayMusician;
@@ -22,6 +23,7 @@ package com.screens.view
 		private var _channelControllers:	Vector.<PlayChannelController>;
 		private var _toolBar:				ToolBar;
 		public var goTo:Signal=new Signal();
+		public var goHome:Signal=new Signal();
 		
 		public function ListenScreen(){
 			_channelControllers = new Vector.<PlayChannelController>();
@@ -82,7 +84,9 @@ package com.screens.view
 		}
 
 		override protected function endMusciPiece():void{
-			//if(Session.instance.goodScreensLength==4){
+			if(Session.instance.goodScreensLength==4){
+				FileProxy.setImproviseEnabled(true,this._guiLayer);
+			}
 				_claps.play();
 				_hat.fillHat(Session.instance.score);
 			//}
@@ -109,14 +113,22 @@ package com.screens.view
 //			_toolBar=new ToolBar(_representation);
 //			_toolBar.y=_representation.y-40//-_toolBar.height;
 //			addChild(_toolBar);
-			var backBtn:Btn = new Btn("exit_idle.png","exit_press.png");
+			var backBtn:Btn = new Btn("back.png","back_press.png");
 			addChild(backBtn);
-			backBtn.x=1;
-			backBtn.y=8;
+			backBtn.x=-3;
+			backBtn.y=6;
 			backBtn.clicked.add(backClicked);
+			var exitBtn:Btn = new Btn("exit_idle.png","exit_press.png");
+			addChild(exitBtn);
+			exitBtn.x=Dimentions.WIDTH-exitBtn.width+3;
+			exitBtn.y=6;
+			exitBtn.clicked.add(exitBtnClicked);
 		}
 		private function backClicked(id:String):void{
 			goTo.dispatch("back");
+		}
+		private function exitBtnClicked(id:String):void{
+			goHome.dispatch();
 		}
 		
 	}

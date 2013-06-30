@@ -1,9 +1,7 @@
 package com.container.controller {
-	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
 	import com.screens.model.ScreensModel;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -28,6 +26,7 @@ package com.container.controller {
 			_themeName = themeName;
 			_frameRate=frameRate;
 			_view.menu.goHome.add(goHome);
+			_view.goHome.add(goHome);
 			goHomeSignal = new Signal();
 			
 		}
@@ -90,11 +89,11 @@ package com.container.controller {
 				_view.closeDemo();
 				_model.currentScreen.start();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
-				Flurry.logEvent("Close demo");
+				//Flurry.logEvent("Close demo");
 			}else{
 				_model.currentScreen.stop();
 				_view.openDemo(_model.demoScreen);
-				Flurry.logEvent("Open demo");
+				//Flurry.logEvent("Open demo");
 			}
 		}
 		
@@ -103,13 +102,8 @@ package com.container.controller {
 			_model.currentScreen.stop();
 			goHomeSignal.dispatch();
 			_model.reset();
-			Flurry.logEvent("go home");
+		//	Flurry.logEvent("go home");
 		}
-		
-		
-		
-	
-		
 		
 	}
 }
