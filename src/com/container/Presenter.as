@@ -24,7 +24,7 @@ package com.container
 		private var _toolBar:			BottomToolBar;
 		public var goto:Signal=new Signal();
 		public var goHome:Signal=new Signal();
-		
+		public var goNext:Signal=new Signal();
 		public function Presenter(){
 			init();
 		}

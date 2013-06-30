@@ -82,6 +82,10 @@ package com.screens.model
 			return curIndex;
 		}
 		
+		public function goNext():void{
+			_currentScreenIndex++;
+		}
+		
 		
 		public function goTo(scr:String):void{
 			var curIndex:int=-1;

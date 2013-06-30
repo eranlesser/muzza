@@ -70,6 +70,11 @@ package com.screens.model {
 			_currentScreen=_recordSession.currentScreen;
 		}
 		
+		public function goNext():void{
+			_recordSession.goNext();
+			_currentScreen=_recordSession.currentScreen;
+		}
+		
 		public function reset():void{
 			if(_recordSession){
 				_recordSession.reset();

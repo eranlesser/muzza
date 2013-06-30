@@ -56,6 +56,7 @@ package com.container.controller {
 		public function reset():void{
 			_model.reset();
 			_view.goto.remove(goTo);
+			_view.goNext.remove(goNext);
 			_view.menu.openDemo.remove(openDemo);
 		}
 		
@@ -66,6 +67,7 @@ package com.container.controller {
 		private function initNavigator():void{
 			_navigator=_view.menu.navigator;
 			_view.goto.add(goTo);
+			_view.goNext.add(goNext);
 			_view.menu.openDemo.add(openDemo);
 			_navigator.state=_model.recordSession;
 			//_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
@@ -78,6 +80,14 @@ package com.container.controller {
 		private function goTo(scr:String):void{
 			_view.removeScreens();
 			_model.goTo(scr);
+			_view.addScreen(_model.currentScreen as DisplayObject);
+			_model.currentScreen.start();
+			_navigator.state=_model.recordSession;
+		}
+		
+		private function goNext():void{
+			_view.removeScreens();
+			_model.goNext();
 			_view.addScreen(_model.currentScreen as DisplayObject);
 			_model.currentScreen.start();
 			_navigator.state=_model.recordSession;

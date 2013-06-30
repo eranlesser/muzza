@@ -2,7 +2,10 @@ package com.screens.recordScreenStates
 {
 	import com.constants.Dimentions;
 	import com.constants.States;
+	import com.container.Presenter;
 	import com.gskinner.motion.GTween;
+	import com.inf.PopUp;
+	import com.inf.PopUpsManager;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.view.instrument.TapInstrument;
@@ -32,12 +35,14 @@ package com.screens.recordScreenStates
 		private var _isActive:Boolean = false;
 		private var _scoreMediator:ScoreMediator;
 		private var _hintArrow:Sprite;
+		private var _popUpsManager:PopUpsManager;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
-			_msk.graphics.beginFill(0x111111,0.8);
+			_msk.graphics.beginFill(0x111111,0.7);
 			_msk.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
 			_scoreMediator = new ScoreMediator(this);
+			_popUpsManager = new PopUpsManager(_context.guiLayer.parent.parent.parent as Presenter,_context.model.instrumentModel.thumbNail);
 		}
 		
 		
@@ -131,6 +136,7 @@ package com.screens.recordScreenStates
 				_context.muteBtn.visible=true;
 			}
 			_isActive = true;
+			_popUpsManager.openPopUp(36,120,0,22);
 		}
 		
 		public function deActivate():void{
