@@ -165,6 +165,8 @@ package com.screens.view.components.homePage
 	}
 }
 import com.constants.Dimentions;
+import com.constants.Session;
+import com.model.FileProxy;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
@@ -195,8 +197,15 @@ class LearnSongPannel extends Sprite{
 	public function get songSelected():Signal{
 		return _songSelected;
 	}
-	private function onClick(e:Event):void{
+	private function onPlay(e:Event):void{
+		Session.IMPROVISE_MODE = false;
 		_songSelected.dispatch(_name);
+	}
+	protected function onFreeStyle(event:MouseEvent):void
+	{
+		Session.IMPROVISE_MODE = true;
+		_songSelected.dispatch(_name);
+		
 	}
 	
 	private function setData(xml:XML):void{
@@ -217,12 +226,23 @@ class LearnSongPannel extends Sprite{
 		
 		
 		var playBtn:Sprite=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
-		playBtn.addEventListener(MouseEvent.CLICK,onClick);
+		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
 		addChild(playBtn);
 		playBtn.x = 650;
 		playBtn.y = 230;
-		
+		var freestyle:Btn=new Btn("freestyle.png","freestyle.png");
+		freestyle.addEventListener(MouseEvent.CLICK,onFreeStyle);
+		addChild(freestyle);
+		freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
+		freestyle.y = 330;
+		freestyle.visible = FileProxy.getImproviseEnabled();
+		FileProxy.freeStyleSignal.add(function():void{
+			freestyle.visible = FileProxy.getImproviseEnabled()
+		}
+		);
 	}
+	
+		
 	
 	public function get songName():String{
 		return _name;

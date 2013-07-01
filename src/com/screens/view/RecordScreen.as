@@ -1,5 +1,6 @@
 package com.screens.view {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.gskinner.motion.GTween;
 	import com.gskinner.motion.easing.Bounce;
 	import com.metronom.*;
@@ -41,7 +42,7 @@ package com.screens.view {
 		private var _playBtnOver:					Btn;
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
-		private var _muteButton:Btn;
+		private var _muteButton:				Btn;
 		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
@@ -80,8 +81,6 @@ package com.screens.view {
 		public function get notes():Notes{
 			return _notes;
 		}
-		
-		
 	
 		protected function initStateController():void{
 			_stateController = new RecordScreenStateController(this);
@@ -96,14 +95,13 @@ package com.screens.view {
 				addChild(_recordBtn);
 				_recordBtn.x=413;
 				_recordBtn.y=44//(strip.height-practiceBtn.height)/2-2;
-				_recordBtn.visible=false;
 				_playBtn = new Btn("play_BTN_play.png","play_BTN_puse.png");
 				_playBtn.x=443;
 				_playBtn.y=44//(strip.height-practiceBtn.height)/2-2;
 				_playBtnOver = new Btn("play_BTN.png","play_BTN.png");
 				addChild(_playBtnOver);
 				addChild(_playBtn);
-				_playBtnOver.alpha=0.75;
+				_playBtnOver.alpha=0.6;
 				_playBtnOver.x=441;
 				_playBtnOver.y=54//(strip.height-practiceBtn.height)/2-2;
 				var playTween1:GTween = new GTween(_playBtnOver,2.2,{alpha:0},{ease:Bounce.easeOut});
@@ -121,6 +119,7 @@ package com.screens.view {
 				_clock = Clock.instance;
 				_clock.x=290;
 				_clock.y=28;
+				
 				isInited = true;
 			}
 			addChild(_clock);
@@ -128,6 +127,10 @@ package com.screens.view {
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 			_clock.reset();
 			addBackUps();
+			_recordBtn.visible=Session.IMPROVISE_MODE;
+			_playBtnOver.visible=!Session.IMPROVISE_MODE;
+			_playBtn.visible=!Session.IMPROVISE_MODE;
+			notes.visible =!Session.IMPROVISE_MODE;
 		}
 		
 		private function onMute(id:String):void

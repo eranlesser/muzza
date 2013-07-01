@@ -54,6 +54,7 @@ package com.screens.view
 				channelController.start();
 			}
 			_hat.reStart();
+			_hat.visible = !Session.IMPROVISE_MODE;
 			//_toolBar.playPauseBut.state = 1;
 		}
 		
@@ -85,7 +86,7 @@ package com.screens.view
 
 		override protected function endMusciPiece():void{
 			if(Session.instance.goodScreensLength==4){
-				//FileProxy.setImproviseEnabled(true,this._guiLayer);
+				FileProxy.setImproviseEnabled(true);
 			}
 				_claps.play();
 				_hat.fillHat(Session.instance.score);
@@ -114,7 +115,7 @@ package com.screens.view
 //			_toolBar.y=_representation.y-40//-_toolBar.height;
 //			addChild(_toolBar);
 			var backBtn:Btn = new Btn("back.png","back_press.png");
-			//addChild(backBtn);
+			addChild(backBtn);
 			backBtn.x=-3;
 			backBtn.y=6;
 			backBtn.clicked.add(backClicked);
