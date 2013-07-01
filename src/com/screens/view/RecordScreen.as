@@ -103,6 +103,7 @@ package com.screens.view {
 				_playBtnOver = new Btn("play_BTN.png","play_BTN.png");
 				addChild(_playBtnOver);
 				addChild(_playBtn);
+				_playBtnOver.alpha=0.75;
 				_playBtnOver.x=441;
 				_playBtnOver.y=54//(strip.height-practiceBtn.height)/2-2;
 				var playTween1:GTween = new GTween(_playBtnOver,2.2,{alpha:0},{ease:Bounce.easeOut});

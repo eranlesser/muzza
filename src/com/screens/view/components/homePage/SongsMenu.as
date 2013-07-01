@@ -80,20 +80,23 @@ package com.screens.view.components.homePage
 			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
 			_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
-			var tmr:Timer = new Timer(400,1);
+			//var tmr:Timer = new Timer(400,1);
 			
-			var enterSound:Sound = new Sound();
-			enterSound.load(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"))
-			enterSound.addEventListener(Event.COMPLETE,function onSoundReady(e:Event):void{
-				enterSound.removeEventListener(Event.COMPLETE, onSoundReady);
-				tmr.start();
-			});
+//			var enterSound:Sound = new Sound();
+//			enterSound.load(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"))
+//			enterSound.addEventListener(Event.COMPLETE,function onSoundReady(e:Event):void{
+//				enterSound.removeEventListener(Event.COMPLETE, onSoundReady);
+//				tmr.start();
+//			});
 			//enterSound.play();
-			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
-				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
+			//tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
+			//	tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
 				var wtween:GTween = new GTween(_wallLayer,1,{x:0},{ease:Circular.easeInOut});
 				var tween:GTween = new GTween(_thumbsLayer,1,{x:0},{ease:Circular.easeInOut});
 				var ptween:GTween = new GTween(_poleLayer,1.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
+				wtween.delay=0.5;
+				tween.delay=0.5;
+				ptween.delay=0.5;
 				ptween.onComplete = function dispatchComplete(t:GTween):void{
 					ready.dispatch();
 					//var loopSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainloop1.mp3"));
@@ -103,7 +106,7 @@ package com.screens.view.components.homePage
 					//						cnl.addEventListener(Event.SOUND_COMPLETE,loop);
 					//					});
 				}
-			});
+			//});
 			
 		}
 		
