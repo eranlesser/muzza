@@ -82,7 +82,7 @@ package com.screens.recordScreenStates
 				arrowHead.x=(shp.width-arrowHead.width)/2;
 			}
 			if(_toPlayNotes.length>0 && _context.notes.visible){
-				_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/2;
+				_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/4;
 				_hintArrow.y = _context.model.noteTargetsY+30;
 				
 				_context.guiLayer.addChild(_hintArrow)

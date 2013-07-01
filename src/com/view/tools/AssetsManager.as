@@ -94,36 +94,45 @@ package com.view.tools
 //			"<image path='assets/instruments/insRectFill.png' />"+
 //			"<image path='assets/instruments/insRectRight.png' />"+
 //			"<image path='assets/instruments/insRectWrong.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_IDLE_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_7.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_8.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_9.png' />"+
-			//BASS
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_4.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_5.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_6.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_7.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_8.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_9.png' />"+
-			//DRUMS
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_1.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_2.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_3.png' />"+
-			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/dj/dj_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_1.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_2.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_3.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_4.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_5.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_6.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_7.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_8.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_9.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_4.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_5.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_6.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_7.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_8.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_9.png' />"+
+//			//BASS
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_1.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_2.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_3.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_4.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_5.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_6.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_7.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_8.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/BASS/BASS_IDLE_9.png' />"+
+//			//DRUMS
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_1.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_2.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_3.png' />"+
+//			"<image path='assets/NOTES/INSTRUMENTS_ICONS/DRUMS/DRUMS_IDLE_4.png' />"+
 			//SCRATCH
 //			"<image path='assets/instruments/scratch/Vinyl.png' />"+
 //			"<image path='assets/instruments/scratch/hey_idle.png' />"+
@@ -148,6 +157,8 @@ package com.view.tools
 			"<image path='assets/gui/freeStyle_idle.png' />"+
 			"<image path='assets/gui/SOUND_OFF.png' />"+
 			"<image path='assets/gui/SOUND_ON.png' />"+
+			"<image path='assets/vica/tryAgain.png' />"+
+			"<image path='assets/vica/next.png' />"+
 			
 			
 			//RECORD SCREEN BUTTONS
@@ -375,9 +386,14 @@ package com.view.tools
 			"<image path='assets/vica/bgBlur.png' />"+
 			"<image path='assets/vica/record_BTN_puse.png' />"+
 			"<image path='assets/vica/record_BTN_play.png' />"+
+			"<image path='assets/vica/play_BTN.png' />"+
 			"<image path='assets/vica/play_BTN_puse.png' />"+
 			"<image path='assets/vica/play_BTN_play.png' />"+
 			"<image path='assets/gui/sign.png' />"+
+			"<image path='assets/vica/scorePanel.png' />"+
+			"<image path='assets/vica/menu.png' />"+
+			"<image path='assets/vica/muteBTN_off.png' />"+
+			"<image path='assets/vica/muteBTN_on.png' />"+
 			
 			"</assets>"
 		

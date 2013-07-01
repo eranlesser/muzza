@@ -24,6 +24,8 @@ package com.screens.mediator
 			_scores = new Vector.<scoreData>();
 			_scorePanel = new ScorePanel(_recordState.thumbNail);
 			_recordState.view.addChild(_scorePanel);
+			_scorePanel.x=22;
+			_scorePanel.y=28;
 		}
 		
 		public function get wrongNotes():uint
@@ -198,16 +200,13 @@ class scoreData{
 class ScorePanel extends Sprite{
 	private var _scoreField:TextField;
 	public function ScorePanel(tmb:String){
-		this.graphics.beginFill(0xFFFFFF,0.2);
-		this.graphics.lineStyle(2,0x999999,0.4);
-		this.graphics.drawRect(6,8,120,38);
-		this.graphics.endFill();
+		addChild(AssetsManager.getAssetByName("scorePanel.png"));
 		_scoreField = new TextField();
 		_scoreField.width=130;
 		_scoreField.x = 14;
-		_scoreField.y=10;
+		_scoreField.y=18;
 		_scoreField.autoSize = TextFieldAutoSize.CENTER;
-		_scoreField.defaultTextFormat = new TextFormat(null,34,0xFFFFFF);
+		_scoreField.defaultTextFormat = new TextFormat(null,34,0x4db9e0);
 		addChild(_scoreField);
 		_scoreField.text ="0";
 		var icon:DisplayObject;
@@ -227,7 +226,7 @@ class ScorePanel extends Sprite{
 		}
 		if(icon){
 			addChild(icon);
-			icon.y=11;
+			icon.y=18;
 			icon.x=12;
 			//icon.filters = [new GlowFilter(0XFFFFFF)]
 		}

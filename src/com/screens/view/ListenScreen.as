@@ -85,7 +85,7 @@ package com.screens.view
 
 		override protected function endMusciPiece():void{
 			if(Session.instance.goodScreensLength==4){
-				FileProxy.setImproviseEnabled(true,this._guiLayer);
+				//FileProxy.setImproviseEnabled(true,this._guiLayer);
 			}
 				_claps.play();
 				_hat.fillHat(Session.instance.score);
@@ -114,14 +114,14 @@ package com.screens.view
 //			_toolBar.y=_representation.y-40//-_toolBar.height;
 //			addChild(_toolBar);
 			var backBtn:Btn = new Btn("back.png","back_press.png");
-			addChild(backBtn);
+			//addChild(backBtn);
 			backBtn.x=-3;
 			backBtn.y=6;
 			backBtn.clicked.add(backClicked);
-			var exitBtn:Btn = new Btn("exit_idle.png","exit_press.png");
+			var exitBtn:Btn = new Btn("menu.png","menu.png");
 			addChild(exitBtn);
-			exitBtn.x=Dimentions.WIDTH-exitBtn.width+3;
-			exitBtn.y=6;
+			exitBtn.x=(Dimentions.WIDTH-exitBtn.width)/2;
+			exitBtn.y=28;
 			exitBtn.clicked.add(exitBtnClicked);
 		}
 		private function backClicked(id:String):void{

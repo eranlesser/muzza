@@ -30,7 +30,7 @@ package com.inf
 		private var _content:TextField;
 		private var _score:TextField;
 		private var seg:DisplayObject;
-		private static var wdt:uint=330;
+		private static var wdt:uint=290;
 		private static var hgt:uint=210;
 		public function PopUp()
 		{
@@ -45,12 +45,12 @@ package com.inf
 		
 		private function addNext():void
 		{
-			_next = new Btn("next_IDLE.png","next_PRESSED.png");
+			_next = new Btn("next.png","next.png");
 			_bg.addChild(_next);
 			_next.y=seg.height+seg.y-_next.height-16;
 			_next.x=_bg.width-_next.width-10;
-			_tryAgain = new Btn("record_IDLE.png","record_PRESSED.png");
-			//_bg.addChild(_tryAgain);
+			_tryAgain = new Btn("tryAgain.png","tryAgain.png");
+			_bg.addChild(_tryAgain);
 			_tryAgain.y=seg.height+seg.y-_next.height-16;
 			_tryAgain.x=10;
 			_tryAgain.clicked.add(
@@ -77,19 +77,19 @@ package com.inf
 			_title.defaultTextFormat=fmt;
 			_title.width=wdt-70-20;
 			_title.x=70+20;
-			_title.y=14;
+			_title.y=28;
 			_title.text=txt;
 			_bg.addChild(_title);
 		}
 		private function setBestScore(txt:String):void{
 			if(!_bestScore){
 				_bestScore = new TextField();
-				_bg.addChild(_bestScore);
+				//_bg.addChild(_bestScore);
 				var fmt:TextFormat = new TextFormat("Vardena",18,0x333333);
 				_bestScore.type = TextFieldType.DYNAMIC;
 				fmt.align = TextFormatAlign.RIGHT;
 				_bestScore.defaultTextFormat=fmt;
-				_bestScore.width=wdt-55;
+				_bestScore.width=wdt-100;
 				_bestScore.y=50;
 			}
 			_bestScore.htmlText=txt;
@@ -122,7 +122,7 @@ package com.inf
 			fmt.leading=8;
 			_content.type = TextFieldType.DYNAMIC;
 			_content.defaultTextFormat=fmt;
-			_content.width=wdt-120;
+			_content.width=wdt-140;
 			_content.height=hgt-140;
 			_content.x=40;
 			_content.y=90;
@@ -150,7 +150,7 @@ package com.inf
 		public function setScore(accuracy:uint,wrongNotes:uint,instrumentScore:uint):void{
 			title="Your Score: "+instrumentScore;
 			setBestScore("Best Score: 670");
-			content = "<p>Timing: </p><p>Wrong Notes:</p> ";
+			content = "<p>On Time: </p><p>Wrong Notes:</p> ";
 			score = "<p>"+ accuracy+"% </p><p>"+wrongNotes+"</p>";
 		}
 		

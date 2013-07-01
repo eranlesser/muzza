@@ -19,7 +19,8 @@ package com.screens.view.components.notes
 		public static const WIDTH:uint=22;
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
 			//trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
-			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_IDLE_"+noteValue+".png",true);
+			trace(getPrefix(channel)+"_"+noteValue+".png")
+			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+noteValue+".png",true);
 			_location=loc;
 			_value=noteValue;
 			_id=id;
@@ -37,8 +38,8 @@ package com.screens.view.components.notes
 			addChild(_idleAsset);
 			
 			
-			this.scaleX=0.65;
-			this.scaleY=0.65;
+			//this.scaleX=0.65;
+			//this.scaleY=0.65;
 			_idleAsset.y=-height-10;
 			
 			//_selectAsset.visible=false;
@@ -50,19 +51,19 @@ package com.screens.view.components.notes
 		}
 		
 		private function getPrefix(tmbNail:String):String{
-			var prefix:String;
+			var prefix:String="dn";
 			switch(tmbNail){
 				case "bottles.png":
 					//prefix =  "insCircleDrop";
-					prefix="BOTTLES"
+					//prefix="BOTTLES"
 					break;
 				case "drum.png":
 					//prefix =  "insCircleDrop";
-					prefix="DRUMS"
+					//prefix="DRUMS"
 					break;
 				case "bass_flash.jpg":
 					//prefix =  "insCircleDrop";
-					prefix="BASS"
+					//prefix="BASS"
 					break;
 				case "turnTable":
 					prefix =  "dj";
