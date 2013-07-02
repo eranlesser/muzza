@@ -9,10 +9,8 @@ package com.representation.controller {
 	import com.musicalInstruments.model.sequances.ISequance;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
-	import com.musicalInstruments.palleta.views.Pallet;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.screens.model.RecordScreenModel;
-	import com.screens.recordScreenStates.RecordState;
 	import com.screens.view.components.notes.NotesChannel;
 
 	/**

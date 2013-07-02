@@ -1,10 +1,9 @@
-package com.musicalInstruments.palleta.views
+package com.musicalInstruments.view.instrument
 {
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.view.components.SoundPlayer;
-	import com.musicalInstruments.view.instrument.Instrument;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;

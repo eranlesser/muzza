@@ -9,7 +9,7 @@ package com.screens.view {
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.palleta.views.TurnTable;
+	import com.musicalInstruments.view.instrument.TurnTable;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.instrument.*;
 	import com.representation.controller.RecordChannelController;

@@ -95,15 +95,15 @@ package com.model
 		}
 		
 		public static function setImproviseEnabled(flag:Boolean):void{
-			if(getImproviseEnabled() == false && flag){
+			if(getImproviseEnabled(Session.SONG_NAME) == false && flag){
 				trace("***POPUP****");
 				//return; // temp
 			}
-			var folder:File = File.applicationStorageDirectory.resolvePath("config");
+			var folder:File = File.applicationStorageDirectory.resolvePath("config/song_"+Session.SONG_NAME);
 			if (!folder.exists) { 
 				folder.createDirectory();
 			} 
-			var outputFile:File = folder.resolvePath("improvise5.xml");
+			var outputFile:File = folder.resolvePath("improvise.xml");
 			if(outputFile.exists){
 				outputFile.deleteFile();
 			}
@@ -116,8 +116,8 @@ package com.model
 			freeStyleSignal.dispatch();
 		}
 		
-		public static function getImproviseEnabled():Boolean{
-			var inputFile:File = File.applicationStorageDirectory.resolvePath("config/improvise5.xml") ;
+		public static function getImproviseEnabled(song:String):Boolean{
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("config/song_"+song+"/improvise.xml") ;
 			if(inputFile.exists){
 				var inputStream:FileStream = new FileStream();
 				inputStream.open(inputFile, FileMode.READ);
@@ -156,24 +156,24 @@ package com.model
 			
 		}
 		
-		public  function exportSessionData(sessionXml:XML):void{
-			var folder:File = File.applicationStorageDirectory.resolvePath("sessions");
-			if (!folder.exists) { 
-				folder.createDirectory();
-			} 
-			var outputFile:File = folder.resolvePath("userSession.xml");
-			if(outputFile.exists){
-				outputFile.deleteFile();
-			}
-			var outputStream:FileStream = new FileStream();
-			outputStream.open(outputFile,FileMode.WRITE);
-			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
-			//outputString += '<userSession>\n';
-			outputString += sessionXml.toXMLString()+'\n';
-			//outputString += '</userSession>\n';
-			outputStream.writeUTFBytes(outputString);
-			outputStream.close();
-		}
+//		public  function exportSessionData(sessionXml:XML):void{
+//			var folder:File = File.applicationStorageDirectory.resolvePath("sessions");
+//			if (!folder.exists) { 
+//				folder.createDirectory();
+//			} 
+//			var outputFile:File = folder.resolvePath("userSession.xml");
+//			if(outputFile.exists){
+//				outputFile.deleteFile();
+//			}
+//			var outputStream:FileStream = new FileStream();
+//			outputStream.open(outputFile,FileMode.WRITE);
+//			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
+//			//outputString += '<userSession>\n';
+//			outputString += sessionXml.toXMLString()+'\n';
+//			//outputString += '</userSession>\n';
+//			outputStream.writeUTFBytes(outputString);
+//			outputStream.close();
+//		}
 		
 		public static function reset(protector:TrainBeats):void{
 			var files:Array=File.applicationStorageDirectory.getDirectoryListing();

@@ -235,9 +235,9 @@ class LearnSongPannel extends Sprite{
 		addChild(freestyle);
 		freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
 		freestyle.y = 310;
-		freestyle.visible = FileProxy.getImproviseEnabled();
+		freestyle.visible = FileProxy.getImproviseEnabled(_name);
 		FileProxy.freeStyleSignal.add(function():void{
-			freestyle.visible = FileProxy.getImproviseEnabled()
+			freestyle.visible = FileProxy.getImproviseEnabled(_name)
 		}
 		);
 	}
