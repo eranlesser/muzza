@@ -8,9 +8,12 @@ package com.model
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 	
+	import org.osflash.signals.Signal;
+	
 	public class FileProxy
 	{
 		private static var _highScore:int=0;
+		public static var freeStyleSignal:Signal = new Signal();
 		public function FileProxy(){
 			
 		}
@@ -91,39 +94,40 @@ package com.model
 			}
 		}
 		
-//		public static function setImproviseEnabled(flag:Boolean,stage:DisplayObjectContainer):void{
-//			if(getImproviseEnabled() == false && flag){
-//				trace("***POPUP****");
-//				return; // temp
-//			}
-//			var folder:File = File.applicationStorageDirectory.resolvePath("config");
-//			if (!folder.exists) { 
-//				folder.createDirectory();
-//			} 
-//			var outputFile:File = folder.resolvePath("improvise3.xml");
-//			if(outputFile.exists){
-//				outputFile.deleteFile();
-//			}
-//			var outputStream:FileStream = new FileStream();
-//			outputStream.open(outputFile,FileMode.WRITE);
-//			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
-//			outputString += '<data><improvise enabled="'+flag.toString()+'" /></data>';
-//			outputStream.writeUTFBytes(outputString);
-//			outputStream.close();
-//		}
-//		
-//		public static function getImproviseEnabled():Boolean{
-//			var inputFile:File = File.applicationStorageDirectory.resolvePath("config/improvise3.xml") ;
-//			if(inputFile.exists){
-//				var inputStream:FileStream = new FileStream();
-//				inputStream.open(inputFile, FileMode.READ);
-//				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
-//				inputStream.close();
-//				return true//sessionXML.improvise.@enabled=="true";
-//			}else{
-//				return true;
-//			}
-//		}
+		public static function setImproviseEnabled(flag:Boolean):void{
+			if(getImproviseEnabled() == false && flag){
+				trace("***POPUP****");
+				//return; // temp
+			}
+			var folder:File = File.applicationStorageDirectory.resolvePath("config");
+			if (!folder.exists) { 
+				folder.createDirectory();
+			} 
+			var outputFile:File = folder.resolvePath("improvise5.xml");
+			if(outputFile.exists){
+				outputFile.deleteFile();
+			}
+			var outputStream:FileStream = new FileStream();
+			outputStream.open(outputFile,FileMode.WRITE);
+			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
+			outputString += '<data><improvise enabled="'+flag.toString()+'" /></data>';
+			outputStream.writeUTFBytes(outputString);
+			outputStream.close();
+			freeStyleSignal.dispatch();
+		}
+		
+		public static function getImproviseEnabled():Boolean{
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("config/improvise5.xml") ;
+			if(inputFile.exists){
+				var inputStream:FileStream = new FileStream();
+				inputStream.open(inputFile, FileMode.READ);
+				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
+				inputStream.close();
+				return sessionXML.improvise.@enabled=="true";
+			}else{
+				return false;
+			}
+		}
 		
 		
 		public  function getSongData(songInx:uint,instrument:String,id:uint):XML{

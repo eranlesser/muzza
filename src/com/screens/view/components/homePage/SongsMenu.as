@@ -80,20 +80,23 @@ package com.screens.view.components.homePage
 			_wallLayer.x = (_wallLayer.x-Dimentions.WIDTH);
 			_thumbsLayer.x = (_thumbsLayer.x-Dimentions.WIDTH);
 			_poleLayer.x = (_poleLayer.x-Dimentions.WIDTH);
-			var tmr:Timer = new Timer(400,1);
+			//var tmr:Timer = new Timer(400,1);
 			
-			var enterSound:Sound = new Sound();
-			enterSound.load(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"))
-			enterSound.addEventListener(Event.COMPLETE,function onSoundReady(e:Event):void{
-				enterSound.removeEventListener(Event.COMPLETE, onSoundReady);
-				tmr.start();
-			});
+//			var enterSound:Sound = new Sound();
+//			enterSound.load(new URLRequest("../../../../../assets/sounds/trainarrives.mp3"))
+//			enterSound.addEventListener(Event.COMPLETE,function onSoundReady(e:Event):void{
+//				enterSound.removeEventListener(Event.COMPLETE, onSoundReady);
+//				tmr.start();
+//			});
 			//enterSound.play();
-			tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
-				tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
+			//tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function start(e:Event):void{
+			//	tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, start);
 				var wtween:GTween = new GTween(_wallLayer,1,{x:0},{ease:Circular.easeInOut});
 				var tween:GTween = new GTween(_thumbsLayer,1,{x:0},{ease:Circular.easeInOut});
 				var ptween:GTween = new GTween(_poleLayer,1.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
+				wtween.delay=0.5;
+				tween.delay=0.5;
+				ptween.delay=0.5;
 				ptween.onComplete = function dispatchComplete(t:GTween):void{
 					ready.dispatch();
 					//var loopSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainloop1.mp3"));
@@ -103,7 +106,7 @@ package com.screens.view.components.homePage
 					//						cnl.addEventListener(Event.SOUND_COMPLETE,loop);
 					//					});
 				}
-			});
+			//});
 			
 		}
 		
@@ -162,6 +165,8 @@ package com.screens.view.components.homePage
 	}
 }
 import com.constants.Dimentions;
+import com.constants.Session;
+import com.model.FileProxy;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
@@ -192,8 +197,15 @@ class LearnSongPannel extends Sprite{
 	public function get songSelected():Signal{
 		return _songSelected;
 	}
-	private function onClick(e:Event):void{
+	private function onPlay(e:Event):void{
+		Session.IMPROVISE_MODE = false;
 		_songSelected.dispatch(_name);
+	}
+	protected function onFreeStyle(event:MouseEvent):void
+	{
+		Session.IMPROVISE_MODE = true;
+		_songSelected.dispatch(_name);
+		
 	}
 	
 	private function setData(xml:XML):void{
@@ -214,12 +226,23 @@ class LearnSongPannel extends Sprite{
 		
 		
 		var playBtn:Sprite=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
-		playBtn.addEventListener(MouseEvent.CLICK,onClick);
+		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
 		addChild(playBtn);
 		playBtn.x = 650;
-		playBtn.y = 230;
-		
+		playBtn.y = 210;
+		var freestyle:Btn=new Btn("freestyle.png","freestyle.png");
+		freestyle.addEventListener(MouseEvent.CLICK,onFreeStyle);
+		addChild(freestyle);
+		freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
+		freestyle.y = 310;
+		freestyle.visible = FileProxy.getImproviseEnabled();
+		FileProxy.freeStyleSignal.add(function():void{
+			freestyle.visible = FileProxy.getImproviseEnabled()
+		}
+		);
 	}
+	
+		
 	
 	public function get songName():String{
 		return _name;

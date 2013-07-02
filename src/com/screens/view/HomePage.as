@@ -195,8 +195,6 @@ class Credits extends Sprite{
 			"<div> Sound Production: <a href='http://www.moca.co.il'>Moca Studio</a></div><br><br>" +
 			"<div> The Human Bass: Idan </div><br><br><br>" +
 			"<div> Special Thanks To:</ul></div><br><br><br>" +
-			"<div> Yair Katz, Yoran Bar: UX</div><br><br>" +
-			"<div> BackYard Studio: Additional sounds</div><br><br>" +
 			"<div> Avi & Nitzan Berger: Music & Sounds prototyping</div><br><br><br>" +
 			"<div> Dear supporting parents & family </div><br><br><br>" +
 			"<div> Sima & Alma </div><br><br><br><br>"+
@@ -208,7 +206,7 @@ class Credits extends Sprite{
 		
 		addChild(tField);
 		tField.x=(Dimentions.WIDTH-tField.width)/2;
-		tField.y=Dimentions.HEIGHT-200;
+		tField.y=Dimentions.HEIGHT-250;
 		_tween = new GTween(tField,30,{y:-tField.height});
 		_tween.repeatCount=0;
 		var msk:Shape = new Shape();

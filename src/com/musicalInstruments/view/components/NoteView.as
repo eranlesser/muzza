@@ -1,14 +1,6 @@
 package com.musicalInstruments.view.components {
-	import com.gamification.RepresentationtypeController;
-	import com.gskinner.motion.GTween;
-	import com.musicalInstruments.model.SequancedNote;
 	import com.representation.ChanelNotesType;
-	import com.representation.RepresentationSizes;
-	import com.representation.RepresentationType;
-	import com.view.tools.AssetsManager;
 	
-	import flash.display.Bitmap;
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.geom.ColorTransform;
 	import flash.text.TextField;
@@ -52,7 +44,6 @@ package com.musicalInstruments.view.components {
 			while(numChildren>0){
 				removeChildAt(0);
 			}
-			var representationController:RepresentationtypeController = RepresentationtypeController.getInstane();
 			drawSymbol(_noteValue,_channelType);
 		}
 		

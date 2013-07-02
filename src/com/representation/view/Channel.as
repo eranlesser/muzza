@@ -1,25 +1,17 @@
 package com.representation.view {
 	import com.constants.Dimentions;
-	import com.gamification.INoteDisplayer;
-	import com.gamification.RepresentationtypeController;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.view.components.NoteView;
 	import com.representation.RepresentationSizes;
-	import com.view.tools.AssetsManager;
 	
-	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	
-	import org.osflash.signals.Signal;
 	
 	
-	public class Channel extends Sprite implements INoteDisplayer
+	public class Channel extends Sprite
 	{
 		private var _instrument:	CoreInstrumentModel;
 		private var _notesFetcher:	INoteFetcher;
@@ -32,7 +24,6 @@ package com.representation.view {
 			_notes = new Vector.<NoteView>();
 			_notesFetcher = _instrument as NotesInstrumentModel;
 			drawFrame();
-			RepresentationtypeController.getInstane().register(this);
 		}
 		
 		public function showData():String{

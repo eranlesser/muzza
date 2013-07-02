@@ -2,14 +2,12 @@ package com.screens.model {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.view.DemoScreen;
 	import com.screens.view.IScreen;
-	import com.studio.Studio;
 	
 
 	public class ScreensModel {
 		
 		private var _recordSession:	RecordSession;
 		private var _demoScreen:	DemoScreen;
-		private var _studio:		Studio;
 		private var _currentScreen:	IScreen;
 		private var _xml:XML;
 		private var _instrumentsModel:ThemeInstrumentsModel;
@@ -34,9 +32,7 @@ package com.screens.model {
 		
 		public function set playMode(mode:String):void{
 			switch(mode){
-				case "studio":
-					_currentScreen=_studio;
-					break;
+				
 				case "record":
 					_currentScreen=_recordSession.currentScreen;
 					break;

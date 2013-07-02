@@ -372,7 +372,7 @@ package com.view.tools
 			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/BASS_PROFILE_PIC.png' />"+
-			"<image path='assets/POP_UP/dj.jpg' />"+
+			"<image path='assets/POP_UP/Turntable.png' />"+
 			"<image path='assets/POP_UP/DRUMMER_PROFILE_PIC.png' />"+
 			"<image path='assets/POP_UP/GIRL_PROFILE_PIC.png' />"+
 			"<image path='assets/POP_UP/next_IDLE.png' />"+
@@ -383,6 +383,7 @@ package com.view.tools
 			
 //			"<image path='assets/hour_glass.png' />"+
 //			"<image path='assets/hour_glass_alert.png' />"+
+			"<image path='assets/vica/freestyle.png' />"+
 			"<image path='assets/vica/bgBlur.png' />"+
 			"<image path='assets/vica/record_BTN_puse.png' />"+
 			"<image path='assets/vica/record_BTN_play.png' />"+
