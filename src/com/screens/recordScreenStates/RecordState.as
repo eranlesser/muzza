@@ -1,6 +1,7 @@
 package com.screens.recordScreenStates
 {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.constants.States;
 	import com.container.Presenter;
 	import com.gskinner.motion.GTween;
@@ -33,9 +34,9 @@ package com.screens.recordScreenStates
 		private var _msk:				Shape = new Shape();
 		private var _toPlayNotes:		Vector.<DroppingNote>;
 		private var _isActive:Boolean = false;
-		private var _scoreMediator:ScoreMediator;
-		private var _hintArrow:Sprite;
-		private var _popUpsManager:PopUpsManager;
+		private var _scoreMediator:		ScoreMediator;
+		private var _hintArrow:			Sprite;
+		private var _popUpsManager:		PopUpsManager;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
@@ -81,7 +82,7 @@ package com.screens.recordScreenStates
 				arrowHead.y=shp.height-1;
 				arrowHead.x=(shp.width-arrowHead.width)/2;
 			}
-			if(_toPlayNotes.length>0 && _context.notes.visible){
+			if(_toPlayNotes.length>0 && !Session.IMPROVISE_MODE){
 				_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/4;
 				_hintArrow.y = _context.model.noteTargetsY+30;
 				
@@ -90,7 +91,7 @@ package com.screens.recordScreenStates
 		}
 		
 		private function checkNotesMatch(noteId:String):void{
-			if(!_context.notes.visible){
+			if(Session.IMPROVISE_MODE){
 				_tween.paused=false;
 				return;
 			}
@@ -157,7 +158,9 @@ package com.screens.recordScreenStates
 			if(_hintArrow&&_hintArrow.parent){
 				_context.guiLayer.removeChild(_hintArrow)
 			}
-			_popUpsManager.openPopUp(_scoreMediator.accuracy,_scoreMediator.wrongNotes,_scoreMediator.score);
+			if(!Session.IMPROVISE_MODE){
+				_popUpsManager.openPopUp(_scoreMediator.accuracy,_scoreMediator.wrongNotes,_scoreMediator.score);
+			}
 			_scoreMediator.active=false;
 			_context.model.score = _scoreMediator.score;
 			//Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail+" "+_scoreMediator.score);
@@ -180,7 +183,7 @@ package com.screens.recordScreenStates
 		private function onTimerTick():void{
 			
 			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(fixNum,_timeModel.currentTick);
-			if(!_context.notes.visible){
+			if(Session.IMPROVISE_MODE){
 				if(_toPlayNotes.length>0){
 					_context.notes.removeNote(_toPlayNotes[0]);
 					_toPlayNotes.splice(0,1);

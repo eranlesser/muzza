@@ -1,7 +1,9 @@
 package com.screens.mediator
 {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.gskinner.motion.GTween;
+	import com.model.FileProxy;
 	import com.screens.recordScreenStates.RecordState;
 	import com.view.tools.AssetsManager;
 	
@@ -26,6 +28,8 @@ package com.screens.mediator
 			_recordState.view.addChild(_scorePanel);
 			_scorePanel.x=22;
 			_scorePanel.y=28;
+			scorePanelVisible();
+			Session.improviseSignal.add(scorePanelVisible);
 		}
 		
 		public function get wrongNotes():uint
@@ -35,7 +39,7 @@ package com.screens.mediator
 
 		public function get accuracy():int
 		{
-			return 100-(_accuracy/_scores.length)*10;
+			return Math.max(100-(_accuracy/_scores.length)*10);
 		}
 
 		public function get score():int{
@@ -57,8 +61,8 @@ package com.screens.mediator
 			}
 		}
 		
-		public function set visible(isImproviseMode:Boolean):void{
-			_scorePanel.visible = !isImproviseMode;
+		private function scorePanelVisible():void{
+			_scorePanel.visible = !Session.IMPROVISE_MODE;
 		}
 		
 		private function onPauseSignal(val:Boolean):void
@@ -228,6 +232,7 @@ class ScorePanel extends Sprite{
 			addChild(icon);
 			icon.y=18;
 			icon.x=12;
+			icon.alpha=0.75;
 			//icon.filters = [new GlowFilter(0XFFFFFF)]
 		}
 	}

@@ -1,15 +1,10 @@
 package com.musicalInstruments.view.components
 {
-	import com.gamification.INoteDisplayer;
-	import com.gamification.RepresentationtypeController;
 	import com.musicalInstruments.model.InstrumentComponentModel;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
-	import com.representation.ChanelNotesType;
 	import com.view.tools.AssetsManager;
-	import com.view.tools.SpriteSheet;
 	
 	import flash.display.Bitmap;
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
@@ -18,7 +13,7 @@ package com.musicalInstruments.view.components
 	
 	import org.osflash.signals.Signal;
 	
-	public class MusicalInstrumentComponent extends Sprite implements INoteDisplayer{
+	public class MusicalInstrumentComponent extends Sprite {
 		
 		private var _model:			InstrumentComponentModel;
 		private var _idleImage:		Bitmap;
@@ -60,7 +55,6 @@ package com.musicalInstruments.view.components
 			
 			
 			//addChild(_mark)
-			RepresentationtypeController.getInstane().register(this);
 			//dev
 			this.addEventListener(MouseEvent.MOUSE_DOWN,onTouch);
 			this.addEventListener(MouseEvent.MOUSE_UP,onUnTouch);

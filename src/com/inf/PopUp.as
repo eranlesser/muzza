@@ -31,7 +31,7 @@ package com.inf
 		private var _score:TextField;
 		private var seg:DisplayObject;
 		private static var wdt:uint=290;
-		private static var hgt:uint=210;
+		private static var hgt:uint=150;
 		public function PopUp()
 		{
 			drawBg(wdt);
@@ -79,6 +79,7 @@ package com.inf
 			_title.x=70+20;
 			_title.y=28;
 			_title.text=txt;
+			_title.height=70;
 			_bg.addChild(_title);
 		}
 		private function setBestScore(txt:String):void{
@@ -129,7 +130,7 @@ package com.inf
 			_content.wordWrap = true;
 			_content.multiline = true;
 			_content.htmlText=txt;
-			_bg.addChild(_content);
+			//_bg.addChild(_content);
 		}
 		
 		private function addScore(txt:String):void{
@@ -145,7 +146,7 @@ package com.inf
 			_score.wordWrap = true;
 			_score.multiline = true;
 			_score.htmlText=txt;
-			_bg.addChild(_score);
+			//_bg.addChild(_score);
 		}
 		public function setScore(accuracy:uint,wrongNotes:uint,instrumentScore:uint):void{
 			title="Your Score: "+instrumentScore;
@@ -207,7 +208,7 @@ package com.inf
 					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
 					break;
 				case "turnTable":
-					icon = AssetsManager.getAssetByName("dj.jpg");
+					icon = AssetsManager.getAssetByName("Turntable.png");
 					break;
 				default:
 					throw new Error("no "+thmb);
@@ -228,7 +229,7 @@ package com.inf
 			_bg.addChild(leftSeg);
 			var butLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_LEFT_CORNER.png");
 			_bg.addChild(butLeft);
-			butLeft.y=seg.height-butLeft.height-2;
+			butLeft.y=seg.height-butLeft.height;
 			
 			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
 			_bg.addChild(topRight);
@@ -241,8 +242,8 @@ package com.inf
 			var rightSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_RIGHT_SEGMENT.png");
 			_bg.addChild(rightSeg);
 			rightSeg.x=topRight.x;
-			rightSeg.y=topRight.height-1;
-			leftSeg.y=topLeft.height-1;
+			rightSeg.y=topRight.height;
+			leftSeg.y=topLeft.height;
 			rightSeg.height=seg.height-topRight.height-butRight.height;
 			leftSeg.height=rightSeg.height;
 			addChild(_bg);

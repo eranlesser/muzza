@@ -3,7 +3,6 @@ package com.screens.model {
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
-	import com.screens.lyrics.LyricModel;
 
 	public class PlayScreenModel extends AbstractScreenModel
 	{
