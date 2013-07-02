@@ -229,12 +229,12 @@ class LearnSongPannel extends Sprite{
 		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
 		addChild(playBtn);
 		playBtn.x = 650;
-		playBtn.y = 230;
+		playBtn.y = 210;
 		var freestyle:Btn=new Btn("freestyle.png","freestyle.png");
 		freestyle.addEventListener(MouseEvent.CLICK,onFreeStyle);
 		addChild(freestyle);
 		freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
-		freestyle.y = 330;
+		freestyle.y = 310;
 		freestyle.visible = FileProxy.getImproviseEnabled();
 		FileProxy.freeStyleSignal.add(function():void{
 			freestyle.visible = FileProxy.getImproviseEnabled()
