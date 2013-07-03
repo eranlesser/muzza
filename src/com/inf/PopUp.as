@@ -26,9 +26,8 @@ package com.inf
 		private var _tryAgain:Btn;
 		public var tryAgainSignal:Signal = new Signal();
 		private var _title:TextField;
+		private var _maxScore:TextField;
 		private var _bestScore:TextField;
-		private var _content:TextField;
-		private var _score:TextField;
 		private var seg:DisplayObject;
 		private static var wdt:uint=290;
 		private static var hgt:uint=150;
@@ -77,31 +76,22 @@ package com.inf
 			_title.defaultTextFormat=fmt;
 			_title.width=wdt-70-20;
 			_title.x=70+20;
-			_title.y=28;
+			_title.y=20;
 			_title.text=txt;
 			_title.height=70;
 			_bg.addChild(_title);
 		}
-		private function setBestScore(txt:String):void{
-			if(!_bestScore){
-				_bestScore = new TextField();
-				//_bg.addChild(_bestScore);
-				var fmt:TextFormat = new TextFormat("Vardena",18,0x333333);
-				_bestScore.type = TextFieldType.DYNAMIC;
-				fmt.align = TextFormatAlign.RIGHT;
-				_bestScore.defaultTextFormat=fmt;
-				_bestScore.width=wdt-100;
-				_bestScore.y=50;
-			}
-			_bestScore.htmlText=txt;
-		}
-		
-		private function set content(value:String):void
-		{
-			if(!_content){
-				addContent(value);
-			}
-			_content.htmlText = value;
+		private function addMax(txt:String):void{
+			_maxScore = new TextField();
+			var fmt:TextFormat = new TextFormat("Vardena",18,0x333333);
+			_maxScore.type = TextFieldType.DYNAMIC;
+			_maxScore.defaultTextFormat=fmt;
+			_maxScore.width=wdt-70-20;
+			_maxScore.x=70+20;
+			_maxScore.y=60;
+			_maxScore.text=txt;
+			_maxScore.height=40;
+			_bg.addChild(_maxScore);
 		}
 		
 		private function set title(str:String):void{
@@ -110,49 +100,18 @@ package com.inf
 			}
 			_title.text = str;
 		}
-		private function set score(str:String):void{
-			if(!_score){
-				addScore(str);
+		private function set maxScore(str:String):void{
+			if(!_maxScore){
+				addMax(str);
 			}
-			_score.htmlText = str;
+			_maxScore.text = str;
 		}
-		
-		private function addContent(txt:String):void{
-			_content = new TextField();
-			var fmt:TextFormat = new TextFormat("Vardena",18,0x372c2d);
-			fmt.leading=8;
-			_content.type = TextFieldType.DYNAMIC;
-			_content.defaultTextFormat=fmt;
-			_content.width=wdt-140;
-			_content.height=hgt-140;
-			_content.x=40;
-			_content.y=90;
-			_content.wordWrap = true;
-			_content.multiline = true;
-			_content.htmlText=txt;
-			//_bg.addChild(_content);
-		}
-		
-		private function addScore(txt:String):void{
-			_score = new TextField();
-			var fmt:TextFormat = new TextFormat("Vardena",18,0x372c2d);
-			fmt.leading=8;
-			_score.type = TextFieldType.DYNAMIC;
-			_score.defaultTextFormat=fmt;
-			_score.width=60;
-			_score.height=hgt-140;
-			_score.x=_content.width+_content.x;
-			_score.y=90;
-			_score.wordWrap = true;
-			_score.multiline = true;
-			_score.htmlText=txt;
-			//_bg.addChild(_score);
-		}
-		public function setScore(accuracy:uint,wrongNotes:uint,instrumentScore:uint):void{
+		public function setScore(instrumentScore:uint,max:uint):void{
 			title="Your Score: "+instrumentScore;
-			setBestScore("Best Score: 670");
-			content = "<p>On Time: </p><p>Wrong Notes:</p> ";
-			score = "<p>"+ accuracy+"% </p><p>"+wrongNotes+"</p>";
+			maxScore = "Best score: "+max;
+			//setBestScore("Best Score: 670");
+			//content = "<p>On Time: </p><p>Wrong Notes:</p> ";
+			//score = "<p>"+ accuracy+"% </p><p>"+wrongNotes+"</p>";
 		}
 		
 		public function open():void{

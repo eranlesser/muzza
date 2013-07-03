@@ -154,7 +154,9 @@ package com.screens.recordScreenStates
 		public function get notes():Notes{
 			return _recordScreen.notes;
 		}
-		
+		public function get playGlow():Btn{
+			return _recordScreen.playGlow;
+		}
 		
 		
 		

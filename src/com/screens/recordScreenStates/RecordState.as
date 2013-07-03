@@ -9,6 +9,7 @@ package com.screens.recordScreenStates
 	import com.inf.PopUpsManager;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
+	import com.model.FileProxy;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.representation.ChanelNotesType;
 	import com.screens.mediator.ScoreMediator;
@@ -115,6 +116,7 @@ package com.screens.recordScreenStates
 		}
 		
 		public function activate():void{
+			_isActive = true;
 			_context.recordButton.state="pressed";
 			_context.playButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.add(checkNotesMatch);
@@ -122,6 +124,7 @@ package com.screens.recordScreenStates
 			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
 			_context.recordButton.clicked.add(onRecordBtn);
 			_context.playButton.clicked.add(onRecordBtn);
+			_context.playGlow.visible=false;
 			if(_context.instrumentRecorder is TapInstrument){
 				//TapInstrument(_context.instrumentRecorder).autoSetOctave(noteSequance);
 			}
@@ -136,10 +139,11 @@ package com.screens.recordScreenStates
 			if(_context.hasBackUps){
 				_context.muteBtn.visible=true;
 			}
-			_isActive = true;
+			
 		}
 		
 		public function deActivate():void{
+			_isActive = false;
 			_context.instrumentRecorder.notePlayed.remove(checkNotesMatch);
 			_context.instrumentRecorder.active = false;
 			_timeModel.tickSignal.remove(onTimerTick);
@@ -158,21 +162,24 @@ package com.screens.recordScreenStates
 			if(_hintArrow&&_hintArrow.parent){
 				_context.guiLayer.removeChild(_hintArrow)
 			}
-			if(!Session.IMPROVISE_MODE){
-				_popUpsManager.openPopUp(_scoreMediator.accuracy,_scoreMediator.wrongNotes,_scoreMediator.score);
-			}
+			
 			_scoreMediator.active=false;
 			_context.model.score = _scoreMediator.score;
 			//Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail+" "+_scoreMediator.score);
-			_isActive = false;
+			
 			
 		}
 
 		private function onComplete(t:GTween):void{
+			
 			stop();
 		}
 		
 		private function stop():void{
+			if(!Session.IMPROVISE_MODE&&_isActive){
+				FileProxy.setBestScore(_context.model.instrumentModel.thumbNail,_scoreMediator.score);
+				_popUpsManager.openPopUp(_scoreMediator.score,FileProxy.getBestScore(_context.model.instrumentModel.thumbNail));
+			}
 			_complete.dispatch();
 		}
 		

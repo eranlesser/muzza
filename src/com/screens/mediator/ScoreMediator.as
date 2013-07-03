@@ -32,15 +32,15 @@ package com.screens.mediator
 			Session.improviseSignal.add(scorePanelVisible);
 		}
 		
-		public function get wrongNotes():uint
-		{
-			return _wrongNotes;
-		}
-
-		public function get accuracy():int
-		{
-			return Math.max(100-(_accuracy/_scores.length)*10);
-		}
+//		public function get wrongNotes():uint
+//		{
+//			return _wrongNotes;
+//		}
+//
+//		public function get accuracy():int
+//		{
+//			return Math.max(100-(_accuracy/_scores.length)*10);
+//		}
 
 		public function get score():int{
 			return _score;
@@ -82,7 +82,8 @@ package com.screens.mediator
 				_recordState.showHint();
 			}
 		}
-		
+		private const comboLength:uint=5;
+		private const sequanceLength:uint=12;
 		private function onScoreSignal(toPlayTime:int,curTime:int):void
 		{
 			if(toPlayTime==-1){
@@ -108,7 +109,7 @@ package com.screens.mediator
 			
 			//combo
 			var isCombo:Boolean=true;
-			const comboLength:uint=5;
+			
 			var i:int;
 			for(i=_scores.length-1;i>_scores.length-comboLength;i--){
 				if(i<0 || _scores[i].value<=8 || _scores[i].wasInCombo){
@@ -125,7 +126,7 @@ package com.screens.mediator
 			}
 			//sequance
 			var isSequance:Boolean=true;
-			const sequanceLength:uint=12;
+			
 			var n:int;
 			for(n=_scores.length-1;n>_scores.length-sequanceLength;n--){
 				if(n<0 || _scores[n].value<0 || _scores[n].wasInSequance){
@@ -204,13 +205,13 @@ class scoreData{
 class ScorePanel extends Sprite{
 	private var _scoreField:TextField;
 	public function ScorePanel(tmb:String){
-		addChild(AssetsManager.getAssetByName("scorePanel.png"));
+		addChild(AssetsManager.getAssetByName("scoreBg.png"));
 		_scoreField = new TextField();
 		_scoreField.width=130;
-		_scoreField.x = 14;
-		_scoreField.y=18;
+		_scoreField.x = 6;
+		_scoreField.y=16;
 		_scoreField.autoSize = TextFieldAutoSize.CENTER;
-		_scoreField.defaultTextFormat = new TextFormat(null,34,0x4db9e0);
+		_scoreField.defaultTextFormat = new TextFormat("Helvetica",32,0x4db9e0);
 		addChild(_scoreField);
 		_scoreField.text ="0";
 		var icon:DisplayObject;
@@ -230,11 +231,12 @@ class ScorePanel extends Sprite{
 		}
 		if(icon){
 			addChild(icon);
-			icon.y=18;
-			icon.x=12;
+			icon.y=20;
+			icon.x=10;
 			icon.alpha=0.75;
 			//icon.filters = [new GlowFilter(0XFFFFFF)]
 		}
+		addChild(AssetsManager.getAssetByName("scoreCover.png"));
 	}
 	
 	public function setScore(score:int):void{

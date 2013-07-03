@@ -9,9 +9,9 @@ package com.screens.view {
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.instrument.TurnTable;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.instrument.*;
+	import com.musicalInstruments.view.instrument.TurnTable;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
@@ -93,19 +93,22 @@ package com.screens.view {
 				super.start();
 				_recordBtn = new Btn("record_BTN_play.png","record_BTN_puse.png");
 				addChild(_recordBtn);
-				_recordBtn.x=413;
+				_recordBtn.x=(Dimentions.WIDTH-_recordBtn.width)/2;
 				_recordBtn.y=44//(strip.height-practiceBtn.height)/2-2;
 				_playBtn = new Btn("play_BTN_play.png","play_BTN_puse.png");
-				_playBtn.x=443;
+				_playBtn.x=(Dimentions.WIDTH-_playBtn.width)/2;
 				_playBtn.y=44//(strip.height-practiceBtn.height)/2-2;
 				_playBtnOver = new Btn("play_BTN.png","play_BTN.png");
 				addChild(_playBtnOver);
 				addChild(_playBtn);
-				_playBtnOver.alpha=0.6;
-				_playBtnOver.x=441;
-				_playBtnOver.y=54//(strip.height-practiceBtn.height)/2-2;
-				var playTween1:GTween = new GTween(_playBtnOver,2.2,{alpha:0},{ease:Bounce.easeOut});
-				playTween1.delay=2;
+				_playBtnOver.alpha=0;
+				_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
+				_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
+				var playTween1:GTween = new GTween(_playBtnOver,3,{alpha:1},{ease:Bounce.easeOut});
+				playTween1.delay=1;
+				playTween1.onComplete = function():void{
+					new GTween(_playBtnOver,1.2,{alpha:0},{ease:Bounce.easeOut});
+				}
 				_muteButton = new Btn("muteBTN_on.png","muteBTN_off.png");
 				_guiLayer.addChild(_muteButton);
 				_muteButton.x=Dimentions.WIDTH-_muteButton.width-8//_recordBtn.x+_recordBtn.width+12;
@@ -249,6 +252,10 @@ package com.screens.view {
 		}
 		public function get guiLayer():Sprite{
 			return _guiLayer;
+		}
+		
+		public function get playGlow():Btn{
+			return _playBtnOver;
 		}
 		
 	}

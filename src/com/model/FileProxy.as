@@ -69,7 +69,7 @@ package com.model
 			if (!folder.exists) { 
 				folder.createDirectory();
 			} 
-			var outputFile:File = folder.resolvePath("highScore2.xml");
+			var outputFile:File = folder.resolvePath("highScore3.xml");
 			if(outputFile.exists){
 				outputFile.deleteFile();
 			}
@@ -82,7 +82,7 @@ package com.model
 		}
 		
 		public static function getHighScore():int{
-			var inputFile:File = File.applicationStorageDirectory.resolvePath("score/song_"+Session.SONG_NAME+"/highScore2.xml") ;
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("score/song_"+Session.SONG_NAME+"/highScore3.xml") ;
 			if(inputFile.exists){
 				var inputStream:FileStream = new FileStream();
 				inputStream.open(inputFile, FileMode.READ);
@@ -92,6 +92,39 @@ package com.model
 			}else{
 				return 0;
 			}
+		}
+		
+		public static function getBestScore(instrument:String):uint{
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("score/song_"+Session.SONG_NAME+"/"+instrument+".xml") ;
+			if(inputFile.exists){
+				var inputStream:FileStream = new FileStream();
+				inputStream.open(inputFile, FileMode.READ);
+				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
+				inputStream.close();
+				return sessionXML.score.@best;
+			}else{
+				return 0;
+			}
+		}
+		
+		public static function setBestScore(instrument:String,score:uint):void{
+			if(score<=getBestScore(instrument)){
+				return;
+			}
+			var folder:File = File.applicationStorageDirectory.resolvePath("score/song_"+Session.SONG_NAME);
+			if (!folder.exists) { 
+				folder.createDirectory();
+			} 
+			var outputFile:File = folder.resolvePath(instrument+".xml");
+			if(outputFile.exists){
+				outputFile.deleteFile();
+			}
+			var outputStream:FileStream = new FileStream();
+			outputStream.open(outputFile,FileMode.WRITE);
+			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
+			outputString += '<data><score best="'+score.toString()+'" /></data>';
+			outputStream.writeUTFBytes(outputString);
+			outputStream.close();
 		}
 		
 		public static function setImproviseEnabled(flag:Boolean):void{

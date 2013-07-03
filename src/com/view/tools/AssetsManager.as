@@ -391,7 +391,8 @@ package com.view.tools
 			"<image path='assets/vica/play_BTN_puse.png' />"+
 			"<image path='assets/vica/play_BTN_play.png' />"+
 			"<image path='assets/gui/sign.png' />"+
-			"<image path='assets/vica/scorePanel.png' />"+
+			"<image path='assets/vica/scoreBg.png' />"+
+			"<image path='assets/vica/scoreCover.png' />"+
 			"<image path='assets/vica/menu.png' />"+
 			"<image path='assets/vica/muteBTN_off.png' />"+
 			"<image path='assets/vica/muteBTN_on.png' />"+

@@ -3,7 +3,6 @@ package com.screens.view {
 	import com.metronom.*;
 	import com.musicalInstruments.model.*;
 	import com.musicalInstruments.view.character.PlayMusician;
-	import com.screens.lyrics.*;
 	import com.screens.model.PlayScreenModel;
 	import com.view.gui.Btn;
 	import com.view.gui.ToggleBut;
