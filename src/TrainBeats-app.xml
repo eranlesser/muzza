@@ -15,9 +15,9 @@
 
 	<!-- A universally unique application identifier. Must be unique across all AIR applications.
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-	<id>app.for.vica</id>
+	<!-- <id>app.for.vica.debug</id>-->
 	<!--  -<id>com.trainBeats.dev</id>-->
-	<!--  <id>com.trainbeats.opencurtain</id>-->
+	 <id>com.trainbeats.opencurtain</id>
 
 	<!-- Used as the filename for the application. Required. -->
 	<filename>TrainBeats</filename>
