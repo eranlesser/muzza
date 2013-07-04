@@ -1,5 +1,6 @@
 package com.model.rawData
 {
+	import com.model.rawData.motzart.MotzartData;
 	import com.model.rawData.ode.OdeData;
 
 	public class Data
@@ -12,9 +13,9 @@ package com.model.rawData
 			<data>
 			<lessons type="lessons">
 				<song name="ode" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
-			<!--			<song name="mozart" thumbNail="MOZART_PICTURE.png"  title="ODE_TO_JOY.png"/>
+				<song name="mozart" thumbNail="MOZART_PICTURE.png"  title="ODE_TO_JOY.png"/>
 				<song name="edvard"  thumbNail="EDVARD_GRIEG.png"  title="MOUNTAIN_KING.png"  />
-					<song name="brazil"  thumbNail="BRAZIL_PICTURE.png"  title="WATERCOLORS_of_BRAZIL.png"  />
+			<!--		<song name="brazil"  thumbNail="BRAZIL_PICTURE.png"  title="WATERCOLORS_of_BRAZIL.png"  />
 
 				<song name="jingleBells" thumbNail="JINGLE_BELLS_PICTURE.png"  title="JINGLE_BELLS.png"  />
 				<song name="tarab"  thumbNail="Tarab.png"  title="Tarab.png"  />
@@ -42,7 +43,7 @@ package com.model.rawData
 					songData = OdeData.data; 
 					break;
 				case "mozart":
-				//	songData = MotzartData.data;
+					songData = MotzartData.data;
 					break;
 				case "jingleBells":
 						//songData = JingleBells.data;
