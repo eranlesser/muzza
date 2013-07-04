@@ -1,5 +1,6 @@
 package com.model.rawData
 {
+	import com.model.rawData.edvard.EdvardData;
 	import com.model.rawData.motzart.MotzartData;
 	import com.model.rawData.ode.OdeData;
 
@@ -35,7 +36,7 @@ package com.model.rawData
 			var songData:XML 
 			switch(songName){
 				case "edvard":
-				//	songData = EdvardData.data;
+					songData = EdvardData.data
 					break;
 				case "beethoven":
 					break;

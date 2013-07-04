@@ -33,6 +33,7 @@ package com.musicalInstruments.view.components {
 		
 		public function play(volume:Number):SoundChannel{
 			var channel:SoundChannel = _sound.play();
+		//	trace(_soundFile)
 			if(channel == null){
 				return channel;
 			}
@@ -42,6 +43,8 @@ package com.musicalInstruments.view.components {
 			}
 			channel.addEventListener(Event.SOUND_COMPLETE,
 				function onSoundComplete(e:Event):void{
+					e.stopImmediatePropagation();
+					e.stopPropagation();
 					channel.removeEventListener(Event.SOUND_COMPLETE,onSoundComplete);
 					soundComplete.dispatch();
 				}
