@@ -16,7 +16,6 @@ package com.musicalInstruments.view.instrument
 	public class TurnTable extends Instrument
 	{
 		private var _vinylContainer:	Sprite;
-		private var _vinyl:				Vinyl;
 		private var _chelo:				Sprite;
 		private var _upNoteId:			String;
 		private var _downNoteId:		String;
@@ -32,23 +31,69 @@ package com.musicalInstruments.view.instrument
 			var pole:DisplayObject = AssetsManager.getAssetByName("pole.png");
 			addChild(pole);
 			pole.y=130;
-			addVinyl(_model.rawData);
+			if(_model.rawData.vinyl.@image.toString().length>0){
+				addVinyl(_model.rawData);
+			}
+			if(_model.rawData.loopy.@image.toString().length>0){
+				addLoop(_model.rawData);
+			}
 			addChelo(_model.rawData);
-			addHey(_model.rawData)
+			if(_model.rawData.hey.@sound.toString().length>0){
+				addHey(_model.rawData);
+			}
 		}
+		
+//___________________________________________________________________________________________________________		
+//____________________________________________________________________________________________________LOOP
+		private function addLoop(xml:XML):void{
+			var loopy:Loopy;
+			var vBg:DisplayObject = (AssetsManager.getAssetByName(xml.loopy.@image));
+			addChild(vBg);
+			
+			_vinylContainer = new Sprite();
+			loopy = new Loopy(AssetsManager.getAssetByName(xml.loopy.@imageTap));
+			_vinylContainer.addChild(loopy);
+			loopy.x=-loopy.width/2;
+			loopy.y=-loopy.height/2;
+			addChild(_vinylContainer);
+			_vinylContainer.x = xml.loopy.@x;
+			_vinylContainer.y = xml.loopy.@y;
+			vBg.x = xml.loopy.@x-vBg.width/2;
+			vBg.y = xml.loopy.@y-vBg.height/2;
+			loopy.onPlay.add(
+				function onPlay(flag:Boolean):void{
+					if(flag){
+						addEventListener(Event.EXIT_FRAME,turn);
+					}else{
+						removeEventListener(Event.EXIT_FRAME,turn);
+					}
+				}
+			);
+			
+			//_vinylContainer.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
+		}
+		
+		private function turn (e:Event):void{
+			
+			
+			_vinylContainer.rotation = _vinylContainer.rotation + 1;
+		}
+		
+	
 		
 //___________________________________________________________________________________________________________		
 //____________________________________________________________________________________________________VINYL		
 		
 		private function addVinyl(xml:XML):void{
+			var vinyl:Vinyl;
 			var vBg:DisplayObject = (AssetsManager.getAssetByName(xml.vinyl.@image));
 			addChild(vBg);
 			
 			_vinylContainer = new Sprite();
-			_vinyl = new Vinyl(AssetsManager.getAssetByName(xml.vinyl.@imageTap));
-			_vinylContainer.addChild(_vinyl);
-			_vinyl.x=-_vinyl.width/2;
-			_vinyl.y=-_vinyl.height/2;
+			vinyl = new Vinyl(AssetsManager.getAssetByName(xml.vinyl.@imageTap));
+			_vinylContainer.addChild(vinyl);
+			vinyl.x=-vinyl.width/2;
+			vinyl.y=-vinyl.height/2;
 			addChild(_vinylContainer);
 			_vinylContainer.x = xml.vinyl.@x;
 			_vinylContainer.y = xml.vinyl.@y;
@@ -188,6 +233,7 @@ package com.musicalInstruments.view.instrument
 }
 import com.metronom.Metronome;
 import com.musicalInstruments.view.components.SoundPlayer;
+import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
@@ -259,6 +305,28 @@ class Vinyl extends Sprite{
 		addChild(_tapImage)
 		//_tapImage.visible = false;
 	}
+	
+	
+}
+
+
+class Loopy extends Sprite{
+	private var _tapImage:DisplayObject;
+	private var _playBtn:Btn;
+	public var onPlay:Signal = new Signal();
+	private var _isPlaying:Boolean=false;
+	public function Loopy(tapImage:DisplayObject){
+		_tapImage = tapImage;
+		addChild(_tapImage)
+		//_tapImage.visible = false;
+		addEventListener(MouseEvent.CLICK,onClick);
+	}
+	
+	private function onClick(e:MouseEvent):void{
+		_isPlaying=!_isPlaying;
+		onPlay.dispatch(_isPlaying);
+	}
+	
 	
 	
 }

@@ -88,8 +88,8 @@ package com.screens.view
 			if(Session.instance.goodScreensLength==4){
 				FileProxy.setImproviseEnabled(true);
 			}
-				_claps.play();
-				_hat.fillHat(Session.instance.score);
+			_claps.play();
+			_hat.fillHat(Session.instance.score);
 			//}
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();

@@ -15,17 +15,12 @@ package com.model.rawData.edvard
 		<powee id="C_6" image="iron1normal.png" imageTap="iron1tap.png" x="20"  sound="mountain/flut/C_6.mp3"   />
 		<powee id="C#_6" image="iron2normal.png" imageTap="iron2tap.png" x="110"  sound="mountain/flut/C_diez_6.mp3" />
 		<powee id="D_5"   image="iron3normal.png" imageTap="iron3tap.png" x="220" sound="mountain/flut/D_5.mp3" />
-		<powee id="E_5" image="iron1normal.png" imageTap="iron1tap.png" x="220"  sound="mountain/flut/E_5.mp3"   />
-		<powee id="F_5" image="iron2normal.png" imageTap="iron2tap.png" x="310"  sound="mountain/flut/F_5.mp3" />
+		<powee id="E_5" image="iron1normal.png" imageTap="iron1tap.png" x="310"  sound="mountain/flut/E_5.mp3"   />
+		<powee id="F_5" image="iron2normal.png" imageTap="iron2tap.png" x="400"  sound="mountain/flut/F_5.mp3" />
 	</chelo>
 	
 			
-	<vinyl image="DJnormal.png" imageTap="DJtap.png" x="740" y="138" >
-		<notes>
-			<up noteId="E_5" />
-			<down noteId="D_5" />
-		</notes>
-	</vinyl>
+	
 </rawData>
 
 			<octaves>

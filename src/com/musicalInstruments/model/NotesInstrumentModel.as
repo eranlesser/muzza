@@ -64,10 +64,12 @@ package com.musicalInstruments.model
 		
 		public function getNoteById(id:String):NoteModel{
 			var ntm:NoteModel;
-			for each(var noteModel:NoteModel in _octaves[_currentOctave]){
-				if(noteModel.id == id){
-					ntm = noteModel;
-					break;
+			for each(var octave:Vector.<NoteModel> in _octaves){
+				for each(var noteModel:NoteModel in octave){
+					if(noteModel.id == id){
+						ntm = noteModel;
+						break;
+					}
 				}
 			}
 			return ntm;

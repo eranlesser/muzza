@@ -182,7 +182,7 @@ package com.screens.view {
 			Session.instance.goodScreensLength = donePlayers;
 			if(donePlayers==_instruments.length){
 				//if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
-				if(_timeModel.currentTick>0 && donePlayers==_instruments.length){
+				if(_timeModel.currentTick>0 ){//&& donePlayers==_instruments.length
 					endMusciPiece();
 				}
 			}

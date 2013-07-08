@@ -31,6 +31,8 @@ public static var data:XML =
 	<note id="C_5" value="3" soundFile="mountain/drums/c4.mp3" animationIndex='1' />
 	<note id="C#_5" value="4" soundFile="mountain/drums/c_diez4.mp3" animationIndex='2' />
 	<note id="E_5" value="4" soundFile="mountain/drums/e4.mp3" animationIndex='3' />
+	<note id="Bbemol_4" value="4" soundFile="mountain/drums/a_diez.mp3" animationIndex='3' />
+	<note id="Ebemol_5" value="4" soundFile="mountain/drums/c_diez4.mp3" animationIndex='3' />
 </notes>
 </octaves>
 <sequances>
@@ -56,7 +58,7 @@ public static var data:XML =
  <note id="D_5" location="89" soundLength="4"/>
  <note id="B_4" location="97" soundLength="4"/>
  <note id="D_5" location="105" soundLength="4"/>
- <note id="B_4" location="109" soundLength="4"/>
+ <note id="Bbemol_4" location="109" soundLength="4"/>
  <note id="C_5" location="113" soundLength="4"/>
  <note id="D_5" location="121" soundLength="4"/>
  <note id="B_4" location="129" soundLength="4"/>
@@ -74,7 +76,7 @@ public static var data:XML =
  <note id="D_5" location="217" soundLength="4"/>
  <note id="B_4" location="225" soundLength="4"/>
  <note id="D_5" location="233" soundLength="4"/>
- <note id="B_4" location="237" soundLength="4"/>
+ <note id="Bbemol_4" location="237" soundLength="4"/>
  <note id="C_5" location="241" soundLength="4"/>
  <note id="D_5" location="249" soundLength="4"/>
  <note id="B_4" location="257" soundLength="4"/>
@@ -93,7 +95,7 @@ public static var data:XML =
  <note id="B_4" location="353" soundLength="4"/>
  <note id="C#_5" location="361" soundLength="4"/>
  <note id="D_5" location="365" soundLength="4"/>
- <note id="E_5" location="369" soundLength="4"/>
+ <note id="Ebemol_5" location="369" soundLength="4"/>
  <note id="B_4" location="385" soundLength="4"/>
  <note id="D_5" location="393" soundLength="4"/>
  <note id="C_5" location="401" soundLength="4"/>
@@ -127,7 +129,7 @@ public static var data:XML =
  <note id="B_4" location="609" soundLength="4"/>
  <note id="C#_5" location="617" soundLength="4"/>
  <note id="D_5" location="621" soundLength="4"/>
- <note id="E_5" location="625" soundLength="4"/>
+ <note id="Ebemol_5" location="625" soundLength="4"/>
  <note id="D_5" location="633" soundLength="4"/>
  <note id="E_5" location="637" soundLength="4"/>
  <note id="B_4" location="641" soundLength="4"/>
@@ -145,7 +147,7 @@ public static var data:XML =
  <note id="D_5" location="729" soundLength="4"/>
  <note id="B_4" location="737" soundLength="4"/>
  <note id="D_5" location="745" soundLength="4"/>
- <note id="B_4" location="749" soundLength="4"/>
+ <note id="Bbemol_4" location="749" soundLength="4"/>
  <note id="C_5" location="753" soundLength="4"/>
  <note id="D_5" location="761" soundLength="4"/>
  <note id="B_4" location="769" soundLength="4"/>
@@ -164,7 +166,7 @@ public static var data:XML =
  <note id="B_4" location="865" soundLength="4"/>
  <note id="C#_5" location="873" soundLength="4"/>
  <note id="D_5" location="877" soundLength="4"/>
- <note id="E_5" location="881" soundLength="4"/>
+ <note id="Ebemol_5" location="881" soundLength="4"/>
  <note id="B_4" location="897" soundLength="4"/>
  <note id="D_5" location="905" soundLength="4"/>
  <note id="C_5" location="913" soundLength="4"/>
@@ -199,7 +201,7 @@ public static var data:XML =
  <note id="B_4" location="1121" soundLength="4"/>
  <note id="C#_5" location="1129" soundLength="4"/>
  <note id="D_5" location="1133" soundLength="4"/>
- <note id="E_5" location="1137" soundLength="4"/>
+ <note id="Ebemol_5" location="1137" soundLength="4"/>
  <note id="D_5" location="1145" soundLength="4"/>
  <note id="E_5" location="1149" soundLength="4"/>
  <note id="B_4" location="1153" soundLength="4"/>
@@ -217,12 +219,12 @@ public static var data:XML =
  <note id="D_5" location="1241" soundLength="4"/>
  <note id="B_4" location="1249" soundLength="4"/>
  <note id="D_5" location="1257" soundLength="4"/>
- <note id="B_4" location="1261" soundLength="4"/>
+ <note id="Bbemol_4" location="1261" soundLength="4"/>
  <note id="C_5" location="1265" soundLength="4"/>
  <note id="D_5" location="1273" soundLength="4"/>
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="64" />
+<subSequance id="10" location="128" />
 
 </sequance>
 </sequances>

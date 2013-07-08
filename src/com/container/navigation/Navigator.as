@@ -83,7 +83,14 @@ class BreadCrumbs extends Sprite{
 	}
 	
 	public function set instruments(instumnts:ThemeInstrumentsModel):void{
-		_icons=new Vector.<Btn>();
+		if(_icons){
+			var n:uint=_icons.length;
+			for(var i:uint=0;i<n;i++){
+				removeChild(_icons.pop());
+			}
+		}else{
+			_icons=new Vector.<Btn>();
+		}
 		for each(var ins:CoreInstrumentModel in instumnts.instruments){
 			var btn:Btn;
 			switch(ins.thumbNail){

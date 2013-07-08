@@ -5,7 +5,7 @@ package com.model.rawData.edvard
 	public class EdvardData
 	{
 		public static var data:XML = 
-			<theme id='recycle' rhythm='10'>
+			<theme id='recycle' rhythm='14'>
 			<instruments>
 			{Bottles.data}
 		{Drum.data}
@@ -24,9 +24,7 @@ package com.model.rawData.edvard
 			<instrument type='bottles.png' >
 			<layout id="0" x='350' y='100'  rotation="0" />
 			</instrument>
-			<instrument type='turnTable' >
-			<layout id="0" x='900' y='500'  rotation="0" />
-			</instrument>
+			
 		
 		</demoScreen>
 		
