@@ -109,6 +109,8 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_7.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_8.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_9.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_10.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_11.png' />"+
 //			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
 //			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
 //			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
@@ -340,6 +342,10 @@ package com.view.tools
 			"<image path='assets/instruments/BOTTLES/bottle_8_SELECTED.png' />"+
 			"<image path='assets/instruments/BOTTLES/bottle_9_idle.png' />"+
 			"<image path='assets/instruments/BOTTLES/bottle_9_SELECTED.png' />"+
+			"<image path='assets/instruments/BOTTLES/bottle_10_idle.png' />"+
+			"<image path='assets/instruments/BOTTLES/bottle_10_SELECTED.png' />"+
+			"<image path='assets/instruments/BOTTLES/bottle_11_idle.png' />"+
+			"<image path='assets/instruments/BOTTLES/bottle_11_SELECTED.png' />"+
 			"<image path='assets/instruments/BOTTLES/Spot_light_bottle.png' />"+
 			"<image path='assets/instruments/BOTTLES/spot_light_floor_bottle.png' />"+
 			"<image path='assets/instruments/BOTTLES/bottles_frame.png' />"+

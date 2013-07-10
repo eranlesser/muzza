@@ -28,11 +28,24 @@ package com.screens.model
 				var scr:RecordScreen = new RecordScreen();
 				scr.parseXML(screenData,instrumentsModel);
 				_recordScreens.push(scr);
+				scr.scoreUpdated.add(onScorUpdated);
 			}
 			
 			_endScreen = new ListenScreen();
 			_endScreen.parseXML(data.endScreen[0],instrumentsModel);
 			_recordScreens.push(_endScreen);
+		}
+		
+		private function onScorUpdated():void
+		{
+			var score:int=0;
+			for each(var isc:IScreen in _recordScreens){
+				if(isc is RecordScreen){
+					score = score+RecordScreen(isc).model.score;
+				}
+			}
+			Session.instance.score = score;
+			
 		}
 		
 		public function start():void{
@@ -92,16 +105,16 @@ package com.screens.model
 			if(scr=="back"){
 				curIndex = _lastInstrumentIndex//  = last screen played
 			}else{
-				var score:int=0;
+				//var score:int=0;
 				for each(var isc:IScreen in _recordScreens){
 					if(isc is RecordScreen){
 						if(RecordScreen(isc).model.instrumentModel.thumbNail==scr){
 							curIndex = _recordScreens.indexOf(isc);
 						}
-						score = score+RecordScreen(isc).model.score;
+						//score = score+RecordScreen(isc).model.score;
 					}
 				}
-				Session.instance.score = score;
+				//Session.instance.score = score;
 			}
 			if(curIndex==-1){
 				curIndex = _recordScreens.length-1;//End Screen

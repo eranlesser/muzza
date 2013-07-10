@@ -153,13 +153,14 @@ package com.screens.view {
 			
 		}
 		
-		
+		public var scoreUpdated:Signal = new Signal();
 		override public function stop():void{
 			_stateController.deActivate();
 			_instrumentRecorder.stop();
 			for each(var player:PlayMusician in _players){
 				player.stop();
 			}
+			scoreUpdated.dispatch();
 			super.stop();
 		}
 		

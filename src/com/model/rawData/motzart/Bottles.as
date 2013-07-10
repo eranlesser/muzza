@@ -12,7 +12,7 @@ package com.model.rawData.motzart
 			<blink start="26" end="31" />
 			
 		</eyes>						
-		<components notesGap="80" leftPad="184">
+		<components notesGap="80" leftPad="75">
 		<bg image="bottles_frame.png" clickable="false"  y="10" />
 		<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='-50' y='0' >
 			<tap noteId="C_5" />
@@ -23,28 +23,28 @@ package com.model.rawData.motzart
 		<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='110' y='0' >
 			<tap noteId="D#_5" />
 		</bottle>
-		<bottle image="bottle_4_idle.png" playImage="bottle_3_SELECTED.png" x='190' y='0' >
+		<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='190' y='0' >
 			<tap noteId="E_5" />
 		</bottle>
-		<bottle image="bottle_5_idle.png" playImage="bottle_4_SELECTED.png" x='270' y='0' >
+		<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='270' y='0' >
 			<tap noteId="F_5" />
 		</bottle>
-		<bottle image="bottle_6_idle.png" playImage="bottle_4_SELECTED.png" x='350' y='0' >
+		<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='350' y='0' >
 			<tap noteId="G_5" />
 		</bottle>
-		<bottle image="bottle_7_idle.png" playImage="bottle_5_SELECTED.png" x='430' y='0' >
+		<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='430' y='0' >
 			<tap noteId="G#_5" />
 		</bottle>
-		<bottle image="bottle_8_idle.png" playImage="bottle_6_SELECTED.png" x='510' y='0' >
+		<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='510' y='0' >
 			<tap noteId="A_5" />
 		</bottle>
-		<bottle image="bottle_9_idle.png" playImage="bottle_7_SELECTED.png" x='590' y='0' >
+		<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='590' y='0' >
 			<tap noteId="B_5" />
 		</bottle>
-		<bottle image="bottle_9_idle.png" playImage="bottle_8_SELECTED.png" x='670' y='0' >
+		<bottle image="bottle_10_idle.png" playImage="bottle_10_SELECTED.png" x='670' y='0' >
 			<tap noteId="C_6" />
 		</bottle>
-		<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='750' y='0' >
+		<bottle image="bottle_11_idle.png" playImage="bottle_11_SELECTED.png" x='750' y='0' >
 			<tap noteId="D_6" />
 		</bottle>
 			
@@ -65,8 +65,8 @@ package com.model.rawData.motzart
 			<note id="G#_5"  soundFile="mozart/xilofon/sol_diez.mp3" animationIndex='3'  value="7"/>
 			<note id="A_5"  soundFile="mozart/xilofon/la.mp3" animationIndex='4'  value="8"/>
 			<note id="B_5"  soundFile="mozart/xilofon/ci.mp3" animationIndex='9'  value="9"/>
-			<note id="C_6" soundFile="mozart/xilofon/do_up.mp3" animationIndex='8' value="1" />
-			<note id="D_6" soundFile="mozart/xilofon/re_up.mp3" animationIndex='7' value="1" />
+			<note id="C_6" soundFile="mozart/xilofon/do_up.mp3" animationIndex='8' value="10" />
+			<note id="D_6" soundFile="mozart/xilofon/re_up.mp3" animationIndex='7' value="11" />
 			
 		</notes>
 		</octaves>
