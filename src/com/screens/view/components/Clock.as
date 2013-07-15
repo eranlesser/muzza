@@ -109,7 +109,7 @@ package com.screens.view.components
 			var onClickSignal:NativeSignal = new NativeSignal(this,MouseEvent.CLICK);
 			//onClickSignal.add(onClick);
 			
-			_preTickSound = new Sound(new URLRequest("../../../../assets/sounds/tick.mp3"));
+			//_preTickSound = new Sound(new URLRequest("../../../../assets/sounds/tick.mp3"));
 			//_tickSound = new Sound(new URLRequest("../../../../assets/sounds/theme/preTick.mp3"));
 			//toggleSoundState("on")
 			
@@ -149,14 +149,14 @@ package com.screens.view.components
 			if(_innerCount==16){
 				_innerCount=0;
 				//if(_soundButton.visible){
-					var channel:SoundChannel = _preTickSound.play();
-					if(channel){
-						var sndTansform:SoundTransform = channel.soundTransform;
-						sndTansform.volume = 0.1;
-						channel.soundTransform = sndTansform;
-					}else{
-						trace("no channel available!! (clock)")
-					}
+					//var channel:SoundChannel = _preTickSound.play();
+//					if(channel){
+//						var sndTansform:SoundTransform = channel.soundTransform;
+//						sndTansform.volume = 0.1;
+//						channel.soundTransform = sndTansform;
+//					}else{
+//						trace("no channel available!! (clock)")
+//					}
 				//}
 			}
 		}

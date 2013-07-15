@@ -5,7 +5,6 @@ package com.screens.recordScreenStates
 	import com.constants.States;
 	import com.container.Presenter;
 	import com.gskinner.motion.GTween;
-	import com.inf.PopUp;
 	import com.inf.PopUpsManager;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
@@ -121,7 +120,7 @@ package com.screens.recordScreenStates
 			_context.playButton.state="pressed";
 			_context.instrumentRecorder.notePlayed.add(checkNotesMatch);
 			_context.instrumentRecorder.active = true;
-			_context.recordChannelController.reset(ChanelNotesType.TEACHER_PLAYING);
+			_context.recordChannelController.reset();
 			_context.recordButton.clicked.add(onRecordBtn);
 			_context.playButton.clicked.add(onRecordBtn);
 			_context.playGlow.visible=false;

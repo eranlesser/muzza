@@ -12,39 +12,39 @@ package com.model.rawData.motzart
 			<blink start="26" end="31" />
 			
 		</eyes>						
-		<components notesGap="80" leftPad="75">
-		<bg image="bottles_frame.png" clickable="false"  y="10" />
-		<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='-50' y='0' >
+		<components notesGap="80" leftPad="100">
+		<bg image="bottles_frame_lg.png" clickable="false"  y="10" />
+		<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='60' y='0' >
 			<tap noteId="C_5" />
 		</bottle>
-		<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='30' y='0' >
+		<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='140' y='0' >
 			<tap noteId="D_5" />
 		</bottle>
-		<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='110' y='0' >
+		<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='220' y='0' >
 			<tap noteId="D#_5" />
 		</bottle>
-		<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='190' y='0' >
+		<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='300' y='0' >
 			<tap noteId="E_5" />
 		</bottle>
-		<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='270' y='0' >
+		<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='380' y='0' >
 			<tap noteId="F_5" />
 		</bottle>
-		<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='350' y='0' >
+		<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='460' y='0' >
 			<tap noteId="G_5" />
 		</bottle>
-		<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='430' y='0' >
+		<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='540' y='0' >
 			<tap noteId="G#_5" />
 		</bottle>
-		<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='510' y='0' >
+		<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='620' y='0' >
 			<tap noteId="A_5" />
 		</bottle>
-		<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='590' y='0' >
+		<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='700' y='0' >
 			<tap noteId="B_5" />
 		</bottle>
-		<bottle image="bottle_10_idle.png" playImage="bottle_10_SELECTED.png" x='670' y='0' >
+		<bottle image="bottle_10_idle.png" playImage="bottle_10_SELECTED.png" x='780' y='0' >
 			<tap noteId="C_6" />
 		</bottle>
-		<bottle image="bottle_11_idle.png" playImage="bottle_11_SELECTED.png" x='750' y='0' >
+		<bottle image="bottle_11_idle.png" playImage="bottle_11_SELECTED.png" x='850' y='0' >
 			<tap noteId="D_6" />
 		</bottle>
 			

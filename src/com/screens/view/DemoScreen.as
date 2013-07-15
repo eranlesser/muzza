@@ -155,7 +155,7 @@ package com.screens.view {
 		
 		
 		
-		private function startPlayers():void{
+		protected function startPlayers():void{
 			if(!this.parent){
 				return;
 			}
@@ -164,13 +164,10 @@ package com.screens.view {
 				ins.play(_model.playSequance,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
 				ins.sequanceDone.addOnce(onPlayerDone);
 			}
-			if(_timeSlider){
-				//_timeModel.tickSignal.add(setTimeSlider);
-				_playPauseBtn.state=0;
-			}
+			_playPauseBtn.state=0;
 		}
 		
-		private function onPlayerDone():void{
+		protected function onPlayerDone():void{
 			var donePlayers:uint=0;
 			for each(var player:PlayMusician in _instruments){
 				if(player.done){

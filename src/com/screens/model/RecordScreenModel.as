@@ -14,6 +14,7 @@ package com.screens.model {
 		private var _instruments:ThemeInstrumentsModel;
 		private var _recordeSequanceId:uint;
 		private var _learnedSequancedId:uint;
+		private var _improviseSequnceId:uint;
 		private var _recordInstrumentX:Number;
 		private var _recordInstrumentY:Number;
 		private var _noteTargetsY:uint;
@@ -32,6 +33,7 @@ package com.screens.model {
 			_instrumentModel = _instruments.getInstrumentByName(xml.playerInstrument.@type);
 			_recordeSequanceId = xml.playerInstrument.@recordedSequance;
 			_learnedSequancedId =  xml.playerInstrument.@learnedSequanced;
+			_improviseSequnceId = xml.playerInstrument.@imroviseSequance;
 			_startAtCurPoint=xml.@startAtCurPoint;
 			_recordInstrumentX= xml.playerInstrument.RecordedX;
 			_recordInstrumentY= xml.playerInstrument.RecordedY;
@@ -76,6 +78,9 @@ package com.screens.model {
 		
 		public function get recordeSequanceId():uint{
 			return _recordeSequanceId;
+		}
+		public function get improviseSequnceId():uint{
+			return _improviseSequnceId;
 		}
 		
 		public function get learnedSequanceId():uint{

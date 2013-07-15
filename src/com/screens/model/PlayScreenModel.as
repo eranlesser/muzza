@@ -10,6 +10,7 @@ package com.screens.model {
 		private var _instruments:Vector.<InstrumentModel>;
 		private var _xml:XML;
 		private var _playSequance:uint;
+		private var _improviseSequance:uint;
 		private var _instrumentsModel:ThemeInstrumentsModel;
 		private var _nowPlayingIcon:String;
 		
@@ -22,6 +23,7 @@ package com.screens.model {
 		
 		private function parse(xml:XML):void{
 			_playSequance=xml.@playSequance;
+			_improviseSequance=xml.@improviseSequance;
 			_nowPlayingIcon=xml.@nowPlaying;
 			_instruments = new Vector.<InstrumentModel>();
 			for each(var instrument:XML in xml.instrument){
@@ -37,6 +39,9 @@ package com.screens.model {
 		
 		public function get playSequance():uint{
 			return _playSequance;
+		}
+		public function get improviseSequance():uint{
+			return _improviseSequance;
 		}
 		
 		public function get instruments():Vector.<InstrumentModel>{

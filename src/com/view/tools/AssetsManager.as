@@ -349,6 +349,7 @@ package com.view.tools
 			"<image path='assets/instruments/BOTTLES/Spot_light_bottle.png' />"+
 			"<image path='assets/instruments/BOTTLES/spot_light_floor_bottle.png' />"+
 			"<image path='assets/instruments/BOTTLES/bottles_frame.png' />"+
+			"<image path='assets/instruments/BOTTLES/bottles_frame_lg.png' />"+
 			
 			"<image path='assets/instruments/DRUMS/DRUMS_1_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_1_PRESSED.png' />"+

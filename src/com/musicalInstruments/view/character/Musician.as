@@ -39,9 +39,8 @@ package com.musicalInstruments.view.character {
 			_sequanceDone=new Signal();
 			_model = model as NotesInstrumentModel;
 			addEyes();
-			addText();
 			 start();
-			this.addEventListener(MouseEvent.CLICK,onClick);
+			//this.addEventListener(MouseEvent.CLICK,onClick);
 		}
 		
 		public function start():void{
@@ -52,9 +51,9 @@ package com.musicalInstruments.view.character {
 			_player.paused=val;
 		}
 		
-		private function onClick(e:MouseEvent):void{
-			_player.onClick();
-		}
+//		private function onClick(e:MouseEvent):void{
+//			_player.onClick();
+//		}
 		
 		public function get sequanceDone():Signal{
 			return _sequanceDone;
@@ -83,16 +82,6 @@ package com.musicalInstruments.view.character {
 			}
 		}
 		
-		private function addText():void{
-			if(_model.text==""){
-				return;
-			}
-			var fmt:TextFormat = new TextFormat(null,14);
-			var tField:TextField = new TextField();
-			tField.defaultTextFormat = fmt;
-			this.addChild(tField);
-			tField.text = _model.text;
-		}
 		
 		public function set octave(level:uint):void{
 			_model.octave=level;
@@ -133,6 +122,15 @@ package com.musicalInstruments.view.character {
 				if(_eyes){
 					_eyes.stop();
 				}
+			}
+		}
+		
+		public function destroy():void{
+			stop();
+			if(_player){
+				_player.sequenceDone.remove(onSequenceDone);
+				_player.notePlayed.remove(onNotePlayed);
+				_player.noteStopped.remove(onNoteStopped);
 			}
 		}
 	}

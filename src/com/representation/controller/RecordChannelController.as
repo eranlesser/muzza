@@ -1,4 +1,5 @@
 package com.representation.controller {
+	import com.constants.Session;
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.model.FileProxy;
@@ -24,6 +25,7 @@ package com.representation.controller {
 		private var _instrumentModel:	CoreInstrumentModel;
 		private var _learnedSequance:	ISequance;
 		private var _recordedSequance:	RecordableNotesSequance;
+		private var _improviseSequnce:	RecordableNotesSequance;
 		private var _instrument:		Instrument;
 		
 		public function RecordChannelController(channelView:NotesChannel,instrumentModel:CoreInstrumentModel, instrument:Instrument,recordScreenModel:RecordScreenModel):void{
@@ -34,6 +36,7 @@ package com.representation.controller {
 			_instrument = instrument;
 			_learnedSequance = _instrumentModel.getSequanceById(_recordScreenModel.learnedSequanceId);
 			_recordedSequance = new RecordableNotesSequance(_recordScreenModel.recordeSequanceId);
+			_improviseSequnce = new RecordableNotesSequance(_recordScreenModel.improviseSequnceId);
 			if(_learnedSequance is NoteSequanceModel){//temp
 				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
@@ -42,26 +45,33 @@ package com.representation.controller {
 			}
 		}
 		
-		public function reset(mode:String):void{
+		public function reset():void{
 			_channelView.clearNotes();
 			if(_learnedSequance is NoteSequanceModel){//temp
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
 			}
 		}
 		
+		private function get recordSequance():RecordableNotesSequance{
+			if(Session.IMPROVISE_MODE){
+				return _improviseSequnce;
+			}else{
+				return _recordedSequance;
+			}
+		}
 		
 		
 		public function beginRecord():void{
-			_recordedSequance.reset();
+			recordSequance.reset();
 			_instrument.noteStopped.add(noteAdded);
 			
 		}
 		
 		public function endRecord():void{
-			if(!_recordedSequance.isEmpty){
+			if(!recordSequance.isEmpty){
 				//write sequance somewhere
-				_instrumentModel.addRecordedSequance(_recordedSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
-				FileProxy.exportSequance(_recordedSequance, _instrumentModel.thumbNail);
+				_instrumentModel.addRecordedSequance(recordSequance, _recordScreenModel.beginAtFrame,_recordScreenModel.endAtFrame);
+				FileProxy.exportSequance(recordSequance, _instrumentModel.thumbNail);
 			}
 			_instrument.noteStopped.remove(noteAdded);
 		}
@@ -70,7 +80,7 @@ package com.representation.controller {
 			return (_learnedSequance as NoteSequanceModel).notes.length;
 		}
 		public function get recordedLength():uint{
-			return (_recordedSequance as RecordableNotesSequance).length;
+			return (recordSequance as RecordableNotesSequance).length;
 		}
 		
 		
@@ -80,7 +90,7 @@ package com.representation.controller {
 		
 		
 		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
-			var note:SequancedNote = _recordedSequance.add(noteId,startLocation,noteLength,octave);
+			var note:SequancedNote = recordSequance.add(noteId,startLocation,noteLength,octave);
 			if(note == null){
 				return;
 			}
@@ -103,9 +113,7 @@ package com.representation.controller {
 		}
 		
 		private function drawNotes(instrumentModel:NotesInstrumentModel,sequance:NoteSequanceModel):void{
-			trace(instrumentModel.thumbNail)
 			for each(var note:SequancedNote in sequance.notes){
-				trace(note.noteId)
 				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
 				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x);
 			}

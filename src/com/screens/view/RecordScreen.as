@@ -104,10 +104,10 @@ package com.screens.view {
 				_playBtnOver.alpha=0;
 				_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
 				_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
-				var playTween1:GTween = new GTween(_playBtnOver,3,{alpha:1},{ease:Bounce.easeOut});
+				var playTween1:GTween = new GTween(_playBtnOver,4,{alpha:1},{ease:Bounce.easeOut});
 				playTween1.delay=1;
 				playTween1.onComplete = function():void{
-					new GTween(_playBtnOver,1.2,{alpha:0},{ease:Bounce.easeOut});
+					new GTween(_playBtnOver,4,{alpha:0.2},{ease:Bounce.easeOut});
 				}
 				_muteButton = new Btn("muteBTN_on.png","muteBTN_off.png");
 				_guiLayer.addChild(_muteButton);
@@ -189,7 +189,7 @@ package com.screens.view {
 		
 		public function get hasBackUps():Boolean{
 			for each(var player:PlayMusician in _players){
-				if(player.isRecorded(_model.recordeSequanceId)){
+				if(player.isRecorded(recordSequanceId)){
 					return true;
 				}
 			}
@@ -207,16 +207,22 @@ package com.screens.view {
 					player.y = player.getY();
 					_players.push(player);
 				}
-				if(player.isRecorded(_model.recordeSequanceId)){
+				if(player.isRecorded(recordSequanceId)){
 					_stageLayer.addChild(player);
 					player.start();
-					player.play(_model.recordeSequanceId,0);
+					player.play(recordSequanceId,0);
 				}
 				
 			}
 			
 		}
 		
+		private function get recordSequanceId():uint{
+			if(Session.IMPROVISE_MODE){
+				return _model.improviseSequnceId;
+			}
+			return _model.recordeSequanceId;
+		}
 		
 		private function createPlayerAndInstrument():void{
 			if(_model.instrumentModel.type=="turnTable"){

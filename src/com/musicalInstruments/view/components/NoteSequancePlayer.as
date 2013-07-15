@@ -68,18 +68,18 @@ package com.musicalInstruments.view.components {
 			}
 		}
 		
-		public function onClick():void{
-			return //
-			if(_isPlaying){
-				_timeModel.tickSignal.remove(onMetronomeTick);
-				_timeModel.tickSignal.remove(onMetronomeUntick);
-			}else{
-				_timeModel.tickSignal.add(onMetronomeTick);
-				_timeModel.tickSignal.add(onMetronomeUntick);
-			}
-			_isPlaying=!_isPlaying;
-		}
-		
+//		public function onClick():void{
+//			return //
+//			if(_isPlaying){
+//				_timeModel.tickSignal.remove(onMetronomeTick);
+//				_timeModel.tickSignal.remove(onMetronomeUntick);
+//			}else{
+//				_timeModel.tickSignal.add(onMetronomeTick);
+//				_timeModel.tickSignal.add(onMetronomeUntick);
+//			}
+//			_isPlaying=!_isPlaying;
+//		}
+//		
 		public function get isAnimating():Boolean{
 			return _isAnimating;
 		}

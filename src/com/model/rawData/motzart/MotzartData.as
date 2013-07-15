@@ -36,7 +36,7 @@ public static var data:XML =
 
 <recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1632" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="240">
-	<RecordedX>102.5</RecordedX>
+	<RecordedX>12</RecordedX>
 	<RecordedY>360</RecordedY>
 	</playerInstrument>
 <backups>

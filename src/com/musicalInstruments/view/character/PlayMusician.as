@@ -59,6 +59,14 @@ package com.musicalInstruments.view.character {
 		public function stop():void{
 			if(_musicianView){
 				_musicianView.stop();
+				_musicianView.sequanceDone.remove(onSequanceDone);
+			}
+		}
+		
+		public function destroy():void{
+			if(_musicianView){
+				_musicianView.destroy();
+				_musicianView.sequanceDone.remove(onSequanceDone);
 			}
 		}
 		

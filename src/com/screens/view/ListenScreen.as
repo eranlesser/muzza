@@ -1,6 +1,7 @@
 package com.screens.view
 {
 	import com.constants.Dimentions;
+	import com.constants.Gains;
 	import com.constants.Session;
 	import com.gui.hat.Hat;
 	import com.model.FileProxy;
@@ -29,8 +30,18 @@ package com.screens.view
 			_channelControllers = new Vector.<PlayChannelController>();
 			//addRepresentation();
 			addToolBar();
+			Session.improviseSignal.add(removeInstruments)
 		}
-
+		
+		private function removeInstruments():void
+		{
+			while(_instruments.length>0){
+				var ins:PlayMusician = _instruments.pop();
+				ins.destroy();
+				_stageLayer.removeChild(ins);
+			}
+		}
+		
 		override public function start():void{
 			if(!isInited){
 				//addEventListener(MouseEvent.CLICK,onClick);
@@ -76,8 +87,15 @@ package com.screens.view
 			_claps = new Claps();
 			
 		}
+		
+		private function get playSequanceId():uint{
+			if(Session.IMPROVISE_MODE){
+				return _model.improviseSequance;
+			}
+			return _model.playSequance;
+		}
 		override protected function addInstrument(insModel:InstrumentModel):void{
-			if(NoteSequanceModel(insModel.getSequanceById(_model.playSequance))){
+			if(NoteSequanceModel(insModel.getSequanceById(playSequanceId))){
 				 super.addInstrument(insModel);
 			//var channel:Channel = _representation.addChannel(insModel.coreModel);
 			//_channelControllers.push(new PlayChannelController( channel, insModel,_model.playSequance));
@@ -93,6 +111,17 @@ package com.screens.view
 			//}
 			for each(var channelController:PlayChannelController in _channelControllers){
 				channelController.stop();
+			}
+		}
+		
+		override protected function startPlayers():void{
+			if(!this.parent){
+				return;
+			}
+			_timeControll.beginAtFrame = _model.beginAtFrame;
+			for each(var ins:PlayMusician in _instruments){
+				ins.play(playSequanceId,_model.beginAtFrame,Gains.PLAY_INSTRUMENT_LEVEL);
+				ins.sequanceDone.addOnce(onPlayerDone);
 			}
 		}
 		
