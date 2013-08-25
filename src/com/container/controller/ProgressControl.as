@@ -1,6 +1,7 @@
 package com.container.controller {
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
+	import com.model.MainThemeModel;
 	import com.screens.model.ScreensModel;
 	
 	import flash.display.DisplayObject;
@@ -15,26 +16,27 @@ package com.container.controller {
 		
 		private var _view:			Presenter;
 		private var _navigator:		Navigator;
-		private var _model:			ScreensModel;
 		private var _themeName:		String;
 		private var _frameRate:		uint;
+		private var _mainThemeModel:MainThemeModel;
 		public var goHomeSignal:	Signal;
 		private var _demoShown:Boolean=false;
-		public function ProgressControl(view:Presenter,model:ScreensModel,themeName:String,frameRate:uint){
+		public function ProgressControl(view:Presenter,theme:MainThemeModel,themeName:String){
 			_view = view;
-			_model = model;
+			_mainThemeModel = theme;
 			_themeName = themeName;
-			_frameRate=frameRate;
+			_frameRate=theme.rhythm;
 			_view.menu.goHome.add(goHome);
 			_view.goHome.add(goHome);
 			goHomeSignal = new Signal();
 			
 		}
 		public function start(mode:String):void{
-			_model.playMode=mode;
-			_view.addScreen(_model.currentScreen as DisplayObject);
+			_mainThemeModel.reset();
+			_mainThemeModel.screensModel.playMode=mode;
+			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
 			
-			_model.currentScreen.start();
+			_mainThemeModel.screensModel.currentScreen.start();
 			initNavigator();
 			if(!_demoShown){
 				_view.mouseEnabled=false;
@@ -43,7 +45,7 @@ package com.container.controller {
 				var tmr:Timer = new Timer(100,1);
 				tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function onTimer(e:Event):void{
 					tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, onTimer);
-					_view.openDemo(_model.demoScreen,true);
+					_view.openDemo(_mainThemeModel.screensModel.demoScreen,true);
 					_view.closeDemo(true);
 					_view.mouseEnabled=true;
 					_view.mouseChildren=true;
@@ -54,7 +56,7 @@ package com.container.controller {
 		}
 		
 		public function reset():void{
-			_model.reset();
+			_mainThemeModel.screensModel.reset();
 			_view.goto.remove(goTo);
 			_view.goNext.remove(goNext);
 			_view.menu.openDemo.remove(openDemo);
@@ -69,7 +71,7 @@ package com.container.controller {
 			_view.goto.add(goTo);
 			_view.goNext.add(goNext);
 			_view.menu.openDemo.add(openDemo);
-			_navigator.state=_model.recordSession;
+			_navigator.state=_mainThemeModel.screensModel.recordSession;
 			//_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
 		}
 		
@@ -79,39 +81,39 @@ package com.container.controller {
 		
 		private function goTo(scr:String):void{
 			_view.removeScreens();
-			_model.goTo(scr);
-			_view.addScreen(_model.currentScreen as DisplayObject);
-			_model.currentScreen.start();
-			_navigator.state=_model.recordSession;
+			_mainThemeModel.screensModel.goTo(scr);
+			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
+			_mainThemeModel.screensModel.currentScreen.start();
+			_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
 		
 		private function goNext():void{
 			_view.removeScreens();
-			_model.goNext();
-			_view.addScreen(_model.currentScreen as DisplayObject);
-			_model.currentScreen.start();
-			_navigator.state=_model.recordSession;
+			_mainThemeModel.screensModel.goNext();
+			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
+			_mainThemeModel.screensModel.currentScreen.start();
+			_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
 		
 		
 		private function openDemo():void{
 			if(_view.isDemoOpen){
 				_view.closeDemo();
-				_model.currentScreen.start();
+				_mainThemeModel.screensModel.currentScreen.start();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				//Flurry.logEvent("Close demo");
 			}else{
-				_model.currentScreen.stop();
-				_view.openDemo(_model.demoScreen);
+				_mainThemeModel.screensModel.currentScreen.stop();
+				_view.openDemo(_mainThemeModel.screensModel.demoScreen);
 				//Flurry.logEvent("Open demo");
 			}
 		}
 		
 		
 		private function goHome():void{
-			_model.currentScreen.stop();
+			_mainThemeModel.screensModel.currentScreen.stop();
 			goHomeSignal.dispatch();
-			_model.reset();
+			_mainThemeModel.screensModel.reset();
 		//	Flurry.logEvent("go home");
 		}
 		

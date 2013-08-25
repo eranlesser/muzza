@@ -115,7 +115,9 @@ package com.representation.controller {
 		private function drawNotes(instrumentModel:NotesInstrumentModel,sequance:NoteSequanceModel):void{
 			for each(var note:SequancedNote in sequance.notes){
 				var noteModel:NoteModel = NotesInstrumentModel(instrumentModel).getNoteById(note.noteId);
-				_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x);
+				if(noteModel.value>0){
+					_channelView.drawNote(note,instrumentModel.thumbNail,noteModel.value,noteModel.x);
+				}
 			}
 			
 			

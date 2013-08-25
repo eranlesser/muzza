@@ -1,5 +1,6 @@
 package com.screens.model {
 	import com.constants.Directions;
+	import com.constants.Session;
 	import com.model.MainThemeModel;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
@@ -68,7 +69,14 @@ package com.screens.model {
 		}
 		
 		public function get isRecorded():Boolean{
-			var insModel:NoteSequanceModel = (_instrumentModel.getSequanceById(_recordeSequanceId) as NoteSequanceModel);
+			var recordId:uint;
+			if(Session.IMPROVISE_MODE){
+				recordId =  _improviseSequnceId;
+			}else{
+				recordId =  _recordeSequanceId;
+				
+			}
+			var insModel:NoteSequanceModel = (_instrumentModel.getSequanceById(recordId) as NoteSequanceModel);
 			return insModel && (insModel.notes.length>0);
 		}
 		

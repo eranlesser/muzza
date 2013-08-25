@@ -167,6 +167,7 @@ package com.inf
 					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
 					break;
 				case "turnTable":
+				case "loopee":
 					icon = AssetsManager.getAssetByName("Turntable.png");
 					break;
 				default:

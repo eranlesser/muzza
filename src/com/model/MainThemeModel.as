@@ -16,13 +16,14 @@ package com.model
 		
 		private var _screens:				ScreensModel;
 		private var _rhythm:				uint;
-
+		private var _guiLayer:Presenter;
 		private  var _instruments:			ThemeInstrumentsModel;
 		public var ready:					Signal = new Signal();
 		
 		
 		public function MainThemeModel(xml:XML,guiLayer:Presenter){
-			parse(xml,guiLayer);
+			_guiLayer=guiLayer;
+			parse(xml);
 		}
 		
 		public function get screensModel():ScreensModel{
@@ -39,18 +40,19 @@ package com.model
 		
 		public function reset():void{
 			_instruments.reset();
+			_guiLayer.menu.instruments = _instruments;
 		}
 		
 		private function onInstrumentsReady():void{
 			ready.dispatch();
 		}
 		
-		private function parse(xml:XML,guiLayer:Presenter):void{
+		private function parse(xml:XML):void{
 			_rhythm = xml.@rhythm;
 			_instruments = new ThemeInstrumentsModel(xml.instruments[0]);
 			_screens = new ScreensModel(xml,_instruments);	
 			_instruments.ready.addOnce(onInstrumentsReady)
-			guiLayer.menu.instruments = _instruments;
+			_guiLayer.menu.instruments = _instruments;
 		}
 	}
 }

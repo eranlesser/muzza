@@ -3,6 +3,7 @@ package com.musicalInstruments.view.instrument
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NoteModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
+	import com.musicalInstruments.view.components.Pawee;
 	import com.musicalInstruments.view.components.SoundPlayer;
 	import com.view.tools.AssetsManager;
 	
@@ -34,53 +35,13 @@ package com.musicalInstruments.view.instrument
 			if(_model.rawData.vinyl.@image.toString().length>0){
 				addVinyl(_model.rawData);
 			}
-			if(_model.rawData.loopy.@image.toString().length>0){
-				addLoop(_model.rawData);
-			}
 			addChelo(_model.rawData);
 			if(_model.rawData.hey.@sound.toString().length>0){
 				addHey(_model.rawData);
 			}
 		}
 		
-//___________________________________________________________________________________________________________		
-//____________________________________________________________________________________________________LOOP
-		private function addLoop(xml:XML):void{
-			var loopy:Loopy;
-			var vBg:DisplayObject = (AssetsManager.getAssetByName(xml.loopy.@image));
-			addChild(vBg);
-			
-			_vinylContainer = new Sprite();
-			loopy = new Loopy(AssetsManager.getAssetByName(xml.loopy.@imageTap));
-			_vinylContainer.addChild(loopy);
-			loopy.x=-loopy.width/2;
-			loopy.y=-loopy.height/2;
-			addChild(_vinylContainer);
-			_vinylContainer.x = xml.loopy.@x;
-			_vinylContainer.y = xml.loopy.@y;
-			vBg.x = xml.loopy.@x-vBg.width/2;
-			vBg.y = xml.loopy.@y-vBg.height/2;
-			loopy.onPlay.add(
-				function onPlay(flag:Boolean):void{
-					if(flag){
-						addEventListener(Event.EXIT_FRAME,turn);
-					}else{
-						removeEventListener(Event.EXIT_FRAME,turn);
-					}
-				}
-			);
-			
-			//_vinylContainer.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
-		}
-		
-		private function turn (e:Event):void{
-			
-			
-			_vinylContainer.rotation = _vinylContainer.rotation + 1;
-		}
-		
 	
-		
 //___________________________________________________________________________________________________________		
 //____________________________________________________________________________________________________VINYL		
 		
@@ -231,72 +192,13 @@ package com.musicalInstruments.view.instrument
 		
 	}
 }
-import com.metronom.Metronome;
-import com.musicalInstruments.view.components.SoundPlayer;
 import com.view.gui.Btn;
-import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
 import flash.display.Sprite;
-import flash.events.Event;
-import flash.events.MouseEvent;
-import flash.events.TouchEvent;
-import flash.media.SoundChannel;
 
 import org.osflash.signals.Signal;
 
-class Pawee extends Sprite{
-	private var _soundPlayer:SoundPlayer;
-	private var _id:String;
-	private var _upState:DisplayObject;
-	private var _tapState:DisplayObject;
-	public var notePlayed:Signal=new Signal();
-	public var noteStopped:Signal=new Signal();
-	private var _startTick:uint;
-	public function Pawee(data:XML){
-		_soundPlayer = new SoundPlayer(data.@sound);
-		_id=data.@id;
-		_upState = AssetsManager.getAssetByName(data.@image);
-		_tapState = AssetsManager.getAssetByName(data.@imageTap);
-		x=data.@x;
-		init();
-	}
-	
-	private function init():void{
-		addChild(_upState);
-		addChild(_tapState);
-		_tapState.visible=false;
-		
-		this.addEventListener(TouchEvent.TOUCH_BEGIN,onClick);
-		this.addEventListener(MouseEvent.MOUSE_DOWN,onClick);
-	}
-	
-	private function onClick(e:Event):void{
-		play();
-		stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
-	}
-	private function play():void{
-		var channel:SoundChannel = _soundPlayer.play(1);
-		notePlayed.dispatch(_id);
-		_startTick = Metronome.getTimeModel().currentTick;
-		_upState.visible=false;
-		_tapState.visible=true;
-	}
-	
-	private function onMouseUp(e:Event):void
-	{
-		stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
-		_upState.visible=true;
-		_tapState.visible=false;
-		noteStopped.dispatch(_id,_startTick);
-	}	
-	
-	public function get id():String
-	{
-		return _id;
-	}
-	
-}
 
 class Vinyl extends Sprite{
 	private var _tapImage:DisplayObject;
@@ -310,23 +212,4 @@ class Vinyl extends Sprite{
 }
 
 
-class Loopy extends Sprite{
-	private var _tapImage:DisplayObject;
-	private var _playBtn:Btn;
-	public var onPlay:Signal = new Signal();
-	private var _isPlaying:Boolean=false;
-	public function Loopy(tapImage:DisplayObject){
-		_tapImage = tapImage;
-		addChild(_tapImage)
-		//_tapImage.visible = false;
-		addEventListener(MouseEvent.CLICK,onClick);
-	}
 	
-	private function onClick(e:MouseEvent):void{
-		_isPlaying=!_isPlaying;
-		onPlay.dispatch(_isPlaying);
-	}
-	
-	
-	
-}

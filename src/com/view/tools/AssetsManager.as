@@ -359,6 +359,12 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_3_PRESSED.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
+			
+			"<image path='assets/instruments/LOOPEE/notes_frame.png' />"+
+			"<image path='assets/instruments/LOOPEE/notes_sheet.png' />"+
+			"<image path='assets/instruments/LOOPEE/PLAY_BUTTON_IDLE.png' />"+
+			"<image path='assets/instruments/LOOPEE/PLAY_BUTTON_PRESSED.png' />"+
+			
 //			"<image path='assets/instruments/marc.png' />"+
 //			"<image path='assets/instruments/platein.png' />"+
 			"<image path='assets/representation/icon_bottles.png' />"+

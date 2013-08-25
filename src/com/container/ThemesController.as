@@ -44,7 +44,7 @@ package com.container
 				_themeProgressors[_progressControlIndex].start(mode);
 			}else{
 				var themeModel:MainThemeModel = new MainThemeModel(Data.getSongData(name),_presenter);
-				var progressControl:ProgressControl = new ProgressControl(_presenter,themeModel.screensModel,name,themeModel.rhythm);
+				var progressControl:ProgressControl = new ProgressControl(_presenter,themeModel,name);
 				themeModel.ready.addOnce(onThemeReady);
 				_themeProgressors.push(progressControl);
 				_progressControlIndex=_themeProgressors.indexOf(progressControl);

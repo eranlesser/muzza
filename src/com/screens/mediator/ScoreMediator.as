@@ -226,6 +226,7 @@ class ScorePanel extends Sprite{
 				icon = AssetsManager.getAssetByName("icon_bass.png");
 				break;
 			case "turnTable":
+			case "loopee":
 				icon = AssetsManager.getAssetByName("icon_mic.png");
 				break;
 		}

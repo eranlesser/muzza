@@ -4,14 +4,12 @@ package com.screens.view {
 	import com.gskinner.motion.GTween;
 	import com.gskinner.motion.easing.Bounce;
 	import com.metronom.*;
-	import com.model.FileProxy;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.character.*;
 	import com.musicalInstruments.view.instrument.*;
-	import com.musicalInstruments.view.instrument.TurnTable;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
@@ -22,12 +20,9 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
-
-
+	
 	public class RecordScreen extends AbstractScreen
 	{
 		private var _instrumentRecorder:		Instrument;
@@ -174,13 +169,18 @@ package com.screens.view {
 			_instrumentRecorder.y = _model.getRecordInstrumentY();
 		}
 		
-		private function isOnStage(playerModel:InstrumentModel):PlayMusician{
+		private function getPlayer(playerModel:InstrumentModel):PlayMusician{
 			for each(var playMusician:PlayMusician in _players){
 				if(playMusician.thumbnail == playerModel.coreModel.thumbNail){
 					return playMusician;
 				}
 			}
-			return null;
+			var player:PlayMusician;
+			player = new PlayMusician(playerModel);
+			player.x = player.getX();
+			player.y = player.getY();
+			_players.push(player);
+			return player;
 		}
 		
 		public function get musteButton():Btn{
@@ -200,17 +200,17 @@ package com.screens.view {
 		private function addBackUps():void{
 			var player:PlayMusician;
 			for each(var insModel:InstrumentModel in _model.backUpInsruments){
-				player = isOnStage(insModel)
-				if(player == null){
-					player = new PlayMusician(insModel);
-					player.x = player.getX();
-					player.y = player.getY();
-					_players.push(player);
-				}
+				player = getPlayer(insModel)
+				
 				if(player.isRecorded(recordSequanceId)){
 					_stageLayer.addChild(player);
 					player.start();
 					player.play(recordSequanceId,0);
+				}else{
+					if(player.parent==_stageLayer){
+						player.stop();
+						_stageLayer.removeChild(player);
+					}
 				}
 				
 			}
@@ -227,8 +227,10 @@ package com.screens.view {
 		private function createPlayerAndInstrument():void{
 			if(_model.instrumentModel.type=="turnTable"){
 				_instrumentRecorder = new TurnTable(_model.instrumentModel as NotesInstrumentModel);
+			}else if(_model.instrumentModel.type=="loopee"){
+				_instrumentRecorder = new Loopee(_model.instrumentModel as NotesInstrumentModel);
 			}else{
-				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
+			_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}
 			/*}else if(_model.instrumentModel.type=="bass"){
 				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);

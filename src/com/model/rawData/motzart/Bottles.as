@@ -144,7 +144,7 @@ package com.model.rawData.motzart
 		
 			
 		<sequance id="99">
-		<subSequance id="10" location="64" />
+		<subSequance id="10" location="0" />
 		</sequance>
 		</sequances>
 		</bottles>

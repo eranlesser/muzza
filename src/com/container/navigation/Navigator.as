@@ -105,6 +105,9 @@ class BreadCrumbs extends Sprite{
 					break;
 				case "turnTable":
 						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","turnTable");
+						break;
+				case "loopee":
+						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","loopee");
 					break;
 			}
 			addButton(btn)

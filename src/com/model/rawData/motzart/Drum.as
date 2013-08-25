@@ -155,7 +155,7 @@ public static var data:XML =
  <note id="C_6" location="1145" soundLength="8"/>
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="64" />
+<subSequance id="10" location="0" />
 </sequance>
 </sequances>
 </drum>
