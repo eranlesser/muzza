@@ -65,7 +65,7 @@ package com.musicalInstruments.view.instrument {
 				stage.focus = e.target as TextField;
 		}
 		
-		private function onKeyPressed(e:KeyboardEvent):void{
+		protected function onKeyPressed(e:KeyboardEvent):void{
 			var compValue:int;
 			var keyValue:int = getValueFromChar(e.keyCode);
 			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
@@ -83,7 +83,7 @@ package com.musicalInstruments.view.instrument {
 			TextField(e.target).text="";
 		}
 		
-		private function getValueFromChar(char:int):int{
+		protected function getValueFromChar(char:int):int{
 			var val:int;
 			switch(char){
 				case Keyboard.NUMBER_0:

@@ -20,15 +20,22 @@ package com.musicalInstruments.view.components
 		public var notePlayed:Signal=new Signal();
 		public var noteStopped:Signal=new Signal();
 		private var _startTick:uint;
+		private var _value:uint;
 		public function Pawee(data:XML){
 			_soundPlayer = new SoundPlayer(data.@sound);
 			_id=data.@id;
 			_upState = AssetsManager.getAssetByName(data.@image);
 			_tapState = AssetsManager.getAssetByName(data.@imageTap);
 			x=data.@x;
+			_value=data.@value;
 			init();
 		}
 		
+		public function get value():uint
+		{
+			return _value;
+		}
+
 		private function init():void{
 			addChild(_upState);
 			addChild(_tapState);
@@ -42,7 +49,7 @@ package com.musicalInstruments.view.components
 			play();
 			stage.addEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 		}
-		private function play():void{
+		public function play():void{
 			var channel:SoundChannel = _soundPlayer.play(1);
 			notePlayed.dispatch(_id);
 			_startTick = Metronome.getTimeModel().currentTick;
@@ -53,10 +60,14 @@ package com.musicalInstruments.view.components
 		private function onMouseUp(e:Event):void
 		{
 			stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
+			stop();
+		}	
+		
+		public function stop():void{
 			_upState.visible=true;
 			_tapState.visible=false;
 			noteStopped.dispatch(_id,_startTick);
-		}	
+		}
 		
 		public function get id():String
 		{

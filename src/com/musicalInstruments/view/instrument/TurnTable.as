@@ -10,14 +10,16 @@ package com.musicalInstruments.view.instrument
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
 	import flash.geom.Point;
+	import flash.text.TextField;
 	
 	public class TurnTable extends Instrument
 	{
 		private var _vinylContainer:	Sprite;
-		private var _chelo:				Sprite;
+		private var _chelo:				Chelo;
 		private var _upNoteId:			String;
 		private var _downNoteId:		String;
 		private var _mouseDownPoint:	Point;
@@ -25,6 +27,7 @@ package com.musicalInstruments.view.instrument
 		private var _moveCounter:		uint=0;
 		private var _isPlaying:			Boolean = false;
 		private var _turnDirection:		int;
+		private var _vinyl:Vinyl;
 		
 		public function TurnTable(model:NotesInstrumentModel)
 		{
@@ -46,15 +49,15 @@ package com.musicalInstruments.view.instrument
 //____________________________________________________________________________________________________VINYL		
 		
 		private function addVinyl(xml:XML):void{
-			var vinyl:Vinyl;
+			
 			var vBg:DisplayObject = (AssetsManager.getAssetByName(xml.vinyl.@image));
 			addChild(vBg);
 			
 			_vinylContainer = new Sprite();
-			vinyl = new Vinyl(AssetsManager.getAssetByName(xml.vinyl.@imageTap));
-			_vinylContainer.addChild(vinyl);
-			vinyl.x=-vinyl.width/2;
-			vinyl.y=-vinyl.height/2;
+			_vinyl = new Vinyl(AssetsManager.getAssetByName(xml.vinyl.@imageTap));
+			_vinylContainer.addChild(_vinyl);
+			_vinyl.x=-_vinyl.width/2;
+			_vinyl.y=-_vinyl.height/2;
 			addChild(_vinylContainer);
 			_vinylContainer.x = xml.vinyl.@x;
 			_vinylContainer.y = xml.vinyl.@y;
@@ -80,6 +83,33 @@ package com.musicalInstruments.view.instrument
 			stage.removeEventListener(TouchEvent.TOUCH_END,onMouseUp);
 			stage.removeEventListener(MouseEvent.MOUSE_UP,onMouseUp);
 			_isPlaying=false;
+		}
+		
+		override protected function onKeyPressed(e:KeyboardEvent):void{
+			var compValue:int;
+			var keyValue:int = getValueFromChar(e.keyCode);
+			switch(keyValue){
+				case 1:
+				case 2:
+				case 3:
+					_chelo.playNote(keyValue)
+					break;
+				case 4:
+					playHey();
+					break;
+				case 5:
+					var note:NoteModel = NotesInstrumentModel(_model).getNoteById("E_5");
+					_vinylContainer.rotation = _vinylContainer.rotation-60;
+					playSound(note);
+					break;
+				case 6:
+					var noteb:NoteModel = NotesInstrumentModel(_model).getNoteById("D_5");
+					_vinylContainer.rotation =_vinylContainer.rotation +  60;
+					playSound(noteb);
+					break;
+			}
+			
+			TextField(e.target).text="";
 		}
 		
 		private function rotate (e:MouseEvent):void{
@@ -133,16 +163,10 @@ package com.musicalInstruments.view.instrument
 		//____________________________________________________________________________________________________CHELO		
 		
 		private function addChelo(xml:XML):void{
-			_chelo = new Sprite();
+			_chelo = new Chelo(xml,onNotePlayed,onNoteStopped);
 			addChild(_chelo);
 			_chelo.x = xml.chelo.@x;
 			_chelo.y = xml.chelo.@y;
-			for each(var paweXml:XML in xml.chelo.children()){
-				var pawee:Pawee = new Pawee(paweXml);
-				_chelo.addChild(pawee);
-				pawee.notePlayed.add(onNotePlayed);
-				pawee.noteStopped.add(onNoteStopped);
-			}
 			
 		}
 		
@@ -155,26 +179,28 @@ package com.musicalInstruments.view.instrument
 			_hey.x = xml.hey.@x;
 			_hey.y = xml.hey.@y;
 			addChild(_hey);
+			_hey.addEventListener(MouseEvent.MOUSE_DOWN,playHey);
+		}
+		
+		private function playHey():void{
 			var heyOver:DisplayObject = AssetsManager.getAssetByName("hey.png");
 			heyOver.x=150;
 			heyOver.y=-heyOver.height+10;
-			var soundPlayer:SoundPlayer = new SoundPlayer(xml.hey.@sound);
-			_hey.addEventListener(MouseEvent.MOUSE_DOWN,function heyClicked():void{
-				soundPlayer.play(1);
-				if(_hey.numChildren==1){
-					_hey.addChild(heyOver);
-				}
-				onNotePlayed(xml.hey.@noteId);
-				var startTime:uint = Metronome.getTimeModel().currentTick;
-				soundPlayer.soundComplete.addOnce(
-					function soundDone():void{
-						if(_hey.numChildren>1){
-							_hey.removeChild(heyOver);
-						}
-						onNoteStopped(xml.hey.@noteId,startTime) 	
+			var soundPlayer:SoundPlayer = new SoundPlayer(_model.rawData.hey.@sound);
+			soundPlayer.play(1);
+			if(_hey.numChildren==1){
+				_hey.addChild(heyOver);
+			}
+			onNotePlayed(_model.rawData.hey.@noteId);
+			var startTime:uint = Metronome.getTimeModel().currentTick;
+			soundPlayer.soundComplete.addOnce(
+				function soundDone():void{
+					if(heyOver.parent==_hey){
+						_hey.removeChild(heyOver);
 					}
-				)
-			});
+					onNoteStopped(_model.rawData.hey.@noteId,startTime) 	
+				}
+			)
 		}
 
 		
@@ -192,15 +218,19 @@ package com.musicalInstruments.view.instrument
 		
 	}
 }
+import com.musicalInstruments.view.components.IKeyPlayer;
+import com.musicalInstruments.view.components.Pawee;
 import com.view.gui.Btn;
 
 import flash.display.DisplayObject;
 import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.KeyboardEvent;
 
 import org.osflash.signals.Signal;
 
 
-class Vinyl extends Sprite{
+class Vinyl extends Sprite implements IKeyPlayer{
 	private var _tapImage:DisplayObject;
 	public function Vinyl(tapImage:DisplayObject){
 		_tapImage = tapImage;
@@ -208,6 +238,37 @@ class Vinyl extends Sprite{
 		//_tapImage.visible = false;
 	}
 	
+	public function playNote(val:uint):void{
+		
+	}
+	
+	
+}
+
+class Chelo extends Sprite implements IKeyPlayer{
+	
+	function Chelo(xml:XML,onNotePlayed:Function,onNoteStopped:Function){
+		for each(var paweXml:XML in xml.chelo.children()){
+			var pawee:Pawee = new Pawee(paweXml);
+			addChild(pawee);
+			pawee.notePlayed.add(onNotePlayed);
+			pawee.noteStopped.add(onNoteStopped);
+		}
+	}
+	
+	public function playNote(val:uint):void{
+		for(var i:uint=0;i<this.numChildren;i++){
+			var pawee:Pawee=getChildAt(i) as Pawee
+			if(pawee.value==val){
+				pawee.play();
+				stage.addEventListener(KeyboardEvent.KEY_UP, function keyUp(event:Event):void{
+					removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
+					pawee.stop();
+				});
+				break;
+			}
+		}
+	}
 	
 }
 

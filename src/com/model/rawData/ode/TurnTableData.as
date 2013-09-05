@@ -12,9 +12,9 @@ package com.model.rawData.ode
 <rawData>
 	
 	<chelo  x="22" y="6" >
-		<powee id="C_6" image="iron1normal.png" imageTap="iron1tap.png" x="20"  sound="ode/scrach/chelo_1.mp3"   />
-		<powee id="C#_6" image="iron2normal.png" imageTap="iron2tap.png" x="110"  sound="ode/scrach/chelo_2.mp3" />
-		<powee id="D_6"   image="iron3normal.png" imageTap="iron3tap.png" x="220" sound="ode/scrach/chelo_3.mp3" />
+		<powee id="C_6" image="iron1normal.png" imageTap="iron1tap.png" x="20" value="1" sound="ode/scrach/chelo_1.mp3"   />
+		<powee id="C#_6" image="iron2normal.png" imageTap="iron2tap.png" x="110" value="2" sound="ode/scrach/chelo_2.mp3" />
+		<powee id="D_6"   image="iron3normal.png" imageTap="iron3tap.png" x="220" value="3" sound="ode/scrach/chelo_3.mp3" />
 	</chelo>
 			
 	<hey x="380" y="50" noteId="G" sound="ode/scrach/sol.mp3">
