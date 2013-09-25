@@ -31,7 +31,6 @@ public static var data:XML =
 		
 		
 	</components>
-<octaves>
 <notes>
 <note id="D_2"   soundFile="mozart/bass/re_bass.mp3" animationIndex='4' value="1"  />
 <note id="E_2"   soundFile="mozart/bass/mi_bass.mp3" animationIndex='6' value="2" />
@@ -40,7 +39,6 @@ public static var data:XML =
 <note id="B_2"   soundFile="mozart/bass/ci.mp3" animationIndex='2' value="5"  />
 <note id="C_2"   soundFile="mozart/bass/do.mp3" animationIndex='3' value="6"  />
 </notes>
-</octaves>
 <gestures>
 </gestures>
 <sequances>

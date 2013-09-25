@@ -24,7 +24,6 @@ public static var data:XML =
 </drum>
 
 </components>
-<octaves>
 <notes>
 	<note id="B_4" value="1"  soundFile="mountain/drums/b3.mp3" animationIndex='5'    />
 	<note id="D_5" value="2" soundFile="mountain/drums/d4.mp3" animationIndex='4'  />
@@ -34,7 +33,6 @@ public static var data:XML =
 	<note id="Bbemol_4" value="4" soundFile="mountain/drums/a_diez.mp3" animationIndex='3' />
 	<note id="Ebemol_5" value="4" soundFile="mountain/drums/c_diez4.mp3" animationIndex='3' />
 </notes>
-</octaves>
 <sequances>
 
 	<!--SUBSEQUANCES-->

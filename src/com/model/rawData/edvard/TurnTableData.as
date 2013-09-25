@@ -23,7 +23,6 @@ package com.model.rawData.edvard
 	
 </rawData>
 
-			<octaves>
 			<notes>
 			<note id="B_4"   soundFile="mountain/flut/B_4.mp3" animationIndex='1' value="1" x="133"  />
 			<note id="C_5"   soundFile="mountain/flut/C_6.mp3" animationIndex='1' value="1" x="133"  />
@@ -34,7 +33,6 @@ package com.model.rawData.edvard
 			
 			
 			</notes>
-			</octaves>
 			<gestures>
 			</gestures>
 			<sequances>

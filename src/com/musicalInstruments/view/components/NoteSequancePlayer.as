@@ -122,7 +122,7 @@ package com.musicalInstruments.view.components {
 				
 				var notes:Vector.<SequancedNote> = _currenSequance.getNotesByLocation( _timeModel.currentTick);
 				if(notes.length>0){
-					_noteFetcher.octave=notes[0].octave;
+					//_noteFetcher.octave=notes[0].octave;
 					for each (var note:SequancedNote in notes){
 						var noteModel:NoteModel = _noteFetcher.getNoteById(note.noteId);
 						noteModel.player.play(_volume);

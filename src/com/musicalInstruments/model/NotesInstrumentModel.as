@@ -10,39 +10,24 @@ package com.musicalInstruments.model
 
 	public class NotesInstrumentModel extends CoreInstrumentModel implements INoteFetcher
 	{
-		private var _octaves:		Vector.<Vector.<NoteModel>>;
-		private var _currentOctave:	uint=0;
+		private var _notes:		Vector.<NoteModel>;
 		private var _readyNotes:	uint=0;
 		
 		public function NotesInstrumentModel(instrument:XML){
 			
 			super(instrument);
-			parseNotes(instrument.octaves)
+			parseNotes(instrument.notes)
 			parseSequances(instrument.sequances.sequance)
 		}
 		
-		public function set octave(level:uint):void{
-			_currentOctave=level;
-		}
 		
-		public function get octave():uint{
-			return _currentOctave;
-		}
-		
-		public function get octavesLength():uint{
-			return _octaves.length;
-		}
 		
 		private function parseNotes(notesXML:XMLList):void{
-			_octaves = new Vector.<Vector.<NoteModel>>();
-			for each(var octave:XML in notesXML.children()){
-				var notes:Vector.<NoteModel> = new Vector.<NoteModel>();
-				for each(var note:XML in octave.children()){
-					var noteModel:NoteModel = new NoteModel(note);
-					noteModel.ready.addOnce(onNoteReady);
-					notes.push(noteModel);
-				}
-				_octaves.push(notes);
+			_notes = new Vector.<NoteModel>();
+			for each(var note:XML in notesXML.children()){
+				var noteModel:NoteModel = new NoteModel(note);
+				noteModel.ready.addOnce(onNoteReady);
+				_notes.push(noteModel);
 			}
 		}
 
@@ -59,24 +44,22 @@ package com.musicalInstruments.model
 		
 		
 		public function get notesLength():uint{
-			return _octaves[_currentOctave].length;
+			return _notes.length;
 		}
 		
 		public function getNoteById(id:String):NoteModel{
 			var ntm:NoteModel;
-			for each(var octave:Vector.<NoteModel> in _octaves){
-				for each(var noteModel:NoteModel in octave){
+				for each(var noteModel:NoteModel in _notes){
 					if(noteModel.id == id){
 						ntm = noteModel;
 						break;
 					}
 				}
-			}
 			return ntm;
 		}
 		
 		public function getNoteAt(indx:uint):NoteModel{
-			return _octaves[_currentOctave][indx];
+			return _notes[indx];
 		}
 		
 		override public function addRecordedSequance(sequance:IRecordableSequance,beginAtFrame:uint,endAtFrame:uint):void{
@@ -93,7 +76,7 @@ package com.musicalInstruments.model
 		
 		private function onNoteReady():void{
 			_readyNotes++;
-			if(_readyNotes == _octaves[_currentOctave].length){
+			if(_readyNotes == _notes.length){
 				ready.dispatch();
 			}
 		}

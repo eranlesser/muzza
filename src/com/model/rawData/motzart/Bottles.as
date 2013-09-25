@@ -54,7 +54,6 @@ package com.model.rawData.motzart
 		
 		
 		</studio>
-		<octaves>
 		<notes>
 			<note id="C_5"  soundFile="mozart/xilofon/do.mp3" animationIndex='1' value="1"   />
 			<note id="D_5"  soundFile="mozart/xilofon/re.mp3" animationIndex='2' value="2"   />
@@ -69,7 +68,6 @@ package com.model.rawData.motzart
 			<note id="D_6" soundFile="mozart/xilofon/re_up.mp3" animationIndex='7' value="11" />
 			
 		</notes>
-		</octaves>
 		<sequances>
 		<sequance id="10">
 

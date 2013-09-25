@@ -114,6 +114,10 @@ package com.musicalInstruments.view.components
 			return _model.clickable;
 		}
 		
+		public function get octave():uint{
+			return _model.octave;
+		}
+		
 		public function get noteId():String{
 			return _model.noteId;
 		}

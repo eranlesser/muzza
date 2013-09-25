@@ -11,7 +11,7 @@ package com.musicalInstruments.model
 		private var _noteX:int;
 		private var _noteY:int;
 		private var _clickable:Boolean=true;
-		
+		private var _octave:uint=1;
 		
 		public function InstrumentComponentModel(xml:XML){
 			image = xml.@image;
@@ -24,6 +24,13 @@ package com.musicalInstruments.model
 			if(xml.@clickable=="false"){
 				_clickable=false;
 			}
+			if(xml.@octave>0){
+				_octave = xml.@octave; 
+			}
+		}
+		
+		public function get octave():uint{
+			return _octave;
 		}
 		
 		public function get clickable():Boolean{

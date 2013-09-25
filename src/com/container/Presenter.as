@@ -103,8 +103,8 @@ package com.container
 			_screensLayer.addChild(demoScreen);
 			demoScreen.start();
 			if(!silentMode){
-			_toolBar.demoButton.state="pressed";
-			demoScreen.close.add(closeDemo);
+				_toolBar.demoButton.state="pressed";
+				demoScreen.close.add(closeDemo);
 			}
 		}
 		

@@ -9,6 +9,7 @@ package com.musicalInstruments.view.components
 	
 	public class Togi extends Sprite{
 		private var _pressed:Sprite;
+		private var _selected:Sprite;
 		private var _idle:Sprite;
 		private var _play:Sprite;
 		private var _soundPlayer:SoundPlayer;
@@ -22,6 +23,10 @@ package com.musicalInstruments.view.components
 			_pressed.graphics.lineStyle(1,0x111111);
 			_pressed.graphics.drawRoundRect(0,0,wdt,hgt,8);
 			_pressed.graphics.endFill();
+			_selected = new Sprite();
+			_selected.graphics.lineStyle(2,0xFF530D);
+			_selected.graphics.drawRoundRect(0,0,wdt,hgt,8);
+			_selected.graphics.endFill();
 			_idle = new Sprite();
 			_idle.graphics.beginFill(0xFFFFFF,0);
 			_idle.graphics.lineStyle(1,0xEEEEEE);
@@ -47,9 +52,11 @@ package com.musicalInstruments.view.components
 		
 		private function init(isPressed:Boolean):void{
 			addChild(_idle);
+			addChild(_selected);
 			addChild(_pressed);
 			addChild(_play);
-			_pressed.visible=isPressed;
+			_pressed.visible=false//isPressed;
+				_selected.visible=isPressed;
 			_play.visible=false;
 			//this.addEventListener(TouchEvent.TOUCH_TAP,togiClicked);
 			this.addEventListener(MouseEvent.MOUSE_DOWN,togiClicked);

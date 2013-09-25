@@ -24,13 +24,11 @@ public static var data:XML =
 </drum>
 
 </components>
-<octaves>
 <notes>
 	<note id="D_6" value="1"  soundFile="ode/drums/snar.mp3" animationIndex='5'    />
 	<note id="C_6" value="2" soundFile="ode/drums/bd.mp3" animationIndex='4'  />
 	<note id="C#_6" value="3" soundFile="ode/drums/shaker.mp3" animationIndex='2' />
 </notes>
-</octaves>
 <sequances>
 
 	<!--SUBSEQUANCES-->

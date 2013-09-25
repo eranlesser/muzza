@@ -28,14 +28,12 @@ package com.model.rawData.motzart
 	</loopy>
 </rawData>
 
-			<octaves>
 			<notes>
 			<note id="quicka"   soundFile="mozart/quicka/quiqa_full.mp3" animationIndex='1' value="1" x="133"  />
 			<note id="ganza"   soundFile="mozart/quicka/ganza_full.mp3" animationIndex='2' value="2" x="238" />
 			
 			
 			</notes>
-			</octaves>
 			<gestures>
 			</gestures>
 			<sequances>

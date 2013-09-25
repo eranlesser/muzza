@@ -147,7 +147,10 @@ package com.musicalInstruments.view.instrument {
 		
 		
 		public function set active(flag:Boolean):void{
-			
+			if(flag && stage.focus != _tField){
+				stage.focus = _tField;
+				_tField.addEventListener(FocusEvent.FOCUS_OUT,onFocusOut);
+			}
 		}
 		
 		

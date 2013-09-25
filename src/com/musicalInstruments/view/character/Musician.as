@@ -83,10 +83,6 @@ package com.musicalInstruments.view.character {
 		}
 		
 		
-		public function set octave(level:uint):void{
-			_model.octave=level;
-		}
-		
 		public function get isPerforming():Boolean{
 			return _player.isAnimating;
 		}

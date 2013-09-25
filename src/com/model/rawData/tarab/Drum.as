@@ -27,14 +27,12 @@ public static var data:XML =
 <tap noteId="4" />
 </drum>
 </components>
-<octaves>
 <notes>
 	<note id="1" value="1" soundFile="tarab/drums/snare.mp3" animationIndex='5'  />
 	<note id="2" value="2" soundFile="tarab/drums/bassDrum2.mp3" animationIndex='4'  />
 	<note id="4"  value="3" soundFile="tarab/drums/haiat.mp3" animationIndex='2'  />
 	<note id="3"  value="4" soundFile="tarab/drums/tam.mp3" animationIndex='1'  />
 </notes>
-</octaves>
 <sequances>
 <sequance id="99">
 </sequance>

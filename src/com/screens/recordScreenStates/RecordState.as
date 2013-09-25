@@ -201,6 +201,7 @@ package com.screens.recordScreenStates
 			}
 			for each(var curNote:DroppingNote in _toPlayNotes){
 				if(curNote.location==_timeModel.currentTick){
+					trace(_timeModel.currentTick,"<",curNote.id)
 					pauseSignal.dispatch(true);
 					_tween.paused=true;
 					break;

@@ -34,7 +34,6 @@ public static var data:XML =
 <background image="backgr_solo.jpg" />
 <spotLight image="bass_spot_lights.png" />
 </studio>
-<octaves>
 <notes>
 <note id="A_2"   soundFile="mountain/bass/la.mp3" animationIndex='8' value="1"  />
 <note id="B_2"   soundFile="mountain/bass/ci.mp3" animationIndex='1' value="2"  />
@@ -43,7 +42,6 @@ public static var data:XML =
 <note id="F#_3"   soundFile="mountain/bass/fa_diez.mp3" animationIndex='4' value="5"  />
 <note id="G_3"   soundFile="mountain/bass/sol.mp3" animationIndex='6' value="6" />
 </notes>
-</octaves>
 <gestures>
 </gestures>
 <sequances>

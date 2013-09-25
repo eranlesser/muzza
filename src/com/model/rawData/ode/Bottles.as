@@ -48,7 +48,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 
 
 </studio>
-<octaves>
 <notes>
 	<note id="A_3"  soundFile="ode/xilofon/la_down.mp3" animationIndex='1' value="1"   />
 	<note id="D_4"  soundFile="ode/xilofon/re.mp3" animationIndex='2'  value="2"  />
@@ -61,7 +60,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="9" soundFile="ode/xilofon/re_up.mp3" animationIndex='5' value="9" />
 	
 </notes>
-</octaves>
 <sequances>
 <sequance id="10">
   <note id="F#_4" location="4" soundLength="4"/>

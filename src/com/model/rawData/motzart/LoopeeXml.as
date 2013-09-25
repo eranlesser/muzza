@@ -96,7 +96,6 @@ package com.model.rawData.motzart
 	</agogo>
 </rawData>
 
-			<octaves>
 			<notes>
 			<note id="q1"   soundFile="mozart/quicka/q1.mp3"  />
 			<note id="q2"   soundFile="mozart/quicka/q2.mp3"  />
@@ -113,7 +112,6 @@ package com.model.rawData.motzart
 			<note id="C_5"  soundFile="mozart/agogo/c4.mp3"  value="1" x="790" />
 			<note id="C#_5" soundFile="mozart/agogo/c_diez4.mp3" value="2" x="940"/>
 			</notes>
-			</octaves>
 			<sequances>
 
 			

@@ -8,7 +8,9 @@ package com.musicalInstruments.view.instrument
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
 	
 	import org.osflash.signals.Signal;
 	
@@ -17,7 +19,6 @@ package com.musicalInstruments.view.instrument
 	{
 		private var _rows:Vector.<TogiRow>;
 		public var playRequest:Signal = new Signal();
-		public var isPlaying:Boolean=false;
 		public function Loopee(model:NotesInstrumentModel){
 			super(model);
 			init();
@@ -26,14 +27,11 @@ package com.musicalInstruments.view.instrument
 		
 		private function init():void{
 			var loopee:Sprite = new Sprite();
-			var bg:DisplayObject=loopee.addChild(AssetsManager.getAssetByName("notes_sheet.png"));
-			var frame:DisplayObject = loopee.addChild(AssetsManager.getAssetByName("notes_frame.png"));
-			frame.scaleX=-1;
-			bg.scaleX=-1;
-			bg.x=bg.width;
-			frame.x = frame.width;
+			//var frame:DisplayObject = loopee.addChild(AssetsManager.getAssetByName("notes_frame.png"));
+//			frame.scaleX=-0.8;
+//			frame.x = frame.width;
 			_rows = new Vector.<TogiRow>();
-			var xx:uint=210;
+			var xx:uint=30;
 			for each(var row:XML in _model.rawData.row){
 				var togiRow:TogiRow = new TogiRow(row);
 				loopee.addChild(togiRow);
@@ -42,33 +40,47 @@ package com.musicalInstruments.view.instrument
 				togiRow.y=50;
 				_rows.push(togiRow);
 			}
-			var playBut:Sprite = new Sprite();
-			playBut.addChild(AssetsManager.getAssetByName("PLAY_BUTTON_IDLE.png"));
-			playBut.addChild(AssetsManager.getAssetByName("PLAY_BUTTON_PRESSED.png"));
-			loopee.addChild(playBut);
-			playBut.getChildAt(1).visible=false;
-			playBut.y=height/2-playBut.height/2;
-			playBut.x=40;
-			playBut.addEventListener(MouseEvent.CLICK,onPlay);
+//			var playBut:Sprite = new Sprite();
+//			playBut.addChild(AssetsManager.getAssetByName("PLAY_BUTTON_IDLE.png"));
+//			playBut.addChild(AssetsManager.getAssetByName("PLAY_BUTTON_PRESSED.png"));
+//			loopee.addChild(playBut);
+//			playBut.getChildAt(1).visible=false;
+//			playBut.y=height/2-playBut.height/2;
+//			playBut.x=40;
+//			playBut.addEventListener(MouseEvent.CLICK,onPlay);
 			addChild(loopee);
 			loopee.scaleX=0.74;
 			addAgogo(_model.rawData);
 		}
 		
 		override public function stop():void{
-			Metronome.getTimeModel().tickSignal.remove(onTick);
 		}
 		
-		private function onPlay(e:MouseEvent):void{
-			if(!Sprite(e.target).getChildAt(1).visible){
-				isPlaying=Sprite(e.target).getChildAt(1).visible=true;
+		override public function set active(flag:Boolean):void{
+			if(flag){
 				Metronome.getTimeModel().tickSignal.add(onTick);
 			}else{
 				Metronome.getTimeModel().tickSignal.remove(onTick);
-				isPlaying=Sprite(e.target).getChildAt(1).visible=false;
 			}
-			playRequest.dispatch();
+		}
+		
+		override protected function onKeyPressed(e:KeyboardEvent):void{
+			var compValue:int;
+			var keyValue:int = getValueFromChar(e.keyCode);
+			switch(keyValue){
+				case 1:
+				case 2:
+					Pawee(_agogo.getChildAt(keyValue-1)).play();
+					addEventListener(KeyboardEvent.KEY_UP,
+						function onKeyUp():void{
+							removeEventListener(KeyboardEvent.KEY_UP,onKeyUp);
+							Pawee(_agogo.getChildAt(keyValue-1)).stop();
+							
+						});
+					break;
+			}
 			
+			TextField(e.target).text="";
 		}
 		
 		private function onTick():void{
@@ -99,14 +111,16 @@ package com.musicalInstruments.view.instrument
 		//___________________________________________________________________________________________________________		
 		//____________________________________________________________________________________________________AGOGO		
 		
+		private var _agogo:Sprite;
+		
 		private function addAgogo(xml:XML):void{
-			var agogo:Sprite = new Sprite();
-			addChild(agogo);
-			agogo.x = xml.agogo.@x;
-			agogo.y = xml.agogo.@y;
+			_agogo = new Sprite();
+			addChild(_agogo);
+			_agogo.x = xml.agogo.@x;
+			_agogo.y = xml.agogo.@y;
 			for each(var paweXml:XML in xml.agogo.children()){
 				var pawee:Pawee = new Pawee(paweXml);
-				agogo.addChild(pawee);
+				_agogo.addChild(pawee);
 				pawee.notePlayed.add(onNotePlayed);
 				pawee.noteStopped.add(onNoteStopped);
 			}

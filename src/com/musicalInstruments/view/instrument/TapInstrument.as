@@ -9,6 +9,10 @@ package com.musicalInstruments.view.instrument {
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IMusicalView;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
+	
+	import flash.events.Event;
+	import flash.events.KeyboardEvent;
+	import flash.text.TextField;
 
 	/**
 	 * @author eranlesser
@@ -20,13 +24,10 @@ package com.musicalInstruments.view.instrument {
 		public function TapInstrument(model:NotesInstrumentModel) {
 			super(model);
 			addTapComponents(_model.components);
-			if(NotesInstrumentModel(_model).octavesLength>1){
-				_octvSelector = new OctaveSelector();
-				addOctaveSelector();
-			}
 		}
 		
 		protected function addTapComponents(components:Vector.<InstrumentComponentModel>):void{
+			var addSelector:Boolean=false;
 			for each(var compModel:InstrumentComponentModel in components){
 				var comp:MusicalInstrumentComponent;
 				comp = new MusicalInstrumentComponent(compModel,_model as INoteFetcher);
@@ -35,6 +36,10 @@ package com.musicalInstruments.view.instrument {
 				comp.unTuch.add(onUnTouch);
 				comp.x = compModel.x;
 				comp.y = compModel.y;
+				if(compModel.octave!=1){
+					comp.visible=false;
+					addSelector=true;
+				}
 				if(comp.clickable){
 					_musicalComponents.push(comp)
 				}else{
@@ -43,17 +48,11 @@ package com.musicalInstruments.view.instrument {
 				}
 				this.mouseEnabled = false;
 			}
+			if(addSelector){
+				addOctaveSelector();
+			}
 		}
 		
-		override public function set active(flag:Boolean):void{
-//			for each (var comp:MusicalInstrumentComponent in _musicalComponents){
-//				if(flag){	
-//					comp.filters = [new GlowFilter(0xF2D8A7)]
-//				}else{
-//					comp.filters = null;
-//				}
-//			}
-		}
 		
 		public function getComponentById(id:String):MusicalInstrumentComponent{
 			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
@@ -64,12 +63,27 @@ package com.musicalInstruments.view.instrument {
 			return null;
 		}
 		
-		
+		override protected function onKeyPressed(e:KeyboardEvent):void{
+			var compValue:int;
+			var keyValue:int = getValueFromChar(e.keyCode);
+			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
+				compValue = NotesInstrumentModel(_model).getNoteById(comp.noteId).value
+				if(compValue == keyValue && comp.octave==_octvSelector.selectedOctave){
+					comp.onTouchTap(e);
+					addEventListener(KeyboardEvent.KEY_UP, function keyUp(event:Event):void{
+						removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
+						comp.onTouchTapEnd(event);
+					}
+					);
+					break;
+				}
+			}
+			TextField(e.target).text="";
+		}
 		
 		
 		private function animateNote(noteId:String,state:String):void{
-						getComponentById(noteId).state = state;
-			//		}
+			getComponentById(noteId).state = state;
 			
 		}
 		private function onTouch(comp:MusicalInstrumentComponent):void{
@@ -100,10 +114,11 @@ package com.musicalInstruments.view.instrument {
 		}
 		
 		private function addOctaveSelector():void{
+			_octvSelector = new OctaveSelector();
 			addChild(_octvSelector);
 			_octvSelector.changed.add(onOctavChanged);
 			layoutOctaveSelector();
-			_octvSelector.octave=0;
+			_octvSelector.octave=1;
 			//_octvSelector.visible=false;
 		}
 		
@@ -117,10 +132,10 @@ package com.musicalInstruments.view.instrument {
 		}
 		//AUTOSWAP IN PRACTICE STATE
 		public function autoSetOctave(sequance:NoteSequanceModel):void{
-			if((_model as NotesInstrumentModel).octavesLength>1){
-				_octaveController=new OctaveSetter(sequance,this);
-				_octaveController.start();
-			}
+//			if((_model as NotesInstrumentModel).octavesLength>1){
+//				_octaveController=new OctaveSetter(sequance,this);
+//				_octaveController.start();
+//			}
 		}
 		//END AUTOSWAP IN PRACTICE STATE
 		public function deAutoSetOctave():void{
@@ -130,12 +145,18 @@ package com.musicalInstruments.view.instrument {
 		
 		
 		private function onOctavChanged():void{
+			if(_octave == _octvSelector.selectedOctave){
+				return;
+			}
 			octave=_octvSelector.selectedOctave;
+			for(var i:uint=0;i<_musicalComponents.length;i++){
+				_musicalComponents[i].visible=(_musicalComponents[i].octave==_octave)
+			}
 		}
 		
 		public function set octave(oct:uint):void{
 			_octave=oct;
-			NotesInstrumentModel(_model).octave=oct;
+			//NotesInstrumentModel(_model).octave=oct;
 			if(_octvSelector){
 				_octvSelector.octave=oct;
 			}
@@ -155,7 +176,7 @@ package com.musicalInstruments.view.instrument {
 		}
 		public function get octave():uint{
 			return _octave;
-			}
+		}
 
 		
 		
@@ -173,7 +194,7 @@ class OctaveSelector extends Sprite{
 	public var changed:Signal=new Signal();
 	public function OctaveSelector(){
 		init();
-		_selectedOctave=0;
+		_selectedOctave=1;
 	}
 	
 	public function set enabled(value:Boolean):void{
@@ -200,9 +221,9 @@ class OctaveSelector extends Sprite{
 			return;
 		}
 		if(e.target.x==0){
-			_selectedOctave=0;
-		}else{
 			_selectedOctave=1;
+		}else{
+			_selectedOctave=2;
 		}
 		changed.dispatch();
 	}
@@ -224,9 +245,9 @@ class OctaveSelector extends Sprite{
 			rect.graphics.drawRect(0,0,rect.width-1,rect.height-1);
 			rect.graphics.endFill();
 		}
-		_rects[indx].graphics.beginFill(0x333333,alphaLevel);
-		_rects[indx].graphics.drawRect(0,0,_rects[indx].width-1,_rects[indx].height-1);
-		_rects[indx].graphics.endFill();
+		_rects[indx-1].graphics.beginFill(0x333333,alphaLevel);
+		_rects[indx-1].graphics.drawRect(0,0,_rects[indx-1].width-1,_rects[indx-1].height-1);
+		_rects[indx-1].graphics.endFill();
 		_selectedOctave=indx;
 	}
 }

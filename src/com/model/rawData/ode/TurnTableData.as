@@ -29,7 +29,6 @@ package com.model.rawData.ode
 	</vinyl>
 </rawData>
 
-			<octaves>
 			<notes>
 			<note id="C_6"   soundFile="ode/scrach/chelo_1.mp3" animationIndex='1' value="1" x="133"  />
 			<note id="C#_6"   soundFile="ode/scrach/chelo_2.mp3" animationIndex='2' value="2" x="238" />
@@ -40,7 +39,6 @@ package com.model.rawData.ode
 			
 			
 			</notes>
-			</octaves>
 			<gestures>
 			</gestures>
 			<sequances>

@@ -182,7 +182,7 @@ package com.musicalInstruments.view.instrument
 			_hey.addEventListener(MouseEvent.MOUSE_DOWN,playHey);
 		}
 		
-		private function playHey():void{
+		private function playHey(e:Event=null):void{
 			var heyOver:DisplayObject = AssetsManager.getAssetByName("hey.png");
 			heyOver.x=150;
 			heyOver.y=-heyOver.height+10;
