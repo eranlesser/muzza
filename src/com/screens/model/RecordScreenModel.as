@@ -22,6 +22,7 @@ package com.screens.model {
 		private var _noteTargetsYOffset:int;
 		private var _backUpInsruments:Vector.<InstrumentModel>;
 		private var _startAtCurPoint:int;
+		private var _showLine:Boolean=true;
 		public var score:int;
 		public function RecordScreenModel(xml:XML,instruments:ThemeInstrumentsModel){
 			super(xml);
@@ -30,6 +31,11 @@ package com.screens.model {
 			parse(xml);
 		}
 		
+		public function get showLine():Boolean
+		{
+			return _showLine;
+		}
+
 		private function parse(xml:XML):void{
 			_instrumentModel = _instruments.getInstrumentByName(xml.playerInstrument.@type);
 			_recordeSequanceId = xml.playerInstrument.@recordedSequance;
@@ -40,6 +46,9 @@ package com.screens.model {
 			_recordInstrumentY= xml.playerInstrument.RecordedY;
 			_noteTargetsY= xml.playerInstrument.@noteTargetsY;
 			_noteTargetsYOffset= xml.playerInstrument.@notesTargetYOffset;
+			if(xml.@showLine=="false"){
+				_showLine=false;
+			}
 			for each(var instrument:XML in xml.backups.instrument){
 				var insModel:CoreInstrumentModel =_instruments.getInstrumentByName(instrument.@type);
 				var themedInsModel:InstrumentModel = new InstrumentModel(insModel,instrument);

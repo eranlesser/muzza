@@ -10,7 +10,6 @@ package com.screens.recordScreenStates
 	import com.metronom.Metronome;
 	import com.model.FileProxy;
 	import com.musicalInstruments.view.instrument.TapInstrument;
-	import com.representation.ChanelNotesType;
 	import com.screens.mediator.ScoreMediator;
 	import com.screens.view.components.Clock;
 	import com.screens.view.components.notes.DroppingNote;

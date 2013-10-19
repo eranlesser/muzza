@@ -41,7 +41,7 @@ package com.representation.controller {
 				_channelView.clearNotes();
 				drawNotes(_instrumentModel as NotesInstrumentModel,NoteSequanceModel(_learnedSequance));
 				
-			_channelView.drawNoteTarget(_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset);
+			_channelView.drawNoteTarget(_recordScreenModel.noteTargetsY,_recordScreenModel.noteTargetsYOffset,_recordScreenModel.showLine);
 			}
 		}
 		
@@ -89,7 +89,7 @@ package com.representation.controller {
 		}
 		
 		
-		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint):void{
+		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint=0):void{
 			var note:SequancedNote = recordSequance.add(noteId,startLocation,noteLength,octave);
 			if(note == null){
 				return;

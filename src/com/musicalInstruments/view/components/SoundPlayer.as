@@ -24,14 +24,18 @@ package com.musicalInstruments.view.components {
 		
 		public function SoundPlayer(soundFile:String){
 			_soundFile = soundFile;
-			if(_soundFile==""){
-				//trace();
-			}
+			
 			_metronom = Metronome.getTimeModel();
+			if(_soundFile!=""){
 			loadSound();
+			}
 		}
 		
 		public function play(volume:Number):SoundChannel{
+			if(_soundFile==""){
+				trace("NO SOUND");
+				return null;
+			}
 			var channel:SoundChannel = _sound.play();
 		//	trace(_soundFile)
 			if(channel == null){

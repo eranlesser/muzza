@@ -10,7 +10,7 @@ public static var data:XML =
 {Bottles.data}
 {Drum.data}
 {Bass.data}
-{LoopeeXml.data}
+{CuiqaData.data}
 </instruments>
 <screens>
 
@@ -89,10 +89,10 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1632" >
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1632" showLine="false">
 	<playerInstrument type="loopee" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
-	<RecordedX>22</RecordedX>
-	<RecordedY>400</RecordedY>
+	<RecordedX>0</RecordedX>
+	<RecordedY>0</RecordedY>
 	</playerInstrument>
 <backups>
 <instrument type="drum.png" >

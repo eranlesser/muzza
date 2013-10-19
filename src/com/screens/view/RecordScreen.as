@@ -228,7 +228,8 @@ package com.screens.view {
 			if(_model.instrumentModel.type=="turnTable"){
 				_instrumentRecorder = new TurnTable(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="loopee"){
-				_instrumentRecorder = new Loopee(_model.instrumentModel as NotesInstrumentModel);
+				//_instrumentRecorder = new Loopee(_model.instrumentModel as NotesInstrumentModel);
+				_instrumentRecorder = new Cuiqa(_model.instrumentModel as NotesInstrumentModel);
 			}else{
 			_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}

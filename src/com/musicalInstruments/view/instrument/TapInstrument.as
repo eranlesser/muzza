@@ -53,6 +53,12 @@ package com.musicalInstruments.view.instrument {
 			}
 		}
 		
+		override public function set active(flag:Boolean):void{
+			if(_octvSelector){
+				_octvSelector.octave=1;
+			}
+		}
+		
 		
 		public function getComponentById(id:String):MusicalInstrumentComponent{
 			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
@@ -68,7 +74,7 @@ package com.musicalInstruments.view.instrument {
 			var keyValue:int = getValueFromChar(e.keyCode);
 			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
 				compValue = NotesInstrumentModel(_model).getNoteById(comp.noteId).value
-				if(compValue == keyValue && comp.octave==_octvSelector.selectedOctave){
+				if(compValue == keyValue &&(!_octvSelector ||  comp.octave==_octvSelector.selectedOctave)){
 					comp.onTouchTap(e);
 					addEventListener(KeyboardEvent.KEY_UP, function keyUp(event:Event):void{
 						removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
@@ -110,7 +116,7 @@ package com.musicalInstruments.view.instrument {
 			//if(!Metronome.getTimeModel().isPreTicking){
 			//}
 			
-			_noteStopped.dispatch(comp.noteId,comp.startLocation,soundLength,0);
+			_noteStopped.dispatch(comp.noteId,comp.startLocation,soundLength,_octave);
 		}
 		
 		private function addOctaveSelector():void{
@@ -123,7 +129,7 @@ package com.musicalInstruments.view.instrument {
 		}
 		
 		public function layoutOctaveSelector():void{
-			_octvSelector.y=-200;
+			_octvSelector.y=-50;
 			_octvSelector.x=0//(this.width-_octvSelector.width)/2
 		}
 		
@@ -152,6 +158,7 @@ package com.musicalInstruments.view.instrument {
 			for(var i:uint=0;i<_musicalComponents.length;i++){
 				_musicalComponents[i].visible=(_musicalComponents[i].octave==_octave)
 			}
+			_notePlayed.dispatch("octave+");
 		}
 		
 		public function set octave(oct:uint):void{
@@ -184,6 +191,9 @@ package com.musicalInstruments.view.instrument {
 }
 import flash.display.Sprite;
 import flash.events.MouseEvent;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
 
 import org.osflash.signals.Signal;
 
@@ -207,9 +217,9 @@ class OctaveSelector extends Sprite{
 	
 	private function init():void{
 		_rects=new Vector.<Sprite>();
-		var rect1:Sprite=rect();
+		var rect1:Sprite=rect("A");
 		addChild(rect1);
-		var rect2:Sprite=rect();
+		var rect2:Sprite=rect("B");
 		addChild(rect2);
 		rect2.x=rect1.width;
 		_rects.push(rect1);
@@ -228,11 +238,19 @@ class OctaveSelector extends Sprite{
 		changed.dispatch();
 	}
 	
-	public function rect():Sprite{
+	public function rect(label:String):Sprite{
 		var spr:Sprite=new Sprite();
-		spr.graphics.lineStyle(1);
+		spr.graphics.lineStyle(1,0xFFFFFF);
 		spr.graphics.drawRect(0,0,40,30);
 		spr.addEventListener(MouseEvent.CLICK,onRectClicked);
+		var tField:TextField = new TextField();
+		tField.autoSize = TextFieldAutoSize.CENTER;
+		tField.text=label;
+		tField.setTextFormat(new TextFormat(null,18,0x333333,true));
+		tField.backgroundColor=0xFFFFFF;
+		tField.background=true;
+		spr.addChild(tField);
+		//tField.y = -tField.height;
 		return spr;
 	}
 	public function set octave(indx:uint):void{
@@ -241,11 +259,11 @@ class OctaveSelector extends Sprite{
 			alphaLevel=0.6;
 		}
 		for each(var rect:Sprite in _rects){
-			rect.graphics.beginFill(0xFFFFFF,alphaLevel);
-			rect.graphics.drawRect(0,0,rect.width-1,rect.height-1);
+			rect.graphics.beginFill(0x333333,alphaLevel);
+			rect.graphics.drawRect(0,0,40,30);
 			rect.graphics.endFill();
 		}
-		_rects[indx-1].graphics.beginFill(0x333333,alphaLevel);
+		_rects[indx-1].graphics.beginFill(0xFFFFFF,alphaLevel);
 		_rects[indx-1].graphics.drawRect(0,0,_rects[indx-1].width-1,_rects[indx-1].height-1);
 		_rects[indx-1].graphics.endFill();
 		_selectedOctave=indx;

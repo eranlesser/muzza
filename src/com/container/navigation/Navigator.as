@@ -109,6 +109,9 @@ class BreadCrumbs extends Sprite{
 				case "loopee":
 						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","loopee");
 					break;
+				case "flute":
+						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","flute");
+					break;
 			}
 			addButton(btn)
 			// need to move btn assets to data and add buttons here

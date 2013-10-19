@@ -103,11 +103,13 @@ package com.screens.view.components.notes
 			}
 			return prefix;
 		}
-		public function drawNoteTarget(yy:int,yOffset:int):void{
-			var lne:DisplayObject = AssetsManager.getAssetByName("line.png");
-			lne.y=yy+yOffset-24;
-			lne.x=-12;
-			addChild(lne);
+		public function drawNoteTarget(yy:int,yOffset:int,addLine:Boolean):void{
+			if(addLine){
+				var lne:DisplayObject = AssetsManager.getAssetByName("line.png");
+				lne.y=yy+yOffset-24;
+				lne.x=-12;
+				addChild(lne);
+			}
 		}
 		
 		

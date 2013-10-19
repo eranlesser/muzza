@@ -93,7 +93,6 @@ package com.musicalInstruments.view.instrument
 			//tickValue =tickValue/4;
 			if(tickValue != (Metronome.getTimeModel().currentTick-1)%64/4)
 				return;
-			trace("tickValue",tickValue)
 			if(_rows[tickValue].selectedTogi){
 				_rows[tickValue].selectedTogi.play();
 				onNotePlayed(_rows[tickValue].selectedTogi.noteId)

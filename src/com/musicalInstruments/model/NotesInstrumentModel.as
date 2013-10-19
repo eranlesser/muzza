@@ -12,7 +12,6 @@ package com.musicalInstruments.model
 	{
 		private var _notes:		Vector.<NoteModel>;
 		private var _readyNotes:	uint=0;
-		
 		public function NotesInstrumentModel(instrument:XML){
 			
 			super(instrument);

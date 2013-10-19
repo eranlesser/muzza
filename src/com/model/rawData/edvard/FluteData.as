@@ -1,13 +1,13 @@
 package com.model.rawData.edvard
 {
-	public class TurnTableData
+	public class FluteData
 	{
-		public function TurnTableData()
+		public function FluteData()
 		{
 		}
 		
 		public static var data:XML = 
-<instrument type="turnTable"  thumbNail='turnTable' >
+<instrument type="flute"  thumbNail='flute' >
 <components />
 <rawData>
 	
