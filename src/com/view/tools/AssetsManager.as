@@ -30,7 +30,7 @@ package com.view.tools
 			//MENU
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
 			"<image path='assets/open/MOZART_PICTURE.png' />"+
-			//"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
+			"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+
 //			"<image path='assets/open/OVER_THE_RAINBOW.png' />"+
 //			"<image path='assets/open/OVER_THE_RAINBOW_pic.png' />"+
 //			"<image path='assets/open/BRAZIL_PICTURE.png' />"+
@@ -51,7 +51,7 @@ package com.view.tools
 //			"<image path='assets/open/Tarab.png' />"+
 			//TITLES
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
-//			"<image path='assets/open/JINGLE_BELLS.png' />"+
+			"<image path='assets/open/JINGLE_BELLS.png' />"+
 			"<image path='assets/open/MOUNTAIN_KING.png' />"+
 			//TOOLBAR
 			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
@@ -185,7 +185,7 @@ package com.view.tools
 //			"<image path='assets/band/bg/chelo.png' />"+
 //			"<image path='assets/metronome.png' />"+
 			//DEMOSCREEN
-//			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
 //			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+

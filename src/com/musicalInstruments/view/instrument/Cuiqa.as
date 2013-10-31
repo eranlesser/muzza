@@ -24,30 +24,28 @@ package com.musicalInstruments.view.instrument
 			_arrow.graphics.drawRect(0,0,RADIUS,2);
 			addChild(_arrow);
 			_arrow.x=Dimentions.WIDTH/2;
-			_arrow.y=Dimentions.HEIGHT/2;
+			_arrow.y=Dimentions.HEIGHT/2+50;
 			
 			var circle:Sprite = new Sprite();
-			circle.graphics.lineStyle(24,0xEEEEEE);
+			circle.graphics.lineStyle(44,0x111111);
 			circle.graphics.beginFill(0x333333,0.6);
 			circle.graphics.drawCircle(0,0,RADIUS);
 			circle.graphics.endFill();
 			addChild(circle);
 			circle.x=Dimentions.WIDTH/2;
-			circle.y=Dimentions.HEIGHT/2;
+			circle.y=Dimentions.HEIGHT/2+50;
 			var inst:Sprite;
 			var location:Point;
 			var i:uint=0;
 			for each(var row:XML in _model.rawData.row){
+				i++;
 				for each(var dot:XML in row.children()){
-					i++;
-					if(dot.@selected=="true"){
 						inst = new Dot(dot,(360/XMLList(_model.rawData.row).length())*i%360);
 						location=calculateDotLocation((360/XMLList(_model.rawData.row).length())*i);
 						inst.x=location.x;
 						inst.y=location.y;
 						circle.addChild(inst);
 						_dots.push(inst);
-					}
 				}
 			}
 			_playingDot=_dots[_dots.length-1];
@@ -93,15 +91,17 @@ package com.musicalInstruments.view.instrument
 			
 		}
 		private function onDotSoundComplete(id:String,startTime:uint,soundLength:int):void{
-			trace(id,soundLength);
-			_noteStopped.dispatch(id,soundLength,startTime);
+			_noteStopped.dispatch(id,startTime,soundLength);
 		}
 		
 	}
 }
+import com.gskinner.motion.GTween;
 import com.metronom.Metronome;
 import com.musicalInstruments.view.components.SoundPlayer;
 
+import flash.display.DisplayObject;
+import flash.display.Shape;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
@@ -114,9 +114,11 @@ class Dot extends Sprite{
 	public var _angle:Number;
 	private var _id:String;
 	private var _startTime:uint;
+	private var _dotFill:Shape;
 	public var soundCompleteSignal:Signal = new Signal();
 	public function Dot(xml:XML,angle:Number){
-		init();
+		init(xml.@color);
+		trace(xml.@color,"<")
 		_angle=angle;
 		_id=xml.@id;
 		_soundPlayer = new SoundPlayer(xml.@sound);
@@ -126,23 +128,35 @@ class Dot extends Sprite{
 		return _id;
 	}
 	
-	private function init():void{
+	private function init(color:int):void{
+		trace(color)
 		var spr:Sprite = new Sprite();
-		spr.graphics.beginFill(0x333333);
+		spr.graphics.lineStyle(1,color);
+		//spr.graphics.beginFill(color);
 		spr.graphics.drawCircle(0,0,16);
 		spr.graphics.endFill();
 		addChild(spr);
+		_dotFill=new Shape();
+		_dotFill.graphics.lineStyle(1,color);
+		_dotFill.graphics.beginFill(color);
+		_dotFill.graphics.drawCircle(0,0,16);
+		_dotFill.graphics.endFill();
+		addChild(_dotFill);
+		_dotFill.alpha=0;
 		this.addEventListener(MouseEvent.MOUSE_OVER,play);
 	}
 	
 	public function play(e:Event=null):void{
 		_soundPlayer.play(1);
 		_soundPlayer.soundComplete.add(onSoundComplete);
-		this.scaleX=2.5;
-		this.scaleY=2.5;
+		
+		var dTween:GTween = new GTween(_dotFill,0.5,{alpha:1});
+		dTween.onComplete = endTween;
 		_startTime = Metronome.getTimeModel().currentTick;
 	}
-	
+	private function endTween(t:GTween):void{
+		new GTween(_dotFill,0.2,{alpha:0});
+	}
 	private function onSoundComplete():void{
 		this.scaleX=1;
 		this.scaleY=1;

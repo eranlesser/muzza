@@ -1,6 +1,7 @@
 package com.model.rawData
 {
 	import com.model.rawData.edvard.EdvardData;
+	import com.model.rawData.jingleBells.JingleBells;
 	import com.model.rawData.motzart.MotzartData;
 	import com.model.rawData.ode.OdeData;
 
@@ -13,12 +14,13 @@ package com.model.rawData
 		public static var xml:XML=
 			<data>
 			<lessons type="lessons">
-			<song name="mozart" thumbNail="MOZART_PICTURE.png"  title="ODE_TO_JOY.png"/>
 				<song name="edvard"  thumbNail="EDVARD_GRIEG.png"  title="MOUNTAIN_KING.png"  />
+<song name="jingleBells" thumbNail="JINGLE_BELLS_PICTURE.png"  title="JINGLE_BELLS.png"  />
+			<song name="mozart" thumbNail="MOZART_PICTURE.png"  title="ODE_TO_JOY.png"/>
 				<song name="ode" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
 			<!--		<song name="brazil"  thumbNail="BRAZIL_PICTURE.png"  title="WATERCOLORS_of_BRAZIL.png"  />
 
-				<song name="jingleBells" thumbNail="JINGLE_BELLS_PICTURE.png"  title="JINGLE_BELLS.png"  />
+				
 				<song name="tarab"  thumbNail="Tarab.png"  title="Tarab.png"  />
 				<song name="tarab"  thumbNail="MOZART_PICTURE.png"  title="MOZART_PICTURE.png"  />
 				<song name="somewhere"  thumbNail="OVER_THE_RAINBOW_pic.png"  title="OVER_THE_RAINBOW.png"  />
@@ -47,7 +49,7 @@ package com.model.rawData
 					songData = MotzartData.data;
 					break;
 				case "jingleBells":
-						//songData = JingleBells.data;
+						songData = JingleBells.data;
 					break;
 				case "tarab":
 				//		songData = TarabData.data;

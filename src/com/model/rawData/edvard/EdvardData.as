@@ -24,8 +24,7 @@ package com.model.rawData.edvard
 			<instrument type='bottles.png' >
 			<layout id="0" x='350' y='100'  rotation="0" />
 			</instrument>
-			
-		
+
 		</demoScreen>
 		
 		

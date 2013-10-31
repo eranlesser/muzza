@@ -1,112 +1,42 @@
 package com.model.rawData.motzart
 {
-	public class CuiqaData
+	public class Drum
 	{
-		public function CuiqaData()
-		{
-		}
-		
 		public static var data:XML = 
-			<instrument type="loopee"  thumbNail='loopee' >
-			<components />
-			<rawData startAt="64"	>
-							<row>
-								<togi id="q1" sound="mozart/quicka/q1.mp3" color="0xFFFFFF" />
-							</row>
-							<row>
-								<togi id="q2" sound="mozart/quicka/q2.mp3" color="0x333333"/>
-							</row>
-							<row>
-							</row>
-							<row>
-								<togi id="q3" sound="mozart/quicka/q3.mp3" color="0xFFFFFF" />
-							</row>
-							<row location="5">
-							</row>
-							<row>
-								<togi id="q4" sound="mozart/quicka/q4.mp3" color="0x555555"/>
-							</row>
-							<row>
-								<togi id="q5" sound="mozart/quicka/q5.mp3" color="0x888888"/>
-							</row>
-							<row>
-								<togi id="q6" sound="mozart/quicka/q6.mp3" color="0x444444" />
-							</row>
-							<row location="9">
-								<togi id="q7" sound="mozart/quicka/q7.mp3" color="0x222222"/>
-							</row>
-							<row>
-								<togi id="q8" sound="mozart/quicka/q8.mp3" color="0xFFFFFF" />
-							</row>
-							<row>
-								<togi id="q9" sound="mozart/quicka/q9.mp3" color="0xFFFFFF" />
-							</row>
-							<row>
-								<togi id="q10" sound="mozart/quicka/q10.mp3" color="0xFFFFFF" />
-							</row>
-							<row location="13">
-								<togi id="q11" sound="mozart/quicka/q11.mp3" color="0xFFFFFF" />
-							</row>
-							<row >
-							</row>
-							<row location="15"> 
-								<togi id="q12" sound="mozart/quicka/q12.mp3" color="0xFFFFFF" />
-							</row>
-							<row>
-							</row>
-			</rawData>
+			<drum type="drums" thumbNail='drum.png' spriteSheet="drumsSheet.png">
+			<eyes swfSheet="drumsEyes.png" x="0" y="0" width="410" height="350" >
+				<blink start="0" end="4" />
+				<blink start="4" end="8" />
+				<blink start="9" end="15" />
+				<blink start="15" end="16" />
+			</eyes>		
+				
+			<components notesGap="140" leftPad="350">
 			
-						<notes>
-						<note id="q1"   soundFile="mozart/quicka/q1.mp3"  />
-						<note id="q2"   soundFile="mozart/quicka/q2.mp3"  />
-						<note id="q3"   soundFile="mozart/quicka/q3.mp3"  />
-						<note id="q4"   soundFile="mozart/quicka/q4.mp3"  />
-						<note id="q5"   soundFile="mozart/quicka/q5.mp3"  />
-						<note id="q6"   soundFile="mozart/quicka/q6.mp3"  />
-						<note id="q7"   soundFile="mozart/quicka/q7.mp3"  />
-						<note id="q8"   soundFile="mozart/quicka/q8.mp3"  />
-						<note id="q9"   soundFile="mozart/quicka/q9.mp3"  />
-						<note id="q10"   soundFile="mozart/quicka/q10.mp3"  />
-						<note id="q11"   soundFile="mozart/quicka/q11.mp3"  />
-						<note id="q12"   soundFile="mozart/quicka/q12.mp3"  />
-						</notes>
-						<sequances>
+			<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='0' y='0'>
+			<tap noteId="C#_5" />
+			</drum>
+			<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='140' y='0'>
+			<tap noteId="C_5" />
+			</drum>
+			<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='280' y='0'>
+			<tap noteId="C#_6" />
+			</drum>
 			
-						
+			</components>
+			<notes>
+				<note id="B_5" value="1"  soundFile="mozart/drums/B_4.mp3" animationIndex='5'    />
+				<note id="C_6" value="2" soundFile="mozart/drums/C_5.mp3" animationIndex='4'  />
+				<note id="C#_6" value="3" soundFile="mozart/drums/C_diez_5.mp3" animationIndex='1' />
+				<note id="C#_5" value="1" soundFile="mozart/agogo/c_diez4.mp3" animationIndex='5' />
+				<note id="C_5" value="2" soundFile="mozart/agogo/c4.mp3" animationIndex='1' />
+			</notes>
+			<sequances>
+			
+			<!--SEQUANCES-->
+			
 			<sequance id="10">
-			<note id="q1" location="1" soundLength="1"/>
-			<note id="q2" location="5" soundLength="1"/>
-			<note id="q3" location="13" soundLength="1"/>
-			<note id="q4" location="21" soundLength="1"/>
-			<note id="q5" location="25" soundLength="1"/>
-			<note id="q6" location="29" soundLength="1"/>
-			<note id="q7" location="33" soundLength="1"/>
-			<note id="q8" location="37" soundLength="1"/>
-			<note id="q9" location="41" soundLength="1"/>
-			<note id="q10" location="45" soundLength="1"/>
-			<note id="q11" location="49" soundLength="1"/>
-			<note id="q12" location="57" soundLength="1"/>
-			</sequance>
-			<sequance id="99">
-<subSequance id="10" location="64" />
-<subSequance id="10" location="128" />
-<subSequance id="10" location="192" />
-<subSequance id="10" location="256" />
-<subSequance id="10" location="320" />
-<subSequance id="10" location="384" />
-<subSequance id="10" location="448" />
-<subSequance id="10" location="512" />
-<subSequance id="10" location="576" />
-<subSequance id="10" location="640" />
-<subSequance id="10" location="704" />
-<subSequance id="10" location="768" />
-<subSequance id="10" location="832" />
-<subSequance id="10" location="896" />
-<subSequance id="10" location="960" />
-<subSequance id="10" location="1024" />
-			<subSequance id="10" location="1088" />
-			</sequance>
-						<sequance id="12">
+			
 			 <note id="C_5" location="65" soundLength="8"/>
 			 <note id="C#_5" location="73" soundLength="8"/>
 			 <note id="C#_5" location="81" soundLength="4"/>
@@ -268,31 +198,14 @@ package com.model.rawData.motzart
 			 <note id="C#_5" location="1137" soundLength="4"/>
 			 <note id="C_5" location="1141" soundLength="8"/>
 			 <note id="C_5" location="1149" soundLength="4"/>
-			<subSequance id="10" location="64" />
-			<subSequance id="10" location="128" />
-			<subSequance id="10" location="192" />
-			<subSequance id="10" location="256" />
-			<subSequance id="10" location="320" />
-			<subSequance id="10" location="384" />
-			<subSequance id="10" location="448" />
-			<subSequance id="10" location="512" />
-			<subSequance id="10" location="576" />
-			<subSequance id="10" location="704" />
-			<subSequance id="10" location="768" />
-			<subSequance id="10" location="832" />
-			<subSequance id="10" location="896" />
-			<subSequance id="10" location="960" />
-			<subSequance id="10" location="1024" />
-			<subSequance id="10" location="1088" />
-			<subSequance id="10" location="1152" />
-			<subSequance id="10" location="1216" />
-			<subSequance id="10" location="1280" />
-			<subSequance id="10" location="1344" />
-			<subSequance id="10" location="1408" />
-			<subSequance id="10" location="1472" />
-			<subSequance id="10" location="1536" />
 			</sequance>
-						</sequances>
-						</instrument>
+			<sequance id="99">
+			<subSequance id="10" location="0" />
+			</sequance>
+			</sequances>
+			</drum>
+		public function Drum()
+		{
+		}
 	}
 }

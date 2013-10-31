@@ -168,6 +168,7 @@ package com.inf
 					break;
 				case "turnTable":
 				case "loopee":
+				case "flute":
 					icon = AssetsManager.getAssetByName("Turntable.png");
 					break;
 				default:

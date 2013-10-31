@@ -8,28 +8,35 @@ package com.model.rawData.edvard
 		
 		public static var data:XML = 
 <instrument type="flute"  thumbNail='flute' >
-<components />
-<rawData>
-	
-	<chelo  x="22" y="6" >
-		<powee id="C_6" image="iron1normal.png" imageTap="iron1tap.png" x="20"  sound="mountain/flut/C_6.mp3"   />
-		<powee id="C#_6" image="iron2normal.png" imageTap="iron2tap.png" x="110"  sound="mountain/flut/C_diez_6.mp3" />
-		<powee id="D_5"   image="iron3normal.png" imageTap="iron3tap.png" x="220" sound="mountain/flut/D_5.mp3" />
-		<powee id="E_5" image="iron1normal.png" imageTap="iron1tap.png" x="310"  sound="mountain/flut/E_5.mp3"   />
-		<powee id="F_5" image="iron2normal.png" imageTap="iron2tap.png" x="400"  sound="mountain/flut/F_5.mp3" />
-	</chelo>
-	
+<components notesGap="110" leftPad="220">
+		<bg image="pole.png" clickable="false"  y="130" />
+		<bottle image="iron1normal.png" playImage="iron1tap.png" x='205' y='6' >
+			<tap noteId="B_4" />
+		</bottle>
+		<bottle image="iron2normal.png" playImage="iron2tap.png" x='280' y='6' >
+			<tap noteId="C_5" />
+		</bottle>
+		<bottle image="iron3normal.png" playImage="iron3tap.png" x='370' y='6' >
+			<tap noteId="C#_5" />
+		</bottle>
+		<bottle image="iron1normal.png" playImage="iron1tap.png" x='468' y='6' >
+			<tap noteId="D_5" />
+		</bottle>
+		<bottle image="iron2normal.png" playImage="iron2tap.png" x='540' y='6' >
+			<tap noteId="E_5" />
+		</bottle>
+		<bottle image="iron3normal.png" playImage="iron3tap.png" x='630' y='6' >
+			<tap noteId="F_5" />
+		</bottle>
 			
-	
-</rawData>
-
+		</components>
 			<notes>
-			<note id="B_4"   soundFile="mountain/flut/B_4.mp3" animationIndex='1' value="1" x="133"  />
-			<note id="C_5"   soundFile="mountain/flut/C_6.mp3" animationIndex='1' value="1" x="133"  />
-			<note id="C#_5"   soundFile="mountain/flut/C_diez_6.mp3" animationIndex='2' value="2" x="238" />
-			<note id="D_5"   soundFile="mountain/flut/D_5.mp3" animationIndex='3' value="3" x="340" />
-			<note id="E_5"   soundFile="mountain/flut/E_5.mp3" animationIndex='5' value="5" x="790"  />
-			<note id="F_5"   soundFile="mountain/flut/F_5.mp3" animationIndex='6' value="6" x="760"  />
+			<note id="B_4"   soundFile="mountain/flut/B_4.mp3" animationIndex='1' value="1" x="20"  />
+			<note id="C_5"   soundFile="mountain/flut/C_6.mp3" animationIndex='1' value="2" x="110"  />
+			<note id="C#_5"   soundFile="mountain/flut/C_diez_6.mp3" animationIndex='2' value="3" x="220" />
+			<note id="D_5"   soundFile="mountain/flut/D_5.mp3" animationIndex='3' value="4" x="330" />
+			<note id="E_5"   soundFile="mountain/flut/E_5.mp3" animationIndex='5' value="5" x="440"  />
+			<note id="F_5"   soundFile="mountain/flut/F_5.mp3" animationIndex='6' value="6" x="550"  />
 			
 			
 			</notes>

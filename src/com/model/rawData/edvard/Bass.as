@@ -48,6 +48,7 @@ public static var data:XML =
 
 <sequance id="10">
 
+
  <note id="B_2" location="1" soundLength="16"/>
  <note id="F#_3" location="17" soundLength="16"/>
  <note id="B_2" location="33" soundLength="16"/>
@@ -125,7 +126,7 @@ public static var data:XML =
  <note id="G_3" location="1265" soundLength="16"/>
 </sequance>
 <sequance id="99">
-<subSequance id="10" location="128" />
+<subSequance id="10" location="64" />
 
 </sequance>
 </sequances>
