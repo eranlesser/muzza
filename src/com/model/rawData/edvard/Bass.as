@@ -36,11 +36,14 @@ public static var data:XML =
 </studio>
 <notes>
 <note id="A_2"   soundFile="mountain/bass/la.mp3" animationIndex='8' value="1"  />
+<note id="B_3"   soundFile="mountain/bass/ci_down.mp3" animationIndex='1' value="2"  />
 <note id="B_2"   soundFile="mountain/bass/ci.mp3" animationIndex='1' value="2"  />
 <note id="C_3"   soundFile="mountain/bass/do.mp3" animationIndex='2' value="3"  />
 <note id="E_3"   soundFile="mountain/bass/mi.mp3" animationIndex='3' value="4"  />
+<note id="E_2"   soundFile="mountain/bass/mi_down.mp3" animationIndex='3' value="4"  />
 <note id="F#_3"   soundFile="mountain/bass/fa_diez.mp3" animationIndex='4' value="5"  />
-<note id="G_3"   soundFile="mountain/bass/sol.mp3" animationIndex='6' value="6" />
+<note id="G_3"   soundFile="mountain/bass/sol_down.mp3" animationIndex='6' value="6" />
+<note id="G_2"   soundFile="mountain/bass/sol.mp3" animationIndex='6' value="6" />
 </notes>
 <gestures>
 </gestures>
@@ -49,81 +52,82 @@ public static var data:XML =
 <sequance id="10">
 
 
- <note id="B_2" location="1" soundLength="16"/>
- <note id="F#_3" location="17" soundLength="16"/>
- <note id="B_2" location="33" soundLength="16"/>
- <note id="F#_3" location="49" soundLength="16"/>
- <note id="B_2" location="65" soundLength="16"/>
- <note id="F#_3" location="81" soundLength="16"/>
- <note id="C_3" location="97" soundLength="16"/>
- <note id="G_3" location="113" soundLength="16"/>
- <note id="A_2" location="129" soundLength="16"/>
- <note id="E_3" location="145" soundLength="16"/>
- <note id="A_2" location="161" soundLength="16"/>
- <note id="E_3" location="177" soundLength="16"/>
- <note id="A_2" location="193" soundLength="16"/>
- <note id="E_3" location="209" soundLength="16"/>
- <note id="A_2" location="225" soundLength="16"/>
- <note id="E_3" location="241" soundLength="16"/>
- <note id="A_2" location="257" soundLength="16"/>
- <note id="E_3" location="273" soundLength="16"/>
- <note id="A_2" location="289" soundLength="16"/>
- <note id="E_3" location="305" soundLength="16"/>
- <note id="C_3" location="321" soundLength="16"/>
- <note id="G_3" location="337" soundLength="16"/>
- <note id="C_3" location="353" soundLength="16"/>
- <note id="A_2" location="385" soundLength="16"/>
- <note id="E_3" location="401" soundLength="16"/>
- <note id="A_2" location="417" soundLength="16"/>
- <note id="E_3" location="433" soundLength="16"/>
- <note id="A_2" location="449" soundLength="16"/>
- <note id="E_3" location="465" soundLength="16"/>
- <note id="A_2" location="481" soundLength="16"/>
- <note id="E_3" location="497" soundLength="16"/>
- <note id="A_2" location="513" soundLength="16"/>
- <note id="E_3" location="529" soundLength="16"/>
- <note id="A_2" location="545" soundLength="16"/>
- <note id="E_3" location="561" soundLength="16"/>
- <note id="C_3" location="577" soundLength="16"/>
- <note id="G_3" location="593" soundLength="16"/>
- <note id="C_3" location="609" soundLength="16"/>
- <note id="E_3" location="641" soundLength="16"/>
- <note id="B_2" location="657" soundLength="16"/>
- <note id="E_3" location="673" soundLength="16"/>
- <note id="B_2" location="689" soundLength="16"/>
- <note id="C_3" location="705" soundLength="16"/>
- <note id="G_3" location="721" soundLength="16"/>
- <note id="E_3" location="737" soundLength="16"/>
- <note id="B_2" location="753" soundLength="16"/>
- <note id="E_3" location="769" soundLength="16"/>
- <note id="B_2" location="785" soundLength="16"/>
- <note id="E_3" location="801" soundLength="16"/>
- <note id="B_2" location="817" soundLength="16"/>
- <note id="C_3" location="833" soundLength="16"/>
- <note id="G_3" location="849" soundLength="16"/>
- <note id="E_3" location="865" soundLength="16"/>
- <note id="E_3" location="897" soundLength="16"/>
- <note id="B_2" location="913" soundLength="16"/>
- <note id="E_3" location="929" soundLength="16"/>
- <note id="B_2" location="945" soundLength="16"/>
- <note id="C_3" location="961" soundLength="16"/>
- <note id="G_3" location="977" soundLength="16"/>
- <note id="E_3" location="993" soundLength="16"/>
- <note id="E_3" location="1025" soundLength="16"/>
- <note id="B_2" location="1041" soundLength="16"/>
- <note id="E_3" location="1057" soundLength="16"/>
- <note id="B_2" location="1073" soundLength="16"/>
- <note id="C_3" location="1089" soundLength="16"/>
- <note id="G_3" location="1105" soundLength="16"/>
- <note id="E_3" location="1121" soundLength="16"/>
- <note id="B_2" location="1153" soundLength="16"/>
- <note id="F#_3" location="1169" soundLength="16"/>
- <note id="B_2" location="1185" soundLength="16"/>
- <note id="F#_3" location="1201" soundLength="16"/>
- <note id="B_2" location="1217" soundLength="16"/>
- <note id="F#_3" location="1233" soundLength="16"/>
- <note id="C_3" location="1249" soundLength="16"/>
- <note id="G_3" location="1265" soundLength="16"/>
+ <note id="B_2" location="1" soundLength="8"/>
+ <note id="F#_3" location="17" soundLength="8"/>
+ <note id="B_2" location="33" soundLength="8"/>
+ <note id="F#_3" location="49" soundLength="8"/>
+ <note id="B_2" location="65" soundLength="8"/>
+ <note id="F#_3" location="81" soundLength="8"/>
+ <note id="C_3" location="97" soundLength="8"/>
+ <note id="G_3" location="113" soundLength="8"/>
+ <note id="A_2" location="129" soundLength="8"/>
+ <note id="E_2" location="145" soundLength="8"/>
+ <note id="A_2" location="161" soundLength="8"/>
+ <note id="E_3" location="177" soundLength="8"/>
+ <note id="A_2" location="193" soundLength="8"/>
+ <note id="E_3" location="209" soundLength="8"/>
+ <note id="A_2" location="225" soundLength="8"/>
+ <note id="E_3" location="241" soundLength="8"/>
+ <note id="A_2" location="257" soundLength="8"/>
+ <note id="E_3" location="273" soundLength="8"/>
+ <note id="A_2" location="289" soundLength="8"/>
+ <note id="E_3" location="305" soundLength="8"/>
+ <note id="C_3" location="321" soundLength="8"/>
+ <note id="G_3" location="337" soundLength="8"/>
+ <note id="C_3" location="353" soundLength="8"/>
+ <note id="G_3" location="369" soundLength="8"/>
+ <note id="A_2" location="385" soundLength="8"/>
+ <note id="E_3" location="401" soundLength="8"/>
+ <note id="A_2" location="417" soundLength="8"/>
+ <note id="E_3" location="433" soundLength="8"/>
+ <note id="A_2" location="449" soundLength="8"/>
+ <note id="E_3" location="465" soundLength="8"/>
+ <note id="A_2" location="481" soundLength="8"/>
+ <note id="E_3" location="497" soundLength="8"/>
+ <note id="A_2" location="513" soundLength="8"/>
+ <note id="E_3" location="529" soundLength="8"/>
+ <note id="A_2" location="545" soundLength="8"/>
+ <note id="E_3" location="561" soundLength="8"/>
+ <note id="C_3" location="577" soundLength="8"/>
+ <note id="G_3" location="593" soundLength="8"/>
+ <note id="C_3" location="609" soundLength="8"/>
+ <note id="E_3" location="641" soundLength="8"/>
+ <note id="B_3" location="657" soundLength="8"/>
+ <note id="E_3" location="673" soundLength="8"/>
+ <note id="B_3" location="689" soundLength="8"/>
+ <note id="C_3" location="705" soundLength="8"/>
+ <note id="G_3" location="721" soundLength="8"/>
+ <note id="E_3" location="737" soundLength="8"/>
+ <note id="B_3" location="753" soundLength="8"/>
+ <note id="E_3" location="769" soundLength="8"/>
+ <note id="B_3" location="785" soundLength="8"/>
+ <note id="E_3" location="801" soundLength="8"/>
+ <note id="B_3" location="817" soundLength="8"/>
+ <note id="C_3" location="833" soundLength="8"/>
+ <note id="G_3" location="849" soundLength="8"/>
+ <note id="E_3" location="865" soundLength="8"/>
+ <note id="E_3" location="897" soundLength="8"/>
+ <note id="B_3" location="913" soundLength="8"/>
+ <note id="E_3" location="929" soundLength="8"/>
+ <note id="B_3" location="945" soundLength="8"/>
+ <note id="C_3" location="961" soundLength="8"/>
+ <note id="G_3" location="977" soundLength="8"/>
+ <note id="E_3" location="993" soundLength="8"/>
+ <note id="E_3" location="1025" soundLength="8"/>
+ <note id="B_3" location="1041" soundLength="8"/>
+ <note id="E_3" location="1057" soundLength="8"/>
+ <note id="B_3" location="1073" soundLength="8"/>
+ <note id="C_3" location="1089" soundLength="8"/>
+ <note id="G_3" location="1105" soundLength="8"/>
+ <note id="E_3" location="1121" soundLength="8"/>
+ <note id="B_2" location="1153" soundLength="8"/>
+ <note id="F#_3" location="1169" soundLength="8"/>
+ <note id="B_2" location="1185" soundLength="8"/>
+ <note id="F#_3" location="1201" soundLength="8"/>
+ <note id="B_2" location="1217" soundLength="8"/>
+ <note id="F#_3" location="1233" soundLength="8"/>
+ <note id="C_3" location="1249" soundLength="8"/>
+ <note id="G_2" location="1265" soundLength="8"/>
 </sequance>
 <sequance id="99">
 <subSequance id="10" location="64" />
