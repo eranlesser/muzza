@@ -34,10 +34,6 @@ public static var data:XML =
 		
 		
 	</components>
-<studio>
-<background image="backgr_solo.jpg" />
-<spotLight image="bass_spot_lights.png" />
-</studio>
 <notes>
 <note id="1"   soundFile="tarab/bass/bas_sol.mp3" animationIndex='1' value="1"  />
 <note id="2"   soundFile="tarab/bass/bas_la.mp3" animationIndex='2' value="2"  />
@@ -46,8 +42,6 @@ public static var data:XML =
 <note id="5"   soundFile="tarab/bass/bas_re.mp3" animationIndex='5' value="5"  />
 <note id="6"   soundFile="tarab/bass/bas_mib.mp3" animationIndex='6' value="6"  />
 </notes>
-<gestures>
-</gestures>
 <sequances>
 <sequance id="99">
 </sequance>

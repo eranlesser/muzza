@@ -15,37 +15,31 @@ package com.model.rawData.jingleBells
 	<blink start="18" end="22" />
 </eyes>						
 <components>
-<bg image="BOttle_Frame.png" x="0" y="0" clickable="false" />
-<bottle image="bottle_8_idle.png" playImage="bottle_8_press.png" x='32' y='-19'>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='32' y='-19'>
 	<tap noteId="1" />
 </bottle>
-<bottle image="bottle_7_idle.png" playImage="bottle_7_press.png" x='107' y='-19'>
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='107' y='-19'>
 	<tap noteId="2" />
 </bottle>
-<bottle image="bottle_6_idle.png" playImage="bottle_6_press.png" x='182' y='-19'>
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='182' y='-19'>
 	<tap noteId="3" />
 </bottle>
-<bottle image="bottle_5_idle.png" playImage="bottle_5_press.png" x='257' y='-19'>
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='257' y='-19'>
 	<tap noteId="4" />
 </bottle>
-<bottle image="bottle_4_idle.png" playImage="bottle_4_press.png" x='322' y='-19'>
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='322' y='-19'>
 	<tap noteId="5" />
 </bottle>
-<bottle image="bottle_3_idle.png" playImage="bottle_3_press.png" x='397' y='-19'>
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='397' y='-19'>
 	<tap noteId="6" />
 </bottle>
-<bottle image="bottle_2_idle.png" playImage="bottle_2_press.png" x='472' y='-19'>
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='472' y='-19'>
 	<tap noteId="7" />
 </bottle>
-<bottle image="bottle_1_idle.png" playImage="bottle_1_press.png" x='547' y='-19'>
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='547' y='-19'>
 	<tap noteId="8" />
 </bottle>
 </components>
-<studio>
-<background image="backgr_solo.jpg" />
-<spotlite image="Spot_light_bottle.png" />
-</studio>
-<octaves>
 <notes>
 	<note id="1"  soundFile="jingleBells/bottle/AHO.mp3" animationIndex='1' value="1" isFlatOrSharp="sharp"   />
 	<note id="2"  soundFile="jingleBells/bottle/BHO.mp3" animationIndex='2'  value="2"  />
@@ -56,8 +50,7 @@ package com.model.rawData.jingleBells
 	<note id="7" soundFile="jingleBells/bottle/B.mp3" animationIndex='6' value="7" />
 	<note id="8" soundFile="jingleBells/bottle/C+1.mp3" animationIndex='5' value="8" isFlatOrSharp="sharp" />
 	<note id="9" soundFile="jingleBells/bottle/F+1HO.mp3" animationIndex='5' value="9" />
-</notes>
-<notes>
+
 	<note id="1"  soundFile="jingleBells/bottle/E.mp3" animationIndex='1' value="1"   />
 	<note id="2"  soundFile="jingleBells/bottle/F+1.mp3" animationIndex='2'  value="2"  />
 	<note id="3"  soundFile="jingleBells/bottle/G+1.mp3" animationIndex='3'  value="3"/>
@@ -68,7 +61,6 @@ package com.model.rawData.jingleBells
 	<note id="8" soundFile="jingleBells/bottle/EHO.mp3" animationIndex='5' value="8" />
 	<note id="9" soundFile="jingleBells/bottle/F+1HO.mp3" animationIndex='5' value="9" />
 </notes>
-</octaves>
 <gestures>
 </gestures>
 <sequances>

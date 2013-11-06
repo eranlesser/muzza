@@ -4,6 +4,7 @@ package com.model.rawData
 	import com.model.rawData.jingleBells.JingleBells;
 	import com.model.rawData.motzart.MotzartData;
 	import com.model.rawData.ode.OdeData;
+	import com.model.rawData.tarab.TarabData;
 
 	public class Data
 	{
@@ -15,6 +16,7 @@ package com.model.rawData
 			<data>
 			<lessons type="lessons">
 				<song name="edvard"  thumbNail="EDVARD_GRIEG.png"  title="MOUNTAIN_KING.png"  />
+<song name="tarab"  thumbNail="morocco_pic.png"  title="Tarab.png"  />
 <song name="jingleBells" thumbNail="JINGLE_BELLS_PICTURE.png"  title="JINGLE_BELLS.png"  />
 			<song name="mozart" thumbNail="MOZART_PICTURE.png"  title="ODE_TO_JOY.png"/>
 				<song name="ode" thumbNail="BETHOVEEN_PICTURE.png"  title="ODE_TO_JOY.png"/>
@@ -52,7 +54,7 @@ package com.model.rawData
 						songData = JingleBells.data;
 					break;
 				case "tarab":
-				//		songData = TarabData.data;
+						songData = TarabData.data;
 					break;
 				case "brazil":
 						//songData = BrazilData.data;

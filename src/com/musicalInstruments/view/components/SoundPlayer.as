@@ -37,7 +37,7 @@ package com.musicalInstruments.view.components {
 				return null;
 			}
 			var channel:SoundChannel = _sound.play();
-		//	trace(_soundFile)
+			trace(_soundFile,Metronome.getTimeModel().currentTick)
 			if(channel == null){
 				return channel;
 			}

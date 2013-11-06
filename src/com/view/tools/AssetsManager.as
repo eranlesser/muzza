@@ -48,7 +48,8 @@ package com.view.tools
 			"<image path='assets/open/PLAY_IDLE.png' />"+
 			"<image path='assets/open/PLAY_PRESSED.png' />"+
 //			"<image path='assets/open/Flagbig.png' />"+
-//			"<image path='assets/open/Tarab.png' />"+
+			"<image path='assets/open/Tarab.png' />"+
+			"<image path='assets/open/morocco_pic.png' />"+
 			//TITLES
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
 			"<image path='assets/open/JINGLE_BELLS.png' />"+

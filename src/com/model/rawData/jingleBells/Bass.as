@@ -32,7 +32,6 @@ package com.model.rawData.jingleBells
 	<background image="backgr_solo.jpg" />
 	<spotlite image="bass_spot_lights.png" />
 	</studio>
-<octaves>
 	<notes>
 	<note id="1"   soundFile="jingleBells/bass/B.mp3" animationIndex='3' value="1"  />
 	<note id="2"   soundFile="jingleBells/bass/AHO.mp3" animationIndex='4' value="2"  />
@@ -41,9 +40,6 @@ package com.model.rawData.jingleBells
 	<note id="5"   soundFile="jingleBells/bass/D.mp3" animationIndex='7' value="5"   />
 	<note id="6"   soundFile="jingleBells/bass/ALO.mp3" animationIndex='8' value="6"  />
 	</notes>
-</octaves>
-	<gestures>
-	</gestures>
 	<sequances>
 	<sequance id="1">
 		<note id="2" location="65" soundLength="2"/>

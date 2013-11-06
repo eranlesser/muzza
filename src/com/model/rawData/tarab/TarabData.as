@@ -4,81 +4,98 @@ package com.model.rawData.tarab
 public class TarabData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='22'>
+<theme id='recycle' rhythm='12'>
 <instruments>
 {Drum.data}
 {Bass.data}
 {Bottles.data}
 </instruments>
 <screens>
+		
+		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1632" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+			<instrument type="drum.png" >
+			<layout id="0" x='50' y='140' rotation="0" />
+			</instrument>
+			<instrument type='bass_flash.jpg' >
+			<layout id="0" x='600' y='100' rotation="0" />
+			</instrument>
+			<instrument type='bottles.png' >
+			<layout id="0" x='350' y='100'  rotation="0" />
+			</instrument>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" playSequance="99">
-<instrument type="drum.png" >
-	<layout id="0" x='50' y='140' rotation="0" />
-	</instrument>
-	<instrument type='bass_flash.jpg' >
-	<layout id="0" x='600' y='100' rotation="0" />
-	</instrument>
-	<instrument type='bottles.png' >
-	<layout id="0" x='350' y='100'  rotation="0" />
-	</instrument>
-</demoScreen>
-
-<studioScreen>
-	<instrument type='bass_flash.jpg'>
-	<layout id="0" x="-7" y="560" rotation="0" />
-	<layout id="1" x="-7" y="568" rotation="0" />
-	<layout id="2" x="-7" y="568" rotation="0" />
-	</instrument>
-	<instrument type="drum.png">
-	<layout id="0" x="12" y="130" rotation="0"/>
-	<layout id="1" x="320" y="190" rotation="90"/>
-	<layout id="2" x="620" y="130" />
-	</instrument>
-	<instrument type='bottles.png' >
-	<layout id="0" x="320" y="40" rotation="0"/>
-	<layout id="1" x="160" y="2"  rotation="180"/>
-	<layout id="2" x="-12" y="-10" rotation="140"/>
-	</instrument>
-</studioScreen>
-
-<recordSession>
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
-	<playerInstrument type="bottles.png" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>167</RecordedX>
-	<RecordedY>360</RecordedY>
-	</playerInstrument>
-</recordScreen>
-
-
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="512" >
-	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>380</RecordedX>
-	<RecordedY>370</RecordedY>
-	</playerInstrument>
-	
-</recordScreen>
-
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="512" >
-	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102">
-	<RecordedX>34</RecordedX>
-	<RecordedY>440</RecordedY>
-	</playerInstrument>
-</recordScreen>
-
-<endScreen type="ThemeTemplate" beginAtFrame="1" playSequance="102">
-	<instrument type="drum.png" >
-<layout id="0" x='50' y='140'  rotation="0" />	
-	</instrument>
-	<instrument type='bass_flash.jpg'>
-<layout id="0" x='600' y='100'  rotation="0" />	
-	</instrument>
-	<instrument type='bottles.png' >
-<layout id="0" x='350' y='100'  rotation="0" />	
-	</instrument>
-</endScreen>
-</recordSession>
-</screens>
+		</demoScreen>
+		
+		
+		<recordSession>
+		
+		
+		<recordScreen type="RecordScreen"  beginAtFrame="700" endAtFrame="1632" >
+			<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="240">
+			<RecordedX>102.5</RecordedX>
+			<RecordedY>360</RecordedY>
+			</playerInstrument>
+		<backups>
+		<instrument type="drum.png" >
+		<layout id="0" x='50' y='140'  rotation="0" learnedSequanced="102" />	
+			</instrument>
+			<instrument type='bass_flash.jpg'>
+		<layout id="0" x='600' y='100'  rotation="0" learnedSequanced="102"/>	
+			</instrument>
+		</backups>
+		</recordScreen>
+		
+		
+		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+			<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
+			<RecordedX>308</RecordedX>
+			<RecordedY>500</RecordedY>
+			</playerInstrument>
+		
+		<backups>
+			<instrument type='bass_flash.jpg'>
+		<layout id="0" x='600' y='100'  rotation="0" learnedSequanced="102"/>	
+			</instrument>
+			<instrument type='bottles.png' >
+		<layout id="0" x='350' y='100'  rotation="0" learnedSequanced="102"/>	
+			</instrument>
+		</backups>
+		</recordScreen>
+		
+		
+		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
+			<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240">
+			<RecordedX>178</RecordedX>
+			<RecordedY>500</RecordedY>
+			</playerInstrument>
+		<backups>
+		<instrument type="drum.png" >
+		<layout id="0" x='50' y='140'  rotation="0" learnedSequanced="102" />	
+			</instrument>
+			<instrument type='bottles.png' >
+		<layout id="0" x='350' y='100'  rotation="0" learnedSequanced="102"/>	
+			</instrument>
+		</backups>
+		</recordScreen>
+		
+		
+		
+		
+		
+		<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="102">
+			<instrument type="drum.png" >
+		<layout id="0" x='50' y='140'  rotation="0" />	
+			</instrument>
+			<instrument type='bass_flash.jpg'>
+		<layout id="0" x='600' y='100'  rotation="0" />	
+			</instrument>
+			<instrument type='bottles.png' >
+		<layout id="0" x='350' y='100'  rotation="0" />	
+			</instrument>
+		</endScreen>
+		
+		
+		</recordSession>
+		</screens>
 </theme>
 	}
 }

@@ -13,7 +13,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="31" end="34" />
 </eyes>							
 <components>
-<bg image="bottles_frame.png" clickable="false"  y="10" />
 <bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='70' y='0' >
 	<tap noteId="1" />
 </bottle>
@@ -42,10 +41,6 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<tap noteId="9" />
 </bottle>
 </components>
-<studio>
-
-
-</studio>
 <notes>
 	<note id="1"  soundFile="tarab/bottle/do.mp3" animationIndex='1' value="1"   />
 	<note id="2"  soundFile="tarab/bottle/re.mp3" animationIndex='2'  value="2"/>

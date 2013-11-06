@@ -14,7 +14,7 @@ package com.model.rawData.edvard
 		</instruments>
 		<screens>
 		
-		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1632" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1400" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
 			<instrument type="drum.png" >
 			<layout id="0" x='50' y='140' rotation="0" />
 			</instrument>
@@ -31,7 +31,7 @@ package com.model.rawData.edvard
 		<recordSession>
 		
 		
-		<recordScreen type="RecordScreen"  beginAtFrame="700" endAtFrame="1632" >
+		<recordScreen type="RecordScreen"  beginAtFrame="700" endAtFrame="1640" >
 			<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="240">
 			<RecordedX>102.5</RecordedX>
 			<RecordedY>360</RecordedY>

@@ -26,18 +26,12 @@ package com.model.rawData.jingleBells
 </drum>
 			
 </components>
-<studio>
-	<background image="backgr_solo.jpg" />
-	<spotlite image="spot_light_floor.png" />
-</studio>
-			<octaves>
 <notes>
 <note id="1" value="1" soundFile="jingleBells/drums/CRASH.mp3" animationIndex='2'  />
 <note id="2"  value="2" soundFile="jingleBells/drums/KICK.mp3" animationIndex='4'  />
 <note id="3"  value="3" soundFile="jingleBells/drums/SNARE.mp3" animationIndex='5'  />
 <note id="4" value="4" soundFile="edvard/notes/drums/TOM.mp3" animationIndex='1'  />
 </notes>
-</octaves>
 <sequances>
 <sequance id="1">
 <note id="2" location="1" soundLength="2"/>
