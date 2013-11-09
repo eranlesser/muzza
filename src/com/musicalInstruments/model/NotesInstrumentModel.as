@@ -66,7 +66,14 @@ package com.musicalInstruments.model
 			var sequanceModelWithSameId:NoteSequanceModel = getSequanceById(recordedSequanceModel.id) as NoteSequanceModel;
 			
 			if(sequanceModelWithSameId){
-				appendSequance(sequanceModelWithSameId,recordedSequanceModel,beginAtFrame,endAtFrame);
+				//appendmode
+				//appendSequance(sequanceModelWithSameId,recordedSequanceModel,beginAtFrame,endAtFrame);
+				//overide mode
+				sequanceModelWithSameId.destroy();
+				for each(var newNote:SequancedNote in recordedSequanceModel.notes){
+					sequanceModelWithSameId.addNote(newNote);
+				}
+				//end overide mode
 			}else{
 				_sequances.push(recordedSequanceModel);
 			}

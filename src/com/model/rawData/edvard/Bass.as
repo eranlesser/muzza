@@ -9,24 +9,30 @@ public static var data:XML =
 	</eyes>	
 <components  notesGap="110" leftPad="220">
 		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
-			<tap noteId="D_2" />
+			<tap noteId="A_2" />
 		</bass>
 		
 		<bass image="BASS_2_IDLE.png" playImage="BASS_2_SELECTED.png" x='110' y='0'  >
-			<tap noteId="E_2" />
+			<tap noteId="B_3" />
 		</bass>
 		
 		<bass image="BASS_3_IDLE.png" playImage="BASS_3_SELECTED.png" x='220' y='0' >
-			<tap noteId="F#_2" />
+			<tap noteId="B_2" />
 		</bass>
 		<bass image="BASS_4_IDLE.png" playImage="BASS_4_SELECTED.png" x='330' y='0'  >
-			<tap noteId="G_2" />
+			<tap noteId="C_3" />
 		</bass>
 		<bass image="BASS_5_IDLE.png" playImage="BASS_5_SELECTED.png" x='440' y='0'  >
-			<tap noteId="A_2" />
+			<tap noteId="E_3" />
 		</bass>
 		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='550' y='0'  >
-			<tap noteId="B_2" />
+			<tap noteId="E_2" />
+		</bass>
+		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='550' y='0'  >
+			<tap noteId="F#_3" />
+		</bass>
+		<bass image="BASS_8_IDLE.png" playImage="BASS_8_SELECTED.png" x='550' y='0'  >
+			<tap noteId="G_2" />
 		</bass>
 		
 	</components>
@@ -37,13 +43,12 @@ public static var data:XML =
 <notes>
 <note id="A_2"   soundFile="mountain/bass/la.mp3" animationIndex='8' value="1"  />
 <note id="B_3"   soundFile="mountain/bass/ci_down.mp3" animationIndex='1' value="2"  />
-<note id="B_2"   soundFile="mountain/bass/ci.mp3" animationIndex='1' value="2"  />
+<note id="B_2"   soundFile="mountain/bass/ci.mp3" animationIndex='3' value="2"  />
 <note id="C_3"   soundFile="mountain/bass/do.mp3" animationIndex='2' value="3"  />
 <note id="E_3"   soundFile="mountain/bass/mi.mp3" animationIndex='5' value="4"  />
 <note id="E_2"   soundFile="mountain/bass/mi_down.mp3" animationIndex='7' value="4"  />
 <note id="F#_3"   soundFile="mountain/bass/fa_diez.mp3" animationIndex='4' value="5"  />
 <note id="G_3"   soundFile="mountain/bass/sol_down.mp3" animationIndex='6' value="6" />
-<note id="G_2"   soundFile="mountain/bass/sol.mp3" animationIndex='6' value="6" />
 </notes>
 <gestures>
 </gestures>

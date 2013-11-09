@@ -13,14 +13,17 @@ public static var data:XML =
 	
 <components notesGap="140" leftPad="350">
 
-<drum image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='0' y='0'>
-<tap noteId="D_6" />
+<drum type="snare" image="DRUMS_1_IDLE.png" playImage="DRUMS_1_PRESSED.png" x='0' y='0'>
+<tap noteId="C_5" />
 </drum>
-<drum image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='140' y='0'>
-<tap noteId="C_6" />
+<drum type="bass" image="DRUMS_2_IDLE.png" playImage="DRUMS_2_PRESSED.png"  x='140' y='0'>
+<tap noteId="B_4" />
 </drum>
-<drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='280' y='0'>
-<tap noteId="C#_6" />
+<drum type="crash" image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='280' y='0'>
+<tap noteId="E_5" />
+</drum>
+<drum type="tom" image="DRUMS_4_IDLE.png" playImage="DRUMS_4_PRESSED.png"  x='420' y='0'>
+<tap noteId="D_5" />
 </drum>
 
 </components>

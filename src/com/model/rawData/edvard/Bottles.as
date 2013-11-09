@@ -35,9 +35,15 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 		<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='530' y='0'>
 			<tap noteId="G_3" />
 		</bottle>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='610' y='0' >
+	<tap noteId="B_4" />
+</bottle>
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='690' y='0' >
+	<tap noteId="C_4" />
+</bottle>
 
 <bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='-22' octave="2">
-	<tap noteId="Ebemol_3" />
+	<tap noteId="A_2R" />
 </bottle>
 <bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='130' y='-22' octave="2">
 	<tap noteId="E_3R" />

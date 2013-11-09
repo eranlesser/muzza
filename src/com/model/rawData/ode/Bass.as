@@ -114,10 +114,6 @@ public static var data:XML =
 	
 		</sequance>
 <sequance id="10">
-  <note id="A_2" location="38" soundLength="8"/>
-  <note id="G_2" location="46" soundLength="8"/>
-  <note id="F#_2" location="52" soundLength="8"/>
-  <note id="E_2" location="60" soundLength="8"/>
   <note id="D_2" location="68" soundLength="16"/>
   <note id="F#_2" location="84" soundLength="8"/>
   <note id="A_2" location="100" soundLength="16"/>

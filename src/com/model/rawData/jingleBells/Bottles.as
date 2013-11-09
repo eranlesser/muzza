@@ -14,30 +14,62 @@ package com.model.rawData.jingleBells
 	<blink start="13" end="17" />
 	<blink start="18" end="22" />
 </eyes>						
-<components>
-<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='32' y='-19'>
+<components notesGap="80" leftPad="179">
+<bg image="bottles_frame.png" clickable="false"  y="10" />
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='0' >
+			<tap noteId="1" />
+		</bottle>
+		<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='130' y='0' >
+			<tap noteId="2" />
+		</bottle>
+		<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='210' y='0' >
+			<tap noteId="3" />
+		</bottle>
+		<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='290' y='0' >
+			<tap noteId="4" />
+		</bottle>
+		<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='370' y='0' >
+			<tap noteId="5" />
+		</bottle>
+		<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='450' y='0' >
+			<tap noteId="6" />
+		</bottle>
+		<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='530' y='0'>
+			<tap noteId="7" />
+		</bottle>
+		<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='610' y='0' >
+			<tap noteId="8" />
+		</bottle>
+		<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='690' y='0' >
+			<tap noteId="9" />
+		</bottle>
+
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='-22' octave="2">
 	<tap noteId="1" />
 </bottle>
-<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='107' y='-19'>
+<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='130' y='-22' octave="2">
 	<tap noteId="2" />
 </bottle>
-<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='182' y='-19'>
+<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='210' y='-22' octave="2" >
 	<tap noteId="3" />
 </bottle>
-<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='257' y='-19'>
+<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='290' y='-22' octave="2">
 	<tap noteId="4" />
 </bottle>
-<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='322' y='-19'>
+<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='370' y='-22' octave="2">
 	<tap noteId="5" />
 </bottle>
-<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='397' y='-19'>
+<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='450' y='-22' octave="2">
 	<tap noteId="6" />
 </bottle>
-<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='472' y='-19'>
+<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='530' y='-22' octave="2">
 	<tap noteId="7" />
 </bottle>
-<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='547' y='-19'>
+<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='610' y='-22' octave="2">
 	<tap noteId="8" />
+</bottle>
+<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='690' y='-22' octave="2">
+	<tap noteId="9" />
 </bottle>
 </components>
 <notes>

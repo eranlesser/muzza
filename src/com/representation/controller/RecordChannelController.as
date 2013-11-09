@@ -91,9 +91,9 @@ package com.representation.controller {
 		
 		private function noteAdded(noteId:String,startLocation:uint,noteLength:uint,octave:uint=0):void{
 			var note:SequancedNote = recordSequance.add(noteId,startLocation,noteLength,octave);
-			if(note == null){
-				return;
-			}
+//			if(note == null){
+//				return;
+//			}
 			//var noteModel:NoteModel = NotesInstrumentModel(_instrumentModel).getNoteById(note.noteId);
 			//var learnedSequance:NoteSequanceModel = NoteSequanceModel(_learnedSequance);
 //			for(var i:uint=0;i<=RecordState.fixNum;i++){
