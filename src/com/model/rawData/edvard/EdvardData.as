@@ -31,7 +31,7 @@ package com.model.rawData.edvard
 		<recordSession>
 		
 		
-		<recordScreen type="RecordScreen"  beginAtFrame="700" endAtFrame="1640" >
+		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1400" >
 			<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="240">
 			<RecordedX>102.5</RecordedX>
 			<RecordedY>360</RecordedY>
@@ -49,7 +49,7 @@ package com.model.rawData.edvard
 		</recordScreen>
 		
 		
-		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1400" >
 			<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
 			<RecordedX>238</RecordedX>
 			<RecordedY>500</RecordedY>
@@ -68,9 +68,9 @@ package com.model.rawData.edvard
 		</recordScreen>
 		
 		
-		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
+		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1400" >
 			<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240">
-			<RecordedX>178</RecordedX>
+			<RecordedX>68</RecordedX>
 			<RecordedY>500</RecordedY>
 			</playerInstrument>
 		<backups>
@@ -86,7 +86,7 @@ package com.model.rawData.edvard
 		</recordScreen>
 		
 		
-		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1400" >
 			<playerInstrument type="flute" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
 			<RecordedX>22</RecordedX>
 			<RecordedY>400</RecordedY>
@@ -106,7 +106,7 @@ package com.model.rawData.edvard
 		</recordScreen>
 		
 		
-		<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="102">
+		<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1400" playSequance="102">
 			<instrument type="drum.png" >
 		<layout id="0" x='50' y='140'  rotation="0" />	
 			</instrument>

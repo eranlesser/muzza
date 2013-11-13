@@ -16,8 +16,6 @@ package com.screens.mediator
 		private var _scores:Vector.<scoreData>;
 		private var _scorePanel:ScorePanel;
 		private var _score:int=0;
-		private var _accuracy:int;
-		private var _wrongNotes:uint=0;
 		
 		public function ScoreMediator(recordState:RecordState){
 			_recordState = recordState;
@@ -49,8 +47,6 @@ package com.screens.mediator
 		public function set active(flag:Boolean):void{
 			if(flag){
 				_score=0;
-				_accuracy=0;
-				_wrongNotes=0;
 				_scorePanel.setScore(_score);
 				_recordState.scoreSignal.add(onScoreSignal)
 				_recordState.pauseSignal.add(onPauseSignal)
@@ -81,77 +77,38 @@ package com.screens.mediator
 			if(_pauseCounter>100){
 				_recordState.showHint();
 			}
+			if(_pauseCounter>16){
+				_recordState.toPlayNote.setState(1);
+			}
+			else if(_pauseCounter>32){
+				_recordState.toPlayNote.setState(0);
+			}
 		}
-		private const comboLength:uint=5;
-		private const sequanceLength:uint=12;
-		private function onScoreSignal(toPlayTime:int,curTime:int):void
+		private function onScoreSignal(toPlayTime:int,curTime:int,goodNote:Boolean,xx:uint=0):void
 		{
-			if(toPlayTime==-1){
-				_wrongNotes++;
-				_scores.push(new scoreData(-1,-1));
+			_pauseCounter=0;
+			if(!goodNote){
+				showScoreFeedBack("X",130,xx,0xE82C0C);
 				return;
 			}
-			//trace(toPlayTime,curTime,_pauseCounter);
-			var value:int ;
-			if(_pauseCounter>0){ // late
-				value = 10 - _pauseCounter;
-				_accuracy = _accuracy+_pauseCounter;
-			}else{  // early
-				value = 10 - (toPlayTime - curTime);
-				_accuracy = _accuracy+(toPlayTime - curTime);
-			}
-			_scores.push(new scoreData(Math.max(value,0),toPlayTime));
-			if(_scores[_scores.length-1].score==2){
-				showScoreFeedBack("+2",0,0xECF0F1);
-				_score = _score + 2 ;
-			}
-			_pauseCounter=0;
+			
 			
 			//combo
-			var isCombo:Boolean=true;
-			
-			var i:int;
-			for(i=_scores.length-1;i>_scores.length-comboLength;i--){
-				if(i<0 || _scores[i].value<=8 || _scores[i].wasInCombo){
-					isCombo=false;
-					break;
-				}
+			_scores.push(new scoreData(_recordState.toPlayNote.scoreValue,toPlayTime));
+			if(_recordState.toPlayNote.scoreValue>0){
+				showScoreFeedBack("+"+_recordState.toPlayNote.scoreValue,130,_recordState.toPlayNote.x,_recordState.toPlayNote.scoreColor);
 			}
-			if(isCombo){
-				showScoreFeedBack("Awesome +6",100,0x3498DB);
-				_score = _score + 6 ;
-				for(i=_scores.length-1;i>_scores.length-comboLength;i--){
-					_scores[i].wasInCombo = true;
-				}
-			}
-			//sequance
-			var isSequance:Boolean=true;
-			
-			var n:int;
-			for(n=_scores.length-1;n>_scores.length-sequanceLength;n--){
-				if(n<0 || _scores[n].value<0 || _scores[n].wasInSequance){
-					isSequance=false;
-					break;
-				}
-			}
-			if(isSequance){
-				showScoreFeedBack("Bonus +4",50,0x50AC6A);
-				_score = _score + 4 ;
-				for(i=_scores.length-1;i>_scores.length-sequanceLength;i--){
-					_scores[i].wasInSequance = true;
-				}
-			}
-			_score = _score + _scores[_scores.length-1].score;
+			_score = _score + _recordState.toPlayNote.scoreValue;
 			_scorePanel.setScore(_score);
 		}
-		private function showScoreFeedBack(str:String,yOffset:int,color:int):void{
+		private function showScoreFeedBack(str:String,yOffset:int,xOffset:int,color:int):void{
 			var _scoreFeedBack:ScoreFeedBack = new ScoreFeedBack(str,color);
 			_recordState.view.addChild(_scoreFeedBack);
-			_scoreFeedBack.x=(Dimentions.WIDTH-_scoreFeedBack.width)/2;
+			_scoreFeedBack.x=xOffset//(Dimentions.WIDTH-_scoreFeedBack.width)/2;
 			_scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset;
-			var gt:GTween = new GTween(_scoreFeedBack,1.5,{alpha:0.2,scaleX:1.2,scaleY:1.2});
+			var gt:GTween = new GTween(_scoreFeedBack,1.5,{alpha:0,scaleX:1.2,scaleY:1.2});
 			gt.onComplete = function():void{_recordState.view.removeChild(_scoreFeedBack)}
-			gt.onChange = function():void{_scoreFeedBack.x=(Dimentions.WIDTH-_scoreFeedBack.width)/2; _scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset}
+			gt.onChange = function():void{ _scoreFeedBack.y=(Dimentions.HEIGHT-_scoreFeedBack.height)/5+yOffset}
 		}
 	}
 }
@@ -171,7 +128,7 @@ class ScoreFeedBack extends Sprite{
 		_txt.autoSize = TextFieldAutoSize.LEFT;
 		_txt.text = str;
 		addChild(_txt);
-		_txt.setTextFormat(new TextFormat("Arial",30,color))
+		_txt.setTextFormat(new TextFormat("Arial",32,color))
 	}
 	
 }

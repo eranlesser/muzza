@@ -123,19 +123,23 @@ package com.screens.view.components.notes
 		};
 		
 		public function removeNote(note:DroppingNote):void{
+			note.destroy();
 			_notes.splice(_notes.indexOf(note),1);
 			_notesContainer.removeChild(note);
 		}
 		
-		public function getNotesInRange(range:uint,curTick:uint):Vector.<DroppingNote>{
+		private var _lastRangeNote:uint;
+		public function getNextNote(range:uint,curTick:uint):DroppingNote{
 			var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
-			for each(var note:DroppingNote in _notes){
+			for(var i:uint=_lastRangeNote;i<_notes.length;i++){
+				var note:DroppingNote = _notes[i];
 				if(note.location<(curTick+range)&&note.location>=curTick-range){
-					rangeNotes.push(note);
+					_lastRangeNote=i;
+					return (note);
 				}
 				
 			}
-			return rangeNotes;
+			return null;
 		}
 		
 		private function drawFrame(size:Rectangle):void{

@@ -7,7 +7,7 @@ public static var data:XML =
 	<eyes swfSheet="bassBlink.png" x="0" y="0" width="250" height="350" >
 		<blink start="0" end="5" />
 	</eyes>	
-<components  notesGap="110" leftPad="220">
+<components  notesGap="110" leftPad="110">
 		<bass image="BASS_1_IDLE.png" playImage="BASS_1_SELECTED.png" x='0' y='0'  >
 			<tap noteId="A_2" />
 		</bass>
@@ -28,11 +28,11 @@ public static var data:XML =
 		<bass image="BASS_6_IDLE.png" playImage="BASS_6_SELECTED.png" x='550' y='0'  >
 			<tap noteId="E_2" />
 		</bass>
-		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='550' y='0'  >
+		<bass image="BASS_7_IDLE.png" playImage="BASS_7_SELECTED.png" x='660' y='0'  >
 			<tap noteId="F#_3" />
 		</bass>
-		<bass image="BASS_8_IDLE.png" playImage="BASS_8_SELECTED.png" x='550' y='0'  >
-			<tap noteId="G_2" />
+		<bass image="BASS_8_IDLE.png" playImage="BASS_8_SELECTED.png" x='770' y='0'  >
+			<tap noteId="G_3" />
 		</bass>
 		
 	</components>
@@ -43,12 +43,12 @@ public static var data:XML =
 <notes>
 <note id="A_2"   soundFile="mountain/bass/la.mp3" animationIndex='8' value="1"  />
 <note id="B_3"   soundFile="mountain/bass/ci_down.mp3" animationIndex='1' value="2"  />
-<note id="B_2"   soundFile="mountain/bass/ci.mp3" animationIndex='3' value="2"  />
-<note id="C_3"   soundFile="mountain/bass/do.mp3" animationIndex='2' value="3"  />
-<note id="E_3"   soundFile="mountain/bass/mi.mp3" animationIndex='5' value="4"  />
-<note id="E_2"   soundFile="mountain/bass/mi_down.mp3" animationIndex='7' value="4"  />
-<note id="F#_3"   soundFile="mountain/bass/fa_diez.mp3" animationIndex='4' value="5"  />
-<note id="G_3"   soundFile="mountain/bass/sol_down.mp3" animationIndex='6' value="6" />
+<note id="B_2"   soundFile="mountain/bass/ci.mp3" animationIndex='3' value="3"  />
+<note id="C_3"   soundFile="mountain/bass/do.mp3" animationIndex='2' value="4"  />
+<note id="E_3"   soundFile="mountain/bass/mi.mp3" animationIndex='5' value="5"  />
+<note id="E_2"   soundFile="mountain/bass/mi_down.mp3" animationIndex='7' value="6"  />
+<note id="F#_3"   soundFile="mountain/bass/fa_diez.mp3" animationIndex='4' value="7"  />
+<note id="G_3"   soundFile="mountain/bass/sol_down.mp3" animationIndex='6' value="8" />
 </notes>
 <gestures>
 </gestures>

@@ -9,6 +9,7 @@ package com.screens.recordScreenStates
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.model.FileProxy;
+	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.screens.mediator.ScoreMediator;
 	import com.screens.view.components.Clock;
@@ -23,7 +24,7 @@ package com.screens.recordScreenStates
 	public class RecordState implements IRecordScreenState
 	{
 		
-		public static const fixNum:		uint=16;
+		public static const fixNum:		uint=24;
 		public var scoreSignal:			Signal=new Signal();
 		public var pauseSignal:			Signal = new Signal();
 		protected var _context:			RecordScreenStateController;
@@ -31,7 +32,8 @@ package com.screens.recordScreenStates
 		protected var _timeModel:		ITimeModel = Metronome.getTimeModel();
 		private var _tween:				GTween;
 		private var _msk:				Shape = new Shape();
-		private var _toPlayNotes:		Vector.<DroppingNote>;
+		//private var _toPlayNotes:		Vector.<DroppingNote>;
+		private var _toPlayNote:DroppingNote;
 		private var _isActive:Boolean = false;
 		private var _scoreMediator:		ScoreMediator;
 		private var _hintArrow:			Sprite;
@@ -81,8 +83,8 @@ package com.screens.recordScreenStates
 				arrowHead.y=shp.height-1;
 				arrowHead.x=(shp.width-arrowHead.width)/2;
 			}
-			if(_toPlayNotes.length>0 && !Session.IMPROVISE_MODE){
-				_hintArrow.x = _toPlayNotes[0].x+_toPlayNotes[0].width/2-_hintArrow.width/4;
+			if(_toPlayNote && !Session.IMPROVISE_MODE){
+				_hintArrow.x = _toPlayNote.x+_toPlayNote.width/2-_hintArrow.width/4;
 				_hintArrow.y = _context.model.noteTargetsY+30;
 				
 				_context.guiLayer.addChild(_hintArrow)
@@ -94,22 +96,25 @@ package com.screens.recordScreenStates
 				_tween.paused=false;
 				return;
 			}
-			if(_toPlayNotes.length>0){
-				var curNote:DroppingNote = _toPlayNotes[0];
-				if(noteId==curNote.id){
+			if(_toPlayNote){
+				var curNote:DroppingNote = _toPlayNote;
+				//if(noteId==curNote.id){
 					if(_tween.paused){// do it before setting the tween to false, this happens .
 						pauseSignal.dispatch(false);
 					}
 					if(_hintArrow&&_hintArrow.parent){
 						_context.guiLayer.removeChild(_hintArrow)
 					}
-					_tween.paused=false;
-					_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
+					
+					//_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
-					scoreSignal.dispatch(curNote.location,_timeModel.currentTick);
-				}else{
-					scoreSignal.dispatch(-1,-1);
-				}
+					var comp:MusicalInstrumentComponent = _context.instrumentRecorder.getCompById(noteId);
+					scoreSignal.dispatch(curNote.location,_timeModel.currentTick,noteId==curNote.id,_context.instrumentRecorder.x+comp.x+comp.width/3);
+				//}else{
+				//	scoreSignal.dispatch(-1,-1);
+				//}
+				_toPlayNote=null;
+				_tween.paused=false;
 			}
 		}
 		
@@ -185,27 +190,32 @@ package com.screens.recordScreenStates
 			return _context.guiLayer;
 		}
 		
+				
+		public function get toPlayNote():DroppingNote{
+			return _toPlayNote;
+		}
+		
 		private function onTimerTick():void{
-			
-			_toPlayNotes=(_context.channel as NotesChannel).getNotesInRange(fixNum,_timeModel.currentTick);
-			if(Session.IMPROVISE_MODE){
-				if(_toPlayNotes.length>0){
-					_context.notes.removeNote(_toPlayNotes[0]);
-					_toPlayNotes.splice(0,1);
+			_toPlayNote = (_context.channel as NotesChannel).getNextNote(fixNum,_timeModel.currentTick);
+			if(_toPlayNote){
+				if(_toPlayNote.location-_timeModel.currentTick > fixNum/8){
+					_toPlayNote.setState(1);
+				}else{
+					_toPlayNote.setState(2);
+				}
+			}if(Session.IMPROVISE_MODE){
+				if(_toPlayNote){
+					_context.notes.removeNote(_toPlayNote);
+					_toPlayNote=null;
 				}
 				return;
 			}
-			if(_toPlayNotes.length>0){
-				_toPlayNotes[0].selected=true;
-			}
-			for each(var curNote:DroppingNote in _toPlayNotes){
-				if(curNote.location==_timeModel.currentTick){
-					trace(_timeModel.currentTick,"<",curNote.id)
+			//for each(var curNote:DroppingNote in _toPlayNotes){
+				if(_toPlayNote && _toPlayNote.location==_timeModel.currentTick){
 					pauseSignal.dispatch(true);
 					_tween.paused=true;
-					break;
 				}
-			}
+			//}
 		}
 		
 		

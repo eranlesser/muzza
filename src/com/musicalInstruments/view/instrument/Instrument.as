@@ -65,6 +65,15 @@ package com.musicalInstruments.view.instrument {
 				stage.focus = e.target as TextField;
 		}
 		
+		public function getCompById(id:String):MusicalInstrumentComponent{
+			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
+				if(comp.noteId==id){
+					return comp;
+				}
+			}
+			return null;
+		}
+		
 		protected function onKeyPressed(e:KeyboardEvent):void{
 			var compValue:int;
 			var keyValue:int = getValueFromChar(e.keyCode);
