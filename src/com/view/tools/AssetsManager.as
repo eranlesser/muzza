@@ -1,6 +1,8 @@
 package com.view.tools
 {
 	
+	import com.constants.Session;
+	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -436,10 +438,10 @@ package com.view.tools
 			for each(var obj:Asset in _loadedAssets){
 				if(obj.name == name){
 					displayObj  = new Bitmap(Bitmap(obj.image).bitmapData.clone());//clone
-					if(smooth){
+					//if(smooth){
 						//(displayObj as Bitmap).cacheAsBitmap=true;
-						(displayObj as Bitmap).smoothing=true;
-					}
+						(displayObj as Bitmap).smoothing=((Session.DeviceId==1)||smooth);
+					//}
 					break;	
 				}
 			}
@@ -451,6 +453,7 @@ package com.view.tools
 			for each(var obj:Asset in _loadedAssets){
 				if(obj.name == name){
 					displayObj  =Bitmap(obj.image).bitmapData;
+					(displayObj as Bitmap).smoothing=(Session.DeviceId==1);
 					break;	
 				}
 			}
@@ -467,6 +470,7 @@ package com.view.tools
 					}else{
 						displayObj  =Bitmap(obj.image);//clone
 					}
+					(displayObj as Bitmap).smoothing=(Session.DeviceId==1);
 					break;	
 				}
 			}

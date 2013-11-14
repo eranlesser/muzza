@@ -45,23 +45,23 @@ package com.model.rawData.ode
 
 			
 <sequance id="10">
-<note id="D_5" location="160" soundLength="1"/><note id="E_5" location="168" soundLength="1"/>
-<note id="D_5" location="172" soundLength="1"/><note id="E_5" location="176" soundLength="1"/>
-<note id="D_5" location="180" soundLength="1"/>
-<note id="E_5" location="416" soundLength="1"/><note id="D_5" location="424" soundLength="1"/>
-<note id="E_5" location="428" soundLength="1"/><note id="D_5" location="432" soundLength="1"/>
-<note id="E_5" location="440" soundLength="1"/>
-			
 <note id="C_6" location="68" soundLength="1"/>
 <note id="C#_6" location="116" soundLength="1"/>
 <note id="C_6" location="132" soundLength="1"/>
+<note id="D_5" location="160" soundLength="1"/><note id="E_5" location="168" soundLength="1"/>
+<note id="D_5" location="172" soundLength="1"/><note id="E_5" location="176" soundLength="1"/>
+<note id="D_5" location="180" soundLength="1"/>
 <note id="G" location="189" soundLength="1"/>
 <note id="C_6" location="196" soundLength="1"/>
+			
 <note id="C#_6" location="244" soundLength="1"/>
 <note id="C_6" location="260" soundLength="1"/>
 <note id="C#_6" location="324" soundLength="1"/>
 <note id="D_6" location="372" soundLength="1"/>
 <note id="C#_6" location="388" soundLength="1"/>
+<note id="E_5" location="416" soundLength="1"/><note id="D_5" location="424" soundLength="1"/>
+<note id="E_5" location="428" soundLength="1"/><note id="D_5" location="432" soundLength="1"/>
+<note id="E_5" location="440" soundLength="1"/>
 <note id="G" location="445" soundLength="1"/>
 <note id="C_6" location="452" soundLength="1"/>
 <note id="C#_6" location="500" soundLength="1"/>

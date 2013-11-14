@@ -88,7 +88,9 @@ package com.screens.mediator
 		{
 			_pauseCounter=0;
 			if(!goodNote){
-				showScoreFeedBack("X",130,xx,0xE82C0C);
+				if(xx>0){
+					showScoreFeedBack("X",130,xx,0xE82C0C);
+				}
 				return;
 			}
 			

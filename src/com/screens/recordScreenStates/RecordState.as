@@ -24,7 +24,7 @@ package com.screens.recordScreenStates
 	public class RecordState implements IRecordScreenState
 	{
 		
-		public static const fixNum:		uint=24;
+		public static const fixNum:		uint=16;
 		public var scoreSignal:			Signal=new Signal();
 		public var pauseSignal:			Signal = new Signal();
 		protected var _context:			RecordScreenStateController;
@@ -109,8 +109,12 @@ package com.screens.recordScreenStates
 					//_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
 					var comp:MusicalInstrumentComponent = _context.instrumentRecorder.getCompById(noteId);
-					scoreSignal.dispatch(curNote.location,_timeModel.currentTick,noteId==curNote.id,_context.instrumentRecorder.x+comp.x+comp.width/3);
-				//}else{
+					if(comp){
+						scoreSignal.dispatch(curNote.location,_timeModel.currentTick,noteId==curNote.id,_context.instrumentRecorder.x+comp.x+comp.width/3);
+					}else{
+						scoreSignal.dispatch(curNote.location,_timeModel.currentTick,noteId==curNote.id);
+					}
+						//}else{
 				//	scoreSignal.dispatch(-1,-1);
 				//}
 				_toPlayNote=null;

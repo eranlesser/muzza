@@ -262,7 +262,7 @@ class Chelo extends Sprite implements IKeyPlayer{
 			if(pawee.value==val){
 				pawee.play();
 				stage.addEventListener(KeyboardEvent.KEY_UP, function keyUp(event:Event):void{
-					removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
+					stage.removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
 					pawee.stop();
 				});
 				break;

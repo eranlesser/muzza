@@ -17,9 +17,11 @@ package com.screens.view.components.notes
 		private var _location:uint;
 		private var _value:uint;
 		private var _id:String;
+		private var _channel:String;
 		public static const WIDTH:uint=22;
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
 			//trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
+			_channel=channel;
 			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+noteValue+".png",true);
 			_location=loc;
 			_value=noteValue;
@@ -32,7 +34,7 @@ package com.screens.view.components.notes
 		}
 		
 		private static const WHITE:uint = 0xF4F1D7;
-		private static const ORANGE:uint = 0xFF7F00;
+		private static const ORANGE:uint = 0xFFC736;
 		private static const GREEN:uint = 0x60A31C;
 		private function init():void{
 			
@@ -50,9 +52,9 @@ package com.screens.view.components.notes
 			//this.x+=width/2;
 			
 			
-			createCircle(_circle,WHITE);
-			createCircle(_getSetCircle,ORANGE);
-			createCircle(_playNowCircle,GREEN);
+			createCircle(_circle,WHITE,4);
+			createCircle(_getSetCircle,ORANGE,4);
+			createCircle(_playNowCircle,GREEN,6);
 		}
 		
 		
@@ -83,8 +85,8 @@ package com.screens.view.components.notes
 		private var _getSetCircle:Shape=new Shape();
 		private var _playNowCircle:Shape=new Shape();
 		
-		private function createCircle(shp:Shape,color:uint):void{
-			shp.graphics.lineStyle(4,color);
+		private function createCircle(shp:Shape,color:uint,wdt:uint):void{
+			shp.graphics.lineStyle(wdt,color);
 			shp.graphics.drawCircle(width/2+1,height/2+1,width/2-4);
 			shp.x=_idleAsset.x;
 			shp.y=_idleAsset.y;
@@ -115,6 +117,7 @@ package com.screens.view.components.notes
 		}
 		
 		public function setState(clr:uint):void{
+			
 			var color:Shape
 			switch(clr){
 				case 0:
@@ -129,9 +132,15 @@ package com.screens.view.components.notes
 			}
 			
 			if(_color!=color){
+				if(_color){
+					removeChild(_color);
+				}
 				_color=color;
 				
 				addChild(color);
+			}
+			if(_channel=="turnTable"){
+				_color.visible=false;
 			}
 			
 		}

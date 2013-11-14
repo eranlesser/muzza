@@ -1,5 +1,6 @@
 package {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.container.PreLoader;
 	import com.container.Presenter;
 	import com.container.ThemesController;
@@ -54,6 +55,11 @@ package {
 			var ratioY:Number = Math.min(stage.fullScreenWidth,stage.fullScreenHeight) / Dimentions.HEIGHT;
 			this.scaleX=ratioX;
 			this.scaleY=ratioY;
+			if(stage.fullScreenWidth==1024 || stage.fullScreenWidth==2048){
+				Session.DeviceId=2;
+			}else{
+				Session.DeviceId=1;
+			}
 		}
 		
 		private function start():void{
