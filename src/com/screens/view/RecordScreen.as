@@ -34,7 +34,7 @@ package com.screens.view {
 		private var _notes:						Notes;
 		private var _recordBtn:					Btn;
 		private var _playBtn:					Btn;
-		private var _playBtnOver:					Btn;
+		private var _playBtnOver:				Btn;
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
 		private var _muteButton:				Btn;
@@ -102,7 +102,7 @@ package com.screens.view {
 				var playTween1:GTween = new GTween(_playBtnOver,4,{alpha:1},{ease:Bounce.easeOut});
 				playTween1.delay=1;
 				playTween1.onComplete = function():void{
-					new GTween(_playBtnOver,4,{alpha:0.2},{ease:Bounce.easeOut});
+					new GTween(_playBtnOver,4,{alpha:0},{ease:Bounce.easeOut});
 				}
 				_muteButton = new Btn("muteBTN_on.png","muteBTN_off.png");
 				_guiLayer.addChild(_muteButton);

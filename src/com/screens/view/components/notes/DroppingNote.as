@@ -19,10 +19,16 @@ package com.screens.view.components.notes
 		private var _id:String;
 		private var _channel:String;
 		public static const WIDTH:uint=22;
+		
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
 			//trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
 			_channel=channel;
-			_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+noteValue+".png",true);
+			if(noteValue==20){
+				trace("VV");
+				_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+"B"+".png",true);
+			}else{
+				_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+noteValue+".png",true);
+			}
 			_location=loc;
 			_value=noteValue;
 			_id=id;

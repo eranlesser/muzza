@@ -114,6 +114,8 @@ package com.view.tools
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_9.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_10.png' />"+
 			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_11.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_A.png' />"+
+			"<image path='assets/NOTES/INSTRUMENTS_ICONS/abstract/dn_B.png' />"+
 //			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_1.png' />"+
 //			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_2.png' />"+
 //			"<image path='assets/NOTES/INSTRUMENTS_ICONS/bottles/BOTTLES_IDLE_3.png' />"+
@@ -413,6 +415,12 @@ package com.view.tools
 			"<image path='assets/vica/muteBTN_off.png' />"+
 			"<image path='assets/vica/muteBTN_on.png' />"+
 			
+			"<image path='assets/ui/a.png' />"+
+			"<image path='assets/ui/b.png' />"+
+			"<image path='assets/ui/cb.png' />"+
+			"<image path='assets/ui/cb_on.png' />"+
+			"<image path='assets/ui/radio.png' />"+
+			"<image path='assets/ui/radio_on.png' />"+
 			"</assets>"
 		
 		);

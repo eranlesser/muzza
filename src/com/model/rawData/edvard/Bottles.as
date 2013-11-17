@@ -12,7 +12,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="26" end="31" />
 	
 </eyes>						
-<components notesGap="80" leftPad="179">
+<components notesGap="80" leftPad="139">
 <bg image="bottles_frame.png" clickable="false"  y="10" />
 	<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='50' y='0' >
 		<tap noteId="A_2" />
@@ -96,7 +96,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="A_4"  soundFile="mountain/xilofon/la.mp3" animationIndex='7'  value="7"/>	
 	<note id="B_4"  soundFile="mountain/xilofon/ci.mp3" animationIndex='6'  value="8"/>
 	<note id="C_4" soundFile="mountain/xilofon/do_up.mp3" animationIndex='5' value="9" />
-	<note id="octave+"  x="150" value="10"  />
+	<note id="octave+"  x="953" value="20"  />
 </notes>
 <sequances>
 <sequance id="10">
@@ -156,7 +156,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 		 <note id="E_3" location="601" soundLength="4"/>
 		 <note id="G_3" location="609" soundLength="24"/>
 
-<note id="octave+" location="625" soundLength="24"/>
+<note id="octave+" location="625" soundLength="24" force="true"/>
 	<!-- OCATAVE -->
 	
  <note id="E_3R" location="641" soundLength="4"/>

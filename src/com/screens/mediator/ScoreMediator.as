@@ -77,10 +77,10 @@ package com.screens.mediator
 			if(_pauseCounter>100){
 				_recordState.showHint();
 			}
-			if(_pauseCounter>16){
+			if(_pauseCounter>16&&_recordState.toPlayNote){
 				_recordState.toPlayNote.setState(1);
 			}
-			else if(_pauseCounter>32){
+			else if(_pauseCounter>32 && _recordState.toPlayNote){
 				_recordState.toPlayNote.setState(0);
 			}
 		}

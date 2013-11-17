@@ -73,25 +73,25 @@ package com.model.rawData.jingleBells
 </bottle>
 </components>
 <notes>
-	<note id="1"  soundFile="jingleBells/bottle/AHO.mp3" animationIndex='1' value="1" isFlatOrSharp="sharp"   />
-	<note id="2"  soundFile="jingleBells/bottle/BHO.mp3" animationIndex='2'  value="2"  />
-	<note id="3"  soundFile="jingleBells/bottle/C+1HO.mp3" animationIndex='3'  value="3"/>
-	<note id="4"  soundFile="jingleBells/bottle/DHO.mp3" animationIndex='4'  value="4"/>
-	<note id="5"  soundFile="jingleBells/bottle/EHO.mp3" animationIndex='8'  value="5"/>
+	<note id="1"  soundFile="jingleBells/bottle/A.mp3" animationIndex='1' value="1" isFlatOrSharp="sharp"   />
+	<note id="2"  soundFile="jingleBells/bottle/B.mp3" animationIndex='2'  value="2"  />
+	<note id="3"  soundFile="jingleBells/bottle/C+1.mp3" animationIndex='3'  value="3"/>
+	<note id="4"  soundFile="jingleBells/bottle/D.mp3" animationIndex='4'  value="4"/>
+	<note id="5"  soundFile="jingleBells/bottle/E.mp3" animationIndex='8'  value="5"/>
 	<note id="6" soundFile="jingleBells/bottle/A.mp3" animationIndex='7' value="6" />
 	<note id="7" soundFile="jingleBells/bottle/B.mp3" animationIndex='6' value="7" />
 	<note id="8" soundFile="jingleBells/bottle/C+1.mp3" animationIndex='5' value="8" isFlatOrSharp="sharp" />
-	<note id="9" soundFile="jingleBells/bottle/F+1HO.mp3" animationIndex='5' value="9" />
+	<note id="9" soundFile="jingleBells/bottle/F+1.mp3" animationIndex='5' value="9" />
 
 	<note id="1"  soundFile="jingleBells/bottle/E.mp3" animationIndex='1' value="1"   />
 	<note id="2"  soundFile="jingleBells/bottle/F+1.mp3" animationIndex='2'  value="2"  />
 	<note id="3"  soundFile="jingleBells/bottle/G+1.mp3" animationIndex='3'  value="3"/>
-	<note id="4"  soundFile="jingleBells/bottle/AHO.mp3" animationIndex='4'  value="4"/>
-	<note id="5"  soundFile="jingleBells/bottle/BHO.mp3" animationIndex='9'  value="5"/>
-	<note id="6" soundFile="jingleBells/bottle/C+1HO.mp3" animationIndex='7' value="6" />
-	<note id="7" soundFile="jingleBells/bottle/DHO.mp3" animationIndex='6' value="7" />
-	<note id="8" soundFile="jingleBells/bottle/EHO.mp3" animationIndex='5' value="8" />
-	<note id="9" soundFile="jingleBells/bottle/F+1HO.mp3" animationIndex='5' value="9" />
+	<note id="4"  soundFile="jingleBells/bottle/A.mp3" animationIndex='4'  value="4"/>
+	<note id="5"  soundFile="jingleBells/bottle/B.mp3" animationIndex='9'  value="5"/>
+	<note id="6" soundFile="jingleBells/bottle/C+1.mp3" animationIndex='7' value="6" />
+	<note id="7" soundFile="jingleBells/bottle/D.mp3" animationIndex='6' value="7" />
+	<note id="8" soundFile="jingleBells/bottle/E.mp3" animationIndex='5' value="8" />
+	<note id="9" soundFile="jingleBells/bottle/F+1.mp3" animationIndex='5' value="9" />
 </notes>
 <gestures>
 </gestures>
