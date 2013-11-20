@@ -186,7 +186,7 @@ class LearnSongPannel extends Sprite{
 	private var _thumbNail:	DisplayObject;
 	private var _title:		DisplayObject;
 	private var _name:		String;
-	
+	private var _isFree:Boolean=false;
 	
 	private var _songSelected:	Signal=new Signal();
 	
@@ -213,6 +213,9 @@ class LearnSongPannel extends Sprite{
 		//var bg:DisplayObject = AssetsManager.getAssetByName("STATION_WALL_TRIP.png");
 		//addChild(bg);
 		//bg.x=Dimentions.WIDTH;
+		if(xml.@isFree=="true"){
+			_isFree=true;
+		}
 		_title=AssetsManager.getAssetByName(xml.@title);
 		addChild(_title);
 		//_title.cacheAsBitmap=true;
@@ -224,22 +227,23 @@ class LearnSongPannel extends Sprite{
 		//_thumbNail.cacheAsBitmap=true;
 		_name=xml.@name;
 		
-		
-		var playBtn:Sprite=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
-		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
-		addChild(playBtn);
-		playBtn.x = 650;
-		playBtn.y = 210;
-		var freestyle:Btn=new Btn("freestyle.png","freestyle.png");
-		freestyle.addEventListener(MouseEvent.CLICK,onFreeStyle);
-		addChild(freestyle);
-		freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
-		freestyle.y = 310;
-		freestyle.visible = FileProxy.getImproviseEnabled(_name);
-		FileProxy.freeStyleSignal.add(function():void{
-			freestyle.visible = FileProxy.getImproviseEnabled(_name)
+		if(_isFree || Session.fullVersionEnabled){
+			var playBtn:Sprite=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
+			playBtn.addEventListener(MouseEvent.CLICK,onPlay);
+			addChild(playBtn);
+			playBtn.x = 650;
+			playBtn.y = 210;
+			var freestyle:Btn=new Btn("freestyle.png","freestyle.png");
+			freestyle.addEventListener(MouseEvent.CLICK,onFreeStyle);
+			addChild(freestyle);
+			freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
+			freestyle.y = 310;
+			freestyle.visible = FileProxy.getImproviseEnabled(_name);
+			FileProxy.freeStyleSignal.add(function():void{
+				freestyle.visible = FileProxy.getImproviseEnabled(_name)
+			}
+			);
 		}
-		);
 	}
 	
 		

@@ -88,7 +88,7 @@ package com.model.rawData.edvard
 		
 		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1400" >
 			<playerInstrument type="flute" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
-			<RecordedX>22</RecordedX>
+			<RecordedX>237.5</RecordedX>
 			<RecordedY>400</RecordedY>
 			</playerInstrument>
 		<backups>

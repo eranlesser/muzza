@@ -56,6 +56,7 @@ package com.view.tools
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
 			"<image path='assets/open/JINGLE_BELLS.png' />"+
 			"<image path='assets/open/MOUNTAIN_KING.png' />"+
+			"<image path='assets/open/mozart.png' />"+
 			//TOOLBAR
 			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_IDLE.png' />"+
@@ -155,6 +156,20 @@ package com.view.tools
 			"<image path='assets/vica/iron2tap.png' />"+
 			"<image path='assets/vica/iron3normal.png' />"+
 			"<image path='assets/vica/iron3tap.png' />"+
+			
+			"<image path='assets/vica/flute1.png' />"+
+			"<image path='assets/vica/flute2.png' />"+
+			"<image path='assets/vica/flute3.png' />"+
+			"<image path='assets/vica/flute4.png' />"+
+			"<image path='assets/vica/flute5.png' />"+
+			"<image path='assets/vica/flute6.png' />"+
+			"<image path='assets/vica/flute1_press.png' />"+
+			"<image path='assets/vica/flute2_press.png' />"+
+			"<image path='assets/vica/flute3_press.png' />"+
+			"<image path='assets/vica/flute4_press.png' />"+
+			"<image path='assets/vica/flute5_press.png' />"+
+			"<image path='assets/vica/flute6_press.png' />"+
+			
 			"<image path='assets/vica/mic.png' />"+
 			"<image path='assets/vica/pole.png' />"+
 			"<image path='assets/vica/violin.png' />"+

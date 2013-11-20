@@ -17,6 +17,7 @@ package com.constants {
 		private static var _IMPROVISE_MODE:Boolean=false;
 		public static const improviseSignal:Signal = new Signal();
 		public static var DeviceId:uint=2;
+		public static var fullVersionEnabled:Boolean=true;
 		public function Session(enforcer:enforcer){
 		}
 		
