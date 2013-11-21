@@ -116,8 +116,10 @@ package com.inf
 		
 		public function open():void{
 			_bg.visible = true;
+			if(_thumbNail){
 			_thumbNail.x=10;
 			_thumbNail.y=10;
+			}
 			this.alpha = 0;
 			new GTween(this,0.5,{alpha:1});
 		}
@@ -126,12 +128,14 @@ package com.inf
 			if(_thumbNail){
 				removeChild(_thumbNail);
 			}
-			
-			_thumbNail = new Sprite();
-			_thumbNail.addChild(getThumbNail(thumbNail));
-			addChild(_thumbNail);
-			_thumbNail.x=5;
-			_thumbNail.y=5;
+			var tmb:DisplayObject = getThumbNail(thumbNail);
+			if(tmb){
+				_thumbNail = new Sprite();
+				_thumbNail.addChild(tmb);
+				addChild(_thumbNail);
+				_thumbNail.x=5;
+				_thumbNail.y=5;
+			}
 			//_thumbNail.visible=false;
 		}
 		
@@ -169,7 +173,7 @@ package com.inf
 				case "turnTable":
 				case "loopee":
 				case "flute":
-					icon = AssetsManager.getAssetByName("Turntable.png");
+					icon = null//AssetsManager.getAssetByName("Turntable.png");
 					break;
 				default:
 					throw new Error("no "+thmb);

@@ -129,6 +129,7 @@ package com.screens.view {
 			_playBtnOver.visible=!Session.IMPROVISE_MODE;
 			_playBtn.visible=!Session.IMPROVISE_MODE;
 			notes.visible =!Session.IMPROVISE_MODE;
+			_instrumentRecorder.active = true;
 		}
 		
 		private function onMute(id:String):void

@@ -175,8 +175,6 @@ package com.view.tools
 			"<image path='assets/vica/violin.png' />"+
 			"<image path='assets/vica/red_arrow.png' />"+
 			"<image path='assets/vica/record.png' />"+
-			"<image path='assets/gui/freeStyle_select.png' />"+
-			"<image path='assets/gui/freeStyle_idle.png' />"+
 			"<image path='assets/gui/SOUND_OFF.png' />"+
 			"<image path='assets/gui/SOUND_ON.png' />"+
 			"<image path='assets/vica/tryAgain.png' />"+
@@ -380,10 +378,6 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_4_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
 			
-			"<image path='assets/instruments/LOOPEE/notes_frame.png' />"+
-			"<image path='assets/instruments/LOOPEE/notes_sheet.png' />"+
-			"<image path='assets/instruments/LOOPEE/PLAY_BUTTON_IDLE.png' />"+
-			"<image path='assets/instruments/LOOPEE/PLAY_BUTTON_PRESSED.png' />"+
 			
 //			"<image path='assets/instruments/marc.png' />"+
 //			"<image path='assets/instruments/platein.png' />"+
@@ -405,7 +399,6 @@ package com.view.tools
 			"<image path='assets/POP_UP/POP_UP_UPPER_ARROW_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/POP_UP_VERTICAL_SEGMENT.png' />"+
 			"<image path='assets/POP_UP/BASS_PROFILE_PIC.png' />"+
-			"<image path='assets/POP_UP/Turntable.png' />"+
 			"<image path='assets/POP_UP/DRUMMER_PROFILE_PIC.png' />"+
 			"<image path='assets/POP_UP/GIRL_PROFILE_PIC.png' />"+
 			"<image path='assets/POP_UP/next_IDLE.png' />"+

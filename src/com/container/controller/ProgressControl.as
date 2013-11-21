@@ -1,6 +1,7 @@
 package com.container.controller {
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
+	import com.metronom.Metronome;
 	import com.model.MainThemeModel;
 	import com.screens.model.ScreensModel;
 	
@@ -38,18 +39,17 @@ package com.container.controller {
 			
 			_mainThemeModel.screensModel.currentScreen.start();
 			initNavigator();
-			if(!_demoShown){
+			if(!_demoShown){//performance
 				_view.mouseEnabled=false;
 				_view.mouseChildren=false;
 				_demoShown=true;
 				var tmr:Timer = new Timer(100,1);
 				tmr.addEventListener(TimerEvent.TIMER_COMPLETE, function onTimer(e:Event):void{
 					tmr.removeEventListener(TimerEvent.TIMER_COMPLETE, onTimer);
-					_view.openDemo(_mainThemeModel.screensModel.demoScreen,true);
-					_view.closeDemo(true);
+					openDemo(true);
+					closeDemo(true);
 					_view.mouseEnabled=true;
 					_view.mouseChildren=true;
-					
 				});
 				tmr.start();
 			}
@@ -59,7 +59,7 @@ package com.container.controller {
 			_mainThemeModel.screensModel.reset();
 			_view.goto.remove(goTo);
 			_view.goNext.remove(goNext);
-			_view.menu.openDemo.remove(openDemo);
+			_view.menu.openDemo.remove(toggleDemo);
 		}
 		
 		public function get frameRate():uint{
@@ -70,7 +70,7 @@ package com.container.controller {
 			_navigator=_view.menu.navigator;
 			_view.goto.add(goTo);
 			_view.goNext.add(goNext);
-			_view.menu.openDemo.add(openDemo);
+			_view.menu.openDemo.add(toggleDemo);
 			_navigator.state=_mainThemeModel.screensModel.recordSession;
 			//_model.currentScreen.isRecorded = _model.recordSession.isRecorded(_model.recordSession.currenScreenIndex);
 		}
@@ -80,6 +80,7 @@ package com.container.controller {
 		}
 		
 		private function goTo(scr:String):void{
+			closeDemo();
 			_view.removeScreens();
 			_mainThemeModel.screensModel.goTo(scr);
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
@@ -88,25 +89,50 @@ package com.container.controller {
 		}
 		
 		private function goNext():void{
+			closeDemo();
 			_view.removeScreens();
 			_mainThemeModel.screensModel.goNext();
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
 			_mainThemeModel.screensModel.currentScreen.start();
 			_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
-		
-		
-		private function openDemo():void{
-			if(_view.isDemoOpen){
-				_view.closeDemo();
-				_mainThemeModel.screensModel.currentScreen.start();
+		private var _demoOpen:Boolean=false;
+		private function toggleDemo():void{
+			if(_demoOpen){
+				closeDemo();
+				//_mainThemeModel.screensModel.currentScreen.start();
 				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
 				//Flurry.logEvent("Close demo");
 			}else{
-				_mainThemeModel.screensModel.currentScreen.stop();
-				_view.openDemo(_mainThemeModel.screensModel.demoScreen);
-				//Flurry.logEvent("Open demo");
+				openDemo();
 			}
+		}
+		
+		private function openDemo(silentMode:Boolean=false):void{
+			_demoOpen = true;
+			_mainThemeModel.screensModel.currentScreen.stop();
+			_view.screensLayer.addChild(_mainThemeModel.screensModel.demoScreen);
+			_mainThemeModel.screensModel.demoScreen.start();
+			if(!silentMode){
+				_view.menu.demoButton.state="pressed";
+				_mainThemeModel.screensModel.demoScreen.close.add(toggleDemo);
+			}
+		}
+		
+		private function closeDemo(silentMode:Boolean=false):void{
+			if(!_demoOpen){
+				return // called from removescreens
+			}
+			
+			_demoOpen=false;
+			_mainThemeModel.screensModel.demoScreen.stop();
+			_view.screensLayer.removeChild(_mainThemeModel.screensModel.demoScreen);
+			Metronome.getTimeControll().stop();
+			if(!silentMode){
+				_view.menu.demoButton.state="idle";
+				_mainThemeModel.screensModel.demoScreen.close.remove(toggleDemo);
+			}
+			_mainThemeModel.screensModel.currentScreen.start();
 		}
 		
 		

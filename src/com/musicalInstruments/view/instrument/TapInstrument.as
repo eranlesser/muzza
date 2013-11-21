@@ -55,6 +55,7 @@ package com.musicalInstruments.view.instrument {
 		}
 		
 		override public function set active(flag:Boolean):void{
+			super.active = flag;
 			if(_octvSelector){
 				_octvSelector.octave=1;
 			}

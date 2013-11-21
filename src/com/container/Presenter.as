@@ -85,9 +85,6 @@ package com.container
 		}
 		
 		public function removeScreens():void{
-			if(_toolBar.demoButton.state=="pressed"){
-				closeDemo();
-			}
 			for(var i:uint=_screensLayer.numChildren;i>0;i--){
 				var scr:IScreen = _screensLayer.getChildAt(0) as IScreen;
 				scr.stop();
@@ -99,28 +96,12 @@ package com.container
 			}
 		}
 		
-		public function openDemo(demoScreen:DemoScreen,silentMode:Boolean=false):void{
-			_screensLayer.addChild(demoScreen);
-			demoScreen.start();
-			if(!silentMode){
-				_toolBar.demoButton.state="pressed";
-				demoScreen.close.add(closeDemo);
-			}
-		}
 		
-		public function closeDemo(silentMode:Boolean=false):void{
-			var demoScreen:DemoScreen = _screensLayer.getChildAt(1) as DemoScreen;
-			demoScreen.stop();
-			_screensLayer.removeChild(demoScreen);
-			Metronome.getTimeControll().stop();
-			if(!silentMode){
-				_toolBar.demoButton.state="idle";
-				(_screensLayer.getChildAt(0) as IScreen).start();
-			}
-		}
 		
-		public function get isDemoOpen():Boolean{
-			return _screensLayer.numChildren==2;
+		
+		
+		public function get screensLayer():Sprite{
+			return _screensLayer;
 		}
 		
 		public function get menu():BottomToolBar{

@@ -168,7 +168,7 @@ class ScorePanel extends Sprite{
 		_scoreField = new TextField();
 		_scoreField.width=130;
 		_scoreField.x = 6;
-		_scoreField.y=16;
+		_scoreField.y=18;
 		_scoreField.autoSize = TextFieldAutoSize.CENTER;
 		_scoreField.defaultTextFormat = new TextFormat("Helvetica",32,0x4db9e0);
 		addChild(_scoreField);
