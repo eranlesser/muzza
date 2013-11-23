@@ -34,7 +34,7 @@ public static var data:XML =
 <recordSession>
 
 
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1632" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1216" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="240">
 	<RecordedX>12</RecordedX>
 	<RecordedY>360</RecordedY>
@@ -52,7 +52,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1632" >
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1216" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
 	<RecordedX>308</RecordedX>
 	<RecordedY>500</RecordedY>
@@ -71,7 +71,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1632" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1216" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240">
 	<RecordedX>178</RecordedX>
 	<RecordedY>500</RecordedY>
@@ -89,7 +89,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1632" showLine="false">
+<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1216" showLine="false">
 	<playerInstrument type="loopee" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
 	<RecordedX>0</RecordedX>
 	<RecordedY>0</RecordedY>
@@ -109,7 +109,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1632" playSequance="102">
+<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1216" playSequance="102">
 	<instrument type="drum.png" >
 <layout id="0" x='50' y='140'  rotation="0" />	
 	</instrument>

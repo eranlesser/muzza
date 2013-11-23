@@ -37,7 +37,7 @@ package com.screens.view
 		
 		private function addCredits():void{
 			var creditsBut:Btn = new Btn("CREDITS_IDLE.png","CREDITS_PRESSED.png");
-			addChild(creditsBut);
+			//addChild(creditsBut);
 			creditsBut.x=140;
 			creditsBut.y=110;
 			creditsBut.clicked.add(openCredits);

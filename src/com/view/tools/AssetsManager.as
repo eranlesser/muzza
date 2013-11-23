@@ -58,6 +58,9 @@ package com.view.tools
 			"<image path='assets/open/MOUNTAIN_KING.png' />"+
 			"<image path='assets/open/mozart.png' />"+
 			//TOOLBAR
+			"<image path='assets/TOOL_BAR_ICONS/FLUTE_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/FLUTE_DONE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/FLUTE_PRESS.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_PRESSED.png' />"+
