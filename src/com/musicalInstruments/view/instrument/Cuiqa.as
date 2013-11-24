@@ -36,7 +36,7 @@ package com.musicalInstruments.view.instrument
 			addChild(circle);
 			circle.x=Dimentions.WIDTH/2;
 			circle.y=Dimentions.HEIGHT/2+50;
-			var inst:Sprite;
+			var inst:Dot;
 			var location:Point;
 			var i:uint=0;
 			for each(var row:XML in _model.rawData.row){
@@ -48,6 +48,8 @@ package com.musicalInstruments.view.instrument
 						inst.y=location.y;
 						circle.addChild(inst);
 						_dots.push(inst);
+						inst.soundPlaySignal.add(onDotSoundPlay);
+						inst.soundCompleteSignal.add(onDotSoundComplete);
 				}
 			}
 			_playingDot=_dots[_dots.length-1];
@@ -69,6 +71,10 @@ package com.musicalInstruments.view.instrument
 				_arrow.rotation=0;
 			}
 		}
+		
+		override public function stop():void{
+			active = false;
+		}
 		private var _playingDot:Dot;
 		private function onTick():void
 		{
@@ -86,7 +92,6 @@ package com.musicalInstruments.view.instrument
 				if((dot._angle)==(tick*360/64)%360 && (dot._angle != _playingDot._angle)){
 					dot.play();
 					_playingDot=dot;
-					_notePlayed.dispatch(dot.id);
 					dot.soundCompleteSignal.add(onDotSoundComplete);
 				}
 			}
@@ -95,11 +100,15 @@ package com.musicalInstruments.view.instrument
 		private function onDotSoundComplete(id:String,startTime:uint,soundLength:int):void{
 			_noteStopped.dispatch(id,startTime,soundLength);
 		}
+		private function onDotSoundPlay(id:String):void{
+			_notePlayed.dispatch(id);
+		}
 		
 	}
 }
 import com.gskinner.motion.GTween;
 import com.metronom.Metronome;
+import com.musicalInstruments.view.IMusicalInstrumentComp;
 import com.musicalInstruments.view.components.SoundPlayer;
 
 import flash.display.DisplayObject;
@@ -107,17 +116,19 @@ import flash.display.Shape;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
+import flash.events.TouchEvent;
 
 import org.osflash.signals.Signal;
 
 
-class Dot extends Sprite{
+class Dot extends Sprite implements IMusicalInstrumentComp{
 	private var _soundPlayer:SoundPlayer;
 	public var _angle:Number;
 	private var _id:String;
 	private var _startTime:uint;
 	private var _dotFill:Shape;
 	public var soundCompleteSignal:Signal = new Signal();
+	public var soundPlaySignal:Signal = new Signal();
 	public function Dot(xml:XML,angle:Number){
 		init(xml.@color);
 		_angle=angle;
@@ -129,11 +140,20 @@ class Dot extends Sprite{
 		return _id;
 	}
 	
+	public function get noteId():String{
+		return _id;
+	}
+	public function get octave():int{
+		return 0;
+	}
+	public function set state(stt:String):void{
+	}
+	
 	private function init(color:int):void{
 		trace(color)
 		var spr:Sprite = new Sprite();
-		spr.graphics.lineStyle(1,color);
-		//spr.graphics.beginFill(color);
+		//spr.graphics.lineStyle(1,color);
+		spr.graphics.beginFill(color,0.4);
 		spr.graphics.drawCircle(0,0,16);
 		spr.graphics.endFill();
 		addChild(spr);
@@ -145,12 +165,13 @@ class Dot extends Sprite{
 		addChild(_dotFill);
 		_dotFill.alpha=0;
 		this.addEventListener(MouseEvent.MOUSE_OVER,play);
+		this.addEventListener(TouchEvent.TOUCH_BEGIN,play);
 	}
 	
 	public function play(e:Event=null):void{
 		_soundPlayer.play(1);
 		_soundPlayer.soundComplete.add(onSoundComplete);
-		
+		soundPlaySignal.dispatch(_id);
 		var dTween:GTween = new GTween(_dotFill,0.5,{alpha:1});
 		dTween.onComplete = endTween;
 		_startTime = Metronome.getTimeModel().currentTick;

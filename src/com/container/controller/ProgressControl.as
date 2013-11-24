@@ -140,6 +140,8 @@ package com.container.controller {
 			_mainThemeModel.screensModel.currentScreen.stop();
 			goHomeSignal.dispatch();
 			_mainThemeModel.screensModel.reset();
+			_view.menu.demoButton.state="idle";
+			_demoOpen=false;
 		//	Flurry.logEvent("go home");
 		}
 		

@@ -22,6 +22,12 @@ package com.screens.view.components.notes
 		
 		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
 			//trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
+			_location=loc;
+			_value=noteValue;
+			_id=id;
+			if(channel=="loopee"){
+				
+			}else{
 			_channel=channel;
 			if(noteValue==20){
 				trace("VV");
@@ -29,11 +35,10 @@ package com.screens.view.components.notes
 			}else{
 				_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+noteValue+".png",true);
 			}
-			_location=loc;
-			_value=noteValue;
-			_id=id;
+			
 			
 			init();
+			}
 		}
 		public function get id():String{
 			return _id;
