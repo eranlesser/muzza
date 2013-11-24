@@ -58,9 +58,13 @@ package com.view.tools
 			"<image path='assets/open/MOUNTAIN_KING.png' />"+
 			"<image path='assets/open/mozart.png' />"+
 			//TOOLBAR
+			"<image path='assets/instruments/bottles_frame_flute.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/FLUTE_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/FLUTE_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/FLUTE_PRESS.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/CUICA_IDLE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/CUICA_DONE.png' />"+
+			"<image path='assets/TOOL_BAR_ICONS/CUICA_PRESS.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_DONE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_IDLE.png' />"+
 			"<image path='assets/TOOL_BAR_ICONS/BASS_PRESSED.png' />"+
@@ -380,6 +384,8 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_3_PRESSED.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_IDLE.png' />"+
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
+
+			"<image path='assets/instruments/CUICA/cuica.png' />"+
 			
 			
 //			"<image path='assets/instruments/marc.png' />"+

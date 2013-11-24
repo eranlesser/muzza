@@ -1,6 +1,7 @@
 package com.musicalInstruments.view.components
 {
 	import com.metronom.Metronome;
+	import com.musicalInstruments.view.IMusicalInstrumentComp;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
@@ -12,7 +13,7 @@ package com.musicalInstruments.view.components
 	
 	import org.osflash.signals.Signal;
 	
-	public class Pawee extends Sprite{
+	public class Pawee extends Sprite implements IMusicalInstrumentComp{
 		private var _soundPlayer:SoundPlayer;
 		private var _id:String;
 		private var _upState:DisplayObject;
@@ -30,6 +31,22 @@ package com.musicalInstruments.view.components
 			_value=data.@value;
 			init();
 		}
+		
+		public function set state(stt:String):void{
+			
+		}
+		override public function get x():Number{
+			return super.x+48;
+		}
+		
+		public function get noteId():String{
+			return _id;
+		}
+		
+		public function get octave():int{
+			return 0;
+		}
+
 		
 		public function get value():uint
 		{

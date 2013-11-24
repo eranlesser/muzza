@@ -8,23 +8,24 @@ package com.model.rawData.edvard
 		
 		public static var data:XML = 
 <instrument type="flute"  thumbNail='flute' >
-<components notesGap="90" leftPad="264">
+<components notesGap="85" leftPad="295">
+<bg image="bottles_frame_flute.png" clickable="false"  y="30" x="-44" />
 		<bottle image="flute1.png" playImage="flute1_press.png" x='0' y='0' >
 			<tap noteId="B_4" />
 		</bottle>
-		<bottle image="flute2.png" playImage="flute2_press.png" x='90' y='0' >
+		<bottle image="flute2.png" playImage="flute2_press.png" x='85' y='0' >
 			<tap noteId="C_5" />
 		</bottle>
-		<bottle image="flute3.png" playImage="flute3_press.png" x='180' y='0' >
+		<bottle image="flute3.png" playImage="flute3_press.png" x='170' y='0' >
 			<tap noteId="C#_5" />
 		</bottle>
-		<bottle image="flute4.png" playImage="flute4_press.png" x='270' y='0' >
+		<bottle image="flute4.png" playImage="flute4_press.png" x='255' y='0' >
 			<tap noteId="D_5" />
 		</bottle>
-		<bottle image="flute5.png" playImage="flute5_press.png" x='360' y='0' >
+		<bottle image="flute5.png" playImage="flute5_press.png" x='340' y='0' >
 			<tap noteId="E_5" />
 		</bottle>
-		<bottle image="flute6.png" playImage="flute6_press.png" x='450' y='0' >
+		<bottle image="flute6.png" playImage="flute6_press.png" x='425' y='0' >
 			<tap noteId="F_5" />
 		</bottle>
 			

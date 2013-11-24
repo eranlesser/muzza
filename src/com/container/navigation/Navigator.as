@@ -107,7 +107,7 @@ class BreadCrumbs extends Sprite{
 						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","turnTable");
 						break;
 				case "loopee":
-						btn=new Btn("vinyl_idle_but.png","vinyl_press_but.png","vinyl_done_but.png","loopee");
+						btn=new Btn("CUICA_IDLE.png","CUICA_PRESS.png","CUICA_DONE.png","loopee");
 					break;
 				case "flute":
 						btn=new Btn("FLUTE_IDLE.png","FLUTE_PRESS.png","FLUTE_DONE.png","flute");

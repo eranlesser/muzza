@@ -9,6 +9,7 @@ package com.screens.recordScreenStates
 	import com.metronom.ITimeModel;
 	import com.metronom.Metronome;
 	import com.model.FileProxy;
+	import com.musicalInstruments.view.IMusicalInstrumentComp;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.screens.mediator.ScoreMediator;
@@ -108,7 +109,7 @@ package com.screens.recordScreenStates
 					
 					//_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
-					var comp:MusicalInstrumentComponent = _context.instrumentRecorder.getCompById(noteId);
+					var comp:IMusicalInstrumentComp = _context.instrumentRecorder.getCompById(noteId);
 					if(comp){
 						scoreSignal.dispatch(curNote.location,_timeModel.currentTick,noteId==curNote.id,_context.instrumentRecorder.x+comp.x+comp.width/3);
 					}else{

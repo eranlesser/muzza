@@ -23,7 +23,7 @@ package com.musicalInstruments.view.instrument
 		private var _upNoteId:			String;
 		private var _downNoteId:		String;
 		private var _mouseDownPoint:	Point;
-		private var _hey:				Sprite;
+		private var _hey:				Hey;
 		private var _moveCounter:		uint=0;
 		private var _isPlaying:			Boolean = false;
 		private var _turnDirection:		int;
@@ -65,7 +65,7 @@ package com.musicalInstruments.view.instrument
 			vBg.y = xml.vinyl.@y-vBg.height/2;
 			_upNoteId = xml.vinyl.notes.up.@noteId;
 			_downNoteId = xml.vinyl.notes.down.@noteId;
-			
+			_musicalComponents.push(_vinyl);
 			_vinylContainer.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
 			_vinylContainer.addEventListener(TouchEvent.TOUCH_BEGIN,onMouseDown);
 		}
@@ -100,11 +100,13 @@ package com.musicalInstruments.view.instrument
 				case 5:
 					var note:NoteModel = NotesInstrumentModel(_model).getNoteById("E_5");
 					_vinylContainer.rotation = _vinylContainer.rotation-60;
+					_vinyl.id="E_5";
 					playSound(note);
 					break;
 				case 6:
 					var noteb:NoteModel = NotesInstrumentModel(_model).getNoteById("D_5");
 					_vinylContainer.rotation =_vinylContainer.rotation +  60;
+					_vinyl.id="D_5";
 					playSound(noteb);
 					break;
 			}
@@ -163,7 +165,7 @@ package com.musicalInstruments.view.instrument
 		//____________________________________________________________________________________________________CHELO		
 		
 		private function addChelo(xml:XML):void{
-			_chelo = new Chelo(xml,onNotePlayed,onNoteStopped);
+			_chelo = new Chelo(xml,onNotePlayed,onNoteStopped,_musicalComponents);
 			addChild(_chelo);
 			_chelo.x = xml.chelo.@x;
 			_chelo.y = xml.chelo.@y;
@@ -174,11 +176,12 @@ package com.musicalInstruments.view.instrument
 		//____________________________________________________________________________________________________HEY		
 		
 		private function addHey(xml:XML):void{
-			_hey = new Sprite();
+			_hey = new Hey("G");
 			_hey.addChild(AssetsManager.getAssetByName("mic.png"));
 			_hey.x = xml.hey.@x;
 			_hey.y = xml.hey.@y;
 			addChild(_hey);
+			_musicalComponents.push(_hey);
 			_hey.addEventListener(MouseEvent.MOUSE_DOWN,playHey);
 		}
 		
@@ -218,6 +221,7 @@ package com.musicalInstruments.view.instrument
 		
 	}
 }
+import com.musicalInstruments.view.IMusicalInstrumentComp;
 import com.musicalInstruments.view.components.IKeyPlayer;
 import com.musicalInstruments.view.components.Pawee;
 import com.view.gui.Btn;
@@ -230,12 +234,32 @@ import flash.events.KeyboardEvent;
 import org.osflash.signals.Signal;
 
 
-class Vinyl extends Sprite implements IKeyPlayer{
+class Vinyl extends Sprite implements IKeyPlayer,IMusicalInstrumentComp{
 	private var _tapImage:DisplayObject;
+	private var _id:String;
 	public function Vinyl(tapImage:DisplayObject){
 		_tapImage = tapImage;
 		addChild(_tapImage)
 		//_tapImage.visible = false;
+	}
+	
+	public function set state(stt:String):void{
+		
+	}
+	
+	public function get octave():int{
+		return 0;
+	}
+	public function get noteId():String{
+		return _id;
+	}
+	
+	public function set id(iid:String):void{
+		_id=iid;
+	}
+	
+	override public function get x():Number{
+		return 650;
 	}
 	
 	public function playNote(val:uint):void{
@@ -246,15 +270,20 @@ class Vinyl extends Sprite implements IKeyPlayer{
 }
 
 class Chelo extends Sprite implements IKeyPlayer{
-	
-	function Chelo(xml:XML,onNotePlayed:Function,onNoteStopped:Function){
+	private var _musicalComponents:Vector.<IMusicalInstrumentComp>;
+	function Chelo(xml:XML,onNotePlayed:Function,onNoteStopped:Function,musicalComponents:Vector.<IMusicalInstrumentComp>){
+		_musicalComponents = musicalComponents;
 		for each(var paweXml:XML in xml.chelo.children()){
 			var pawee:Pawee = new Pawee(paweXml);
 			addChild(pawee);
 			pawee.notePlayed.add(onNotePlayed);
 			pawee.noteStopped.add(onNoteStopped);
+			_musicalComponents.push(pawee);
 		}
 	}
+	
+	
+	
 	
 	public function playNote(val:uint):void{
 		for(var i:uint=0;i<this.numChildren;i++){
@@ -270,6 +299,29 @@ class Chelo extends Sprite implements IKeyPlayer{
 		}
 	}
 	
+}
+
+class Hey extends Sprite implements IMusicalInstrumentComp{
+	private var _id:String;
+	public function Hey(id:String){
+		_id=id;
+	}
+	
+	public function get noteId():String{
+		return _id;	
+	}
+	
+	public function get octave():int{
+		return 0;
+	}
+	
+	public function set state(stt:String):void{
+		
+	}
+	
+	override public function get x():Number{
+		return 430;
+	}
 }
 
 

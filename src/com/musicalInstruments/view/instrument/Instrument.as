@@ -8,6 +8,7 @@ package com.musicalInstruments.view.instrument {
 	import com.musicalInstruments.model.sequances.INoteFetcher;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 	import com.musicalInstruments.view.IAnimateable;
+	import com.musicalInstruments.view.IMusicalInstrumentComp;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.components.NoteSequancePlayer;
 	
@@ -26,7 +27,7 @@ package com.musicalInstruments.view.instrument {
 	
 	public class Instrument extends Sprite implements IAnimateable{
 		
-		protected var _musicalComponents:	Vector.<MusicalInstrumentComponent>;
+		protected var _musicalComponents:	Vector.<IMusicalInstrumentComp>;
 		private var _endAtFrame:			uint;
 		protected var _model:				CoreInstrumentModel;
 		protected var _beginAtFrame:		uint;
@@ -43,7 +44,7 @@ package com.musicalInstruments.view.instrument {
 		public function Instrument(model:CoreInstrumentModel){
 			_notePlayed = new Signal();
 			_noteStopped = new Signal();
-			_musicalComponents = new Vector.<MusicalInstrumentComponent>();
+			_musicalComponents = new Vector.<IMusicalInstrumentComp>();
 			_model = model as CoreInstrumentModel;
 			_player=new NoteSequancePlayer(NotesInstrumentModel(_model),this);
 			addEventListener(KeyboardEvent.KEY_DOWN,onKeyPressed);
@@ -65,8 +66,8 @@ package com.musicalInstruments.view.instrument {
 				stage.focus = e.target as TextField;
 		}
 		
-		public function getCompById(id:String):MusicalInstrumentComponent{
-			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
+		public function getCompById(id:String):IMusicalInstrumentComp{
+			for each(var comp:IMusicalInstrumentComp in _musicalComponents){
 				if(comp.noteId==id){
 					return comp;
 				}
@@ -77,13 +78,13 @@ package com.musicalInstruments.view.instrument {
 		protected function onKeyPressed(e:KeyboardEvent):void{
 			var compValue:int;
 			var keyValue:int = getValueFromChar(e.keyCode);
-			for each(var comp:MusicalInstrumentComponent in _musicalComponents){
+			for each(var comp:IMusicalInstrumentComp in _musicalComponents){
 				compValue = NotesInstrumentModel(_model).getNoteById(comp.noteId).value
-				if(compValue == keyValue){
-					comp.onTouchTap(e);
+				if(compValue == keyValue && comp is MusicalInstrumentComponent){
+					MusicalInstrumentComponent(comp).onTouchTap(e);
 					addEventListener(KeyboardEvent.KEY_UP, function keyUp(event:Event):void{
 						removeEventListener(KeyboardEvent.KEY_UP,  keyUp);
-						comp.onTouchTapEnd(event);
+						MusicalInstrumentComponent(comp).onTouchTapEnd(event);
 					}
 					);
 					break;
@@ -146,7 +147,7 @@ package com.musicalInstruments.view.instrument {
 		}
 		
 		public function animateTo(indx:uint,id:String):void{
-			for each(var component:MusicalInstrumentComponent in _musicalComponents){
+			for each(var component:IMusicalInstrumentComp in _musicalComponents){
 				component.state = "idle";
 			}
 			//if(indx>0)
@@ -165,7 +166,7 @@ package com.musicalInstruments.view.instrument {
 		
 		public function stop():void{
 			_player.stop();
-			for each(var component:MusicalInstrumentComponent in _musicalComponents){
+			for each(var component:IMusicalInstrumentComp in _musicalComponents){
 				component.state = "idle";
 			}
 			if(stage){

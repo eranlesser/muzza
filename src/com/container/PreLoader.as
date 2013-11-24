@@ -22,7 +22,6 @@ package com.container
 		}
 		
 		private function initBand(e:Event):void{
-			trace(Data.xml.musicians)
 			for each(var characterXml:XML in XML(Data.xml.musicians).children()){
 				var character:Character=new Character(characterXml.@spriteSheet,characterXml.@positionsLength,characterXml.@width,characterXml.@height);
 				Band.instance.initCharacter(character);

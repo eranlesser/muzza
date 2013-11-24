@@ -3,13 +3,15 @@ package com.musicalInstruments.view.instrument
 	import com.constants.Dimentions;
 	import com.metronom.Metronome;
 	import com.musicalInstruments.model.NotesInstrumentModel;
+	import com.view.tools.AssetsManager;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.geom.Point;
 
 	public class Cuiqa extends Instrument
 	{
-		private const RADIUS:uint=200;
+		private const RADIUS:uint=182;
 		private var _arrow:Sprite;
 		private var _dots:Vector.<Dot>=new Vector.<Dot>();
 		public function Cuiqa(model:NotesInstrumentModel)
@@ -27,10 +29,10 @@ package com.musicalInstruments.view.instrument
 			_arrow.y=Dimentions.HEIGHT/2+50;
 			
 			var circle:Sprite = new Sprite();
-			circle.graphics.lineStyle(44,0x111111);
-			circle.graphics.beginFill(0x333333,0.6);
-			circle.graphics.drawCircle(0,0,RADIUS);
-			circle.graphics.endFill();
+			var shp:DisplayObject = AssetsManager.getAssetByName("cuica.png");
+			circle.addChild(shp);
+			shp.x=-shp.width/2;
+			shp.y=-shp.height/2;
 			addChild(circle);
 			circle.x=Dimentions.WIDTH/2;
 			circle.y=Dimentions.HEIGHT/2+50;
@@ -118,7 +120,6 @@ class Dot extends Sprite{
 	public var soundCompleteSignal:Signal = new Signal();
 	public function Dot(xml:XML,angle:Number){
 		init(xml.@color);
-		trace(xml.@color,"<")
 		_angle=angle;
 		_id=xml.@id;
 		_soundPlayer = new SoundPlayer(xml.@sound);

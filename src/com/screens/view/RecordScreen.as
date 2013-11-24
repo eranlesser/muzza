@@ -169,7 +169,7 @@ package com.screens.view {
 			_instrumentRecorder.x = _model.getRecordInstrumentX();
 			_instrumentRecorder.y = _model.getRecordInstrumentY();
 			//_instrumentRecorder.x = (Dimentions.WIDTH-_instrumentRecorder.width)/2
-				trace("LLL",_instrumentRecorder.x)
+				//trace("LLL",_instrumentRecorder.x)
 		}
 		
 		private function getPlayer(playerModel:InstrumentModel):PlayMusician{

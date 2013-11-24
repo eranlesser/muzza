@@ -2,6 +2,7 @@ package com.musicalInstruments.view.components
 {
 	import com.musicalInstruments.model.InstrumentComponentModel;
 	import com.musicalInstruments.model.sequances.INoteFetcher;
+	import com.musicalInstruments.view.IMusicalInstrumentComp;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Bitmap;
@@ -13,7 +14,7 @@ package com.musicalInstruments.view.components
 	
 	import org.osflash.signals.Signal;
 	
-	public class MusicalInstrumentComponent extends Sprite {
+	public class MusicalInstrumentComponent extends Sprite implements IMusicalInstrumentComp {
 		
 		private var _model:			InstrumentComponentModel;
 		private var _idleImage:		Bitmap;
@@ -114,7 +115,7 @@ package com.musicalInstruments.view.components
 			return _model.clickable;
 		}
 		
-		public function get octave():uint{
+		public function get octave():int{
 			return _model.octave;
 		}
 		
