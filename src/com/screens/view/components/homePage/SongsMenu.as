@@ -1,6 +1,7 @@
 package com.screens.view.components.homePage
 {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.gskinner.motion.GTween;
 	import com.gskinner.motion.easing.Bounce;
 	import com.gskinner.motion.easing.Circular;
@@ -50,6 +51,8 @@ package com.screens.view.components.homePage
 			addChild(_poleLayer);
 			//addTutoiralPannel();
 			var indx:uint=0;
+			_songs=new Vector.<LearnSongPannel>();
+			Session.fullVersionSignal.add(onFullVersion);
 			for each(var song:XML in xml.song){
 				var songPannel:LearnSongPannel = getSongPannel(song);
 				_thumbsLayer.addChild(songPannel);
@@ -59,7 +62,7 @@ package com.screens.view.components.homePage
 				pole.x=Dimentions.WIDTH*indx;
 				indx++;
 				songPannel.songSelected.add(onSongSelected);
-				trace(song)
+				_songs.push(songPannel);
 			}
 			//_wallLayer.cacheAsBitmap=true;
 			//_thumbsLayer.cacheAsBitmap=true;
@@ -108,6 +111,14 @@ package com.screens.view.components.homePage
 				}
 			//});
 			
+		}
+		
+		private function onFullVersion():void
+		{
+			// TODO Auto Generated method stub
+			for each(var learnedSong:LearnSongPannel in _songs){
+				learnedSong.onFullVersion();
+			}
 		}
 		
 		private function onNext(id:String):void{
@@ -167,6 +178,7 @@ package com.screens.view.components.homePage
 import com.constants.Dimentions;
 import com.constants.Session;
 import com.model.FileProxy;
+import com.screens.view.Store;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
 
@@ -187,6 +199,7 @@ class LearnSongPannel extends Sprite{
 	private var _title:		DisplayObject;
 	private var _name:		String;
 	private var _isFree:Boolean=false;
+	private var _store:Store;
 	
 	private var _songSelected:	Signal=new Signal();
 	
@@ -207,7 +220,9 @@ class LearnSongPannel extends Sprite{
 		_songSelected.dispatch(_name);
 		
 	}
-	
+	private var playBtn:Sprite;
+	private var freestyle:Btn;
+	private var buyBtn:Btn;
 	private function setData(xml:XML):void{
 		//addChild(AssetsManager.getAssetByName("STATION_WALL_TRIP.png"))
 		//var bg:DisplayObject = AssetsManager.getAssetByName("STATION_WALL_TRIP.png");
@@ -227,23 +242,56 @@ class LearnSongPannel extends Sprite{
 		//_thumbNail.cacheAsBitmap=true;
 		_name=xml.@name;
 		
-		if(_isFree || Session.fullVersionEnabled){
-			var playBtn:Sprite=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
+		
+			playBtn=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
 			playBtn.addEventListener(MouseEvent.CLICK,onPlay);
 			addChild(playBtn);
 			playBtn.x = 650;
 			playBtn.y = 210;
-			var freestyle:Btn=new Btn("freestyle.png","freestyle.png");
+			freestyle = new Btn("freestyle.png","freestyle.png");
 			freestyle.addEventListener(MouseEvent.CLICK,onFreeStyle);
 			addChild(freestyle);
 			freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
 			freestyle.y = 310;
-			freestyle.visible = FileProxy.getImproviseEnabled(_name);
-			FileProxy.freeStyleSignal.add(function():void{
-				freestyle.visible = FileProxy.getImproviseEnabled(_name)
+//			freestyle.visible = FileProxy.getImproviseEnabled(_name);
+//			FileProxy.freeStyleSignal.add(function():void{
+//				freestyle.visible = FileProxy.getImproviseEnabled(_name)
+//			}
+//			);
+			buyBtn = new Btn("dot.png","dot.png");
+			buyBtn.clicked.add(buyBtnClicked);
+			addChild(buyBtn);
+			buyBtn.x=650 ;
+			buyBtn.y=340;
+			onFullVersion();
+	}
+	
+	public function onFullVersion():void{
+		var isFree:Boolean = (_isFree || Session.fullVersionEnabled)
+			buyBtn.visible=!isFree;
+			freestyle.visible=isFree;
+			playBtn.visible=isFree;
+			if(_store&&_store.parent){
+				removeChild(_store);
 			}
-			);
+	}
+	
+	private function buyBtnClicked(id:String):void
+	{
+		// TODO Auto Generated method stub
+		if(!_store){
+			_store = new Store();
+			_store.complete.add(onStore);
+		}else{
+			_store.restart();
 		}
+		addChild(_store);
+		
+	}	
+	
+	private function onStore():void{
+		
+		onFullVersion();
 	}
 	
 		

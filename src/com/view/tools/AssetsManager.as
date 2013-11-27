@@ -386,6 +386,7 @@ package com.view.tools
 			"<image path='assets/instruments/DRUMS/DRUMS_4_PRESSED.png' />"+
 
 			"<image path='assets/instruments/CUICA/cuica.png' />"+
+			"<image path='assets/instruments/CUICA/dot.png' />"+
 			
 			
 //			"<image path='assets/instruments/marc.png' />"+

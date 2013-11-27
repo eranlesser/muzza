@@ -11,7 +11,7 @@ package com.musicalInstruments.view.instrument
 
 	public class Cuiqa extends Instrument
 	{
-		private const RADIUS:uint=182;
+		private const RADIUS:uint=194;
 		private var _arrow:Sprite;
 		private var _dots:Vector.<Dot>=new Vector.<Dot>();
 		public function Cuiqa(model:NotesInstrumentModel)
@@ -24,7 +24,7 @@ package com.musicalInstruments.view.instrument
 			_arrow = new Sprite();
 			_arrow.graphics.lineStyle(22,0xFFFFFF);
 			_arrow.graphics.drawRect(0,0,RADIUS,2);
-			addChild(_arrow);
+			//addChild(_arrow);
 			_arrow.x=Dimentions.WIDTH/2;
 			_arrow.y=Dimentions.HEIGHT/2+50;
 			
@@ -35,7 +35,7 @@ package com.musicalInstruments.view.instrument
 			shp.y=-shp.height/2;
 			addChild(circle);
 			circle.x=Dimentions.WIDTH/2;
-			circle.y=Dimentions.HEIGHT/2+50;
+			circle.y=Dimentions.HEIGHT/2+20;
 			var inst:Dot;
 			var location:Point;
 			var i:uint=0;
@@ -86,15 +86,15 @@ package com.musicalInstruments.view.instrument
 			}
 			_arrow.visible=true;
 			var tick:int = Metronome.getTimeModel().currentTick;
-			_arrow.rotation = tick*360/64;
+			_arrow.rotation = tick*360/64+12;
 			
-			for each(var dot:Dot in _dots){
-				if((dot._angle)==(tick*360/64)%360 && (dot._angle != _playingDot._angle)){
-					dot.play();
-					_playingDot=dot;
-					dot.soundCompleteSignal.add(onDotSoundComplete);
-				}
-			}
+//			for each(var dot:Dot in _dots){
+//				if((dot._angle)==(tick*360/64)%360 && (dot._angle != _playingDot._angle)){
+//					dot.play();
+//					_playingDot=dot;
+//					dot.soundCompleteSignal.add(onDotSoundComplete);
+//				}
+//			}
 			
 		}
 		private function onDotSoundComplete(id:String,startTime:uint,soundLength:int):void{
@@ -110,6 +110,7 @@ import com.gskinner.motion.GTween;
 import com.metronom.Metronome;
 import com.musicalInstruments.view.IMusicalInstrumentComp;
 import com.musicalInstruments.view.components.SoundPlayer;
+import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
 import flash.display.Shape;
@@ -162,8 +163,11 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		_dotFill.graphics.beginFill(color);
 		_dotFill.graphics.drawCircle(0,0,16);
 		_dotFill.graphics.endFill();
-		addChild(_dotFill);
 		_dotFill.alpha=0;
+		var bg:DisplayObject = addChild(AssetsManager.getAssetByName("dot.png"));
+		bg.x= -bg.width/2;
+		bg.y= -bg.height/2;
+		addChild(_dotFill);
 		this.addEventListener(MouseEvent.MOUSE_OVER,play);
 		this.addEventListener(TouchEvent.TOUCH_BEGIN,play);
 	}
@@ -175,6 +179,7 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		var dTween:GTween = new GTween(_dotFill,0.5,{alpha:1});
 		dTween.onComplete = endTween;
 		_startTime = Metronome.getTimeModel().currentTick;
+		trace("DOT playe",_id,_startTime-3);
 	}
 	private function endTween(t:GTween):void{
 		new GTween(_dotFill,0.2,{alpha:0});
@@ -182,7 +187,7 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 	private function onSoundComplete():void{
 		this.scaleX=1;
 		this.scaleY=1;
-		soundCompleteSignal.dispatch(_id,_startTime,Metronome.getTimeModel().currentTick-_startTime);
+		soundCompleteSignal.dispatch(_id,_startTime,_startTime);
 	}
 	
 }

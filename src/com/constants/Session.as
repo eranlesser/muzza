@@ -14,11 +14,21 @@ package com.constants {
 		private static var _session:Session;
 		private var _score:int;
 		public var goodScreensLength:uint;
+		public static var inAppFullVersionId:String="allSongs_1_0";
 		private static var _IMPROVISE_MODE:Boolean=false;
 		public static const improviseSignal:Signal = new Signal();
+		public static const fullVersionSignal:Signal = new Signal();
 		public static var DeviceId:uint=2;
-		public static var fullVersionEnabled:Boolean=true;
+		private static var _fullVersionEnabled:Boolean=true;
 		public function Session(enforcer:enforcer){
+		}
+		
+		public static function set fullVersionEnabled(flag:Boolean):void{
+			_fullVersionEnabled=flag;
+			fullVersionSignal.dispatch();
+		}
+		public static function get fullVersionEnabled():Boolean{
+		 return _fullVersionEnabled;	
 		}
 		
 		public static function get IMPROVISE_MODE():Boolean

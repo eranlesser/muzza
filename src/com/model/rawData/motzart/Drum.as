@@ -20,6 +20,9 @@ public static var data:XML =
 <tap noteId="C_6" />
 </drum>
 <drum image="DRUMS_3_IDLE.png" playImage="DRUMS_3_PRESSED.png"  x='280' y='0'>
+<tap noteId="c4" />
+</drum>
+<drum image="DRUMS_4_IDLE.png" playImage="DRUMS_4_PRESSED.png"  x='420' y='0'>
 <tap noteId="C#_6" />
 </drum>
 
@@ -27,7 +30,8 @@ public static var data:XML =
 <notes>
 	<note id="B_5" value="1"  soundFile="mozart/drums/B_4.mp3" animationIndex='5'    />
 	<note id="C_6" value="2" soundFile="mozart/drums/C_5.mp3" animationIndex='4'  />
-	<note id="C#_6" value="3" soundFile="mozart/drums/C_diez_5.mp3" animationIndex='1' />
+	<note id="c4" value="3" soundFile="mozart/agogo/c4.mp3" animationIndex='2' />
+	<note id="C#_6" value="4" soundFile="mozart/drums/C_diez_5.mp3" animationIndex='1' />
 </notes>
 <sequances>
 

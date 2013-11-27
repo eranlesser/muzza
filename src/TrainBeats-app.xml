@@ -266,4 +266,8 @@
     </iPhone>
 
 
+<extensions>
+        <extensionID>com.sticksports.nativeExtensions.Flurry</extensionID>
+        <extensionID>com.adobe.ane.productStore</extensionID>
+    </extensions>
 </application>
