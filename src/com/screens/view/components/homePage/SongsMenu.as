@@ -8,6 +8,7 @@ package com.screens.view.components.homePage
 	import com.gskinner.motion.easing.Elastic;
 	import com.gskinner.motion.easing.Exponential;
 	import com.gskinner.motion.easing.Sine;
+	import com.model.FileProxy;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
@@ -35,7 +36,7 @@ package com.screens.view.components.homePage
 		private var _prevButton:Btn;
 		public var ready:Signal = new Signal();
 		public function SongsMenu(){
-			
+			Session.fullVersionEnabled = FileProxy.getFullVersion();
 		}
 		
 		public function set data(xml:XML):void{
@@ -115,7 +116,6 @@ package com.screens.view.components.homePage
 		
 		private function onFullVersion():void
 		{
-			// TODO Auto Generated method stub
 			for each(var learnedSong:LearnSongPannel in _songs){
 				learnedSong.onFullVersion();
 			}
@@ -200,6 +200,9 @@ class LearnSongPannel extends Sprite{
 	private var _name:		String;
 	private var _isFree:Boolean=false;
 	private var _store:Store;
+	private var playBtn:Sprite;
+	private var freestyle:Btn;
+	private var buyBtn:Btn;
 	
 	private var _songSelected:	Signal=new Signal();
 	
@@ -220,9 +223,7 @@ class LearnSongPannel extends Sprite{
 		_songSelected.dispatch(_name);
 		
 	}
-	private var playBtn:Sprite;
-	private var freestyle:Btn;
-	private var buyBtn:Btn;
+	
 	private function setData(xml:XML):void{
 		//addChild(AssetsManager.getAssetByName("STATION_WALL_TRIP.png"))
 		//var bg:DisplayObject = AssetsManager.getAssetByName("STATION_WALL_TRIP.png");
@@ -258,11 +259,11 @@ class LearnSongPannel extends Sprite{
 //				freestyle.visible = FileProxy.getImproviseEnabled(_name)
 //			}
 //			);
-			buyBtn = new Btn("dot.png","dot.png");
+			buyBtn = new Btn("unlock.png","unlock.png");
 			buyBtn.clicked.add(buyBtnClicked);
 			addChild(buyBtn);
-			buyBtn.x=650 ;
-			buyBtn.y=340;
+			buyBtn.x=670 ;
+			buyBtn.y=260;
 			onFullVersion();
 	}
 	

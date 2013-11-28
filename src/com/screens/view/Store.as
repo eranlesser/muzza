@@ -7,6 +7,7 @@ package com.screens.view
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.text.TextField;
@@ -18,7 +19,6 @@ package com.screens.view
 	
 	public class Store extends Sprite
 	{
-		private var _storeBtn:Btn;
 		public var complete:Signal = new Signal();
 		private var _CheckIfAdult:Sprite;
 		private var _tf:TextField;
@@ -28,7 +28,6 @@ package com.screens.view
 		
 		public function Store()
 		{
-			_storeBtn = new Btn("dot.png","dot.png");
 			addChild(AssetsManager.getAssetByName("STATION_WALL_TRIP.png"))
 			init();
 			_inApper = new InApper();
@@ -42,16 +41,49 @@ package com.screens.view
 				_tf.text="";
 			}
 		}
-		
+		private function drawBg(wdt:uint):void{
+			_CheckIfAdult = new Sprite();
+			var seg:DisplayObject = AssetsManager.getAssetByName("POP_UP_VERTICAL_SEGMENT.png");
+			_CheckIfAdult.addChild(seg);
+			var topLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_LEFT_CORNER.png");
+			_CheckIfAdult.addChild(topLeft);
+			seg.width = wdt-topLeft.width;
+			seg.x=topLeft.width;
+			seg.height = 180;
+			var leftSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_LEFT_SEGMENT.png");
+			_CheckIfAdult.addChild(leftSeg);
+			var butLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_LEFT_CORNER.png");
+			_CheckIfAdult.addChild(butLeft);
+			butLeft.y=seg.height-butLeft.height;
+			
+			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
+			_CheckIfAdult.addChild(topRight);
+			topRight.x=wdt//-topRight.width//+topLeft.width;
+			var butRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_RIGT_CORNER.png");
+			_CheckIfAdult.addChild(butRight);
+			butRight.y=butLeft.y;
+			butRight.x=wdt//-butRight.width;//+butLeft.width;
+			
+			var rightSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_RIGHT_SEGMENT.png");
+			_CheckIfAdult.addChild(rightSeg);
+			rightSeg.x=topRight.x;
+			rightSeg.y=topRight.height;
+			leftSeg.y=topLeft.height;
+			rightSeg.height=seg.height-topRight.height-butRight.height;
+			leftSeg.height=rightSeg.height;
+			addChild(_CheckIfAdult);
+		}
+
 		private function init():void{
 			_CheckIfAdult = new Sprite();
-			_CheckIfAdult.graphics.beginFill(0xFFFFFF,0.75);
-			_CheckIfAdult.graphics.drawRoundRect(0,0,500,180,12,8);
-			_CheckIfAdult.graphics.endFill();
+			drawBg(500);
+			//_CheckIfAdult.graphics.beginFill(0xFFFFFF,0.75);
+			//_CheckIfAdult.graphics.drawRoundRect(0,0,500,180,12,8);
+			//_CheckIfAdult.graphics.endFill();
 			addChild(_CheckIfAdult);
 			_CheckIfAdult.x=Dimentions.WIDTH-100-_CheckIfAdult.width;
 			_CheckIfAdult.y=190;
-			var tf:TextFormat = new TextFormat("Arial",34,0X023550);
+			var tf:TextFormat = new TextFormat("Arial",32,0X023550);
 			var txt:TextField = new TextField();
 			txt.defaultTextFormat=tf;
 			txt.width=600;
@@ -65,7 +97,7 @@ package com.screens.view
 			nms.defaultTextFormat=tf;
 			nms.autoSize=TextFieldAutoSize.LEFT;
 			nms.text = "20-4 = ";
-			nms.x=txt.x+txt.width/2-nms.width/2;;
+			nms.x=txt.x+txt.width/2-nms.width/2-22;
 			nms.y=120;
 			_CheckIfAdult.addChild(nms);
 			_tf = new TextField();
@@ -74,7 +106,7 @@ package com.screens.view
 			_tf.border=true;
 			_CheckIfAdult.addChild(_tf);
 			_tf.defaultTextFormat = tf;
-			_tf.backgroundColor=0XFFE39F;
+			_tf.backgroundColor=0XFFFFFF;
 			_tf.background=true;
 			nms.x=nms.x-_tf.width/2;
 			_tf.x=nms.x+nms.width+10;
@@ -82,11 +114,14 @@ package com.screens.view
 			_tf.type = TextFieldType.INPUT;
 			_tf.addEventListener(Event.CHANGE,onInput);
 			
-			var closeBtn:Btn = new Btn("CLOSE_BUTTON_IDLE.png","CLOSE_BUTTON_SELECTED.png");
+			var closeBtn:Btn = new Btn("next_IDLE.png","next_PRESS.png");
 			_CheckIfAdult.addChild(closeBtn);
-			closeBtn.x=_CheckIfAdult.width-closeBtn.width+4;
-			closeBtn.y=-4;
-			closeBtn.clicked.add(function(id:String):void{complete.dispatch();});
+			closeBtn.x=_CheckIfAdult.width-closeBtn.width-35;
+			closeBtn.y=nms.y+5;
+			closeBtn.clicked.add(function(id:String):void{
+				_tf.text="";
+				complete.dispatch();
+			});
 		}
 		
 		private function onInput(e:Event):void{
@@ -104,16 +139,16 @@ package com.screens.view
 		{
 			// TODO Auto Generated method stub
 			if(!_buyButton){
-				_buyButton=new Btn("dot.png","dot.png");
-				_restoreButton=new Btn("dot.png","dot.png");
+				_buyButton=new Btn("buy.png","buy.png");
+				_restoreButton=new Btn("restore.png","restore.png");
 				_buyButton.clicked.add(buyFullVersion);
 				_restoreButton.clicked.add(restoreFullVersion);
 				addChild(_buyButton);
 				addChild(_restoreButton);
-				_buyButton.x=630;
-				_buyButton.y=230;
-				_restoreButton.x=530;
-				_restoreButton.y=230;
+				_buyButton.x=730;
+				_buyButton.y=280;
+				_restoreButton.x=470;
+				_restoreButton.y=280;
 			}else{
 				_buyButton.visible=true;
 				_restoreButton.visible=true;

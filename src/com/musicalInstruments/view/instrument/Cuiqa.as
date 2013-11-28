@@ -20,14 +20,22 @@ package com.musicalInstruments.view.instrument
 			init();
 		}
 		
+		override public function get x():Number{
+			return 100;
+		}
+		
 		private function init():void{
 			_arrow = new Sprite();
-			_arrow.graphics.lineStyle(22,0xFFFFFF);
-			_arrow.graphics.drawRect(0,0,RADIUS,2);
-			//addChild(_arrow);
+			_arrow.graphics.lineStyle(5,0x3333333,0.2);
+			_arrow.graphics.drawRect(0,0,RADIUS-32,2);
 			_arrow.x=Dimentions.WIDTH/2;
-			_arrow.y=Dimentions.HEIGHT/2+50;
-			
+			_arrow.y=Dimentions.HEIGHT/2+20;
+			var rect:DisplayObject = AssetsManager.getAssetByName("rect.png");
+			_arrow.addChild(rect);
+			_arrow.mouseChildren=false;
+			_arrow.mouseEnabled = false;
+			rect.x=RADIUS-rect.width+28;
+			rect.y=-26;
 			var circle:Sprite = new Sprite();
 			var shp:DisplayObject = AssetsManager.getAssetByName("cuica.png");
 			circle.addChild(shp);
@@ -53,6 +61,7 @@ package com.musicalInstruments.view.instrument
 				}
 			}
 			_playingDot=_dots[_dots.length-1];
+			addChild(_arrow);
 		}
 		
 		private function calculateDotLocation(angle:Number):Point{
@@ -86,7 +95,7 @@ package com.musicalInstruments.view.instrument
 			}
 			_arrow.visible=true;
 			var tick:int = Metronome.getTimeModel().currentTick;
-			_arrow.rotation = tick*360/64+12;
+			_arrow.rotation = tick*360/64+16.5;
 			
 //			for each(var dot:Dot in _dots){
 //				if((dot._angle)==(tick*360/64)%360 && (dot._angle != _playingDot._angle)){
@@ -154,7 +163,7 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		trace(color)
 		var spr:Sprite = new Sprite();
 		//spr.graphics.lineStyle(1,color);
-		spr.graphics.beginFill(color,0.4);
+		spr.graphics.beginFill(color,0);
 		spr.graphics.drawCircle(0,0,16);
 		spr.graphics.endFill();
 		addChild(spr);
@@ -168,7 +177,7 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		bg.x= -bg.width/2;
 		bg.y= -bg.height/2;
 		addChild(_dotFill);
-		this.addEventListener(MouseEvent.MOUSE_OVER,play);
+		this.addEventListener(MouseEvent.ROLL_OVER,play);
 		this.addEventListener(TouchEvent.TOUCH_BEGIN,play);
 	}
 	
@@ -182,11 +191,10 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		trace("DOT playe",_id,_startTime-3);
 	}
 	private function endTween(t:GTween):void{
-		new GTween(_dotFill,0.2,{alpha:0});
+		new GTween(_dotFill,0.4,{alpha:0});
 	}
 	private function onSoundComplete():void{
-		this.scaleX=1;
-		this.scaleY=1;
+		new GTween(this,0.4,{scaleX:1,scaleY:1});
 		soundCompleteSignal.dispatch(_id,_startTime,_startTime);
 	}
 	

@@ -8,49 +8,49 @@ package com.model.rawData.motzart
 		
 		public static var data:XML = 
 			<instrument type="loopee"  thumbNail='loopee' >
-			<components />
+<components notesGap="2" leftPad="139" />
 			<rawData startAt="64"	>
 							<row>
-								<togi id="q1" sound="mozart/quicka/q1.mp3" color="0xFFFFFF" />
+								<togi id="q1" sound="mozart/quicka/q1.mp3" color="0xA64005" />
 							</row>
 							<row>
-								<togi id="q2" sound="mozart/quicka/q2.mp3" color="0x333333"/>
+								<togi id="q2" sound="mozart/quicka/q2.mp3" color="0xD97014"/>
 							</row>
 							<row>
 							</row>
 							<row>
-								<togi id="q3" sound="mozart/quicka/q3.mp3" color="0xFFFFFF" />
+								<togi id="q3" sound="mozart/quicka/q3.mp3" color="0xF29727" />
 							</row>
 							<row location="5">
 							</row>
 							<row>
-								<togi id="q4" sound="mozart/quicka/q4.mp3" color="0x555555"/>
+								<togi id="q4" sound="mozart/quicka/q4.mp3" color="0xA63005"/>
 							</row>
 							<row>
-								<togi id="q5" sound="mozart/quicka/q5.mp3" color="0x888888"/>
+								<togi id="q5" sound="mozart/quicka/q5.mp3" color="0x732103"/>
 							</row>
 							<row>
-								<togi id="q6" sound="mozart/quicka/q6.mp3" color="0x444444" />
+								<togi id="q6" sound="mozart/quicka/q6.mp3" color="0xD9941C" />
 							</row>
 							<row location="9">
-								<togi id="q7" sound="mozart/quicka/q7.mp3" color="0x222222"/>
+								<togi id="q7" sound="mozart/quicka/q7.mp3" color="0x40331C"/>
 							</row>
 							<row>
-								<togi id="q8" sound="mozart/quicka/q8.mp3" color="0xFFFFFF" />
+								<togi id="q8" sound="mozart/quicka/q8.mp3" color="0x32B18C" />
 							</row>
 							<row>
-								<togi id="q9" sound="mozart/quicka/q9.mp3" color="0xFFFFFF" />
+								<togi id="q9" sound="mozart/quicka/q9.mp3" color="0x1CD96D" />
 							</row>
 							<row>
-								<togi id="q10" sound="mozart/quicka/q10.mp3" color="0xFFFFFF" />
+								<togi id="q10" sound="mozart/quicka/q10.mp3" color="0x1E13F2" />
 							</row>
 							<row location="13">
-								<togi id="q11" sound="mozart/quicka/q11.mp3" color="0xFFFFFF" />
+								<togi id="q11" sound="mozart/quicka/q11.mp3" color="0x32B317" />
 							</row>
 							<row >
 							</row>
 							<row location="15"> 
-								<togi id="q12" sound="mozart/quicka/q12.mp3" color="0xFFFFFF" />
+								<togi id="q12" sound="mozart/quicka/q12.mp3" color="0x59280C" />
 							</row>
 							<row>
 							</row>

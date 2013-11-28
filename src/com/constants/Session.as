@@ -19,13 +19,14 @@ package com.constants {
 		public static const improviseSignal:Signal = new Signal();
 		public static const fullVersionSignal:Signal = new Signal();
 		public static var DeviceId:uint=2;
-		private static var _fullVersionEnabled:Boolean=true;
+		private static var _fullVersionEnabled:Boolean=false;
 		public function Session(enforcer:enforcer){
 		}
 		
 		public static function set fullVersionEnabled(flag:Boolean):void{
 			_fullVersionEnabled=flag;
 			fullVersionSignal.dispatch();
+			FileProxy.setFullVersion("true");
 		}
 		public static function get fullVersionEnabled():Boolean{
 		 return _fullVersionEnabled;	

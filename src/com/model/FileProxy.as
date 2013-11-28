@@ -69,7 +69,7 @@ package com.model
 			if (!folder.exists) { 
 				folder.createDirectory();
 			} 
-			var outputFile:File = folder.resolvePath("highScore3.xml");
+			var outputFile:File = folder.resolvePath("highScore.xml");
 			if(outputFile.exists){
 				outputFile.deleteFile();
 			}
@@ -82,7 +82,7 @@ package com.model
 		}
 		
 		public static function getHighScore():int{
-			var inputFile:File = File.applicationStorageDirectory.resolvePath("score/song_"+Session.SONG_NAME+"/highScore3.xml") ;
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("score/song_"+Session.SONG_NAME+"/highScore.xml") ;
 			if(inputFile.exists){
 				var inputStream:FileStream = new FileStream();
 				inputStream.open(inputFile, FileMode.READ);
@@ -91,6 +91,33 @@ package com.model
 				return sessionXML.score.@high;
 			}else{
 				return 0;
+			}
+		}
+		
+		public static function setFullVersion(val:String):void{
+			
+			var outputFile:File = File.applicationStorageDirectory.resolvePath("session/fullVersion.xml") ;
+			if(outputFile.exists){
+				outputFile.deleteFile();
+			}
+			var outputStream:FileStream = new FileStream();
+			outputStream.open(outputFile,FileMode.WRITE);
+			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
+			outputString += '<data><session fullversion="'+val+'" /></data>';
+			outputStream.writeUTFBytes(outputString);
+			outputStream.close();
+		}
+		
+		public static function getFullVersion():Boolean{
+			var inputFile:File = File.applicationStorageDirectory.resolvePath("session/fullVersion.xml") ;
+			if(inputFile.exists){
+				var inputStream:FileStream = new FileStream();
+				inputStream.open(inputFile, FileMode.READ);
+				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
+				inputStream.close();
+				return sessionXML.session.@fullversion == "true";
+			}else{
+				return false;
 			}
 		}
 		
@@ -209,6 +236,7 @@ package com.model
 //		}
 		
 		public static function reset(protector:TrainBeats):void{
+			return;
 			var files:Array=File.applicationStorageDirectory.getDirectoryListing();
 			for each(var file:File in files){
 				if(file.isDirectory){

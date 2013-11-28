@@ -84,7 +84,7 @@ package com.screens.recordScreenStates
 				arrowHead.y=shp.height-1;
 				arrowHead.x=(shp.width-arrowHead.width)/2;
 			}
-			if(_toPlayNote && !Session.IMPROVISE_MODE){
+			if(_toPlayNote && !Session.IMPROVISE_MODE && _context.model.instrumentModel.thumbNail!="loopee"){
 				_hintArrow.x = _toPlayNote.x+_toPlayNote.width/2-_hintArrow.width/4;
 				_hintArrow.y = _context.model.noteTargetsY+30;
 				
