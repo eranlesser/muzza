@@ -27,7 +27,7 @@ package com.musicalInstruments.view.components
 			addChild(_rect1);
 			_rect2=new Selector("b");
 			addChild(_rect2);
-			_rect2.x=58;
+			_rect2.x=64;
 			
 			_rect1.touched.add(onTouched);
 			_rect2.touched.add(onTouched);

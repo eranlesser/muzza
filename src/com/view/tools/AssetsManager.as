@@ -216,6 +216,7 @@ package com.view.tools
 			"<image path='assets/DEMO_SCREEN/JingleBells_nowPlaying.png' />"+
 //			"<image path='assets/DEMO_SCREEN/OVER_THE_RAINBOW_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/MOUTAIN_KING_nowPlaying.png' />"+
+			"<image path='assets/DEMO_SCREEN/mozart_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/ODE_TO_JOY_nowPlaying.png' />"+
 //			"<image path='assets/DEMO_SCREEN/WATERCOLORS_of_BRAZIL_nowPlaying.png' />"+
 			"<image path='assets/DEMO_SCREEN/DEMO_SCREEN_FRAME.png' />"+

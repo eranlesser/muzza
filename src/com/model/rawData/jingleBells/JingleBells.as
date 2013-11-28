@@ -56,7 +56,7 @@ package com.model.rawData.jingleBells
 		</instruments>
 		<screens>
 		
-		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1632" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1632" playSequance="99" nowPlaying="JingleBells_nowPlaying.png">
 			<instrument type="drum.png" >
 			<layout id="0" x='50' y='140' rotation="0" />
 			</instrument>

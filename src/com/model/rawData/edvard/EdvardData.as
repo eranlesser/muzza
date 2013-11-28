@@ -14,7 +14,7 @@ package com.model.rawData.edvard
 		</instruments>
 		<screens>
 		
-		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1400" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1400" playSequance="99" nowPlaying="MOUTAIN_KING_nowPlaying.png">
 			<instrument type="drum.png" >
 			<layout id="0" x='50' y='140' rotation="0" />
 			</instrument>
@@ -24,9 +24,7 @@ package com.model.rawData.edvard
 			<instrument type='bottles.png' >
 			<layout id="0" x='350' y='100'  rotation="0" />
 			</instrument>
-<instrument type='flute' >
-			<layout id="0" x='350' y='100'  rotation="0" />
-			</instrument>
+
 
 		</demoScreen>
 		
@@ -119,9 +117,9 @@ package com.model.rawData.edvard
 			<instrument type='bottles.png' >
 		<layout id="0" x='350' y='100'  rotation="0" />	
 			</instrument>
-		<instrument type='flute' >
+		<!--<instrument type='flute' >
 			<layout id="0" x='900' y='500'  rotation="0" />
-			</instrument>
+			</instrument>-->
 		</endScreen>
 		
 		
