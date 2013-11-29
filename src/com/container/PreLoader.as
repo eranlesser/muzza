@@ -1,6 +1,7 @@
 package com.container
 {
 	import com.constants.Dimentions;
+	import com.gskinner.motion.GTween;
 	import com.model.rawData.Data;
 	import com.musicalInstruments.Band;
 	import com.musicalInstruments.view.character.Character;
@@ -15,7 +16,8 @@ package com.container
 	import org.osflash.signals.Signal;
 	
 	public class PreLoader extends Sprite{
-		
+		[Embed(source="../../assets/openscreen.jpg")]
+		private var bg:Class;
 		public var loaded:Signal=new Signal();
 		public function PreLoader(){
 			init();
@@ -28,18 +30,27 @@ package com.container
 				addChildAt(character,0);
 			}
 			loaded.dispatch();
+			
 		}
-		
+		private var logo:DisplayObject 
 		private function init():void{
-			var logo:DisplayObject = AssetsManager.getAssetByName("logo.png")
+			logo = new bg() as DisplayObject;
 			addChild(logo);
 			logo.x=(Dimentions.WIDTH-logo.width)/2
 			logo.y=(Dimentions.HEIGHT-logo.height)/2
 			//for each(var characterXml:XML in Data.xml.musicians){
-			var tmr:Timer=new Timer(500,1);
-			tmr.addEventListener(TimerEvent.TIMER_COMPLETE,initBand);
-			tmr.start();
+			
+			var assetsManage:AssetsManager = new AssetsManager();
+			assetsManage.complete.addOnce(onLoaded);
 			//}
+		}
+		
+		private function onLoaded():void{
+				var tmr:Timer=new Timer(2000,1);
+				tmr.addEventListener(TimerEvent.TIMER_COMPLETE,initBand);
+				tmr.start();
+				//new GTween(logo,3,{alpha:0})
+				
 		}
 	}
 }

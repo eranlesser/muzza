@@ -5,7 +5,6 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
-	import com.view.tools.AssetsManager;
 	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
@@ -63,11 +62,10 @@ package {
 		}
 		
 		private function start():void{
-			var assetsManage:AssetsManager = new AssetsManager();
-			assetsManage.complete.addOnce(preLoad);
+			
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGING, orientationChange);
-			
+			preLoad();
 //			Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
 //			Flurry.getInstance().startSession();
 //			Flurry.getInstance().setUserId("");//eran

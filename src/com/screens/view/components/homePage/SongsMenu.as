@@ -98,9 +98,9 @@ package com.screens.view.components.homePage
 				var wtween:GTween = new GTween(_wallLayer,1,{x:0},{ease:Circular.easeInOut});
 				var tween:GTween = new GTween(_thumbsLayer,1,{x:0},{ease:Circular.easeInOut});
 				var ptween:GTween = new GTween(_poleLayer,1.2,{x:Dimentions.WIDTH-100},{ease:Circular.easeInOut});
-				wtween.delay=0.5;
-				tween.delay=0.5;
-				ptween.delay=0.5;
+				wtween.delay=3;
+				tween.delay=3;
+				ptween.delay=3;
 				ptween.onComplete = function dispatchComplete(t:GTween):void{
 					ready.dispatch();
 					//var loopSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainloop1.mp3"));
