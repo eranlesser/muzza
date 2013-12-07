@@ -71,7 +71,7 @@ package com.model.rawData.edvard
 		
 		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1400" >
 			<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240">
-			<RecordedX>68</RecordedX>
+			<RecordedX>178</RecordedX>
 			<RecordedY>500</RecordedY>
 			</playerInstrument>
 		<backups>

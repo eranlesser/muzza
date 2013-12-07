@@ -101,7 +101,9 @@ package com.screens.view.components.homePage
 				wtween.delay=3;
 				tween.delay=3;
 				ptween.delay=3;
+				_nextButton.visible=false;
 				ptween.onComplete = function dispatchComplete(t:GTween):void{
+					_nextButton.visible=true;
 					ready.dispatch();
 					//var loopSound:Sound = new Sound(new URLRequest("../../../../../assets/sounds/trainloop1.mp3"));
 					//var cnl:SoundChannel = loopSound.play();
@@ -240,6 +242,7 @@ class LearnSongPannel extends Sprite{
 		
 		_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
 		addChild(_thumbNail);
+		_thumbNail.alpha=0.99;
 		//_thumbNail.cacheAsBitmap=true;
 		_name=xml.@name;
 		

@@ -2,6 +2,7 @@ package com.screens.view
 {
 	import com.constants.Dimentions;
 	import com.constants.Session;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.utils.inapp.InAppPurchaser;
 	import com.utils.inapp.InApper;
 	import com.view.gui.Btn;
@@ -137,6 +138,7 @@ package com.screens.view
 		//after confirm adult
 		private function showBuyButtons():void
 		{
+			Flurry.logEvent("ADULT");
 			// TODO Auto Generated method stub
 			if(!_buyButton){
 				_buyButton=new Btn("buy.png","buy.png");
@@ -164,13 +166,14 @@ package com.screens.view
 			//
 			Session.fullVersionEnabled=true;
 			complete.dispatch();
+			Flurry.logEvent("restore");
 		}
 		
 		private function buyFullVersion(id:String=""):void
 		{
 			_inApper.purchase(Session.inAppFullVersionId,1);
 			_inApper.signal.add(onInappEvent);
-			
+			Flurry.logEvent("buyFullVersion");
 		}
 		
 		private function onInappEvent(type:String):void

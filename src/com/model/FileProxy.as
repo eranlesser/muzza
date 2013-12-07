@@ -236,11 +236,10 @@ package com.model
 //		}
 		
 		public static function reset(protector:TrainBeats):void{
-			return;
 			var files:Array=File.applicationStorageDirectory.getDirectoryListing();
 			for each(var file:File in files){
 				if(file.isDirectory){
-					if(file.name != "score" && file.name != "config"){
+					if(file.name != "score" && file.name != "config" && file.name != "session"){
 						file.deleteDirectory(true);
 					}
 				}else{

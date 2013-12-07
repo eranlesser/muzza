@@ -110,7 +110,7 @@ package com.screens.recordScreenStates
 					//_toPlayNotes.splice(_toPlayNotes.indexOf(curNote),1);
 					_context.notes.removeNote(curNote);
 					var comp:IMusicalInstrumentComp = _context.instrumentRecorder.getCompById(noteId);
-					//trace(noteId,"==",curNote.id);
+					
 					if(comp){
 						scoreSignal.dispatch(curNote.location,_timeModel.currentTick,noteId==curNote.id,_context.instrumentRecorder.x+comp.x+comp.width/3);
 					}else{
@@ -220,6 +220,7 @@ package com.screens.recordScreenStates
 				if(_toPlayNote && _toPlayNote.location==_timeModel.currentTick){
 					pauseSignal.dispatch(true);
 					_tween.paused=true;
+					trace(_toPlayNote.location);
 				}
 			//}
 		}

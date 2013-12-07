@@ -92,7 +92,6 @@ public static var data:XML =
  <note id="D_5" location="393" soundLength="1"/>
  <note id="C_5" location="401" soundLength="1"/>
  <note id="D_5" location="409" soundLength="1"/>
- <note id="D_5" location="413" soundLength="1"/>
  <note id="B_4" location="417" soundLength="1"/>
  <note id="D_5" location="425" soundLength="1"/>
  <note id="C_5" location="433" soundLength="1"/>
@@ -110,13 +109,11 @@ public static var data:XML =
  <note id="D_5" location="521" soundLength="1"/>
  <note id="C_5" location="529" soundLength="1"/>
  <note id="B_4" location="545" soundLength="1"/>
- <note id="D_5" location="553" soundLength="1"/>
  <note id="C_5" location="561" soundLength="1"/>
  <note id="D_5" location="569" soundLength="1"/>
  <note id="B_4" location="577" soundLength="1"/>
  <note id="D_5" location="585" soundLength="1"/>
  <note id="C_5" location="593" soundLength="1"/>
- <note id="D_5" location="601" soundLength="1"/>
  <note id="B_4" location="609" soundLength="1"/>
  <note id="D_5" location="617" soundLength="1"/>
  <note id="D_5" location="633" soundLength="1"/>
@@ -171,7 +168,6 @@ public static var data:XML =
  <note id="B_4" location="1017" soundLength="1"/>
  <note id="B_4" location="1025" soundLength="1"/>
  <note id="D_5" location="1033" soundLength="1"/>
- <note id="C_5" location="1041" soundLength="1"/>
  <note id="D_5" location="1049" soundLength="1"/>
  <note id="B_4" location="1057" soundLength="1"/>
  <note id="D_5" location="1065" soundLength="1"/>

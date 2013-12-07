@@ -23,7 +23,7 @@ package com.model.rawData
 			<!--		<song name="brazil"  thumbNail="BRAZIL_PICTURE.png"  title="WATERCOLORS_of_BRAZIL.png"  />
 
 				
-				<song name="tarab"  thumbNail="Tarab.png"  title="Tarab.png"  />
+				<song name="tarab"  thumbNail=""  title="Tarab.png"  />
 				<song name="tarab"  thumbNail="MOZART_PICTURE.png"  title="MOZART_PICTURE.png"  />
 				<song name="somewhere"  thumbNail="OVER_THE_RAINBOW_pic.png"  title="OVER_THE_RAINBOW.png"  />
 			-->	
