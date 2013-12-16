@@ -160,7 +160,6 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 	}
 	
 	private function init(color:int):void{
-		trace(color)
 		var spr:Sprite = new Sprite();
 		//spr.graphics.lineStyle(1,color);
 		spr.graphics.beginFill(color,0);
@@ -178,7 +177,7 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		bg.y= -bg.height/2;
 		addChild(_dotFill);
 		this.addEventListener(MouseEvent.ROLL_OVER,play);
-		this.addEventListener(TouchEvent.TOUCH_BEGIN,play);
+		this.addEventListener(TouchEvent.TOUCH_ROLL_OVER,play);
 	}
 	
 	public function play(e:Event=null):void{
@@ -188,7 +187,6 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		var dTween:GTween = new GTween(_dotFill,0.5,{alpha:1});
 		dTween.onComplete = endTween;
 		_startTime = Metronome.getTimeModel().currentTick;
-		trace("DOT playe",_id,_startTime-3);
 	}
 	private function endTween(t:GTween):void{
 		new GTween(_dotFill,0.4,{alpha:0});

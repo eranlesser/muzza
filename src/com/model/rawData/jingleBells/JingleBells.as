@@ -48,7 +48,7 @@ package com.model.rawData.jingleBells
 				
 			</lyrics>
 		public static var data:XML = 
-			<theme id='recycle' rhythm='6'>
+			<theme id='recycle' rhythm='12'>
 			<instruments>
 			{Bottles.data}
 		{Drum.data}
@@ -56,8 +56,8 @@ package com.model.rawData.jingleBells
 		</instruments>
 		<screens>
 		
-		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1632" playSequance="99" nowPlaying="JingleBells_nowPlaying.png">
-			<instrument type="drum.png" >
+		<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1694" playSequance="99" nowPlaying="JingleBells_nowPlaying.png">
+<instrument type="drum.png" >
 			<layout id="0" x='50' y='140' rotation="0" />
 			</instrument>
 			<instrument type='bass_flash.jpg' >
@@ -66,14 +66,13 @@ package com.model.rawData.jingleBells
 			<instrument type='bottles.png' >
 			<layout id="0" x='350' y='100'  rotation="0" />
 			</instrument>
-
 		</demoScreen>
 		
 		
 		<recordSession>
 		
 		
-		<recordScreen type="RecordScreen"  beginAtFrame="700" endAtFrame="1632" >
+		<recordScreen type="RecordScreen"  beginAtFrame="700" endAtFrame="1694" >
 			<playerInstrument type="bottles.png" learnedSequanced="99" palletSequance="10" recordedSequance="102" noteTargetsY="240">
 			<RecordedX>102.5</RecordedX>
 			<RecordedY>360</RecordedY>
@@ -89,9 +88,9 @@ package com.model.rawData.jingleBells
 		</recordScreen>
 		
 		
-		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
+		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1694" >
 			<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
-			<RecordedX>308</RecordedX>
+<RecordedX>238</RecordedX>
 			<RecordedY>500</RecordedY>
 			</playerInstrument>
 		
@@ -106,7 +105,7 @@ package com.model.rawData.jingleBells
 		</recordScreen>
 		
 		
-		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="632" >
+		<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="1694" >
 			<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240">
 			<RecordedX>178</RecordedX>
 			<RecordedY>500</RecordedY>
@@ -125,7 +124,7 @@ package com.model.rawData.jingleBells
 		
 		
 		
-		<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="102">
+		<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1694" playSequance="102">
 			<instrument type="drum.png" >
 		<layout id="0" x='50' y='140'  rotation="0" />	
 			</instrument>

@@ -32,6 +32,7 @@ package com.screens.view
 			addChild(AssetsManager.getAssetByName("STATION_WALL_TRIP.png"))
 			init();
 			_inApper = new InApper();
+			_inApper.signal.add(onInappEvent);
 		}
 		//Is called every time except first (then init is called)
 		public function restart():void{
@@ -161,18 +162,16 @@ package com.screens.view
 		
 		private function restoreFullVersion(id:String):void
 		{
-			_inApper.signal.add(onInappEvent);
 			_inApper.restoreTransactions();
 			//
-			Session.fullVersionEnabled=true;
-			complete.dispatch();
+			//Session.fullVersionEnabled=true;
+			//complete.dispatch();
 			Flurry.logEvent("restore");
 		}
 		
 		private function buyFullVersion(id:String=""):void
 		{
 			_inApper.purchase(Session.inAppFullVersionId,1);
-			_inApper.signal.add(onInappEvent);
 			Flurry.logEvent("buyFullVersion");
 		}
 		

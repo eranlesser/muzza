@@ -6,9 +6,9 @@ public class TarabData
 public static var data:XML = 
 <theme id='recycle' rhythm='12'>
 <instruments>
+{Bottles.data}
 {Drum.data}
 {Bass.data}
-{Bottles.data}
 </instruments>
 <screens>
 		
@@ -47,7 +47,7 @@ public static var data:XML =
 		
 		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="632" >
 			<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
-			<RecordedX>308</RecordedX>
+			<RecordedX>238</RecordedX>
 			<RecordedY>500</RecordedY>
 			</playerInstrument>
 		

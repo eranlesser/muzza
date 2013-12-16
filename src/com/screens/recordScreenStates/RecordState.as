@@ -11,6 +11,7 @@ package com.screens.recordScreenStates
 	import com.model.FileProxy;
 	import com.musicalInstruments.view.IMusicalInstrumentComp;
 	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
+	import com.musicalInstruments.view.instrument.Cuiqa;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.screens.mediator.ScoreMediator;
 	import com.screens.view.components.Clock;
@@ -70,14 +71,14 @@ package com.screens.recordScreenStates
 			if(!_hintArrow){
 				_hintArrow = new Sprite();
 				var shp:Shape = new Shape();
-				shp.graphics.beginFill(0xFFFFFF,0.8);
-				shp.graphics.drawRoundRect(0,0,4,_context.model.getRecordInstrumentY()-(_context.model.noteTargetsY+40),2,2);
+				shp.graphics.beginFill(0xFFFFFF,0.5);
+				shp.graphics.drawRoundRect(0,0,8,_context.model.getRecordInstrumentY()-(_context.model.noteTargetsY+40),2,2);
 				shp.graphics.endFill();
 				_hintArrow.addChild(shp);
 				var arrowHead:Shape = new Shape();
-				arrowHead.graphics.beginFill(0xFFFFFF,0.8);
-				arrowHead.graphics.lineTo(12,0);
-				arrowHead.graphics.lineTo(6,6);
+				arrowHead.graphics.beginFill(0xFFFFFF,0.5);
+				arrowHead.graphics.lineTo(16,0);
+				arrowHead.graphics.lineTo(8,8);
 				arrowHead.graphics.lineTo(0,0);
 				arrowHead.graphics.endFill();
 				_hintArrow.addChild(arrowHead);
@@ -121,6 +122,9 @@ package com.screens.recordScreenStates
 				//}
 				_toPlayNote=null;
 				_tween.paused=false;
+			}
+			if(_context.instrumentRecorder is Cuiqa){
+				scoreSignal.dispatch(1,_timeModel.currentTick,true);
 			}
 		}
 		
@@ -217,10 +221,9 @@ package com.screens.recordScreenStates
 				return;
 			}
 			//for each(var curNote:DroppingNote in _toPlayNotes){
-				if(_toPlayNote && _toPlayNote.location==_timeModel.currentTick){
+				if(_toPlayNote && _toPlayNote.location==_timeModel.currentTick && !(_context.instrumentRecorder is Cuiqa)){
 					pauseSignal.dispatch(true);
 					_tween.paused=true;
-					trace(_toPlayNote.location);
 				}
 			//}
 		}

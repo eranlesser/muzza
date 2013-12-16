@@ -53,7 +53,7 @@ package com.view.tools
 			"<image path='assets/open/PLAY_IDLE.png' />"+
 			"<image path='assets/open/PLAY_PRESSED.png' />"+
 //			"<image path='assets/open/Flagbig.png' />"+
-			"<image path='assets/open/Tarab.png' />"+
+			"<image path='assets/open/TARAB.png' />"+
 			"<image path='assets/open/morocco_pic.png' />"+
 			//TITLES
 			"<image path='assets/open/ODE_TO_JOY.png' />"+
@@ -444,6 +444,8 @@ package com.view.tools
 			"<image path='assets/ui/cb_on.png' />"+
 			"<image path='assets/ui/radio.png' />"+
 			"<image path='assets/ui/radio_on.png' />"+
+			"<image path='assets/NOTES/green_circle.png' />"+
+			"<image path='assets/NOTES/green_orange.png' />"+
 			"</assets>"
 		
 		);

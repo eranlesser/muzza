@@ -30,7 +30,6 @@ package com.screens.view.components.notes
 			}else{
 			_channel=channel;
 			if(noteValue==20){
-				trace("VV");
 				_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+"B"+".png",true);
 			}else{
 				_idleAsset = AssetsManager.getAssetByName(getPrefix(channel)+"_"+noteValue+".png",true);
@@ -63,9 +62,17 @@ package com.screens.view.components.notes
 			//this.x+=width/2;
 			
 			
-			createCircle(_circle,WHITE,4);
-			createCircle(_getSetCircle,ORANGE,4);
-			createCircle(_playNowCircle,GREEN,6);
+			//createCircle(_circle,WHITE,4);
+			//createCircle(_getSetCircle,ORANGE,4);
+			//createCircle(_playNowCircle,GREEN,6);
+			_playNowCircle = new Sprite();
+			_getSetCircle = new Sprite();
+			_playNowCircle.addChild(AssetsManager.getAssetByName("green_circle.png"));
+			_getSetCircle.addChild(AssetsManager.getAssetByName("green_orange.png"));
+			_playNowCircle.x=_idleAsset.x+2;
+			_playNowCircle.y=_idleAsset.y+2;
+			_getSetCircle.x=_idleAsset.x+2;
+			_getSetCircle.y=_idleAsset.y+2;
 		}
 		
 		
@@ -91,16 +98,18 @@ package com.screens.view.components.notes
 			}
 			return prefix;
 		}
-		private var _color:Shape;
-		private var _circle:Shape=new Shape();
-		private var _getSetCircle:Shape=new Shape();
-		private var _playNowCircle:Shape=new Shape();
+		private var _color:Sprite;
+		private var _circle:Sprite=new Sprite();
+		private var _getSetCircle:Sprite;
+		private var _playNowCircle:Sprite;
 		
 		private function createCircle(shp:Shape,color:uint,wdt:uint):void{
-			shp.graphics.lineStyle(wdt,color);
-			shp.graphics.drawCircle(width/2+1,height/2+1,width/2-4);
+			//shp.graphics.lineStyle(wdt,color);
+			//shp.graphics.drawCircle(width/2+1,height/2+1,width/2-4);
+			//shp.graphics.endFill();
 			shp.x=_idleAsset.x;
 			shp.y=_idleAsset.y;
+			//shp.cacheAsBitmap = true;
 		}
 		
 		public function get scoreValue():uint{
@@ -124,15 +133,15 @@ package com.screens.view.components.notes
 					return GREEN;
 					break;
 			}
-			return WHITE;
+			return ORANGE;
 		}
 		
 		public function setState(clr:uint):void{
 			
-			var color:Shape
+			var color:Sprite
 			switch(clr){
 				case 0:
-						color = _circle;
+						color = _getSetCircle;
 					break;
 				case 1:
 						color = _getSetCircle;

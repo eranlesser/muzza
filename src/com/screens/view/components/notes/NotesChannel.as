@@ -130,7 +130,7 @@ package com.screens.view.components.notes
 		
 		private var _lastRangeNote:uint;
 		public function getNextNote(range:uint,curTick:uint):DroppingNote{
-			var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
+			//var rangeNotes:Vector.<DroppingNote> = new Vector.<DroppingNote>();
 			for(var i:uint=_lastRangeNote;i<_notes.length;i++){
 				var note:DroppingNote = _notes[i];
 				if(note.location<(curTick+range)&&note.location>=curTick-range){

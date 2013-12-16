@@ -14,7 +14,7 @@ package com.constants {
 		private static var _session:Session;
 		private var _score:int;
 		public var goodScreensLength:uint;
-		public static var inAppFullVersionId:String="allSongs_1_0";
+		public static var inAppFullVersionId:String="melody.fullversion";
 		private static var _IMPROVISE_MODE:Boolean=false;
 		public static const improviseSignal:Signal = new Signal();
 		public static const fullVersionSignal:Signal = new Signal();
@@ -26,7 +26,9 @@ package com.constants {
 		public static function set fullVersionEnabled(flag:Boolean):void{
 			_fullVersionEnabled=flag;
 			fullVersionSignal.dispatch();
-			FileProxy.setFullVersion("true");
+			if(flag){
+				FileProxy.setFullVersion("true");
+			}
 		}
 		public static function get fullVersionEnabled():Boolean{
 		 return _fullVersionEnabled;	

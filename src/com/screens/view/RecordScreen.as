@@ -16,10 +16,14 @@ package com.screens.view {
 	import com.screens.view.components.Clock;
 	import com.screens.view.components.notes.Notes;
 	import com.screens.view.components.notes.NotesChannel;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -99,11 +103,9 @@ package com.screens.view {
 				_playBtnOver.alpha=0;
 				_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
 				_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
-				var playTween1:GTween = new GTween(_playBtnOver,4,{alpha:1},{ease:Bounce.easeOut});
-				playTween1.delay=1;
-				playTween1.onComplete = function():void{
-					new GTween(_playBtnOver,4,{alpha:0},{ease:Bounce.easeOut});
-				}
+				var tmr:Timer = new Timer(2000,7);
+				tmr.addEventListener(TimerEvent.TIMER,showPlay);
+				tmr.start();
 				_muteButton = new Btn("muteBTN_on.png","muteBTN_off.png");
 				_guiLayer.addChild(_muteButton);
 				_muteButton.x=Dimentions.WIDTH-_muteButton.width-8//_recordBtn.x+_recordBtn.width+12;
@@ -117,7 +119,7 @@ package com.screens.view {
 				_clock = Clock.instance;
 				_clock.x=290;
 				_clock.y=28;
-				
+				Flurry.logEvent("Screen Start",{theme:_model.instrumentModel.thumbNail,session:Session.SONG_NAME});
 				isInited = true;
 			}
 			addChild(_clock);
@@ -130,6 +132,18 @@ package com.screens.view {
 			_playBtn.visible=!Session.IMPROVISE_MODE;
 			notes.visible =!Session.IMPROVISE_MODE;
 			_instrumentRecorder.active = true;
+		}
+		
+		private function showPlay(e:Event):void{
+			var playTween1:GTween = new GTween(_playBtnOver,0.5,{alpha:1});
+			playTween1.onComplete = function():void{
+				new GTween(_playBtnOver,0.5,{alpha:0});
+			}
+			var tmr:Timer = e.target as Timer;
+			if(tmr && tmr.currentCount==tmr.repeatCount){
+				tmr.removeEventListener(TimerEvent.TIMER,showPlay);
+				tmr=null;
+			}
 		}
 		
 		private function onMute(id:String):void

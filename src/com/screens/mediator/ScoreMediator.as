@@ -93,14 +93,25 @@ package com.screens.mediator
 				}
 				return;
 			}
-			
+			var scoreValue:uint;
+			var scoreColor:uint;
+			var scoreX:Number;
+			if(_recordState.toPlayNote){
+				scoreValue = _recordState.toPlayNote.scoreValue;
+				scoreColor = _recordState.toPlayNote.scoreColor;
+				scoreX = _recordState.toPlayNote.x;
+			}else{
+				scoreValue = Math.ceil(Math.random()*2)
+				scoreColor = 0xF9F9F9;
+				scoreX = 43;
+			}
 			
 			//combo
-			_scores.push(new scoreData(_recordState.toPlayNote.scoreValue,toPlayTime));
-			if(_recordState.toPlayNote.scoreValue>0){
-				showScoreFeedBack("+"+_recordState.toPlayNote.scoreValue,130,_recordState.toPlayNote.x,_recordState.toPlayNote.scoreColor);
+			_scores.push(new scoreData(scoreValue,toPlayTime));
+			if(scoreValue>0){
+				showScoreFeedBack("+"+scoreValue,130,scoreX,scoreColor);
 			}
-			_score = _score + _recordState.toPlayNote.scoreValue;
+			_score = _score + scoreValue;
 			_scorePanel.setScore(_score);
 		}
 		private function showScoreFeedBack(str:String,yOffset:int,xOffset:int,color:int):void{

@@ -12,35 +12,36 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<blink start="26" end="31" />
 	<blink start="31" end="34" />
 </eyes>							
-<components>
-<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='70' y='0' >
-	<tap noteId="1" />
-</bottle>
-<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='170' y='0' >
-	<tap noteId="2" />
-</bottle>
-<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='270' y='0' >
-	<tap noteId="3" />
-</bottle>
-<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='370' y='0' >
-	<tap noteId="4" />
-</bottle>
-<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='470' y='0' >
-	<tap noteId="5" />
-</bottle>
-<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='570' y='0' >
-	<tap noteId="6" />
-</bottle>
-<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='670' y='0' >
-	<tap noteId="7" />
-</bottle>
-<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='770' y='0' >
-	<tap noteId="8" />
-</bottle>
-<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='870' y='0' >
-	<tap noteId="9" />
-</bottle>
-</components>
+<components notesGap="80" leftPad="179">
+<bg image="bottles_frame.png" clickable="false"  y="10" />
+<bottle image="bottle_1_idle.png" playImage="bottle_1_SELECTED.png" x='60' y='0' >
+			<tap noteId="1" />
+		</bottle>
+		<bottle image="bottle_2_idle.png" playImage="bottle_2_SELECTED.png" x='140' y='0' >
+			<tap noteId="2" />
+		</bottle>
+		<bottle image="bottle_3_idle.png" playImage="bottle_3_SELECTED.png" x='220' y='0' >
+			<tap noteId="3" />
+		</bottle>
+		<bottle image="bottle_4_idle.png" playImage="bottle_4_SELECTED.png" x='300' y='0' >
+			<tap noteId="4" />
+		</bottle>
+		<bottle image="bottle_5_idle.png" playImage="bottle_5_SELECTED.png" x='380' y='0' >
+			<tap noteId="5" />
+		</bottle>
+		<bottle image="bottle_6_idle.png" playImage="bottle_6_SELECTED.png" x='460' y='0' >
+			<tap noteId="6" />
+		</bottle>
+		<bottle image="bottle_7_idle.png" playImage="bottle_7_SELECTED.png" x='540' y='0' >
+			<tap noteId="7" />
+		</bottle>
+		<bottle image="bottle_8_idle.png" playImage="bottle_8_SELECTED.png" x='620' y='0' >
+			<tap noteId="8" />
+		</bottle>
+		<bottle image="bottle_9_idle.png" playImage="bottle_9_SELECTED.png" x='700' y='0' >
+			<tap noteId="9" />
+		</bottle>
+		</components>
 <notes>
 	<note id="1"  soundFile="tarab/bottle/do.mp3" animationIndex='1' value="1"   />
 	<note id="2"  soundFile="tarab/bottle/re.mp3" animationIndex='2'  value="2"/>
@@ -49,6 +50,8 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 	<note id="5" soundFile="tarab/bottle/sol.mp3" animationIndex='7' value="5" />
 	<note id="6"  soundFile="tarab/bottle/la.mp3" animationIndex='6'  value="6"/>
 	<note id="7" soundFile="tarab/bottle/sib.mp3" animationIndex='5' value="7" />
+<note id="8"  soundFile="mozart/xilofon/do_up.mp3" animationIndex='4'  value="8"/>
+			<note id="9"  soundFile="mozart/xilofon/re_up.mp3" animationIndex='9'  value="9"/>
 </notes>
 <gestures>
 </gestures>

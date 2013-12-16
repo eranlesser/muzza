@@ -10,7 +10,7 @@ package com.model.rawData.edvard
 			{Bottles.data}
 		{Drum.data}
 		{Bass.data}
-		{FluteData.data}
+		
 		</instruments>
 		<screens>
 		
@@ -44,9 +44,7 @@ package com.model.rawData.edvard
 			<instrument type='bass_flash.jpg'>
 		<layout id="0" x='600' y='100'  rotation="0" learnedSequanced="102"/>	
 			</instrument>
-		<instrument type='flute' >
-			<layout id="0" x='900' y='500'  rotation="0" />
-			</instrument></backups>
+		</backups>
 		</recordScreen>
 		
 		
@@ -63,9 +61,7 @@ package com.model.rawData.edvard
 			<instrument type='bottles.png' >
 		<layout id="0" x='350' y='100'  rotation="0" learnedSequanced="102"/>	
 			</instrument>
-		<instrument type='flute' >
-			<layout id="0" x='900' y='500'  rotation="0" />
-			</instrument></backups>
+		</backups>
 		</recordScreen>
 		
 		
@@ -81,30 +77,10 @@ package com.model.rawData.edvard
 			<instrument type='bottles.png' >
 		<layout id="0" x='350' y='100'  rotation="0" learnedSequanced="102"/>	
 			</instrument>
-		<instrument type='flute' >
-			<layout id="0" x='900' y='500'  rotation="0" />
-			</instrument></backups>
-		</recordScreen>
-		
-		
-		<recordScreen type="RecordScreen" beginAtFrame="1" endAtFrame="1400" >
-			<playerInstrument type="flute" learnedSequanced="99" recordedSequance="102"  noteTargetsY="240"  >
-			<RecordedX>245</RecordedX>
-			<RecordedY>400</RecordedY>
-			</playerInstrument>
-		<backups>
-		<instrument type="drum.png" >
-		<layout id="0" x='50' y='140'  rotation="0" learnedSequanced="102" />	
-			</instrument>
-			<instrument type='bass_flash.jpg'>
-		<layout id="0" x='600' y='100'  rotation="0" learnedSequanced="102"/>	
-			</instrument>
-			<instrument type='bottles.png' >
-		<layout id="0" x='350' y='100'  rotation="0" learnedSequanced="102"/>	
-			</instrument>
 		</backups>
-		
 		</recordScreen>
+		
+		
 		
 		
 		<endScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="1400" playSequance="102">

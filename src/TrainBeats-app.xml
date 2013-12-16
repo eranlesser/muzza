@@ -17,7 +17,8 @@
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
 	<!-- <id>app.for.vica.debug</id>-->
 	<!--  -<id>com.trainBeats.dev</id>-->
-	 <id>com.creativelamas.melody</id>
+	 <id>com.creativelamas.melodee</id> 
+	<!--   <id>com.trainbeats.opencurtain</id>-->
 
 	<!-- Used as the filename for the application. Required. -->
 	<filename>Melody</filename>
@@ -131,11 +132,11 @@
 	<!-- The icon the system uses for the application. For at least one resolution,
 	specify the path to a PNG file included in the AIR package. Optional. -->
 	 <icon>
-		<image29x29>icons/29x29_icon.png</image29x29>
-		<image50x50>icons/50x50_icon.png</image50x50>
-		<image72x72>icons/72x72_icon_ipad.png</image72x72>
-		<image512x512>icons/512x512_icon.png</image512x512>
-		<image1024x1024>icons/1024x1024_icon.png</image1024x1024>
+		<image29x29>icons/icon_29.png</image29x29>
+		<image50x50>icons/icon_50.png</image50x50>
+		<image72x72>icons/icon_72.png</image72x72>
+		<image512x512>icons/icon_512.png</image512x512>
+		<image1024x1024>icons/icon_1024.png</image1024x1024>
 	</icon> 
 
 	<!-- Whether the application handles the update when a user double-clicks an update version
@@ -259,7 +260,6 @@
         <InfoAdditions><![CDATA[
 			<key>UIDeviceFamily</key>
 			<array>
-				<string>1</string>
 				<string>2</string>
 			</array>
 		]]></InfoAdditions>

@@ -33,7 +33,7 @@ package com.model.rawData.edvard
 			<notes>
 			<note id="B_4"   soundFile="mountain/flut/B_4.mp3" animationIndex='1' value="1"   />
 			<note id="C_5"   soundFile="mountain/flut/C_5.mp3" animationIndex='1' value="2"   />
-			<note id="C+_5"   soundFile="mountain/flut/C+_5.mp3" animationIndex='2' value="3"  />
+			<note id="C#_5"   soundFile="mountain/flut/Cdiez_5.mp3" animationIndex='2' value="3"  />
 			<note id="D_5"   soundFile="mountain/flut/D_5.mp3" animationIndex='3' value="4" />
 			<note id="E_5"   soundFile="mountain/flut/E_5.mp3" animationIndex='5' value="5"   />
 			<note id="F_5"   soundFile="mountain/flut/F_5.mp3" animationIndex='6' value="6"   />

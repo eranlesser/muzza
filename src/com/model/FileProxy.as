@@ -41,6 +41,7 @@ package com.model
 			outputString += sequance.toXML().toXMLString()+'\n';
 			outputStream.writeUTFBytes(outputString);
 			outputStream.close();
+			trace(sequance.toXML().toXMLString());
 		}
 		
 		public static function importSequance(file:File):XML{
