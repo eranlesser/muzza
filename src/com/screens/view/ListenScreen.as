@@ -10,7 +10,6 @@ package com.screens.view
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.representation.Representation;
 	import com.representation.controller.PlayChannelController;
-	import com.representation.view.Channel;
 	import com.utils.Claps;
 	import com.view.gui.Btn;
 	
@@ -23,7 +22,7 @@ package com.screens.view
 		private var _representation:		Representation;
 		private var _channelControllers:	Vector.<PlayChannelController>;
 		private var _toolBar:				ToolBar;
-		public var goTo:Signal=new Signal();
+		public var gotoScreen:Signal=new Signal();
 		public var goHome:Signal=new Signal();
 		
 		public function ListenScreen(){
@@ -31,6 +30,9 @@ package com.screens.view
 			//addRepresentation();
 			addToolBar();
 			Session.improviseSignal.add(removeInstruments)
+		}
+		override public function get screenName():String{
+			return "listen";
 		}
 		
 		private function removeInstruments():void
@@ -155,7 +157,7 @@ package com.screens.view
 			exitBtn.clicked.add(exitBtnClicked);
 		}
 		private function backClicked(id:String):void{
-			goTo.dispatch("back");
+			gotoScreen.dispatch("back");
 		}
 		private function exitBtnClicked(id:String):void{
 			goHome.dispatch();
@@ -163,7 +165,6 @@ package com.screens.view
 		
 	}
 }
-import com.constants.Dimentions;
 import com.gskinner.motion.GTween;
 import com.metronom.Metronome;
 import com.representation.Representation;
@@ -173,8 +174,6 @@ import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
 import flash.display.Sprite;
-
-import org.osflash.signals.Signal;
 
 class ToolBar extends Sprite{
 	

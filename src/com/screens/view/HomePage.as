@@ -1,19 +1,9 @@
 package com.screens.view
 {
-	import com.constants.Dimentions;
 	import com.model.rawData.Data;
 	import com.screens.view.components.homePage.SongsMenu;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
-	
-	import flash.display.DisplayObject;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFormat;
-	
-	import org.osflash.signals.Signal;
 
 	public class HomePage extends AbstractScreen
 	{
@@ -41,6 +31,10 @@ package com.screens.view
 			creditsBut.x=140;
 			creditsBut.y=110;
 			creditsBut.clicked.add(openCredits);
+		}
+		
+		override public function get screenName():String{
+			return "home";
 		}
 		
 		private function openCredits(str:String):void{
@@ -76,8 +70,7 @@ import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFieldType;
 import flash.text.TextFormat;
-
-import flashx.textLayout.formats.TextAlign;
+import flash.text.TextFormatAlign;
 
 import org.osflash.signals.Signal;
 
@@ -132,7 +125,7 @@ class Credits extends Sprite{
 		tField.text = "Stay tuned, we have exciting updates coming soon:";
 		tField.x=70;
 		tField.y=495;
-		tField.setTextFormat(new TextFormat("Verdana",18,0xFFFFFF,null,null,null,null,null,TextAlign.LEFT));
+		tField.setTextFormat(new TextFormat("Verdana",18,0xFFFFFF,null,null,null,null,null,TextFormatAlign.LEFT));
 		
 		
 		email.type = TextFieldType.INPUT;
@@ -146,7 +139,7 @@ class Credits extends Sprite{
 		addChild(email);
 		email.x=565;
 		email.y=495;
-		email.defaultTextFormat = (new TextFormat("Verdana",16,0x111111,null,null,null,null,null,TextAlign.LEFT));
+		email.defaultTextFormat = (new TextFormat("Verdana",16,0x111111,null,null,null,null,null,TextFormatAlign.LEFT));
 		var fb:Btn=new Btn("facebook.png","facebook.png");
 		addChild(fb);
 		fb.x=905;
@@ -187,7 +180,7 @@ class Credits extends Sprite{
 		tField.width=920;
 		tField.height=820;
 		tField.multiline=true;
-		tField.defaultTextFormat = (new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextAlign.CENTER));
+		tField.defaultTextFormat = (new TextFormat("Verdana",22,0xFFFFFF,null,null,null,null,null,TextFormatAlign.CENTER));
 		tField.htmlText = 
 			"<div> Production & Development: <a href='http://www.creativelamas.com'>Creative Lamas</a></div><br><br>" +
 			"<div> Art & Animations: <a href='http://www.lefrenchbulldog.com'>LeFrenchBulldog</a> </div><br><br>" +

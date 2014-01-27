@@ -100,7 +100,7 @@ package com.screens.model
 		}
 		
 		
-		public function goTo(scr:String):void{
+		public function gotoScreen(scr:String):void{
 			var curIndex:int=-1;
 			if(scr=="back"){
 				curIndex = _lastInstrumentIndex//  = last screen played

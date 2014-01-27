@@ -10,7 +10,6 @@ package com.screens.recordScreenStates
 	import com.metronom.Metronome;
 	import com.model.FileProxy;
 	import com.musicalInstruments.view.IMusicalInstrumentComp;
-	import com.musicalInstruments.view.components.MusicalInstrumentComponent;
 	import com.musicalInstruments.view.instrument.Cuiqa;
 	import com.musicalInstruments.view.instrument.TapInstrument;
 	import com.screens.mediator.ScoreMediator;
@@ -39,16 +38,19 @@ package com.screens.recordScreenStates
 		private var _isActive:Boolean = false;
 		private var _scoreMediator:		ScoreMediator;
 		private var _hintArrow:			Sprite;
-		private var _popUpsManager:		PopUpsManager;
+		protected var _popUpsManager:		PopUpsManager;
 		
 		public function RecordState(stateController:RecordScreenStateController){
 			_context = stateController;
 			_msk.graphics.beginFill(0x111111,0.7);
 			_msk.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
-			_scoreMediator = new ScoreMediator(this);
 			_popUpsManager = new PopUpsManager(_context.guiLayer.parent.parent.parent as Presenter,_context.model.instrumentModel.thumbNail);
+			initScores();
 		}
 		
+		protected function initScores():void{
+			_scoreMediator = new ScoreMediator(this);
+		}
 		
 		public function get thumbNail():String{
 			return _context.thumbNail;
@@ -148,7 +150,9 @@ package com.screens.recordScreenStates
 			_context.notes.start();
 			Clock.instance.play();
 			_context.stageLayer.addChild(_msk);
-			_scoreMediator.active=true;
+			if(_scoreMediator){
+				_scoreMediator.active=true;
+			}
 			if(_context.hasBackUps){
 				_context.muteBtn.visible=true;
 			}
@@ -175,9 +179,10 @@ package com.screens.recordScreenStates
 			if(_hintArrow&&_hintArrow.parent){
 				_context.guiLayer.removeChild(_hintArrow)
 			}
-			
-			_scoreMediator.active=false;
-			_context.model.score = _scoreMediator.score;
+			if(_scoreMediator){
+				_scoreMediator.active=false;
+				_context.model.score = _scoreMediator.score;
+			}
 			//Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail+" "+_scoreMediator.score);
 			
 			
@@ -188,7 +193,7 @@ package com.screens.recordScreenStates
 			stop();
 		}
 		
-		private function stop():void{
+		protected function stop():void{
 			if(!Session.IMPROVISE_MODE&&_isActive){
 				FileProxy.setBestScore(_context.model.instrumentModel.thumbNail,_scoreMediator.score);
 				_popUpsManager.openPopUp(_scoreMediator.score,FileProxy.getBestScore(_context.model.instrumentModel.thumbNail));
@@ -221,15 +226,15 @@ package com.screens.recordScreenStates
 				return;
 			}
 			//for each(var curNote:DroppingNote in _toPlayNotes){
-				if(_toPlayNote && _toPlayNote.location==_timeModel.currentTick && !(_context.instrumentRecorder is Cuiqa)){
-					pauseSignal.dispatch(true);
-					_tween.paused=true;
-				}
+			if(_toPlayNote && _toPlayNote.location==_timeModel.currentTick && !(_context.instrumentRecorder is Cuiqa)){
+				pauseSignal.dispatch(true);
+				_tween.paused=true;
+			}
 			//}
 		}
 		
 		
-		private function onRecordBtn(buttonState:Boolean):void{
+		protected function onRecordBtn(buttonState:Boolean):void{
 			stop();
 		}
 		

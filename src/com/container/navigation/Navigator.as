@@ -11,7 +11,7 @@ package com.container.navigation
 	
 	public class Navigator extends Sprite
 	{
-		public var goto:Signal = new Signal();
+		public var gotoScreen:Signal = new Signal();
 		private var _breadCrumbs:BreadCrumbs;
 		public function Navigator(){
 			initButtons();
@@ -28,7 +28,7 @@ package com.container.navigation
 		
 		
 		private function onNavigate(btn:String):void{
-			goto.dispatch(btn);
+			gotoScreen.dispatch(btn);
 		}
 		
 		public function set state(session:RecordSession):void{

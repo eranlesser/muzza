@@ -1,7 +1,13 @@
 package com.screens.view {
-	import com.constants.*;
-	import com.metronom.*;
-	import com.musicalInstruments.model.*;
+	import com.constants.Dimentions;
+	import com.constants.Gains;
+	import com.constants.Rhythms;
+	import com.constants.Session;
+	import com.metronom.ITimeControll;
+	import com.metronom.ITimeModel;
+	import com.metronom.Metronome;
+	import com.musicalInstruments.model.InstrumentModel;
+	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.view.character.PlayMusician;
 	import com.screens.model.PlayScreenModel;
 	import com.view.gui.Btn;
@@ -11,7 +17,10 @@ package com.screens.view {
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.text.*;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFieldType;
+	import flash.text.TextFormat;
 	
 	import org.osflash.signals.Signal;
 
@@ -33,6 +42,10 @@ package com.screens.view {
 			_instruments = new Vector.<PlayMusician>();
 			_timeControll= Metronome.getTimeControll();
 			
+		}
+		
+		override public function get screenName():String{
+			return "demo";
 		}
 		
 		override public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void{
@@ -229,7 +242,7 @@ package com.screens.view {
 			//}
 			_instruments.push(ins)
 		}
-		
+		public var demoComplete:Signal = new Signal();
 		protected function endMusciPiece():void{
 			//Clock.getInstance().stop();
 			if(_timeSlider){
@@ -239,6 +252,7 @@ package com.screens.view {
 					_playPauseBtn.state=1;
 				//Flurry.logEvent("demo complete");
 				}
+				demoComplete.dispatch();
 			}
 			
 		}

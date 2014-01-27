@@ -2,14 +2,18 @@ package com.screens.view {
 	import com.constants.Dimentions;
 	import com.constants.Session;
 	import com.gskinner.motion.GTween;
-	import com.gskinner.motion.easing.Bounce;
-	import com.metronom.*;
+	import com.metronom.ITimeControll;
+	import com.metronom.ITimeModel;
+	import com.metronom.Metronome;
 	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.NotesInstrumentModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
-	import com.musicalInstruments.view.character.*;
-	import com.musicalInstruments.view.instrument.*;
+	import com.musicalInstruments.view.character.PlayMusician;
+	import com.musicalInstruments.view.instrument.Cuiqa;
+	import com.musicalInstruments.view.instrument.Instrument;
+	import com.musicalInstruments.view.instrument.TapInstrument;
+	import com.musicalInstruments.view.instrument.TurnTable;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
 	import com.screens.recordScreenStates.RecordScreenStateController;
@@ -21,9 +25,6 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -51,7 +52,9 @@ package com.screens.view {
 		public function get recorder():Instrument{
 			return _instrumentRecorder;
 		}
-		
+		override public function get screenName():String{
+			return "record";
+		}
 		
 		public function get model():RecordScreenModel{
 			return _model;
@@ -103,9 +106,9 @@ package com.screens.view {
 				_playBtnOver.alpha=0;
 				_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
 				_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
-				var tmr:Timer = new Timer(2000,7);
-				tmr.addEventListener(TimerEvent.TIMER,showPlay);
-				tmr.start();
+				_playBtn.visible=false;
+				_playBtnOver.visible=false;
+				_recordBtn.visible=false;
 				_muteButton = new Btn("muteBTN_on.png","muteBTN_off.png");
 				_guiLayer.addChild(_muteButton);
 				_muteButton.x=Dimentions.WIDTH-_muteButton.width-8//_recordBtn.x+_recordBtn.width+12;
@@ -123,28 +126,15 @@ package com.screens.view {
 				isInited = true;
 			}
 			addChild(_clock);
-			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 			_clock.reset();
 			addBackUps();
-			_recordBtn.visible=Session.IMPROVISE_MODE;
-			_playBtnOver.visible=!Session.IMPROVISE_MODE;
-			_playBtn.visible=!Session.IMPROVISE_MODE;
-			notes.visible =!Session.IMPROVISE_MODE;
+			
 			_instrumentRecorder.active = true;
+			_stateController.start();
 		}
 		
-		private function showPlay(e:Event):void{
-			var playTween1:GTween = new GTween(_playBtnOver,0.5,{alpha:1});
-			playTween1.onComplete = function():void{
-				new GTween(_playBtnOver,0.5,{alpha:0});
-			}
-			var tmr:Timer = e.target as Timer;
-			if(tmr && tmr.currentCount==tmr.repeatCount){
-				tmr.removeEventListener(TimerEvent.TIMER,showPlay);
-				tmr=null;
-			}
-		}
+		
 		
 		private function onMute(id:String):void
 		{

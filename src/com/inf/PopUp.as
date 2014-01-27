@@ -6,13 +6,9 @@ package com.inf
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.geom.Point;
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
-	import flash.text.TextFormatAlign;
 	
 	import org.osflash.signals.Signal;
 	
@@ -22,9 +18,9 @@ package com.inf
 		private var _thumbNail:Sprite;
 		private var _bg:Sprite;
 		private var _next:Btn;
-		public var nextSignal:Signal = new Signal();
 		private var _tryAgain:Btn;
-		public var tryAgainSignal:Signal = new Signal();
+		private var _nextSignal:Signal = new Signal();
+		private var _tryAgainSignal:Signal = new Signal();
 		private var _title:TextField;
 		private var _maxScore:TextField;
 		private var _bestScore:TextField;
@@ -42,6 +38,16 @@ package com.inf
 		}
 		
 		
+		public function get tryAgainSignal():Signal
+		{
+			return _tryAgainSignal;
+		}
+
+		public function get nextSignal():Signal
+		{
+			return _nextSignal;
+		}
+
 		private function addNext():void
 		{
 			_next = new Btn("next.png","next.png");
@@ -94,7 +100,7 @@ package com.inf
 			_bg.addChild(_maxScore);
 		}
 		
-		private function set title(str:String):void{
+		public function set title(str:String):void{
 			if(!_title){
 				addTitle(str);
 			}

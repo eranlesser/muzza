@@ -3,9 +3,7 @@ package com.inf
 	import com.constants.Dimentions;
 	import com.container.Presenter;
 	
-	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.utils.Dictionary;
 
 	public class PopUpsManager
 	{
@@ -45,9 +43,12 @@ package com.inf
 		
 		private function onNext():void
 		{
+
 			closePopUp()
+
 			Presenter(_presenter).goNext.dispatch();
 		}
+
 		
 		private function closePopUp():void{
 			_presenter.removeChild(_mask);

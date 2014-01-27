@@ -9,6 +9,7 @@ package com.screens.view
 		function start():void;
 		function stop():void;
 		function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void
+		function get screenName():String;
 		//function set representationVisible(vis:Boolean):void;
 		//function layout(direction:String):void;
 		

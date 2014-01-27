@@ -61,8 +61,8 @@ package com.screens.model {
 		public function getScreenIndex(scr:String):int{
 			return _recordSession.getScreenIndex(scr);
 		}
-		public function goTo(scr:String):void{
-			_recordSession.goTo(scr);
+		public function gotoScreen(scr:String):void{
+			_recordSession.gotoScreen(scr);
 			_currentScreen=_recordSession.currentScreen;
 		}
 		

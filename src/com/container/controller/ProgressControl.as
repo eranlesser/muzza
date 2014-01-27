@@ -3,7 +3,7 @@ package com.container.controller {
 	import com.container.navigation.Navigator;
 	import com.metronom.Metronome;
 	import com.model.MainThemeModel;
-	import com.screens.model.ScreensModel;
+	import com.screens.recordScreenStates.TutorialIdleState;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -50,6 +50,7 @@ package com.container.controller {
 					closeDemo(true);
 					_view.mouseEnabled=true;
 					_view.mouseChildren=true;
+					_view.tutorialSignal.dispatch(TutorialIdleState.OPEN_DEMO);
 				});
 				tmr.start();
 			}
@@ -57,7 +58,7 @@ package com.container.controller {
 		
 		public function reset():void{
 			_mainThemeModel.screensModel.reset();
-			_view.goto.remove(goTo);
+			_view.gotoScreen.remove(gotoScreen);
 			_view.goNext.remove(goNext);
 			_view.menu.openDemo.remove(toggleDemo);
 		}
@@ -68,7 +69,7 @@ package com.container.controller {
 		
 		private function initNavigator():void{
 			_navigator=_view.menu.navigator;
-			_view.goto.add(goTo);
+			_view.gotoScreen.add(gotoScreen);
 			_view.goNext.add(goNext);
 			_view.menu.openDemo.add(toggleDemo);
 			_navigator.state=_mainThemeModel.screensModel.recordSession;
@@ -79,10 +80,10 @@ package com.container.controller {
 			return _themeName;
 		}
 		
-		private function goTo(scr:String):void{
+		private function gotoScreen(scr:String):void{
 			closeDemo();
 			_view.removeScreens();
-			_mainThemeModel.screensModel.goTo(scr);
+			_mainThemeModel.screensModel.gotoScreen(scr);
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
 			_mainThemeModel.screensModel.currentScreen.start();
 			_navigator.state=_mainThemeModel.screensModel.recordSession;
@@ -111,7 +112,7 @@ package com.container.controller {
 		private function openDemo(silentMode:Boolean=false):void{
 			_demoOpen = true;
 			_mainThemeModel.screensModel.currentScreen.stop();
-			_view.screensLayer.addChild(_mainThemeModel.screensModel.demoScreen);
+			_view.addDemoScreen(_mainThemeModel.screensModel.demoScreen,silentMode);
 			_mainThemeModel.screensModel.demoScreen.start();
 			if(!silentMode){
 				_view.menu.demoButton.state="pressed";
@@ -131,6 +132,7 @@ package com.container.controller {
 			if(!silentMode){
 				_view.menu.demoButton.state="idle";
 				_mainThemeModel.screensModel.demoScreen.close.remove(toggleDemo);
+				_view.tutorialSignal.dispatch(TutorialIdleState.CLICK_PLAY);
 			}
 			_mainThemeModel.screensModel.currentScreen.start();
 		}

@@ -1,6 +1,8 @@
 package com.screens.recordScreenStates
 {
 	import com.constants.States;
+	import com.container.Presenter;
+	import com.inf.TutorialManager;
 	import com.musicalInstruments.view.instrument.Instrument;
 	import com.representation.controller.RecordChannelController;
 	import com.screens.model.RecordScreenModel;
@@ -10,8 +12,6 @@ package com.screens.recordScreenStates
 	import com.view.gui.Btn;
 	
 	import flash.display.Sprite;
-	
-	import org.osflash.signals.Signal;
 
 	public class RecordScreenStateController
 	{
@@ -26,8 +26,14 @@ package com.screens.recordScreenStates
 		}
 		
 		protected function initStates():void{
-			_states.push(new IdleState(this));
-			_states.push(new RecordState(this));
+			if(_recordScreen.model.isTutorial){
+				var tManager:TutorialManager = new TutorialManager(_recordScreen.guiLayer.parent.parent.parent as Presenter); 
+				_states.push(new TutorialIdleState(this,tManager));
+				_states.push(new TutorialRecord(this,tManager));
+			}else{
+				_states.push(new IdleState(this));
+				_states.push(new RecordState(this));
+			}
 		}
 		
 		public function get muteBtn():Btn{

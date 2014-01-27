@@ -1,7 +1,7 @@
 package com.container
 {
 	import com.constants.Dimentions;
-	import com.metronom.Metronome;
+	import com.screens.recordScreenStates.TutorialIdleState;
 	import com.screens.view.DemoScreen;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
@@ -10,7 +10,6 @@ package com.container
 	import com.screens.view.components.homePage.SongsMenu;
 	
 	import flash.display.DisplayObject;
-	import flash.display.Screen;
 	import flash.display.Sprite;
 	
 	import org.osflash.signals.Signal;
@@ -22,9 +21,10 @@ package com.container
 		private var _messageLayer:		Sprite;
 		private var _startScreen:		HomePage;
 		private var _toolBar:			BottomToolBar;
-		public var goto:Signal=new Signal();
+		public var gotoScreen:Signal=new Signal();
 		public var goHome:Signal=new Signal();
 		public var goNext:Signal=new Signal();
+		public var tutorialSignal:Signal = new Signal();
 		public function Presenter(){
 			init();
 		}
@@ -36,14 +36,14 @@ package com.container
 			_toolBar = new BottomToolBar();
 			addChild(_toolBar);
 			_toolBar.y=Dimentions.HEIGHT-_toolBar.height;
-			_toolBar.navigator.goto.add(goToRequest);
+			_toolBar.navigator.gotoScreen.add(goToRequest);
 			addChild(_guiLayer);
 			_messageLayer = new Sprite();
 			addChild(_messageLayer);
 		}
 		
 		private function goToRequest(scr:String):void{
-			goto.dispatch(scr);
+			gotoScreen.dispatch(scr);
 		}
 		private function goHomeRequest():void{
 			goHome.dispatch();
@@ -76,13 +76,25 @@ package com.container
 			_screensLayer.addChild(screen);
 			_toolBar.visible = (screen is RecordScreen);
 			if(screen is ListenScreen){
-				(screen as ListenScreen).goTo.add(goToRequest);
+				(screen as ListenScreen).gotoScreen.add(goToRequest);
 				(screen as ListenScreen).goHome.add(goHomeRequest);
 			}
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
 			}
+			
 		}
+		
+		public function addDemoScreen(demoScreen:DemoScreen,silentMode:Boolean=false):void{
+			tutorialSignal.dispatch(TutorialIdleState.INIT);
+			_screensLayer.addChild(demoScreen);
+			demoScreen.demoComplete.addOnce(onDemoComplete);
+		}
+		private function onDemoComplete():void{
+			tutorialSignal.dispatch(TutorialIdleState.DEMO_COMPLETE);
+		}
+		
+		
 		
 		public function removeScreens():void{
 			for(var i:uint=_screensLayer.numChildren;i>0;i--){
@@ -90,7 +102,7 @@ package com.container
 				scr.stop();
 				_screensLayer.removeChildAt(0);
 				if(scr is ListenScreen){
-					(scr as ListenScreen).goTo.remove(goToRequest);
+					(scr as ListenScreen).gotoScreen.remove(goToRequest);
 					(scr as ListenScreen).goHome.remove(goHomeRequest);
 				}
 			}
