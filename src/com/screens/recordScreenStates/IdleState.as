@@ -1,12 +1,7 @@
 package com.screens.recordScreenStates
 {
-	import com.constants.Session;
+	import com.constants.Dimentions;
 	import com.constants.States;
-	import com.gskinner.motion.GTween;
-	
-	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 
@@ -44,7 +39,6 @@ package com.screens.recordScreenStates
 			_context.recordButton.clicked.add(onRecordBtn);
 			_context.playButton.clicked.add(onRecordBtn);
 			_context.instrumentRecorder.y=_context.model.getRecordInstrumentY();
-			applyButtonsVisibility();
 			//_context.instrumentRecorder.octave=0;
 			//_context.startTimer();
 			//_context.notes.start();//move cue
@@ -52,16 +46,6 @@ package com.screens.recordScreenStates
 			_context.muteBtn.visible=false;
 			//_context.recordButton.x=(Dimentions.WIDTH-_context.recordButton.width)/2;
 			_isActive = true;
-		}
-		
-		protected function applyButtonsVisibility():void{
-			_context.recordButton.visible=Session.IMPROVISE_MODE;
-			_context.playGlow.visible=!Session.IMPROVISE_MODE;
-			_context.playButton.visible=!Session.IMPROVISE_MODE;
-			_context.notes.visible =!Session.IMPROVISE_MODE;
-			var tmr:Timer = new Timer(2000,7);
-			tmr.addEventListener(TimerEvent.TIMER,showPlay);
-			tmr.start();
 		}
 		
 		private function onRecordBtn(buttonState:Boolean):void{
@@ -72,17 +56,6 @@ package com.screens.recordScreenStates
 			_context.practice();
 		}
 		
-		private function showPlay(e:Event):void{
-			var playTween1:GTween = new GTween(_context.playGlow,0.5,{alpha:1});
-			playTween1.onComplete = function():void{
-				new GTween(_context.playGlow,0.5,{alpha:0});
-			}
-			var tmr:Timer = e.target as Timer;
-			if(tmr && tmr.currentCount==tmr.repeatCount){
-				tmr.removeEventListener(TimerEvent.TIMER,showPlay);
-				tmr=null;
-			}
-		}
 		
 		
 		

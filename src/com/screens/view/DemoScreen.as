@@ -36,16 +36,12 @@ package com.screens.view {
 		private var _playPauseBtn:			ToggleBut;
 		public var close:					Signal=new Signal();
 		private var _timeSlider:TimeSlider;
-		
+		public var complete:Signal = new Signal();
 		
 		public function DemoScreen(){
 			_instruments = new Vector.<PlayMusician>();
 			_timeControll= Metronome.getTimeControll();
 			
-		}
-		
-		override public function get screenName():String{
-			return "demo";
 		}
 		
 		override public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void{
@@ -194,6 +190,7 @@ package com.screens.view {
 				//if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
 				if(_timeModel.currentTick>0 ){//&& donePlayers==_instruments.length
 					endMusciPiece();
+					complete.dispatch();
 				}
 			}
 		}
@@ -242,7 +239,7 @@ package com.screens.view {
 			//}
 			_instruments.push(ins)
 		}
-		public var demoComplete:Signal = new Signal();
+		
 		protected function endMusciPiece():void{
 			//Clock.getInstance().stop();
 			if(_timeSlider){
@@ -252,7 +249,6 @@ package com.screens.view {
 					_playPauseBtn.state=1;
 				//Flurry.logEvent("demo complete");
 				}
-				demoComplete.dispatch();
 			}
 			
 		}

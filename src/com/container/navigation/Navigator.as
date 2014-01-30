@@ -2,10 +2,8 @@ package com.container.navigation
 {
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.screens.model.RecordSession;
-	import com.view.gui.Btn;
 	
 	import flash.display.Sprite;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -33,6 +31,9 @@ package com.container.navigation
 		
 		public function set state(session:RecordSession):void{
 			_breadCrumbs.state=session;
+		}
+		public function get breadCrumbs():BreadCrumbs{
+			return _breadCrumbs;
 		}
 	
 		public function reset():void{

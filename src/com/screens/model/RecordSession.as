@@ -1,14 +1,10 @@
 package com.screens.model
 {
 	import com.constants.Session;
-	import com.model.FileProxy;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
-	import com.screens.view.DemoScreen;
 	import com.screens.view.IScreen;
 	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
-	
-	import org.osflash.signals.Signal;
 
 	/**
 	 *Record session  -  record 3(or different number) instruments and then show the result. 

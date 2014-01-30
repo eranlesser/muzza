@@ -3,7 +3,9 @@ package com.screens.mediator
 	import com.constants.Dimentions;
 	import com.constants.Session;
 	import com.gskinner.motion.GTween;
+	import com.model.FileProxy;
 	import com.screens.recordScreenStates.RecordState;
+	import com.view.tools.AssetsManager;
 	
 	import flash.events.Event;
 
@@ -127,6 +129,7 @@ import com.view.tools.AssetsManager;
 
 import flash.display.DisplayObject;
 import flash.display.Sprite;
+import flash.filters.GlowFilter;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFormat;

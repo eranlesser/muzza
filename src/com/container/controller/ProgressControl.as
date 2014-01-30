@@ -3,7 +3,6 @@ package com.container.controller {
 	import com.container.navigation.Navigator;
 	import com.metronom.Metronome;
 	import com.model.MainThemeModel;
-	import com.screens.recordScreenStates.TutorialIdleState;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -15,11 +14,11 @@ package com.container.controller {
 
 	public class ProgressControl{
 		
-		private var _view:			Presenter;
+		protected var _view:			Presenter;
 		private var _navigator:		Navigator;
 		private var _themeName:		String;
 		private var _frameRate:		uint;
-		private var _mainThemeModel:MainThemeModel;
+		protected var _mainThemeModel:MainThemeModel;
 		public var goHomeSignal:	Signal;
 		private var _demoShown:Boolean=false;
 		public function ProgressControl(view:Presenter,theme:MainThemeModel,themeName:String){
@@ -50,7 +49,6 @@ package com.container.controller {
 					closeDemo(true);
 					_view.mouseEnabled=true;
 					_view.mouseChildren=true;
-					_view.tutorialSignal.dispatch(TutorialIdleState.OPEN_DEMO);
 				});
 				tmr.start();
 			}
@@ -80,22 +78,23 @@ package com.container.controller {
 			return _themeName;
 		}
 		
-		private function gotoScreen(scr:String):void{
+		protected function gotoScreen(scr:String):void{
 			closeDemo();
 			_view.removeScreens();
-			_mainThemeModel.screensModel.gotoScreen(scr);
+			scr == "next" ? _mainThemeModel.screensModel.gotoScreen(scr) : _mainThemeModel.screensModel.goNext();
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
 			_mainThemeModel.screensModel.currentScreen.start();
 			_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
 		
 		private function goNext():void{
-			closeDemo();
-			_view.removeScreens();
-			_mainThemeModel.screensModel.goNext();
-			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
-			_mainThemeModel.screensModel.currentScreen.start();
-			_navigator.state=_mainThemeModel.screensModel.recordSession;
+			gotoScreen("next");
+			//closeDemo();
+			//_view.removeScreens();
+			
+			//_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
+			//_mainThemeModel.screensModel.currentScreen.start();
+			//_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
 		private var _demoOpen:Boolean=false;
 		private function toggleDemo():void{
@@ -109,10 +108,10 @@ package com.container.controller {
 			}
 		}
 		
-		private function openDemo(silentMode:Boolean=false):void{
+		protected function openDemo(silentMode:Boolean=false):void{
 			_demoOpen = true;
 			_mainThemeModel.screensModel.currentScreen.stop();
-			_view.addDemoScreen(_mainThemeModel.screensModel.demoScreen,silentMode);
+			_view.screensLayer.addChild(_mainThemeModel.screensModel.demoScreen);
 			_mainThemeModel.screensModel.demoScreen.start();
 			if(!silentMode){
 				_view.menu.demoButton.state="pressed";
@@ -120,7 +119,7 @@ package com.container.controller {
 			}
 		}
 		
-		private function closeDemo(silentMode:Boolean=false):void{
+		protected function closeDemo(silentMode:Boolean=false):void{
 			if(!_demoOpen){
 				return // called from removescreens
 			}
@@ -132,7 +131,6 @@ package com.container.controller {
 			if(!silentMode){
 				_view.menu.demoButton.state="idle";
 				_mainThemeModel.screensModel.demoScreen.close.remove(toggleDemo);
-				_view.tutorialSignal.dispatch(TutorialIdleState.CLICK_PLAY);
 			}
 			_mainThemeModel.screensModel.currentScreen.start();
 		}

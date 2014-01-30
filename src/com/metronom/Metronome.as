@@ -134,7 +134,7 @@ package com.metronom
 			}
 			_tickValue = Math.round(tween.position/2);
 			_tickSignal.dispatch();
-			//trace(_tickValue,"met")
+			trace(_tickValue,"met")
 		}
 		
 		public function get duration():int{

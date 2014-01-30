@@ -1,7 +1,7 @@
 package com.container
 {
 	import com.constants.Dimentions;
-	import com.screens.recordScreenStates.TutorialIdleState;
+	import com.metronom.Metronome;
 	import com.screens.view.DemoScreen;
 	import com.screens.view.HomePage;
 	import com.screens.view.IScreen;
@@ -10,6 +10,7 @@ package com.container
 	import com.screens.view.components.homePage.SongsMenu;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Screen;
 	import flash.display.Sprite;
 	
 	import org.osflash.signals.Signal;
@@ -24,7 +25,6 @@ package com.container
 		public var gotoScreen:Signal=new Signal();
 		public var goHome:Signal=new Signal();
 		public var goNext:Signal=new Signal();
-		public var tutorialSignal:Signal = new Signal();
 		public function Presenter(){
 			init();
 		}
@@ -82,19 +82,7 @@ package com.container
 			if(_screensLayer.numChildren>1){
 				throw new Error("too many scrreennss",this);
 			}
-			
 		}
-		
-		public function addDemoScreen(demoScreen:DemoScreen,silentMode:Boolean=false):void{
-			tutorialSignal.dispatch(TutorialIdleState.INIT);
-			_screensLayer.addChild(demoScreen);
-			demoScreen.demoComplete.addOnce(onDemoComplete);
-		}
-		private function onDemoComplete():void{
-			tutorialSignal.dispatch(TutorialIdleState.DEMO_COMPLETE);
-		}
-		
-		
 		
 		public function removeScreens():void{
 			for(var i:uint=_screensLayer.numChildren;i>0;i--){

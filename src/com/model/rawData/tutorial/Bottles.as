@@ -82,54 +82,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
   <note id="F#_4" location="164" soundLength="8"/>
   <note id="E_4" location="172" soundLength="8"/>
   <note id="E_4" location="180" soundLength="16"/>
-  <note id="F#_4" location="196" soundLength="8"/>
-  <note id="F#_4" location="204" soundLength="8"/>
-  <note id="G_4" location="212" soundLength="8"/>
-  <note id="A_4" location="220" soundLength="8"/>
-  <note id="A_4" location="228" soundLength="8"/>
-  <note id="G_4" location="236" soundLength="8"/>
-  <note id="F#_4" location="244" soundLength="8"/>
-  <note id="E_4" location="252" soundLength="8"/>
-  <note id="D_4" location="260" soundLength="8"/>
-  <note id="D_4" location="268" soundLength="8"/>
-  <note id="E_4" location="276" soundLength="8"/>
-  <note id="F#_4" location="284" soundLength="8"/>
-  <note id="E_4" location="292" soundLength="8"/>
-  <note id="D_4" location="300" soundLength="8"/>
-  <note id="D_4" location="308" soundLength="8"/>
-  <note id="E_4" location="324" soundLength="8"/>
-  <note id="E_4" location="332" soundLength="8"/>
-  <note id="F#_4" location="340" soundLength="8"/>
-  <note id="D_4" location="348" soundLength="8"/>
-  <note id="E_4" location="356" soundLength="8"/>
-  <note id="F#_4" location="364" soundLength="4"/>
-  <note id="G_4" location="368" soundLength="4"/>
-  <note id="F#_4" location="372" soundLength="8"/>
-  <note id="D_4" location="380" soundLength="8"/>
-  <note id="E_4" location="388" soundLength="8"/>
-  <note id="F#_4" location="396" soundLength="4"/>
-  <note id="G_4" location="400" soundLength="4"/>
-  <note id="F#_4" location="404" soundLength="8"/>
-  <note id="E_4" location="412" soundLength="8"/>
-  <note id="D_4" location="420" soundLength="8"/>
-  <note id="E_4" location="428" soundLength="8"/>
-  <note id="A_3" location="436" soundLength="16"/>
-  <note id="F#_4" location="452" soundLength="8"/>
-  <note id="F#_4" location="460" soundLength="8"/>
-  <note id="G_4" location="468" soundLength="8"/>
-  <note id="A_4" location="476" soundLength="8"/>
-  <note id="A_4" location="484" soundLength="8"/>
-  <note id="G_4" location="492" soundLength="8"/>
-  <note id="F#_4" location="500" soundLength="8"/>
-  <note id="E_4" location="508" soundLength="8"/>
-  <note id="D_4" location="516" soundLength="8"/>
-  <note id="D_4" location="524" soundLength="8"/>
-  <note id="E_4" location="532" soundLength="8"/>
-  <note id="F#_4" location="540" soundLength="8"/>
-  <note id="E_4" location="548" soundLength="8"/>
-  <note id="D_4" location="556" soundLength="8"/>
-  <note id="D_4" location="564" soundLength="16"/>
-</sequance>
+  </sequance>
 
 	
 <sequance id="99">

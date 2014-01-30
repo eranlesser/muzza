@@ -5,7 +5,7 @@ package com.model.rawData.tutorial
 public class TutorialData
 {
 public static var data:XML = 
-<theme id='recycle' rhythm='11'>
+<theme id='recycle' rhythm='11' tutorial="true">
 <instruments>
 {Bottles.data}
 {Drum.data}
@@ -13,7 +13,7 @@ public static var data:XML =
 </instruments>
 <screens>
 
-<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="632" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
+<demoScreen type="ThemeTemplate" beginAtFrame="1" endAtFrame="260" playSequance="99" nowPlaying="ODE_TO_JOY_nowPlaying.png">
 	<instrument type="drum.png" >
 	<layout id="0" x='50' y='140'  />
 	</instrument>
@@ -31,7 +31,7 @@ public static var data:XML =
 <recordSession>
 
 
-<recordScreen type="RecordScreen" tutorial="true"  beginAtFrame="1" endAtFrame="632" >
+<recordScreen type="RecordScreen"   beginAtFrame="1" endAtFrame="260" >
 	<playerInstrument type="bottles.png" learnedSequanced="99" imroviseSequance="101" recordedSequance="102" noteTargetsY="240">
 	<RecordedX>102.5</RecordedX>
 	<RecordedY>360</RecordedY>
@@ -47,7 +47,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen" tutorial="true" beginAtFrame="1" endAtFrame="632" >
+<recordScreen type="RecordScreen"  beginAtFrame="1" endAtFrame="260" >
 	<playerInstrument type="drum.png" learnedSequanced="99" recordedSequance="102" imroviseSequance="101"  noteTargetsY="240"  >
 	<RecordedX>308</RecordedX>
 	<RecordedY>500</RecordedY>
@@ -64,7 +64,7 @@ public static var data:XML =
 </recordScreen>
 
 
-<recordScreen type="RecordScreen" tutorial="true"  beginAtFrame="1" endAtFrame="632" >
+<recordScreen type="RecordScreen"   beginAtFrame="1" endAtFrame="260" >
 	<playerInstrument type="bass_flash.jpg" learnedSequanced="99" recordedSequance="102" imroviseSequance="101" noteTargetsY="240">
 	<RecordedX>178</RecordedX>
 	<RecordedY>500</RecordedY>
@@ -81,7 +81,7 @@ public static var data:XML =
 
 
 
-<endScreen type="ThemeTemplate" tutorial="true" beginAtFrame="1" endAtFrame="632" playSequance="102" improviseSequance="101">
+<endScreen type="ThemeTemplate"  beginAtFrame="1" endAtFrame="260" playSequance="102" improviseSequance="101">
 	<instrument type="drum.png" >
 <layout id="0" x='50' y='140'   />	
 	</instrument>

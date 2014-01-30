@@ -24,7 +24,6 @@ package com.screens.model {
 		private var _startAtCurPoint:int;
 		private var _showLine:Boolean=true;
 		public var score:int;
-		public var isTutorial:Boolean = false;
 		public function RecordScreenModel(xml:XML,instruments:ThemeInstrumentsModel){
 			super(xml);
 			_instruments = instruments;
@@ -49,9 +48,6 @@ package com.screens.model {
 			_noteTargetsYOffset= xml.playerInstrument.@notesTargetYOffset;
 			if(xml.@showLine=="false"){
 				_showLine=false;
-			}
-			if(xml.@tutorial=="true"){
-				isTutorial = true;
 			}
 			for each(var instrument:XML in xml.backups.instrument){
 				var insModel:CoreInstrumentModel =_instruments.getInstrumentByName(instrument.@type);

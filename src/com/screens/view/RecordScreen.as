@@ -25,6 +25,9 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -43,6 +46,7 @@ package com.screens.view {
 		private var _recordTween:				GTween;
 		private var _clock:						Clock;
 		private var _muteButton:				Btn;
+		private var _players:Vector.<PlayMusician> = new Vector.<PlayMusician>();
 		
 		public function RecordScreen(){
 			_timerControll = Metronome.getTimeControll();
@@ -52,9 +56,7 @@ package com.screens.view {
 		public function get recorder():Instrument{
 			return _instrumentRecorder;
 		}
-		override public function get screenName():String{
-			return "record";
-		}
+		
 		
 		public function get model():RecordScreenModel{
 			return _model;
@@ -92,23 +94,7 @@ package com.screens.view {
 				_bg.addChild(AssetsManager.getAssetByName("bgBlur.png"));
 				addRepresentation();
 				createPlayerAndInstrument();
-				super.start();
-				_recordBtn = new Btn("record_BTN_play.png","record_BTN_puse.png");
-				addChild(_recordBtn);
-				_recordBtn.x=(Dimentions.WIDTH-_recordBtn.width)/2;
-				_recordBtn.y=44//(strip.height-practiceBtn.height)/2-2;
-				_playBtn = new Btn("play_BTN_play.png","play_BTN_puse.png");
-				_playBtn.x=(Dimentions.WIDTH-_playBtn.width)/2;
-				_playBtn.y=44//(strip.height-practiceBtn.height)/2-2;
-				_playBtnOver = new Btn("play_BTN.png","play_BTN.png");
-				addChild(_playBtnOver);
-				addChild(_playBtn);
-				_playBtnOver.alpha=0;
-				_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
-				_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
-				_playBtn.visible=false;
-				_playBtnOver.visible=false;
-				_recordBtn.visible=false;
+				initPlayButton();
 				_muteButton = new Btn("muteBTN_on.png","muteBTN_off.png");
 				_guiLayer.addChild(_muteButton);
 				_muteButton.x=Dimentions.WIDTH-_muteButton.width-8//_recordBtn.x+_recordBtn.width+12;
@@ -126,15 +112,48 @@ package com.screens.view {
 				isInited = true;
 			}
 			addChild(_clock);
+			_stateController.start();
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 			_clock.reset();
 			addBackUps();
-			
+			_recordBtn.visible=Session.IMPROVISE_MODE;
+			_playBtnOver.visible=!Session.IMPROVISE_MODE;
+			_playBtn.visible=!Session.IMPROVISE_MODE;
+			notes.visible =!Session.IMPROVISE_MODE;
 			_instrumentRecorder.active = true;
-			_stateController.start();
 		}
 		
+		private function initPlayButton():void
+		{
+			_recordBtn = new Btn("record_BTN_play.png","record_BTN_puse.png");
+			addChild(_recordBtn);
+			_recordBtn.x=(Dimentions.WIDTH-_recordBtn.width)/2;
+			_recordBtn.y=44//(strip.height-practiceBtn.height)/2-2;
+			_playBtn = new Btn("play_BTN_play.png","play_BTN_puse.png");
+			_playBtn.x=(Dimentions.WIDTH-_playBtn.width)/2;
+			_playBtn.y=44//(strip.height-practiceBtn.height)/2-2;
+			_playBtnOver = new Btn("play_BTN.png","play_BTN.png");
+			addChild(_playBtnOver);
+			addChild(_playBtn);
+			_playBtnOver.alpha=0;
+			_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
+			_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
+			var tmr:Timer = new Timer(2000,7);
+			tmr.addEventListener(TimerEvent.TIMER,showPlay);
+			tmr.start();
+		}
 		
+		private function showPlay(e:Event):void{
+			var playTween1:GTween = new GTween(_playBtnOver,0.5,{alpha:1});
+			playTween1.onComplete = function():void{
+				new GTween(_playBtnOver,0.5,{alpha:0});
+			}
+			var tmr:Timer = e.target as Timer;
+			if(tmr && tmr.currentCount==tmr.repeatCount){
+				tmr.removeEventListener(TimerEvent.TIMER,showPlay);
+				tmr=null;
+			}
+		}
 		
 		private function onMute(id:String):void
 		{
@@ -203,7 +222,6 @@ package com.screens.view {
 			return false;
 		}
 		
-		private var _players:Vector.<PlayMusician> = new Vector.<PlayMusician>();
 		private function addBackUps():void{
 			var player:PlayMusician;
 			for each(var insModel:InstrumentModel in _model.backUpInsruments){
@@ -235,20 +253,10 @@ package com.screens.view {
 			if(_model.instrumentModel.type=="turnTable"){
 				_instrumentRecorder = new TurnTable(_model.instrumentModel as NotesInstrumentModel);
 			}else if(_model.instrumentModel.type=="loopee"){
-				//_instrumentRecorder = new Loopee(_model.instrumentModel as NotesInstrumentModel);
 				_instrumentRecorder = new Cuiqa(_model.instrumentModel as NotesInstrumentModel);
 			}else{
 			_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
 			}
-			/*}else if(_model.instrumentModel.type=="bass"){
-				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
-			}else if(_model.instrumentModel.type=="drums"){
-				_instrumentRecorder = new TapInstrument(_model.instrumentModel as NotesInstrumentModel);
-			}else if(_model.instrumentModel.type=="voice"){
-				//_instrumentRecorder = new MicrophoneView(_model.instrumentModel,_model.recordeSequanceId);
-			}else{
-				//trace(_model.instrumentModel.type)
-			}*/
 			_guiLayer.addChild(_instrumentRecorder);
 			
 		}

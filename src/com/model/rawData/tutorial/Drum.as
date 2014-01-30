@@ -89,49 +89,7 @@ public static var data:XML =
   <note id="D_6" location="148" soundLength="4"/>
   <note id="C#_6" location="156" soundLength="4"/>
   <note id="C_6" location="164" soundLength="4"/>
-  <note id="C#_6" location="188" soundLength="4"/>
-  <note id="C_6" location="196" soundLength="4"/>
-  <note id="C#_6" location="204" soundLength="4"/>
-  <note id="D_6" location="212" soundLength="4"/>
-  <note id="C#_6" location="220" soundLength="4"/>
-  <note id="C_6" location="228" soundLength="4"/>
-  <note id="C_6" location="236" soundLength="4"/>
-  <note id="D_6" location="244" soundLength="4"/>
-  <note id="C#_6" location="252" soundLength="4"/>
-  <note id="C_6" location="260" soundLength="4"/>
-  <note id="C#_6" location="268" soundLength="4"/>
-  <note id="D_6" location="276" soundLength="4"/>
-  <note id="C#_6" location="284" soundLength="4"/>
-  <note id="C_6" location="292" soundLength="4"/>
-  <note id="C_6" location="300" soundLength="4"/>
-  <note id="D_6" location="308" soundLength="4"/>
-  <note id="C_6" location="324" soundLength="4"/>
-  <note id="C#_6" location="332" soundLength="4"/>
-  <note id="D_6" location="340" soundLength="4"/>
-  <note id="C_6" location="348" soundLength="4"/>
-  <note id="C_6" location="356" soundLength="4"/>
-  <note id="C#_6" location="364" soundLength="4"/>
-  <note id="D_6" location="372" soundLength="4"/>
-  <note id="C_6" location="388" soundLength="4"/>
-  <note id="C#_6" location="396" soundLength="4"/>
-  <note id="D_6" location="404" soundLength="4"/>
-  <note id="C_6" location="412" soundLength="4"/>
-  <note id="C_6" location="420" soundLength="4"/>
-  <note id="C#_6" location="428" soundLength="4"/>
-  <note id="C_6" location="452" soundLength="4"/>
-  <note id="C#_6" location="460" soundLength="4"/>
-  <note id="D_6" location="468" soundLength="4"/>
-  <note id="C#_6" location="476" soundLength="4"/>
-  <note id="C_6" location="484" soundLength="4"/>
-  <note id="C_6" location="492" soundLength="4"/>
-  <note id="D_6" location="500" soundLength="4"/>
-  <note id="C#_6" location="508" soundLength="4"/>
-  <note id="C_6" location="516" soundLength="4"/>
-  <note id="D_6" location="532" soundLength="4"/>
-  <note id="C#_6" location="540" soundLength="4"/>
-  <note id="C_6" location="544" soundLength="4"/>
-  <note id="C_6" location="556" soundLength="4"/>
-  <note id="D_6" location="564" soundLength="4"/>
+  
 </sequance>
 <sequance id="99">
 <subSequance id="10" location="64" />

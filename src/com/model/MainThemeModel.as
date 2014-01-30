@@ -18,6 +18,7 @@ package com.model
 		private var _rhythm:				uint;
 		private var _guiLayer:Presenter;
 		private  var _instruments:			ThemeInstrumentsModel;
+		private var _isTutorial:Boolean;
 		public var ready:					Signal = new Signal();
 		
 		
@@ -26,6 +27,11 @@ package com.model
 			parse(xml);
 		}
 		
+		public function get isTutorial():Boolean
+		{
+			return _isTutorial;
+		}
+
 		public function get screensModel():ScreensModel{
 			return _screens;
 		}
@@ -49,6 +55,7 @@ package com.model
 		
 		private function parse(xml:XML):void{
 			_rhythm = xml.@rhythm;
+			_isTutorial = xml.@tutorial == "true" ? true : false; 
 			_instruments = new ThemeInstrumentsModel(xml.instruments[0]);
 			_screens = new ScreensModel(xml,_instruments);	
 			_instruments.ready.addOnce(onInstrumentsReady)

@@ -3,6 +3,7 @@ package com.container
 	import com.constants.Rhythms;
 	import com.constants.Session;
 	import com.container.controller.ProgressControl;
+	import com.container.controller.TutorialProgressControl;
 	import com.model.MainThemeModel;
 	import com.model.rawData.Data;
 
@@ -44,7 +45,12 @@ package com.container
 				_themeProgressors[_progressControlIndex].start(mode);
 			}else{
 				var themeModel:MainThemeModel = new MainThemeModel(Data.getSongData(name),_presenter);
-				var progressControl:ProgressControl = new ProgressControl(_presenter,themeModel,name);
+				var progressControl:ProgressControl;
+				if(themeModel.isTutorial){
+					progressControl =  new TutorialProgressControl(_presenter,themeModel,name); 
+				}else{
+					progressControl =  new ProgressControl(_presenter,themeModel,name);
+				}
 				themeModel.ready.addOnce(onThemeReady);
 				_themeProgressors.push(progressControl);
 				_progressControlIndex=_themeProgressors.indexOf(progressControl);

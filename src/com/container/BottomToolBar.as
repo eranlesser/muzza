@@ -55,6 +55,7 @@ package com.container
 			return _navigator;
 		}
 		
+		
 		public function set instruments(instmnts:ThemeInstrumentsModel):void{
 			_navigator.instruments = instmnts;
 			_navigator.x = Dimentions.WIDTH-10-_navigator.width;

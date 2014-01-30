@@ -1,4 +1,5 @@
 package com.screens.view {
+	import com.container.Presenter;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	
 	import flash.display.Sprite;
@@ -14,10 +15,6 @@ package com.screens.view {
 
 		public function AbstractScreen(){
 			addBg();
-		}
-		
-		public function get screenName():String{
-			return "abstract";
 		}
 		
 		private function addBg():void{

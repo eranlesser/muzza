@@ -5,16 +5,10 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
-	import com.utils.errorHandlers.GlobalExceptionHandler;
 	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageDisplayState;
-	import flash.display.StageOrientation;
-	import flash.display.StageQuality;
-	import flash.display.StageScaleMode;
+	import flash.display.*;
 	import flash.events.StageOrientationEvent;
 	import flash.media.AudioPlaybackMode;
 	import flash.media.SoundMixer;
@@ -41,7 +35,6 @@ package {
 			start();
 			FileProxy.reset(this)
 			setDisplaySize();
-			new GlobalExceptionHandler(stage);
 			//Flurry.startSession("8R342X54FKMXSYP793P9");
 			//Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
 			//Flurry.getInstance().startSession();
