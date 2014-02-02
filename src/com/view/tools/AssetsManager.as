@@ -32,7 +32,9 @@ package com.view.tools
 			"<image path='assets/gui/buy.png' />"+
 			"<image path='assets/gui/restore.png' />"+
 			"<image path='assets/gui/unlock.png' />"+
+		
 			//MENU
+			"<image path='assets/open/Start_tutorial_idle.png' />"+
 			"<image path='assets/open/BETHOVEEN_PICTURE.png' />"+
 			"<image path='assets/open/MOZART_PICTURE.png' />"+
 			"<image path='assets/open/JINGLE_BELLS_PICTURE.png' />"+

@@ -59,9 +59,9 @@ package com.container.controller
 				if(_recordScreen && _recordScreen.recorder.visible==false){
 					var yy:Number = _recordScreen.recorder.y;
 					_recordScreen.stateController.stateChanged.add(onStatesChanged);
-					showPlayButton();
 					openInstruction("Play","Click here, let's play some music with Mel",450,130,"bottles.png",Inf.TOP_LEFT);
 				}
+				showPlayButton();
 			}
 		}
 		
@@ -142,14 +142,16 @@ package com.container.controller
 			closePopUp();
 			hideButtons();
 			showPlayButton();
-			var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail; 
-			switch(thumbNail){
-				case "drum.png":
-					openInstruction("Dee Drums","Lets add some rhythm",170,130,thumbNail,Inf.TOP_RIGHT);
-					break;
-				case "bass_flash.jpg":
-					openInstruction("O the human Bass","Time for some heavy groove",450,130,thumbNail,Inf.TOP_LEFT);
-					break;
+			if(_recordScreen){
+				var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail; 
+				switch(thumbNail){
+					case "drum.png":
+						openInstruction("Dee Drums","Lets add some rhythm",170,130,thumbNail,Inf.TOP_RIGHT);
+						break;
+					case "bass_flash.jpg":
+						openInstruction("O the human Bass","Time for some heavy groove",450,130,thumbNail,Inf.TOP_LEFT);
+						break;
+				}
 			}
 		}
 		

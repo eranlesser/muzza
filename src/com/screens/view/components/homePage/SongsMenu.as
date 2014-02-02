@@ -3,24 +3,13 @@ package com.screens.view.components.homePage
 	import com.constants.Dimentions;
 	import com.constants.Session;
 	import com.gskinner.motion.GTween;
-	import com.gskinner.motion.easing.Bounce;
 	import com.gskinner.motion.easing.Circular;
-	import com.gskinner.motion.easing.Elastic;
-	import com.gskinner.motion.easing.Exponential;
-	import com.gskinner.motion.easing.Sine;
 	import com.model.FileProxy;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.geom.Matrix;
-	import flash.media.Sound;
-	import flash.media.SoundChannel;
-	import flash.net.URLRequest;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	
@@ -155,7 +144,8 @@ package com.screens.view.components.homePage
 			if(_thumbsLayer.x==0){
 				_prevButton.visible=false;
 			}
-			if(_thumbsLayer.x==-(_thumbsLayer.width)+Dimentions.WIDTH){
+			trace((_thumbsLayer.width)+Dimentions.WIDTH);
+			if(_thumbsLayer.x<-(_thumbsLayer.width)+Dimentions.WIDTH){
 				_nextButton.visible=false;
 			}
 		}
@@ -177,9 +167,7 @@ package com.screens.view.components.homePage
 		}
 	}
 }
-import com.constants.Dimentions;
 import com.constants.Session;
-import com.model.FileProxy;
 import com.screens.view.Store;
 import com.view.gui.Btn;
 import com.view.tools.AssetsManager;
@@ -188,10 +176,6 @@ import flash.display.DisplayObject;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
-import flash.geom.Matrix;
-import flash.text.TextField;
-import flash.text.TextFieldAutoSize;
-import flash.text.TextFormat;
 
 import org.osflash.signals.Signal;
 
@@ -227,29 +211,15 @@ class LearnSongPannel extends Sprite{
 	}
 	
 	private function setData(xml:XML):void{
-		//addChild(AssetsManager.getAssetByName("STATION_WALL_TRIP.png"))
-		//var bg:DisplayObject = AssetsManager.getAssetByName("STATION_WALL_TRIP.png");
-		//addChild(bg);
-		//bg.x=Dimentions.WIDTH;
 		if(xml.@isFree=="true"){
 			_isFree=true;
 		}
-		_title=AssetsManager.getAssetByName(xml.@title);
-		addChild(_title);
-		//_title.cacheAsBitmap=true;
-		
-		//addChild(AssetsManager.getAssetByName("WHITE_LIGHT_TOP.png"))//.cacheAsBitmap=true;
-		
-		_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
-		addChild(_thumbNail);
-		_thumbNail.alpha=0.99;
-		//_thumbNail.cacheAsBitmap=true;
-		_name=xml.@name;
-		
-		
+		if(xml.@name=="tutorial"){
+			playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png");
+			playBtn.x = 510;
+			playBtn.y = 220;
+		}else{
 			playBtn=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");
-			playBtn.addEventListener(MouseEvent.CLICK,onPlay);
-			addChild(playBtn);
 			playBtn.x = 650;
 			playBtn.y = 210;
 			freestyle = new Btn("freestyle.png","freestyle.png");
@@ -257,17 +227,21 @@ class LearnSongPannel extends Sprite{
 			addChild(freestyle);
 			freestyle.x = 650 + (playBtn.width-freestyle.width)/2;
 			freestyle.y = 310;
-//			freestyle.visible = FileProxy.getImproviseEnabled(_name);
-//			FileProxy.freeStyleSignal.add(function():void{
-//				freestyle.visible = FileProxy.getImproviseEnabled(_name)
-//			}
-//			);
 			buyBtn = new Btn("unlock.png","unlock.png");
 			buyBtn.clicked.add(buyBtnClicked);
 			addChild(buyBtn);
 			buyBtn.x=670 ;
 			buyBtn.y=260;
+			_title=AssetsManager.getAssetByName(xml.@title);
+			addChild(_title);
+			_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
+			addChild(_thumbNail);
+			_thumbNail.alpha=0.99;
+			_name=xml.@name;
 			onFullVersion();
+		}
+		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
+		addChild(playBtn);
 	}
 	
 	public function onFullVersion():void{
