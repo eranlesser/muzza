@@ -26,7 +26,7 @@ package com.screens.view {
 			addChild(_guiLayer);
 		}
 		
-		public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void{
+		public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel,tutorial:Boolean=false):void{
 			trace("EEERRRROOOORRR parseXML not implemented");
 		}
 		

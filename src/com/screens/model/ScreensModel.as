@@ -25,7 +25,7 @@ package com.screens.model {
 		private function parse(xml:XML):void{
 //			_studio=new Studio();
 //			_studio.parseXML(_xml.screens.studioScreen[0],_instrumentsModel);
-			_recordSession=new RecordSession(_xml.screens.recordSession[0],_instrumentsModel);
+			_recordSession=new RecordSession(_xml.screens.recordSession[0],_instrumentsModel,xml.@tutorial == "true");
 			_demoScreen = new DemoScreen();
 			_demoScreen.parseXML(_xml.screens.demoScreen[0],_instrumentsModel);
 		}

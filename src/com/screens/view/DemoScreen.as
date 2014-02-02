@@ -16,11 +16,6 @@ package com.screens.view {
 	
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
-	import flash.display.Sprite;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFieldType;
-	import flash.text.TextFormat;
 	
 	import org.osflash.signals.Signal;
 
@@ -44,27 +39,24 @@ package com.screens.view {
 			
 		}
 		
-		override public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void{
+		override public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel,tutorial:Boolean=false):void{
 			_model = new PlayScreenModel(screenData,instrumentsModel);
 		}
 		
 		protected function init(masked:Boolean=true):void{
 			_model.start();
-			//addSign();
 			for each(var instrumentModel:InstrumentModel in _model.instruments){
 				(addInstrument(instrumentModel));
 			}
 			
 			layout();
 			isInited = true;
-			//////
 			for each(var ins:PlayMusician in _instruments){
 				ins.start();
 			}
 			
 			if(masked){ // demo - not listen
 				_mask=getMask();
-				//_stageLayer.mask=_mask;
 				addChild(_mask)
 				_bg.mask=_mask;
 				_frame=AssetsManager.getAssetByName("DEMO_SCREEN_FRAME.png");
@@ -97,15 +89,6 @@ package com.screens.view {
 				_guiLayer.addChild(_timeSlider);
 				_timeSlider.x=(Dimentions.WIDTH)/2+_frame.x-_timeSlider.width/2;
 				_timeSlider.y=531+19+40;
-				
-//				var anotherMask:Shape = new Shape();
-//				anotherMask.graphics.beginFill(0xFFFFFF);
-//				anotherMask.graphics.drawRect(6,10,940,580);
-//				anotherMask.graphics.endFill();
-//				//mask=anotherMask;
-//				anotherMask.x=29+16;
-//				anotherMask.y=19+22;
-				//var timeBar:DisplayObject=AssetsManager.getAssetByName("");
 			}
 			_stageLayer.addChild(AssetsManager.getAssetByName("Pole_Left.png"));
 			if(_timeSlider)
@@ -142,8 +125,6 @@ package com.screens.view {
 				for each(var ins:PlayMusician in _instruments){
 					ins.start();
 				}
-				
-				//setClock();
 			}
 			if(_timeSlider){
 				_timeControll.play(_timeSlider,_model.endAtFrame,{value:100});
@@ -151,18 +132,11 @@ package com.screens.view {
 				_timeControll.play(this,_model.endAtFrame,null);
 			}
 			stage.frameRate=Rhythms.FRAME_RATE;
-			//trace("frame rate is",stage.frameRate)
 			if(_timeSlider){
 				_timeSlider.value=(0);
 			}
 			startPlayers();
 		}
-		
-//		private function setTimeSlider():void{
-//			_timeSlider.setValue(_timeModel.currentTick/_model.endAtFrame)
-//		}
-		
-		
 		
 		protected function startPlayers():void{
 			if(!this.parent){
@@ -187,7 +161,6 @@ package com.screens.view {
 			}
 			Session.instance.goodScreensLength = donePlayers;
 			if(donePlayers==_instruments.length){
-				//if(_timeModel.currentTick>0 && donePlayers==_model.instruments.length){
 				if(_timeModel.currentTick>0 ){//&& donePlayers==_instruments.length
 					endMusciPiece();
 					complete.dispatch();
@@ -200,20 +173,10 @@ package com.screens.view {
 				ins.stop();
 			}
 			_timeControll.stop();
-			//Clock.getInstance().reset();
-			//Clock.getInstance().visible=false;
-			if(_timeSlider){
-				//_timeModel.tickSignal.remove(setTimeSlider);
-			}
 		}
 		
 		
 		protected function setClock():void{
-//			var clock:Clock = Clock.getInstance()//new Clock(_guiLayer);
-//			clock.x =  281;
-//			clock.y = 54;
-//			addChild(clock);
-//			clock.visible = true;
 		}
 		
 		override protected function layout():void{
@@ -227,49 +190,23 @@ package com.screens.view {
 		
 		protected function addInstrument(insModel:InstrumentModel):void{
 			var ins:PlayMusician = new PlayMusician(insModel);
-			//if(ins.type=="bg"){
 			if(_model.instruments.indexOf(insModel)<2){
-				
 				_stageLayer.addChildAt(ins,0);
 			}else{
 				_stageLayer.addChild(ins);
 			}
-			//}else{
-			//	_stageLayer.addChild(ins);
-			//}
 			_instruments.push(ins)
 		}
 		
 		protected function endMusciPiece():void{
-			//Clock.getInstance().stop();
 			if(_timeSlider){
-				//_timeModel.tickSignal.remove(setTimeSlider);
 				if(_model.endAtFrame-10 <= _timeModel.currentTick){
-				//PopUpsManager.openPopUp(PopUpsManager.CLOSE_DEMO);
 					_playPauseBtn.state=1;
-				//Flurry.logEvent("demo complete");
 				}
 			}
 			
 		}
 		
-		
-		private function addSign():void{
-			var sign:Sprite = new Sprite();
-			sign.addChild(AssetsManager.getAssetByName("sign.png"));
-			_bg.addChild(sign);
-			sign.x=380;
-			sign.y=40;
-			var tField:TextField = new TextField()
-			tField.defaultTextFormat = new TextFormat("HelveticaNeue",24,0Xd6d6d9);
-			sign.addChild(tField);
-			tField.autoSize = TextFieldAutoSize.LEFT;
-			tField.text = "Train Beats";
-			tField.type = TextFieldType.INPUT;
-			tField.maxChars = 14;
-			tField.x=15;
-			tField.y=32;
-		}
 		
 	}
 }

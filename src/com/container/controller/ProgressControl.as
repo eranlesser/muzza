@@ -81,13 +81,13 @@ package com.container.controller {
 		protected function gotoScreen(scr:String):void{
 			closeDemo();
 			_view.removeScreens();
-			scr == "next" ? _mainThemeModel.screensModel.gotoScreen(scr) : _mainThemeModel.screensModel.goNext();
+			scr == "next" ? _mainThemeModel.screensModel.goNext() : _mainThemeModel.screensModel.gotoScreen(scr) ; 
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
 			_mainThemeModel.screensModel.currentScreen.start();
 			_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
 		
-		private function goNext():void{
+		protected function goNext():void{
 			gotoScreen("next");
 			//closeDemo();
 			//_view.removeScreens();
@@ -136,7 +136,7 @@ package com.container.controller {
 		}
 		
 		
-		private function goHome():void{
+		protected function goHome():void{
 			_mainThemeModel.screensModel.currentScreen.stop();
 			goHomeSignal.dispatch();
 			_mainThemeModel.screensModel.reset();

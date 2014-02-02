@@ -18,16 +18,12 @@ package com.screens.recordScreenStates
 		protected var _states:			Vector.<IRecordScreenState>;
 		protected var _state:			IRecordScreenState;
 		protected var _recordScreen:	RecordScreen;
+		public var stateChanged:Signal = new Signal();
 		
-		public function RecordScreenStateController(recordScreen:RecordScreen){
+		public function RecordScreenStateController(recordScreen:RecordScreen,tutorial:Boolean = false){
 			_recordScreen = recordScreen;
 			_states = new Vector.<IRecordScreenState>();
-			init();
-		}
-		
-		protected function initStates():void{
-			_states.push(new IdleState(this));
-			_states.push(new RecordState(this));
+			init(tutorial);
 		}
 		
 		public function get muteBtn():Btn{
@@ -38,9 +34,14 @@ package com.screens.recordScreenStates
 			return _recordScreen.hasBackUps;
 		}
 		
-		private function init():void{
-			initStates();
-			//instrumentRecorder.setRecordable(model.beginAtFrame,model.endAtFrame);
+		private function init(tutorial:Boolean):void{
+			if(tutorial){
+				_states.push(new TutorialIdleState(this));
+				_states.push(new TutorialRecord(this));
+			}else{
+				_states.push(new IdleState(this));
+				_states.push(new RecordState(this));
+			}
 		}
 		
 		
@@ -85,6 +86,7 @@ package com.screens.recordScreenStates
 			//trace("state",name)
 			_state = getStateByName(name);
 			activate();
+			stateChanged.dispatch(name);
 		}
 		
 		

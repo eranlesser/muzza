@@ -1,8 +1,10 @@
 package com.container.controller
 {
+	import com.constants.Dimentions;
+	import com.constants.States;
 	import com.container.Presenter;
 	import com.inf.Inf;
-	import com.inf.TutorialManager;
+	import com.model.FileProxy;
 	import com.model.MainThemeModel;
 	import com.screens.view.RecordScreen;
 	
@@ -21,11 +23,24 @@ package com.container.controller
 			super.start(mode);
 			openInstruction("Demo","Click here, this is what we are about to play together",85,500,"bottles.png",Inf.BTM_LEFT);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
-			_recordScreen.playButton.visible = false;
-			_recordScreen.playGlow.visible = false;
-			_recordScreen.recorder.visible = false;
-			_view.menu.navigator.visible = false;
-			
+			hideButtons();
+		}
+		
+		private function hideButtons():void{
+			if(_recordScreen){
+				_recordScreen.playButton.visible = false;
+				_recordScreen.recordButton.visible = false;
+				_recordScreen.playGlow.visible = false;
+				_recordScreen.recorder.visible = false;
+				_view.menu.navigator.visible = false;
+				_recordScreen.musteButton.visible=false;
+			}
+		}
+		
+		private function showPlayButton():void{
+			if(_recordScreen){
+				_recordScreen.playButton.visible = true;
+			}
 		}
 		
 		override protected function openDemo(silentMode:Boolean=false):void{
@@ -41,6 +56,12 @@ package com.container.controller
 			if(!silentMode){
 				closePopUp();
 				_mainThemeModel.screensModel.demoScreen.complete.remove(closePopUp);
+				if(_recordScreen && _recordScreen.recorder.visible==false){
+					var yy:Number = _recordScreen.recorder.y;
+					_recordScreen.stateController.stateChanged.add(onStatesChanged);
+					showPlayButton();
+					openInstruction("Play","Click here, let's play some music with Mel",450,130,"bottles.png",Inf.TOP_LEFT);
+				}
 			}
 		}
 		
@@ -51,7 +72,40 @@ package com.container.controller
 		override protected function gotoScreen(scr:String):void{
 			super.gotoScreen(scr);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
+			hideButtons();
+			if(_recordScreen){
+				_recordScreen.stateController.stateChanged.add(onStatesChanged);
+			}
 		}
+		
+		private function onStatesChanged(state:String):void
+		{
+			if(state == States.RECORD){
+				closePopUp();
+			}else{
+				if(_recordScreen.model.isRecorded){
+					var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail;
+					switch(thumbNail){
+						
+						case "bottles.png":
+							openPop("Great Job!","",(Dimentions.WIDTH-300)/2,130,thumbNail);
+							break;
+						case "drum.png":
+							openPop("You Rock!","",(Dimentions.WIDTH-300)/2,130,thumbNail);
+							break;
+						case "bass_flash.jpg":
+							openPop("Awesome!!","",(Dimentions.WIDTH-300)/2,130,thumbNail);
+							break;
+					}
+				}
+			}
+			
+		}
+		
+		private function onListenDone():void{
+			
+		}
+		
 		
 		public function openInstruction(title:String,content:String,xx:uint,yy:uint,thumbNail:String,dir:String):void{
 			_inf = new Inf(300,dir);
@@ -82,12 +136,32 @@ package com.container.controller
 		
 		private function onNext():void
 		{
-			// TODO Auto Generated method stub
+			_recordScreen.stateController.stateChanged.remove(onStatesChanged);
+			goNext();
 			_inf.nextSignal.remove(onNext);
+			closePopUp();
+			hideButtons();
+			showPlayButton();
+			var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail; 
+			switch(thumbNail){
+				case "drum.png":
+					openInstruction("Dee Drums","Lets add some rhythm",170,130,thumbNail,Inf.TOP_RIGHT);
+					break;
+				case "bass_flash.jpg":
+					openInstruction("O the human Bass","Time for some heavy groove",450,130,thumbNail,Inf.TOP_LEFT);
+					break;
+			}
+		}
+		
+		override protected function goHome():void{
+			super.goHome();
+			closePopUp();
+			FileProxy.resetTutorial();
+			_mainThemeModel.screensModel.recordSession.deleteRecorded();
+				//clear all data from levels
 		}
 		
 		public function closePopUp():void{
-			//_view.removeChild(_mask);
 			if(_inf&&_inf.parent){
 				_view.removeChild(_inf as DisplayObject);
 			}

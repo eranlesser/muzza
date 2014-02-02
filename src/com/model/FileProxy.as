@@ -3,7 +3,6 @@ package com.model
 	import com.constants.Session;
 	import com.musicalInstruments.model.sequances.RecordableNotesSequance;
 	
-	import flash.display.DisplayObjectContainer;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
@@ -41,7 +40,6 @@ package com.model
 			outputString += sequance.toXML().toXMLString()+'\n';
 			outputStream.writeUTFBytes(outputString);
 			outputStream.close();
-			trace(sequance.toXML().toXMLString());
 		}
 		
 		public static function importSequance(file:File):XML{
@@ -156,10 +154,6 @@ package com.model
 		}
 		
 		public static function setImproviseEnabled(flag:Boolean):void{
-			if(getImproviseEnabled(Session.SONG_NAME) == false && flag){
-				trace("***POPUP****");
-				//return; // temp
-			}
 			var folder:File = File.applicationStorageDirectory.resolvePath("config/song_"+Session.SONG_NAME);
 			if (!folder.exists) { 
 				folder.createDirectory();
@@ -245,6 +239,18 @@ package com.model
 					}
 				}else{
 					file.deleteFile();
+				}
+			}
+		}
+		public static function resetTutorial():void{
+			var files:Array=File.applicationStorageDirectory.getDirectoryListing();
+			for each(var file:File in files){
+				if(file.isDirectory&&file.name=="song_tutorial"){
+					if(file.isDirectory){
+						file.deleteDirectory(true);
+					}else{
+						file.deleteFile();
+					}
 				}
 			}
 		}

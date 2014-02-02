@@ -16,6 +16,8 @@ package com.screens.mediator
 		private var _scores:Vector.<scoreData>;
 		private var _scorePanel:ScorePanel;
 		private var _score:int=0;
+		private var _lastScore:uint=0;
+		
 		
 		public function ScoreMediator(recordState:RecordState){
 			_recordState = recordState;
@@ -28,6 +30,10 @@ package com.screens.mediator
 			_scorePanel.y=28;
 			scorePanelVisible();
 			Session.improviseSignal.add(scorePanelVisible);
+		}
+		
+		public function get lastScore():uint{
+			return _lastScore;
 		}
 		
 //		public function get wrongNotes():uint
@@ -90,6 +96,7 @@ package com.screens.mediator
 			if(!goodNote){
 				if(xx>0){
 					showScoreFeedBack("X",130,xx,0xE82C0C);
+					_lastScore=0;
 				}
 				return;
 			}
@@ -111,6 +118,7 @@ package com.screens.mediator
 			if(scoreValue>0){
 				showScoreFeedBack("+"+scoreValue,130,scoreX,scoreColor);
 			}
+			_lastScore = scoreValue;
 			_score = _score + scoreValue;
 			_scorePanel.setScore(_score);
 		}

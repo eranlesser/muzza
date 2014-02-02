@@ -53,6 +53,11 @@ package com.screens.view {
 			_timeModel = Metronome.getTimeModel();
 		}
 		
+		public function get stateController():RecordScreenStateController
+		{
+			return _stateController;
+		}
+
 		public function get recorder():Instrument{
 			return _instrumentRecorder;
 		}
@@ -86,8 +91,8 @@ package com.screens.view {
 			return _notes;
 		}
 	
-		protected function initStateController():void{
-			_stateController = new RecordScreenStateController(this);
+		protected function initStateController(tutorial:Boolean):void{
+			_stateController = new RecordScreenStateController(this,tutorial);
 		}
 		override public function start():void{
 			if(!isInited){
@@ -102,7 +107,7 @@ package com.screens.view {
 				_muteButton.clicked.add(onMute);
 				var channel:NotesChannel=_notes.addChannel(_model.instrumentModel,_model.endAtFrame);
 				_recordChannelController = new RecordChannelController(channel, _model.instrumentModel, _instrumentRecorder,_model);
-				initStateController();
+				initStateController(_model.tutorial);
 				_timerControll=Metronome.getTimeControll();
 				layout();
 				_clock = Clock.instance;
@@ -116,10 +121,6 @@ package com.screens.view {
 			_timerControll.beginAtFrame = _model.beginAtFrame;
 			_clock.reset();
 			addBackUps();
-			_recordBtn.visible=Session.IMPROVISE_MODE;
-			_playBtnOver.visible=!Session.IMPROVISE_MODE;
-			_playBtn.visible=!Session.IMPROVISE_MODE;
-			notes.visible =!Session.IMPROVISE_MODE;
 			_instrumentRecorder.active = true;
 		}
 		
@@ -138,22 +139,8 @@ package com.screens.view {
 			_playBtnOver.alpha=0;
 			_playBtnOver.x=(Dimentions.WIDTH-_playBtnOver.width)/2;;
 			_playBtnOver.y=50//(strip.height-practiceBtn.height)/2-2;
-			var tmr:Timer = new Timer(2000,7);
-			tmr.addEventListener(TimerEvent.TIMER,showPlay);
-			tmr.start();
 		}
 		
-		private function showPlay(e:Event):void{
-			var playTween1:GTween = new GTween(_playBtnOver,0.5,{alpha:1});
-			playTween1.onComplete = function():void{
-				new GTween(_playBtnOver,0.5,{alpha:0});
-			}
-			var tmr:Timer = e.target as Timer;
-			if(tmr && tmr.currentCount==tmr.repeatCount){
-				tmr.removeEventListener(TimerEvent.TIMER,showPlay);
-				tmr=null;
-			}
-		}
 		
 		private function onMute(id:String):void
 		{
@@ -183,8 +170,9 @@ package com.screens.view {
 			super.stop();
 		}
 		
-		override public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel):void{
+		override public function parseXML(screenData:XML,instrumentsModel:ThemeInstrumentsModel,tutorial:Boolean=false):void{
 			_model = new RecordScreenModel(screenData,instrumentsModel);
+			_model.tutorial = tutorial;
 		}
 		
 		override protected function layout():void{

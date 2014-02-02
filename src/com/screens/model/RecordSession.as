@@ -18,11 +18,11 @@ package com.screens.model
 		private var _currentScreenIndex:	uint = 0;
 		private var _lastInstrumentIndex:	uint;
 		
-		public function RecordSession(data:XML,instrumentsModel:ThemeInstrumentsModel){
+		public function RecordSession(data:XML,instrumentsModel:ThemeInstrumentsModel,tutorial:Boolean){
 			_recordScreens = new Vector.<IScreen>();
 			for each(var screenData:XML in data.recordScreen){
 				var scr:RecordScreen = new RecordScreen();
-				scr.parseXML(screenData,instrumentsModel);
+				scr.parseXML(screenData,instrumentsModel,tutorial);
 				_recordScreens.push(scr);
 				scr.scoreUpdated.add(onScorUpdated);
 			}
@@ -50,6 +50,14 @@ package com.screens.model
 		
 		public function reset():void{
 			_currentScreenIndex = 0;
+		}
+		
+		public function deleteRecorded():void{
+			for each(var isc:IScreen in _recordScreens){
+				if(isc is RecordScreen && RecordScreen(isc).model.instrumentModel.getSequanceById(RecordScreen(isc).model.recordeSequanceId)){
+					RecordScreen(isc).model.instrumentModel.getSequanceById(RecordScreen(isc).model.recordeSequanceId).destroy();
+				}
+			}
 		}
 		
 		public function get currentScreen():IScreen{

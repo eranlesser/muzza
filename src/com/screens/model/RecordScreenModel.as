@@ -1,11 +1,7 @@
 package com.screens.model {
-	import com.constants.Directions;
 	import com.constants.Session;
-	import com.model.MainThemeModel;
 	import com.musicalInstruments.model.CoreInstrumentModel;
 	import com.musicalInstruments.model.InstrumentModel;
-	import com.musicalInstruments.model.NotesInstrumentModel;
-	import com.musicalInstruments.model.PalletModel;
 	import com.musicalInstruments.model.ThemeInstrumentsModel;
 	import com.musicalInstruments.model.sequances.NoteSequanceModel;
 
@@ -24,6 +20,7 @@ package com.screens.model {
 		private var _startAtCurPoint:int;
 		private var _showLine:Boolean=true;
 		public var score:int;
+		public var tutorial:Boolean=false;
 		public function RecordScreenModel(xml:XML,instruments:ThemeInstrumentsModel){
 			super(xml);
 			_instruments = instruments;
