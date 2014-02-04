@@ -36,9 +36,9 @@ package com.container
 			Session.SONG_NAME=name;
 			_playMode=mode;
 			_presenter.removeStartScreen();
-			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){//reset old progresscontroll
-				_themeProgressors[_progressControlIndex].reset();
-			}
+			//if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){//reset old progresscontroll
+			//	_themeProgressors[_progressControlIndex].reset();
+			//}
 			_progressControlIndex = getProgressControllerIndex(name);
 			//_progressControl = getProgressController(name);
 			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){

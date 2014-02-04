@@ -237,9 +237,9 @@ class LearnSongPannel extends Sprite{
 			_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
 			addChild(_thumbNail);
 			_thumbNail.alpha=0.99;
-			_name=xml.@name;
 			onFullVersion();
 		}
+		_name=xml.@name;
 		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
 		addChild(playBtn);
 	}

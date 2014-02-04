@@ -26,8 +26,6 @@ package com.container.controller {
 			_mainThemeModel = theme;
 			_themeName = themeName;
 			_frameRate=theme.rhythm;
-			_view.menu.goHome.add(goHome);
-			_view.goHome.add(goHome);
 			goHomeSignal = new Signal();
 			
 		}
@@ -35,6 +33,9 @@ package com.container.controller {
 			_mainThemeModel.reset();
 			_mainThemeModel.screensModel.playMode=mode;
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
+			
+			_view.menu.goHome.add(goHome);
+			_view.goHome.add(goHome);
 			
 			_mainThemeModel.screensModel.currentScreen.start();
 			initNavigator();
@@ -54,11 +55,16 @@ package com.container.controller {
 			}
 		}
 		
-		public function reset():void{
+		private function reset():void{
 			_mainThemeModel.screensModel.reset();
+			_mainThemeModel.screensModel.currentScreen.stop();
+			_view.menu.goHome.remove(goHome);
+			_view.goHome.remove(goHome);
 			_view.gotoScreen.remove(gotoScreen);
 			_view.goNext.remove(goNext);
 			_view.menu.openDemo.remove(toggleDemo);
+			_view.menu.demoButton.state="idle";
+			_demoOpen=false;
 		}
 		
 		public function get frameRate():uint{
@@ -89,12 +95,6 @@ package com.container.controller {
 		
 		protected function goNext():void{
 			gotoScreen("next");
-			//closeDemo();
-			//_view.removeScreens();
-			
-			//_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
-			//_mainThemeModel.screensModel.currentScreen.start();
-			//_navigator.state=_mainThemeModel.screensModel.recordSession;
 		}
 		private var _demoOpen:Boolean=false;
 		private function toggleDemo():void{
@@ -137,11 +137,8 @@ package com.container.controller {
 		
 		
 		protected function goHome():void{
-			_mainThemeModel.screensModel.currentScreen.stop();
+			reset();
 			goHomeSignal.dispatch();
-			_mainThemeModel.screensModel.reset();
-			_view.menu.demoButton.state="idle";
-			_demoOpen=false;
 		//	Flurry.logEvent("go home");
 		}
 		

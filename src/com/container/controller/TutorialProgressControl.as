@@ -6,17 +6,24 @@ package com.container.controller
 	import com.inf.Inf;
 	import com.model.FileProxy;
 	import com.model.MainThemeModel;
+	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Sprite;
 
 	public class TutorialProgressControl extends ProgressControl
 	{
 		private var _inf:Inf;
+		private var _mask:Sprite;
 		private var _recordScreen:RecordScreen;
 		public function TutorialProgressControl(view:Presenter,theme:MainThemeModel,themeName:String)
 		{
 			super(view,theme,themeName);
+			_mask = new Sprite();
+			_mask.graphics.beginFill(0xFFFFFF,0.3);
+			_mask.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
+			_mask.graphics.endFill();
 		}
 		
 		override public function start(mode:String):void{
@@ -56,7 +63,7 @@ package com.container.controller
 			if(!silentMode){
 				closePopUp();
 				_mainThemeModel.screensModel.demoScreen.complete.remove(closePopUp);
-				if(_recordScreen && _recordScreen.recorder.visible==false){
+				if(_recordScreen && _recordScreen.recorder.visible==false && _recordScreen.model.instrumentModel.thumbNail == "bottles.png"){
 					var yy:Number = _recordScreen.recorder.y;
 					_recordScreen.stateController.stateChanged.add(onStatesChanged);
 					openInstruction("Play","Click here, let's play some music with Mel",450,130,"bottles.png",Inf.TOP_LEFT);
@@ -72,10 +79,22 @@ package com.container.controller
 		override protected function gotoScreen(scr:String):void{
 			super.gotoScreen(scr);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
-			hideButtons();
 			if(_recordScreen){
 				_recordScreen.stateController.stateChanged.add(onStatesChanged);
+				hideButtons();
+			}else{
+				var listenScreen:ListenScreen = _mainThemeModel.screensModel.currentScreen as ListenScreen;
+				if(listenScreen){
+					listenScreen.complete.addOnce(onSessionComplete);
+					listenScreen.backBtn.visible = false;
+				}
 			}
+		}
+		
+		private function onSessionComplete():void
+		{
+			openInstruction("Well Done","You are ready for the next level, click here",410,110,"bottles.png",Inf.TOP_LEFT);
+			
 		}
 		
 		private function onStatesChanged(state:String):void
@@ -88,13 +107,13 @@ package com.container.controller
 					switch(thumbNail){
 						
 						case "bottles.png":
-							openPop("Great Job!","",(Dimentions.WIDTH-300)/2,130,thumbNail);
+							openPop("Great Job!","",(Dimentions.WIDTH-300)/2,230,thumbNail);
 							break;
 						case "drum.png":
-							openPop("You Rock!","",(Dimentions.WIDTH-300)/2,130,thumbNail);
+							openPop("You Rock!","",(Dimentions.WIDTH-300)/2,230,thumbNail);
 							break;
 						case "bass_flash.jpg":
-							openPop("Awesome!!","",(Dimentions.WIDTH-300)/2,130,thumbNail);
+							openPop("Awesome!!","",(Dimentions.WIDTH-300)/2,230,thumbNail);
 							break;
 					}
 				}
@@ -122,7 +141,7 @@ package com.container.controller
 		
 		public function openPop(title:String,content:String,xx:uint,yy:uint,thumbNail:String):void{
 			_inf = new Inf(300,Inf.NO_ARROW);
-			//_view.addChild(_mask);
+			_view.addChild(_mask);
 			_view.addChild(_inf);
 			_inf.thumbNail = thumbNail;
 			_inf.addTitle(title);
@@ -137,6 +156,7 @@ package com.container.controller
 		private function onNext():void
 		{
 			_recordScreen.stateController.stateChanged.remove(onStatesChanged);
+			_recordScreen.stateController.deActivate();
 			goNext();
 			_inf.nextSignal.remove(onNext);
 			closePopUp();
@@ -146,10 +166,10 @@ package com.container.controller
 				var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail; 
 				switch(thumbNail){
 					case "drum.png":
-						openInstruction("Dee Drums","Lets add some rhythm",170,130,thumbNail,Inf.TOP_RIGHT);
+						openInstruction("Dee Drums","Lets add some rhythm",180,130,thumbNail,Inf.TOP_RIGHT);
 						break;
 					case "bass_flash.jpg":
-						openInstruction("O the human Bass","Time for some heavy groove",450,130,thumbNail,Inf.TOP_LEFT);
+						openInstruction("The human Bass","Time for some heavy groove",180,130,thumbNail,Inf.TOP_RIGHT);
 						break;
 				}
 			}
@@ -160,12 +180,16 @@ package com.container.controller
 			closePopUp();
 			FileProxy.resetTutorial();
 			_mainThemeModel.screensModel.recordSession.deleteRecorded();
+			_view.menu.navigator.visible = true;
 				//clear all data from levels
 		}
 		
 		public function closePopUp():void{
 			if(_inf&&_inf.parent){
 				_view.removeChild(_inf as DisplayObject);
+			}
+			if(_mask&&_mask.parent){
+				_view.removeChild(_mask as DisplayObject);
 			}
 		}
 	}

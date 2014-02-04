@@ -49,7 +49,6 @@ package com.musicalInstruments.view.character {
 					//_musicianView = new Singer(_model,false);
 				//}
 			}else{
-				trace("ERROR",_model.coreModel.thumbNail)
 			}
 			_musicianView.start();
 			addChild(_musicianView);

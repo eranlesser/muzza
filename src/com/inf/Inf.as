@@ -6,8 +6,6 @@ package com.inf
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
@@ -25,15 +23,13 @@ package com.inf
 		private var _arrow:DisplayObject;
 		private var _thumbNail:DisplayObject;
 		private var _bg:Sprite;
-		private var _mini_bg:Sprite;
 		private var _nextSignal:Signal = new Signal();
 		private var _tryAgainSignal:Signal = new Signal();
 		private var _width:uint;
 		public function Inf(wdth:uint,direction:String)
 		{
 			drawBg(wdth,direction);
-			drawMiniBg();
-			this.addEventListener(MouseEvent.CLICK,onClick);
+			//this.addEventListener(MouseEvent.CLICK,onClick);
 			//addTitle(_model.title,_model.width);
 			//addContent(_model.content,_model.width)
 			this.x=6;
@@ -96,25 +92,10 @@ package com.inf
 			)
 		}
 		
-		private function onClick(event:Event):void
-			
-		{
-			
-			//_bg.width = 70+20;			
-			
-			//_bg.height = _thumbNail.height+20;
-			if(_bg.visible){
-				close();
-			}else{
-				open();
-			}
-			
-		}
+		
 		
 		public function open():void{
 			_bg.visible = true;
-			_mini_bg.visible=false;
-			//this.x=_model.x
 			_thumbNail.x=10;
 			_thumbNail.y=10;
 			this.alpha = 0;
@@ -131,16 +112,7 @@ package com.inf
 			//_thumbNail.visible=false;
 		}
 		
-		public function close():void{
-			_bg.visible=false;
-			_mini_bg.visible=true;
-			this.x=6;
-			this.y=6;//(_topContainerY-_thumbNail.height)/2;
-			_thumbNail.x=5;
-			_thumbNail.y=5;
-			this.alpha=1;
-			tryAgainSignal.dispatch();
-		}
+		
 		
 		private function addArrow(arrowDirection:String):DisplayObject{
 			var arrow:DisplayObject;
@@ -177,40 +149,6 @@ package com.inf
 		}
 		
 		
-		private function drawMiniBg():void{
-			_mini_bg = new Sprite();
-			var topLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_LEFT_CORNER.png");
-			_mini_bg.addChild(topLeft);
-			var leftSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_LEFT_SEGMENT.png");
-			_mini_bg.addChild(leftSeg);
-			leftSeg.y=topLeft.height;
-			leftSeg.height=40;
-			var butLeft:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_LEFT_CORNER.png");
-			_mini_bg.addChild(butLeft);
-			butLeft.y=40+topLeft.height;
-			
-			var topRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_UPPER_RIGHT_CORNER.png");
-			_mini_bg.addChild(topRight);
-			topRight.x=40+topLeft.width//-topRight.width//+topLeft.width;
-			var butRight:DisplayObject = AssetsManager.getAssetByName("POP_UP_LOWER_RIGT_CORNER.png");
-			_mini_bg.addChild(butRight);
-			butRight.y=butLeft.y;
-			butRight.x=40+topLeft.width//-butRight.width;//+butLeft.width;
-			
-			var rightSeg:DisplayObject = AssetsManager.getAssetByName("POP_UP_RIGHT_SEGMENT.png");
-			_mini_bg.addChild(rightSeg);
-			rightSeg.x=topRight.x;
-			rightSeg.y=topRight.height;
-			rightSeg.height=40;
-			leftSeg.height=40;
-			var seg:DisplayObject = AssetsManager.getAssetByName("POP_UP_VERTICAL_SEGMENT.png");
-			_mini_bg.addChild(seg);
-			seg.width=40;
-			seg.height=83;
-			seg.x=20;
-			seg.y=0;
-			addChild(_mini_bg);
-		}
 		private function drawBg(wdt:uint,arrowDirection:String):void{
 			_bg = new Sprite();
 			var seg:DisplayObject = AssetsManager.getAssetByName("POP_UP_VERTICAL_SEGMENT.png");

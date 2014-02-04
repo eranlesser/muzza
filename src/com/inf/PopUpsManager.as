@@ -3,9 +3,7 @@ package com.inf
 	import com.constants.Dimentions;
 	import com.container.Presenter;
 	
-	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.utils.Dictionary;
 
 	public class PopUpsManager
 	{

@@ -33,6 +33,11 @@ package com.screens.view
 			Session.improviseSignal.add(removeInstruments)
 		}
 		
+		public function get backBtn():Btn
+		{
+			return _backBtn;
+		}
+
 		private function removeInstruments():void
 		{
 			while(_instruments.length>0){
@@ -138,16 +143,16 @@ package com.screens.view
 //			_representation.y = 573+52-5;
 //			_stageLayer.addChild(_representation);
 //		}
-		
+		private var _backBtn:Btn;
 		private function addToolBar():void{
 //			_toolBar=new ToolBar(_representation);
 //			_toolBar.y=_representation.y-40//-_toolBar.height;
 //			addChild(_toolBar);
-			var backBtn:Btn = new Btn("back.png","back_press.png");
-			addChild(backBtn);
-			backBtn.x=-3;
-			backBtn.y=6;
-			backBtn.clicked.add(backClicked);
+			_backBtn = new Btn("back.png","back_press.png");
+			addChild(_backBtn);
+			_backBtn.x=-3;
+			_backBtn.y=6;
+			_backBtn.clicked.add(backClicked);
 			var exitBtn:Btn = new Btn("menu.png","menu.png");
 			addChild(exitBtn);
 			exitBtn.x=(Dimentions.WIDTH-exitBtn.width)/2;
