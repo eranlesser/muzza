@@ -1,6 +1,5 @@
 package com.utils.errorHandlers
 {
-	import flash.display.DisplayObject;
 	import flash.display.LoaderInfo;
 	import flash.events.UncaughtErrorEvent;
 
@@ -9,12 +8,14 @@ package com.utils.errorHandlers
 		
 		
 		
-		public function GlobalExceptionHandler(stg:DisplayObject)
+		public function GlobalExceptionHandler(loaderInfo:LoaderInfo)
 		{
-			var loaderInfo:LoaderInfo;
-			loaderInfo = stg.loaderInfo;
 			loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR,
 				uncaughtErrorHandler);
+		}
+		
+		private function catchGlobalErrors(loaderInfo:LoaderInfo):void{
+			loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, uncaughtErrorHandler);
 		}
 		
 		private function uncaughtErrorHandler(event:UncaughtErrorEvent):void

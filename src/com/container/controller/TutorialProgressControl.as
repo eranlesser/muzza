@@ -28,7 +28,7 @@ package com.container.controller
 		
 		override public function start(mode:String):void{
 			super.start(mode);
-			openInstruction("Demo","Click here, this is what we are about to play together",85,500,"bottles.png",Inf.BTM_LEFT);
+			openInstruction("Demo","דמו לחלח דחלחנב חי לח",85,500,"bottles.png",Inf.BTM_LEFT);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
 			hideButtons();
 		}
