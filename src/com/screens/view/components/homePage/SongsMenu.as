@@ -186,9 +186,10 @@ class LearnSongPannel extends Sprite{
 	private var _name:		String;
 	private var _isFree:Boolean=false;
 	private var _store:Store;
-	private var playBtn:Sprite;
+	private var playBtn:Btn;
 	private var freestyle:Btn;
 	private var buyBtn:Btn;
+	private var playBtnVisible:Boolean=true;
 	
 	private var _songSelected:	Signal=new Signal();
 	
@@ -215,7 +216,7 @@ class LearnSongPannel extends Sprite{
 			_isFree=true;
 		}
 		if(xml.@name=="tutorial"){
-			playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png");
+			playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png","","tutorial");
 			playBtn.x = 510;
 			playBtn.y = 220;
 		}else{
@@ -237,18 +238,23 @@ class LearnSongPannel extends Sprite{
 			_thumbNail = AssetsManager.getAssetByName(xml.@thumbNail);
 			addChild(_thumbNail);
 			_thumbNail.alpha=0.99;
+			playBtnVisible = (xml.@play!="false")
 			onFullVersion();
 		}
+		
 		_name=xml.@name;
 		playBtn.addEventListener(MouseEvent.CLICK,onPlay);
 		addChild(playBtn);
 	}
 	
 	public function onFullVersion():void{
+		if(playBtn.id=="tutorial"){
+			return;
+		}
 		var isFree:Boolean = (_isFree || Session.fullVersionEnabled)
 			buyBtn.visible=!isFree;
 			freestyle.visible=isFree;
-			playBtn.visible=isFree;
+			playBtn.visible=isFree && playBtnVisible;
 			if(_store&&_store.parent){
 				removeChild(_store);
 			}

@@ -95,7 +95,7 @@ package com.model
 		
 		public static function setFullVersion(val:String):void{
 			
-			var outputFile:File = File.applicationStorageDirectory.resolvePath("session/fullVersion.xml") ;
+			var outputFile:File = File.documentsDirectory.resolvePath("melody/session/fullVersion.xml") ;
 			if(outputFile.exists){
 				outputFile.deleteFile();
 			}
@@ -108,7 +108,7 @@ package com.model
 		}
 		
 		public static function getFullVersion():Boolean{
-			var inputFile:File = File.applicationStorageDirectory.resolvePath("session/fullVersion.xml") ;
+			var inputFile:File = File.documentsDirectory.resolvePath("melody/session/fullVersion.xml") ;
 			if(inputFile.exists){
 				var inputStream:FileStream = new FileStream();
 				inputStream.open(inputFile, FileMode.READ);
@@ -153,36 +153,7 @@ package com.model
 			outputStream.close();
 		}
 		
-		public static function setImproviseEnabled(flag:Boolean):void{
-			var folder:File = File.applicationStorageDirectory.resolvePath("config/song_"+Session.SONG_NAME);
-			if (!folder.exists) { 
-				folder.createDirectory();
-			} 
-			var outputFile:File = folder.resolvePath("improvise.xml");
-			if(outputFile.exists){
-				outputFile.deleteFile();
-			}
-			var outputStream:FileStream = new FileStream();
-			outputStream.open(outputFile,FileMode.WRITE);
-			var outputString:String = '<?xml version="1.0" encoding="utf-8"?>\n';
-			outputString += '<data><improvise enabled="'+flag.toString()+'" /></data>';
-			outputStream.writeUTFBytes(outputString);
-			outputStream.close();
-			freeStyleSignal.dispatch();
-		}
 		
-		public static function getImproviseEnabled(song:String):Boolean{
-			var inputFile:File = File.applicationStorageDirectory.resolvePath("config/song_"+song+"/improvise.xml") ;
-			if(inputFile.exists){
-				var inputStream:FileStream = new FileStream();
-				inputStream.open(inputFile, FileMode.READ);
-				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
-				inputStream.close();
-				return sessionXML.improvise.@enabled=="true";
-			}else{
-				return false;
-			}
-		}
 		
 		
 		public  function getSongData(songInx:uint,instrument:String,id:uint):XML{
@@ -196,20 +167,6 @@ package com.model
 			//return new XML();
 		}
 		
-		public  function importSessionData():XML{
-			var inputFile:File = File.applicationStorageDirectory.resolvePath("sessions/userSession.xml") ;
-			if(inputFile.exists){
-				var inputStream:FileStream = new FileStream();
-				inputStream.open(inputFile, FileMode.READ);
-				var sessionXML:XML = XML(inputStream.readUTFBytes(inputStream.bytesAvailable));
-				inputStream.close();
-				return sessionXML;
-			}else{ // first run
-				return new XML('<userSession><session count="5" /></userSession>');// start from 5 after 4 prefed
-			}
-			
-			
-		}
 		
 //		public  function exportSessionData(sessionXml:XML):void{
 //			var folder:File = File.applicationStorageDirectory.resolvePath("sessions");

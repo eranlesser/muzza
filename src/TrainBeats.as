@@ -6,7 +6,6 @@ package {
 	import com.container.ThemesController;
 	import com.model.FileProxy;
 	import com.utils.errorHandlers.GlobalExceptionHandler;
-	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
 	import flash.display.Sprite;

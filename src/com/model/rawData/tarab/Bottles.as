@@ -56,7 +56,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 <gestures>
 </gestures>
 <sequances>
-<sequance id="99">
+<sequance id="199">
 <note id="2" location="1" soundLength="1"/> 
 <note id="6" location="9" soundLength="1"/> 
 <note id="5" location="17" soundLength="1"/> 

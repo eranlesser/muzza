@@ -29,6 +29,11 @@ package com.view.gui
 			init();
 		}
 		
+		public function get id():String
+		{
+			return _id;
+		}
+
 		public function get clicked():Signal{
 			return _clicked;
 		}

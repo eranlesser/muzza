@@ -108,9 +108,6 @@ package com.screens.view
 		}
 
 		override protected function endMusciPiece():void{
-			if(Session.instance.goodScreensLength==4){
-				FileProxy.setImproviseEnabled(true);
-			}
 			_claps.play();
 			_hat.fillHat(Session.instance.score);
 			//}
