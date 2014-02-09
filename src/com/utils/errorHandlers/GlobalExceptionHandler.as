@@ -1,5 +1,7 @@
 package com.utils.errorHandlers
 {
+	import com.sticksports.nativeExtensions.flurry.Flurry;
+	
 	import flash.display.LoaderInfo;
 	import flash.events.UncaughtErrorEvent;
 
@@ -21,7 +23,7 @@ package com.utils.errorHandlers
 		private function uncaughtErrorHandler(event:UncaughtErrorEvent):void
 		{
 			if(event.error is Error){
-				trace(event.errorID,event.error.message,event.error.getStackTrace())
+				Flurry.logError(event.errorID.toString(),event.error.message+" : "+event.error.getStackTrace())
 			}
 			event.preventDefault();
 		}

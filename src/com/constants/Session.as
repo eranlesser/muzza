@@ -1,7 +1,5 @@
 package com.constants {
 	import com.model.FileProxy;
-	import com.screens.model.RecordScreenModel;
-	import com.screens.view.RecordScreen;
 	
 	import org.osflash.signals.Signal;
 

@@ -6,6 +6,7 @@ package com.container
 	import com.container.controller.TutorialProgressControl;
 	import com.model.MainThemeModel;
 	import com.model.rawData.Data;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 
 	public class ThemesController{
 		
@@ -24,23 +25,18 @@ package com.container
 			_presenter.addStartScreen();
 			_presenter.start(this);
 			_presenter.songMenu.playRequest.add(onSongSelected);
-			//_presenter.tutorialRequest.add(onSongSelected);
 		}
 		
 		private function onSongSelected(name:String):void{
 			startProgressControll(name,"record");
-			//Flurry.logEvent("in song selected",name);
+			Flurry.logEvent("in song selected",{name:name});
 		}
 		
 		private function startProgressControll(name:String,mode:String):void{
 			Session.SONG_NAME=name;
 			_playMode=mode;
 			_presenter.removeStartScreen();
-			//if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){//reset old progresscontroll
-			//	_themeProgressors[_progressControlIndex].reset();
-			//}
 			_progressControlIndex = getProgressControllerIndex(name);
-			//_progressControl = getProgressController(name);
 			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){
 				_themeProgressors[_progressControlIndex].start(mode);
 			}else{
@@ -58,7 +54,6 @@ package com.container
 			}
 			Rhythms.FRAME_RATE = _themeProgressors[_progressControlIndex].frameRate*4;
 			_presenter.stage.frameRate = Rhythms.FRAME_RATE;
-			//trace("frame rate is",_presenter.stage.frameRate)
 			_themeProgressors[_progressControlIndex].goHomeSignal.add(reStartScreen);
 		}
 		
@@ -69,7 +64,6 @@ package com.container
 		private function reStartScreen():void{
 			_presenter.removeScreens();
 			_presenter.restart(this);
-			//_progressControl.goHomeSignal.remove(reStartScreen);
 		}
 		
 	/*

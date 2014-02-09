@@ -16,6 +16,7 @@ package com.screens.recordScreenStates
 	import com.screens.view.components.Clock;
 	import com.screens.view.components.notes.DroppingNote;
 	import com.screens.view.components.notes.NotesChannel;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -193,7 +194,7 @@ package com.screens.recordScreenStates
 				_scoreMediator.active=false;
 				_context.model.score = _scoreMediator.score;
 			}
-			//Flurry.logEvent("Record Done"+_context.model.instrumentModel.thumbNail+" "+_scoreMediator.score);
+			Flurry.logEvent("Record Done",{song:Session.SONG_NAME,instrument:_context.model.instrumentModel.thumbNail,score:_scoreMediator.score});
 			
 			
 		}

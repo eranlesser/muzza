@@ -90,9 +90,9 @@ package com.screens.view
 			txt.defaultTextFormat=tf;
 			txt.width=600;
 			txt.autoSize=TextFieldAutoSize.CENTER;
-			txt.text = "Please verify you are an adult";
+			txt.text = "Please ask your parents for \npermission before purchasing";
 			txt.x=(_CheckIfAdult.width-txt.width)/2;
-			txt.y=46;
+			txt.y=16;
 			_CheckIfAdult.addChild(txt);
 			
 			var nms:TextField = new TextField();
@@ -139,7 +139,7 @@ package com.screens.view
 		//after confirm adult
 		private function showBuyButtons():void
 		{
-			Flurry.logEvent("ADULT");
+			Flurry.logEvent("showBuyButtons");
 			// TODO Auto Generated method stub
 			if(!_buyButton){
 				_buyButton=new Btn("buy.png","buy.png");
@@ -190,6 +190,7 @@ package com.screens.view
 		private function onPurchased():void
 		{
 			// TODO Auto Generated method stub
+			Flurry.logEvent("onPurchased");
 			Session.fullVersionEnabled=true;
 			complete.dispatch();
 		}

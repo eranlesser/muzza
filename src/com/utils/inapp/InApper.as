@@ -75,12 +75,7 @@ package com.utils.inapp
 			while(e.products && i < e.products.length)
 			{
 				var p:Product = e.products[i];
-				Flurry.logEvent("\nTITLE: " + p.title + "\nDescription: " + p.description + "\nIdentifier : " + p.identifier + "PriceLocale : " + p.priceLocale + "\nPrice: " + p.price);
-				trace("title : "+p.title);
-				trace("description: "+p.description);
-				trace("identifier: "+p.identifier);
-				trace("priceLocale: "+p.priceLocale);
-				trace("price :"+p.price);
+				//Flurry.logEvent("\nTITLE: " + p.title + "\nDescription: " + p.description + "\nIdentifier : " + p.identifier + "PriceLocale : " + p.priceLocale + "\nPrice: " + p.price);
 				i++;
 			}
 		}
@@ -89,18 +84,15 @@ package com.utils.inapp
 		{
 			
 			Flurry.logEvent("in productDetailsfailed ");
-			trace("in productDetailsFailed"+e);
 			var i:uint=0;
 			while(e.invalidIdentifiers && i < e.invalidIdentifiers.length)
 			{
-				trace(e.invalidIdentifiers[i]);
 				i++;
 			}
 		}
 		
 		public function purchase(product:String,quantety:uint):void
 		{
-			trace("purchase product...");
 			productStore.addEventListener(TransactionEvent.PURCHASE_TRANSACTION_SUCCESS, purchaseTransactionSucceeded);
 			productStore.addEventListener(TransactionEvent.PURCHASE_TRANSACTION_CANCEL, purchaseTransactionCanceled);
 			productStore.addEventListener(TransactionEvent.PURCHASE_TRANSACTION_FAIL, purchaseTransactionFailed);
@@ -111,7 +103,6 @@ package com.utils.inapp
 		protected function purchaseTransactionSucceeded(e:TransactionEvent):void
 		{
 			
-			Flurry.logEvent("in purchaseTransactionSucceeded ");
 			Flurry.logEvent("in purchaseTransaction",{status:"success"});
 			productStore.removeEventListener(TransactionEvent.PURCHASE_TRANSACTION_SUCCESS, purchaseTransactionSucceeded);
 			trace("in purchaseTransactionSucceeded" +e);
@@ -146,7 +137,6 @@ package com.utils.inapp
 			
 			Flurry.logEvent("in purchaseTransaction",{status:"canceled"});
 			productStore.removeEventListener(TransactionEvent.PURCHASE_TRANSACTION_CANCEL, purchaseTransactionCanceled);
-			trace("in purchaseTransactionCanceled"+e);
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
 			{
@@ -164,7 +154,6 @@ package com.utils.inapp
 		{
 			Flurry.logEvent("in purchaseTransaction",{status:"failed"});
 			productStore.removeEventListener(TransactionEvent.PURCHASE_TRANSACTION_FAIL, purchaseTransactionFailed);
-			trace("in purchaseTransactionFailed"+e);
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
 			{
@@ -181,7 +170,6 @@ package com.utils.inapp
 		
 		protected function finishTransactionSucceeded(e:TransactionEvent):void{
 			Flurry.logEvent("in purchaseTransaction",{status:"finish"});
-			trace("in finishTransactionSucceeded" +e);
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
 			{

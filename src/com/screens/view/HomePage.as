@@ -8,7 +8,6 @@ package com.screens.view
 	public class HomePage extends AbstractScreen
 	{
 		private var _songMenu:	SongsMenu;
-		private var _credits:Credits;
 		public function HomePage(){
 			init();
 		}
@@ -18,29 +17,14 @@ package com.screens.view
 			_songMenu=new SongsMenu();
 			_songMenu.data=XML(Data.xml.lessons);
 			addChild(_songMenu);
-			_songMenu.ready.addOnce(addCredits);
 			addChild(AssetsManager.getAssetByName("WAGON_TRAIN.png"));
 			//_songMenu.y=200;
 			//_songMenu.x=320;
 			
 		}
 		
-		private function addCredits():void{
-			var creditsBut:Btn = new Btn("CREDITS_IDLE.png","CREDITS_PRESSED.png");
-			//addChild(creditsBut);
-			creditsBut.x=140;
-			creditsBut.y=110;
-			creditsBut.clicked.add(openCredits);
-		}
 		
-		private function openCredits(str:String):void{
-			if(!_credits){
-				_credits = new Credits();
-				_credits.close.add(function close():void{removeChild(_credits)});
-			}
-			addChild(_credits);
-			//Flurry.logEvent("openCredits");
-		}
+		
 		
 		public function get songMenu():SongsMenu{
 			return _songMenu;

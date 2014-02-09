@@ -5,7 +5,9 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.utils.errorHandlers.GlobalExceptionHandler;
+	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
 	import flash.display.Sprite;
@@ -41,19 +43,9 @@ package {
 			FileProxy.reset(this)
 			setDisplaySize();
 			new GlobalExceptionHandler(loaderInfo);
-			//Flurry.startSession("8R342X54FKMXSYP793P9");
-			//Flurry.getInstance().setIOSAPIKey("8R342X54FKMXSYP793P9");
-			//Flurry.getInstance().startSession();
-			//Flurry.getInstance().setUserId(currentOSUser);//eran
+			Flurry.startSession("NZ33R7N9728H7CD2T9WB");
 		}
 		
-//			public static function get currentOSUser():String
-//			{
-//				var userDir:String = File.userDirectory.nativePath;
-//				var userName:String = userDir.substr(userDir.lastIndexOf(File.separator) + 1);
-//				return userName;
-//			}
-			
 		
 		private function setDisplaySize():void{
 			var ratioX:Number = Math.max(stage.fullScreenWidth,stage.fullScreenHeight) / Dimentions.WIDTH;

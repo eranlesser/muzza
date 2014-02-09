@@ -25,9 +25,6 @@ package com.screens.view {
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
 	
 	import org.osflash.signals.Signal;
 	

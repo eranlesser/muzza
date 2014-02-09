@@ -1,8 +1,10 @@
 package com.container.controller {
+	import com.constants.Session;
 	import com.container.Presenter;
 	import com.container.navigation.Navigator;
 	import com.metronom.Metronome;
 	import com.model.MainThemeModel;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -100,9 +102,6 @@ package com.container.controller {
 		private function toggleDemo():void{
 			if(_demoOpen){
 				closeDemo();
-				//_mainThemeModel.screensModel.currentScreen.start();
-				//PopUpsManager.openPopUp(PopUpsManager.PRESS_RECORD);
-				//Flurry.logEvent("Close demo");
 			}else{
 				openDemo();
 			}
@@ -117,6 +116,7 @@ package com.container.controller {
 				_view.menu.demoButton.state="pressed";
 				_mainThemeModel.screensModel.demoScreen.close.add(toggleDemo);
 			}
+			Flurry.logEvent("demo",{song:Session.SONG_NAME});
 		}
 		
 		protected function closeDemo(silentMode:Boolean=false):void{
@@ -139,7 +139,6 @@ package com.container.controller {
 		protected function goHome():void{
 			reset();
 			goHomeSignal.dispatch();
-		//	Flurry.logEvent("go home");
 		}
 		
 	}
