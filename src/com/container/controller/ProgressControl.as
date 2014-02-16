@@ -4,7 +4,7 @@ package com.container.controller {
 	import com.container.navigation.Navigator;
 	import com.metronom.Metronome;
 	import com.model.MainThemeModel;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
+	import com.utils.Monotorizer;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -116,7 +116,7 @@ package com.container.controller {
 				_view.menu.demoButton.state="pressed";
 				_mainThemeModel.screensModel.demoScreen.close.add(toggleDemo);
 			}
-			Flurry.logEvent("demo",{song:Session.SONG_NAME});
+			Monotorizer.logEvent("demo",Session.SONG_NAME);
 		}
 		
 		protected function closeDemo(silentMode:Boolean=false):void{

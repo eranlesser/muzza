@@ -20,7 +20,7 @@ package com.screens.view {
 	import com.screens.view.components.Clock;
 	import com.screens.view.components.notes.Notes;
 	import com.screens.view.components.notes.NotesChannel;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
+	import com.utils.Monotorizer;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
 	
@@ -110,7 +110,7 @@ package com.screens.view {
 				_clock = Clock.instance;
 				_clock.x=290;
 				_clock.y=28;
-				Flurry.logEvent("Screen Start",{theme:_model.instrumentModel.thumbNail,session:Session.SONG_NAME});
+				Monotorizer.logEvent("Screen Start",_model.instrumentModel.thumbNail+"-"+Session.SONG_NAME);
 				isInited = true;
 			}
 			addChild(_clock);

@@ -5,7 +5,6 @@ package {
 	import com.container.Presenter;
 	import com.container.ThemesController;
 	import com.model.FileProxy;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
 	import com.utils.errorHandlers.GlobalExceptionHandler;
 	
 	import flash.desktop.NativeApplication;
@@ -43,7 +42,7 @@ package {
 			FileProxy.reset(this)
 			setDisplaySize();
 			new GlobalExceptionHandler(loaderInfo);
-			Flurry.startSession("NZ33R7N9728H7CD2T9WB");
+			//Flurry.startSession("NZ33R7N9728H7CD2T9WB");
 		}
 		
 		

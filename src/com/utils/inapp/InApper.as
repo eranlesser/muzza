@@ -24,9 +24,10 @@ package com.utils.inapp
 	import com.adobe.ane.productStore.Transaction;
 	import com.adobe.ane.productStore.TransactionEvent;
 	import com.constants.Session;
-	import com.sticksports.nativeExtensions.flurry.Flurry;
+	import com.utils.Monotorizer;
 	
-	import flash.events.*;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
@@ -45,8 +46,8 @@ package com.utils.inapp
 		public function InApper()
 		{
 			productStore=new ProductStore();
-			Flurry.logEvent("productstore supported="+ProductStore.isSupported);
-			Flurry.logEvent("productstore available="+productStore.available);
+			Monotorizer.logEvent("productstore supported=",ProductStore.isSupported.toString());
+			Monotorizer.logEvent("productstore available=",productStore.available.toString());
 			get_Product();
 		}
 		
@@ -70,7 +71,7 @@ package com.utils.inapp
 		
 		public function productDetailsSucceeded(e:ProductEvent):void
 		{
-			Flurry.logEvent("in productDetailsSucceeded ");
+			Monotorizer.logEvent("productStore","in productDetailsSucceeded");
 			var i:uint=0;
 			while(e.products && i < e.products.length)
 			{
@@ -83,7 +84,7 @@ package com.utils.inapp
 		public function productDetailsFailed(e:ProductEvent):void
 		{
 			
-			Flurry.logEvent("in productDetailsfailed ");
+			Monotorizer.logEvent("productStore","in productDetailsfailed ");
 			var i:uint=0;
 			while(e.invalidIdentifiers && i < e.invalidIdentifiers.length)
 			{
@@ -103,9 +104,8 @@ package com.utils.inapp
 		protected function purchaseTransactionSucceeded(e:TransactionEvent):void
 		{
 			
-			Flurry.logEvent("in purchaseTransaction",{status:"success"});
+			Monotorizer.logEvent("productStore","success");
 			productStore.removeEventListener(TransactionEvent.PURCHASE_TRANSACTION_SUCCESS, purchaseTransactionSucceeded);
-			trace("in purchaseTransactionSucceeded" +e);
 			var i:uint=0;
 			var t:Transaction;
 			while(e.transactions && i < e.transactions.length)
@@ -135,7 +135,7 @@ package com.utils.inapp
 		
 		protected function purchaseTransactionCanceled(e:TransactionEvent):void{
 			
-			Flurry.logEvent("in purchaseTransaction",{status:"canceled"});
+			Monotorizer.logEvent("productStore","canceled");
 			productStore.removeEventListener(TransactionEvent.PURCHASE_TRANSACTION_CANCEL, purchaseTransactionCanceled);
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
@@ -152,7 +152,7 @@ package com.utils.inapp
 		
 		protected function purchaseTransactionFailed(e:TransactionEvent):void
 		{
-			Flurry.logEvent("in purchaseTransaction",{status:"failed"});
+			Monotorizer.logError("purchaseTransactionFailed",e.error,false);
 			productStore.removeEventListener(TransactionEvent.PURCHASE_TRANSACTION_FAIL, purchaseTransactionFailed);
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
@@ -169,7 +169,7 @@ package com.utils.inapp
 		}
 		
 		protected function finishTransactionSucceeded(e:TransactionEvent):void{
-			Flurry.logEvent("in purchaseTransaction",{status:"finish"});
+			Monotorizer.logEvent("productStore","finishTransactionSucceeded");
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
 			{
@@ -184,7 +184,7 @@ package com.utils.inapp
 		
 		public function restoreTransactions():void
 		{
-			trace("in restore_Transactions");
+			Monotorizer.logEvent("productStore","restoreTransactions");
 			productStore.addEventListener(TransactionEvent.RESTORE_TRANSACTION_SUCCESS, restoreTransactionSucceeded);
 			productStore.addEventListener(TransactionEvent.RESTORE_TRANSACTION_FAIL, restoreTransactionFailed);
 			productStore.addEventListener(TransactionEvent.RESTORE_TRANSACTION_COMPLETE,  restoreTransactionCompleted);
@@ -193,7 +193,7 @@ package com.utils.inapp
 		}
 		
 		protected function restoreTransactionSucceeded(e:TransactionEvent):void{
-			Flurry.logEvent("in restore",{status:"sucess"});
+			Monotorizer.logEvent("productStore","restoreTransactionSucceeded");
 			trace("in restoreTransactionSucceeded" +e);
 			var i:uint=0;
 			while(e.transactions && i < e.transactions.length)
@@ -212,13 +212,13 @@ package com.utils.inapp
 		}
 		
 		protected function restoreTransactionFailed(e:TransactionEvent):void{
-			Flurry.logEvent("in restore",{status:"failed"});
+			Monotorizer.logError("restoreTransactionFailed",e.error,false);
 			trace("in restoreTransactionFailed" +e);
 			_signal.dispatch(PRODUCT_RESTORE_FAIL);
 		}
 		
 		protected function restoreTransactionCompleted(e:TransactionEvent):void{
-			Flurry.logEvent("in restore",{status:"complete"});
+			Monotorizer.logEvent("productStore","restoreTransactionCompleted");
 			trace("in restoreTransactionCompleted" +e);
 			_signal.dispatch(PRODUCT_RESTORE_SUCCEED);
 		}
@@ -230,7 +230,6 @@ package com.utils.inapp
 		
 		public function getPendingTransaction(prdStore:ProductStore):void
 		{
-			trace("pending transaction");
 			var transactions:Vector.<Transaction> = prdStore.pendingTransactions; 
 			var i:uint=0;
 			while(transactions && i<transactions.length)
