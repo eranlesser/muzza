@@ -139,6 +139,7 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 	private var _dotFill:Shape;
 	public var soundCompleteSignal:Signal = new Signal();
 	public var soundPlaySignal:Signal = new Signal();
+	private var _isPlaying:Boolean = false;
 	public function Dot(xml:XML,angle:Number){
 		init(xml.@color);
 		_angle=angle;
@@ -176,22 +177,26 @@ class Dot extends Sprite implements IMusicalInstrumentComp{
 		bg.x= -bg.width/2;
 		bg.y= -bg.height/2;
 		addChild(_dotFill);
-		this.addEventListener(MouseEvent.ROLL_OVER,play);
+		//this.addEventListener(MouseEvent.ROLL_OVER,play);
 		this.addEventListener(TouchEvent.TOUCH_ROLL_OVER,play);
 	}
 	
 	public function play(e:Event=null):void{
+		if(_isPlaying) return;
+		
 		_soundPlayer.play(1);
-		_soundPlayer.soundComplete.add(onSoundComplete);
+		_soundPlayer.soundComplete.addOnce(onSoundComplete);
 		soundPlaySignal.dispatch(_id);
 		var dTween:GTween = new GTween(_dotFill,0.5,{alpha:1});
 		dTween.onComplete = endTween;
 		_startTime = Metronome.getTimeModel().currentTick;
+		_isPlaying = true;
 	}
 	private function endTween(t:GTween):void{
 		new GTween(_dotFill,0.4,{alpha:0});
 	}
 	private function onSoundComplete():void{
+		_isPlaying=false;
 		new GTween(this,0.4,{scaleX:1,scaleY:1});
 		soundCompleteSignal.dispatch(_id,_startTime,_startTime);
 	}
