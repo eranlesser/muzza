@@ -120,7 +120,9 @@ package com.screens.recordScreenStates
 						//}else{
 				//	scoreSignal.dispatch(-1,-1);
 				//}
-				continuePlay(curNote);
+				if(!(_toPlayNote.mandatory&&noteId!=curNote.id)&&curNote.location==_timeModel.currentTick){
+					continuePlay(curNote);
+				}
 			}
 			if(_context.instrumentRecorder is Cuiqa){
 				scoreSignal.dispatch(1,_timeModel.currentTick,true);

@@ -11,15 +11,21 @@ package com.musicalInstruments.model
 		private var _endLocation:uint;
 		private var _soundLength:uint;
 		private var _octave:uint;
-		private var _pointToNote:String;
-		public function SequancedNote(noteId:String,location:uint,soundLength:uint,octave:uint,pointToNote:String=""){
+		private var _mandatory:Boolean=false;
+		public function SequancedNote(noteId:String,location:uint,soundLength:uint,octave:uint,mandatory:String){
 			_noteId = noteId;
 			_location = location;
 			_soundLength = soundLength;
 			_octave=octave;
-			_pointToNote=pointToNote;
+			if(mandatory=="true")
+				_mandatory = true;
 		}
 		
+		public function get mandatory():Boolean
+		{
+			return _mandatory;
+		}
+
 		public function get octave():uint{
 			return _octave;
 		}
@@ -44,9 +50,6 @@ package com.musicalInstruments.model
 			return 4+_location;
 		}
 		
-		public function get pointToNote():String{
-			return _pointToNote; 
-		}
 		
 	}
 }

@@ -92,12 +92,12 @@ package com.musicalInstruments.model.sequances {
 		private function parse(xml:XML):void{
 			_id = xml.@id;
 			for each(var note:XML in xml.note){
-				_notes.push(new SequancedNote(note.@id,note.@location,note.@soundLength,note.@octave,note.@pointToNote));
+				_notes.push(new SequancedNote(note.@id,note.@location,note.@soundLength,note.@octave,note.@mandatory));
 			}
 			for each(var subSequance:XML in xml.subSequance){
 				var sequance:NoteSequanceModel = _sequanceFetcher.getSequanceById(subSequance.@id) as NoteSequanceModel;
 				for each(var snote:SequancedNote in sequance.notes){
-					var newSequancedNote:SequancedNote = new SequancedNote(snote.noteId,snote.location + uint(subSequance.@location),snote.soundLength,snote.octave,snote.pointToNote);
+					var newSequancedNote:SequancedNote = new SequancedNote(snote.noteId,snote.location + uint(subSequance.@location),snote.soundLength,snote.octave,snote.mandatory.toString());
 					_notes.push(newSequancedNote);
 				}
 			}

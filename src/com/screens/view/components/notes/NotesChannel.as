@@ -1,20 +1,13 @@
 package com.screens.view.components.notes
 {
-	import com.constants.Dimentions;
-	import com.gskinner.motion.GTween;
 	import com.musicalInstruments.model.CoreInstrumentModel;
-	import com.musicalInstruments.model.InstrumentModel;
 	import com.musicalInstruments.model.SequancedNote;
-	import com.representation.RepresentationSizes;
 	import com.view.tools.AssetsManager;
 	
 	import flash.display.DisplayObject;
-	import flash.display.Shader;
 	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import flash.utils.Dictionary;
 	
 	public class NotesChannel extends Sprite
 	{
@@ -26,7 +19,6 @@ package com.screens.view.components.notes
 		private var _top:				Sprite;
 		private var _notesMask:			Shape;
 		private var _instrumentY:		uint;
-		private var _pointToBasePoint:	Point;
 		public static var _notesGap:int;
 		
 		public function NotesChannel(model:CoreInstrumentModel,size:Rectangle,notesLength:uint){
@@ -57,7 +49,7 @@ package com.screens.view.components.notes
 		}
 		
 		public function drawNote(noteModel:SequancedNote,thumbNail:String,noteValue:uint,xx:uint):void{
-			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId);
+			var note:DroppingNote = new DroppingNote(noteValue,noteModel.location,thumbNail,noteModel.noteId,noteModel.mandatory);
 			_notesContainer.addChild(note);
 			note.y=_instrumentY-note.location*_notesGap+16.5;
 			if(xx>0){
@@ -66,17 +58,6 @@ package com.screens.view.components.notes
 				note.x=(noteValue-1)*_instrumentModel.notesGap+_instrumentModel.leftPad-6;
 			}
 			_notes.push(note);
-			if(_pointToBasePoint){
-//				_notesContainer.graphics.lineStyle(1);
-//				_notesContainer.graphics.moveTo(_pointToBasePoint.x,_pointToBasePoint.y+note.height/2);
-//				_notesContainer.graphics.lineTo(note.x,note.y+note.height/2);
-			}
-			if(noteModel.pointToNote!=""){
-				_pointToBasePoint = new Point(note.x,note.y);
-			}
-			else{
-				_pointToBasePoint=null;
-			}
 		}
 		
 		private function getPrefix(tmbNail:String):String{
@@ -106,7 +87,7 @@ package com.screens.view.components.notes
 		public function drawNoteTarget(yy:int,yOffset:int,addLine:Boolean):void{
 			if(addLine){
 				var lne:DisplayObject = AssetsManager.getAssetByName("line.png");
-				lne.y=yy+yOffset-24;
+				lne.y=yy+yOffset-29; //tutorial - timing
 				lne.x=-12;
 				addChild(lne);
 			}

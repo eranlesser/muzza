@@ -1,15 +1,10 @@
 package com.screens.view.components.notes
 {
-	import com.gskinner.motion.GTween;
 	import com.view.tools.AssetsManager;
 	
-	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.display.Shape;
 	import flash.display.Sprite;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFormat;
 	
 	public class DroppingNote extends Sprite{
 		
@@ -18,13 +13,15 @@ package com.screens.view.components.notes
 		private var _value:uint;
 		private var _id:String;
 		private var _channel:String;
+		private var _mandatory:Boolean;
 		public static const WIDTH:uint=22;
 		
-		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String){
+		public function DroppingNote(noteValue:uint,loc:uint,channel:String,id:String,mandatory:Boolean){
 			//trace(getPrefix(channel)+"_IDLE_"+noteValue+".png")
 			_location=loc;
 			_value=noteValue;
 			_id=id;
+			_mandatory = mandatory;
 			if(channel=="loopee"){
 				
 			}else{
@@ -39,6 +36,12 @@ package com.screens.view.components.notes
 			init();
 			}
 		}
+
+		public function get mandatory():Boolean
+		{
+			return _mandatory;
+		}
+
 		public function get id():String{
 			return _id;
 		}

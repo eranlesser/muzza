@@ -156,7 +156,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 		 <note id="E_3" location="601" soundLength="4"/>
 		 <note id="G_3" location="609" soundLength="24"/>
 
-<note id="octave+" location="625" soundLength="24" force="true"/>
+<note id="octave+" location="625" soundLength="24" mandatory="true"/>
 	<!-- OCATAVE -->
 	
  <note id="E_3R" location="641" soundLength="4"/>

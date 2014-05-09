@@ -6,11 +6,13 @@ package com.container.controller
 	import com.inf.Inf;
 	import com.model.FileProxy;
 	import com.model.MainThemeModel;
+	import com.screens.recordScreenStates.RecordState;
 	import com.screens.view.ListenScreen;
 	import com.screens.view.RecordScreen;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.utils.Timer;
 
 	public class TutorialProgressControl extends ProgressControl
 	{
@@ -47,6 +49,24 @@ package com.container.controller
 		private function showPlayButton():void{
 			if(_recordScreen){
 				_recordScreen.playButton.visible = true;
+				_recordScreen.playButton.clicked.add(onPlay);
+			}
+		}
+		
+		private function onPlay(str:String):void
+		{
+			// tutorial - timing
+			openInstruction("Cue Line","When notes reach the line, play the bottle with the same number",460,65,"bottles.png",Inf.BTM_LEFT);
+			(_recordScreen.stateController.currentState as RecordState).scoreSignal.add(onScore);
+			
+		}
+		
+		private function onScore(toPlayTime:int,curTime:int,goodNote:Boolean,xx:uint=0):void
+		{
+			// TODO Auto Generated method stub
+			if(toPlayTime ==curTime && goodNote){
+				closePopUp();
+				(_recordScreen.stateController.currentState as RecordState).scoreSignal.remove(onScore);
 			}
 		}
 		
@@ -181,6 +201,7 @@ package com.container.controller
 			FileProxy.resetTutorial();
 			_mainThemeModel.screensModel.recordSession.deleteRecorded();
 			_view.menu.navigator.visible = true;
+			_recordScreen.playButton.clicked.remove(onPlay);
 				//clear all data from levels
 		}
 		

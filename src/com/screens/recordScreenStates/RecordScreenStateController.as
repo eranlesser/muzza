@@ -160,6 +160,10 @@ package com.screens.recordScreenStates
 			return _recordScreen.playGlow;
 		}
 		
+		public function get currentState():IRecordScreenState{
+			return _state;
+		}
+		
 		
 		
 	}

@@ -37,7 +37,7 @@ package com.musicalInstruments.model.sequances
 				trace("DUPLICATE "+_notes[_notes.length-1].location)
 				return null;
 			}
-			var note:SequancedNote = new SequancedNote(noteId,location,soundLength,octave);
+			var note:SequancedNote = new SequancedNote(noteId,location,soundLength,octave,"false");
 			_notes.push(note);
 			_added.dispatch(note);
 			return note;
