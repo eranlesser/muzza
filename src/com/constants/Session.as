@@ -18,6 +18,7 @@ package com.constants {
 		public static const fullVersionSignal:Signal = new Signal();
 		public static var DeviceId:uint=2;
 		private static var _fullVersionEnabled:Boolean=false;
+		public static const flurryId:String="NZ33R7N9728H7CD2T9WB";
 		public function Session(enforcer:enforcer){
 		}
 		

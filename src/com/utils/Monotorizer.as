@@ -1,39 +1,35 @@
 package com.utils
 {
-	import eu.alebianco.air.extensions.analytics.Analytics;
-	import eu.alebianco.air.extensions.analytics.api.ITracker;
+	import com.constants.Session;
+	import com.sticksports.nativeExtensions.flurry.Flurry;
 
 	public class Monotorizer
 	{
-		private static var tracker:ITracker ;
+		private static var _inited:Boolean = false;
 		public function Monotorizer()
 		{
 			
 		}
 		
-		public static function logEvent(category:String,action:String,value:int=-100):void{
-			try{
-			if (Analytics.isSupported()) {
-				if(!tracker){
-					tracker:ITracker = Analytics.getInstance().getTracker("UA-48121763-1");
-				}
-				if(value!=-100){
-					tracker.buildEvent(category, action).track();
-				}else{
-					tracker.buildEvent(category, action).withValue(value).track();
-				}
+		private static function init():void{
+			if(!_inited){
+				Flurry.startSession(Session.flurryId);
 			}
+			_inited = true;
+		}
+		
+		public static function logEvent(category:String,action:String,value:int=-100):void{
+			init();
+			try{
+				Flurry.logEvent(category+"_"+action,{param:value});
 			}catch(e:Error){}
 		}
 		
 		public static function logError(errorId:String,description:String,critical:Boolean=true):void{
+			
+			init();
 			try{
-			if (Analytics.isSupported()) {
-				if(!tracker){
-					tracker:ITracker = Analytics.getInstance().getTracker("UA-48121763-1");
-				}
-				tracker.buildException(critical).withDescription(description).track();
-			}
+				Flurry.logError(errorId,description);
 			}catch(e:Error){}
 		}
 		

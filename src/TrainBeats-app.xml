@@ -281,5 +281,6 @@
 <extensions>
         <extensionID>com.adobe.ane.productStore</extensionID>
     <extensionID>eu.alebianco.air.extensions.analytics.NativeGATracker</extensionID>
+    <extensionID>com.sticksports.nativeExtensions.Flurry</extensionID>
     </extensions>
 </application>
