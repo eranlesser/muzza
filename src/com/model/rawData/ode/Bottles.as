@@ -64,7 +64,7 @@ public static var data:XML = <bottles type="bottles" thumbNail='bottles.png' spr
 <sequance id="10">
   <note id="F#_4" location="4" soundLength="4"/>
   <note id="E_4" location="20" soundLength="4"/>
-  <note id="F#_4" location="36" soundLength="4"/>
+  <note id="F#_4" location="36" soundLength="4" mandatory="true"/>
   <note id="A_4" location="44" soundLength="4"/>
   <note id="E_4" location="52" soundLength="4"/>
   <note id="F#_4" location="68" soundLength="8"/>

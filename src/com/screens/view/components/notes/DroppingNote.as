@@ -71,7 +71,7 @@ package com.screens.view.components.notes
 			_playNowCircle = new Sprite();
 			_getSetCircle = new Sprite();
 			_playNowCircle.addChild(AssetsManager.getAssetByName("green_circle.png"));
-			_getSetCircle.addChild(AssetsManager.getAssetByName("green_orange.png"));
+			//_getSetCircle.addChild(AssetsManager.getAssetByName("green_orange.png"));
 			_playNowCircle.x=_idleAsset.x+2;
 			_playNowCircle.y=_idleAsset.y+2;
 			_getSetCircle.x=_idleAsset.x+2;

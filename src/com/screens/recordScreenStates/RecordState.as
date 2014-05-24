@@ -120,7 +120,7 @@ package com.screens.recordScreenStates
 						//}else{
 				//	scoreSignal.dispatch(-1,-1);
 				//}
-				if(!(_toPlayNote.mandatory&&noteId!=curNote.id)&&curNote.location==_timeModel.currentTick){
+				if(!(_toPlayNote.mandatory&&noteId!=curNote.id)){
 					continuePlay(curNote);
 				}
 			}

@@ -19,6 +19,7 @@ package com.view
 		private var _value:uint=0;
 		private var _fmt:SoundTransform;
 		private var _tickView:DisplayObject;
+		
 		public function MetronomView(){
 			_timeModel=Metronome.getTimeModel();
 			init();

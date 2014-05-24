@@ -61,7 +61,6 @@ public static var data:XML =
  <note id="E_2" location="273" soundLength="16"/>
  <note id="A_2" location="289" soundLength="16"/>
  <note id="E_2" location="305" soundLength="8"/>
- <note id="B_2" location="313" soundLength="8"/>
  <note id="A_2" location="321" soundLength="16"/>
  <note id="E_2" location="337" soundLength="16"/>
  <note id="A_2" location="353" soundLength="16"/>
