@@ -43,6 +43,10 @@ package com.screens.view {
 			_model = new PlayScreenModel(screenData,instrumentsModel);
 		}
 		
+		public function get closeBtn():Btn{
+			return _closeBtn;
+		}
+		
 		protected function init(masked:Boolean=true):void{
 			_model.start();
 			for each(var instrumentModel:InstrumentModel in _model.instruments){

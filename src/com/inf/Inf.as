@@ -6,6 +6,7 @@ package com.inf
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
@@ -26,7 +27,8 @@ package com.inf
 		private var _nextSignal:Signal = new Signal();
 		private var _tryAgainSignal:Signal = new Signal();
 		private var _width:uint;
-		public function Inf(wdth:uint,direction:String)
+		private var _actionBtn:Btn;
+		public function Inf(wdth:uint,direction:String,actionBtn:Btn)
 		{
 			drawBg(wdth,direction);
 			//this.addEventListener(MouseEvent.CLICK,onClick);
@@ -35,8 +37,16 @@ package com.inf
 			this.x=6;
 			this.y=6;//(_topContainerY-_thumbNail.height)/2;
 			_width = wdth;
+			_actionBtn = actionBtn;
+			this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);
 		}
 		
+		protected function onMouseDown(event:MouseEvent):void
+		{
+			// TODO Auto-generated method stub
+			if(_actionBtn)
+				_actionBtn.clicked.dispatch(_actionBtn.id);
+		}		
 		
 		public function get tryAgainSignal():Signal
 		{
@@ -98,8 +108,6 @@ package com.inf
 			_bg.visible = true;
 			_thumbNail.x=10;
 			_thumbNail.y=10;
-			this.alpha = 0;
-			new GTween(this,1,{alpha:1});
 		}
 		
 		public function set thumbNail(thumbNail:String):void{

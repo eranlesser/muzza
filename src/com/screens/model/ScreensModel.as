@@ -28,19 +28,9 @@ package com.screens.model {
 			_recordSession=new RecordSession(_xml.screens.recordSession[0],_instrumentsModel,xml.@tutorial == "true");
 			_demoScreen = new DemoScreen();
 			_demoScreen.parseXML(_xml.screens.demoScreen[0],_instrumentsModel);
+			_currentScreen=_recordSession.currentScreen;
 		}
 		
-		public function set playMode(mode:String):void{
-			switch(mode){
-				
-				case "record":
-					_currentScreen=_recordSession.currentScreen;
-					break;
-				case "demo":
-					_currentScreen=_demoScreen;
-					break;
-			}
-		}
 		
 		public function get demoScreen():DemoScreen{
 			return _demoScreen;

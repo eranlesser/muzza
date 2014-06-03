@@ -13,7 +13,6 @@ package com.container
 		private var _presenter:			Presenter;
 		private var _themeProgressors:	Vector.<ProgressControl>;
 		private var _progressControlIndex:	uint=0;
-		private var _playMode:String;
 		
 		public function ThemesController(view:Presenter){
 			_presenter = view;
@@ -28,17 +27,16 @@ package com.container
 		}
 		
 		private function onSongSelected(name:String):void{
-			startProgressControll(name,"record");
+			startProgressControll(name);
 			Monotorizer.logEvent("in song selected",name);
 		}
 		
-		private function startProgressControll(name:String,mode:String):void{
+		private function startProgressControll(name:String):void{
 			Session.SONG_NAME=name;
-			_playMode=mode;
 			_presenter.removeStartScreen();
 			_progressControlIndex = getProgressControllerIndex(name);
 			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){
-				_themeProgressors[_progressControlIndex].start(mode);
+				_themeProgressors[_progressControlIndex].start();
 			}else{
 				var themeModel:MainThemeModel = new MainThemeModel(Data.getSongData(name),_presenter);
 				var progressControl:ProgressControl;
@@ -58,7 +56,7 @@ package com.container
 		}
 		
 		private function onThemeReady():void{
-			_themeProgressors[_progressControlIndex].start(_playMode);
+			_themeProgressors[_progressControlIndex].start();
 		}
 		
 		private function reStartScreen():void{

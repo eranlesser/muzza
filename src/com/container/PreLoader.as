@@ -16,7 +16,7 @@ package com.container
 	import org.osflash.signals.Signal;
 	
 	public class PreLoader extends Sprite{
-		[Embed(source="../../assets/openscreen.jpg")]
+		[Embed(source="../../assets/splash.png")]
 		private var bg:Class;
 		public var loaded:Signal=new Signal();
 		public function PreLoader(){

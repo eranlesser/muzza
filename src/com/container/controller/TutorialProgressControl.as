@@ -6,19 +6,24 @@ package com.container.controller
 	import com.inf.Inf;
 	import com.model.FileProxy;
 	import com.model.MainThemeModel;
+	import com.model.texts.EnglishTexts;
+	import com.model.texts.HebrewTexts;
+	import com.model.texts.ITexts;
 	import com.screens.recordScreenStates.RecordState;
 	import com.screens.view.ListenScreen;
+	import com.screens.view.MeetTheBand;
 	import com.screens.view.RecordScreen;
+	import com.view.gui.Btn;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.utils.Timer;
 
 	public class TutorialProgressControl extends ProgressControl
 	{
 		private var _inf:Inf;
 		private var _mask:Sprite;
 		private var _recordScreen:RecordScreen;
+		private var _texts:ITexts;
 		public function TutorialProgressControl(view:Presenter,theme:MainThemeModel,themeName:String)
 		{
 			super(view,theme,themeName);
@@ -26,14 +31,20 @@ package com.container.controller
 			_mask.graphics.beginFill(0xFFFFFF,0.3);
 			_mask.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
 			_mask.graphics.endFill();
+			_texts = new HebrewTexts();
 		}
 		
-		override public function start(mode:String):void{
-			super.start(mode);
-			openInstruction("Demo","Click here, this is what we are about to play together",85,500,"bottles.png",Inf.BTM_LEFT);
+		override public function start():void{
+			_view.addScreen(new MeetTheBand());
+		}
+		
+		private function startPlay():void{
+			super.start();
+			openInstruction(_texts.getTitleById("demo"),_texts.getMsgById("demo"),85,500,"bottles.png",Inf.BTM_LEFT,_view.menu.demoButton);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
 			hideButtons();
 		}
+		
 		
 		private function hideButtons():void{
 			if(_recordScreen){
@@ -56,7 +67,9 @@ package com.container.controller
 		private function onPlay(str:String):void
 		{
 			// tutorial - timing
-			openInstruction("Cue Line","When notes reach the line, play the bottle with the same number",460,65,"bottles.png",Inf.BTM_LEFT);
+			if(_recordScreen&& _recordScreen.model.instrumentModel.thumbNail == "bottles.png"){
+				openInstruction(_texts.getTitleById("cueline"),_texts.getMsgById("cueline"),460,65,"bottles.png",Inf.BTM_LEFT,null);
+			}
 			(_recordScreen.stateController.currentState as RecordState).scoreSignal.add(onScore);
 			
 		}
@@ -86,14 +99,14 @@ package com.container.controller
 				if(_recordScreen && _recordScreen.recorder.visible==false && _recordScreen.model.instrumentModel.thumbNail == "bottles.png"){
 					var yy:Number = _recordScreen.recorder.y;
 					_recordScreen.stateController.stateChanged.add(onStatesChanged);
-					openInstruction("Play","Click here, let's play some music with Mel",450,130,"bottles.png",Inf.TOP_LEFT);
+					openInstruction(_texts.getTitleById("play"),_texts.getMsgById("play"),450,130,"bottles.png",Inf.TOP_LEFT,_recordScreen.playButton);
 				}
 				showPlayButton();
 			}
 		}
 		
 		private function onDemoComplete():void{
-			openInstruction("Close","Click to close",697,85,"bottles.png",Inf.TOP_RIGHT);
+			openInstruction(_texts.getTitleById("close"),_texts.getMsgById("close"),697,85,"bottles.png",Inf.TOP_RIGHT,_mainThemeModel.screensModel.demoScreen.closeBtn);
 		}
 		
 		override protected function gotoScreen(scr:String):void{
@@ -113,7 +126,7 @@ package com.container.controller
 		
 		private function onSessionComplete():void
 		{
-			openInstruction("Well Done","You are ready for the next level, click here",410,110,"bottles.png",Inf.TOP_LEFT);
+			openInstruction(_texts.getTitleById("welldone"),_texts.getMsgById("welldone"),410,110,"bottles.png",Inf.TOP_LEFT,null);
 			
 		}
 		
@@ -127,13 +140,13 @@ package com.container.controller
 					switch(thumbNail){
 						
 						case "bottles.png":
-							openPop("Great Job!","",(Dimentions.WIDTH-300)/2,230,thumbNail);
+							openPop(_texts.getTitleById("bottles"),"",(Dimentions.WIDTH-300)/2,230,thumbNail);
 							break;
 						case "drum.png":
-							openPop("You Rock!","",(Dimentions.WIDTH-300)/2,230,thumbNail);
+							openPop(_texts.getTitleById("drums"),"",(Dimentions.WIDTH-300)/2,230,thumbNail);
 							break;
 						case "bass_flash.jpg":
-							openPop("Awesome!!","",(Dimentions.WIDTH-300)/2,230,thumbNail);
+							openPop(_texts.getTitleById("bass"),"",(Dimentions.WIDTH-300)/2,230,thumbNail);
 							break;
 					}
 				}
@@ -146,8 +159,8 @@ package com.container.controller
 		}
 		
 		
-		public function openInstruction(title:String,content:String,xx:uint,yy:uint,thumbNail:String,dir:String):void{
-			_inf = new Inf(300,dir);
+		public function openInstruction(title:String,content:String,xx:uint,yy:uint,thumbNail:String,dir:String,actionBtn:Btn):void{
+			_inf = new Inf(300,dir,actionBtn);
 			//_view.addChild(_mask);
 			_view.addChild(_inf);
 			_inf.thumbNail = thumbNail;
@@ -156,11 +169,12 @@ package com.container.controller
 			_inf.open();
 			_inf.x=xx//(Dimentions.WIDTH-popUp.width)/2
 			_inf.y=yy//(Dimentions.HEIGHT-popUp.height)/3
+			
 			//_closeEvent = closeEvent;
 		}
 		
 		public function openPop(title:String,content:String,xx:uint,yy:uint,thumbNail:String):void{
-			_inf = new Inf(300,Inf.NO_ARROW);
+			_inf = new Inf(300,Inf.NO_ARROW,null);
 			_view.addChild(_mask);
 			_view.addChild(_inf);
 			_inf.thumbNail = thumbNail;
@@ -186,10 +200,10 @@ package com.container.controller
 				var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail; 
 				switch(thumbNail){
 					case "drum.png":
-						openInstruction("Dee Drums","Lets add some rhythm",180,130,thumbNail,Inf.TOP_RIGHT);
+						openInstruction(_texts.getTitleById("Ddrums"),_texts.getMsgById("Ddrums"),180,130,thumbNail,Inf.TOP_RIGHT,null);
 						break;
 					case "bass_flash.jpg":
-						openInstruction("The human Bass","Time for some heavy groove",180,130,thumbNail,Inf.TOP_RIGHT);
+						openInstruction(_texts.getTitleById("Bbass"),_texts.getMsgById("Bbass"),180,130,thumbNail,Inf.TOP_RIGHT,null);
 						break;
 				}
 			}
@@ -201,7 +215,9 @@ package com.container.controller
 			FileProxy.resetTutorial();
 			_mainThemeModel.screensModel.recordSession.deleteRecorded();
 			_view.menu.navigator.visible = true;
-			_recordScreen.playButton.clicked.remove(onPlay);
+			if(_recordScreen){
+				_recordScreen.playButton.clicked.remove(onPlay);
+			}
 				//clear all data from levels
 		}
 		
