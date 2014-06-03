@@ -6,12 +6,10 @@ package com.container.controller
 	import com.inf.Inf;
 	import com.model.FileProxy;
 	import com.model.MainThemeModel;
-	import com.model.texts.EnglishTexts;
 	import com.model.texts.HebrewTexts;
 	import com.model.texts.ITexts;
 	import com.screens.recordScreenStates.RecordState;
 	import com.screens.view.ListenScreen;
-	import com.screens.view.MeetTheBand;
 	import com.screens.view.RecordScreen;
 	import com.view.gui.Btn;
 	
@@ -35,10 +33,6 @@ package com.container.controller
 		}
 		
 		override public function start():void{
-			_view.addScreen(new MeetTheBand());
-		}
-		
-		private function startPlay():void{
 			super.start();
 			openInstruction(_texts.getTitleById("demo"),_texts.getMsgById("demo"),85,500,"bottles.png",Inf.BTM_LEFT,_view.menu.demoButton);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
