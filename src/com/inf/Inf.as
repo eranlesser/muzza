@@ -152,6 +152,9 @@ package com.inf
 				case "bass_flash.jpg":
 					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
 					break;
+				case "turnTable":
+					icon = AssetsManager.getAssetByName("DJtap_tmb.png");
+					break;
 			}
 			return icon;
 		}

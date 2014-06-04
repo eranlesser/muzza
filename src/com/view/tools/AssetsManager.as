@@ -423,7 +423,8 @@ package com.view.tools
 			"<image path='assets/POP_UP/record_IDLE.png' />"+
 			"<image path='assets/POP_UP/record_PRESSED.png' />"+
 			"<image path='assets/POP_UP/POP_UP_LINE_SPLITTER_SEGMENT.png' />"+
-			
+			"<image path='assets/POP_UP/DJtap_tmb.png' />"	+
+			"<image path='assets/POP_UP/cuica_tmb.png' />"	+
 //			"<image path='assets/hour_glass.png' />"+
 //			"<image path='assets/hour_glass_alert.png' />"+
 			"<image path='assets/vica/freestyle.png' />"+

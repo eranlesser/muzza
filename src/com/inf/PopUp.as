@@ -167,9 +167,10 @@ package com.inf
 					icon = AssetsManager.getAssetByName("BASS_PROFILE_PIC.png");
 					break;
 				case "turnTable":
+					icon = AssetsManager.getAssetByName("DJtap_tmb.png");
+					break;
 				case "loopee":
-				case "flute":
-					icon = null//AssetsManager.getAssetByName("Turntable.png");
+					icon = AssetsManager.getAssetByName("cuica_tmb.png");
 					break;
 				default:
 					throw new Error("no "+thmb);
