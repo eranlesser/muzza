@@ -1,7 +1,6 @@
 package com.container
 {
 	import com.constants.Dimentions;
-	import com.gskinner.motion.GTween;
 	import com.model.rawData.Data;
 	import com.musicalInstruments.Band;
 	import com.musicalInstruments.view.character.Character;
@@ -16,7 +15,7 @@ package com.container
 	import org.osflash.signals.Signal;
 	
 	public class PreLoader extends Sprite{
-		[Embed(source="../../assets/splash.png")]
+		[Embed(source="../../assets/melody.jpg")]
 		private var bg:Class;
 		public var loaded:Signal=new Signal();
 		public function PreLoader(){

@@ -14,7 +14,7 @@ package com.model.texts
 			_titles["cueline"] = "קו נגינה";
 			_msgs["cueline"] = "כאשר המספר מגיע לקו לחצו על כלי הנגינה עם המספר המתאים";
 			_titles["play"] = "התחל";
-			_msgs["play"] = "לחצו כאן, שיעור ראשון עם מל";
+			_msgs["play"] = "לחצו כאן, שיעור ראשון מתחיל";
 			_titles["close"] = "סגור";
 			_msgs["close"] = "לחצו לסגירה של החלון";
 			_titles["welldone"] = "יפה מאוד";
@@ -22,10 +22,10 @@ package com.model.texts
 			_titles["Ddrums"] = "תופים";
 			_msgs["Ddrums"] = "בואו נוסיף קצת קצב"; 
 			_titles["Bbass"] = "הבס האנושי";
-			_msgs["Bbass"] = "זמן לקצת גרוב";
-			_titles["bottles"] = "מצוין!"; 
-			_titles["drums"] = "קצב מעולה!";
-			_titles["bass"] = "כל הכבוד!!";
+			_msgs["Bbass"] = "זמן לכלים הכבדים";
+			_titles["bottles"] = "!מצוין"; 
+			_titles["drums"] = "!קצב מעולה";
+			_titles["bass"] = "!!כל הכבוד";
 		}
 		
 		public function getTitleById(id:String):String{

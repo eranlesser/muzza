@@ -20,6 +20,7 @@ package com.view.tools
 		private var _assets:XML = new XML(
 			"<assets>" +
 			"<image path='assets/logo.png' />"+
+			"<image path='assets/hebrew/tutorialHeb.jpg' />"+
 			//OPEN
 			"<image path='assets/open/WAGON_TRAIN.png' />"+
 			"<image path='assets/open/STATION_WALL_TRIP.png' />"+

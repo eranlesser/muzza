@@ -216,8 +216,12 @@ class LearnSongPannel extends Sprite{
 			_isFree=true;
 		}
 		if(xml.@name=="tutorial"){
-			playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png","","tutorial");
-			playBtn.x = 510;
+			
+			//playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png","","tutorial");
+			playBtn=new Btn("tutorialHeb.jpg","tutorialHeb.jpg","","tutorial");
+			
+			//playBtn.x = 510;
+			playBtn.x = 530;
 			playBtn.y = 220;
 		}else{
 			playBtn=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");

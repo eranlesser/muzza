@@ -9,6 +9,7 @@ package com.inf
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
+	import flash.text.TextFormatAlign;
 	
 	import org.osflash.signals.Signal;
 	
@@ -69,6 +70,7 @@ package com.inf
 			_title = new TextField();
 			var fmt:TextFormat = new TextFormat("Vardena",24,0xFFFFFF,true);
 			_title.type = TextFieldType.DYNAMIC;
+			fmt.align = TextFormatAlign.CENTER;
 			_title.defaultTextFormat=fmt;
 			_title.width=wdt-70-20;
 			_title.x=70+20;
