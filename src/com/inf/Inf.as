@@ -1,5 +1,6 @@
 package com.inf
 {
+	import com.constants.Session;
 	import com.gskinner.motion.GTween;
 	import com.view.gui.Btn;
 	import com.view.tools.AssetsManager;
@@ -62,7 +63,8 @@ package com.inf
 		public function addTitle(txt:String):void{
 			var title:TextField = new TextField();
 			var fmt:TextFormat = new TextFormat("Arial",24,0xFFFFFF,true);
-			fmt.align = TextFormatAlign.CENTER;
+			if(Session.LANGUAGE=="hebrew")
+				fmt.align = TextFormatAlign.CENTER;
 			title.type = TextFieldType.DYNAMIC;
 			title.defaultTextFormat=fmt;
 			title.width=_width-70-20;
@@ -75,7 +77,8 @@ package com.inf
 		public function addContent(txt:String):void{
 			var content:TextField = new TextField();
 			var fmt:TextFormat = new TextFormat("Arial",18,0x372c2d);
-			fmt.align = TextFormatAlign.RIGHT;
+			if(Session.LANGUAGE=="hebrew")
+				fmt.align = TextFormatAlign.RIGHT;
 			content.type = TextFieldType.DYNAMIC;
 			content.defaultTextFormat=fmt;
 			content.width=_width-70-30;

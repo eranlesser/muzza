@@ -17,7 +17,8 @@
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
 	<!-- <id>app.for.vica.debug</id>-->
 	<!--  -<id>com.trainBeats.dev</id>-->
-	 <id>com.creativelamas.melodee</id> 
+	<!-- <id>com.creativelamas.melodee</id>  RELESE -->
+	<id>com.creativelamas.melodee.heb</id>
 	<!--   <id>com.trainbeats.opencurtain</id>-->
 
 	<!-- Used as the filename for the application. Required. -->

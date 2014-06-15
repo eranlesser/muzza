@@ -18,6 +18,19 @@ package com.screens.model {
 			parse(xml);
 		}
 		
+		public function set playMode(mode:String):void{
+			switch(mode){
+				
+				case "record":
+					_currentScreen=_recordSession.currentScreen;
+					break;
+				case "demo":
+					_currentScreen=_demoScreen;
+					break;
+			}
+		}
+
+		
 		public function get currentScreen():IScreen{
 			return _currentScreen;
 		}

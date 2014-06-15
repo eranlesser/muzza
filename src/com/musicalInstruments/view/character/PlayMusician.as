@@ -59,6 +59,7 @@ package com.musicalInstruments.view.character {
 			if(_musicianView){
 				_musicianView.stop();
 				_musicianView.sequanceDone.remove(onSequanceDone);
+				_done = false;
 			}
 		}
 		

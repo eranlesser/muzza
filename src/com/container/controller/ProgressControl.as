@@ -31,8 +31,9 @@ package com.container.controller {
 			goHomeSignal = new Signal();
 			
 		}
-		public function start():void{
+		public function start(mode:String):void{
 			_mainThemeModel.reset();
+			_mainThemeModel.screensModel.playMode = mode;
 			_view.addScreen(_mainThemeModel.screensModel.currentScreen as DisplayObject);
 			
 			_view.menu.goHome.add(goHome);

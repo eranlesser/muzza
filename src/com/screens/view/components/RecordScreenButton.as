@@ -1,5 +1,6 @@
 package com.screens.view.components
 {
+	import com.constants.Session;
 	import com.view.gui.Btn;
 	
 	import flash.display.Shape;
@@ -58,7 +59,8 @@ package com.screens.view.components
 			_label.x=2;
 			_label.y=3;
 			var fmt:TextFormat=new TextFormat("Arial",15);
-			fmt.align=TextFormatAlign.CENTER;
+			if(Session.LANGUAGE=="hebrew")
+				fmt.align=TextFormatAlign.CENTER;
 			_label.setTextFormat(fmt);
 			_label.height=40;
 			_label.width=64;

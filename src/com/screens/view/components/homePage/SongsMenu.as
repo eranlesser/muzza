@@ -144,7 +144,6 @@ package com.screens.view.components.homePage
 			if(_thumbsLayer.x==0){
 				_prevButton.visible=false;
 			}
-			trace((_thumbsLayer.width)+Dimentions.WIDTH);
 			if(_thumbsLayer.x<-(_thumbsLayer.width)+Dimentions.WIDTH){
 				_nextButton.visible=false;
 			}
@@ -217,11 +216,14 @@ class LearnSongPannel extends Sprite{
 		}
 		if(xml.@name=="tutorial"){
 			
-			//playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png","","tutorial");
-			playBtn=new Btn("tutorialHeb.jpg","tutorialHeb.jpg","","tutorial");
+			if(Session.LANGUAGE=="hebrew"){
+				playBtn=new Btn("tutorialHeb.jpg","tutorialHeb.jpg","","tutorial");
+				playBtn.x = 530;
+			}else{
+				playBtn=new Btn("Start_tutorial_idle.png","Start_tutorial_idle.png","","tutorial");
+				playBtn.x = 510;
+			}
 			
-			//playBtn.x = 510;
-			playBtn.x = 530;
 			playBtn.y = 220;
 		}else{
 			playBtn=new Btn("PLAY_IDLE.png","PLAY_PRESSED.png");

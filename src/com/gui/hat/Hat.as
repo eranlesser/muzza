@@ -101,7 +101,6 @@ package com.gui.hat
 			}else{
 				amount=5;
 			}
-			trace("amount=",amount)
 			var tween:GTween = new GTween(null,amount);
 			tween.ease = Sine.easeInOut;
 			tween.onChange = onFillHat;

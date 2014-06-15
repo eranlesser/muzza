@@ -7,12 +7,13 @@ package com.container
 	import com.model.MainThemeModel;
 	import com.model.rawData.Data;
 	import com.utils.Monotorizer;
-
+	
 	public class ThemesController{
 		
 		private var _presenter:			Presenter;
 		private var _themeProgressors:	Vector.<ProgressControl>;
 		private var _progressControlIndex:	uint=0;
+		private var _playMode:String;
 		
 		public function ThemesController(view:Presenter){
 			_presenter = view;
@@ -27,16 +28,17 @@ package com.container
 		}
 		
 		private function onSongSelected(name:String):void{
-			startProgressControll(name);
+			startProgressControll(name,"record");
 			Monotorizer.logEvent("in song selected",name);
 		}
 		
-		private function startProgressControll(name:String):void{
+		private function startProgressControll(name:String,mode:String):void{
 			Session.SONG_NAME=name;
+			_playMode=mode;
 			_presenter.removeStartScreen();
 			_progressControlIndex = getProgressControllerIndex(name);
 			if(_themeProgressors.length>_progressControlIndex &&_themeProgressors[_progressControlIndex]){
-				_themeProgressors[_progressControlIndex].start();
+				_themeProgressors[_progressControlIndex].start(mode);
 			}else{
 				var themeModel:MainThemeModel = new MainThemeModel(Data.getSongData(name),_presenter);
 				var progressControl:ProgressControl;
@@ -56,7 +58,7 @@ package com.container
 		}
 		
 		private function onThemeReady():void{
-			_themeProgressors[_progressControlIndex].start();
+			_themeProgressors[_progressControlIndex].start(_playMode);
 		}
 		
 		private function reStartScreen():void{
@@ -64,14 +66,14 @@ package com.container
 			_presenter.restart(this);
 		}
 		
-	/*
+		/*
 		public function resetData():void{
-			while(_themeProgressors.length>0){
-				_themeProgressors.pop().reset();
-			}
-			while(_themeModels.length>0){
-				_themeModels.pop().reset();
-			}
+		while(_themeProgressors.length>0){
+		_themeProgressors.pop().reset();
+		}
+		while(_themeModels.length>0){
+		_themeModels.pop().reset();
+		}
 		}
 		*/
 		private function getProgressControllerIndex(theme:String):uint{

@@ -12,13 +12,14 @@ package com.constants {
 		private static var _session:Session;
 		private var _score:int;
 		public var goodScreensLength:uint;
-		public static var inAppFullVersionId:String="melody.fullversion";
+		public static var inAppFullVersionId:String="melody.fullversion";//melody.fullversion.heb
 		private static var _IMPROVISE_MODE:Boolean=false;
 		public static const improviseSignal:Signal = new Signal();
 		public static const fullVersionSignal:Signal = new Signal();
 		public static var DeviceId:uint=2;
 		private static var _fullVersionEnabled:Boolean=false;
 		public static const flurryId:String="NZ33R7N9728H7CD2T9WB";
+		public static const LANGUAGE:String="hebrew";
 		public function Session(enforcer:enforcer){
 		}
 		

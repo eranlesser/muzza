@@ -34,7 +34,6 @@ package com.musicalInstruments.model.sequances
 		
 		public function add(noteId:String,location:uint,soundLength:uint,octave:uint):SequancedNote{
 			if(_notes.length>0 && _notes[_notes.length-1].location == location && _notes[_notes.length-1].noteId == noteId){
-				trace("DUPLICATE "+_notes[_notes.length-1].location)
 				return null;
 			}
 			var note:SequancedNote = new SequancedNote(noteId,location,soundLength,octave,"false");

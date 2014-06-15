@@ -1,11 +1,13 @@
 package com.container.controller
 {
 	import com.constants.Dimentions;
+	import com.constants.Session;
 	import com.constants.States;
 	import com.container.Presenter;
 	import com.inf.Inf;
 	import com.model.FileProxy;
 	import com.model.MainThemeModel;
+	import com.model.texts.EnglishTexts;
 	import com.model.texts.HebrewTexts;
 	import com.model.texts.ITexts;
 	import com.screens.recordScreenStates.RecordState;
@@ -29,11 +31,15 @@ package com.container.controller
 			_mask.graphics.beginFill(0xFFFFFF,0.3);
 			_mask.graphics.drawRect(0,0,Dimentions.WIDTH,Dimentions.HEIGHT);
 			_mask.graphics.endFill();
-			_texts = new HebrewTexts();
+			if(Session.LANGUAGE=="hebrew"){
+				_texts = new HebrewTexts();
+			}else{
+				_texts = new EnglishTexts();
+			}
 		}
 		
-		override public function start():void{
-			super.start();
+		override public function start(mode:String):void{
+			super.start(mode);
 			openInstruction(_texts.getTitleById("demo"),_texts.getMsgById("demo"),85,500,"bottles.png",Inf.BTM_LEFT,_view.menu.demoButton);
 			_recordScreen = (_mainThemeModel.screensModel.currentScreen as RecordScreen);
 			hideButtons();
@@ -54,17 +60,16 @@ package com.container.controller
 		private function showPlayButton():void{
 			if(_recordScreen){
 				_recordScreen.playButton.visible = true;
-				_recordScreen.playButton.clicked.add(onPlay);
 			}
 		}
 		
-		private function onPlay(str:String):void
+		private function onPlay():void
 		{
 			// tutorial - timing
 			if(_recordScreen&& _recordScreen.model.instrumentModel.thumbNail == "bottles.png"){
 				openInstruction(_texts.getTitleById("cueline"),_texts.getMsgById("cueline"),460,65,"bottles.png",Inf.BTM_LEFT,null);
+				(_recordScreen.stateController.currentState as RecordState).scoreSignal.add(onScore);
 			}
-			(_recordScreen.stateController.currentState as RecordState).scoreSignal.add(onScore);
 			
 		}
 		
@@ -128,6 +133,7 @@ package com.container.controller
 		{
 			if(state == States.RECORD){
 				closePopUp();
+				onPlay();
 			}else{
 				if(_recordScreen.model.isRecorded){
 					var thumbNail:String = _recordScreen.model.instrumentModel.thumbNail;
@@ -209,9 +215,6 @@ package com.container.controller
 			FileProxy.resetTutorial();
 			_mainThemeModel.screensModel.recordSession.deleteRecorded();
 			_view.menu.navigator.visible = true;
-			if(_recordScreen){
-				_recordScreen.playButton.clicked.remove(onPlay);
-			}
 				//clear all data from levels
 		}
 		
