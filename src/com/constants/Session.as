@@ -12,7 +12,7 @@ package com.constants {
 		private static var _session:Session;
 		private var _score:int;
 		public var goodScreensLength:uint;
-		public static var inAppFullVersionId:String="melody.fullversion";//melody.fullversion.heb
+		public static var inAppFullVersionId:String="melody.fullversion.heb"//"melody.fullversion";//
 		private static var _IMPROVISE_MODE:Boolean=false;
 		public static const improviseSignal:Signal = new Signal();
 		public static const fullVersionSignal:Signal = new Signal();

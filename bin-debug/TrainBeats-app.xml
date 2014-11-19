@@ -18,7 +18,7 @@
 	<!-- <id>app.for.vica.debug</id>-->
 	<!--  -<id>com.trainBeats.dev</id>-->
 	<!-- <id>com.creativelamas.melodee</id>  RELESE -->
-	<id>com.creativelamas.melodee.heb</id>
+	<id>com.creativelamas.melodee.heb.debug</id>
 	<!--   <id>com.trainbeats.opencurtain</id>-->
 
 	<!-- Used as the filename for the application. Required. -->
@@ -26,7 +26,7 @@
 
 	<!-- The name that is displayed in the AIR application installer. 
 	May have multiple values for each language. See samples or xsd schema file. Optional. -->
-	<name>Melody</name>
+	<name>Melody-debug</name>
 	
 	<!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
 	Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -50,7 +50,7 @@
 	<initialWindow>
 		<!-- The main SWF or HTML file of the application. Required. -->
 		<!-- Note: In Flash Builder, the SWF reference is set automatically. -->
-		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
+		<content>TrainBeats.swf</content>
 		
 		<!-- The title of the main window. Optional. -->
 		<!-- <title></title> -->

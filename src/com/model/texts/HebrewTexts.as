@@ -7,14 +7,15 @@ package com.model.texts
 		private var _titles:Dictionary = new Dictionary();
 		private var _msgs:Dictionary = new Dictionary();
 		
+		
 		public function HebrewTexts()
 		{
 			_titles["demo"] = "הדגמה";
-			_msgs["demo"] = "לחצו כאן לשמוע הדגמה של המנגינה אותה ננגן יחד";
+			_msgs["demo"] = "לחצו כאן ";
 			_titles["cueline"] = "קו נגינה";
-			_msgs["cueline"] = "כאשר המספר מגיע לקו לחצו על כלי הנגינה עם המספר המתאים";
+			_msgs["cueline"] = "לחצו על המספר המתאים";
 			_titles["play"] = "התחל";
-			_msgs["play"] = "לחצו כאן, שיעור ראשון מתחיל";
+			_msgs["play"] = "שיעור ראשון מתחיל";
 			_titles["close"] = "סגור";
 			_msgs["close"] = "לחצו לסגירה של החלון";
 			_titles["welldone"] = "יפה מאוד";
@@ -23,16 +24,26 @@ package com.model.texts
 			_msgs["Ddrums"] = "בואו נוסיף קצת קצב"; 
 			_titles["Bbass"] = "הבס האנושי";
 			_msgs["Bbass"] = "זמן לכלים הכבדים";
-			_titles["bottles"] = "!מצוין"; 
-			_titles["drums"] = "!קצב מעולה";
-			_titles["bass"] = "!!כל הכבוד";
+			_titles["bottles"] = "מצוין!"; 
+			_titles["drums"] = "קצב מעולה!";
+			_titles["bass"] = "כל הכבוד!!";
 		}
 		
 		public function getTitleById(id:String):String{
-			return _titles[id];
+			return flip(_titles[id]);
 		}
 		public function getMsgById(id:String):String{
-			return _msgs[id];
+			return flip(_msgs[id]);
+		}
+		
+		private function flip(str:String):String{
+			
+			var newStr:String = "";
+			for(var i:int=str.length-1;i>=0;i--){
+				newStr = newStr + str.charAt(i);
+			}
+			
+			return newStr;
 		}
 	}
 }
